@@ -5,26 +5,18 @@ import { hero } from "@/content/home";
 
 export default function Hero() {
   return (
-    <section className="relative h-[92vh] min-h-[640px] bg-black overflow-hidden">
-      {/* Vimeo Background Video */}
-      <div className="absolute inset-0">
-        <iframe
-          src={`https://player.vimeo.com/video/${hero.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-          className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2"
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          title="Hero Background Video"
-        />
+    <section className="relative h-[92vh] min-h-[640px] bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
+      {/* Elegant background pattern - can add image here later */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(181,139,131,0.15),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(139,92,88,0.1),transparent_50%)]" />
       </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#00000066] to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6">
         <div className="max-w-3xl">
           <motion.h1
-            className="heading-xl font-serif tracking-wider text-white [font-variant-ligatures:common-ligatures]"
+            className="heading-xl font-serif tracking-wider text-ink [font-variant-ligatures:common-ligatures]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -35,7 +27,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="subhead mt-4 text-white/90"
+            className="subhead mt-4 text-espresso"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -57,7 +49,7 @@ export default function Hero() {
             </a>
             <a
               href="#signature-work"
-              className="rounded-full border border-white/60 bg-white/10 px-6 py-3 text-white/90 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20 focus-ring"
+              className="rounded-full border border-rose-2 px-6 py-3 text-rose-2 transition-all duration-300 hover:scale-105 hover:bg-rose-2 hover:text-white focus-ring"
             >
               Watch Our Films
             </a>
@@ -65,19 +57,19 @@ export default function Hero() {
 
           {/* Stats */}
           <motion.div
-            className="mt-8 flex gap-8 text-sm text-white/80"
+            className="mt-8 flex gap-8 text-sm text-espresso"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
           >
             <div>
-              <span className="font-serif text-2xl font-bold text-white">
+              <span className="font-serif text-2xl font-bold text-ink">
                 {hero.stats.weddings}
               </span>
               <span className="ml-2">Weddings</span>
             </div>
             <div>
-              <span className="font-serif text-2xl font-bold text-white">
+              <span className="font-serif text-2xl font-bold text-ink">
                 {hero.stats.rating}
               </span>
               <span className="ml-2">Rating</span>
