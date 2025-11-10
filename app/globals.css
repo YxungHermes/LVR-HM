@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #FAF6F0;
+  --espresso: #2A1E17;
+  --coffee: #4B3621;
+  --rose-1: #B58B83;
+  --rose-2: #8B5C58;
+  --ink: #0F0F10;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-espresso;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink;
+  }
+}
+
+@layer utilities {
+  .bg-rose-grad {
+    background: linear-gradient(135deg, var(--rose-1), var(--rose-2));
+  }
+
+  .text-espresso {
+    color: var(--espresso);
+  }
+
+  .text-ink {
+    color: var(--ink);
+  }
+
+  .paper-grain {
+    mix-blend-mode: multiply;
+    opacity: 0.12;
+    pointer-events: none;
+  }
+
+  /* Reduce motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Custom focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-rose-1 focus:ring-offset-2;
+  }
+
+  /* Heading scale */
+  .heading-xl {
+    font-size: clamp(40px, 6vw, 88px);
+    line-height: 1.1;
+  }
+
+  .heading-lg {
+    font-size: clamp(32px, 4.5vw, 64px);
+    line-height: 1.15;
+  }
+
+  .heading-md {
+    font-size: clamp(24px, 3vw, 48px);
+    line-height: 1.2;
+  }
+
+  .subhead {
+    font-size: clamp(16px, 1.4vw, 22px);
+    line-height: 1.6;
+  }
+}
