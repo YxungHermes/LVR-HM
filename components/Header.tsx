@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation } from "@/content/home";
-import LvrWaxSeal from "./brand/LvrWaxSeal";
+import MinimalRoseIcon from "./brand/MinimalRoseIcon";
 
 type MegaMenuSection = {
   title: string;
@@ -129,30 +129,27 @@ export default function Header() {
         onMouseEnter={handleHeaderMouseEnter}
         onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-[1280px] px-6 h-[56px] md:h-[68px] flex items-center justify-between">
+        <div className="mx-auto max-w-[1280px] px-12 h-[56px] md:h-[72px] flex items-center justify-between">
           {/* Left Navigation */}
           <nav className="flex items-center gap-1" aria-label="Primary">
             {navigation.left.map(renderNavItem)}
           </nav>
 
-          {/* Center Brand with Wax Seal - Transitions between full wordmark and LVR monogram */}
+          {/* Center Brand - Transitions between full wordmark and LVR monogram */}
           <div className="absolute left-1/2 -translate-x-1/2">
             <a
               href="#"
-              className="group relative flex items-center gap-2.5 transition-transform duration-200 hover:-translate-y-[1px] focus-ring"
+              className="group relative flex items-center justify-center transition-colors duration-300 focus-ring"
             >
-              <LvrWaxSeal className="h-7 w-7 shrink-0 transition-all duration-700 group-hover:brightness-[1.04] wax-seal-mobile md:h-7 md:w-7" />
-
               {/* Full Wordmark - visible when not scrolled */}
               <motion.span
-                className={`font-serif text-xl font-bold tracking-[0.08em] whitespace-nowrap ${
-                  solid ? "text-[#111]" : "text-white"
+                className={`font-serif text-3xl md:text-4xl font-bold tracking-[0.025em] whitespace-nowrap transition-colors duration-300 ${
+                  solid ? "text-[#1C1A18]" : "text-white"
                 }`}
                 initial={false}
                 animate={{
                   opacity: isScrolled ? 0 : 1,
-                  scale: isScrolled ? 0.9 : 1,
-                  x: isScrolled ? -10 : 0,
+                  scale: isScrolled ? 0.8 : 1,
                 }}
                 transition={{
                   duration: 0.7,
@@ -163,16 +160,13 @@ export default function Header() {
                 Love, Violeta Rose
               </motion.span>
 
-              {/* LVR Monogram - visible when scrolled */}
-              <motion.span
-                className={`absolute left-9 font-serif text-xl font-bold tracking-[0.12em] whitespace-nowrap ${
-                  solid ? "text-[#111]" : "text-white"
-                }`}
+              {/* LVR Monogram with Rose Icon - visible when scrolled */}
+              <motion.div
+                className="absolute flex items-center gap-2"
                 initial={false}
                 animate={{
                   opacity: isScrolled ? 1 : 0,
-                  scale: isScrolled ? 1 : 0.9,
-                  x: isScrolled ? 0 : 10,
+                  scale: isScrolled ? 1 : 0.8,
                 }}
                 transition={{
                   duration: 0.7,
@@ -180,8 +174,21 @@ export default function Header() {
                 }}
                 style={{ pointerEvents: isScrolled ? "auto" : "none" }}
               >
-                LVR
-              </motion.span>
+                {/* Minimal rose icon */}
+                <MinimalRoseIcon
+                  className={`h-4 w-4 opacity-85 transition-colors duration-300 ${
+                    solid ? "text-[#1C1A18]" : "text-white"
+                  }`}
+                />
+                {/* LVR text */}
+                <span
+                  className={`font-serif text-xl font-semibold tracking-[0.08em] whitespace-nowrap transition-colors duration-300 ${
+                    solid ? "text-[#1C1A18]" : "text-white"
+                  }`}
+                >
+                  LVR
+                </span>
+              </motion.div>
             </a>
           </div>
 
@@ -196,7 +203,7 @@ export default function Header() {
       <AnimatePresence>
         {activeMegaMenu && (
           <motion.div
-            className="fixed left-0 right-0 z-40 bg-[#F4EAE4]/70 backdrop-blur-md border-b border-black/8 top-[56px] md:top-[68px]"
+            className="fixed left-0 right-0 z-40 bg-[#F4EAE4]/70 backdrop-blur-md border-b border-black/8 top-[56px] md:top-[72px]"
             style={{
               boxShadow: "0 8px 24px rgba(0,0,0,.06)",
             }}
