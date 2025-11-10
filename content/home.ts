@@ -185,8 +185,8 @@ export const navigation = {
           {
             title: "Get In Touch",
             links: [
-              { label: "Book a Call", href: "#contact" },
-              { label: "Send Inquiry", href: "#contact" },
+              { label: "Book Your Consultation", href: "#contact" },
+              { label: "Begin Your Journey", href: "#contact" },
               { label: "Check Availability", href: "#contact" }
             ]
           }

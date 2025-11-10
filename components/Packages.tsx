@@ -90,7 +90,7 @@ function PackageCard({ pkg, index }: { pkg: typeof packages[0]; index: number })
             : "border-rose-2 text-rose-2 hover:bg-rose-grad hover:border-transparent hover:text-white"
         }`}
       >
-        Book This Package
+        Begin Your Journey
       </a>
     </motion.div>
   );

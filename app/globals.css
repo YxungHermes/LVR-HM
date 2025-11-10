@@ -3,12 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --cream: #FAF6F0;
-  --espresso: #2A1E17;
-  --coffee: #4B3621;
-  --rose-1: #B58B83;
-  --rose-2: #8B5C58;
-  --ink: #0F0F10;
+  /* Brand Identity Color System */
+  --rose-wax-red: #A14C41;
+  --warm-sand: #E9DDD2;
+  --ivory-white: #FAF7F2;
+  --cinematic-black: #1C1A18;
+  --muted-brown: #7B6A5A;
+
+  /* Legacy tokens (mapped to new system) */
+  --cream: var(--ivory-white);
+  --espresso: var(--cinematic-black);
+  --coffee: var(--muted-brown);
+  --rose-1: var(--rose-wax-red);
+  --rose-2: var(--rose-wax-red);
+  --ink: var(--cinematic-black);
 }
 
 @layer base {

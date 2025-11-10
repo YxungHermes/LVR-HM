@@ -45,13 +45,13 @@ export default function Hero() {
               href="#packages"
               className="group bg-rose-grad rounded-full px-6 py-3 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg focus-ring"
             >
-              View Packages
+              View Our Collections
             </a>
             <a
               href="#signature-work"
               className="rounded-full border border-rose-2 px-6 py-3 text-rose-2 transition-all duration-300 hover:scale-105 hover:bg-rose-2 hover:text-white focus-ring"
             >
-              Watch Our Films
+              Explore Our Stories
             </a>
           </motion.div>
 

@@ -2,11 +2,11 @@ export default function LvrWaxSeal(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 200 200" aria-hidden="true" {...props}>
       <defs>
-        {/* Deep red wax gradient */}
+        {/* Rose wax red gradient - brand identity */}
         <radialGradient id="waxGrad" cx="45%" cy="40%" r="70%">
-          <stop offset="0%" stopColor="#B0102A" />
-          <stop offset="45%" stopColor="#9A0D24" />
-          <stop offset="100%" stopColor="#6F0A18" />
+          <stop offset="0%" stopColor="#A14C41" />
+          <stop offset="45%" stopColor="#8A3E35" />
+          <stop offset="100%" stopColor="#6B2F27" />
         </radialGradient>
 
         {/* Inner highlight glow */}

@@ -20,14 +20,19 @@ type NavItem = {
 
 export default function Header() {
   const [solid, setSolid] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const handleScroll = () => {
-      const shouldBeSolid = window.scrollY > 32;
+      const scrollY = window.scrollY;
+      const shouldBeSolid = scrollY > 32;
+      const shouldBeCompact = scrollY > 32;
+
       setSolid(shouldBeSolid);
+      setIsScrolled(shouldBeCompact);
     };
 
     handleScroll();
@@ -130,20 +135,53 @@ export default function Header() {
             {navigation.left.map(renderNavItem)}
           </nav>
 
-          {/* Center Brand with Wax Seal */}
+          {/* Center Brand with Wax Seal - Transitions between full wordmark and LVR monogram */}
           <div className="absolute left-1/2 -translate-x-1/2">
             <a
               href="#"
-              className="group flex items-center gap-2.5 transition-transform duration-200 hover:-translate-y-[1px] focus-ring"
+              className="group relative flex items-center gap-2.5 transition-transform duration-200 hover:-translate-y-[1px] focus-ring"
             >
-              <LvrWaxSeal className="h-7 w-7 shrink-0 transition-all duration-200 group-hover:brightness-[1.04] wax-seal-mobile md:h-7 md:w-7" />
-              <span
-                className={`font-serif text-xl font-bold tracking-[0.08em] transition-colors duration-200 ${
+              <LvrWaxSeal className="h-7 w-7 shrink-0 transition-all duration-700 group-hover:brightness-[1.04] wax-seal-mobile md:h-7 md:w-7" />
+
+              {/* Full Wordmark - visible when not scrolled */}
+              <motion.span
+                className={`font-serif text-xl font-bold tracking-[0.08em] whitespace-nowrap ${
                   solid ? "text-[#111]" : "text-white"
                 }`}
+                initial={false}
+                animate={{
+                  opacity: isScrolled ? 0 : 1,
+                  scale: isScrolled ? 0.9 : 1,
+                  x: isScrolled ? -10 : 0,
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.85, 0, 0.15, 1],
+                }}
+                style={{ pointerEvents: isScrolled ? "none" : "auto" }}
               >
                 Love, Violeta Rose
-              </span>
+              </motion.span>
+
+              {/* LVR Monogram - visible when scrolled */}
+              <motion.span
+                className={`absolute left-9 font-serif text-xl font-bold tracking-[0.12em] whitespace-nowrap ${
+                  solid ? "text-[#111]" : "text-white"
+                }`}
+                initial={false}
+                animate={{
+                  opacity: isScrolled ? 1 : 0,
+                  scale: isScrolled ? 1 : 0.9,
+                  x: isScrolled ? 0 : 10,
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.85, 0, 0.15, 1],
+                }}
+                style={{ pointerEvents: isScrolled ? "auto" : "none" }}
+              >
+                LVR
+              </motion.span>
             </a>
           </div>
 

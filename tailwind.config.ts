@@ -9,18 +9,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#FAF6F0",
-        espresso: "#2A1E17",
-        coffee: "#4B3621",
+        // Brand Identity Colors
+        "rose-wax-red": "#A14C41",
+        "warm-sand": "#E9DDD2",
+        "ivory-white": "#FAF7F2",
+        "cinematic-black": "#1C1A18",
+        "muted-brown": "#7B6A5A",
+
+        // Legacy mappings (for backward compatibility)
+        cream: "#FAF7F2",
+        espresso: "#1C1A18",
+        coffee: "#7B6A5A",
         rose: {
-          1: "#B58B83",
-          2: "#8B5C58",
+          1: "#A14C41",
+          2: "#A14C41",
         },
-        ink: "#0F0F10",
+        ink: "#1C1A18",
       },
       fontFamily: {
-        serif: ["var(--font-cormorant)", "Cormorant Garamond", "serif"],
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        serif: ["var(--font-playfair)", "Playfair Display", "Georgia", "serif"],
+        sans: ["var(--font-inter)", "Inter", "Helvetica Neue", "system-ui", "sans-serif"],
       },
       letterSpacing: {
         wider: "0.04em",
