@@ -162,7 +162,7 @@ export default function Header() {
 
               {/* LVR Monogram with Rose Icon - visible when scrolled */}
               <motion.div
-                className="absolute flex items-center gap-2"
+                className="absolute flex items-center gap-2 group/monogram"
                 initial={false}
                 animate={{
                   opacity: isScrolled ? 1 : 0,
@@ -177,13 +177,13 @@ export default function Header() {
                 {/* Minimal rose icon */}
                 <MinimalRoseIcon
                   className={`h-4 w-4 opacity-85 transition-colors duration-300 ${
-                    solid ? "text-[#1C1A18]" : "text-white"
+                    solid ? "text-[#1C1A18] group-hover/monogram:text-[#A14C41]" : "text-white group-hover/monogram:text-[#A14C41]"
                   }`}
                 />
                 {/* LVR text */}
                 <span
-                  className={`font-serif text-xl font-semibold tracking-[0.08em] whitespace-nowrap transition-colors duration-300 ${
-                    solid ? "text-[#1C1A18]" : "text-white"
+                  className={`font-serif text-xl font-extrabold tracking-[0.04em] whitespace-nowrap transition-colors duration-300 ${
+                    solid ? "text-[#1C1A18] group-hover/monogram:text-[#A14C41]" : "text-white group-hover/monogram:text-[#A14C41]"
                   }`}
                 >
                   LVR
