@@ -1,9 +1,9 @@
 export const hero = {
   title: "Love Stories Worth Reliving",
   sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
-  // H264 version for maximum browser compatibility (Chrome, Firefox, Safari, Edge)
-  // Using raw=1 for direct video streaming from Dropbox
-  video: "https://www.dropbox.com/scl/fi/bqwj8361l710dzee6rmir/Love-Violeta-Rose-Loopt-H264.mov?rlkey=nd5271m0vximyafz1clheosnn&raw=1",
+  // Using Vimeo for reliable video hosting and streaming
+  // Vimeo ID from: https://vimeo.com/1057598499
+  vimeoId: "1057598499",
   poster: "/media/hero-poster.jpg",
   stats: {
     weddings: "500+",

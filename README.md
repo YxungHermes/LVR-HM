@@ -42,22 +42,27 @@ npm start
 
 Edit content in `content/home.ts`:
 
-- **Hero**: Title, subtitle, video URL, poster image
+- **Hero**: Title, subtitle, Vimeo video ID, poster image
 - **Signature Work**: Wedding film reels with titles and videos
 - **Packages**: Pricing, features, and descriptions
 - **Testimonials**: Client quotes and details
 - **Navigation**: Menu items and social links
 
+### Hero Video
+
+The hero section uses **Vimeo** for reliable video hosting:
+- Current video: `vimeoId: "1057598499"`
+- To change: Upload your video to Vimeo and update the ID in `content/home.ts`
+- Vimeo's background mode ensures smooth autoplay and looping
+
 ## Media Assets
 
 Place your media files in the `/public/media` directory:
 
-- `hero-poster.jpg` — Hero video poster image
+- `hero-poster.jpg` — Hero video poster image (optional fallback)
 - `reel-1.jpg`, `reel-1.mp4` — Signature work videos and posters
 - `reel-2.jpg`, `reel-2.mp4`
 - `reel-3.jpg`, `reel-3.mp4`
-
-Currently using Dropbox direct link for the hero video. For production, host videos on a CDN or self-host for better performance.
 
 ## Design Philosophy
 
