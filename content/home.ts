@@ -1,9 +1,9 @@
 export const hero = {
   title: "Love Stories Worth Reliving",
   sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
-  // Note: H265/HEVC codec only works in Safari. For Chrome/Firefox, you need H264.
-  // Using raw=1 for better Dropbox streaming
-  video: "https://www.dropbox.com/scl/fi/augur89d8l1ro0r6zn6b8/Love-Violeta-Rose-Loopt-H265.mov?rlkey=o5rfrolegzc9x62m8wkk566i0&raw=1",
+  // H264 version for maximum browser compatibility (Chrome, Firefox, Safari, Edge)
+  // Using raw=1 for direct video streaming from Dropbox
+  video: "https://www.dropbox.com/scl/fi/bqwj8361l710dzee6rmir/Love-Violeta-Rose-Loopt-H264.mov?rlkey=nd5271m0vximyafz1clheosnn&raw=1",
   poster: "/media/hero-poster.jpg",
   stats: {
     weddings: "500+",
