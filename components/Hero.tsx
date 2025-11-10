@@ -1,22 +1,66 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 import { hero } from "@/content/home";
 
 export default function Hero() {
+  const [videoError, setVideoError] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Try to play the video
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.error("Video autoplay failed:", error);
+        });
+      }
+    }
+  }, []);
+
+  const handleVideoError = (e: React.SyntheticEvent<HTMLVideoElement, Event>) => {
+    console.error("Video failed to load:", e);
+    setVideoError(true);
+  };
+
+  const handleVideoLoaded = () => {
+    console.log("Video loaded successfully");
+    setVideoLoaded(true);
+  };
+
   return (
     <section className="relative h-[92vh] min-h-[640px] bg-black">
       {/* Video Background */}
       <video
+        ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
-        src={hero.video}
         poster={hero.poster}
         autoPlay
         muted
         loop
         playsInline
-        preload="metadata"
-      />
+        preload="auto"
+        onError={handleVideoError}
+        onLoadedData={handleVideoLoaded}
+        crossOrigin="anonymous"
+      >
+        <source src={hero.video} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Fallback message for debugging */}
+      {videoError && (
+        <div className="absolute inset-0 flex items-center justify-center bg-black/80 text-white">
+          <div className="text-center">
+            <p className="text-sm">Video failed to load</p>
+            <p className="mt-2 text-xs opacity-60">Check browser console for details</p>
+          </div>
+        </div>
+      )}
 
       {/* Gradient Overlay */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#00000066] to-transparent" />
