@@ -28,16 +28,35 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-6 py-4">
         <div className="grid grid-cols-3 items-center">
           {/* Left: Navigation */}
-          <nav className="flex gap-6">
+          <nav className="flex gap-2">
             {navigation.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-sm font-medium transition-colors hover:text-rose-2 focus-ring ${
+                className={`group relative px-4 py-2 text-sm font-medium transition-all duration-300 focus-ring ${
                   isScrolled ? "text-espresso" : "text-white"
                 }`}
               >
-                {item.label}
+                {/* D&G-style background highlight on hover */}
+                <span className={`absolute inset-0 rounded-md transition-all duration-300 ${
+                  isScrolled
+                    ? "bg-rose-1/0 group-hover:bg-rose-1/10"
+                    : "bg-white/0 group-hover:bg-white/10"
+                }`} />
+
+                {/* Text with color transition */}
+                <span className={`relative transition-colors duration-300 ${
+                  isScrolled
+                    ? "group-hover:text-rose-2"
+                    : "group-hover:text-white"
+                }`}>
+                  {item.label}
+                </span>
+
+                {/* Subtle bottom border on hover */}
+                <span className={`absolute bottom-0 left-1/2 h-[1px] w-0 -translate-x-1/2 transition-all duration-300 group-hover:w-3/4 ${
+                  isScrolled ? "bg-rose-2" : "bg-white"
+                }`} />
               </a>
             ))}
           </nav>
@@ -46,11 +65,17 @@ export default function Header() {
           <div className="flex justify-center">
             <a
               href="#"
-              className={`font-serif text-2xl font-bold tracking-wider transition-colors focus-ring ${
+              className={`group relative px-6 py-2 font-serif text-2xl font-bold tracking-wider transition-all duration-300 focus-ring ${
                 isScrolled ? "text-ink" : "text-white"
               }`}
             >
-              Love, Violeta Rose
+              {/* Subtle glow on hover */}
+              <span className={`absolute inset-0 rounded-lg transition-all duration-500 ${
+                isScrolled
+                  ? "bg-rose-1/0 group-hover:bg-rose-1/5"
+                  : "bg-white/0 group-hover:bg-white/5"
+              }`} />
+              <span className="relative">Love, Violeta Rose</span>
             </a>
           </div>
 
