@@ -2,7 +2,7 @@ export const hero = {
   title: "Love Stories Worth Reliving",
   sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
   // Using Vimeo for reliable video hosting and streaming
-  // Vimeo ID from: https://vimeo.com/1057598499
+  // Vimeo ID from:
   vimeoId: "1057598499",
   poster: "/media/hero-poster.jpg",
   stats: {
