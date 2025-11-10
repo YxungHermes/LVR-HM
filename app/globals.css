@@ -57,7 +57,15 @@
 
   /* Custom focus styles for accessibility */
   .focus-ring {
-    @apply focus:outline-none focus:ring-2 focus:ring-rose-1 focus:ring-offset-2;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 focus-visible:ring-offset-2;
+  }
+
+  /* Responsive wax seal sizing */
+  @media (max-width: 768px) {
+    .wax-seal-mobile {
+      height: 22px;
+      width: 22px;
+    }
   }
 
   /* Heading scale */

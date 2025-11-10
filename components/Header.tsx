@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation } from "@/content/home";
+import LvrWaxSeal from "./brand/LvrWaxSeal";
 
 type MegaMenuSection = {
   title: string;
@@ -18,85 +19,138 @@ type NavItem = {
 };
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [solid, setSolid] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
+  const openTimeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const shouldBeSolid = window.scrollY > 32;
+      setSolid(shouldBeSolid);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleMouseEnter = (label: string) => {
+  const handleHeaderMouseEnter = () => {
+    setSolid(true);
+  };
+
+  const handleHeaderMouseLeave = () => {
+    // Only return to transparent if at top
+    if (window.scrollY <= 32) {
+      setSolid(false);
+    }
+  };
+
+  const handleNavItemEnter = (label: string) => {
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
     }
-    setActiveMegaMenu(label);
+    if (openTimeoutRef.current) {
+      clearTimeout(openTimeoutRef.current);
+    }
+
+    // 120ms delay before opening
+    openTimeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu(label);
+    }, 120);
   };
 
-  const handleMouseLeave = () => {
+  const handleNavItemLeave = () => {
+    if (openTimeoutRef.current) {
+      clearTimeout(openTimeoutRef.current);
+    }
+
+    // 200ms delay before closing
     closeTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null);
-    }, 150); // 150ms delay to prevent flicker
+    }, 200);
   };
 
   const handleMegaMenuEnter = () => {
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
     }
+    if (openTimeoutRef.current) {
+      clearTimeout(openTimeoutRef.current);
+    }
+  };
+
+  const handleNavItemFocus = (label: string) => {
+    // Force solid state for contrast on keyboard focus
+    setSolid(true);
+    setActiveMegaMenu(label);
   };
 
   const renderNavItem = (item: NavItem) => (
     <a
       key={item.label}
       href={item.href}
-      className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide text-ink/90 transition-opacity duration-300 hover:opacity-70 focus-ring"
-      onMouseEnter={() => handleMouseEnter(item.label)}
-      onFocus={() => handleMouseEnter(item.label)}
+      className={`group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring ${
+        solid ? "text-[#121212]" : "text-white"
+      }`}
+      onMouseEnter={() => handleNavItemEnter(item.label)}
+      onMouseLeave={handleNavItemLeave}
+      onFocus={() => handleNavItemFocus(item.label)}
     >
-      {item.label}
+      <span className="relative">
+        {item.label}
+        {/* Underline on hover */}
+        <span
+          className={`absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-200 group-hover:w-full ${
+            solid ? "bg-[#121212]/40" : "bg-white/55"
+          }`}
+        />
+      </span>
     </a>
   );
 
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/95 shadow-sm backdrop-blur-md border-b border-black/10"
-            : "bg-transparent"
+        role="banner"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          solid
+            ? "bg-white border-b border-black/8 shadow-sm"
+            : "bg-transparent border-b-0"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleHeaderMouseEnter}
+        onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-7xl px-8 py-5">
-          <div className="flex items-center justify-between">
-            {/* Left Navigation */}
-            <nav className="flex items-center gap-1">
-              {navigation.left.map(renderNavItem)}
-            </nav>
+        <div className="mx-auto max-w-[1280px] px-6 h-[56px] md:h-[68px] flex items-center justify-between">
+          {/* Left Navigation */}
+          <nav className="flex items-center gap-1" aria-label="Primary">
+            {navigation.left.map(renderNavItem)}
+          </nav>
 
-            {/* Center Logo */}
-            <div className="absolute left-1/2 -translate-x-1/2">
-              <a
-                href="#"
-                className="block font-serif text-2xl font-bold tracking-[0.08em] text-[#111] transition-opacity duration-300 hover:opacity-70 focus-ring"
+          {/* Center Brand with Wax Seal */}
+          <div className="absolute left-1/2 -translate-x-1/2">
+            <a
+              href="#"
+              className="group flex items-center gap-2.5 transition-transform duration-200 hover:-translate-y-[1px] focus-ring"
+            >
+              <LvrWaxSeal className="h-7 w-7 shrink-0 transition-all duration-200 group-hover:brightness-[1.04] wax-seal-mobile md:h-7 md:w-7" />
+              <span
+                className={`font-serif text-xl font-bold tracking-[0.08em] transition-colors duration-200 ${
+                  solid ? "text-[#111]" : "text-white"
+                }`}
               >
                 Love, Violeta Rose
-              </a>
-            </div>
-
-            {/* Right Navigation */}
-            <nav className="flex items-center gap-1">
-              {navigation.right.map(renderNavItem)}
-            </nav>
+              </span>
+            </a>
           </div>
+
+          {/* Right Navigation */}
+          <nav className="flex items-center gap-1" aria-label="Secondary">
+            {navigation.right.map(renderNavItem)}
+          </nav>
         </div>
       </motion.header>
 
@@ -104,37 +158,39 @@ export default function Header() {
       <AnimatePresence>
         {activeMegaMenu && (
           <motion.div
-            className="fixed left-0 right-0 z-40 bg-white border-b border-black/10 shadow-lg"
-            style={{ top: isScrolled ? "73px" : "69px" }}
-            initial={{ opacity: 0, y: -20 }}
+            className="fixed left-0 right-0 z-40 bg-[#F4EAE4]/70 backdrop-blur-md border-b border-black/8 top-[56px] md:top-[68px]"
+            style={{
+              boxShadow: "0 8px 24px rgba(0,0,0,.06)",
+            }}
+            initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             onMouseEnter={handleMegaMenuEnter}
-            onMouseLeave={handleMouseLeave}
+            onMouseLeave={handleNavItemLeave}
           >
-            <div className="mx-auto max-w-7xl px-8 py-12">
-              <div className="grid grid-cols-2 gap-16">
+            <div className="mx-auto max-w-[1280px] px-8 py-6">
+              <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-16">
                 {/* Find active menu item and render its sections */}
                 {[...navigation.left, ...navigation.right]
                   .find((item) => item.label === activeMegaMenu)
                   ?.megaMenu.sections.map((section, idx) => (
                     <div key={idx}>
-                      <h3 className="mb-6 text-xs font-semibold uppercase tracking-widest text-ink/60">
+                      <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#6B5E57]">
                         {section.title}
                       </h3>
-                      <ul className="space-y-4">
+                      <ul className="space-y-3">
                         {section.links.map((link, linkIdx) => (
                           <li key={linkIdx}>
                             <a
                               href={link.href}
-                              className="group block transition-opacity duration-200 hover:opacity-70"
+                              className="group block transition-opacity duration-180 hover:opacity-70"
                             >
-                              <span className="font-serif text-lg text-ink">
+                              <span className="font-serif text-base font-semibold text-[#121212]">
                                 {link.label}
                               </span>
                               {link.subtitle && (
-                                <span className="ml-2 text-sm text-espresso/60">
+                                <span className="ml-2 text-sm text-[#6B5E57]">
                                   {link.subtitle}
                                 </span>
                               )}
