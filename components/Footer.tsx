@@ -36,7 +36,7 @@ export default function Footer() {
               Navigate
             </h4>
             <nav className="space-y-2">
-              {navigation.map((item) => (
+              {[...navigation.left, ...navigation.right].map((item) => (
                 <a
                   key={item.label}
                   href={item.href}

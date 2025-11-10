@@ -108,12 +108,93 @@ export const testimonials = [
   }
 ];
 
-export const navigation = [
-  { label: "Films", href: "#signature-work" },
-  { label: "Packages", href: "#packages" },
-  { label: "Stories", href: "#testimonials" },
-  { label: "Contact", href: "#contact" }
-];
+// Navigation with mega menu content
+export const navigation = {
+  left: [
+    {
+      label: "Films",
+      href: "#signature-work",
+      megaMenu: {
+        sections: [
+          {
+            title: "Latest Films",
+            links: [
+              { label: "Ari & Billy", href: "#signature-work", subtitle: "Malibu" },
+              { label: "Jeremy & Lourdes", href: "#signature-work", subtitle: "Palm Springs" },
+              { label: "Caitlyn & Michael", href: "#signature-work", subtitle: "Santa Barbara" }
+            ]
+          },
+          {
+            title: "Collections",
+            links: [
+              { label: "Full Weddings", href: "#signature-work" },
+              { label: "Elopements", href: "#signature-work" },
+              { label: "Highlight Reels", href: "#signature-work" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      label: "Packages",
+      href: "#packages",
+      megaMenu: {
+        sections: [
+          {
+            title: "Coverage",
+            links: [
+              { label: "Intimate", href: "#packages", subtitle: "4 hours" },
+              { label: "Classic", href: "#packages", subtitle: "6 hours" },
+              { label: "Premium", href: "#packages", subtitle: "8 hours" },
+              { label: "Legacy", href: "#packages", subtitle: "10-12 hours" }
+            ]
+          },
+          {
+            title: "Add-Ons",
+            links: [
+              { label: "Drone Footage", href: "#packages" },
+              { label: "Save the Date", href: "#packages" },
+              { label: "Second Shooter", href: "#packages" }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  right: [
+    {
+      label: "Stories",
+      href: "#testimonials",
+      megaMenu: {
+        sections: [
+          {
+            title: "Testimonials",
+            links: [
+              { label: "Read Reviews", href: "#testimonials" },
+              { label: "Client Gallery", href: "#testimonials" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      label: "Contact",
+      href: "#contact",
+      megaMenu: {
+        sections: [
+          {
+            title: "Get In Touch",
+            links: [
+              { label: "Book a Call", href: "#contact" },
+              { label: "Send Inquiry", href: "#contact" },
+              { label: "Check Availability", href: "#contact" }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+};
 
 export const socialLinks = [
   { platform: "Instagram", href: "https://instagram.com/lovevioletarose", label: "@lovevioletarose" },
