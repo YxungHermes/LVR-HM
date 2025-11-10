@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation } from "@/content/home";
-import MinimalRoseIcon from "./brand/MinimalRoseIcon";
 
 type MegaMenuSection = {
   title: string;
@@ -135,60 +134,26 @@ export default function Header() {
             {navigation.left.map(renderNavItem)}
           </nav>
 
-          {/* Center Brand - Transitions between full wordmark and LVR monogram */}
-          <div className="absolute left-1/2 -translate-x-1/2">
+          {/* Center Brand - Wordmark only, scales down on scroll */}
+          <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
             <a
               href="#"
-              className="group relative flex items-center justify-center transition-colors duration-300 focus-ring"
+              className="relative block origin-center will-change-transform transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] focus-ring"
+              style={{
+                transform: isScrolled ? "scale(0.62)" : "scale(1)",
+              }}
             >
-              {/* Full Wordmark - visible when not scrolled */}
-              <motion.span
-                className={`font-serif text-3xl md:text-4xl font-bold tracking-[0.025em] whitespace-nowrap transition-colors duration-300 ${
+              <span
+                className={`font-serif text-2xl md:text-3xl font-bold whitespace-nowrap transition-colors duration-300 ${
                   solid ? "text-[#1C1A18]" : "text-white"
                 }`}
-                initial={false}
-                animate={{
-                  opacity: isScrolled ? 0 : 1,
-                  scale: isScrolled ? 0.8 : 1,
+                style={{
+                  letterSpacing: isScrolled ? "0.015em" : "0.025em",
+                  transition: "color 0.3s, letter-spacing 0.7s cubic-bezier(0.85, 0, 0.15, 1)",
                 }}
-                transition={{
-                  duration: 0.7,
-                  ease: [0.85, 0, 0.15, 1],
-                }}
-                style={{ pointerEvents: isScrolled ? "none" : "auto" }}
               >
                 Love, Violeta Rose
-              </motion.span>
-
-              {/* LVR Monogram with Rose Icon - visible when scrolled */}
-              <motion.div
-                className="absolute flex items-center gap-2 group/monogram"
-                initial={false}
-                animate={{
-                  opacity: isScrolled ? 1 : 0,
-                  scale: isScrolled ? 1 : 0.8,
-                }}
-                transition={{
-                  duration: 0.7,
-                  ease: [0.85, 0, 0.15, 1],
-                }}
-                style={{ pointerEvents: isScrolled ? "auto" : "none" }}
-              >
-                {/* Minimal rose icon */}
-                <MinimalRoseIcon
-                  className={`h-4 w-4 opacity-85 transition-colors duration-300 ${
-                    solid ? "text-[#1C1A18] group-hover/monogram:text-[#A14C41]" : "text-white group-hover/monogram:text-[#A14C41]"
-                  }`}
-                />
-                {/* LVR text */}
-                <span
-                  className={`font-serif text-xl font-extrabold tracking-[0.04em] whitespace-nowrap transition-colors duration-300 ${
-                    solid ? "text-[#1C1A18] group-hover/monogram:text-[#A14C41]" : "text-white group-hover/monogram:text-[#A14C41]"
-                  }`}
-                >
-                  LVR
-                </span>
-              </motion.div>
+              </span>
             </a>
           </div>
 

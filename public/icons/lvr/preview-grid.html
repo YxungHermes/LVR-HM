@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LVR Icon Pack Preview</title>
+  <style>
+    :root {
+      --cinematic-black: #1C1A18;
+      --rose-wax-red: #A14C41;
+      --ivory-white: #FAF7F2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--ivory-white);
+      padding: 48px 24px;
+      color: var(--cinematic-black);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      letter-spacing: 0.025em;
+    }
+
+    p {
+      text-align: center;
+      color: #6B5E57;
+      margin-bottom: 48px;
+      font-size: 14px;
+    }
+
+    .grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+    }
+
+    .icon-card {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.24s ease;
+      cursor: pointer;
+    }
+
+    .icon-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    .icon {
+      stroke: var(--cinematic-black);
+      transition: stroke 0.24s ease;
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+    }
+
+    .icon-card:hover .icon {
+      stroke: var(--rose-wax-red);
+    }
+
+    .icon-name {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cinematic-black);
+    }
+
+    .color-demo {
+      max-width: 800px;
+      margin: 64px auto 0;
+      padding: 32px;
+      background: white;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .color-demo h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .color-swatches {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      flex: 1;
+      min-width: 120px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .swatch-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .swatch-value {
+      font-size: 12px;
+      font-family: monospace;
+      color: #6B5E57;
+    }
+  </style>
+</head>
+<body>
+  <h1>Love, Violeta Rose — Icon Pack</h1>
+  <p>Premium line icons for luxury wedding cinematography • 1.5px stroke • 24x24 grid</p>
+
+  <div class="grid">
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <line x1="9" y1="9" x2="15" y2="9"/>
+        <line x1="9" y1="13" x2="13" y2="13"/>
+      </svg>
+      <div class="icon-name">Consultation Chat</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 7l-7 5 7 5V7z"/>
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+      </svg>
+      <div class="icon-name">Camera Cinema</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="5" cy="5" r="2"/>
+        <circle cx="19" cy="5" r="2"/>
+        <circle cx="5" cy="19" r="2"/>
+        <circle cx="19" cy="19" r="2"/>
+        <line x1="5" y1="7" x2="5" y2="10"/>
+        <line x1="19" y1="7" x2="19" y2="10"/>
+        <line x1="5" y1="14" x2="5" y2="17"/>
+        <line x1="19" y1="14" x2="19" y2="17"/>
+        <rect x="8" y="10" width="8" height="4" rx="1"/>
+      </svg>
+      <div class="icon-name">Drone</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+      <div class="icon-name">Edit Clock</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l3 7h-6l3-7z"/>
+        <path d="M12 9l-8 4 8 9 8-9-8-4z"/>
+        <path d="M5 13l7 7 7-7"/>
+      </svg>
+      <div class="icon-name">Engagement Ring</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" y1="12" x2="20" y2="12"/>
+        <circle cx="4" cy="12" r="2"/>
+        <circle cx="12" cy="12" r="2"/>
+        <circle cx="20" cy="12" r="2"/>
+        <line x1="4" y1="12" x2="4" y2="8"/>
+        <line x1="12" y1="12" x2="12" y2="6"/>
+        <line x1="20" y1="12" x2="20" y2="8"/>
+      </svg>
+      <div class="icon-name">Timeline</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+        <line x1="7" y1="2" x2="7" y2="22"/>
+        <line x1="17" y1="2" x2="17" y2="22"/>
+        <line x1="2" y1="12" x2="22" y2="12"/>
+        <line x1="2" y1="7" x2="7" y2="7"/>
+        <line x1="2" y1="17" x2="7" y2="17"/>
+        <line x1="17" y1="17" x2="22" y2="17"/>
+        <line x1="17" y1="7" x2="22" y2="7"/>
+        <polygon points="13 9.5 16 12 13 14.5 13 9.5"/>
+      </svg>
+      <div class="icon-name">Play Film</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="10" r="2"/>
+        <path d="M12 8 C14 7, 16 8, 16 10 C16 12, 14 13, 12 13"/>
+        <path d="M12 8 C10 7, 8 8, 8 10 C8 12, 10 13, 12 13"/>
+        <path d="M15 10 C16 8, 17 9, 17 11 C17 13, 15 13, 13 12"/>
+        <path d="M9 10 C8 8, 7 9, 7 11 C7 13, 9 13, 11 12"/>
+        <path d="M12 13 L12 21"/>
+        <path d="M12 17 C13 16.5, 14 17, 14 18"/>
+        <path d="M12 19 C11 18.5, 10 19, 10 20"/>
+      </svg>
+      <div class="icon-name">Rose</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="6" width="16" height="14" rx="2" ry="2"/>
+        <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/>
+        <rect x="10" y="13" width="4" height="4" rx="1"/>
+        <line x1="12" y1="13" x2="12" y2="11"/>
+      </svg>
+      <div class="icon-name">USB Keepsake</div>
+    </div>
+
+    <div class="icon-card">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 22l4-4 6 2 8-8-8-8-8 8 2 6-4 4z"/>
+        <path d="M8 10l4 4"/>
+        <path d="M14 6l4 4"/>
+      </svg>
+      <div class="icon-name">Location Airplane</div>
+    </div>
+  </div>
+
+  <div class="color-demo">
+    <h2>Brand Color Tokens</h2>
+    <div class="color-swatches">
+      <div class="swatch" style="background: #1C1A18; color: white;">
+        <div class="swatch-label">Cinematic Black</div>
+        <div class="swatch-value">#1C1A18</div>
+      </div>
+      <div class="swatch" style="background: #A14C41; color: white;">
+        <div class="swatch-label">Rose Wax Red</div>
+        <div class="swatch-value">#A14C41</div>
+      </div>
+      <div class="swatch" style="background: #E9DDD2;">
+        <div class="swatch-label">Warm Sand</div>
+        <div class="swatch-value">#E9DDD2</div>
+      </div>
+      <div class="swatch" style="background: #FAF7F2;">
+        <div class="swatch-label">Ivory White</div>
+        <div class="swatch-value">#FAF7F2</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

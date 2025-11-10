@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .lvr-text {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 36px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        fill: #1C1A18;
+      }
+    </style>
+  </defs>
+  <rect width="100" height="100" fill="#FAF7F2"/>
+  <text x="50" y="62" text-anchor="middle" class="lvr-text">LVR</text>
+</svg>
