@@ -5,7 +5,7 @@ import { hero } from "@/content/home";
 
 export default function Hero() {
   return (
-    <section className="relative h-[92vh] min-h-[640px] bg-gradient-to-br from-cream via-rose-1/20 to-cream">
+    <section className="relative h-[92vh] min-h-[640px] bg-gradient-to-br from-cream via-rose-1/20 to-cream pt-[56px] md:pt-[72px]">
       {/* Elegant background pattern - can add image here later */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(181,139,131,0.15),transparent_50%)]" />
@@ -13,8 +13,8 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex h-full max-w-6xl items-center px-6">
-        <div className="max-w-3xl">
+      <div className="relative z-10 mx-auto flex h-full max-w-[880px] items-center justify-center px-6">
+        <div className="w-full text-center md:text-left max-w-3xl mx-auto pt-12 md:pt-16">
           <motion.h1
             className="heading-xl font-serif tracking-wider text-ink [font-variant-ligatures:common-ligatures]"
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p
-            className="subhead mt-4 text-espresso"
+            className="subhead mt-6 md:mt-8 text-espresso max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -36,7 +36,7 @@ export default function Hero() {
           </motion.p>
 
           <motion.div
-            className="mt-8 flex flex-wrap gap-3"
+            className="mt-10 md:mt-12 flex flex-wrap gap-3 justify-center md:justify-start"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
@@ -57,7 +57,7 @@ export default function Hero() {
 
           {/* Stats */}
           <motion.div
-            className="mt-8 flex gap-8 text-sm text-espresso"
+            className="mt-10 md:mt-12 flex gap-8 text-sm text-espresso justify-center md:justify-start"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}

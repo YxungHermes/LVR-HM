@@ -96,4 +96,21 @@
     font-size: clamp(16px, 1.4vw, 22px);
     line-height: 1.6;
   }
+
+  /* Lava gradient animation for Book Consultation button */
+  @keyframes lvr-lava {
+    0% {
+      background-position: 0% 0%, 100% 0%, 0% 100%;
+    }
+    50% {
+      background-position: 20% 10%, 80% 0%, 10% 90%;
+    }
+    100% {
+      background-position: 0% 20%, 100% 10%, 0% 80%;
+    }
+  }
+
+  .animate-lava {
+    animation: lvr-lava 14s ease-in-out infinite alternate;
+  }
 }
