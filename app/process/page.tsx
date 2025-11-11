@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Roadmap from "@/components/Roadmap";
+import FinaleBlock from "@/components/FinaleBlock";
 
 export default function ProcessPage() {
   return (
@@ -130,42 +131,8 @@ export default function ProcessPage() {
           </div>
         </section>
 
-        {/* Final CTA */}
-        <section className="px-6 py-20 bg-warm-sand/30">
-          <motion.div
-            className="mx-auto max-w-3xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">
-              Ready to begin your story?
-            </h3>
-            <p className="text-base text-espresso mb-8 leading-relaxed">
-              Share your vision, your date, and what matters most. We'll send a thoughtful proposal within 48 hours.
-            </p>
-            <Link
-              href="/consultation"
-              className="inline-flex items-center bg-rose-wax-red text-white px-10 py-4 rounded-full font-medium text-lg transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg focus-ring"
-            >
-              Book Your Consultation
-              <svg
-                className="ml-3 h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </Link>
-          </motion.div>
-        </section>
+        {/* Finale Block */}
+        <FinaleBlock hasBooked={false} />
       </main>
       <Footer />
     </>

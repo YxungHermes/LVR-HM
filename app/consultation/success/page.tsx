@@ -5,6 +5,7 @@ import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Roadmap from "@/components/Roadmap";
+import FinaleBlock from "@/components/FinaleBlock";
 
 export default function ConsultationSuccessPage() {
   return (
@@ -257,23 +258,8 @@ export default function ConsultationSuccessPage() {
           </div>
         </section>
 
-        {/* Final Note */}
-        <section className="px-6 py-16 bg-warm-sand/30">
-          <motion.div
-            className="mx-auto max-w-2xl text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-base text-espresso leading-relaxed mb-6">
-              We're honored you're considering us to document your celebration. This is where the story begins.
-            </p>
-            <p className="text-sm text-espresso/70 italic">
-              — Violeta Rose
-            </p>
-          </motion.div>
-        </section>
+        {/* Finale Block */}
+        <FinaleBlock hasBooked={true} />
       </main>
       <Footer />
     </>

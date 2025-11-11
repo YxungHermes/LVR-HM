@@ -234,6 +234,47 @@ Edit the `roadmapSteps` array inside `/components/Roadmap.tsx` to change titles,
 7. Post Production - Editing, color, sound design, and review
 8. Delivery - Final films, USB keepsake, and online gallery
 
+## Finale Block (Process & Success)
+
+A shared component that appears at the bottom of `/process` and `/consultation/success` pages to invite users to follow on Instagram and provide a brand sign-off.
+
+### Component
+
+- **Location:** `/components/FinaleBlock.tsx`
+- **Props:**
+  - `hasBooked` (boolean): When `true`, hides "Book Your Consultation" CTA
+  - `showCTA` (boolean, optional): Override to force show/hide the CTA
+
+### Features
+
+**Always included:**
+- Instagram invitation with link to [@lovevioletarose](https://www.instagram.com/lovevioletarose/)
+- Brand sign-off line: "Love, Violeta Rose"
+- Clarification note: "Violeta Rose is our house name and not a person."
+
+**Conditional:**
+- "Book Your Consultation" button (shown when `hasBooked={false}`)
+
+### Usage
+
+```tsx
+// On Process page - shows CTA
+<FinaleBlock hasBooked={false} />
+
+// On Consultation Success page - hides CTA (user already submitted)
+<FinaleBlock hasBooked={true} />
+
+// Force show CTA regardless of hasBooked
+<FinaleBlock hasBooked={true} showCTA={true} />
+```
+
+### Design
+
+- Background: warm sand (`bg-warm-sand/30`)
+- Typography: Playfair Display for sign-off, Inter for body text
+- Instagram link: Rose wax red with hover effects and external link icon
+- Responsive spacing and animations with Framer Motion
+
 ## License
 
 © 2025 Love, Violeta Rose. All rights reserved.
