@@ -6,7 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Roadmap from "@/components/Roadmap";
 import FinaleBlock from "@/components/FinaleBlock";
-import SectionDivider from "@/components/SectionDivider";
 
 export default function ProcessPage() {
   return (
@@ -14,7 +13,7 @@ export default function ProcessPage() {
       <Header settled />
       <main className="bg-cream">
         {/* Hero */}
-        <section className="relative px-6 pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden">
+        <section className="px-6 pt-32 pb-20 md:pt-36 md:pb-24">
           <div className="mx-auto max-w-4xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -28,15 +27,6 @@ export default function ProcessPage() {
                 Your film starts long before the cameras roll. Here's how we keep everything calm, clear, and beautifully told.
               </p>
             </motion.div>
-          </div>
-
-          {/* Organic wave divider */}
-          <div className="absolute bottom-0 left-0 right-0">
-            <SectionDivider
-              color="fill-cream"
-              height={100}
-              variant="soft-wave"
-            />
           </div>
         </section>
 

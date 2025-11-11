@@ -2,11 +2,10 @@
 
 import { motion } from "framer-motion";
 import { hero } from "@/content/home";
-import SectionDivider from "@/components/SectionDivider";
 
 export default function Hero() {
   return (
-    <section className="relative h-[92vh] min-h-[640px] bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
+    <section className="relative h-[92vh] min-h-[640px] bg-gradient-to-br from-cream via-rose-1/20 to-cream">
       {/* Elegant background pattern - can add image here later */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(181,139,131,0.15),transparent_50%)]" />
@@ -77,15 +76,6 @@ export default function Hero() {
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* Organic wave divider */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <SectionDivider
-          color="fill-cream"
-          height={120}
-          variant="soft-wave"
-        />
       </div>
     </section>
   );

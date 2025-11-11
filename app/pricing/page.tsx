@@ -7,7 +7,6 @@ import { whatIOffer, pricingOverview } from "@/content/pricing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Roadmap from "@/components/Roadmap";
-import SectionDivider from "@/components/SectionDivider";
 
 
 export default function PricingPage() {
@@ -16,7 +15,7 @@ export default function PricingPage() {
       <Header settled />
       <main className="bg-cream">
         {/* Compact Hero */}
-        <section className="relative px-6 pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden">
+        <section className="px-6 pt-32 pb-20 md:pt-36 md:pb-24">
           <div className="mx-auto max-w-4xl text-center">
             <motion.h1
               className="font-serif text-4xl md:text-5xl font-bold tracking-wide text-ink"
@@ -49,15 +48,6 @@ export default function PricingPage() {
                 Book Your Consultation
               </Link>
             </motion.div>
-          </div>
-
-          {/* Organic wave divider */}
-          <div className="absolute bottom-0 left-0 right-0">
-            <SectionDivider
-              color="fill-cream"
-              height={100}
-              variant="soft-wave"
-            />
           </div>
         </section>
 
