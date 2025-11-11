@@ -97,7 +97,11 @@ export default function Header() {
         <a
           key={item.label}
           href={item.href}
-          className="inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium bg-[#A14C41] text-white hover:bg-[#A14C41]/90 transition-all duration-200 focus-ring ml-2"
+          className={`inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-500 ease-out focus-ring ml-2 ${
+            solid
+              ? "bg-[#7B8B7A] text-white shadow-sm hover:bg-[#6B7B6A] hover:shadow-md"
+              : "bg-white/10 backdrop-blur-sm text-white border border-white/30 hover:bg-white/20 hover:border-white/40"
+          }`}
           onMouseEnter={() => handleNavItemEnter(item.label)}
           onMouseLeave={handleNavItemLeave}
           onFocus={() => handleNavItemFocus(item.label)}
