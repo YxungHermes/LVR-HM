@@ -52,7 +52,13 @@ export default function PricingPage() {
           </div>
 
           {/* Organic wave divider */}
-          <SectionDivider color="#FAF6F0" height="100px" />
+          <div className="absolute bottom-0 left-0 right-0">
+            <SectionDivider
+              color="fill-cream"
+              height={100}
+              variant="soft-wave"
+            />
+          </div>
         </section>
 
         {/* Pricing Overview - FIRST (with anchor IDs) */}

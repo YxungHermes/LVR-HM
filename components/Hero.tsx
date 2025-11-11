@@ -80,7 +80,13 @@ export default function Hero() {
       </div>
 
       {/* Organic wave divider */}
-      <SectionDivider color="#FAF6F0" height="120px" />
+      <div className="absolute bottom-0 left-0 right-0">
+        <SectionDivider
+          color="fill-cream"
+          height={120}
+          variant="soft-wave"
+        />
+      </div>
     </section>
   );
 }

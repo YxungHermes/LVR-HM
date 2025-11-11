@@ -281,39 +281,79 @@ A reusable component that creates organic wave/mountain transitions between hero
 **Location:** `/components/SectionDivider.tsx`
 
 **Props:**
-- `color` (optional) - Fill color for the SVG wave, defaults to `"#FAF7F2"` (cream)
-- `height` (optional) - Height of the wave effect, defaults to `"120px"`
-- `flip` (optional) - Boolean to rotate the wave 180 degrees, defaults to `false`
+- `color` (optional) - Tailwind fill class for the SVG wave, defaults to `"fill-[#FAF7F2]"` (cream)
+- `height` (optional) - Height of the wave effect in pixels, defaults to `96`
+- `flipX` (optional) - Boolean to flip the wave horizontally, defaults to `false`
+- `flipY` (optional) - Boolean to flip the wave vertically, defaults to `false`
+- `variant` (optional) - Wave shape variant: `"soft-wave"` | `"swell"` | `"s-curve"`, defaults to `"soft-wave"`
+- `className` (optional) - Additional CSS classes to apply to the container
+
+### Variants
+
+**soft-wave** - Gentle, repeating wave pattern (default)
+- Best for: Hero sections with minimal visual weight
+- Path: Multiple smooth curves creating a natural wave
+
+**swell** - Single smooth curve like an ocean swell
+- Best for: Elegant, simple transitions
+- Path: One large, gradual curve
+
+**s-curve** - Dramatic S-shaped curve
+- Best for: Bold, dynamic transitions
+- Path: Steep curves with more visual impact
 
 ### Usage
 
 ```tsx
-// Standard wave transition from hero to content
-<SectionDivider color="#FAF6F0" height="120px" />
+// Standard wave transition (wrapped in absolute positioning div)
+<div className="absolute bottom-0 left-0 right-0">
+  <SectionDivider color="fill-cream" height={120} variant="soft-wave" />
+</div>
 
-// Flipped wave (inverted)
-<SectionDivider color="#FAF6F0" height="100px" flip />
+// Swell variant with custom height
+<div className="absolute bottom-0 left-0 right-0">
+  <SectionDivider color="fill-cream" height={100} variant="swell" />
+</div>
 
-// Minimal usage (uses defaults)
-<SectionDivider />
+// Flipped S-curve
+<div className="absolute bottom-0 left-0 right-0">
+  <SectionDivider
+    color="fill-cream"
+    height={96}
+    variant="s-curve"
+    flipY
+  />
+</div>
+
+// Minimal usage (uses all defaults)
+<div className="absolute bottom-0 left-0 right-0">
+  <SectionDivider />
+</div>
 ```
 
 **Used on:**
-- Homepage hero (`/components/Hero.tsx`) - Transition to ChooseYourStory section
-- Pricing hero (`/app/pricing/page.tsx`) - Transition to pricing cards
-- Process hero (`/app/process/page.tsx`) - Transition to roadmap
+- Homepage hero (`/components/Hero.tsx`) - Soft-wave transition to ChooseYourStory section
+- Pricing hero (`/app/pricing/page.tsx`) - Soft-wave transition to pricing cards
+- Process hero (`/app/process/page.tsx`) - Soft-wave transition to roadmap
 
 ### Implementation
 
-The component uses an SVG path with `preserveAspectRatio="none"` to create a responsive, organic curve that scales smoothly across all screen sizes. It's positioned absolutely at the bottom of hero sections using `absolute bottom-0`.
+The component uses SVG paths with `preserveAspectRatio="none"` to create responsive, organic curves that scale smoothly across all screen sizes. The component itself is `relative` and should be wrapped in an absolutely positioned container at the bottom of hero sections.
 
 **Container requirements:**
+- Wrap component in `<div className="absolute bottom-0 left-0 right-0">`
 - Parent section must have `relative` positioning
 - Parent section must have `overflow-hidden` to prevent overflow
 
+**Technical details:**
+- Uses `clsx` for conditional className management
+- `pointer-events-none` and `select-none` prevent interaction
+- `aria-hidden="true"` for accessibility (purely decorative)
+- SVG viewBox: `0 0 1200 120` for consistent aspect ratio
+
 ### Design Philosophy
 
-The wave divider creates a visual "dissolve" between sections, mimicking cinematic transitions. The subtle curve adds elegance without drawing attention away from content, maintaining the luxury brand aesthetic.
+The wave divider creates a visual "dissolve" between sections, mimicking cinematic transitions. The subtle curve adds elegance without drawing attention away from content, maintaining the luxury brand aesthetic. Multiple variants allow for different emotional tones while maintaining consistency.
 
 ## License
 
