@@ -6,35 +6,58 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { pricing } from "@/content/pricing";
 import { TRADITION_CATEGORIES, SPECIAL_CHOICES, getTraditionLabel } from "@/data/traditions";
+import { formatPhoneSmart } from "@/lib/phone";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PinterestShare from "@/components/consultation/PinterestShare";
 
+type Role = "couple" | "planner" | "parent";
+
+const LOCATIONS = [
+  "New York City",
+  "New Jersey",
+  "Long Island",
+  "Hudson Valley",
+  "Upstate New York",
+  "Destination — Europe",
+  "Destination — Caribbean",
+  "Destination — West Coast",
+  "Other",
+];
+
 export default function ConsultationPage() {
   const router = useRouter();
-  const [isPlannerMode, setIsPlannerMode] = useState(false);
+
+  // Names
+  const [partner1, setPartner1] = useState("");
+  const [partner2, setPartner2] = useState("");
+
+  // Phone with smart formatting
+  const [phone, setPhone] = useState("");
+  const [isUS, setIsUS] = useState<boolean | null>(null);
+
+  // Location with select + other
+  const [location, setLocation] = useState(LOCATIONS[0]);
+  const [locationOther, setLocationOther] = useState("");
+
+  // Role selector
+  const [role, setRole] = useState<Role>("couple");
+  const [plannerName, setPlannerName] = useState("");
+
+  // Tradition selector
   const [tradition, setTradition] = useState<string>("");
   const [multiTraditions, setMultiTraditions] = useState<string[]>([]);
   const [traditionOther, setTraditionOther] = useState("");
 
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
-    phone: "",
     eventType: "",
     date: "",
-    location: "",
     guestCount: "",
     howYouMet: "",
     filmFeel: [] as string[],
-    isPlannerMode: false,
-    plannerName: "",
-    plannerEmail: "",
-    plannerPhone: "",
-    plannerCompany: "",
     budgetRange: "",
     contactPreference: "email",
-    privacyConsent: false,
     pinterestBoardUrl: "",
     pinterestBoardTitle: "",
     additionalNotes: "",
@@ -58,8 +81,20 @@ export default function ConsultationPage() {
     );
   };
 
+  const onPhoneInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, isLikelyUS } = formatPhoneSmart(e.target.value);
+    setIsUS(isLikelyUS);
+    setPhone(value);
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate names
+    if (!partner1.trim() || !partner2.trim()) {
+      alert("Please enter both partner names.");
+      return;
+    }
 
     // Validate tradition field
     if (!tradition) {
@@ -75,6 +110,12 @@ export default function ConsultationPage() {
       return;
     }
 
+    // Validate location "Other"
+    if (location === "Other" && !locationOther.trim()) {
+      alert("Please specify the location.");
+      return;
+    }
+
     // Build tradition resolved string
     let traditionResolved = "";
     if (isMulti) {
@@ -86,13 +127,22 @@ export default function ConsultationPage() {
       traditionResolved = getTraditionLabel(tradition);
     }
 
+    // Resolve final location
+    const finalLocation = location === "Other" ? locationOther : location;
+
     // Handle form submission
     console.log("Consultation form submitted:", {
-      ...formData,
+      partner1,
+      partner2,
+      phone,
+      role,
+      plannerName: role === "planner" ? plannerName : undefined,
+      location: finalLocation,
       tradition,
       traditionResolved,
       multiTraditions: isMulti ? multiTraditions : undefined,
       traditionOther: isOther ? traditionOther : undefined,
+      ...formData,
     });
 
     // Redirect to thank you page
@@ -106,12 +156,7 @@ export default function ConsultationPage() {
 
     if (type === "checkbox" && (e.target as HTMLInputElement).checked !== undefined) {
       const checkbox = e.target as HTMLInputElement;
-      if (name === "privacyConsent") {
-        setFormData({ ...formData, [name]: checkbox.checked });
-      } else if (name === "isPlannerMode") {
-        setIsPlannerMode(checkbox.checked);
-        setFormData({ ...formData, [name]: checkbox.checked });
-      } else if (name === "filmFeel") {
+      if (name === "filmFeel") {
         const feelValue = checkbox.value;
         const currentFeels = formData.filmFeel;
         const updatedFeels = checkbox.checked
@@ -162,23 +207,37 @@ export default function ConsultationPage() {
                   Your Information
                 </h3>
 
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <label htmlFor="name" className="mb-2 block text-sm font-medium text-espresso">
-                      Your Names <span className="text-rose-wax-red">*</span>
-                    </label>
+                {/* Names - Split into two fields */}
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-espresso">
+                    Your Names <span className="text-rose-wax-red">*</span>
+                  </label>
+                  <div className="grid gap-4 md:grid-cols-2">
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
+                      id="partner1"
+                      name="partner1"
+                      value={partner1}
+                      onChange={(e) => setPartner1(e.target.value)}
                       required
                       className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                      placeholder="Sarah & James"
+                      placeholder="First Partner Name"
+                    />
+                    <input
+                      type="text"
+                      id="partner2"
+                      name="partner2"
+                      value={partner2}
+                      onChange={(e) => setPartner2(e.target.value)}
+                      required
+                      className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                      placeholder="Second Partner Name"
                     />
                   </div>
+                </div>
 
+                {/* Email and Phone */}
+                <div className="grid gap-6 md:grid-cols-2">
                   <div>
                     <label htmlFor="email" className="mb-2 block text-sm font-medium text-espresso">
                       Email <span className="text-rose-wax-red">*</span>
@@ -194,22 +253,81 @@ export default function ConsultationPage() {
                       placeholder="hello@example.com"
                     />
                   </div>
+
+                  <div>
+                    <label htmlFor="phone" className="mb-2 block text-sm font-medium text-espresso">
+                      Phone <span className="text-xs text-espresso/60">(optional)</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={phone}
+                      onChange={onPhoneInput}
+                      className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                      placeholder={isUS ? "(555) 123-4567" : "+44 7123 456789"}
+                    />
+                  </div>
                 </div>
 
+                {/* Role Selector */}
                 <div>
-                  <label htmlFor="phone" className="mb-2 block text-sm font-medium text-espresso">
-                    Phone <span className="text-rose-wax-red">*</span>
+                  <label className="mb-3 block text-sm font-medium text-espresso">
+                    Who's reaching out?
                   </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                    placeholder="(555) 123-4567"
-                  />
+                  <div className="flex flex-wrap gap-4 items-center">
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="couple"
+                        checked={role === "couple"}
+                        onChange={() => setRole("couple")}
+                        className="h-4 w-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                      />
+                      <span className="text-sm text-espresso">We're the couple</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="planner"
+                        checked={role === "planner"}
+                        onChange={() => setRole("planner")}
+                        className="h-4 w-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                      />
+                      <span className="text-sm text-espresso">Wedding planner</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="parent"
+                        checked={role === "parent"}
+                        onChange={() => setRole("parent")}
+                        className="h-4 w-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                      />
+                      <span className="text-sm text-espresso">Parent / Family</span>
+                    </label>
+                  </div>
+
+                  {role === "planner" && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-3"
+                    >
+                      <input
+                        type="text"
+                        name="plannerName"
+                        placeholder="Planner or Agency Name (optional)"
+                        value={plannerName}
+                        onChange={(e) => setPlannerName(e.target.value)}
+                        className="w-full md:w-1/2 rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                      />
+                    </motion.div>
+                  )}
                 </div>
               </div>
 
@@ -232,10 +350,10 @@ export default function ConsultationPage() {
                     className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
                   >
                     <option value="">Select a collection</option>
-                    <option value="elopements">{pricing.elopements.title} (from ${pricing.elopements.starting.toLocaleString()})</option>
-                    <option value="weddingDay">{pricing.weddingDay.title} (from ${pricing.weddingDay.starting.toLocaleString()})</option>
-                    <option value="destination">{pricing.destination.title} (from ${pricing.destination.starting.toLocaleString()})</option>
-                    <option value="adventure">{pricing.adventure.title} (from ${pricing.adventure.starting.toLocaleString()})</option>
+                    <option value="elopements">Elopements & Intimate Gatherings</option>
+                    <option value="weddingDay">Wedding Day Films</option>
+                    <option value="destination">Destination Wedding Films</option>
+                    <option value="adventure">Adventure Sessions & Stories</option>
                     <option value="custom">Not sure yet / Custom</option>
                   </select>
                 </div>
@@ -367,20 +485,42 @@ export default function ConsultationPage() {
                   )}
                 </div>
 
+                {/* Location - Select with Other option */}
                 <div>
                   <label htmlFor="location" className="mb-2 block text-sm font-medium text-espresso">
                     Location <span className="text-rose-wax-red">*</span>
                   </label>
-                  <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    value={formData.location}
-                    onChange={handleChange}
-                    required
-                    className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                    placeholder="City, State or Country"
-                  />
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <select
+                      id="location"
+                      name="location"
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      required
+                      className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                    >
+                      {LOCATIONS.map((loc) => (
+                        <option key={loc} value={loc}>
+                          {loc}
+                        </option>
+                      ))}
+                    </select>
+
+                    {location === "Other" && (
+                      <motion.input
+                        type="text"
+                        name="locationOther"
+                        placeholder="City, State or Country"
+                        value={locationOther}
+                        onChange={(e) => setLocationOther(e.target.value)}
+                        required
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                      />
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -430,96 +570,18 @@ export default function ConsultationPage() {
                 </div>
               </div>
 
-              {/* Planner Mode */}
-              <div className="space-y-6">
-                <div className="flex items-center space-x-3 p-4 bg-warm-sand/30 rounded-lg">
-                  <input
-                    type="checkbox"
-                    id="isPlannerMode"
-                    name="isPlannerMode"
-                    checked={isPlannerMode}
-                    onChange={handleChange}
-                    className="h-4 w-4 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
-                  />
-                  <label htmlFor="isPlannerMode" className="text-sm font-medium text-espresso cursor-pointer">
-                    I am a wedding planner inquiring on behalf of a client
-                  </label>
-                </div>
-
-                {isPlannerMode && (
-                  <motion.div
-                    className="space-y-4 p-6 bg-warm-sand/20 rounded-lg border border-coffee/10"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <h4 className="font-serif text-lg font-semibold text-ink">Planner Information</h4>
-
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="plannerName" className="mb-2 block text-sm font-medium text-espresso">
-                          Your Name
-                        </label>
-                        <input
-                          type="text"
-                          id="plannerName"
-                          name="plannerName"
-                          value={formData.plannerName}
-                          onChange={handleChange}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                          placeholder="Jane Smith"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="plannerCompany" className="mb-2 block text-sm font-medium text-espresso">
-                          Company Name
-                        </label>
-                        <input
-                          type="text"
-                          id="plannerCompany"
-                          name="plannerCompany"
-                          value={formData.plannerCompany}
-                          onChange={handleChange}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                          placeholder="Elite Events Co."
-                        />
-                      </div>
-                    </div>
-
-                    <div className="grid gap-4 md:grid-cols-2">
-                      <div>
-                        <label htmlFor="plannerEmail" className="mb-2 block text-sm font-medium text-espresso">
-                          Your Email
-                        </label>
-                        <input
-                          type="email"
-                          id="plannerEmail"
-                          name="plannerEmail"
-                          value={formData.plannerEmail}
-                          onChange={handleChange}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                          placeholder="jane@eliteevents.com"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="plannerPhone" className="mb-2 block text-sm font-medium text-espresso">
-                          Your Phone
-                        </label>
-                        <input
-                          type="tel"
-                          id="plannerPhone"
-                          name="plannerPhone"
-                          value={formData.plannerPhone}
-                          onChange={handleChange}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                          placeholder="(555) 987-6543"
-                        />
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
+              {/* Pinterest Inspiration Board - Moved after Your Story */}
+              <div>
+                <PinterestShare
+                  coupleNameFieldId="partner1"
+                  onSelect={({ url, title }) => {
+                    setFormData({
+                      ...formData,
+                      pinterestBoardUrl: url,
+                      pinterestBoardTitle: title,
+                    });
+                  }}
+                />
               </div>
 
               {/* Budget & Preferences */}
@@ -591,20 +653,6 @@ export default function ConsultationPage() {
                 </div>
               </div>
 
-              {/* Pinterest Inspiration Board */}
-              <div>
-                <PinterestShare
-                  coupleNameFieldId="name"
-                  onSelect={({ url, title }) => {
-                    setFormData({
-                      ...formData,
-                      pinterestBoardUrl: url,
-                      pinterestBoardTitle: title,
-                    });
-                  }}
-                />
-              </div>
-
               {/* Additional Notes */}
               <div className="space-y-6">
                 <div>
@@ -621,22 +669,6 @@ export default function ConsultationPage() {
                     placeholder="Any additional details, special requests, or questions..."
                   />
                 </div>
-              </div>
-
-              {/* Privacy Consent */}
-              <div className="flex items-start space-x-3 p-4 bg-warm-sand/30 rounded-lg">
-                <input
-                  type="checkbox"
-                  id="privacyConsent"
-                  name="privacyConsent"
-                  checked={formData.privacyConsent}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 h-4 w-4 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
-                />
-                <label htmlFor="privacyConsent" className="text-sm text-espresso cursor-pointer">
-                  I consent to Love, Violeta Rose storing and using my information to respond to my inquiry. Your information will never be shared with third parties. <span className="text-rose-wax-red">*</span>
-                </label>
               </div>
 
               {/* Submit Button */}
