@@ -215,15 +215,15 @@ export const navigation = {
     },
     {
       label: "Contact",
-      href: "#contact",
+      href: "/consultation",
       megaMenu: {
         sections: [
           {
             title: "Get In Touch",
             links: [
-              { label: "Book Your Consultation", href: "#contact" },
-              { label: "Begin Your Journey", href: "#contact" },
-              { label: "Check Availability", href: "#contact" }
+              { label: "Book Your Consultation", href: "/consultation" },
+              { label: "Begin Your Journey", href: "/consultation" },
+              { label: "Check Availability", href: "/consultation" }
             ]
           }
         ]
