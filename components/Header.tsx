@@ -4,9 +4,15 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation } from "@/content/home";
 
+type MegaMenuLink = {
+  label: string;
+  href: string;
+  subtitle?: string;
+};
+
 type MegaMenuSection = {
   title: string;
-  links: Array<{ label: string; href: string; subtitle?: string }>;
+  links: MegaMenuLink[];
 };
 
 type NavItem = {
