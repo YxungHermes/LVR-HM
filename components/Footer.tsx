@@ -15,9 +15,11 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="font-serif text-2xl font-bold tracking-wider text-ink">
-              Love, Violeta Rose
-            </h3>
+            <a href="/" className="inline-block group focus-ring rounded">
+              <h3 className="font-serif text-2xl font-bold tracking-wider text-ink group-hover:text-rose-wax-red transition-colors">
+                Love, Violeta Rose
+              </h3>
+            </a>
             <p className="mt-3 text-sm text-espresso">
               Cinematic wedding films crafted with heart.
             </p>

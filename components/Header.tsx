@@ -137,7 +137,7 @@ export default function Header() {
           {/* Center Brand - Wordmark only, scales down on scroll */}
           <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
             <a
-              href="#"
+              href="/"
               className="relative block origin-center will-change-transform transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] focus-ring"
               style={{
                 transform: isScrolled ? "scale(0.62)" : "scale(1)",
