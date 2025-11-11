@@ -42,7 +42,7 @@ export default function PricingPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Link
-                href="/contact"
+                href="/consultation"
                 className="inline-block bg-rose-wax-red text-white px-8 py-3 rounded-md font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring"
               >
                 Book Your Consultation
@@ -205,7 +205,7 @@ export default function PricingPage() {
               I'll recommend a collection that fits — with transparent pricing.
             </p>
             <Link
-              href="/contact"
+              href="/consultation"
               className="inline-block bg-rose-wax-red text-white px-8 py-3 rounded-md font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring"
             >
               Book Your Consultation

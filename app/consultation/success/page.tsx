@@ -119,7 +119,7 @@ export default function ConsultationSuccessPage() {
 
         {/* Roadmap Component */}
         <div className="pb-8">
-          <Roadmap variant="full" cta={false} />
+          <Roadmap variant="full" cta />
         </div>
 
         {/* Quick Actions */}

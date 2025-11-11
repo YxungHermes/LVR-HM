@@ -190,7 +190,7 @@ export const navigation = {
             title: "Explore",
             links: [
               { label: "View All Collections", href: "/pricing" },
-              { label: "Book Consultation", href: "/contact" }
+              { label: "Book Consultation", href: "/consultation" }
             ]
           }
         ]
