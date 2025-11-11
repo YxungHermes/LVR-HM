@@ -46,7 +46,10 @@ export default function ConsultationPage() {
   const [plannerPhone, setPlannerPhone] = useState("");
   const [plannerCompany, setPlannerCompany] = useState("");
   const [parentName, setParentName] = useState("");
+  const [parentEmail, setParentEmail] = useState("");
+  const [parentPhone, setParentPhone] = useState("");
   const [parentRelation, setParentRelation] = useState("");
+  const [parentContactPreference, setParentContactPreference] = useState<"email" | "phone" | "either">("email");
 
   // Tradition selector
   const [tradition, setTradition] = useState<string>("");
@@ -104,6 +107,30 @@ export default function ConsultationPage() {
       return;
     }
 
+    // Validate planner fields
+    if (role === "planner") {
+      if (!plannerName.trim()) {
+        alert("Please enter your name in the Planner Information section.");
+        return;
+      }
+      if (!plannerEmail.trim()) {
+        alert("Please enter your email in the Planner Information section.");
+        return;
+      }
+    }
+
+    // Validate parent fields
+    if (role === "parent") {
+      if (!parentName.trim()) {
+        alert("Please enter your name in the Parent/Family Information section.");
+        return;
+      }
+      if (!parentEmail.trim()) {
+        alert("Please enter your email in the Parent/Family Information section.");
+        return;
+      }
+    }
+
     // Validate tradition field
     if (!tradition) {
       alert("Please select a tradition or cultural context.");
@@ -149,7 +176,10 @@ export default function ConsultationPage() {
       plannerPhone: role === "planner" ? plannerPhone : undefined,
       plannerCompany: role === "planner" ? plannerCompany : undefined,
       parentName: role === "parent" ? parentName : undefined,
+      parentEmail: role === "parent" ? parentEmail : undefined,
+      parentPhone: role === "parent" ? parentPhone : undefined,
       parentRelation: role === "parent" ? parentRelation : undefined,
+      parentContactPreference: role === "parent" ? parentContactPreference : undefined,
       location: finalLocation,
       tradition,
       traditionResolved,
@@ -223,7 +253,7 @@ export default function ConsultationPage() {
                 {/* Names - Split into two fields */}
                 <div>
                   <label className="mb-2 block text-sm font-medium text-espresso">
-                    Your Names <span className="text-rose-wax-red">*</span>
+                    Couple's Names <span className="text-rose-wax-red">*</span>
                   </label>
                   <div className="grid gap-4 md:grid-cols-2">
                     <input
@@ -333,40 +363,48 @@ export default function ConsultationPage() {
                     >
                       <h4 className="font-serif text-lg font-semibold text-ink">Planner Information</h4>
                       <div className="grid gap-4 md:grid-cols-2">
-                        <input
-                          type="text"
-                          name="plannerName"
-                          placeholder="Your Name"
-                          value={plannerName}
-                          onChange={(e) => setPlannerName(e.target.value)}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                        />
-                        <input
-                          type="text"
-                          name="plannerCompany"
-                          placeholder="Agency/Company Name"
-                          value={plannerCompany}
-                          onChange={(e) => setPlannerCompany(e.target.value)}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                        />
+                        <div>
+                          <input
+                            type="text"
+                            name="plannerName"
+                            placeholder="Your Name *"
+                            value={plannerName}
+                            onChange={(e) => setPlannerName(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            name="plannerCompany"
+                            placeholder="Agency/Company Name"
+                            value={plannerCompany}
+                            onChange={(e) => setPlannerCompany(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
                       </div>
                       <div className="grid gap-4 md:grid-cols-2">
-                        <input
-                          type="email"
-                          name="plannerEmail"
-                          placeholder="Your Email"
-                          value={plannerEmail}
-                          onChange={(e) => setPlannerEmail(e.target.value)}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                        />
-                        <input
-                          type="tel"
-                          name="plannerPhone"
-                          placeholder="Your Phone"
-                          value={plannerPhone}
-                          onChange={(e) => setPlannerPhone(e.target.value)}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                        />
+                        <div>
+                          <input
+                            type="email"
+                            name="plannerEmail"
+                            placeholder="Your Email *"
+                            value={plannerEmail}
+                            onChange={(e) => setPlannerEmail(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="tel"
+                            name="plannerPhone"
+                            placeholder="Your Phone (optional)"
+                            value={plannerPhone}
+                            onChange={(e) => setPlannerPhone(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
                       </div>
                     </motion.div>
                   )}
@@ -380,22 +418,88 @@ export default function ConsultationPage() {
                     >
                       <h4 className="font-serif text-lg font-semibold text-ink">Your Information</h4>
                       <div className="grid gap-4 md:grid-cols-2">
-                        <input
-                          type="text"
-                          name="parentName"
-                          placeholder="Your Name"
-                          value={parentName}
-                          onChange={(e) => setParentName(e.target.value)}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                        />
-                        <input
-                          type="text"
-                          name="parentRelation"
-                          placeholder="Relation (e.g., Mother of the Bride)"
-                          value={parentRelation}
-                          onChange={(e) => setParentRelation(e.target.value)}
-                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                        />
+                        <div>
+                          <input
+                            type="text"
+                            name="parentName"
+                            placeholder="Your Name *"
+                            value={parentName}
+                            onChange={(e) => setParentName(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="text"
+                            name="parentRelation"
+                            placeholder="Relation (e.g., Mother of the Bride)"
+                            value={parentRelation}
+                            onChange={(e) => setParentRelation(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
+                      </div>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div>
+                          <input
+                            type="email"
+                            name="parentEmail"
+                            placeholder="Your Email *"
+                            value={parentEmail}
+                            onChange={(e) => setParentEmail(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="tel"
+                            name="parentPhone"
+                            placeholder="Your Phone (optional)"
+                            value={parentPhone}
+                            onChange={(e) => setParentPhone(e.target.value)}
+                            className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <label className="mb-2 block text-sm font-medium text-espresso">
+                          How would you prefer to be contacted?
+                        </label>
+                        <div className="flex flex-wrap gap-4">
+                          <label className="flex items-center space-x-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="parentContactPreference"
+                              value="email"
+                              checked={parentContactPreference === "email"}
+                              onChange={() => setParentContactPreference("email")}
+                              className="h-4 w-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                            />
+                            <span className="text-sm text-espresso">Email</span>
+                          </label>
+                          <label className="flex items-center space-x-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="parentContactPreference"
+                              value="phone"
+                              checked={parentContactPreference === "phone"}
+                              onChange={() => setParentContactPreference("phone")}
+                              className="h-4 w-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                            />
+                            <span className="text-sm text-espresso">Phone</span>
+                          </label>
+                          <label className="flex items-center space-x-2 cursor-pointer">
+                            <input
+                              type="radio"
+                              name="parentContactPreference"
+                              value="either"
+                              checked={parentContactPreference === "either"}
+                              onChange={() => setParentContactPreference("either")}
+                              className="h-4 w-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                            />
+                            <span className="text-sm text-espresso">Either</span>
+                          </label>
+                        </div>
                       </div>
                     </motion.div>
                   )}
