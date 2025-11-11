@@ -7,6 +7,7 @@ export const whatIOffer = [
     description:
       "For intentional ceremonies, city hall vows, rooftops, at-home celebrations, and days where you know every face in the room.",
     href: "/pricing/elopements",
+    image: "/collections/elopements.jpg",
   },
   {
     slug: "wedding-day-films",
@@ -14,6 +15,7 @@ export const whatIOffer = [
     description:
       "For full wedding days close to home, from quiet mornings to the final song, crafted as one cohesive cinematic story.",
     href: "/pricing/wedding-day-films",
+    image: "/collections/wedding-day.jpg",
   },
   {
     slug: "destination-weddings",
@@ -21,6 +23,7 @@ export const whatIOffer = [
     description:
       "For celebrations in meaningful locations around the world, where the setting, your people, and the entire weekend become part of the film.",
     href: "/pricing/destination-weddings",
+    image: "/collections/destination.jpg",
   },
   {
     slug: "adventure-sessions",
@@ -28,6 +31,7 @@ export const whatIOffer = [
     description:
       "For engagements, welcome parties, day-after sessions, anniversaries, or creative stories beyond the wedding day.",
     href: "/pricing/adventure-sessions",
+    image: "/collections/adventure.jpg",
   },
 ];
 
@@ -40,6 +44,7 @@ export const pricingOverview = [
     description:
       "For intentional ceremonies, city hall 'I do's, rooftops, and small gatherings where every face matters.",
     href: "/pricing/elopements",
+    image: "/collections/elopements.jpg",
   },
   {
     slug: "wedding-day-films",
@@ -49,6 +54,7 @@ export const pricingOverview = [
     description:
       "For full wedding days at home, crafted as emotive, cinematic films you'll want to revisit often.",
     href: "/pricing/wedding-day-films",
+    image: "/collections/wedding-day.jpg",
   },
   {
     slug: "destination-weddings",
@@ -58,6 +64,7 @@ export const pricingOverview = [
     description:
       "For celebrations in meaningful places around the world, with films that weave in people, place, and atmosphere.",
     href: "/pricing/destination-weddings",
+    image: "/collections/destination.jpg",
   },
   {
     slug: "adventure-sessions",
@@ -67,6 +74,7 @@ export const pricingOverview = [
     description:
       "For engagements, welcome parties, day-after sessions, anniversaries, or brand stories with the same cinematic care.",
     href: "/pricing/adventure-sessions",
+    image: "/collections/adventure.jpg",
   },
 ];
 
@@ -74,6 +82,7 @@ export const pricingPages = {
   elopements: {
     title: "Elopements & Intimate Gatherings",
     seoTitle: "Elopement Wedding Films | Love, Violeta Rose",
+    heroImage: "/collections/elopements.jpg",
     introHeading: "For the couples choosing presence over spectacle.",
     introBody:
       "Some vows are whispered on a rooftop, in a quiet courthouse, or under a tree with only your closest people. These celebrations deserve the same cinematic respect as any ballroom. This collection is for couples who want a refined, honest film that reflects the intimacy of the day.",
@@ -101,6 +110,7 @@ export const pricingPages = {
   "wedding-day-films": {
     title: "Wedding Day Films",
     seoTitle: "Wedding Day Film Collections | Love, Violeta Rose",
+    heroImage: "/collections/wedding-day.jpg",
     introHeading: "A complete, cinematic record of the day you built.",
     introBody:
       "From getting ready through the final song, your wedding day moves quickly. Our focus is to craft a film that feels like you: how your families hold you, the energy in the room, the way the night turns into story. This collection is for couples who want their full day told with intention.",
@@ -129,6 +139,7 @@ export const pricingPages = {
   "destination-weddings": {
     title: "Destination Wedding Films",
     seoTitle: "Destination Wedding Videography | Love, Violeta Rose",
+    heroImage: "/collections/destination.jpg",
     introHeading: "For celebrations that live across borders and timelines.",
     introBody:
       "A destination wedding is more than one day. It is airport greetings, welcome dinners, slow mornings, boat rides, late-night toasts. This collection is for couples who want that full atmosphere held on film. We travel with you, move like guests, and create a film that feels like an heirloom from another world.",
@@ -156,6 +167,7 @@ export const pricingPages = {
   "adventure-sessions": {
     title: "Adventure Sessions & Stories",
     seoTitle: "Adventure & Engagement Films | Love, Violeta Rose",
+    heroImage: "/collections/adventure.jpg",
     introHeading: "Chapters of your story beyond the wedding day.",
     introBody:
       "Some of the most honest moments happen far from the aisle. These sessions are for engagements, anniversaries, day-before walks, day-after swims, at-home mornings, or creative collaborations that deserve more than phone footage.",

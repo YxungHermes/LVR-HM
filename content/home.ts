@@ -25,7 +25,7 @@ export const chooseYourStory = [
   {
     slug: "elopements",
     name: "Elopements & Intimate Gatherings",
-    teaser: "For small, intentional "just us" celebrations.",
+    teaser: "For small, intentional 'just us' celebrations.",
     href: "/pricing#elopements"
   },
   {

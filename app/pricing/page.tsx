@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { whatIOffer, pricingOverview } from "@/content/pricing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -56,15 +57,27 @@ export default function PricingPage() {
                 <motion.div
                   key={collection.slug}
                   id={collection.slug}
-                  className="bg-white border border-coffee/10 rounded-lg p-8 scroll-mt-24"
+                  className="bg-white border border-coffee/10 rounded-lg overflow-hidden scroll-mt-24"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <h3 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
-                    {collection.name}
-                  </h3>
+                  {/* Collection Image - Fixed aspect ratio */}
+                  <div className="relative w-full aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={collection.image}
+                      alt={collection.name}
+                      fill
+                      className="object-cover transition-transform duration-500 hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
+
+                  <div className="p-8">
+                    <h3 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
+                      {collection.name}
+                    </h3>
 
                   <div className="mb-4 pb-4 border-b border-coffee/10">
                     <p className="text-xs font-medium text-coffee uppercase tracking-wider mb-2">
@@ -82,25 +95,26 @@ export default function PricingPage() {
                     {collection.description}
                   </p>
 
-                  <Link
-                    href={collection.href}
-                    className="inline-flex items-center text-sm font-medium text-rose-wax-red hover:text-rose-wax-red/80 transition-colors focus-ring"
-                  >
-                    <span>View details</span>
-                    <svg
-                      className="ml-2 h-4 w-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                    <Link
+                      href={collection.href}
+                      className="inline-flex items-center text-sm font-medium text-rose-wax-red hover:text-rose-wax-red/80 transition-colors focus-ring"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M17 8l4 4m0 0l-4 4m4-4H3"
-                      />
-                    </svg>
-                  </Link>
+                      <span>View details</span>
+                      <svg
+                        className="ml-2 h-4 w-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        />
+                      </svg>
+                    </Link>
+                  </div>
                 </motion.div>
               ))}
             </div>

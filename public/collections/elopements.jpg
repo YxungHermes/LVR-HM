@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <linearGradient id="elopementGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FAF7F2;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#E9DDD2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A14C41;stop-opacity:0.3" />
+    </linearGradient>
+    <radialGradient id="elopementVignette" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.15" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1600" height="900" fill="url(#elopementGrad)"/>
+
+  <!-- Vignette -->
+  <rect width="1600" height="900" fill="url(#elopementVignette)"/>
+
+  <!-- Subtle texture circles -->
+  <circle cx="400" cy="300" r="200" fill="#A14C41" opacity="0.08"/>
+  <circle cx="1200" cy="600" r="250" fill="#1C1A18" opacity="0.05"/>
+
+  <!-- Centered text -->
+  <text x="800" y="420" font-family="'Playfair Display', Georgia, serif" font-size="64" font-weight="700" fill="#1C1A18" opacity="0.7" text-anchor="middle" letter-spacing="2">
+    Elopements &amp;
+  </text>
+  <text x="800" y="500" font-family="'Playfair Display', Georgia, serif" font-size="64" font-weight="700" fill="#1C1A18" opacity="0.7" text-anchor="middle" letter-spacing="2">
+    Intimate Gatherings
+  </text>
+  <text x="800" y="570" font-family="Inter, sans-serif" font-size="18" fill="#7B6A5A" opacity="0.6" text-anchor="middle" letter-spacing="1">
+    Replace with your cinematic still
+  </text>
+</svg>

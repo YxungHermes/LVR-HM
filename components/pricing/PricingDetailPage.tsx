@@ -2,11 +2,13 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 interface PricingDetailPageProps {
   title: string;
+  heroImage: string;
   introHeading: string;
   introBody: string;
   startingFrom: string;
@@ -20,6 +22,7 @@ interface PricingDetailPageProps {
 
 export default function PricingDetailPage({
   title,
+  heroImage,
   introHeading,
   introBody,
   startingFrom,
@@ -36,7 +39,7 @@ export default function PricingDetailPage({
       <main className="bg-cream">
         {/* Breadcrumb */}
         <section className="px-6 pt-24 pb-8">
-          <div className="mx-auto max-w-4xl">
+          <div className="mx-auto max-w-6xl">
             <Link
               href="/pricing"
               className="inline-flex items-center text-sm text-espresso/60 hover:text-rose-wax-red transition-colors"
@@ -59,7 +62,29 @@ export default function PricingDetailPage({
           </div>
         </section>
 
-        {/* Hero */}
+        {/* Hero Image */}
+        <section className="px-6 pb-12">
+          <div className="mx-auto max-w-6xl">
+            <motion.div
+              className="relative w-full aspect-[21/9] overflow-hidden rounded-lg"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Image
+                src={heroImage}
+                alt={title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 1536px) 100vw, 1536px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Hero Content */}
         <section className="px-6 pb-16">
           <div className="mx-auto max-w-4xl">
             <motion.div
