@@ -97,15 +97,7 @@ export default function Header() {
         <a
           key={item.label}
           href={item.href}
-          className="animate-lava relative inline-flex items-center rounded-full px-6 py-2.5 text-sm font-medium backdrop-blur-[14px] border transition-all duration-[260ms] ease-[cubic-bezier(0.33,0,0.2,1)] focus-ring ml-3 hover:-translate-y-[1px] hover:scale-[1.03] hover:shadow-[0_10px_26px_rgba(0,0,0,0.09)]"
-          style={{
-            background: solid
-              ? 'radial-gradient(circle at 0% 0%, rgba(153, 121, 214, 0.16), transparent), radial-gradient(circle at 100% 0%, rgba(123, 184, 164, 0.14), transparent), radial-gradient(circle at 0% 100%, rgba(203, 118, 153, 0.14), transparent), rgba(255, 255, 255, 0.85)'
-              : 'radial-gradient(circle at 0% 0%, rgba(153, 121, 214, 0.12), transparent), radial-gradient(circle at 100% 0%, rgba(123, 184, 164, 0.10), transparent), radial-gradient(circle at 0% 100%, rgba(203, 118, 153, 0.10), transparent), rgba(255, 255, 255, 0.08)',
-            borderColor: solid ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.35)',
-            color: solid ? '#1C1A18' : '#ffffff',
-            backgroundSize: '200% 200%',
-          }}
+          className={`lvr-glass-cta focus-ring ml-3 ${!solid ? 'lvr-glass-cta--transparent' : ''}`}
           onMouseEnter={() => handleNavItemEnter(item.label)}
           onMouseLeave={handleNavItemLeave}
           onFocus={() => handleNavItemFocus(item.label)}
