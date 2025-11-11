@@ -173,17 +173,17 @@ export const navigation = {
       }
     },
     {
-      label: "Packages",
+      label: "Pricing",
       href: "/pricing",
       megaMenu: {
         sections: [
           {
             title: "Collections",
             links: [
-              { label: "Elopements", href: "/pricing#elopements", subtitle: "From $2,200" },
-              { label: "Wedding Day Films", href: "/pricing#wedding-day-films", subtitle: "From $3,500" },
-              { label: "Destination Weddings", href: "/pricing#destination-weddings", subtitle: "From $5,500" },
-              { label: "Adventure Sessions", href: "/pricing#adventure-sessions", subtitle: "From $1,200" }
+              { label: "Elopements & Intimate Gatherings", href: "/pricing#elopements" },
+              { label: "Wedding Day Films", href: "/pricing#wedding-day-films" },
+              { label: "Destination Wedding Films", href: "/pricing#destination-weddings" },
+              { label: "Adventure Sessions & Stories", href: "/pricing#adventure-sessions" }
             ]
           },
           {

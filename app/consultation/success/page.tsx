@@ -118,9 +118,9 @@ export default function ConsultationSuccessPage() {
           </div>
         </section>
 
-        {/* Roadmap Component */}
+        {/* Roadmap Component - No CTA on success page per spec */}
         <div className="pb-8">
-          <Roadmap variant="full" cta />
+          <Roadmap variant="full" />
         </div>
 
         {/* Quick Actions */}
