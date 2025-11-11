@@ -1,5 +1,36 @@
 // content/pricing.ts
 
+export const whatIOffer = [
+  {
+    slug: "elopements",
+    name: "Elopements & Intimate Gatherings",
+    description:
+      "For intentional ceremonies, city hall vows, rooftops, at-home celebrations, and days where you know every face in the room.",
+    href: "/pricing/elopements",
+  },
+  {
+    slug: "wedding-day-films",
+    name: "Wedding Day Films",
+    description:
+      "For full wedding days close to home, from quiet mornings to the final song, crafted as one cohesive cinematic story.",
+    href: "/pricing/wedding-day-films",
+  },
+  {
+    slug: "destination-weddings",
+    name: "Destination Wedding Films",
+    description:
+      "For celebrations in meaningful locations around the world, where the setting, your people, and the entire weekend become part of the film.",
+    href: "/pricing/destination-weddings",
+  },
+  {
+    slug: "adventure-sessions",
+    name: "Adventure Sessions & Stories",
+    description:
+      "For engagements, welcome parties, day-after sessions, anniversaries, or creative stories beyond the wedding day.",
+    href: "/pricing/adventure-sessions",
+  },
+];
+
 export const pricingOverview = [
   {
     slug: "elopements",
