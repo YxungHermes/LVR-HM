@@ -17,8 +17,8 @@ type NavItem = {
   };
 };
 
-export default function Header() {
-  const [solid, setSolid] = useState(false);
+export default function Header({ settled = false }: { settled?: boolean }) {
+  const [solid, setSolid] = useState(settled);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
@@ -27,7 +27,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const shouldBeSolid = scrollY > 32;
+      const shouldBeSolid = scrollY > 32 || settled;
       const shouldBeCompact = scrollY > 32;
 
       setSolid(shouldBeSolid);
@@ -37,15 +37,15 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [settled]);
 
   const handleHeaderMouseEnter = () => {
     setSolid(true);
   };
 
   const handleHeaderMouseLeave = () => {
-    // Only return to transparent if at top
-    if (window.scrollY <= 32) {
+    // Only return to transparent if at top and not settled
+    if (window.scrollY <= 32 && !settled) {
       setSolid(false);
     }
   };
