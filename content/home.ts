@@ -214,16 +214,16 @@ export const navigation = {
       }
     },
     {
-      label: "Contact",
+      label: "Book Consultation",
       href: "/consultation",
       megaMenu: {
         sections: [
           {
-            title: "Get In Touch",
+            title: "Get Started",
             links: [
               { label: "Book Your Consultation", href: "/consultation" },
-              { label: "Begin Your Journey", href: "/consultation" },
-              { label: "Check Availability", href: "/consultation" }
+              { label: "View Pricing", href: "/pricing" },
+              { label: "Learn the Process", href: "/process" }
             ]
           }
         ]

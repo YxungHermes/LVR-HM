@@ -90,28 +90,47 @@ export default function Header() {
     setActiveMegaMenu(label);
   };
 
-  const renderNavItem = (item: NavItem) => (
-    <a
-      key={item.label}
-      href={item.href}
-      className={`group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring ${
-        solid ? "text-[#121212]" : "text-white"
-      }`}
-      onMouseEnter={() => handleNavItemEnter(item.label)}
-      onMouseLeave={handleNavItemLeave}
-      onFocus={() => handleNavItemFocus(item.label)}
-    >
-      <span className="relative">
-        {item.label}
-        {/* Underline on hover */}
-        <span
-          className={`absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-200 group-hover:w-full ${
-            solid ? "bg-[#121212]/40" : "bg-white/55"
-          }`}
-        />
-      </span>
-    </a>
-  );
+  const renderNavItem = (item: NavItem) => {
+    // Render "Book Consultation" as primary CTA button
+    if (item.label === "Book Consultation") {
+      return (
+        <a
+          key={item.label}
+          href={item.href}
+          className="inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium bg-[#A14C41] text-white hover:bg-[#A14C41]/90 transition-all duration-200 focus-ring ml-2"
+          onMouseEnter={() => handleNavItemEnter(item.label)}
+          onMouseLeave={handleNavItemLeave}
+          onFocus={() => handleNavItemFocus(item.label)}
+        >
+          {item.label}
+        </a>
+      );
+    }
+
+    // Regular text link for other nav items
+    return (
+      <a
+        key={item.label}
+        href={item.href}
+        className={`group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring ${
+          solid ? "text-[#121212]" : "text-white"
+        }`}
+        onMouseEnter={() => handleNavItemEnter(item.label)}
+        onMouseLeave={handleNavItemLeave}
+        onFocus={() => handleNavItemFocus(item.label)}
+      >
+        <span className="relative">
+          {item.label}
+          {/* Underline on hover */}
+          <span
+            className={`absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-200 group-hover:w-full ${
+              solid ? "bg-[#121212]/40" : "bg-white/55"
+            }`}
+          />
+        </span>
+      </a>
+    );
+  };
 
   return (
     <>
