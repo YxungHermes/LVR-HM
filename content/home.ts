@@ -8,8 +8,45 @@ export const hero = {
   stats: {
     weddings: "500+",
     rating: "5.0"
+  },
+  ctas: {
+    primary: {
+      label: "View Film Collections",
+      href: "/pricing"
+    },
+    secondary: {
+      label: "Watch Our Films",
+      href: "#signature-work"
+    }
   }
 };
+
+export const chooseYourStory = [
+  {
+    slug: "elopements",
+    name: "Elopements & Intimate Gatherings",
+    teaser: "For small, intentional "just us" celebrations.",
+    href: "/pricing#elopements"
+  },
+  {
+    slug: "wedding-day-films",
+    name: "Wedding Day Films",
+    teaser: "For full wedding days close to home.",
+    href: "/pricing#wedding-day-films"
+  },
+  {
+    slug: "destination-weddings",
+    name: "Destination Wedding Films",
+    teaser: "For weekends and celebrations around the world.",
+    href: "/pricing#destination-weddings"
+  },
+  {
+    slug: "adventure-sessions",
+    name: "Adventure Sessions & Stories",
+    teaser: "For engagements, welcome parties, and day-after moments.",
+    href: "/pricing#adventure-sessions"
+  }
+];
 
 export const signatureWork = [
   {
@@ -137,24 +174,23 @@ export const navigation = {
     },
     {
       label: "Packages",
-      href: "#packages",
+      href: "/pricing",
       megaMenu: {
         sections: [
           {
-            title: "Coverage",
+            title: "Collections",
             links: [
-              { label: "Intimate", href: "#packages", subtitle: "4 hours" },
-              { label: "Classic", href: "#packages", subtitle: "6 hours" },
-              { label: "Premium", href: "#packages", subtitle: "8 hours" },
-              { label: "Legacy", href: "#packages", subtitle: "10-12 hours" }
+              { label: "Elopements", href: "/pricing#elopements", subtitle: "From $2,200" },
+              { label: "Wedding Day Films", href: "/pricing#wedding-day-films", subtitle: "From $3,500" },
+              { label: "Destination Weddings", href: "/pricing#destination-weddings", subtitle: "From $5,500" },
+              { label: "Adventure Sessions", href: "/pricing#adventure-sessions", subtitle: "From $1,200" }
             ]
           },
           {
-            title: "Add-Ons",
+            title: "Explore",
             links: [
-              { label: "Drone Footage", href: "#packages" },
-              { label: "Save the Date", href: "#packages" },
-              { label: "Second Shooter", href: "#packages" }
+              { label: "View All Collections", href: "/pricing" },
+              { label: "Book Consultation", href: "/contact" }
             ]
           }
         ]

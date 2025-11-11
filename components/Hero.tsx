@@ -42,16 +42,16 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.6 }}
           >
             <a
-              href="#packages"
+              href={hero.ctas.primary.href}
               className="group bg-rose-grad rounded-full px-6 py-3 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg focus-ring"
             >
-              View Our Collections
+              {hero.ctas.primary.label}
             </a>
             <a
-              href="#signature-work"
+              href={hero.ctas.secondary.href}
               className="rounded-full border border-rose-2 px-6 py-3 text-rose-2 transition-all duration-300 hover:scale-105 hover:bg-rose-2 hover:text-white focus-ring"
             >
-              Explore Our Stories
+              {hero.ctas.secondary.label}
             </a>
           </motion.div>
 

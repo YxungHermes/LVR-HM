@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ChooseYourStory from "@/components/ChooseYourStory";
 import SignatureWork from "@/components/SignatureWork";
 import Packages from "@/components/Packages";
 import Testimonials from "@/components/Testimonials";
@@ -12,6 +13,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <ChooseYourStory />
         <SignatureWork />
         <Packages />
         <Testimonials />
