@@ -155,14 +155,14 @@ export default function Header() {
         onMouseEnter={handleHeaderMouseEnter}
         onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-[1280px] px-12 h-[56px] md:h-[72px] flex items-center justify-between">
-          {/* Left Navigation */}
-          <nav className="flex items-center gap-1" aria-label="Primary">
+        <div className="mx-auto max-w-[1280px] px-12 h-[56px] md:h-[72px] flex items-center">
+          {/* Left Navigation - flex-1 for optical centering */}
+          <nav className="flex items-center gap-1 flex-1" aria-label="Primary">
             {navigation.left.map(renderNavItem)}
           </nav>
 
           {/* Center Brand - Wordmark only, scales down on scroll */}
-          <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
+          <div className="flex items-center justify-center flex-1">
             <a
               href="/"
               className="relative block origin-center will-change-transform transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] focus-ring"
@@ -184,8 +184,8 @@ export default function Header() {
             </a>
           </div>
 
-          {/* Right Navigation */}
-          <nav className="flex items-center gap-1" aria-label="Secondary">
+          {/* Right Navigation - flex-1 for optical centering */}
+          <nav className="flex items-center gap-1 flex-1 justify-end" aria-label="Secondary">
             {navigation.right.map(renderNavItem)}
           </nav>
         </div>
