@@ -197,4 +197,29 @@
     border-color: rgba(255, 255, 255, 0.35);
     color: #ffffff;
   }
+
+  /* Pinterest button shimmer effect */
+  .btn-pinterest {
+    background: #e60023;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-pinterest::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      120% 120% at 10% 10%,
+      rgba(255, 255, 255, 0.15),
+      transparent 40%
+    );
+    transform: translateX(-30%);
+    transition: transform 800ms ease;
+  }
+
+  .btn-pinterest:hover::after {
+    transform: translateX(10%);
+  }
 }

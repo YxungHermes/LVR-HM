@@ -7,6 +7,7 @@ import Link from "next/link";
 import { pricing } from "@/content/pricing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import PinterestShare from "@/components/consultation/PinterestShare";
 
 export default function ConsultationPage() {
   const router = useRouter();
@@ -29,6 +30,8 @@ export default function ConsultationPage() {
     budgetRange: "",
     contactPreference: "email",
     privacyConsent: false,
+    pinterestBoardUrl: "",
+    pinterestBoardTitle: "",
     additionalNotes: "",
   });
 
@@ -444,7 +447,24 @@ export default function ConsultationPage() {
                     </label>
                   </div>
                 </div>
+              </div>
 
+              {/* Pinterest Inspiration Board */}
+              <div>
+                <PinterestShare
+                  coupleNameFieldId="name"
+                  onSelect={({ url, title }) => {
+                    setFormData({
+                      ...formData,
+                      pinterestBoardUrl: url,
+                      pinterestBoardTitle: title,
+                    });
+                  }}
+                />
+              </div>
+
+              {/* Additional Notes */}
+              <div className="space-y-6">
                 <div>
                   <label htmlFor="additionalNotes" className="mb-2 block text-sm font-medium text-espresso">
                     Additional Notes or Questions
