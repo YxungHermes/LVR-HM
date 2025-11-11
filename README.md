@@ -198,7 +198,7 @@ The roadmap visualizes the complete client journey from inquiry to final deliver
 The Roadmap component is located at `/components/Roadmap.tsx` with two variants:
 
 **Full Variant:**
-- Vertical timeline with 8 steps
+- Vertical timeline with 8 distinct steps (Consultation and Proposal separated for emotional rhythm)
 - Detailed descriptions for each step
 - Delivery timeline section (Teaser: 2-3 weeks, Highlight: 6-8 weeks, Feature: 10-12 weeks)
 - Optional CTA button
@@ -225,13 +225,14 @@ Edit the `roadmapSteps` array inside `/components/Roadmap.tsx` to change titles,
 
 ### Steps Included
 
-1. Inquiry - Share your details and vision
-2. Consultation & Proposal - Personal conversation and tailored collection designed for your day
-3. Booking - Sign agreement and secure your date
-4. Pre-Production - Timeline sync and creative planning
-5. Wedding Day - Full-day cinematic storytelling
-6. Post Production - Editing, color, sound design, and review
-7. Delivery - Final films, USB keepsake, and online gallery
+1. **Inquiry** - You reach out and share your wedding date, location, and a bit of your story
+2. **Consultation** - We meet for a relaxed conversation to understand your vision and energy as a couple
+3. **Proposal** - You receive a curated proposal outlining your tailored film experience and investment
+4. **Booking** - Once your date is secured, we officially begin this creative journey together
+5. **Pre-Production** - We collaborate on your timeline, visual tone, and creative direction
+6. **Wedding Day** - We capture your story from quiet moments to the celebration itself with artful precision
+7. **Post Production** - Your footage is crafted into a timeless film through editing, color, and sound
+8. **Delivery** - Your finished films arrive — cinematic, emotional, and beautifully packaged
 
 ## Finale Block (Process & Success)
 
@@ -270,6 +271,49 @@ A shared component that appears at the bottom of `/process` and `/consultation/s
 - External link icon animates on hover (`translate-x-1`)
 - Responsive spacing and Framer Motion animations
 - Border separator between Instagram invitation and sign-off
+
+## Section Divider
+
+A reusable component that creates organic wave/mountain transitions between hero sections and content sections. Inspired by clean luxury sites, this replaces hard horizontal breaks with natural, flowing curves.
+
+### Component
+
+**Location:** `/components/SectionDivider.tsx`
+
+**Props:**
+- `color` (optional) - Fill color for the SVG wave, defaults to `"#FAF7F2"` (cream)
+- `height` (optional) - Height of the wave effect, defaults to `"120px"`
+- `flip` (optional) - Boolean to rotate the wave 180 degrees, defaults to `false`
+
+### Usage
+
+```tsx
+// Standard wave transition from hero to content
+<SectionDivider color="#FAF6F0" height="120px" />
+
+// Flipped wave (inverted)
+<SectionDivider color="#FAF6F0" height="100px" flip />
+
+// Minimal usage (uses defaults)
+<SectionDivider />
+```
+
+**Used on:**
+- Homepage hero (`/components/Hero.tsx`) - Transition to ChooseYourStory section
+- Pricing hero (`/app/pricing/page.tsx`) - Transition to pricing cards
+- Process hero (`/app/process/page.tsx`) - Transition to roadmap
+
+### Implementation
+
+The component uses an SVG path with `preserveAspectRatio="none"` to create a responsive, organic curve that scales smoothly across all screen sizes. It's positioned absolutely at the bottom of hero sections using `absolute bottom-0`.
+
+**Container requirements:**
+- Parent section must have `relative` positioning
+- Parent section must have `overflow-hidden` to prevent overflow
+
+### Design Philosophy
+
+The wave divider creates a visual "dissolve" between sections, mimicking cinematic transitions. The subtle curve adds elegance without drawing attention away from content, maintaining the luxury brand aesthetic.
 
 ## License
 

@@ -11,37 +11,42 @@ interface RoadmapProps {
 const roadmapSteps = [
   {
     title: "Inquiry",
-    text: "Share your date, location, and what matters most.",
+    text: "You reach out and share your wedding date, location, and a bit of your story.",
     icon: "✉️",
   },
   {
-    title: "Consultation & Proposal",
-    text: "We meet, learn your vision, and create a personalized film collection that fits your celebration.",
+    title: "Consultation",
+    text: "We meet for a relaxed conversation to understand your vision and energy as a couple.",
     icon: "💬",
   },
   {
+    title: "Proposal",
+    text: "You receive a curated proposal outlining your tailored film experience and investment.",
+    icon: "📋",
+  },
+  {
     title: "Booking",
-    text: "Sign the agreement and secure your date.",
+    text: "Once your date is secured, we officially begin this creative journey together.",
     icon: "📝",
   },
   {
     title: "Pre-Production",
-    text: "Timeline sync, creative planning, and key details.",
+    text: "We collaborate on your timeline, visual tone, and creative direction.",
     icon: "🎬",
   },
   {
     title: "Wedding Day",
-    text: "Cinematic storytelling, minimal intrusion, full coverage.",
+    text: "We capture your story from quiet moments to the celebration itself with artful precision.",
     icon: "🎥",
   },
   {
     title: "Post Production",
-    text: "Editing, color, sound design, and a private review link.",
+    text: "Your footage is crafted into a timeless film through editing, color, and sound.",
     icon: "✂️",
   },
   {
     title: "Delivery",
-    text: "Final films, USB keepsake, and online showcase gallery.",
+    text: "Your finished films arrive — cinematic, emotional, and beautifully packaged.",
     icon: "🎁",
   },
 ];

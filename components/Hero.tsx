@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { hero } from "@/content/home";
+import SectionDivider from "@/components/SectionDivider";
 
 export default function Hero() {
   return (
@@ -77,6 +78,9 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Organic wave divider */}
+      <SectionDivider color="#FAF6F0" height="120px" />
     </section>
   );
 }

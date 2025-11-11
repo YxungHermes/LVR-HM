@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Roadmap from "@/components/Roadmap";
 import FinaleBlock from "@/components/FinaleBlock";
+import SectionDivider from "@/components/SectionDivider";
 
 export default function ProcessPage() {
   return (
@@ -13,7 +14,7 @@ export default function ProcessPage() {
       <Header settled />
       <main className="bg-cream">
         {/* Hero */}
-        <section className="px-6 pt-32 pb-16 md:pt-36 md:pb-20">
+        <section className="relative px-6 pt-32 pb-16 md:pt-36 md:pb-20 overflow-hidden">
           <div className="mx-auto max-w-4xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -28,6 +29,9 @@ export default function ProcessPage() {
               </p>
             </motion.div>
           </div>
+
+          {/* Organic wave divider */}
+          <SectionDivider color="#FAF6F0" height="100px" />
         </section>
 
         {/* Roadmap Component */}
