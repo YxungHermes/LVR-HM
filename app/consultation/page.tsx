@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { pricing } from "@/content/pricing";
+import { TRADITION_CATEGORIES, SPECIAL_CHOICES, getTraditionLabel } from "@/data/traditions";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PinterestShare from "@/components/consultation/PinterestShare";
@@ -12,6 +13,10 @@ import PinterestShare from "@/components/consultation/PinterestShare";
 export default function ConsultationPage() {
   const router = useRouter();
   const [isPlannerMode, setIsPlannerMode] = useState(false);
+  const [tradition, setTradition] = useState<string>("");
+  const [multiTraditions, setMultiTraditions] = useState<string[]>([]);
+  const [traditionOther, setTraditionOther] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,10 +49,52 @@ export default function ConsultationPage() {
     "Moody",
   ];
 
+  const isMulti = tradition === "multicultural_interfaith";
+  const isOther = tradition === "other";
+
+  const toggleMulti = (key: string) => {
+    setMultiTraditions((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate tradition field
+    if (!tradition) {
+      alert("Please select a tradition or cultural context.");
+      return;
+    }
+    if (isMulti && multiTraditions.length < 2) {
+      alert("Please select two traditions for a multicultural/interfaith wedding.");
+      return;
+    }
+    if (isOther && !traditionOther.trim()) {
+      alert("Please describe your tradition or event.");
+      return;
+    }
+
+    // Build tradition resolved string
+    let traditionResolved = "";
+    if (isMulti) {
+      const labels = multiTraditions.map(getTraditionLabel);
+      traditionResolved = `Multicultural / Interfaith: ${labels.join(" + ")}`;
+    } else if (isOther) {
+      traditionResolved = `Other: ${traditionOther}`;
+    } else {
+      traditionResolved = getTraditionLabel(tradition);
+    }
+
     // Handle form submission
-    console.log("Consultation form submitted:", formData);
+    console.log("Consultation form submitted:", {
+      ...formData,
+      tradition,
+      traditionResolved,
+      multiTraditions: isMulti ? multiTraditions : undefined,
+      traditionOther: isOther ? traditionOther : undefined,
+    });
+
     // Redirect to thank you page
     router.push("/consultation/success");
   };
@@ -223,6 +270,101 @@ export default function ConsultationPage() {
                       placeholder="e.g., 50-75 guests"
                     />
                   </div>
+                </div>
+
+                {/* Tradition / Cultural Context */}
+                <div>
+                  <label htmlFor="tradition" className="mb-2 block text-sm font-medium text-espresso">
+                    Tradition / Cultural Context <span className="text-rose-wax-red">*</span>
+                  </label>
+                  <p className="mb-3 text-xs text-espresso/60">
+                    This helps us plan coverage respectfully. Choose the option that fits best. For blended ceremonies, choose "Multicultural / Interfaith."
+                  </p>
+                  <select
+                    id="tradition"
+                    name="tradition"
+                    value={tradition}
+                    onChange={(e) => {
+                      setTradition(e.target.value);
+                      setMultiTraditions([]);
+                      setTraditionOther("");
+                    }}
+                    required
+                    className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                  >
+                    <option value="">Select one</option>
+
+                    {TRADITION_CATEGORIES.map((cat) => (
+                      <optgroup key={cat.label} label={cat.label}>
+                        {cat.options.map((opt) => (
+                          <option key={opt.key} value={opt.key}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+
+                    <optgroup label="More">
+                      {SPECIAL_CHOICES.map((opt) => (
+                        <option key={opt.key} value={opt.key}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                  </select>
+
+                  {/* Multicultural / Interfaith picker */}
+                  {isMulti && (
+                    <motion.div
+                      className="mt-4 p-4 bg-warm-sand/20 rounded-lg border border-coffee/10"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <p className="mb-3 text-sm font-medium text-espresso">
+                        Choose the two traditions you're blending:
+                      </p>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {TRADITION_CATEGORIES[0].options.map((opt) => (
+                          <label
+                            key={opt.key}
+                            className={`flex items-center gap-2 border rounded-lg px-3 py-2 cursor-pointer transition-colors ${
+                              multiTraditions.includes(opt.key)
+                                ? "border-rose-wax-red bg-rose-wax-red/5"
+                                : "border-coffee/20 hover:border-coffee/30"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              value={opt.key}
+                              checked={multiTraditions.includes(opt.key)}
+                              onChange={() => toggleMulti(opt.key)}
+                              className="h-4 w-4 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                            />
+                            <span className="text-sm text-espresso">{opt.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Other describe */}
+                  {isOther && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <input
+                        name="traditionOther"
+                        placeholder="Describe your tradition or event"
+                        value={traditionOther}
+                        onChange={(e) => setTraditionOther(e.target.value)}
+                        required
+                        className="mt-4 w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                      />
+                    </motion.div>
+                  )}
                 </div>
 
                 <div>
