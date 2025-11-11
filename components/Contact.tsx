@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import ConsultationCTA from "@/components/cta/ConsultationCTA";
 
 export default function Contact() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,6 +20,8 @@ export default function Contact() {
     e.preventDefault();
     // Handle form submission
     console.log("Form submitted:", formData);
+    // Redirect with success flag to hide CTA
+    router.push("/?sent=true");
   };
 
   const handleChange = (
@@ -195,6 +200,11 @@ export default function Contact() {
             </button>
           </div>
         </motion.form>
+
+        {/* Consultation CTA - appears below form, hides after submission */}
+        <div className="mt-16 md:mt-24">
+          <ConsultationCTA tone="light" />
+        </div>
       </div>
     </section>
   );
