@@ -259,7 +259,7 @@ export default function ConsultationSuccessPage() {
         </section>
 
         {/* Finale Block */}
-        <FinaleBlock hasBooked={true} />
+        <FinaleBlock />
       </main>
       <Footer />
     </>

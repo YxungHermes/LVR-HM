@@ -1,16 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 
-interface FinaleBlockProps {
-  hasBooked?: boolean;
-  showCTA?: boolean;
-}
-
-export default function FinaleBlock({ hasBooked = false, showCTA }: FinaleBlockProps) {
-  const shouldShowCTA = typeof showCTA === "boolean" ? showCTA : !hasBooked;
-
+export default function FinaleBlock() {
   return (
     <section className="px-6 py-20 bg-warm-sand/30">
       <motion.div
@@ -61,50 +53,16 @@ export default function FinaleBlock({ hasBooked = false, showCTA }: FinaleBlockP
             </a>
           </div>
 
-          {/* Optional CTA */}
-          {shouldShowCTA && (
-            <motion.div
-              className="pt-6"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <Link
-                href="/consultation"
-                className="inline-flex items-center bg-rose-wax-red text-white px-8 py-3 rounded-full font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg focus-ring"
-              >
-                Book Your Consultation
-                <svg
-                  className="ml-2 h-5 w-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </Link>
-            </motion.div>
-          )}
-
           {/* Brand Sign-off */}
           <motion.div
             className="pt-12 border-t border-coffee/10"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="font-serif text-lg text-ink italic mb-2">
+            <p className="font-serif text-lg text-ink italic">
               Love, Violeta Rose
-            </p>
-            <p className="text-xs text-espresso/60">
-              Note: "Violeta Rose" is our house name and not a person.
             </p>
           </motion.div>
         </div>

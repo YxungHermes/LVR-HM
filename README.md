@@ -226,54 +226,50 @@ Edit the `roadmapSteps` array inside `/components/Roadmap.tsx` to change titles,
 ### Steps Included
 
 1. Inquiry - Share your details and vision
-2. Consultation - Personal conversation to learn your story
-3. Proposal - Tailored collection designed for your day
-4. Booking - Sign agreement and secure your date
-5. Pre-Production - Timeline sync and creative planning
-6. Wedding Day - Full-day cinematic storytelling
-7. Post Production - Editing, color, sound design, and review
-8. Delivery - Final films, USB keepsake, and online gallery
+2. Consultation & Proposal - Personal conversation and tailored collection designed for your day
+3. Booking - Sign agreement and secure your date
+4. Pre-Production - Timeline sync and creative planning
+5. Wedding Day - Full-day cinematic storytelling
+6. Post Production - Editing, color, sound design, and review
+7. Delivery - Final films, USB keepsake, and online gallery
 
 ## Finale Block (Process & Success)
 
-A shared component that appears at the bottom of `/process` and `/consultation/success` pages to invite users to follow on Instagram and provide a brand sign-off.
+A shared component that appears at the bottom of `/process` and `/consultation/success` pages to invite users to follow on Instagram and provide a warm brand sign-off.
 
 ### Component
 
 - **Location:** `/components/FinaleBlock.tsx`
-- **Props:**
-  - `hasBooked` (boolean): When `true`, hides "Book Your Consultation" CTA
-  - `showCTA` (boolean, optional): Override to force show/hide the CTA
+- **Props:** None (simplified component with no configuration needed)
 
 ### Features
 
 **Always included:**
-- Instagram invitation with link to [@lovevioletarose](https://www.instagram.com/lovevioletarose/)
-- Brand sign-off line: "Love, Violeta Rose"
-- Clarification note: "Violeta Rose is our house name and not a person."
-
-**Conditional:**
-- "Book Your Consultation" button (shown when `hasBooked={false}`)
+- Instagram invitation: "A little inspiration while you wait"
+  - Encourages users to follow [@lovevioletarose](https://www.instagram.com/lovevioletarose/) for recent films, color tests, and behind-the-scenes
+  - Instagram icon with external link indicator
+  - Rose wax red hover effects
+- Brand sign-off: "Love, Violeta Rose" in elegant italic serif
 
 ### Usage
 
 ```tsx
-// On Process page - shows CTA
-<FinaleBlock hasBooked={false} />
-
-// On Consultation Success page - hides CTA (user already submitted)
-<FinaleBlock hasBooked={true} />
-
-// Force show CTA regardless of hasBooked
-<FinaleBlock hasBooked={true} showCTA={true} />
+// Simple usage on any page
+<FinaleBlock />
 ```
+
+**Used on:**
+- `/process` - After FAQ section, provides closure to the process overview
+- `/consultation/success` - After "While you wait" cards, provides calm closing after form submission
 
 ### Design
 
 - Background: warm sand (`bg-warm-sand/30`)
-- Typography: Playfair Display for sign-off, Inter for body text
-- Instagram link: Rose wax red with hover effects and external link icon
-- Responsive spacing and animations with Framer Motion
+- Typography: Playfair Display italic for "Love, Violeta Rose" sign-off
+- Instagram link: Rose wax red with underline and hover effects
+- External link icon animates on hover (`translate-x-1`)
+- Responsive spacing and Framer Motion animations
+- Border separator between Instagram invitation and sign-off
 
 ## License
 

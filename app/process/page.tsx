@@ -132,7 +132,7 @@ export default function ProcessPage() {
         </section>
 
         {/* Finale Block */}
-        <FinaleBlock hasBooked={false} />
+        <FinaleBlock />
       </main>
       <Footer />
     </>

@@ -15,14 +15,9 @@ const roadmapSteps = [
     icon: "✉️",
   },
   {
-    title: "Consultation",
-    text: "A conversation to learn your story and ensure we're the right fit.",
+    title: "Consultation & Proposal",
+    text: "We meet, learn your vision, and create a personalized film collection that fits your celebration.",
     icon: "💬",
-  },
-  {
-    title: "Proposal",
-    text: "Receive a tailored collection designed for your day.",
-    icon: "📋",
   },
   {
     title: "Booking",
