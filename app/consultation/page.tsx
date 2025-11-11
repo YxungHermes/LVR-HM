@@ -45,8 +45,8 @@ export default function ConsultationPage() {
     e.preventDefault();
     // Handle form submission
     console.log("Consultation form submitted:", formData);
-    // Redirect to thank you page or show confirmation
-    router.push("/?consultation=success");
+    // Redirect to thank you page
+    router.push("/consultation/success");
   };
 
   const handleChange = (

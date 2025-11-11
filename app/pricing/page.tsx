@@ -6,6 +6,8 @@ import Image from "next/image";
 import { whatIOffer, pricingOverview } from "@/content/pricing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Roadmap from "@/components/Roadmap";
+
 
 export default function PricingPage() {
   return (
@@ -182,6 +184,9 @@ export default function PricingPage() {
             </div>
           </div>
         </section>
+
+        {/* Roadmap - What Happens Next */}
+        <Roadmap variant="mini" cta />
 
         {/* Final CTA */}
         <section className="px-6 py-24">

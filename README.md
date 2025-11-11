@@ -183,6 +183,57 @@ A branded 404 page is available at `/app/not-found.tsx` with:
 - Quick navigation to home, consultation, and pricing
 - Consistent styling with the rest of the site
 
+## Roadmap System
+
+The roadmap visualizes the complete client journey from inquiry to final delivery across multiple pages.
+
+### Pages
+
+- **Full page:** `/process` - Detailed roadmap with FAQ section
+- **Mini version:** On `/pricing` - Compact horizontal timeline after explainer section
+- **Post-consultation:** `/consultation/success` - Thank-you page with full roadmap
+
+### Component
+
+The Roadmap component is located at `/components/Roadmap.tsx` with two variants:
+
+**Full Variant:**
+- Vertical timeline with 8 steps
+- Detailed descriptions for each step
+- Delivery timeline section (Teaser: 2-3 weeks, Highlight: 6-8 weeks, Feature: 10-12 weeks)
+- Optional CTA button
+
+**Mini Variant:**
+- Horizontal compact layout with icons
+- Step numbers and titles only
+- Delivery timeline note
+- Optional CTA button
+
+### Usage
+
+```tsx
+// Full variant with CTA
+<Roadmap variant="full" cta />
+
+// Mini variant without CTA
+<Roadmap variant="mini" cta={false} />
+```
+
+### How to Update Steps
+
+Edit the `roadmapSteps` array inside `/components/Roadmap.tsx` to change titles, descriptions, or icons. All three pages (process, pricing, consultation success) will automatically reflect the updates.
+
+### Steps Included
+
+1. Inquiry - Share your details and vision
+2. Consultation - Personal conversation to learn your story
+3. Proposal - Tailored collection designed for your day
+4. Booking - Sign agreement and secure your date
+5. Pre-Production - Timeline sync and creative planning
+6. Wedding Day - Full-day cinematic storytelling
+7. Post Production - Editing, color, sound design, and review
+8. Delivery - Final films, USB keepsake, and online gallery
+
 ## License
 
 © 2025 Love, Violeta Rose. All rights reserved.
