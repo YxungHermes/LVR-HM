@@ -19,9 +19,8 @@ const LOCATIONS = [
   "Long Island",
   "Hudson Valley",
   "Upstate New York",
-  "Destination — Europe",
-  "Destination — Caribbean",
-  "Destination — West Coast",
+  "Connecticut",
+  "Pennsylvania",
   "Other",
 ];
 
@@ -40,9 +39,14 @@ export default function ConsultationPage() {
   const [location, setLocation] = useState(LOCATIONS[0]);
   const [locationOther, setLocationOther] = useState("");
 
-  // Role selector
+  // Role selector with expanded fields
   const [role, setRole] = useState<Role>("couple");
   const [plannerName, setPlannerName] = useState("");
+  const [plannerEmail, setPlannerEmail] = useState("");
+  const [plannerPhone, setPlannerPhone] = useState("");
+  const [plannerCompany, setPlannerCompany] = useState("");
+  const [parentName, setParentName] = useState("");
+  const [parentRelation, setParentRelation] = useState("");
 
   // Tradition selector
   const [tradition, setTradition] = useState<string>("");
@@ -54,7 +58,11 @@ export default function ConsultationPage() {
     eventType: "",
     date: "",
     guestCount: "",
+    venueName: "",
+    venueLink: "",
+    isMultiDay: false,
     howYouMet: "",
+    otherInspirationLinks: "",
     filmFeel: [] as string[],
     budgetRange: "",
     contactPreference: "email",
@@ -137,6 +145,11 @@ export default function ConsultationPage() {
       phone,
       role,
       plannerName: role === "planner" ? plannerName : undefined,
+      plannerEmail: role === "planner" ? plannerEmail : undefined,
+      plannerPhone: role === "planner" ? plannerPhone : undefined,
+      plannerCompany: role === "planner" ? plannerCompany : undefined,
+      parentName: role === "parent" ? parentName : undefined,
+      parentRelation: role === "parent" ? parentRelation : undefined,
       location: finalLocation,
       tradition,
       traditionResolved,
@@ -221,7 +234,7 @@ export default function ConsultationPage() {
                       onChange={(e) => setPartner1(e.target.value)}
                       required
                       className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                      placeholder="First Partner Name"
+                      placeholder="Your Name"
                     />
                     <input
                       type="text"
@@ -231,7 +244,7 @@ export default function ConsultationPage() {
                       onChange={(e) => setPartner2(e.target.value)}
                       required
                       className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                      placeholder="Second Partner Name"
+                      placeholder="Partner's Name"
                     />
                   </div>
                 </div>
@@ -316,16 +329,74 @@ export default function ConsultationPage() {
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       transition={{ duration: 0.3 }}
-                      className="mt-3"
+                      className="mt-4 p-6 bg-warm-sand/20 rounded-lg border border-coffee/10 space-y-4"
                     >
-                      <input
-                        type="text"
-                        name="plannerName"
-                        placeholder="Planner or Agency Name (optional)"
-                        value={plannerName}
-                        onChange={(e) => setPlannerName(e.target.value)}
-                        className="w-full md:w-1/2 rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
-                      />
+                      <h4 className="font-serif text-lg font-semibold text-ink">Planner Information</h4>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <input
+                          type="text"
+                          name="plannerName"
+                          placeholder="Your Name"
+                          value={plannerName}
+                          onChange={(e) => setPlannerName(e.target.value)}
+                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                        />
+                        <input
+                          type="text"
+                          name="plannerCompany"
+                          placeholder="Agency/Company Name"
+                          value={plannerCompany}
+                          onChange={(e) => setPlannerCompany(e.target.value)}
+                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                        />
+                      </div>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <input
+                          type="email"
+                          name="plannerEmail"
+                          placeholder="Your Email"
+                          value={plannerEmail}
+                          onChange={(e) => setPlannerEmail(e.target.value)}
+                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                        />
+                        <input
+                          type="tel"
+                          name="plannerPhone"
+                          placeholder="Your Phone"
+                          value={plannerPhone}
+                          onChange={(e) => setPlannerPhone(e.target.value)}
+                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                        />
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {role === "parent" && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4 p-6 bg-warm-sand/20 rounded-lg border border-coffee/10 space-y-4"
+                    >
+                      <h4 className="font-serif text-lg font-semibold text-ink">Your Information</h4>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <input
+                          type="text"
+                          name="parentName"
+                          placeholder="Your Name"
+                          value={parentName}
+                          onChange={(e) => setParentName(e.target.value)}
+                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                        />
+                        <input
+                          type="text"
+                          name="parentRelation"
+                          placeholder="Relation (e.g., Mother of the Bride)"
+                          value={parentRelation}
+                          onChange={(e) => setParentRelation(e.target.value)}
+                          className="w-full rounded-lg border border-coffee/20 bg-white px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                        />
+                      </div>
                     </motion.div>
                   )}
                 </div>
@@ -356,6 +427,28 @@ export default function ConsultationPage() {
                     <option value="adventure">Adventure Sessions & Stories</option>
                     <option value="custom">Not sure yet / Custom</option>
                   </select>
+
+                  {/* Multi-day question for destination weddings */}
+                  {formData.eventType === "destination" && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      transition={{ duration: 0.3 }}
+                      className="mt-4 flex items-center space-x-3 p-4 bg-warm-sand/20 rounded-lg"
+                    >
+                      <input
+                        type="checkbox"
+                        id="isMultiDay"
+                        name="isMultiDay"
+                        checked={formData.isMultiDay}
+                        onChange={(e) => setFormData({ ...formData, isMultiDay: e.target.checked })}
+                        className="h-4 w-4 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red/20"
+                      />
+                      <label htmlFor="isMultiDay" className="text-sm font-medium text-espresso cursor-pointer">
+                        This is a multi-day celebration
+                      </label>
+                    </motion.div>
+                  )}
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">
@@ -488,7 +581,7 @@ export default function ConsultationPage() {
                 {/* Location - Select with Other option */}
                 <div>
                   <label htmlFor="location" className="mb-2 block text-sm font-medium text-espresso">
-                    Location <span className="text-rose-wax-red">*</span>
+                    General Location <span className="text-rose-wax-red">*</span>
                   </label>
                   <div className="grid gap-4 md:grid-cols-2">
                     <select
@@ -522,6 +615,33 @@ export default function ConsultationPage() {
                     )}
                   </div>
                 </div>
+
+                {/* Venue Information (optional) */}
+                <div>
+                  <label className="mb-2 block text-sm font-medium text-espresso">
+                    Venue <span className="text-xs text-espresso/60">(optional)</span>
+                  </label>
+                  <div className="grid gap-4 md:grid-cols-2">
+                    <input
+                      type="text"
+                      id="venueName"
+                      name="venueName"
+                      value={formData.venueName}
+                      onChange={handleChange}
+                      placeholder="Venue Name"
+                      className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                    />
+                    <input
+                      type="url"
+                      id="venueLink"
+                      name="venueLink"
+                      value={formData.venueLink}
+                      onChange={handleChange}
+                      placeholder="Venue Website Link"
+                      className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Your Story */}
@@ -532,7 +652,7 @@ export default function ConsultationPage() {
 
                 <div>
                   <label htmlFor="howYouMet" className="mb-2 block text-sm font-medium text-espresso">
-                    How did you meet?
+                    How did you meet? <span className="text-xs text-espresso/60">(optional — we'll discuss during consultation)</span>
                   </label>
                   <textarea
                     id="howYouMet"
@@ -582,6 +702,22 @@ export default function ConsultationPage() {
                     });
                   }}
                 />
+
+                {/* Other Inspiration Links */}
+                <div className="mt-6">
+                  <label htmlFor="otherInspirationLinks" className="mb-2 block text-sm font-medium text-espresso">
+                    Other Inspiration Links <span className="text-xs text-espresso/60">(optional)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="otherInspirationLinks"
+                    name="otherInspirationLinks"
+                    value={formData.otherInspirationLinks}
+                    onChange={handleChange}
+                    placeholder="YouTube videos, Instagram reels, or other links that inspire you"
+                    className="w-full rounded-lg border border-coffee/20 bg-cream px-4 py-3 text-espresso transition-colors focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20"
+                  />
+                </div>
               </div>
 
               {/* Budget & Preferences */}

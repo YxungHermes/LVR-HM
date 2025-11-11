@@ -10,6 +10,17 @@ export type TraditionCategory = {
 
 export const TRADITION_CATEGORIES: TraditionCategory[] = [
   {
+    label: "Most Popular in NYC",
+    options: [
+      { key: "jewish", label: "Jewish Wedding" },
+      { key: "hindu", label: "Hindu Wedding (Vedic)" },
+      { key: "christian_catholic", label: "Christian Wedding — Catholic" },
+      { key: "chinese", label: "Chinese Wedding (Tea Ceremony)" },
+      { key: "american_traditional", label: "American Wedding (Traditional/Non-religious)" },
+      { key: "muslim", label: "Muslim Wedding (Nikah/Walima)" },
+    ],
+  },
+  {
     label: "Weddings — Religious / Cultural",
     options: [
       { key: "hindu", label: "Hindu Wedding (Vedic)" },
