@@ -121,6 +121,68 @@ Tested and optimized for:
 - Safari (latest)
 - Mobile Safari (iOS 14+)
 
+## Pricing & Consultation
+
+### Pricing System
+
+The pricing system is centralized in `content/pricing.ts` and includes 4 wedding film collections:
+
+- **Elopements & Intimate Gatherings** — Starting at $2,200
+- **Wedding Day Films** — Starting at $3,500
+- **Destination Wedding Films** — Starting at $5,500
+- **Adventure Sessions & Stories** — Starting at $1,200
+
+**Routes:**
+- `/pricing` — Overview page showing all collections
+- `/pricing/elopements` — Elopement collection details
+- `/pricing/wedding-day-films` — Wedding day collection details
+- `/pricing/destination-weddings` — Destination collection details
+- `/pricing/adventure-sessions` — Adventure sessions details
+
+**To update pricing:**
+1. Edit `/content/pricing.ts`
+2. Update the `startingFrom`, `range`, and collection details
+3. Changes automatically reflect across all pricing pages
+
+### Collection Images
+
+Collection images are stored in `/public/collections/`:
+
+```
+/public/collections/
+  ├── elopements.jpg
+  ├── wedding-day.jpg
+  ├── destination.jpg
+  └── adventure.jpg
+```
+
+**To update images:**
+1. Replace files in `/public/collections/` with matching filenames
+2. Recommended specs: 2000-3000px wide, landscape orientation, JPG/PNG format
+3. Images use forced aspect ratios for consistent display:
+   - Pricing cards: 16:10 aspect ratio
+   - Detail page heroes: 21:9 aspect ratio
+
+### Consultation Form
+
+The consultation form is available at `/consultation` and includes:
+
+- Contact information (name, email, phone)
+- Event details (type, date, location, guest count)
+- Story fields (how you met, desired film feel)
+- Planner mode (for wedding planners inquiring on behalf of clients)
+- Budget range and contact preferences
+- Privacy consent
+
+Form submissions can be integrated with your preferred backend or email service.
+
+### Custom 404 Page
+
+A branded 404 page is available at `/app/not-found.tsx` with:
+- Brand voice messaging
+- Quick navigation to home, consultation, and pricing
+- Consistent styling with the rest of the site
+
 ## License
 
 © 2025 Love, Violeta Rose. All rights reserved.

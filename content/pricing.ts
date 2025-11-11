@@ -192,3 +192,35 @@ export const pricingPages = {
     ctaHref: "/contact",
   },
 };
+
+// Adapter export for consultation form (matches integration guide format)
+export const pricing = {
+  elopements: {
+    title: "Elopements & Intimate Gatherings",
+    starting: 2200,
+    range: [2200, 4800],
+    description:
+      "For intentional ceremonies, city hall vows, rooftops, or at-home celebrations — moments where you know every face in the room.",
+  },
+  weddingDay: {
+    title: "Wedding Day Films",
+    starting: 3500,
+    range: [3500, 7500],
+    description:
+      "For full wedding days close to home, from quiet mornings to the final dance, crafted as one cohesive cinematic story.",
+  },
+  destination: {
+    title: "Destination Wedding Films",
+    starting: 5500,
+    range: [5500, 12500],
+    description:
+      "For celebrations in meaningful destinations, where the setting becomes part of the story.",
+  },
+  adventure: {
+    title: "Adventure Sessions & Stories",
+    starting: 1200,
+    range: [1200, 3000],
+    description:
+      "For engagements, welcome parties, anniversaries, or creative stories beyond the wedding day.",
+  },
+};
