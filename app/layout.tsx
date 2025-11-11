@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+import StagingBadge from "@/components/StagingBadge";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -30,6 +31,10 @@ export const metadata: Metadata = {
       { url: '/favicons/lvr-monogram.svg', sizes: '180x180', type: 'image/svg+xml' },
     ],
   },
+  robots:
+    process.env.VERCEL_ENV === "preview"
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
 };
 
 export default function RootLayout({
@@ -41,6 +46,7 @@ export default function RootLayout({
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <StagingBadge />
       </body>
     </html>
   );
