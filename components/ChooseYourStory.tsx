@@ -43,6 +43,19 @@ export default function ChooseYourStory() {
                 <p className="text-sm text-espresso leading-relaxed">
                   {collection.teaser}
                 </p>
+
+                {/* Test: Add video to first offering card */}
+                {index === 0 && (
+                  <div className="mt-4 relative w-full rounded-lg overflow-hidden" style={{ paddingBottom: "56.25%" }}>
+                    <iframe
+                      src="https://player.vimeo.com/video/1057632056?title=0&byline=0&portrait=0&muted=1&loop=1&background=1"
+                      className="absolute top-0 left-0 w-full h-full"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                )}
               </Link>
             </motion.div>
           ))}
