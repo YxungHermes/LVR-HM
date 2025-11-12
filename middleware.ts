@@ -13,9 +13,6 @@ function isPreviewEnv(req: NextRequest) {
 }
 
 export function middleware(req: NextRequest) {
-  // Temporarily disabled - remove this line to re-enable staging protection
-  return NextResponse.next();
-
   if (!isPreviewEnv(req)) return NextResponse.next();
 
   const url = req.nextUrl;
