@@ -13,35 +13,15 @@ function isPreviewEnv(req: NextRequest) {
 }
 
 export function middleware(req: NextRequest) {
-  if (!isPreviewEnv(req)) return NextResponse.next();
-
   const url = req.nextUrl;
 
-  // Allow Next static internals without auth loop
-  if (url.pathname.startsWith("/_next") || url.pathname.startsWith("/api/health")) {
-    return NextResponse.next();
+  // Redirect /pricing to /offerings (navigation renamed)
+  if (url.pathname === "/pricing") {
+    return NextResponse.redirect(new URL("/offerings", req.url));
   }
 
-  const auth = req.headers.get("authorization");
-  const basic = "Basic " + Buffer.from(
-    `${process.env.STAGING_PROTECT_USERNAME}:${process.env.STAGING_PROTECT_PASSWORD}`
-  ).toString("base64");
-
-  if (auth === basic) {
-    // Add noindex headers on staging
-    const res = NextResponse.next();
-    res.headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
-    return res;
-  }
-
-  return new NextResponse("Authentication required", {
-    status: 401,
-    headers: {
-      "WWW-Authenticate": 'Basic realm="LVR Preview"',
-      "Content-Type": "text/plain; charset=utf-8",
-      "X-Robots-Tag": "noindex, nofollow, noarchive",
-    },
-  });
+  // No password protection - publicly accessible preview
+  return NextResponse.next();
 }
 
 export const config = {
