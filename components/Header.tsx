@@ -37,7 +37,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     }
   };
 
-  const handleNavItemEnter = (label: string) => {
+  const handleNavItemEnter = (label: string, isCta?: boolean) => {
+    if (isCta) return; // No mega menu for CTA items
+
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
     }
@@ -71,23 +73,26 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     }
   };
 
-  const handleNavItemFocus = (label: string) => {
+  const handleNavItemFocus = (label: string, isCta?: boolean) => {
     // Force solid state for contrast on keyboard focus
     setSolid(true);
-    setActiveMegaMenu(label);
+    if (!isCta) {
+      setActiveMegaMenu(label);
+    }
   };
 
   const renderNavItem = (item: NavItem) => {
-    // Render "Book Consultation" as primary CTA button with lava animation
-    if (item.label === "Book Consultation") {
+    // Render primary CTA with lava animation - no dropdown
+    if (item.isCta) {
       return (
         <a
           key={item.label}
           href={item.href}
           className={`lvr-glass-cta ml-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 ${!solid ? 'lvr-glass-cta--transparent' : ''}`}
-          onMouseEnter={() => handleNavItemEnter(item.label)}
+          onMouseEnter={() => handleNavItemEnter(item.label, true)}
           onMouseLeave={handleNavItemLeave}
-          onFocus={() => handleNavItemFocus(item.label)}
+          onFocus={() => handleNavItemFocus(item.label, true)}
+          aria-label="Book a consultation"
         >
           {item.label}
         </a>
@@ -102,9 +107,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         className={`group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring ${
           solid ? "text-[#121212]" : "text-white"
         }`}
-        onMouseEnter={() => handleNavItemEnter(item.label)}
+        onMouseEnter={() => handleNavItemEnter(item.label, false)}
         onMouseLeave={handleNavItemLeave}
-        onFocus={() => handleNavItemFocus(item.label)}
+        onFocus={() => handleNavItemFocus(item.label, false)}
       >
         <span className="relative">
           {item.label}
@@ -187,10 +192,10 @@ export default function Header({ settled = false }: { settled?: boolean }) {
           >
             <div className="mx-auto max-w-[1280px] px-8 py-6">
               <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-16">
-                {/* Find active menu item and render its sections */}
+                {/* Find active menu item and render its sections - only if it has a megaMenu */}
                 {[...navigation.left, ...navigation.right]
-                  .find((item) => item.label === activeMegaMenu)
-                  ?.megaMenu.sections.map((section, idx) => (
+                  .find((item) => item.label === activeMegaMenu && item.megaMenu)
+                  ?.megaMenu?.sections.map((section, idx) => (
                     <div key={idx}>
                       <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#6B5E57]">
                         {section.title}
