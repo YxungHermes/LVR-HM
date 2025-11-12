@@ -114,21 +114,30 @@
   .lvr-glass-cta {
     position: relative;
     padding: 0.85rem 1.9rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 9999px;
+    border: none;
     background: radial-gradient(
         circle at 0% 0%,
-        rgba(173, 132, 255, 0.16),
-        transparent 55%
+        rgba(173, 132, 255, 0.14),
+        transparent 60%
       ),
       radial-gradient(
         circle at 100% 100%,
-        rgba(144, 202, 181, 0.14),
-        transparent 55%
+        rgba(144, 202, 181, 0.12),
+        transparent 60%
       ),
-      rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(147, 197, 253, 0.08),
+        transparent 70%
+      ),
+      rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.05),
+      0 4px 12px rgba(0, 0, 0, 0.08);
     color: #1c1a18;
     font-size: 0.9rem;
     font-weight: 500;
@@ -138,10 +147,9 @@
     align-items: center;
     gap: 0.4rem;
     transition:
-      transform 220ms ease,
-      box-shadow 220ms ease,
-      background 260ms ease,
-      border-color 260ms ease;
+      transform 280ms cubic-bezier(0.34, 1.56, 0.64, 1),
+      box-shadow 280ms ease,
+      background 320ms ease;
   }
 
   /* Subtle inner "lava" layer */
@@ -151,51 +159,88 @@
     inset: -40%;
     background: radial-gradient(
         circle at 10% 0%,
-        rgba(180, 132, 255, 0.16),
+        rgba(180, 132, 255, 0.12),
         transparent 65%
       ),
       radial-gradient(
         circle at 90% 100%,
-        rgba(111, 191, 187, 0.18),
+        rgba(111, 191, 187, 0.14),
         transparent 65%
       ),
       radial-gradient(
+        circle at 50% 50%,
+        rgba(147, 197, 253, 0.10),
+        transparent 70%
+      ),
+      radial-gradient(
         circle at 30% 100%,
-        rgba(233, 174, 255, 0.14),
+        rgba(233, 174, 255, 0.11),
         transparent 70%
       );
-    mix-blend-mode: screen;
-    opacity: 0.55;
+    mix-blend-mode: overlay;
+    opacity: 0.6;
     animation: lvr-lava 16s ease-in-out infinite alternate;
     pointer-events: none;
+    border-radius: inherit;
   }
 
   .lvr-glass-cta:hover {
-    transform: translateY(-1px) scale(1.03);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
-    border-color: rgba(255, 255, 255, 0.55);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.04),
+      0 12px 32px rgba(173, 132, 255, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.12);
+    background: radial-gradient(
+        circle at 0% 0%,
+        rgba(173, 132, 255, 0.18),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 100% 100%,
+        rgba(144, 202, 181, 0.16),
+        transparent 60%
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(147, 197, 253, 0.12),
+        transparent 70%
+      ),
+      rgba(255, 255, 255, 0.24);
   }
 
   .lvr-glass-cta:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+    transform: translateY(0px) scale(0.99);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 2px 4px rgba(0, 0, 0, 0.08),
+      0 4px 8px rgba(0, 0, 0, 0.12);
   }
 
   /* Transparent state over hero */
   .lvr-glass-cta--transparent {
     background: radial-gradient(
         circle at 0% 0%,
-        rgba(173, 132, 255, 0.12),
-        transparent 55%
+        rgba(173, 132, 255, 0.10),
+        transparent 60%
       ),
       radial-gradient(
         circle at 100% 100%,
-        rgba(144, 202, 181, 0.10),
-        transparent 55%
+        rgba(144, 202, 181, 0.08),
+        transparent 60%
       ),
-      rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.35);
+      radial-gradient(
+        circle at 50% 50%,
+        rgba(147, 197, 253, 0.06),
+        transparent 70%
+      ),
+      rgba(255, 255, 255, 0.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.08),
+      0 4px 12px rgba(0, 0, 0, 0.12);
     color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
 
   /* Pinterest button shimmer effect */
