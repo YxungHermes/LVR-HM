@@ -123,125 +123,127 @@
     line-height: 1.6;
   }
 
-  /* Slow organic lava lamp animation - 32s dreamy drift */
+  /* Enhanced CTA Animations - Premium, saturated motion */
+
+  /* Richer lava lamp drift with more saturation */
   @keyframes lvrLavaDrift {
-    0% {
-      transform: translate3d(-6%, -4%, 0) scale(1);
-    }
-    25% {
-      transform: translate3d(4%, -2%, 0) scale(1.05);
-    }
-    50% {
-      transform: translate3d(6%, 3%, 0) scale(0.98);
-    }
-    75% {
-      transform: translate3d(-3%, 5%, 0) scale(1.03);
-    }
-    100% {
-      transform: translate3d(-6%, -4%, 0) scale(1);
-    }
+    0%   { transform: translate3d(-6%, -4%, 0) scale(1); }
+    25%  { transform: translate3d(5%, -1%, 0) scale(1.06); }
+    50%  { transform: translate3d(6%, 4%, 0) scale(0.98); }
+    75%  { transform: translate3d(-3%, 6%, 0) scale(1.03); }
+    100% { transform: translate3d(-6%, -4%, 0) scale(1); }
   }
 
-  /* Premium glass CTA button with lava lamp gradient */
+  /* Soft conic rotation for premium sheen */
+  @keyframes lvrConicSpin {
+    0%   { transform: rotate(0deg) scale(1.02); }
+    100% { transform: rotate(360deg) scale(1.02); }
+  }
+
+  /* Sparkle flecks that pulse */
+  @keyframes lvrSparkle {
+    0%, 100% { opacity: 0.15; filter: blur(0.5px); }
+    50%      { opacity: 0.35; filter: blur(1px); }
+  }
+
+  /* Boost visibility when CTA is on transparent header */
+  .lvr-cta-boost {
+    text-shadow: 0 1px 0 rgba(255,255,255,.55);
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.15));
+  }
+
+  /* Premium glass CTA button - Always-visible star of the show */
   .lvr-glass-cta {
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 0.75rem 1.75rem;
+    padding: 0.65rem 1.15rem;
     border-radius: 9999px;
-    font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1;
-    isolation: isolate; /* Ensure ::before stays behind text */
-    color: #121212;
+    isolation: isolate;
+    color: #0e0e0e;
     text-decoration: none;
     cursor: pointer;
-    overflow: hidden; /* Prevent gradient spill */
-
-    /* Glass background - static layer */
-    background: rgba(255, 255, 255, 0.28);
-    backdrop-filter: blur(14px) saturate(120%);
-    -webkit-backdrop-filter: blur(14px) saturate(120%);
-
-    /* Subtle border and inner highlights */
-    border: 1px solid rgba(0, 0, 0, 0.06);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.35),
-      0 1px 2px rgba(0, 0, 0, 0.06);
-
-    /* Smooth transitions */
-    transition:
-      filter 250ms ease,
-      transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1),
-      box-shadow 250ms ease;
-    will-change: transform, filter;
+    overflow: hidden;
+    background: rgba(255,255,255,0.24);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: transform .15s ease, box-shadow .25s ease, filter .25s ease;
   }
 
-  /* Animated lava lamp gradient layer - lives behind text */
+  /* Layer 1: saturated drifting blobs - the lava layer */
   .lvr-glass-cta::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
     z-index: -1;
-
-    /* Soft blur for dreamy blob effect */
-    filter: blur(8px) saturate(105%);
-    opacity: 0.9;
-
-    /* Muted purple, blue, green gradient blobs */
+    border-radius: inherit;
+    opacity: .95;
     background:
-      radial-gradient(
-        40% 55% at 22% 35%,
-        rgba(217, 200, 255, 0.35) 0%,
-        rgba(217, 200, 255, 0) 70%
-      ),
-      radial-gradient(
-        45% 60% at 70% 30%,
-        rgba(207, 231, 255, 0.32) 0%,
-        rgba(207, 231, 255, 0) 72%
-      ),
-      radial-gradient(
-        50% 65% at 52% 75%,
-        rgba(213, 245, 227, 0.30) 0%,
-        rgba(213, 245, 227, 0) 68%
-      );
-
-    /* Slow 32s organic drift animation */
-    animation: lvrLavaDrift 32s ease-in-out infinite;
-    will-change: transform, opacity, filter;
-    transform: translate3d(0, 0, 0);
-    pointer-events: none;
+      radial-gradient(50% 60% at 22% 35%, rgba(199,130,255,0.38) 0%, rgba(199,130,255,0.00) 70%),
+      radial-gradient(55% 65% at 70% 30%, rgba(125,180,255,0.34) 0%, rgba(125,180,255,0.00) 72%),
+      radial-gradient(52% 68% at 52% 75%, rgba(110,230,195,0.32) 0%, rgba(110,230,195,0.00) 68%);
+    animation: lvrLavaDrift 34s ease-in-out infinite;
+    filter: saturate(115%) url(#lvrGooey);
   }
 
-  /* Hover state - brighten glass and enhance glow */
+  /* Layer 2: soft conic rotation for premium sheen */
+  .lvr-glass-cta::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    z-index: -2;
+    border-radius: 50%;
+    background:
+      conic-gradient(
+        from 0deg,
+        rgba(255,255,255,0.08),
+        rgba(208,160,255,0.10),
+        rgba(160,208,255,0.10),
+        rgba(160,255,220,0.10),
+        rgba(255,255,255,0.08)
+      );
+    animation: lvrConicSpin 28s linear infinite;
+  }
+
+  /* Sparkle flecks layer - sits on top of text */
+  .lvr-cta-sparkles {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background:
+      radial-gradient(2px 2px at 22% 40%, rgba(255,255,255,0.8) 0%, transparent 70%),
+      radial-gradient(2px 2px at 68% 58%, rgba(255,255,255,0.6) 0%, transparent 70%),
+      radial-gradient(1.5px 1.5px at 44% 72%, rgba(255,255,255,0.7) 0%, transparent 70%);
+    animation: lvrSparkle 5.6s ease-in-out infinite;
+  }
+
+  /* Hover state - subtle brightness boost */
   .lvr-glass-cta:hover {
-    filter: brightness(1.04);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.5),
-      0 4px 14px rgba(0, 0, 0, 0.08);
+    filter: brightness(1.05);
   }
 
   /* Active state - subtle press */
   .lvr-glass-cta:active {
-    transform: translateY(0.5px) scale(0.98);
+    transform: translateY(0.5px) scale(0.985);
   }
 
-  /* Transparent variant - for use over hero/dark backgrounds */
+  /* Transparent variant - for transparent header over hero */
   .lvr-glass-cta--transparent {
-    background: rgba(255, 255, 255, 0.14);
-    border-color: rgba(255, 255, 255, 0.18);
-    color: #ffffff;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.25),
-      0 2px 8px rgba(0, 0, 0, 0.15);
+    background: rgba(255,255,255,0.16);
+    color: #0e0e0e;
   }
 
-  /* Respect user motion preferences - disable animation if reduced motion */
+  /* Respect user motion preferences - disable animations if reduced motion */
   @media (prefers-reduced-motion: reduce) {
-    .lvr-glass-cta::before {
+    .lvr-glass-cta::before,
+    .lvr-glass-cta::after,
+    .lvr-cta-sparkles {
       animation: none;
     }
   }

@@ -95,19 +95,20 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   };
 
   const renderNavItem = (item: NavItem) => {
-    // Render primary CTA with lava animation - no dropdown
+    // Render primary CTA with enhanced animations - no dropdown
     if (item.isCta) {
       return (
         <a
           key={item.label}
           href={item.href}
-          className={`lvr-glass-cta ml-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 ${!solid ? 'lvr-glass-cta--transparent' : ''}`}
+          className={`lvr-glass-cta ml-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 ${!solid ? 'lvr-glass-cta--transparent lvr-cta-boost' : ''}`}
           onMouseEnter={() => handleNavItemEnter(item.label, true)}
           onMouseLeave={handleNavItemLeave}
           onFocus={() => handleNavItemFocus(item.label, true)}
           aria-label="Book a consultation"
         >
-          {item.label}
+          <span className="relative z-10">{item.label}</span>
+          <span aria-hidden="true" className="lvr-cta-sparkles"></span>
         </a>
       );
     }

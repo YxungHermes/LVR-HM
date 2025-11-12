@@ -101,7 +101,7 @@ export default function MobileNav({
                 ))}
             </div>
 
-            {/* Primary CTA - Fixed at bottom */}
+            {/* Primary CTA - Fixed at bottom with enhanced animations */}
             <div className="px-5 pb-5 pt-3 border-t border-black/10">
               <a
                 href={cta.href}
@@ -109,7 +109,8 @@ export default function MobileNav({
                 className="lvr-glass-cta w-full inline-flex justify-center items-center touch-target"
                 aria-label="Book a consultation"
               >
-                {cta.label}
+                <span className="relative z-10">{cta.label}</span>
+                <span aria-hidden="true" className="lvr-cta-sparkles"></span>
               </a>
             </div>
           </motion.nav>
