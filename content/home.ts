@@ -176,18 +176,8 @@ export const navigation: Navigation = {
   left: [
     {
       label: "Home",
-      href: "/",
-      megaMenu: {
-        sections: [
-          {
-            title: "Welcome",
-            links: [
-              { label: "Back to Homepage", href: "/" },
-              { label: "View Our Work", href: "#signature-work" }
-            ]
-          }
-        ]
-      }
+      href: "/"
+      // No mega menu - simple link to homepage
     },
     {
       label: "Films",
