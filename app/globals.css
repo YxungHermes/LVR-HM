@@ -65,40 +65,45 @@
 /* Color morph animation with movement */
 @keyframes lvrColorFlow {
   0%   {
+    opacity: 0.92;
+    filter: saturate(135%) hue-rotate(0deg) blur(10px);
+    transform: translate3d(-12%, -8%, 0) scale(1.08);
+  }
+  25%  {
+    opacity: 0.98;
+    filter: saturate(145%) hue-rotate(8deg) blur(14px);
+    transform: translate3d(10%, -3%, 0) scale(0.95);
+  }
+  50%  {
     opacity: 0.90;
-    filter: saturate(130%) hue-rotate(0deg) blur(12px);
-    transform: translate3d(-5%, -4%, 0) scale(1.03);
+    filter: saturate(140%) hue-rotate(-5deg) blur(12px);
+    transform: translate3d(12%, 10%, 0) scale(1.05);
   }
-  33%  {
+  75%  {
     opacity: 0.95;
-    filter: saturate(140%) hue-rotate(5deg) blur(14px);
-    transform: translate3d(4%, 2%, 0) scale(0.97);
-  }
-  66%  {
-    opacity: 0.88;
-    filter: saturate(135%) hue-rotate(-3deg) blur(13px);
-    transform: translate3d(2%, -5%, 0) scale(1.02);
+    filter: saturate(138%) hue-rotate(3deg) blur(13px);
+    transform: translate3d(-8%, 8%, 0) scale(0.97);
   }
   100% {
-    opacity: 0.90;
-    filter: saturate(130%) hue-rotate(0deg) blur(12px);
-    transform: translate3d(-5%, -4%, 0) scale(1.03);
+    opacity: 0.92;
+    filter: saturate(135%) hue-rotate(0deg) blur(10px);
+    transform: translate3d(-12%, -8%, 0) scale(1.08);
   }
 }
 
 /* Hover: Gradient reacts and pulls away with rumbling effect */
 @keyframes lvrHoverRumble {
-  0%   { transform: translate3d(0, 0, 0) scale(1.05); }
-  10%  { transform: translate3d(-2%, 1%, 0) scale(1.06); }
-  20%  { transform: translate3d(1%, -1%, 0) scale(1.04); }
-  30%  { transform: translate3d(-1%, -2%, 0) scale(1.07); }
-  40%  { transform: translate3d(2%, 1%, 0) scale(1.05); }
-  50%  { transform: translate3d(-1%, 2%, 0) scale(1.06); }
-  60%  { transform: translate3d(1%, -1%, 0) scale(1.04); }
-  70%  { transform: translate3d(-2%, 0%, 0) scale(1.07); }
-  80%  { transform: translate3d(2%, -2%, 0) scale(1.05); }
-  90%  { transform: translate3d(-1%, 1%, 0) scale(1.06); }
-  100% { transform: translate3d(0, 0, 0) scale(1.05); }
+  0%   { transform: translate3d(0, 0, 0) scale(1.08); }
+  10%  { transform: translate3d(-4%, 3%, 0) scale(1.10); }
+  20%  { transform: translate3d(3%, -3%, 0) scale(1.06); }
+  30%  { transform: translate3d(-3%, -4%, 0) scale(1.12); }
+  40%  { transform: translate3d(4%, 2%, 0) scale(1.08); }
+  50%  { transform: translate3d(-2%, 4%, 0) scale(1.10); }
+  60%  { transform: translate3d(3%, -2%, 0) scale(1.06); }
+  70%  { transform: translate3d(-4%, 1%, 0) scale(1.11); }
+  80%  { transform: translate3d(4%, -4%, 0) scale(1.09); }
+  90%  { transform: translate3d(-3%, 2%, 0) scale(1.10); }
+  100% { transform: translate3d(0, 0, 0) scale(1.08); }
 }
 
 /* Conic gradient rotation for premium sheen */
@@ -275,16 +280,16 @@
     z-index: -2;
     border-radius: inherit;
     background:
-      radial-gradient(ellipse 140% 100% at 20% 40%, rgba(199,130,255,0.70) 0%, rgba(199,130,255,0.30) 40%, rgba(199,130,255,0.05) 70%),
-      radial-gradient(ellipse 140% 100% at 80% 60%, rgba(125,180,255,0.65) 0%, rgba(125,180,255,0.28) 40%, rgba(125,180,255,0.05) 70%),
-      radial-gradient(ellipse 120% 90% at 50% 80%, rgba(110,230,195,0.60) 0%, rgba(110,230,195,0.25) 40%, rgba(110,230,195,0.05) 70%);
-    animation: lvrColorFlow 4s ease-in-out infinite;
+      radial-gradient(ellipse 140% 100% at 20% 40%, rgba(199,130,255,0.75) 0%, rgba(199,130,255,0.35) 40%, rgba(199,130,255,0.08) 70%),
+      radial-gradient(ellipse 140% 100% at 80% 60%, rgba(125,180,255,0.70) 0%, rgba(125,180,255,0.32) 40%, rgba(125,180,255,0.08) 70%),
+      radial-gradient(ellipse 120% 90% at 50% 80%, rgba(110,230,195,0.65) 0%, rgba(110,230,195,0.28) 40%, rgba(110,230,195,0.08) 70%);
+    animation: lvrColorFlow 3s ease-in-out infinite;
     will-change: transform, opacity, filter;
   }
 
   /* Hover: Gradient reacts and rumbles like it's alive */
   .lvr-glass-cta:hover::after {
-    animation: lvrHoverRumble 0.6s ease-in-out infinite, lvrColorFlow 4s ease-in-out infinite;
+    animation: lvrHoverRumble 0.35s ease-in-out infinite, lvrColorFlow 3s ease-in-out infinite;
   }
 
   /* Sparkle flecks layer - sits on top of text */
@@ -295,21 +300,21 @@
     z-index: 1;
     border-radius: inherit;
     background:
-      radial-gradient(2px 2px at 22% 40%, rgba(255,255,255,0.8) 0%, transparent 70%),
-      radial-gradient(2px 2px at 68% 58%, rgba(255,255,255,0.6) 0%, transparent 70%),
-      radial-gradient(1.5px 1.5px at 44% 72%, rgba(255,255,255,0.7) 0%, transparent 70%);
-    animation: lvrSparkle 2.5s ease-in-out infinite;
+      radial-gradient(2px 2px at 22% 40%, rgba(255,255,255,0.9) 0%, transparent 70%),
+      radial-gradient(2px 2px at 68% 58%, rgba(255,255,255,0.7) 0%, transparent 70%),
+      radial-gradient(1.5px 1.5px at 44% 72%, rgba(255,255,255,0.8) 0%, transparent 70%);
+    animation: lvrSparkle 1.8s ease-in-out infinite;
   }
 
   /* Hover: Sparkles react faster when anticipating touch */
   .lvr-glass-cta:hover .lvr-cta-sparkles {
-    animation: lvrSparkle 0.4s ease-in-out infinite;
+    animation: lvrSparkle 0.3s ease-in-out infinite;
   }
 
   /* Hover state - brightness boost + spinning color glow around edges */
   .lvr-glass-cta:hover {
-    filter: brightness(1.12);
-    animation: lvrBorderPulse 1.5s ease-in-out infinite;
+    filter: brightness(1.15);
+    animation: lvrBorderPulse 1.2s ease-in-out infinite;
   }
 
   /* Active state - subtle press */
