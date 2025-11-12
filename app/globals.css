@@ -198,10 +198,13 @@
     text-decoration: none;
     cursor: pointer;
     overflow: hidden;
-    background: rgba(255,255,255,0.24);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
     border: 1px solid rgba(0,0,0,0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.3),
+      0 2px 8px rgba(0,0,0,0.06);
     transition: transform .15s ease, box-shadow .25s ease, filter .25s ease;
   }
 
@@ -209,16 +212,17 @@
   .lvr-glass-cta::before {
     content: "";
     position: absolute;
-    inset: 0;
+    inset: -2px;
     z-index: -1;
     border-radius: inherit;
-    opacity: .95;
+    opacity: 1;
     background:
-      radial-gradient(50% 60% at 22% 35%, rgba(199,130,255,0.48) 0%, rgba(199,130,255,0.00) 70%),
-      radial-gradient(55% 65% at 70% 30%, rgba(125,180,255,0.44) 0%, rgba(125,180,255,0.00) 72%),
-      radial-gradient(52% 68% at 52% 75%, rgba(110,230,195,0.42) 0%, rgba(110,230,195,0.00) 68%);
+      radial-gradient(50% 60% at 22% 35%, rgba(199,130,255,0.55) 0%, rgba(199,130,255,0.00) 70%),
+      radial-gradient(55% 65% at 70% 30%, rgba(125,180,255,0.50) 0%, rgba(125,180,255,0.00) 72%),
+      radial-gradient(52% 68% at 52% 75%, rgba(110,230,195,0.48) 0%, rgba(110,230,195,0.00) 68%),
+      linear-gradient(135deg, rgba(199,130,255,0.12), rgba(125,180,255,0.12));
     animation: lvrLavaDrift 6s ease-in-out infinite;
-    filter: saturate(125%) url(#lvrGooey);
+    filter: saturate(130%) url(#lvrGooey);
     will-change: transform;
   }
 
@@ -232,11 +236,11 @@
     background:
       conic-gradient(
         from 0deg,
-        rgba(255,255,255,0.08),
-        rgba(208,160,255,0.14),
-        rgba(160,208,255,0.14),
-        rgba(160,255,220,0.14),
-        rgba(255,255,255,0.08)
+        rgba(255,255,255,0.10),
+        rgba(208,160,255,0.16),
+        rgba(160,208,255,0.16),
+        rgba(160,255,220,0.16),
+        rgba(255,255,255,0.10)
       );
     animation: lvrConicSpin 8s linear infinite;
     will-change: transform;
@@ -269,8 +273,12 @@
 
   /* Transparent variant - for transparent header over hero */
   .lvr-glass-cta--transparent {
-    background: rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.35);
+    border-color: rgba(255,255,255,0.15);
     color: #0e0e0e;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.4),
+      0 4px 12px rgba(0,0,0,0.18);
   }
 
   /* Respect user motion preferences - disable animations if reduced motion */

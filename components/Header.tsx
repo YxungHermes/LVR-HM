@@ -158,10 +158,10 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       >
         <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] flex items-center">
           {/* Left: Mobile hamburger + Desktop nav */}
-          <div className="flex items-center gap-2 flex-1">
+          <div className="flex items-center gap-2 flex-1 justify-start">
             {/* Mobile hamburger */}
             <button
-              className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl"
+              className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl flex-shrink-0"
               aria-label="Open menu"
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
@@ -177,10 +177,10 @@ export default function Header({ settled = false }: { settled?: boolean }) {
           </div>
 
           {/* Center Brand - Wordmark only, scales down on scroll */}
-          <div className="flex items-center justify-center flex-1">
+          <div className="flex items-center justify-center flex-1 absolute left-0 right-0 pointer-events-none md:relative md:left-auto md:right-auto md:pointer-events-auto">
             <a
               href="/"
-              className="relative block origin-center will-change-transform transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] focus-ring"
+              className="relative block origin-center will-change-transform transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] focus-ring pointer-events-auto"
               style={{
                 transform: isScrolled ? "scale(0.62)" : "scale(1)",
               }}
@@ -199,13 +199,14 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </a>
           </div>
 
-          {/* Right: Desktop nav + CTA - hidden on mobile */}
-          <nav className="hidden md:flex items-center gap-1 flex-1 justify-end" aria-label="Secondary">
-            {navigation.right.map(renderNavItem)}
-          </nav>
-
-          {/* Mobile spacer for symmetry */}
-          <div className="md:hidden w-10 flex-shrink-0" />
+          {/* Right: Desktop nav + CTA (hidden on mobile) / Mobile spacer for symmetry */}
+          <div className="flex items-center gap-1 flex-1 justify-end">
+            <nav className="hidden md:flex items-center gap-1" aria-label="Secondary">
+              {navigation.right.map(renderNavItem)}
+            </nav>
+            {/* Mobile spacer to match hamburger width for perfect centering */}
+            <div className="md:hidden w-10 flex-shrink-0" />
+          </div>
         </div>
       </motion.header>
 
