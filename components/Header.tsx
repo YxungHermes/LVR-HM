@@ -84,7 +84,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         <a
           key={item.label}
           href={item.href}
-          className={`lvr-glass-cta focus-ring ml-3 ${!solid ? 'lvr-glass-cta--transparent' : ''}`}
+          className={`lvr-glass-cta ml-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 ${!solid ? 'lvr-glass-cta--transparent' : ''}`}
           onMouseEnter={() => handleNavItemEnter(item.label)}
           onMouseLeave={handleNavItemLeave}
           onFocus={() => handleNavItemFocus(item.label)}
