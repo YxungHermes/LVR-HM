@@ -62,11 +62,28 @@
   100% { transform: translate3d(6%, 4%, 0) scale(1.02); }
 }
 
-/* Color morph animation */
+/* Color morph animation with movement */
 @keyframes lvrColorFlow {
-  0%   { opacity: 0.85; filter: saturate(130%) hue-rotate(0deg) blur(12px); }
-  50%  { opacity: 0.95; filter: saturate(140%) hue-rotate(8deg) blur(14px); }
-  100% { opacity: 0.85; filter: saturate(130%) hue-rotate(0deg) blur(12px); }
+  0%   {
+    opacity: 0.90;
+    filter: saturate(130%) hue-rotate(0deg) blur(12px);
+    transform: translate3d(-3%, -2%, 0) scale(1.02);
+  }
+  33%  {
+    opacity: 0.95;
+    filter: saturate(140%) hue-rotate(5deg) blur(14px);
+    transform: translate3d(2%, 1%, 0) scale(0.98);
+  }
+  66%  {
+    opacity: 0.88;
+    filter: saturate(135%) hue-rotate(-3deg) blur(13px);
+    transform: translate3d(1%, -3%, 0) scale(1.01);
+  }
+  100% {
+    opacity: 0.90;
+    filter: saturate(130%) hue-rotate(0deg) blur(12px);
+    transform: translate3d(-3%, -2%, 0) scale(1.02);
+  }
 }
 
 /* Conic gradient rotation for premium sheen */
