@@ -54,6 +54,21 @@
   100% { transform: translate3d(-8%, -6%, 0) scale(1); }
 }
 
+/* Secondary drift for depth/parallax */
+@keyframes lvrLavaDrift2 {
+  0%   { transform: translate3d(6%, 4%, 0) scale(1.02); }
+  33%  { transform: translate3d(-5%, -3%, 0) scale(0.98); }
+  66%  { transform: translate3d(-7%, 5%, 0) scale(1.04); }
+  100% { transform: translate3d(6%, 4%, 0) scale(1.02); }
+}
+
+/* Color morph animation */
+@keyframes lvrColorFlow {
+  0%   { opacity: 0.85; filter: saturate(130%) hue-rotate(0deg) blur(12px); }
+  50%  { opacity: 0.95; filter: saturate(140%) hue-rotate(8deg) blur(14px); }
+  100% { opacity: 0.85; filter: saturate(130%) hue-rotate(0deg) blur(12px); }
+}
+
 /* Conic gradient rotation for premium sheen */
 @keyframes lvrConicSpin {
   0%   { transform: rotate(0deg) scale(1.02); }
@@ -64,12 +79,6 @@
 @keyframes lvrSparkle {
   0%, 100% { opacity: 0.2; filter: blur(0.5px); }
   50%      { opacity: 0.5; filter: blur(1px); }
-}
-
-/* Spinning border on hover */
-@keyframes lvrBorderSpin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
 }
 
 /* Border color pulse on hover */
@@ -208,50 +217,37 @@
     transition: transform .15s ease, box-shadow .25s ease, filter .25s ease;
   }
 
-  /* Layer 1: saturated drifting blobs - the lava layer */
+  /* Base layer: Full smooth gradient foundation */
   .lvr-glass-cta::before {
     content: "";
     position: absolute;
-    inset: -3px;
-    z-index: -1;
+    inset: -4px;
+    z-index: -3;
     border-radius: inherit;
-    opacity: 1;
-    background:
-      radial-gradient(50% 60% at 22% 35%, rgba(199,130,255,0.65) 0%, rgba(199,130,255,0.15) 70%),
-      radial-gradient(55% 65% at 70% 30%, rgba(125,180,255,0.60) 0%, rgba(125,180,255,0.15) 72%),
-      radial-gradient(52% 68% at 52% 75%, rgba(110,230,195,0.58) 0%, rgba(110,230,195,0.15) 68%),
-      radial-gradient(ellipse 100% 120% at -10% 50%, rgba(199,130,255,0.55) 0%, rgba(199,130,255,0.25) 35%, rgba(199,130,255,0.12) 60%),
-      radial-gradient(ellipse 100% 120% at 110% 50%, rgba(125,180,255,0.55) 0%, rgba(125,180,255,0.25) 35%, rgba(125,180,255,0.12) 60%),
-      linear-gradient(90deg,
-        rgba(199,130,255,0.35) 0%,
-        rgba(180,155,255,0.32) 25%,
-        rgba(145,190,255,0.30) 50%,
-        rgba(125,210,215,0.28) 75%,
-        rgba(110,230,195,0.32) 100%
-      );
-    animation: lvrLavaDrift 6s ease-in-out infinite;
-    filter: saturate(130%) url(#lvrGooey);
-    will-change: transform;
+    background: linear-gradient(135deg,
+      rgba(199,130,255,0.40) 0%,
+      rgba(180,155,255,0.38) 20%,
+      rgba(160,175,255,0.36) 40%,
+      rgba(140,195,235,0.34) 60%,
+      rgba(120,215,215,0.36) 80%,
+      rgba(110,230,195,0.38) 100%
+    );
+    filter: blur(14px) saturate(135%);
   }
 
-  /* Layer 2: soft conic rotation for premium sheen */
+  /* Layer 1: Mesh gradient - flowing color field (slow) */
   .lvr-glass-cta::after {
     content: "";
     position: absolute;
-    inset: -40%;
+    inset: -6px;
     z-index: -2;
-    border-radius: 50%;
+    border-radius: inherit;
     background:
-      conic-gradient(
-        from 0deg,
-        rgba(255,255,255,0.10),
-        rgba(208,160,255,0.16),
-        rgba(160,208,255,0.16),
-        rgba(160,255,220,0.16),
-        rgba(255,255,255,0.10)
-      );
-    animation: lvrConicSpin 8s linear infinite;
-    will-change: transform;
+      radial-gradient(ellipse 140% 100% at 20% 40%, rgba(199,130,255,0.70) 0%, rgba(199,130,255,0.30) 40%, rgba(199,130,255,0.05) 70%),
+      radial-gradient(ellipse 140% 100% at 80% 60%, rgba(125,180,255,0.65) 0%, rgba(125,180,255,0.28) 40%, rgba(125,180,255,0.05) 70%),
+      radial-gradient(ellipse 120% 90% at 50% 80%, rgba(110,230,195,0.60) 0%, rgba(110,230,195,0.25) 40%, rgba(110,230,195,0.05) 70%);
+    animation: lvrColorFlow 8s ease-in-out infinite;
+    will-change: transform, opacity, filter;
   }
 
   /* Sparkle flecks layer - sits on top of text */
