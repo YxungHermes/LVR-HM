@@ -35,6 +35,16 @@ export default function Hero() {
             {hero.sub}
           </motion.p>
 
+          {/* Location tagline - Luxury studio placement */}
+          <motion.p
+            className="mt-5 md:mt-6 text-sm md:text-base text-[#7B6A5A] uppercase tracking-[0.15em] font-medium text-center md:text-left"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            {hero.location}
+          </motion.p>
+
           <motion.div
             className="mt-10 md:mt-12 flex flex-wrap gap-3 justify-center md:justify-start"
             initial={{ opacity: 0, y: 20 }}
@@ -53,27 +63,6 @@ export default function Hero() {
             >
               {hero.ctas.secondary.label}
             </a>
-          </motion.div>
-
-          {/* Stats */}
-          <motion.div
-            className="mt-10 md:mt-12 flex gap-8 text-sm text-espresso justify-center md:justify-start"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
-            <div>
-              <span className="font-serif text-2xl font-bold text-ink">
-                {hero.stats.weddings}
-              </span>
-              <span className="ml-2">Weddings</span>
-            </div>
-            <div>
-              <span className="font-serif text-2xl font-bold text-ink">
-                {hero.stats.rating}
-              </span>
-              <span className="ml-2">Rating</span>
-            </div>
           </motion.div>
         </div>
       </div>

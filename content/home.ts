@@ -1,14 +1,11 @@
 export const hero = {
   title: "Love Stories Worth Reliving",
   sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
+  location: "Based in New York • Traveling Worldwide",
   // Using Vimeo for reliable video hosting and streaming
   // Vimeo ID from:
   vimeoId: "1057598499",
   poster: "/media/hero-poster.jpg",
-  stats: {
-    weddings: "500+",
-    rating: "5.0"
-  },
   ctas: {
     primary: {
       label: "View Film Collections",
