@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import StagingBadge from "@/components/StagingBadge";
+import PageTransition from "@/components/PageTransition";
+import ClickOrigin from "@/components/ClickOrigin";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -45,7 +47,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-sans antialiased">
-        {children}
+        {/* Capture click position for radial transition mode */}
+        <ClickOrigin />
+
+        {/* Page transitions - switch between "crossfade" or "radial" */}
+        <PageTransition mode="crossfade" tint="#FAF7F2">
+          {children}
+        </PageTransition>
+
         <StagingBadge />
       </body>
     </html>

@@ -220,6 +220,32 @@
     }
   }
 
+  /* ============================================
+     Page Transition Styles
+     ============================================ */
+
+  /* Initial page-load overlay (fades out once) */
+  .lvr-initial-fade {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+  }
+
+  /* Radial mask container for click-origin transitions */
+  .lvr-radial-mask {
+    will-change: clip-path, opacity;
+  }
+
+  /* Accessibility: reduce motion for page transitions */
+  @media (prefers-reduced-motion: reduce) {
+    .lvr-initial-fade {
+      display: none;
+    }
+    .lvr-radial-mask {
+      clip-path: none !important;
+    }
+  }
+
   /* Pinterest button shimmer effect */
   .btn-pinterest {
     background: #e60023;
