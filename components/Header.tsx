@@ -2,26 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { navigation } from "@/content/home";
-
-type MegaMenuLink = {
-  label: string;
-  href: string;
-  subtitle?: string;
-};
-
-type MegaMenuSection = {
-  title: string;
-  links: MegaMenuLink[];
-};
-
-type NavItem = {
-  label: string;
-  href: string;
-  megaMenu: {
-    sections: MegaMenuSection[];
-  };
-};
+import { navigation, type NavItem } from "@/content/home";
 
 export default function Header({ settled = false }: { settled?: boolean }) {
   const [solid, setSolid] = useState(settled);

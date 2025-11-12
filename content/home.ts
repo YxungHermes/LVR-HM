@@ -145,8 +145,33 @@ export const testimonials = [
   }
 ];
 
+// Type definitions for navigation
+export type MegaMenuLink = {
+  label: string;
+  href: string;
+  subtitle?: string;
+};
+
+export type MegaMenuSection = {
+  title: string;
+  links: MegaMenuLink[];
+};
+
+export type NavItem = {
+  label: string;
+  href: string;
+  megaMenu: {
+    sections: MegaMenuSection[];
+  };
+};
+
+export type Navigation = {
+  left: NavItem[];
+  right: NavItem[];
+};
+
 // Navigation with mega menu content
-export const navigation = {
+export const navigation: Navigation = {
   left: [
     {
       label: "Films",
