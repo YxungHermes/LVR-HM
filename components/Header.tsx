@@ -50,9 +50,10 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     }
   };
 
-  const handleNavItemEnter = (label: string, isCta?: boolean) => {
+  const handleNavItemEnter = (label: string, isCta?: boolean, hasMegaMenu?: boolean) => {
     if (isMobile) return; // No mega menu on mobile
     if (isCta) return; // No mega menu for CTA items
+    if (!hasMegaMenu) return; // No mega menu if item doesn't have one
 
     if (closeTimeoutRef.current) {
       clearTimeout(closeTimeoutRef.current);
@@ -87,10 +88,10 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     }
   };
 
-  const handleNavItemFocus = (label: string, isCta?: boolean) => {
+  const handleNavItemFocus = (label: string, isCta?: boolean, hasMegaMenu?: boolean) => {
     // Force solid state for contrast on keyboard focus
     setSolid(true);
-    if (isMobile || isCta) return; // No mega menu on mobile or CTA
+    if (isMobile || isCta || !hasMegaMenu) return; // No mega menu on mobile, CTA, or if item has no menu
     setActiveMegaMenu(label);
   };
 
@@ -121,9 +122,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         className={`group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring ${
           solid ? "text-[#121212]" : "text-white"
         }`}
-        onMouseEnter={() => handleNavItemEnter(item.label, false)}
+        onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
-        onFocus={() => handleNavItemFocus(item.label, false)}
+        onFocus={() => handleNavItemFocus(item.label, false, !!item.megaMenu)}
       >
         <span className="relative">
           {item.label}
