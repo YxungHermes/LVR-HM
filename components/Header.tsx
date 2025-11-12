@@ -3,13 +3,26 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { navigation, type NavItem } from "@/content/home";
+import MobileNav from "@/components/MobileNav";
 
 export default function Header({ settled = false }: { settled?: boolean }) {
   const [solid, setSolid] = useState(settled);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
+
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 767px)").matches);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,6 +51,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   };
 
   const handleNavItemEnter = (label: string, isCta?: boolean) => {
+    if (isMobile) return; // No mega menu on mobile
     if (isCta) return; // No mega menu for CTA items
 
     if (closeTimeoutRef.current) {
@@ -76,9 +90,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   const handleNavItemFocus = (label: string, isCta?: boolean) => {
     // Force solid state for contrast on keyboard focus
     setSolid(true);
-    if (!isCta) {
-      setActiveMegaMenu(label);
-    }
+    if (isMobile || isCta) return; // No mega menu on mobile or CTA
+    setActiveMegaMenu(label);
   };
 
   const renderNavItem = (item: NavItem) => {
@@ -124,6 +137,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     );
   };
 
+  // CTA item for mobile nav
+  const ctaItem = { label: "Book Consultation", href: "/consultation" };
+
   return (
     <>
       <motion.header
@@ -139,11 +155,25 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         onMouseEnter={handleHeaderMouseEnter}
         onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-[1280px] px-12 h-[56px] md:h-[72px] flex items-center">
-          {/* Left Navigation - flex-1 for optical centering */}
-          <nav className="flex items-center gap-1 flex-1" aria-label="Primary">
-            {navigation.left.map(renderNavItem)}
-          </nav>
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] flex items-center">
+          {/* Left: Mobile hamburger + Desktop nav */}
+          <div className="flex items-center gap-2 flex-1">
+            {/* Mobile hamburger */}
+            <button
+              className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl"
+              aria-label="Open menu"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setMobileOpen(true)}
+            >
+              <span className={solid ? "text-[#1C1A18]" : "text-white"}>☰</span>
+            </button>
+
+            {/* Desktop left nav - hidden on mobile */}
+            <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
+              {navigation.left.map(renderNavItem)}
+            </nav>
+          </div>
 
           {/* Center Brand - Wordmark only, scales down on scroll */}
           <div className="flex items-center justify-center flex-1">
@@ -155,7 +185,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               }}
             >
               <span
-                className={`font-serif text-2xl md:text-3xl font-bold whitespace-nowrap transition-colors duration-300 ${
+                className={`font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap transition-colors duration-300 ${
                   solid ? "text-[#1C1A18]" : "text-white"
                 }`}
                 style={{
@@ -168,64 +198,78 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </a>
           </div>
 
-          {/* Right Navigation - flex-1 for optical centering */}
-          <nav className="flex items-center gap-1 flex-1 justify-end" aria-label="Secondary">
+          {/* Right: Desktop nav + CTA - hidden on mobile */}
+          <nav className="hidden md:flex items-center gap-1 flex-1 justify-end" aria-label="Secondary">
             {navigation.right.map(renderNavItem)}
           </nav>
+
+          {/* Mobile spacer for symmetry */}
+          <div className="md:hidden w-10 flex-shrink-0" />
         </div>
       </motion.header>
 
-      {/* Mega Menu Tray */}
-      <AnimatePresence>
-        {activeMegaMenu && (
-          <motion.div
-            className="fixed left-0 right-0 z-40 bg-[#F4EAE4]/70 backdrop-blur-md border-b border-black/8 top-[56px] md:top-[72px]"
-            style={{
-              boxShadow: "0 8px 24px rgba(0,0,0,.06)",
-            }}
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            onMouseEnter={handleMegaMenuEnter}
-            onMouseLeave={handleNavItemLeave}
-          >
-            <div className="mx-auto max-w-[1280px] px-8 py-6">
-              <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-16">
-                {/* Find active menu item and render its sections - only if it has a megaMenu */}
-                {[...navigation.left, ...navigation.right]
-                  .find((item) => item.label === activeMegaMenu && item.megaMenu)
-                  ?.megaMenu?.sections.map((section, idx) => (
-                    <div key={idx}>
-                      <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#6B5E57]">
-                        {section.title}
-                      </h3>
-                      <ul className="space-y-3">
-                        {section.links.map((link, linkIdx) => (
-                          <li key={linkIdx}>
-                            <a
-                              href={link.href}
-                              className="group block transition-opacity duration-180 hover:opacity-70"
-                            >
-                              <span className="font-serif text-base font-semibold text-[#121212]">
-                                {link.label}
-                              </span>
-                              {link.subtitle && (
-                                <span className="ml-2 text-sm text-[#6B5E57]">
-                                  {link.subtitle}
+      {/* Mega Menu Tray - Desktop only */}
+      <div className="hidden md:block">
+        <AnimatePresence>
+          {activeMegaMenu && (
+            <motion.div
+              className="fixed left-0 right-0 z-40 bg-[#F4EAE4]/70 backdrop-blur-md border-b border-black/8 top-[56px] md:top-[72px]"
+              style={{
+                boxShadow: "0 8px 24px rgba(0,0,0,.06)",
+              }}
+              initial={{ opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              onMouseEnter={handleMegaMenuEnter}
+              onMouseLeave={handleNavItemLeave}
+            >
+              <div className="mx-auto max-w-[1280px] px-8 py-6">
+                <div className="grid grid-cols-2 gap-6 md:grid-cols-3 md:gap-16">
+                  {/* Find active menu item and render its sections - only if it has a megaMenu */}
+                  {[...navigation.left, ...navigation.right]
+                    .find((item) => item.label === activeMegaMenu && item.megaMenu)
+                    ?.megaMenu?.sections.map((section, idx) => (
+                      <div key={idx}>
+                        <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#6B5E57]">
+                          {section.title}
+                        </h3>
+                        <ul className="space-y-3">
+                          {section.links.map((link, linkIdx) => (
+                            <li key={linkIdx}>
+                              <a
+                                href={link.href}
+                                className="group block transition-opacity duration-180 hover:opacity-70"
+                              >
+                                <span className="font-serif text-base font-semibold text-[#121212]">
+                                  {link.label}
                                 </span>
-                              )}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                                {link.subtitle && (
+                                  <span className="ml-2 text-sm text-[#6B5E57]">
+                                    {link.subtitle}
+                                  </span>
+                                )}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Mobile Navigation Drawer */}
+      <MobileNav
+        open={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        itemsLeft={navigation.left}
+        itemsRight={navigation.right}
+        cta={ctaItem}
+      />
     </>
   );
 }

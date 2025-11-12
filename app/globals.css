@@ -13,6 +13,10 @@
   --cinematic-black: #1C1A18;
   --muted-brown: #7B6A5A;
 
+  /* Mobile viewport & safe areas */
+  --header-h-sm: 56px;
+  --header-h-md: 72px;
+
   /* Legacy tokens (mapped to new system) */
   --cream: var(--ivory-white);
   --espresso: var(--cinematic-black);
@@ -69,6 +73,25 @@
   /* Custom focus styles for accessibility */
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 focus-visible:ring-offset-2;
+  }
+
+  /* Mobile touch targets & safe areas */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  html,
+  body {
+    height: 100%;
   }
 
   /* Responsive wax seal sizing */
