@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
 import StagingBadge from "@/components/StagingBadge";
+import PageTransition from "@/components/PageTransition";
+import ClickOrigin from "@/components/ClickOrigin";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const playfair = Playfair_Display({
@@ -46,7 +48,31 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-sans antialiased">
-        {children}
+        {/* Capture click position for radial transition mode */}
+        <ClickOrigin />
+
+        {/* SVG gooey blur filter for CTA button extra depth */}
+        <svg width="0" height="0" style={{ position: "absolute" }}>
+          <filter id="lvrGooey">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 18 -8"
+              result="goo"
+            />
+            <feBlend in="SourceGraphic" in2="goo" />
+          </filter>
+        </svg>
+
+        {/* Page transitions - switch between "crossfade" or "radial" */}
+        <PageTransition mode="crossfade" tint="#FAF7F2">
+          {children}
+        </PageTransition>
+
         <StagingBadge />
         <SpeedInsights />
       </body>

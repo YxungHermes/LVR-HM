@@ -941,7 +941,7 @@ export default function ConsultationPage() {
             {/* Back to Pricing Link */}
             <div className="mt-8 text-center">
               <Link
-                href="/pricing"
+                href="/offerings"
                 className="inline-flex items-center text-sm text-espresso/60 hover:text-rose-wax-red transition-colors"
               >
                 <svg

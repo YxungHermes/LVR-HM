@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import ConsultationCTA from "@/components/cta/ConsultationCTA";
@@ -203,7 +203,9 @@ export default function Contact() {
 
         {/* Consultation CTA - appears below form, hides after submission */}
         <div className="mt-16 md:mt-24">
-          <ConsultationCTA tone="light" />
+          <Suspense fallback={null}>
+            <ConsultationCTA tone="light" />
+          </Suspense>
         </div>
       </div>
     </section>

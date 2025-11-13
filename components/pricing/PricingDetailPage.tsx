@@ -41,7 +41,7 @@ export default function PricingDetailPage({
         <section className="px-6 pt-24 pb-8">
           <div className="mx-auto max-w-6xl">
             <Link
-              href="/pricing"
+              href="/offerings"
               className="inline-flex items-center text-sm text-espresso/60 hover:text-rose-wax-red transition-colors"
             >
               <svg

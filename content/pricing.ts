@@ -6,7 +6,7 @@ export const whatIOffer = [
     name: "Elopements & Intimate Gatherings",
     description:
       "For intentional ceremonies, city hall vows, rooftops, at-home celebrations, and days where you know every face in the room.",
-    href: "/pricing/elopements",
+    href: "/offerings/elopements",
     image: "/collections/elopements.jpg",
   },
   {
@@ -14,7 +14,7 @@ export const whatIOffer = [
     name: "Wedding Day Films",
     description:
       "For full wedding days close to home, from quiet mornings to the final song, crafted as one cohesive cinematic story.",
-    href: "/pricing/wedding-day-films",
+    href: "/offerings/wedding-day-films",
     image: "/collections/wedding-day.jpg",
   },
   {
@@ -22,7 +22,7 @@ export const whatIOffer = [
     name: "Destination Wedding Films",
     description:
       "For celebrations in meaningful locations around the world, where the setting, your people, and the entire weekend become part of the film.",
-    href: "/pricing/destination-weddings",
+    href: "/offerings/destination-weddings",
     image: "/collections/destination.jpg",
   },
   {
@@ -30,7 +30,7 @@ export const whatIOffer = [
     name: "Adventure Sessions & Stories",
     description:
       "For engagements, welcome parties, day-after sessions, anniversaries, or creative stories beyond the wedding day.",
-    href: "/pricing/adventure-sessions",
+    href: "/offerings/adventure-sessions",
     image: "/collections/adventure.jpg",
   },
 ];
@@ -43,7 +43,7 @@ export const pricingOverview = [
     range: "$2,200 — $4,800",
     description:
       "For intentional ceremonies, city hall 'I do's, rooftops, and small gatherings where every face matters.",
-    href: "/pricing/elopements",
+    href: "/offerings/elopements",
     image: "/collections/elopements.jpg",
   },
   {
@@ -53,7 +53,7 @@ export const pricingOverview = [
     range: "$3,500 — $7,500",
     description:
       "For full wedding days at home, crafted as emotive, cinematic films you'll want to revisit often.",
-    href: "/pricing/wedding-day-films",
+    href: "/offerings/wedding-day-films",
     image: "/collections/wedding-day.jpg",
   },
   {
@@ -63,7 +63,7 @@ export const pricingOverview = [
     range: "$5,500 — $12,000+",
     description:
       "For celebrations in meaningful places around the world, with films that weave in people, place, and atmosphere.",
-    href: "/pricing/destination-weddings",
+    href: "/offerings/destination-weddings",
     image: "/collections/destination.jpg",
   },
   {
@@ -73,7 +73,7 @@ export const pricingOverview = [
     range: "$1,200 — $3,000",
     description:
       "For engagements, welcome parties, day-after sessions, anniversaries, or brand stories with the same cinematic care.",
-    href: "/pricing/adventure-sessions",
+    href: "/offerings/adventure-sessions",
     image: "/collections/adventure.jpg",
   },
 ];

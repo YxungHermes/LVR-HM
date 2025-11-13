@@ -1,18 +1,15 @@
 export const hero = {
   title: "Love Stories Worth Reliving",
   sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
+  location: "Based in New York • Traveling Worldwide",
   // Using Vimeo for reliable video hosting and streaming
-  // Vimeo ID from:
-  vimeoId: "1057598499",
+  // 16:9 wedding video for hero background
+  vimeoId: "1057632056",
   poster: "/media/hero-poster.jpg",
-  stats: {
-    weddings: "500+",
-    rating: "5.0"
-  },
   ctas: {
     primary: {
       label: "View Film Collections",
-      href: "/pricing"
+      href: "/offerings"
     },
     secondary: {
       label: "Watch Our Films",
@@ -26,25 +23,25 @@ export const chooseYourStory = [
     slug: "elopements",
     name: "Elopements & Intimate Gatherings",
     teaser: "For small, intentional 'just us' celebrations.",
-    href: "/pricing#elopements"
+    href: "/offerings#elopements"
   },
   {
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     teaser: "For full wedding days close to home.",
-    href: "/pricing#wedding-day-films"
+    href: "/offerings#wedding-day-films"
   },
   {
     slug: "destination-weddings",
     name: "Destination Wedding Films",
     teaser: "For weekends and celebrations around the world.",
-    href: "/pricing#destination-weddings"
+    href: "/offerings#destination-weddings"
   },
   {
     slug: "adventure-sessions",
     name: "Adventure Sessions & Stories",
     teaser: "For engagements, welcome parties, and day-after moments.",
-    href: "/pricing#adventure-sessions"
+    href: "/offerings#adventure-sessions"
   }
 ];
 
@@ -145,9 +142,40 @@ export const testimonials = [
   }
 ];
 
+// Type definitions for navigation
+export type MegaMenuLink = {
+  label: string;
+  href: string;
+  subtitle?: string;
+};
+
+export type MegaMenuSection = {
+  title: string;
+  links: MegaMenuLink[];
+};
+
+export type NavItem = {
+  label: string;
+  href: string;
+  isCta?: boolean; // CTA items have no dropdown/mega menu
+  megaMenu?: {
+    sections: MegaMenuSection[];
+  };
+};
+
+export type Navigation = {
+  left: NavItem[];
+  right: NavItem[];
+};
+
 // Navigation with mega menu content
-export const navigation = {
+export const navigation: Navigation = {
   left: [
+    {
+      label: "Home",
+      href: "/"
+      // No mega menu - simple link to homepage
+    },
     {
       label: "Films",
       href: "#signature-work",
@@ -173,23 +201,23 @@ export const navigation = {
       }
     },
     {
-      label: "Pricing",
-      href: "/pricing",
+      label: "Offerings",
+      href: "/offerings",
       megaMenu: {
         sections: [
           {
             title: "Collections",
             links: [
-              { label: "Elopements & Intimate Gatherings", href: "/pricing#elopements" },
-              { label: "Wedding Day Films", href: "/pricing#wedding-day-films" },
-              { label: "Destination Wedding Films", href: "/pricing#destination-weddings" },
-              { label: "Adventure Sessions & Stories", href: "/pricing#adventure-sessions" }
+              { label: "Elopements & Intimate Gatherings", href: "/offerings#elopements" },
+              { label: "Wedding Day Films", href: "/offerings#wedding-day-films" },
+              { label: "Destination Wedding Films", href: "/offerings#destination-weddings" },
+              { label: "Adventure Sessions & Stories", href: "/offerings#adventure-sessions" }
             ]
           },
           {
             title: "Explore",
             links: [
-              { label: "View All Collections", href: "/pricing" },
+              { label: "View All Collections", href: "/offerings" },
               { label: "Book Consultation", href: "/consultation" }
             ]
           }
@@ -199,15 +227,16 @@ export const navigation = {
   ],
   right: [
     {
-      label: "Stories",
-      href: "#testimonials",
+      label: "Process",
+      href: "/process",
       megaMenu: {
         sections: [
           {
-            title: "Testimonials",
+            title: "How We Work",
             links: [
-              { label: "Read Reviews", href: "#testimonials" },
-              { label: "Client Gallery", href: "#testimonials" }
+              { label: "Our Approach", href: "/process#approach" },
+              { label: "Timeline & Planning", href: "/process#timeline" },
+              { label: "What to Expect", href: "/process#expect" }
             ]
           }
         ]
@@ -216,18 +245,7 @@ export const navigation = {
     {
       label: "Book Consultation",
       href: "/consultation",
-      megaMenu: {
-        sections: [
-          {
-            title: "Get Started",
-            links: [
-              { label: "Book Your Consultation", href: "/consultation" },
-              { label: "View Pricing", href: "/pricing" },
-              { label: "Learn the Process", href: "/process" }
-            ]
-          }
-        ]
-      }
+      isCta: true // Primary CTA - no dropdown, focused action only
     }
   ]
 };

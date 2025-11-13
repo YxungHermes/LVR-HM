@@ -1,3 +1,6 @@
+/* LVR Luxury Homepage - Global Styles */
+/* Testing GitHub + Vercel Slack notifications */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,6 +12,10 @@
   --ivory-white: #FAF7F2;
   --cinematic-black: #1C1A18;
   --muted-brown: #7B6A5A;
+
+  /* Mobile viewport & safe areas */
+  --header-h-sm: 56px;
+  --header-h-md: 72px;
 
   /* Legacy tokens (mapped to new system) */
   --cream: var(--ivory-white);
@@ -30,6 +37,106 @@
 
   h1, h2, h3, h4, h5, h6 {
     @apply text-ink;
+  }
+}
+
+/* ============================================
+   CTA Button Keyframe Animations
+   (Must be outside @layer for proper rendering)
+   ============================================ */
+
+/* Lava lamp drift - smooth organic motion */
+@keyframes lvrLavaDrift {
+  0%   { transform: translate3d(-8%, -6%, 0) scale(1); }
+  25%  { transform: translate3d(7%, -2%, 0) scale(1.08); }
+  50%  { transform: translate3d(8%, 6%, 0) scale(0.96); }
+  75%  { transform: translate3d(-5%, 8%, 0) scale(1.05); }
+  100% { transform: translate3d(-8%, -6%, 0) scale(1); }
+}
+
+/* Secondary drift for depth/parallax */
+@keyframes lvrLavaDrift2 {
+  0%   { transform: translate3d(6%, 4%, 0) scale(1.02); }
+  33%  { transform: translate3d(-5%, -3%, 0) scale(0.98); }
+  66%  { transform: translate3d(-7%, 5%, 0) scale(1.04); }
+  100% { transform: translate3d(6%, 4%, 0) scale(1.02); }
+}
+
+/* Color morph animation with movement */
+@keyframes lvrColorFlow {
+  0%   {
+    opacity: 0.92;
+    filter: saturate(135%) hue-rotate(0deg) blur(10px);
+    transform: translate3d(-12%, -8%, 0) scale(1.08);
+  }
+  25%  {
+    opacity: 0.98;
+    filter: saturate(145%) hue-rotate(8deg) blur(14px);
+    transform: translate3d(10%, -3%, 0) scale(0.95);
+  }
+  50%  {
+    opacity: 0.90;
+    filter: saturate(140%) hue-rotate(-5deg) blur(12px);
+    transform: translate3d(12%, 10%, 0) scale(1.05);
+  }
+  75%  {
+    opacity: 0.95;
+    filter: saturate(138%) hue-rotate(3deg) blur(13px);
+    transform: translate3d(-8%, 8%, 0) scale(0.97);
+  }
+  100% {
+    opacity: 0.92;
+    filter: saturate(135%) hue-rotate(0deg) blur(10px);
+    transform: translate3d(-12%, -8%, 0) scale(1.08);
+  }
+}
+
+/* Hover: Gradient reacts and pulls away with rumbling effect */
+@keyframes lvrHoverRumble {
+  0%   { transform: translate3d(0, 0, 0) scale(1.08); }
+  10%  { transform: translate3d(-4%, 3%, 0) scale(1.10); }
+  20%  { transform: translate3d(3%, -3%, 0) scale(1.06); }
+  30%  { transform: translate3d(-3%, -4%, 0) scale(1.12); }
+  40%  { transform: translate3d(4%, 2%, 0) scale(1.08); }
+  50%  { transform: translate3d(-2%, 4%, 0) scale(1.10); }
+  60%  { transform: translate3d(3%, -2%, 0) scale(1.06); }
+  70%  { transform: translate3d(-4%, 1%, 0) scale(1.11); }
+  80%  { transform: translate3d(4%, -4%, 0) scale(1.09); }
+  90%  { transform: translate3d(-3%, 2%, 0) scale(1.10); }
+  100% { transform: translate3d(0, 0, 0) scale(1.08); }
+}
+
+/* Conic gradient rotation for premium sheen */
+@keyframes lvrConicSpin {
+  0%   { transform: rotate(0deg) scale(1.02); }
+  100% { transform: rotate(360deg) scale(1.02); }
+}
+
+/* Sparkle pulse for jeweled effect */
+@keyframes lvrSparkle {
+  0%, 100% { opacity: 0.2; filter: blur(0.5px); }
+  50%      { opacity: 0.5; filter: blur(1px); }
+}
+
+/* Border color pulse on hover */
+@keyframes lvrBorderPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(199,130,255,0.5),
+      0 0 20px rgba(199,130,255,0.4),
+      0 0 40px rgba(125,180,255,0.2);
+  }
+  33% {
+    box-shadow:
+      0 0 0 1px rgba(125,180,255,0.5),
+      0 0 20px rgba(125,180,255,0.4),
+      0 0 40px rgba(110,230,195,0.2);
+  }
+  66% {
+    box-shadow:
+      0 0 0 1px rgba(110,230,195,0.5),
+      0 0 20px rgba(110,230,195,0.4),
+      0 0 40px rgba(199,130,255,0.2);
   }
 }
 
@@ -68,6 +175,25 @@
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 focus-visible:ring-offset-2;
   }
 
+  /* Mobile touch targets & safe areas */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
   /* Responsive wax seal sizing */
   @media (max-width: 768px) {
     .wax-seal-mobile {
@@ -97,105 +223,144 @@
     line-height: 1.6;
   }
 
-  /* Lava gradient animation for Book Consultation button */
-  @keyframes lvr-lava {
-    0% {
-      transform: translate3d(-6%, -4%, 0) scale(1);
-    }
-    50% {
-      transform: translate3d(4%, 6%, 0) scale(1.08);
-    }
-    100% {
-      transform: translate3d(-3%, 2%, 0) scale(1.02);
-    }
+  /* Boost visibility when CTA is on transparent header */
+  .lvr-cta-boost {
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.15));
   }
 
-  /* Glass CTA Button with lava animation */
+  /* Premium glass CTA button - Always-visible star of the show */
   .lvr-glass-cta {
     position: relative;
-    padding: 0.85rem 1.9rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background: radial-gradient(
-        circle at 0% 0%,
-        rgba(173, 132, 255, 0.16),
-        transparent 55%
-      ),
-      radial-gradient(
-        circle at 100% 100%,
-        rgba(144, 202, 181, 0.14),
-        transparent 55%
-      ),
-      rgba(255, 255, 255, 0.16);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    color: #1c1a18;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    overflow: hidden;
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    transition:
-      transform 220ms ease,
-      box-shadow 220ms ease,
-      background 260ms ease,
-      border-color 260ms ease;
+    justify-content: center;
+    padding: 0.65rem 1.15rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    line-height: 1;
+    isolation: isolate;
+    color: #0e0e0e;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: hidden;
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(16px) saturate(130%);
+    -webkit-backdrop-filter: blur(16px) saturate(130%);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: transform .15s ease, box-shadow .25s ease, filter .25s ease;
   }
 
-  /* Subtle inner "lava" layer */
+  /* Base layer: Full smooth gradient foundation */
   .lvr-glass-cta::before {
     content: "";
     position: absolute;
-    inset: -40%;
-    background: radial-gradient(
-        circle at 10% 0%,
-        rgba(180, 132, 255, 0.16),
-        transparent 65%
-      ),
-      radial-gradient(
-        circle at 90% 100%,
-        rgba(111, 191, 187, 0.18),
-        transparent 65%
-      ),
-      radial-gradient(
-        circle at 30% 100%,
-        rgba(233, 174, 255, 0.14),
-        transparent 70%
-      );
-    mix-blend-mode: screen;
-    opacity: 0.55;
-    animation: lvr-lava 16s ease-in-out infinite alternate;
+    inset: -4px;
+    z-index: -3;
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+      rgba(199,130,255,0.40) 0%,
+      rgba(180,155,255,0.38) 20%,
+      rgba(160,175,255,0.36) 40%,
+      rgba(140,195,235,0.34) 60%,
+      rgba(120,215,215,0.36) 80%,
+      rgba(110,230,195,0.38) 100%
+    );
+    filter: blur(14px) saturate(135%);
+  }
+
+  /* Layer 1: Mesh gradient - flowing color field */
+  .lvr-glass-cta::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    z-index: -2;
+    border-radius: inherit;
+    background:
+      radial-gradient(ellipse 140% 100% at 20% 40%, rgba(199,130,255,0.75) 0%, rgba(199,130,255,0.35) 40%, rgba(199,130,255,0.08) 70%),
+      radial-gradient(ellipse 140% 100% at 80% 60%, rgba(125,180,255,0.70) 0%, rgba(125,180,255,0.32) 40%, rgba(125,180,255,0.08) 70%),
+      radial-gradient(ellipse 120% 90% at 50% 80%, rgba(110,230,195,0.65) 0%, rgba(110,230,195,0.28) 40%, rgba(110,230,195,0.08) 70%);
+    animation: lvrColorFlow 3s ease-in-out infinite;
+    will-change: transform, opacity, filter;
+  }
+
+  /* Hover: Gradient reacts and rumbles like it's alive */
+  .lvr-glass-cta:hover::after {
+    animation: lvrHoverRumble 0.35s ease-in-out infinite, lvrColorFlow 3s ease-in-out infinite;
+  }
+
+  /* Sparkle flecks layer - sits on top of text */
+  .lvr-cta-sparkles {
     pointer-events: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    background:
+      radial-gradient(2px 2px at 22% 40%, rgba(255,255,255,0.9) 0%, transparent 70%),
+      radial-gradient(2px 2px at 68% 58%, rgba(255,255,255,0.7) 0%, transparent 70%),
+      radial-gradient(1.5px 1.5px at 44% 72%, rgba(255,255,255,0.8) 0%, transparent 70%);
+    animation: lvrSparkle 1.8s ease-in-out infinite;
   }
 
+  /* Hover: Sparkles react faster when anticipating touch */
+  .lvr-glass-cta:hover .lvr-cta-sparkles {
+    animation: lvrSparkle 0.3s ease-in-out infinite;
+  }
+
+  /* Hover state - brightness boost + spinning color glow around edges */
   .lvr-glass-cta:hover {
-    transform: translateY(-1px) scale(1.03);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
-    border-color: rgba(255, 255, 255, 0.55);
+    filter: brightness(1.15);
+    animation: lvrBorderPulse 1.2s ease-in-out infinite;
   }
 
+  /* Active state - subtle press */
   .lvr-glass-cta:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+    transform: translateY(0.5px) scale(0.985);
   }
 
-  /* Transparent state over hero */
+  /* Transparent variant - for transparent header over hero */
   .lvr-glass-cta--transparent {
-    background: radial-gradient(
-        circle at 0% 0%,
-        rgba(173, 132, 255, 0.12),
-        transparent 55%
-      ),
-      radial-gradient(
-        circle at 100% 100%,
-        rgba(144, 202, 181, 0.10),
-        transparent 55%
-      ),
-      rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.35);
-    color: #ffffff;
+    background: rgba(255,255,255,0.35);
+    border-color: rgba(255,255,255,0.15);
+    color: #0e0e0e;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  }
+
+  /* Respect user motion preferences - disable animations if reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .lvr-glass-cta::before,
+    .lvr-glass-cta::after,
+    .lvr-cta-sparkles,
+    .lvr-glass-cta:hover {
+      animation: none !important;
+    }
+  }
+
+  /* ============================================
+     Page Transition Styles
+     ============================================ */
+
+  /* Initial page-load overlay (fades out once) */
+  .lvr-initial-fade {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+  }
+
+  /* Radial mask container for click-origin transitions */
+  .lvr-radial-mask {
+    will-change: clip-path, opacity;
+  }
+
+  /* Accessibility: reduce motion for page transitions */
+  @media (prefers-reduced-motion: reduce) {
+    .lvr-initial-fade {
+      display: none;
+    }
+    .lvr-radial-mask {
+      clip-path: none !important;
+    }
   }
 
   /* Pinterest button shimmer effect */
