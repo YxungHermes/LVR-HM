@@ -6,7 +6,7 @@ import { chooseYourStory } from "@/content/home";
 
 export default function ChooseYourStory() {
   return (
-    <section className="bg-warm-sand/20 px-6 py-20 border-y border-coffee/10">
+    <section id="choose-your-story" className="bg-warm-sand/20 px-6 py-20 border-y border-coffee/10 min-h-screen flex items-center">
       <div className="mx-auto max-w-6xl">
         <motion.div
           className="text-center mb-12"

@@ -9,18 +9,33 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
       <Header />
-      <main>
-        <Hero />
-        <ChooseYourStory />
-        {/* Temporarily removed per spec - to be decided in future flow */}
-        {/* <SignatureWork /> */}
-        {/* <Packages /> */}
-        {/* <Testimonials /> */}
-        <Contact />
-      </main>
-      <Footer />
-    </>
+      {/*
+        Scroll snap container for full-screen sections
+        - snap-y: vertical scroll snapping
+        - snap-mandatory: always snap to nearest section when scroll ends
+        Only enabled on homepage for cinematic slide-based experience
+      */}
+      <div className="snap-y snap-mandatory overflow-y-auto h-screen">
+        <main>
+          {/* Each major section has snap-start to create full-screen "slides" */}
+          <div className="snap-start">
+            <Hero />
+          </div>
+          <div className="snap-start">
+            <ChooseYourStory />
+          </div>
+          {/* Temporarily removed per spec - to be decided in future flow */}
+          {/* <SignatureWork /> */}
+          {/* <Packages /> */}
+          {/* <Testimonials /> */}
+          <div className="snap-start">
+            <Contact />
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </div>
   );
 }

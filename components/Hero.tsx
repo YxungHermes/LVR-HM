@@ -4,8 +4,14 @@ import { motion } from "framer-motion";
 import { hero } from "@/content/home";
 
 export default function Hero() {
+  // Scroll to next section smoothly
+  const scrollToNext = () => {
+    const nextSection = document.querySelector('#choose-your-story');
+    nextSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
-    <section className="relative h-[92vh] min-h-[640px] bg-gradient-to-br from-cream via-rose-1/20 to-cream pt-[56px] md:pt-[72px] overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
       {/* Vimeo Video Background */}
       <div className="absolute inset-0 z-0">
         <iframe
@@ -26,8 +32,8 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex h-full max-w-[1000px] items-center justify-center px-6">
+      {/* Content - Full viewport height accounting for fixed header */}
+      <div className="relative z-10 mx-auto flex h-screen max-w-[1000px] items-center justify-center px-6 pt-[56px] md:pt-[72px]">
         <div className="w-full text-center max-w-4xl mx-auto">
           {/* Tagline above title */}
           <motion.p
@@ -78,6 +84,30 @@ export default function Hero() {
           </motion.div>
         </div>
       </div>
+
+      {/* Subtle scroll affordance - appears at bottom of hero */}
+      <motion.button
+        onClick={scrollToNext}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-all duration-300 group focus-ring rounded-lg px-4 py-2"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.2 }}
+        aria-label="Scroll to next section"
+      >
+        <span className="text-xs uppercase tracking-widest font-medium">Scroll</span>
+        {/* Animated chevron */}
+        <motion.svg
+          className="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </motion.svg>
+      </motion.button>
     </section>
   );
 }
