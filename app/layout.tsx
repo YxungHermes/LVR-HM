@@ -4,6 +4,7 @@ import "./globals.css";
 import StagingBadge from "@/components/StagingBadge";
 import PageTransition from "@/components/PageTransition";
 import ClickOrigin from "@/components/ClickOrigin";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -73,6 +74,7 @@ export default function RootLayout({
         </PageTransition>
 
         <StagingBadge />
+        <SpeedInsights />
       </body>
     </html>
   );
