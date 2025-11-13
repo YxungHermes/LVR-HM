@@ -22,58 +22,56 @@ export default function Hero() {
           allow="autoplay; fullscreen; picture-in-picture"
           title="Hero Background Video"
         />
-        {/* Dark overlay for text contrast */}
-        <div className="absolute inset-0 bg-black/30" />
+        {/* Darker gradient overlay for better contrast and premium feel */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex h-full max-w-[880px] items-center justify-center px-6">
-        <div className="w-full text-center md:text-left max-w-3xl mx-auto pt-12 md:pt-16">
-          <motion.h1
-            className="heading-xl font-serif tracking-wider text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] [font-variant-ligatures:common-ligatures]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            {hero.title.split(" ").slice(0, 3).join(" ")}
-            <br />
-            {hero.title.split(" ").slice(3).join(" ")}
-          </motion.h1>
-
+      <div className="relative z-10 mx-auto flex h-full max-w-[1000px] items-center justify-center px-6">
+        <div className="w-full text-center max-w-4xl mx-auto">
+          {/* Tagline above title */}
           <motion.p
-            className="subhead mt-6 md:mt-8 text-white/95 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)] max-w-2xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            {hero.sub}
-          </motion.p>
-
-          {/* Location tagline - Luxury studio placement */}
-          <motion.p
-            className="mt-5 md:mt-6 text-sm md:text-base text-white/90 uppercase tracking-[0.15em] font-medium text-center md:text-left drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]"
+            className="text-xs md:text-sm text-white/80 uppercase tracking-[0.2em] font-medium mb-6 md:mb-8"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             {hero.location}
           </motion.p>
 
-          <motion.div
-            className="mt-10 md:mt-12 flex flex-wrap gap-3 justify-center md:justify-start"
+          <motion.h1
+            className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            {hero.title}
+          </motion.h1>
+
+          <motion.p
+            className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {hero.sub}
+          </motion.p>
+
+          <motion.div
+            className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <a
               href={hero.ctas.primary.href}
-              className="group bg-rose-grad rounded-full px-6 py-3 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg focus-ring"
+              className="group bg-white text-ink rounded-full px-8 py-4 font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl focus-ring"
             >
               {hero.ctas.primary.label}
             </a>
             <a
               href={hero.ctas.secondary.href}
-              className="rounded-full border border-rose-2 px-6 py-3 text-rose-2 transition-all duration-300 hover:scale-105 hover:bg-rose-2 hover:text-white focus-ring"
+              className="rounded-full border-2 border-white/80 px-8 py-4 text-white font-medium backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:text-ink focus-ring"
             >
               {hero.ctas.secondary.label}
             </a>
