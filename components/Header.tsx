@@ -35,13 +35,20 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       const heroSection = document.querySelector('section');
       const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
 
-      // Calculate scroll progress for gradient text mask (0 to 1 over 20% of hero)
-      const progress = Math.min(1, Math.max(0, scrollY / (heroHeight * 0.2)));
+      // Get header height (56px mobile, 72px desktop - use 72px as max)
+      const headerHeight = 72;
+
+      // Calculate when second section reaches the top of the header
+      // Header becomes solid only when top of next section touches bottom of header
+      const secondSectionAtHeader = scrollY >= (heroHeight - headerHeight);
+
+      // Scroll progress: 0 when not at second section, 1 when second section reaches header
+      const progress = secondSectionAtHeader ? 1 : 0;
       setScrollProgress(progress);
 
-      // Header becomes solid when scrolling past 20% of hero section
-      const shouldBeSolid = progress > 0.5 || settled;
-      const shouldBeCompact = progress > 0.5;
+      // Header becomes solid only when second section reaches it
+      const shouldBeSolid = secondSectionAtHeader || settled;
+      const shouldBeCompact = secondSectionAtHeader;
 
       setSolid(shouldBeSolid);
       setIsScrolled(shouldBeCompact);
@@ -69,13 +76,16 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   };
 
   const handleHeaderMouseLeave = () => {
-    // Only return to transparent if at top and not settled
+    // Only return to transparent if still on hero section and not settled
     const mainContainer = document.querySelector('.snap-y');
     const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
     const heroSection = document.querySelector('section');
     const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+    const headerHeight = 72;
 
-    if (scrollY <= (heroHeight * 0.2) && !settled) {
+    // Return to transparent only if second section hasn't reached header yet
+    const secondSectionAtHeader = scrollY >= (heroHeight - headerHeight);
+    if (!secondSectionAtHeader && !settled) {
       setSolid(false);
     }
   };
