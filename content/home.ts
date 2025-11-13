@@ -9,7 +9,7 @@ export const hero = {
   ctas: {
     primary: {
       label: "View Film Collections",
-      href: "/pricing"
+      href: "/offerings"
     },
     secondary: {
       label: "Watch Our Films",
@@ -23,25 +23,25 @@ export const chooseYourStory = [
     slug: "elopements",
     name: "Elopements & Intimate Gatherings",
     teaser: "For small, intentional 'just us' celebrations.",
-    href: "/pricing#elopements"
+    href: "/offerings#elopements"
   },
   {
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     teaser: "For full wedding days close to home.",
-    href: "/pricing#wedding-day-films"
+    href: "/offerings#wedding-day-films"
   },
   {
     slug: "destination-weddings",
     name: "Destination Wedding Films",
     teaser: "For weekends and celebrations around the world.",
-    href: "/pricing#destination-weddings"
+    href: "/offerings#destination-weddings"
   },
   {
     slug: "adventure-sessions",
     name: "Adventure Sessions & Stories",
     teaser: "For engagements, welcome parties, and day-after moments.",
-    href: "/pricing#adventure-sessions"
+    href: "/offerings#adventure-sessions"
   }
 ];
 

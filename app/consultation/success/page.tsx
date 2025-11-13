@@ -208,7 +208,7 @@ export default function ConsultationSuccessPage() {
                     Explore all four collections and see which fits your celebration.
                   </p>
                   <Link
-                    href="/pricing"
+                    href="/offerings"
                     className="text-sm text-rose-wax-red hover:text-rose-wax-red/80 transition-colors underline underline-offset-4"
                   >
                     View Collections

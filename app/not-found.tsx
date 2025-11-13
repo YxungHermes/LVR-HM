@@ -97,7 +97,7 @@ export default function NotFound() {
               <p className="text-sm text-espresso/60 mb-4">Or explore these pages:</p>
               <div className="flex flex-wrap gap-4 justify-center text-sm">
                 <Link
-                  href="/pricing"
+                  href="/offerings"
                   className="text-espresso hover:text-rose-wax-red transition-colors underline underline-offset-4"
                 >
                   View Pricing
