@@ -1,9 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { hero } from "@/content/home";
 
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0);
+
+  // Track scroll position for scroll marker fade-out effect
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get scroll position from the main scroll container
+      const mainContainer = document.querySelector('.snap-y');
+      if (mainContainer) {
+        setScrollY(mainContainer.scrollTop);
+      }
+    };
+
+    const mainContainer = document.querySelector('.snap-y');
+    if (mainContainer) {
+      mainContainer.addEventListener('scroll', handleScroll);
+      return () => mainContainer.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  // Calculate opacity for scroll marker: fades out after 100px of scroll
+  const scrollMarkerOpacity = Math.max(0, 1 - scrollY / 100);
+
   // Scroll to next section smoothly
   const scrollToNext = () => {
     const nextSection = document.querySelector('#choose-your-story');
@@ -85,10 +108,15 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Subtle scroll affordance - appears at bottom of hero */}
+      {/* Scroll affordance with scroll-linked fade animation */}
       <motion.button
         onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-all duration-300 group focus-ring rounded-lg px-4 py-2"
+        className="fixed bottom-8 left-1/2 z-20 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group focus-ring rounded-lg px-4 py-2"
+        style={{
+          opacity: scrollMarkerOpacity,
+          transform: `translateX(-50%) translateY(${scrollY * 0.5}px)`,
+          pointerEvents: scrollMarkerOpacity < 0.1 ? 'none' : 'auto',
+        }}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.2 }}

@@ -11,6 +11,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0); // For gradient text mask
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
 
@@ -26,17 +27,41 @@ export default function Header({ settled = false }: { settled?: boolean }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const shouldBeSolid = scrollY > 32 || settled;
-      const shouldBeCompact = scrollY > 32;
+      // Check for scroll position in the snap container (homepage)
+      const mainContainer = document.querySelector('.snap-y');
+      const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
+
+      // Get hero section height to detect when entering second section
+      const heroSection = document.querySelector('section');
+      const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+
+      // Calculate scroll progress for gradient text mask (0 to 1 over 20% of hero)
+      const progress = Math.min(1, Math.max(0, scrollY / (heroHeight * 0.2)));
+      setScrollProgress(progress);
+
+      // Header becomes solid when scrolling past 20% of hero section
+      const shouldBeSolid = progress > 0.5 || settled;
+      const shouldBeCompact = progress > 0.5;
 
       setSolid(shouldBeSolid);
       setIsScrolled(shouldBeCompact);
     };
 
     handleScroll();
+
+    // Listen to both window scroll (for other pages) and snap container scroll (for homepage)
+    const mainContainer = document.querySelector('.snap-y');
+    if (mainContainer) {
+      mainContainer.addEventListener("scroll", handleScroll);
+    }
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      if (mainContainer) {
+        mainContainer.removeEventListener("scroll", handleScroll);
+      }
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [settled]);
 
   const handleHeaderMouseEnter = () => {
@@ -45,7 +70,12 @@ export default function Header({ settled = false }: { settled?: boolean }) {
 
   const handleHeaderMouseLeave = () => {
     // Only return to transparent if at top and not settled
-    if (window.scrollY <= 32 && !settled) {
+    const mainContainer = document.querySelector('.snap-y');
+    const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
+    const heroSection = document.querySelector('section');
+    const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+
+    if (scrollY <= (heroHeight * 0.2) && !settled) {
       setSolid(false);
     }
   };
@@ -114,20 +144,29 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       );
     }
 
-    // Regular text link for other nav items
+    // Regular text link for other nav items with gradient text mask
     return (
       <a
         key={item.label}
         href={item.href}
-        className={`group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring ${
-          solid ? "text-[#121212]" : "text-white"
-        }`}
+        className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring"
         onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
         onFocus={() => handleNavItemFocus(item.label, false, !!item.megaMenu)}
       >
         <span className="relative">
-          {item.label}
+          <span
+            style={{
+              // Gradient text mask that wipes from bottom to top as you scroll
+              background: `linear-gradient(to top, #121212 ${scrollProgress * 100}%, white ${scrollProgress * 100}%)`,
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              color: "transparent",
+            }}
+          >
+            {item.label}
+          </span>
           {/* Underline on hover */}
           <span
             className={`absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-200 group-hover:w-full ${
@@ -168,7 +207,18 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen(true)}
             >
-              <span className={solid ? "text-[#1C1A18]" : "text-white"}>☰</span>
+              <span
+                style={{
+                  // Gradient text mask that wipes from bottom to top as you scroll
+                  background: `linear-gradient(to top, #1C1A18 ${scrollProgress * 100}%, white ${scrollProgress * 100}%)`,
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
+                }}
+              >
+                ☰
+              </span>
             </button>
 
             {/* Desktop left nav - hidden on mobile */}
@@ -187,12 +237,16 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               }}
             >
               <span
-                className={`font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap transition-colors duration-300 ${
-                  solid ? "text-[#1C1A18]" : "text-white"
-                }`}
+                className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
                 style={{
                   letterSpacing: isScrolled ? "0.015em" : "0.025em",
-                  transition: "color 0.3s, letter-spacing 0.7s cubic-bezier(0.85, 0, 0.15, 1)",
+                  transition: "letter-spacing 0.7s cubic-bezier(0.85, 0, 0.15, 1)",
+                  // Gradient text mask that wipes from bottom to top as you scroll
+                  background: `linear-gradient(to top, #1C1A18 ${scrollProgress * 100}%, white ${scrollProgress * 100}%)`,
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  color: "transparent",
                 }}
               >
                 Love, Violeta Rose
