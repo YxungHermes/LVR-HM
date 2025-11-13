@@ -3,8 +3,8 @@ export const hero = {
   sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
   location: "Based in New York • Traveling Worldwide",
   // Using Vimeo for reliable video hosting and streaming
-  // Temporary test video - will replace with wedding reel when ready
-  vimeoId: "1057601568",
+  // 16:9 wedding video for hero background
+  vimeoId: "1057632056",
   poster: "/media/hero-poster.jpg",
   ctas: {
     primary: {
