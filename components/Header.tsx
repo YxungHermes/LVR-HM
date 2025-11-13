@@ -144,29 +144,22 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       );
     }
 
-    // Regular text link for other nav items with gradient text mask
+    // Regular text link for other nav items
     return (
       <a
         key={item.label}
         href={item.href}
-        className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring"
+        className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-300 focus-ring"
+        style={{
+          // Simple color transition based on scroll progress
+          color: scrollProgress > 0.5 ? "#121212" : "white",
+        }}
         onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
         onFocus={() => handleNavItemFocus(item.label, false, !!item.megaMenu)}
       >
         <span className="relative">
-          <span
-            style={{
-              // Gradient text mask that wipes from bottom to top as you scroll
-              background: `linear-gradient(to top, #121212 ${scrollProgress * 100}%, white ${scrollProgress * 100}%)`,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              color: "transparent",
-            }}
-          >
-            {item.label}
-          </span>
+          {item.label}
           {/* Underline on hover */}
           <span
             className={`absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-200 group-hover:w-full ${
@@ -206,19 +199,13 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen(true)}
+              style={{
+                // Simple color transition based on scroll progress
+                color: scrollProgress > 0.5 ? "#1C1A18" : "white",
+                transition: "color 0.3s ease",
+              }}
             >
-              <span
-                style={{
-                  // Gradient text mask that wipes from bottom to top as you scroll
-                  background: `linear-gradient(to top, #1C1A18 ${scrollProgress * 100}%, white ${scrollProgress * 100}%)`,
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  color: "transparent",
-                }}
-              >
-                ☰
-              </span>
+              ☰
             </button>
 
             {/* Desktop left nav - hidden on mobile */}
@@ -240,13 +227,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
                 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
                 style={{
                   letterSpacing: isScrolled ? "0.015em" : "0.025em",
-                  transition: "letter-spacing 0.7s cubic-bezier(0.85, 0, 0.15, 1)",
-                  // Gradient text mask that wipes from bottom to top as you scroll
-                  background: `linear-gradient(to top, #1C1A18 ${scrollProgress * 100}%, white ${scrollProgress * 100}%)`,
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  color: "transparent",
+                  transition: "letter-spacing 0.7s cubic-bezier(0.85, 0, 0.15, 1), color 0.3s ease",
+                  // Simple color transition based on scroll progress
+                  color: scrollProgress > 0.5 ? "#1C1A18" : "white",
                 }}
               >
                 Love, Violeta Rose
