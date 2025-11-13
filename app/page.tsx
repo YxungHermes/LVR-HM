@@ -14,10 +14,11 @@ export default function Home() {
       {/*
         Scroll snap container for full-screen sections
         - snap-y: vertical scroll snapping
-        - snap-mandatory: always snap to nearest section when scroll ends
+        - snap-proximity: gentle snap - only snaps when close to a section (s-curve feel)
+        - Gives user more freedom while scrolling, less aggressive than snap-mandatory
         Only enabled on homepage for cinematic slide-based experience
       */}
-      <div className="snap-y snap-mandatory overflow-y-auto h-screen">
+      <div className="snap-y snap-proximity overflow-y-auto h-screen">
         <main>
           {/* Each major section has snap-start to create full-screen "slides" */}
           <div className="snap-start">
