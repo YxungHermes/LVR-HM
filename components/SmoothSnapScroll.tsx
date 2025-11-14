@@ -28,11 +28,11 @@ export default function SmoothSnapScroll({ children }: SmoothSnapScrollProps) {
         setIsUserScrolling(true);
       }
 
-      // Detect scroll stop after 150ms of no scrolling
+      // Detect scroll stop after 250ms of no scrolling - more time for smooth gliding
       scrollTimeoutRef.current = setTimeout(() => {
         setIsUserScrolling(false);
         snapToNearestSection();
-      }, 150);
+      }, 250);
 
       lastScrollTop.current = container.scrollTop;
     };
@@ -71,23 +71,23 @@ export default function SmoothSnapScroll({ children }: SmoothSnapScrollProps) {
         }
       });
 
-      if (nearestSection && smallestDistance < viewportHeight * 0.3) {
-        // Only snap if within 30% of viewport height from a snap point
+      if (nearestSection && smallestDistance < viewportHeight * 0.4) {
+        // Only snap if within 40% of viewport height from a snap point
         const targetRect = (nearestSection as HTMLElement).getBoundingClientRect();
         const containerRect = container.getBoundingClientRect();
         const targetScrollTop = scrollTop + (targetRect.top - containerRect.top);
 
-        // Smooth scroll to target
+        // Smooth scroll to target with gentle gliding motion
         isScrollingRef.current = true;
         container.scrollTo({
           top: targetScrollTop,
           behavior: 'smooth'
         });
 
-        // Reset scrolling flag after animation completes
+        // Reset scrolling flag after animation completes (longer for smoother glide)
         setTimeout(() => {
           isScrollingRef.current = false;
-        }, 600);
+        }, 800);
       }
     };
 

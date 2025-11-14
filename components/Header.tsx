@@ -231,7 +231,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </button>
 
             {/* Desktop left nav - hidden on mobile */}
-            <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Primary">
               {navigation.left.map(renderNavItem)}
             </nav>
           </div>
@@ -257,8 +257,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
           </div>
 
           {/* Right: Desktop nav + CTA (hidden on mobile) / Mobile spacer for symmetry */}
-          <div className="flex items-center gap-1 flex-1 justify-end">
-            <nav className="hidden md:flex items-center gap-1" aria-label="Secondary">
+          <div className="flex items-center gap-6 lg:gap-8 flex-1 justify-end">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Secondary">
               {navigation.right.map(renderNavItem)}
             </nav>
             {/* Mobile spacer to match hamburger width for perfect centering */}
