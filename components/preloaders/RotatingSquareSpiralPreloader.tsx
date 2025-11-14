@@ -71,8 +71,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     }
   }, [isVisible, onComplete]);
 
-  // Number of squares in the recursive tunnel - continuous generation inward
-  const squareCount = 65; // Significantly increased for continuous building effect
+  // Number of squares in the recursive tunnel - infinite depth illusion
+  const squareCount = 140; // Massive count for infinite tunnel effect
   const squares = Array.from({ length: squareCount }, (_, i) => i);
 
   return (
@@ -129,18 +129,18 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                   // Calculate properties for vortex/tunnel effect
                   const progress = i / squareCount;
 
-                  // Size: massive on outside to fill screen, smaller toward center
+                  // Size: massive on outside to fill screen, vanishing small toward center
                   // Using viewport units to ensure full screen coverage
                   const maxSize = Math.max(
                     typeof window !== 'undefined' ? window.innerWidth : 1920,
                     typeof window !== 'undefined' ? window.innerHeight : 1080
                   ) * 1.4; // 140% of viewport to ensure coverage
-                  const minSize = 30;
+                  const minSize = 2; // Extremely small center for infinite tunnel illusion
                   const size = maxSize - (progress * (maxSize - minSize));
 
-                  // Opacity: fade outer edges, stronger toward center
-                  // Outer squares very transparent, inner squares more visible
-                  const finalOpacity = 0.08 + (progress * 0.6); // 0.08 to 0.68
+                  // Opacity: fade outer edges, peak visibility in center for tunnel depth
+                  // Outer squares very transparent, inner squares more visible to see infinite depth
+                  const finalOpacity = 0.06 + (progress * 0.75); // 0.06 to 0.81 - stronger center visibility
 
                   // Rotation offset: each square rotated relative to previous
                   // This creates the recursive spiral/vortex illusion
@@ -152,7 +152,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                   const lightness = 72 - (progress * 18); // Darker toward center
 
                   // Staggered delay for building effect - outside to inside
-                  const appearDelay = i * 0.04; // 40ms between each square
+                  const appearDelay = i * 0.025; // 25ms between each square - faster for infinite depth
                   const appearDuration = 0.5; // Each square takes 0.5s to appear
 
                   return (
