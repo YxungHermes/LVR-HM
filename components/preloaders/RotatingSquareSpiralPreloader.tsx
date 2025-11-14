@@ -71,8 +71,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     }
   }, [isVisible, onComplete]);
 
-  // Number of squares in the recursive tunnel - infinite depth illusion
-  const squareCount = 140; // Massive count for infinite tunnel effect
+  // Number of squares in the recursive tunnel - optimized for performance
+  const squareCount = 40; // Reduced from 140 for smooth performance
   const squares = Array.from({ length: squareCount }, (_, i) => i);
 
   return (
@@ -281,8 +281,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
             {/* Floating particles around hero text */}
             {!prefersReducedMotion && !isExiting && (
               <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 99 }}>
-                {Array.from({ length: 20 }, (_, i) => {
-                  const angle = (i / 20) * Math.PI * 2;
+                {Array.from({ length: 8 }, (_, i) => {
+                  const angle = (i / 8) * Math.PI * 2;
                   const radius = 200 + (i % 3) * 80;
                   const x = 50 + Math.cos(angle) * (radius / 10);
                   const y = 50 + Math.sin(angle) * (radius / 10);
