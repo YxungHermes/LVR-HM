@@ -27,8 +27,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
   }, []);
 
   useEffect(() => {
-    // Vortex animation timing: let it loop for ~5-6 seconds
-    const displayTime = 5500; // 5.5 seconds of hypnotic spinning
+    // Extended vortex animation timing: let more squares build for longer
+    const displayTime = 7500; // 7.5 seconds - more time for continuous square generation
 
     // Always run the full sequence - don't skip early
     const exitTimeout = setTimeout(() => {
@@ -44,13 +44,13 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     if (isExiting) return; // Prevent multiple triggers
     setIsExiting(true);
 
-    // Start exit animation sequence - zoom deep into center
+    // Start exit animation sequence - gentle fade into main page
     containerControls.start({
-      scale: 8, // Zoom 8x into center of vortex
+      scale: 1.05, // Subtle zoom instead of dramatic zoom
       opacity: 0,
       transition: {
-        duration: 1.5, // 1.5s exit animation
-        ease: [0.22, 1, 0.36, 1],
+        duration: 1.2, // 1.2s smooth fade
+        ease: "easeOut",
       },
     }).then(() => {
       setIsVisible(false);
@@ -71,8 +71,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     }
   }, [isVisible, onComplete]);
 
-  // Number of squares in the recursive tunnel - increased for full screen coverage
-  const squareCount = 28;
+  // Number of squares in the recursive tunnel - continuous generation inward
+  const squareCount = 65; // Significantly increased for continuous building effect
   const squares = Array.from({ length: squareCount }, (_, i) => i);
 
   return (
@@ -87,7 +87,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+            transition: { duration: 1.2, ease: "easeOut" }
           }}
         >
           {/* Vortex container - full screen */}
