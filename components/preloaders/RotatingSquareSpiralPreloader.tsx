@@ -206,19 +206,40 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
               </>
             )}
 
-            {/* Brand text - fades in after vortex builds */}
+            {/* Radial blur/fade overlay - creates focus on center */}
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle at center, transparent 0%, transparent 30%, rgba(245, 235, 224, 0.3) 60%, rgba(245, 235, 224, 0.7) 85%, rgba(245, 235, 224, 0.95) 100%)',
+              }}
+            />
+
+            {/* Brand text - HERO centerpiece, fades in FIRST before squares */}
             <motion.div
-              className="absolute inset-x-0 bottom-12 text-center"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: isExiting ? 0 : 1, y: 0 }}
-              transition={{ delay: 1.5, duration: 0.6 }}
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              style={{ zIndex: 100 }}
+              initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
+              animate={{
+                opacity: isExiting ? 0 : 1,
+                scale: isExiting ? 0.9 : 1,
+                filter: isExiting ? 'blur(10px)' : 'blur(0px)'
+              }}
+              transition={{
+                delay: 0.3, // Fades in early, before center squares appear
+                duration: 1.2,
+                ease: [0.22, 1, 0.36, 1]
+              }}
             >
-              <p
-                className="font-serif text-lg font-semibold tracking-wide"
-                style={{ color: "#6B5E57" }}
+              <h1
+                className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide text-center px-8"
+                style={{
+                  color: "#1C1A18",
+                  textShadow: '0 2px 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6)',
+                  letterSpacing: '0.02em'
+                }}
               >
                 Love, Violeta Rose
-              </p>
+              </h1>
             </motion.div>
           </motion.div>
         </motion.div>
