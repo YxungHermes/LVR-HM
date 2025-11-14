@@ -27,8 +27,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
   }, []);
 
   useEffect(() => {
-    // Extended vortex animation timing: let more squares build for longer
-    const displayTime = 7500; // 7.5 seconds - more time for continuous square generation
+    // Vortex animation timing - reduced to allow for longer fade out
+    const displayTime = 6000; // 6 seconds of animation
 
     // Always run the full sequence - don't skip early
     const exitTimeout = setTimeout(() => {
@@ -44,12 +44,12 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     if (isExiting) return; // Prevent multiple triggers
     setIsExiting(true);
 
-    // Start exit animation sequence - gentle fade into main page
+    // Start exit animation sequence - longer, more luxurious fade
     containerControls.start({
       scale: 1.05, // Subtle zoom instead of dramatic zoom
       opacity: 0,
       transition: {
-        duration: 1.2, // 1.2s smooth fade
+        duration: 2.0, // 2.0s luxurious fade into hero
         ease: "easeOut",
       },
     }).then(() => {
@@ -86,7 +86,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
           initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
-            transition: { duration: 1.2, ease: "easeOut" }
+            transition: { duration: 2.0, ease: "easeOut" }
           }}
         >
           {/* Warm gradient layer - fades in gradually over pure white */}
