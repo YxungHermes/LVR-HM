@@ -4,6 +4,7 @@ import "./globals.css";
 import StagingBadge from "@/components/StagingBadge";
 import PageTransition from "@/components/PageTransition";
 import ClickOrigin from "@/components/ClickOrigin";
+import PreloaderProvider from "@/components/PreloaderProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const playfair = Playfair_Display({
@@ -47,7 +48,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased">
+      <body
+        className="font-sans antialiased"
+        style={{
+          '--lvr-header-height-mobile': '56px',
+          '--lvr-header-height-desktop': '72px',
+        } as React.CSSProperties}
+      >
         {/* Capture click position for radial transition mode */}
         <ClickOrigin />
 
@@ -68,10 +75,13 @@ export default function RootLayout({
           </filter>
         </svg>
 
-        {/* Page transitions - switch between "crossfade" or "radial" */}
-        <PageTransition mode="crossfade" tint="#FAF7F2">
-          {children}
-        </PageTransition>
+        {/* Preloader - shows on initial page load */}
+        <PreloaderProvider>
+          {/* Page transitions - switch between "crossfade" or "radial" */}
+          <PageTransition mode="crossfade" tint="#FAF7F2">
+            {children}
+          </PageTransition>
+        </PreloaderProvider>
 
         <StagingBadge />
         <SpeedInsights />

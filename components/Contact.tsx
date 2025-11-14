@@ -31,8 +31,8 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-white px-6 py-24">
-      <div className="mx-auto max-w-3xl">
+    <section id="contact" className="bg-white px-6 py-16 md:py-20 min-h-screen flex flex-col justify-center">
+      <div className="mx-auto max-w-3xl w-full">
         <motion.div
           className="mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}

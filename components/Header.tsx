@@ -11,6 +11,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0); // For gradient text mask
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
 
@@ -24,28 +25,79 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Keep header solid when mega menu is active
+  useEffect(() => {
+    if (activeMegaMenu !== null) {
+      setSolid(true);
+    }
+  }, [activeMegaMenu]);
+
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const shouldBeSolid = scrollY > 32 || settled;
-      const shouldBeCompact = scrollY > 32;
+      // Check for scroll position in the scroll container (homepage)
+      const mainContainer = document.querySelector('.overflow-y-auto');
+      const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
+
+      // Get hero section height to detect when entering second section
+      const heroSection = document.querySelector('section');
+      const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+
+      // Get header height (56px mobile, 72px desktop - use 72px as max)
+      const headerHeight = 72;
+
+      // Calculate when second section reaches the top of the header
+      // Header becomes solid only when top of next section touches bottom of header
+      const secondSectionAtHeader = scrollY >= (heroHeight - headerHeight);
+
+      // Scroll progress: 0 when not at second section, 1 when second section reaches header
+      const progress = secondSectionAtHeader ? 1 : 0;
+      setScrollProgress(progress);
+
+      // Header becomes solid only when second section reaches it OR mega menu is open
+      const shouldBeSolid = secondSectionAtHeader || settled || activeMegaMenu !== null;
+      const shouldBeCompact = secondSectionAtHeader;
 
       setSolid(shouldBeSolid);
       setIsScrolled(shouldBeCompact);
     };
 
     handleScroll();
+
+    // Listen to both window scroll (for other pages) and scroll container scroll (for homepage)
+    const mainContainer = document.querySelector('.overflow-y-auto');
+    if (mainContainer) {
+      mainContainer.addEventListener("scroll", handleScroll);
+    }
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [settled]);
+
+    return () => {
+      if (mainContainer) {
+        mainContainer.removeEventListener("scroll", handleScroll);
+      }
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [settled, activeMegaMenu]);
 
   const handleHeaderMouseEnter = () => {
     setSolid(true);
   };
 
   const handleHeaderMouseLeave = () => {
-    // Only return to transparent if at top and not settled
-    if (window.scrollY <= 32 && !settled) {
+    // Only return to transparent if:
+    // 1. No mega menu is open (activeMegaMenu === null)
+    // 2. Still on hero section (not scrolled past hero)
+    // 3. Not on a settled page
+    const mainContainer = document.querySelector('.overflow-y-auto');
+    const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
+    const heroSection = document.querySelector('section');
+    const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
+    const headerHeight = 72;
+
+    // Return to transparent only if ALL conditions are met:
+    const secondSectionAtHeader = scrollY >= (heroHeight - headerHeight);
+    const canBeTransparent = !secondSectionAtHeader && !settled && activeMegaMenu === null;
+
+    if (canBeTransparent) {
       setSolid(false);
     }
   };
@@ -119,9 +171,11 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       <a
         key={item.label}
         href={item.href}
-        className={`group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-200 focus-ring ${
-          solid ? "text-[#121212]" : "text-white"
-        }`}
+        className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-300 focus-ring"
+        style={{
+          // Color changes when header is solid OR when second section reaches nav
+          color: (solid || scrollProgress > 0.5) ? "#121212" : "white",
+        }}
         onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
         onFocus={() => handleNavItemFocus(item.label, false, !!item.megaMenu)}
@@ -167,32 +221,34 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen(true)}
+              style={{
+                // Color changes when header is solid OR when second section reaches nav
+                color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
+                transition: "color 0.3s ease",
+              }}
             >
-              <span className={solid ? "text-[#1C1A18]" : "text-white"}>☰</span>
+              ☰
             </button>
 
             {/* Desktop left nav - hidden on mobile */}
-            <nav className="hidden md:flex items-center gap-1" aria-label="Primary">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Primary">
               {navigation.left.map(renderNavItem)}
             </nav>
           </div>
 
-          {/* Center Brand - Wordmark only, scales down on scroll */}
+          {/* Center Brand - Wordmark only, stays same size */}
           <div className="flex items-center justify-center flex-1 absolute left-0 right-0 pointer-events-none md:relative md:left-auto md:right-auto md:pointer-events-auto">
             <a
               href="/"
-              className="relative block origin-center will-change-transform transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] focus-ring pointer-events-auto"
-              style={{
-                transform: isScrolled ? "scale(0.62)" : "scale(1)",
-              }}
+              className="relative block origin-center focus-ring pointer-events-auto"
             >
               <span
-                className={`font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap transition-colors duration-300 ${
-                  solid ? "text-[#1C1A18]" : "text-white"
-                }`}
+                className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
                 style={{
-                  letterSpacing: isScrolled ? "0.015em" : "0.025em",
-                  transition: "color 0.3s, letter-spacing 0.7s cubic-bezier(0.85, 0, 0.15, 1)",
+                  letterSpacing: "0.025em",
+                  transition: "color 0.3s ease",
+                  // Color changes when header is solid OR when second section reaches nav
+                  color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
                 }}
               >
                 Love, Violeta Rose
@@ -201,8 +257,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
           </div>
 
           {/* Right: Desktop nav + CTA (hidden on mobile) / Mobile spacer for symmetry */}
-          <div className="flex items-center gap-1 flex-1 justify-end">
-            <nav className="hidden md:flex items-center gap-1" aria-label="Secondary">
+          <div className="flex items-center gap-6 lg:gap-8 flex-1 justify-end">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Secondary">
               {navigation.right.map(renderNavItem)}
             </nav>
             {/* Mobile spacer to match hamburger width for perfect centering */}
