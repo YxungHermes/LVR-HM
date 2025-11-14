@@ -80,26 +80,29 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
       {isVisible && (
         <motion.div
           className="fixed inset-0 z-[9999] flex items-center justify-center"
-          initial={{
-            opacity: 1,
-            background: "#FFFFFF" // Start pure white for seamless page load
+          style={{
+            background: "#FFFFFF" // Pure about:blank white - stays constant
           }}
-          animate={{
-            background: isExiting
-              ? "#FFFFFF"
-              : "linear-gradient(135deg, #f5ebe0 0%, #f8e8dc 25%, #fdf0e8 50%, #f5ebe0 100%)"
-          }}
+          initial={{ opacity: 1 }}
           exit={{
             opacity: 0,
             transition: { duration: 1.2, ease: "easeOut" }
           }}
-          transition={{
-            background: {
-              duration: 1.0,
-              ease: "easeOut"
-            }
-          }}
         >
+          {/* Warm gradient layer - fades in gradually over pure white */}
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(135deg, #f5ebe0 0%, #f8e8dc 25%, #fdf0e8 50%, #f5ebe0 100%)",
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isExiting ? 0 : 1 }}
+            transition={{
+              duration: 1.8,
+              ease: [0.22, 1, 0.36, 1]
+            }}
+          />
+
           {/* Vortex container - full screen */}
           <motion.div
             className="absolute inset-0"
