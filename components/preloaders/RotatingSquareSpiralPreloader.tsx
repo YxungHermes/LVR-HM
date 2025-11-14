@@ -122,8 +122,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                 />
               </motion.div>
             ) : (
-              // Full animation: Rotating recursive square vortex
-              // Each square is rotated relative to the previous, creating tunnel effect
+              // Full animation: Building recursive square vortex
+              // Squares appear sequentially from outside to center, then rotate
               <>
                 {squares.map((i) => {
                   // Calculate properties for vortex/tunnel effect
@@ -140,7 +140,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
 
                   // Opacity: fade outer edges, stronger toward center
                   // Outer squares very transparent, inner squares more visible
-                  const opacity = 0.08 + (progress * 0.6); // 0.08 to 0.68
+                  const finalOpacity = 0.08 + (progress * 0.6); // 0.08 to 0.68
 
                   // Rotation offset: each square rotated relative to previous
                   // This creates the recursive spiral/vortex illusion
@@ -151,6 +151,10 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                   const saturation = 18 + (progress * 12); // Subtle saturation increase
                   const lightness = 72 - (progress * 18); // Darker toward center
 
+                  // Staggered delay for building effect - outside to inside
+                  const appearDelay = i * 0.04; // 40ms between each square
+                  const appearDuration = 0.5; // Each square takes 0.5s to appear
+
                   return (
                     <motion.div
                       key={i}
@@ -158,12 +162,30 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                       style={{
                         transformOrigin: "center center",
                       }}
+                      initial={{
+                        opacity: 0,
+                        scale: 0.8,
+                        rotate: rotationOffset,
+                      }}
                       animate={isExiting ? undefined : {
+                        opacity: finalOpacity,
+                        scale: 1,
                         rotate: [rotationOffset, rotationOffset + 360],
                       }}
                       transition={{
+                        opacity: {
+                          duration: appearDuration,
+                          delay: appearDelay,
+                          ease: "easeOut",
+                        },
+                        scale: {
+                          duration: appearDuration,
+                          delay: appearDelay,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
                         rotate: {
                           duration: 22 - (progress * 10), // Outer squares slower (22s), inner faster (12s)
+                          delay: appearDelay + appearDuration, // Start rotating after appearing
                           repeat: Infinity,
                           ease: "linear",
                         },
@@ -176,7 +198,6 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                           border: "1px solid",
                           borderColor: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
                           borderRadius: "2px",
-                          opacity: opacity,
                         }}
                       />
                     </motion.div>
@@ -185,12 +206,12 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
               </>
             )}
 
-            {/* Brand text - fades in after vortex starts */}
+            {/* Brand text - fades in after vortex builds */}
             <motion.div
               className="absolute inset-x-0 bottom-12 text-center"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: isExiting ? 0 : 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              transition={{ delay: 1.5, duration: 0.6 }}
             >
               <p
                 className="font-serif text-lg font-semibold tracking-wide"
