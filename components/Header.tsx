@@ -161,8 +161,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         href={item.href}
         className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-300 focus-ring"
         style={{
-          // Simple color transition based on scroll progress
-          color: scrollProgress > 0.5 ? "#121212" : "white",
+          // Color changes when header is solid OR when second section reaches nav
+          color: (solid || scrollProgress > 0.5) ? "#121212" : "white",
         }}
         onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
@@ -210,8 +210,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen(true)}
               style={{
-                // Simple color transition based on scroll progress
-                color: scrollProgress > 0.5 ? "#1C1A18" : "white",
+                // Color changes when header is solid OR when second section reaches nav
+                color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
                 transition: "color 0.3s ease",
               }}
             >
@@ -224,22 +224,19 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </nav>
           </div>
 
-          {/* Center Brand - Wordmark only, scales down on scroll */}
+          {/* Center Brand - Wordmark only, stays same size */}
           <div className="flex items-center justify-center flex-1 absolute left-0 right-0 pointer-events-none md:relative md:left-auto md:right-auto md:pointer-events-auto">
             <a
               href="/"
-              className="relative block origin-center will-change-transform transition-all duration-700 ease-[cubic-bezier(0.85,0,0.15,1)] focus-ring pointer-events-auto"
-              style={{
-                transform: isScrolled ? "scale(0.62)" : "scale(1)",
-              }}
+              className="relative block origin-center focus-ring pointer-events-auto"
             >
               <span
                 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
                 style={{
-                  letterSpacing: isScrolled ? "0.015em" : "0.025em",
-                  transition: "letter-spacing 0.7s cubic-bezier(0.85, 0, 0.15, 1), color 0.3s ease",
-                  // Simple color transition based on scroll progress
-                  color: scrollProgress > 0.5 ? "#1C1A18" : "white",
+                  letterSpacing: "0.025em",
+                  transition: "color 0.3s ease",
+                  // Color changes when header is solid OR when second section reaches nav
+                  color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
                 }}
               >
                 Love, Violeta Rose

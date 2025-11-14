@@ -32,20 +32,20 @@ export default function ChooseYourStory() {
   return (
     <section
       id="choose-your-story"
-      className="relative min-h-screen flex flex-col pt-20 md:pt-24"
+      className="relative min-h-screen flex flex-col"
     >
-      {/* Header - centered above grid, with padding to avoid nav cutoff */}
+      {/* Header - centered above grid, with padding to account for fixed nav */}
       <motion.div
-        className="w-full text-center py-8 md:py-12 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent"
+        className="w-full text-center pt-20 md:pt-24 pb-6 md:pb-8 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-3">
+        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-3">
           Choose Your Kind of Story
         </h2>
-        <p className="text-base md:text-lg text-espresso max-w-2xl mx-auto">
+        <p className="text-sm md:text-base text-espresso max-w-2xl mx-auto">
           Every celebration is different. Start with the type of day you're planning.
         </p>
       </motion.div>
