@@ -13,28 +13,22 @@ export default function Home() {
       <Header />
       {/*
         Scroll snap container for full-screen sections
-        - snap-y: vertical scroll snapping
-        - snap-mandatory: snaps firmly to sections - locks into place
-        - Creates crisp, intentional transitions between slides
-        Only enabled on homepage for cinematic slide-based experience
+        - Desktop: snap-mandatory for crisp, intentional slide transitions
+        - Mobile/Tablet: snap-proximity for more natural touch scrolling
+        - Each section is a full viewport slide
       */}
-      <div className="snap-y snap-mandatory overflow-y-auto h-screen">
+      <div className="snap-y md:snap-mandatory snap-proximity overflow-y-auto h-screen scroll-smooth">
         <main>
-          {/* Each major section has snap-start to create full-screen "slides" */}
-          <div className="snap-start">
-            <Hero />
-          </div>
-          <div className="snap-start">
-            <ChooseYourStory />
-          </div>
+          {/* Each major section is a full-screen "slide" with snap-start */}
+          <Hero />
+          <ChooseYourStory />
           {/* Temporarily removed per spec - to be decided in future flow */}
           {/* <SignatureWork /> */}
           {/* <Packages /> */}
           {/* <Testimonials /> */}
-          <div className="snap-start">
-            <Contact />
-          </div>
+          <Contact />
         </main>
+        {/* Footer: no snap alignment, flows naturally after Contact */}
         <Footer />
       </div>
     </div>

@@ -34,7 +34,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
+    <section className="relative h-screen snap-start bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
       {/* Vimeo Video Background */}
       <div className="absolute inset-0 z-0">
         <iframe

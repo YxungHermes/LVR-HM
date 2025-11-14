@@ -32,7 +32,7 @@ export default function ChooseYourStory() {
   return (
     <section
       id="choose-your-story"
-      className="relative h-screen flex flex-col"
+      className="relative h-screen snap-start flex flex-col"
     >
       {/* Header - centered above grid, with padding to account for fixed nav */}
       <motion.div

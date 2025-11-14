@@ -48,7 +48,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased">
+      <body
+        className="font-sans antialiased"
+        style={{
+          '--lvr-header-height-mobile': '56px',
+          '--lvr-header-height-desktop': '72px',
+        } as React.CSSProperties}
+      >
         {/* Capture click position for radial transition mode */}
         <ClickOrigin />
 

@@ -25,6 +25,13 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Keep header solid when mega menu is active
+  useEffect(() => {
+    if (activeMegaMenu !== null) {
+      setSolid(true);
+    }
+  }, [activeMegaMenu]);
+
   useEffect(() => {
     const handleScroll = () => {
       // Check for scroll position in the snap container (homepage)
@@ -46,8 +53,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       const progress = secondSectionAtHeader ? 1 : 0;
       setScrollProgress(progress);
 
-      // Header becomes solid only when second section reaches it
-      const shouldBeSolid = secondSectionAtHeader || settled;
+      // Header becomes solid only when second section reaches it OR mega menu is open
+      const shouldBeSolid = secondSectionAtHeader || settled || activeMegaMenu !== null;
       const shouldBeCompact = secondSectionAtHeader;
 
       setSolid(shouldBeSolid);
@@ -69,7 +76,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       }
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [settled]);
+  }, [settled, activeMegaMenu]);
 
   const handleHeaderMouseEnter = () => {
     setSolid(true);
