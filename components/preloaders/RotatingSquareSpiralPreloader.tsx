@@ -11,7 +11,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
   const [isVisible, setIsVisible] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-  const controls = useAnimation();
+  const containerControls = useAnimation();
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -27,21 +27,27 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
   }, []);
 
   useEffect(() => {
-    // Minimum display time: 800ms
-    const minDisplayTime = 800;
+    // Cascade animation duration
+    const squareCount = 15;
+    const delayPerSquare = 0.25; // Time between each square starting
+    const rotationDuration = 0.6; // How long each square rotates
+    const cascadeDuration = (squareCount * delayPerSquare) + rotationDuration;
 
-    // Maximum total time: 4000ms (safety)
-    const maxTotalTime = 4000;
+    // Total display time before exit: ~4-5 seconds
+    const displayTime = cascadeDuration + 1000; // Add 1s padding
+
+    // Maximum total time: 8000ms (safety)
+    const maxTotalTime = 8000;
 
     // Safety timeout - force exit after max time
     const safetyTimeout = setTimeout(() => {
       triggerExit();
     }, maxTotalTime);
 
-    // Normal exit after minimum display time
+    // Normal exit after cascade completes
     const exitTimeout = setTimeout(() => {
       triggerExit();
-    }, minDisplayTime);
+    }, displayTime);
 
     return () => {
       clearTimeout(safetyTimeout);
@@ -53,13 +59,12 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     if (isExiting) return; // Prevent multiple triggers
     setIsExiting(true);
 
-    // Start exit animation sequence
-    controls.start({
-      rotate: 360 * 3, // Speed up rotation
-      scale: 4, // Zoom into center
+    // Start exit animation sequence - zoom into center
+    containerControls.start({
+      scale: 5, // Zoom deep into center
       opacity: 0,
       transition: {
-        duration: 1.4, // 1.4s exit animation
+        duration: 1.5, // 1.5s exit animation
         ease: [0.22, 1, 0.36, 1],
       },
     }).then(() => {
@@ -81,7 +86,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     }
   }, [isVisible, onComplete]);
 
-  // Number of nested squares (tunnel depth)
+  // Number of nested squares (recursive tunnel depth)
   const squareCount = 15;
   const squares = Array.from({ length: squareCount }, (_, i) => i);
 
@@ -104,7 +109,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
           <motion.div
             className="relative w-96 h-96"
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={isExiting ? controls : {
+            animate={isExiting ? containerControls : {
               opacity: 1,
               scale: 1,
               transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
@@ -132,33 +137,52 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                 />
               </motion.div>
             ) : (
-              // Full animation: Rotating nested square spiral tunnel
-              <motion.div
-                className="absolute inset-0"
-                animate={isExiting ? undefined : {
-                  rotate: 360,
-                }}
-                transition={{
-                  rotate: {
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  },
-                }}
-              >
+              // Full animation: Cascading recursive square spiral
+              <>
                 {squares.map((i) => {
                   // Calculate properties for tunnel effect
                   // Larger squares on outside, smaller toward center
                   const progress = i / squareCount;
                   const size = 350 - (progress * 320); // 350px to 30px
-                  const opacity = 0.15 + (progress * 0.4); // Fade toward center
-                  const rotationOffset = progress * 45; // Slight rotation offset per square
+                  const opacity = 0.2 + (progress * 0.5); // Fade toward center
 
                   // Soft warm neutral color (off-white to rose-beige)
                   const hue = 25; // Warm beige-rose
                   const saturation = 15 + (progress * 15); // Subtle saturation
                   const lightness = 70 - (progress * 15); // Slightly darker toward center
 
+                  // Cascading animation timing
+                  // Square 0 (outermost): no rotation (static)
+                  // Square 1-14: rotate in sequence with staggered delay
+                  const delayPerSquare = 0.25; // Seconds between each square
+                  const rotationDuration = 0.6; // Duration of rotation
+                  const delay = i * delayPerSquare; // Cascade from outside to inside
+
+                  // Outermost square is static
+                  if (i === 0) {
+                    return (
+                      <motion.div
+                        key={i}
+                        className="absolute inset-0 flex items-center justify-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.4 }}
+                      >
+                        <div
+                          style={{
+                            width: `${size}px`,
+                            height: `${size}px`,
+                            border: "1px solid",
+                            borderColor: `hsl(${hue}, ${saturation}%, ${lightness}%)`,
+                            borderRadius: "2px",
+                            opacity: opacity,
+                          }}
+                        />
+                      </motion.div>
+                    );
+                  }
+
+                  // Inner squares: cascade rotation from outside to inside
                   return (
                     <motion.div
                       key={i}
@@ -166,14 +190,20 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                       style={{
                         transformOrigin: "center center",
                       }}
+                      initial={{ opacity: 0, rotate: 0 }}
                       animate={isExiting ? undefined : {
-                        rotate: [rotationOffset, rotationOffset + 360],
+                        opacity: 1,
+                        rotate: [0, 0, 90, 90], // Stay at 0, then rotate to 90, then stay
                       }}
                       transition={{
+                        opacity: {
+                          duration: 0.3,
+                          delay: delay,
+                        },
                         rotate: {
-                          duration: 15 + (i * 0.5), // Varied rotation speeds for depth
-                          repeat: Infinity,
-                          ease: "linear",
+                          duration: rotationDuration + delay,
+                          times: [0, delay / (rotationDuration + delay), (delay + rotationDuration) / (rotationDuration + delay), 1],
+                          ease: [0.22, 1, 0.36, 1],
                         },
                       }}
                     >
@@ -190,7 +220,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                     </motion.div>
                   );
                 })}
-              </motion.div>
+              </>
             )}
 
             {/* Brand text - fades in after spiral starts */}
@@ -198,7 +228,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
               className="absolute inset-x-0 -bottom-20 text-center"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: isExiting ? 0 : 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
             >
               <p
                 className="font-serif text-lg font-semibold tracking-wide"
