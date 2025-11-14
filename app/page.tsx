@@ -13,11 +13,11 @@ export default function Home() {
       <Header />
       {/*
         Scroll snap container for full-screen sections
-        - Desktop: snap-mandatory for crisp, intentional slide transitions
-        - Mobile/Tablet: snap-proximity for more natural touch scrolling
+        - snap-proximity: subtle snapping only when very close to section
+        - Prevents aggressive pull-back when scrolling to footer
         - Each section is a full viewport slide
       */}
-      <div className="snap-y md:snap-mandatory snap-proximity overflow-y-auto h-screen scroll-smooth">
+      <div className="snap-y snap-proximity overflow-y-auto h-screen scroll-smooth">
         <main>
           {/* Each major section is a full-screen "slide" with snap-start */}
           <Hero />

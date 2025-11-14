@@ -31,7 +31,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="bg-white px-6 py-24 h-screen snap-start flex flex-col justify-center">
+    <section id="contact" className="bg-white px-6 py-16 md:py-20 min-h-screen snap-center flex flex-col justify-center">
       <div className="mx-auto max-w-3xl w-full">
         <motion.div
           className="mb-12 text-center"

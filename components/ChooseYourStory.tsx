@@ -20,38 +20,38 @@ const cardSizes = [
   "md:col-span-2 md:row-span-1", // Adventure - Small
 ];
 
-// Typography sizes based on card prominence
+// Typography sizes based on card prominence - smaller for better fit
 const typographySizes = [
-  "text-4xl md:text-5xl lg:text-6xl", // Large card - HUGE
-  "text-3xl md:text-4xl lg:text-5xl", // Medium wide - Large
-  "text-3xl md:text-4xl lg:text-5xl", // Medium wide - Large
-  "text-2xl md:text-3xl lg:text-4xl", // Small - Medium
+  "text-3xl md:text-4xl lg:text-5xl", // Large card - Large
+  "text-2xl md:text-3xl lg:text-4xl", // Medium wide - Medium
+  "text-2xl md:text-3xl lg:text-4xl", // Medium wide - Medium
+  "text-xl md:text-2xl lg:text-3xl", // Small - Compact
 ];
 
 export default function ChooseYourStory() {
   return (
     <section
       id="choose-your-story"
-      className="relative h-screen snap-start flex flex-col"
+      className="relative h-screen snap-start flex flex-col overflow-hidden"
     >
-      {/* Header - centered above grid, with padding to account for fixed nav */}
+      {/* Header - centered above grid, with minimal padding */}
       <motion.div
-        className="w-full text-center pt-24 md:pt-28 pb-6 md:pb-8 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent"
+        className="w-full text-center pt-20 md:pt-24 pb-4 md:pb-6 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent flex-shrink-0"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       >
-        <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-3">
+        <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-ink mb-2">
           Choose Your Kind of Story
         </h2>
-        <p className="text-sm md:text-base text-espresso max-w-2xl mx-auto">
+        <p className="text-xs md:text-sm text-espresso max-w-2xl mx-auto">
           Every celebration is different. Start with the type of day you're planning.
         </p>
       </motion.div>
 
       {/* Bento Box Grid - Asymmetric, dynamic layout */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-5 md:grid-rows-3 gap-0 pb-0">
+      <div className="flex-1 grid grid-cols-1 md:grid-cols-5 md:grid-rows-3 gap-0 overflow-hidden min-h-0">
         {chooseYourStory.map((collection, index) => (
           <motion.div
             key={collection.slug}
@@ -67,33 +67,33 @@ export default function ChooseYourStory() {
           >
             <Link
               href={collection.href}
-              className={`group relative block h-full min-h-[40vh] md:min-h-0 ${cardGradients[index]}
+              className={`group relative block h-full min-h-[30vh] md:min-h-0 ${cardGradients[index]}
                 border border-coffee/10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:z-10 hover:shadow-2xl`}
             >
               {/* Hover overlay - darkens on hover */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
 
               {/* Content - centered in card */}
-              <div className="relative h-full flex flex-col items-center justify-center p-6 md:p-8 lg:p-12 text-center">
+              <div className="relative h-full flex flex-col items-center justify-center p-4 md:p-6 lg:p-8 text-center">
                 {/* Collection number - subtle */}
-                <span className="text-espresso/30 text-xs md:text-sm font-medium uppercase tracking-widest mb-3 md:mb-4">
+                <span className="text-espresso/30 text-xs font-medium uppercase tracking-widest mb-2">
                   {String(index + 1).padStart(2, '0')}
                 </span>
 
                 {/* Collection name - scales by card size */}
-                <h3 className={`font-serif ${typographySizes[index]} font-bold text-ink mb-4 md:mb-6
+                <h3 className={`font-serif ${typographySizes[index]} font-bold text-ink mb-2 md:mb-4
                   leading-tight max-w-md transition-all duration-500 group-hover:scale-105`}>
                   {collection.name}
                 </h3>
 
                 {/* Teaser - responsive sizing */}
-                <p className={`text-sm md:text-base ${index === 0 ? 'lg:text-lg' : ''} text-espresso/80 max-w-sm leading-relaxed`}>
+                <p className={`text-xs md:text-sm ${index === 0 ? 'lg:text-base' : ''} text-espresso/80 max-w-sm leading-relaxed`}>
                   {collection.teaser}
                 </p>
 
                 {/* Explore arrow - appears on hover */}
-                <div className="mt-6 md:mt-8 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                  <span className="inline-flex items-center gap-2 text-xs md:text-sm font-medium uppercase tracking-wider text-ink">
+                <div className="mt-4 md:mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                  <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-ink">
                     Explore
                     <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
