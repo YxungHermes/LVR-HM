@@ -6,31 +6,39 @@ import ChooseYourStory from "@/components/ChooseYourStory";
 // import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import SmoothSnapScroll from "@/components/SmoothSnapScroll";
 
 export default function Home() {
   return (
     <div className="relative">
       <Header />
       {/*
-        Scroll snap container for full-screen sections
-        - snap-proximity: subtle snapping only when very close to section
-        - Prevents aggressive pull-back when scrolling to footer
-        - Each section is a full viewport slide
+        Smooth snap scroll container
+        - Detects when user stops scrolling
+        - Smoothly eases into nearest section instead of abrupt snap
+        - Only snaps if within 30% of section boundary
+        - Footer remains freely scrollable
       */}
-      <div className="snap-y snap-proximity overflow-y-auto h-screen scroll-smooth">
+      <SmoothSnapScroll>
         <main>
-          {/* Each major section is a full-screen "slide" with snap-start */}
-          <Hero />
-          <ChooseYourStory />
+          {/* Each major section smoothly snaps with data-snap-section */}
+          <div data-snap-section>
+            <Hero />
+          </div>
+          <div data-snap-section>
+            <ChooseYourStory />
+          </div>
           {/* Temporarily removed per spec - to be decided in future flow */}
           {/* <SignatureWork /> */}
           {/* <Packages /> */}
           {/* <Testimonials /> */}
-          <Contact />
+          <div data-snap-section>
+            <Contact />
+          </div>
         </main>
-        {/* Footer: no snap alignment, flows naturally after Contact */}
+        {/* Footer: no snap attribute, flows naturally after Contact */}
         <Footer />
-      </div>
+      </SmoothSnapScroll>
     </div>
   );
 }

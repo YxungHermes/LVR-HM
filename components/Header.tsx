@@ -34,8 +34,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check for scroll position in the snap container (homepage)
-      const mainContainer = document.querySelector('.snap-y');
+      // Check for scroll position in the scroll container (homepage)
+      const mainContainer = document.querySelector('.overflow-y-auto');
       const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
 
       // Get hero section height to detect when entering second section
@@ -63,8 +63,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
 
     handleScroll();
 
-    // Listen to both window scroll (for other pages) and snap container scroll (for homepage)
-    const mainContainer = document.querySelector('.snap-y');
+    // Listen to both window scroll (for other pages) and scroll container scroll (for homepage)
+    const mainContainer = document.querySelector('.overflow-y-auto');
     if (mainContainer) {
       mainContainer.addEventListener("scroll", handleScroll);
     }
@@ -87,7 +87,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     // 1. No mega menu is open (activeMegaMenu === null)
     // 2. Still on hero section (not scrolled past hero)
     // 3. Not on a settled page
-    const mainContainer = document.querySelector('.snap-y');
+    const mainContainer = document.querySelector('.overflow-y-auto');
     const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
     const heroSection = document.querySelector('section');
     const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
