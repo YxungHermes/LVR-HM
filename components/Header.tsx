@@ -76,16 +76,21 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   };
 
   const handleHeaderMouseLeave = () => {
-    // Only return to transparent if still on hero section and not settled
+    // Only return to transparent if:
+    // 1. No mega menu is open (activeMegaMenu === null)
+    // 2. Still on hero section (not scrolled past hero)
+    // 3. Not on a settled page
     const mainContainer = document.querySelector('.snap-y');
     const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
     const heroSection = document.querySelector('section');
     const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
     const headerHeight = 72;
 
-    // Return to transparent only if second section hasn't reached header yet
+    // Return to transparent only if ALL conditions are met:
     const secondSectionAtHeader = scrollY >= (heroHeight - headerHeight);
-    if (!secondSectionAtHeader && !settled) {
+    const canBeTransparent = !secondSectionAtHeader && !settled && activeMegaMenu === null;
+
+    if (canBeTransparent) {
       setSolid(false);
     }
   };

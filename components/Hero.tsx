@@ -34,7 +34,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
+    <section className="relative h-screen bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
       {/* Vimeo Video Background */}
       <div className="absolute inset-0 z-0">
         <iframe
@@ -56,7 +56,7 @@ export default function Hero() {
       </div>
 
       {/* Content - Full viewport height accounting for fixed header */}
-      <div className="relative z-10 mx-auto flex h-screen max-w-[1000px] items-center justify-center px-6 pt-[56px] md:pt-[72px]">
+      <div className="relative z-10 mx-auto flex h-full max-w-[1000px] items-center justify-center px-6 pt-[56px] md:pt-[72px]">
         <div className="w-full text-center max-w-4xl mx-auto">
           {/* Tagline above title */}
           <motion.p

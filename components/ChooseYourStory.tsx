@@ -32,11 +32,11 @@ export default function ChooseYourStory() {
   return (
     <section
       id="choose-your-story"
-      className="relative min-h-screen flex flex-col"
+      className="relative h-screen flex flex-col"
     >
       {/* Header - centered above grid, with padding to account for fixed nav */}
       <motion.div
-        className="w-full text-center pt-20 md:pt-24 pb-6 md:pb-8 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent"
+        className="w-full text-center pt-24 md:pt-28 pb-6 md:pb-8 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
