@@ -27,30 +27,35 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
   }, []);
 
   useEffect(() => {
-    // Cascade animation duration
+    // Cascade animation timing breakdown:
+    const fadeInDuration = 600; // Initial container fade in
     const squareCount = 15;
-    const delayPerSquare = 0.25; // Time between each square starting
-    const rotationDuration = 0.6; // How long each square rotates
-    const cascadeDuration = (squareCount * delayPerSquare) + rotationDuration;
+    const delayPerSquare = 0.25; // Seconds between each square starting (250ms)
+    const rotationDuration = 0.6; // How long each square rotates (600ms)
 
-    // Total display time before exit: ~4-5 seconds
-    const displayTime = cascadeDuration + 1000; // Add 1s padding
+    // Calculate total cascade duration
+    // Last square starts at: (squareCount - 1) * delayPerSquare
+    // Last square completes at: lastSquareStart + rotationDuration
+    const lastSquareStart = (squareCount - 1) * delayPerSquare * 1000; // Convert to ms
+    const cascadeComplete = lastSquareStart + (rotationDuration * 1000);
 
-    // Maximum total time: 8000ms (safety)
-    const maxTotalTime = 8000;
+    // Premium timing: Let the full cascade complete + pause to appreciate
+    const pauseAfterCascade = 800; // 0.8s to admire the completed spiral
+    const displayTime = fadeInDuration + cascadeComplete + pauseAfterCascade;
 
-    // Safety timeout - force exit after max time
-    const safetyTimeout = setTimeout(() => {
-      triggerExit();
-    }, maxTotalTime);
+    // Total sequence: ~6.9 seconds
+    // - Fade in: 0.6s
+    // - Cascade: 3.5s (last square starts) + 0.6s (completes) = 4.1s
+    // - Pause: 0.8s
+    // - Exit zoom: 1.5s (handled separately in triggerExit)
+    // = ~7.0s total experience
 
-    // Normal exit after cascade completes
+    // Always run the full sequence - don't skip early
     const exitTimeout = setTimeout(() => {
       triggerExit();
     }, displayTime);
 
     return () => {
-      clearTimeout(safetyTimeout);
       clearTimeout(exitTimeout);
     };
   }, []);
