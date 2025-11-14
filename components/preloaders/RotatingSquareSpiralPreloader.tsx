@@ -46,7 +46,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
 
     // Start exit animation sequence - zoom deep into center
     containerControls.start({
-      scale: 6, // Zoom 6x into center of vortex
+      scale: 8, // Zoom 8x into center of vortex
       opacity: 0,
       transition: {
         duration: 1.5, // 1.5s exit animation
@@ -71,8 +71,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
     }
   }, [isVisible, onComplete]);
 
-  // Number of squares in the recursive tunnel
-  const squareCount = 18;
+  // Number of squares in the recursive tunnel - increased for full screen coverage
+  const squareCount = 28;
   const squares = Array.from({ length: squareCount }, (_, i) => i);
 
   return (
@@ -90,10 +90,10 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
             transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
           }}
         >
-          {/* Vortex container */}
+          {/* Vortex container - full screen */}
           <motion.div
-            className="relative w-96 h-96"
-            initial={{ opacity: 0, scale: 0.8 }}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={isExiting ? containerControls : {
               opacity: 1,
               scale: 1,
@@ -129,15 +129,22 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                   // Calculate properties for vortex/tunnel effect
                   const progress = i / squareCount;
 
-                  // Size: larger on outside, smaller toward center
-                  const size = 380 - (progress * 350); // 380px to 30px
+                  // Size: massive on outside to fill screen, smaller toward center
+                  // Using viewport units to ensure full screen coverage
+                  const maxSize = Math.max(
+                    typeof window !== 'undefined' ? window.innerWidth : 1920,
+                    typeof window !== 'undefined' ? window.innerHeight : 1080
+                  ) * 1.4; // 140% of viewport to ensure coverage
+                  const minSize = 30;
+                  const size = maxSize - (progress * (maxSize - minSize));
 
-                  // Opacity: fade toward center for depth
-                  const opacity = 0.3 + (progress * 0.4);
+                  // Opacity: fade outer edges, stronger toward center
+                  // Outer squares very transparent, inner squares more visible
+                  const opacity = 0.08 + (progress * 0.6); // 0.08 to 0.68
 
                   // Rotation offset: each square rotated relative to previous
                   // This creates the recursive spiral/vortex illusion
-                  const rotationOffset = i * 8; // 8 degrees per square = 144° total twist
+                  const rotationOffset = i * 7; // 7 degrees per square
 
                   // Color: warm neutral matching LVR palette
                   const hue = 25; // Warm beige-rose
@@ -151,18 +158,12 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                       style={{
                         transformOrigin: "center center",
                       }}
-                      initial={{ opacity: 0, rotate: rotationOffset }}
                       animate={isExiting ? undefined : {
-                        opacity: opacity,
                         rotate: [rotationOffset, rotationOffset + 360],
                       }}
                       transition={{
-                        opacity: {
-                          duration: 0.4,
-                          ease: "easeOut",
-                        },
                         rotate: {
-                          duration: 20 - (progress * 8), // Outer squares slower, inner faster
+                          duration: 22 - (progress * 10), // Outer squares slower (22s), inner faster (12s)
                           repeat: Infinity,
                           ease: "linear",
                         },
@@ -186,7 +187,7 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
 
             {/* Brand text - fades in after vortex starts */}
             <motion.div
-              className="absolute inset-x-0 -bottom-20 text-center"
+              className="absolute inset-x-0 bottom-12 text-center"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: isExiting ? 0 : 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
