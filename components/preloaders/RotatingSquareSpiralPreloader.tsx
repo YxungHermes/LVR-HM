@@ -151,8 +151,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                   const saturation = 18 + (progress * 12); // Subtle saturation increase
                   const lightness = 72 - (progress * 18); // Darker toward center
 
-                  // Staggered delay for building effect - outside to inside
-                  const appearDelay = i * 0.025; // 25ms between each square - faster for infinite depth
+                  // Staggered delay for building effect - CENTER TO OUTSIDE (emanating energy)
+                  const appearDelay = (squareCount - 1 - i) * 0.02; // 20ms between each square, innermost first
                   const appearDuration = 0.5; // Each square takes 0.5s to appear
 
                   return (
@@ -230,17 +230,79 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                 ease: [0.22, 1, 0.36, 1]
               }}
             >
-              <h1
-                className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide text-center px-8"
-                style={{
-                  color: "#1C1A18",
-                  textShadow: '0 2px 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6)',
-                  letterSpacing: '0.02em'
+              {/* Breathing animation wrapper */}
+              <motion.div
+                animate={isExiting ? {} : {
+                  scale: [1, 1.02, 1],
+                }}
+                transition={{
+                  duration: 3.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
                 }}
               >
-                Love, Violeta Rose
-              </h1>
+                <motion.h1
+                  className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide text-center px-8"
+                  style={{
+                    color: "#1C1A18",
+                    letterSpacing: '0.02em'
+                  }}
+                  animate={isExiting ? {} : {
+                    textShadow: [
+                      '0 2px 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(217, 119, 136, 0.3)',
+                      '0 2px 25px rgba(255, 255, 255, 0.9), 0 0 50px rgba(255, 255, 255, 0.7), 0 0 80px rgba(217, 119, 136, 0.5)',
+                      '0 2px 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6), 0 0 60px rgba(217, 119, 136, 0.3)',
+                    ]
+                  }}
+                  transition={{
+                    duration: 3.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  Love, Violeta Rose
+                </motion.h1>
+              </motion.div>
             </motion.div>
+
+            {/* Floating particles around hero text */}
+            {!prefersReducedMotion && !isExiting && (
+              <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 99 }}>
+                {Array.from({ length: 20 }, (_, i) => {
+                  const angle = (i / 20) * Math.PI * 2;
+                  const radius = 200 + (i % 3) * 80;
+                  const x = 50 + Math.cos(angle) * (radius / 10);
+                  const y = 50 + Math.sin(angle) * (radius / 10);
+
+                  return (
+                    <motion.div
+                      key={i}
+                      className="absolute rounded-full"
+                      style={{
+                        left: `${x}%`,
+                        top: `${y}%`,
+                        width: '3px',
+                        height: '3px',
+                        background: 'radial-gradient(circle, rgba(217, 119, 136, 0.6), rgba(217, 119, 136, 0))',
+                      }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{
+                        opacity: [0, 0.6, 0.4, 0.7, 0],
+                        scale: [0, 1, 1.2, 1, 0],
+                        y: [0, -30, -60, -90, -120],
+                        x: [0, Math.sin(i) * 10, Math.sin(i * 2) * 15, Math.sin(i * 3) * 10, 0],
+                      }}
+                      transition={{
+                        duration: 4 + (i % 3),
+                        delay: 0.5 + (i * 0.1),
+                        repeat: Infinity,
+                        ease: "easeOut",
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            )}
           </motion.div>
         </motion.div>
       )}
