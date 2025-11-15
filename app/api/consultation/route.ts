@@ -109,114 +109,247 @@ function generateEmailHtml(data: any): string {
   <title>New Consultation Request</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-      line-height: 1.6;
+      font-family: Georgia, 'Playfair Display', serif;
+      line-height: 1.7;
       color: #1C1A18;
-      background-color: #FAF7F2;
+      background: linear-gradient(to bottom, #FAF7F2 0%, #F5EFE7 100%);
       margin: 0;
       padding: 0;
     }
+    .outer-envelope {
+      max-width: 680px;
+      margin: 20px auto;
+      padding: 20px;
+    }
     .container {
-      max-width: 600px;
-      margin: 40px auto;
+      max-width: 640px;
+      margin: 0 auto;
       background: #FFFFFF;
+      box-shadow: 0 10px 40px rgba(161, 76, 65, 0.15);
       border: 1px solid #E9DDD2;
-      border-radius: 8px;
+      border-radius: 2px;
       overflow: hidden;
     }
+
+    /* Elegant Header - Like opening a letter */
     .header {
-      background: linear-gradient(135deg, #A14C41 0%, #7B6A5A 100%);
-      padding: 40px 30px;
+      background: linear-gradient(135deg, #A14C41 0%, #8B5A50 50%, #7B6A5A 100%);
+      padding: 50px 40px 40px;
       text-align: center;
+      position: relative;
+      border-bottom: 3px solid #D4A574;
+    }
+    .header::before {
+      content: "✦";
+      display: block;
+      font-size: 24px;
+      color: #FAF7F2;
+      opacity: 0.6;
+      margin-bottom: 10px;
     }
     .header h1 {
-      margin: 0;
+      margin: 0 0 10px 0;
       color: #FFFFFF;
-      font-size: 28px;
-      font-weight: 600;
+      font-size: 32px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .header .couple-names {
+      font-size: 26px;
+      color: #FAF7F2;
+      font-style: italic;
+      margin: 15px 0 0 0;
+      font-weight: 300;
       letter-spacing: 0.05em;
     }
-    .header p {
-      margin: 8px 0 0 0;
+    .header .date-stamp {
+      font-size: 12px;
       color: #FAF7F2;
-      font-size: 16px;
-      opacity: 0.95;
+      opacity: 0.8;
+      margin-top: 20px;
+      font-family: -apple-system, sans-serif;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
+
+    /* Content */
     .content {
-      padding: 40px 30px;
+      padding: 45px 40px;
     }
-    .section {
-      margin-bottom: 32px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid #E9DDD2;
+
+    /* Info Cards - organized blocks */
+    .info-card {
+      background: linear-gradient(to bottom, #FFFCF7, #FFFFFF);
+      border: 2px solid #E9DDD2;
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(123, 106, 90, 0.08);
     }
-    .section:last-child {
-      border-bottom: none;
+    .info-card:last-child {
       margin-bottom: 0;
-      padding-bottom: 0;
     }
-    .section-title {
-      font-size: 18px;
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #A14C41;
+    }
+    .card-icon {
+      font-size: 24px;
+      margin-right: 12px;
+    }
+    .card-title {
+      font-size: 20px;
       font-weight: 600;
       color: #A14C41;
-      margin: 0 0 16px 0;
-      letter-spacing: 0.03em;
+      margin: 0;
+      letter-spacing: 0.05em;
+      font-family: 'Playfair Display', Georgia, serif;
     }
-    .field {
-      margin-bottom: 12px;
+
+    /* Fields - key/value pairs */
+    .field-row {
+      display: table;
+      width: 100%;
+      margin-bottom: 14px;
+    }
+    .field-row:last-child {
+      margin-bottom: 0;
     }
     .field-label {
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 11px;
+      font-weight: 700;
       color: #7B6A5A;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 4px;
+      letter-spacing: 0.1em;
+      margin-bottom: 5px;
+      font-family: -apple-system, sans-serif;
     }
     .field-value {
-      font-size: 15px;
+      font-size: 16px;
       color: #1C1A18;
+      line-height: 1.6;
     }
     .field-value a {
       color: #A14C41;
       text-decoration: none;
+      border-bottom: 1px solid #E9DDD2;
+      transition: border-color 0.3s;
     }
     .field-value a:hover {
-      text-decoration: underline;
+      border-bottom-color: #A14C41;
     }
-    .badge {
+    .field-value.highlight {
+      font-size: 18px;
+      font-weight: 600;
+      color: #A14C41;
+    }
+
+    /* Special tags/badges */
+    .tag {
       display: inline-block;
+      background: #A14C41;
+      color: #FFFFFF;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 4px 6px 4px 0;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: -apple-system, sans-serif;
+    }
+    .tag.secondary {
       background: #E9DDD2;
       color: #7B6A5A;
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 500;
-      margin: 2px 4px 2px 0;
     }
-    .priority-box {
-      background: #FFF9F0;
-      border-left: 4px solid #A14C41;
-      padding: 16px;
+
+    /* Priority/Special boxes */
+    .special-note {
+      background: linear-gradient(135deg, #FFF9F0 0%, #FFF5E8 100%);
+      border-left: 5px solid #D4A574;
+      border-radius: 6px;
+      padding: 20px 24px;
       margin: 20px 0;
-      border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(212, 165, 116, 0.15);
     }
+    .special-note-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #A14C41;
+      margin: 0 0 12px 0;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: -apple-system, sans-serif;
+    }
+    .special-note-content {
+      font-size: 15px;
+      color: #1C1A18;
+      line-height: 1.7;
+    }
+
+    /* Story section - more elegant */
+    .story-box {
+      background: #FFFCF7;
+      border: 2px dashed #E9DDD2;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 20px 0;
+      font-style: italic;
+      color: #5A4A42;
+      line-height: 1.8;
+    }
+
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #E9DDD2, transparent);
+      margin: 32px 0;
+    }
+
+    /* Footer */
     .footer {
-      background: #FAF7F2;
-      padding: 24px 30px;
+      background: linear-gradient(to bottom, #F5EFE7, #E9DDD2);
+      padding: 30px 40px;
       text-align: center;
+      border-top: 3px solid #D4A574;
+    }
+    .footer-logo {
+      font-size: 20px;
+      font-weight: 600;
+      color: #A14C41;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .footer-tagline {
       font-size: 13px;
       color: #7B6A5A;
+      font-style: italic;
+      margin-bottom: 15px;
+    }
+    .footer-meta {
+      font-size: 11px;
+      color: #7B6A5A;
+      opacity: 0.7;
+      font-family: -apple-system, sans-serif;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <div class="header">
-      <h1>✨ New Consultation Request</h1>
-      <p>${partner1} & ${partner2}</p>
-    </div>
+  <div class="outer-envelope">
+    <div class="container">
+      <!-- Elegant Header -->
+      <div class="header">
+        <h1>New Consultation</h1>
+        <div class="couple-names">${partner1} & ${partner2}</div>
+        <div class="date-stamp">Submitted ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
+      </div>
 
     <!-- Content -->
     <div class="content">
