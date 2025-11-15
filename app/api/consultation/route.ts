@@ -102,435 +102,294 @@ function generateEmailHtml(data: any): string {
 
   return `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Consultation Request</title>
-  <style>
-    body {
-      font-family: Georgia, 'Playfair Display', serif;
-      line-height: 1.7;
-      color: #1C1A18;
-      background: linear-gradient(to bottom, #FAF7F2 0%, #F5EFE7 100%);
-      margin: 0;
-      padding: 0;
-    }
-    .outer-envelope {
-      max-width: 680px;
-      margin: 20px auto;
-      padding: 20px;
-    }
-    .container {
-      max-width: 640px;
-      margin: 0 auto;
-      background: #FFFFFF;
-      box-shadow: 0 10px 40px rgba(161, 76, 65, 0.15);
-      border: 1px solid #E9DDD2;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    /* Elegant Header - Like opening a letter */
-    .header {
-      background: linear-gradient(135deg, #A14C41 0%, #8B5A50 50%, #7B6A5A 100%);
-      padding: 50px 40px 40px;
-      text-align: center;
-      position: relative;
-      border-bottom: 3px solid #D4A574;
-    }
-    .header::before {
-      content: "✦";
-      display: block;
-      font-size: 24px;
-      color: #FAF7F2;
-      opacity: 0.6;
-      margin-bottom: 10px;
-    }
-    .header h1 {
-      margin: 0 0 10px 0;
-      color: #FFFFFF;
-      font-size: 32px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-family: 'Playfair Display', Georgia, serif;
-    }
-    .header .couple-names {
-      font-size: 26px;
-      color: #FAF7F2;
-      font-style: italic;
-      margin: 15px 0 0 0;
-      font-weight: 300;
-      letter-spacing: 0.05em;
-    }
-    .header .date-stamp {
-      font-size: 12px;
-      color: #FAF7F2;
-      opacity: 0.8;
-      margin-top: 20px;
-      font-family: -apple-system, sans-serif;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* Content */
-    .content {
-      padding: 45px 40px;
-    }
-
-    /* Info Cards - organized blocks */
-    .info-card {
-      background: linear-gradient(to bottom, #FFFCF7, #FFFFFF);
-      border: 2px solid #E9DDD2;
-      border-radius: 8px;
-      padding: 24px 28px;
-      margin-bottom: 24px;
-      box-shadow: 0 2px 8px rgba(123, 106, 90, 0.08);
-    }
-    .info-card:last-child {
-      margin-bottom: 0;
-    }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #A14C41;
-    }
-    .card-icon {
-      font-size: 24px;
-      margin-right: 12px;
-    }
-    .card-title {
-      font-size: 20px;
-      font-weight: 600;
-      color: #A14C41;
-      margin: 0;
-      letter-spacing: 0.05em;
-      font-family: 'Playfair Display', Georgia, serif;
-    }
-
-    /* Fields - key/value pairs */
-    .field-row {
-      display: table;
-      width: 100%;
-      margin-bottom: 14px;
-    }
-    .field-row:last-child {
-      margin-bottom: 0;
-    }
-    .field-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: #7B6A5A;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 5px;
-      font-family: -apple-system, sans-serif;
-    }
-    .field-value {
-      font-size: 16px;
-      color: #1C1A18;
-      line-height: 1.6;
-    }
-    .field-value a {
-      color: #A14C41;
-      text-decoration: none;
-      border-bottom: 1px solid #E9DDD2;
-      transition: border-color 0.3s;
-    }
-    .field-value a:hover {
-      border-bottom-color: #A14C41;
-    }
-    .field-value.highlight {
-      font-size: 18px;
-      font-weight: 600;
-      color: #A14C41;
-    }
-
-    /* Special tags/badges */
-    .tag {
-      display: inline-block;
-      background: #A14C41;
-      color: #FFFFFF;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      margin: 4px 6px 4px 0;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-family: -apple-system, sans-serif;
-    }
-    .tag.secondary {
-      background: #E9DDD2;
-      color: #7B6A5A;
-    }
-
-    /* Priority/Special boxes */
-    .special-note {
-      background: linear-gradient(135deg, #FFF9F0 0%, #FFF5E8 100%);
-      border-left: 5px solid #D4A574;
-      border-radius: 6px;
-      padding: 20px 24px;
-      margin: 20px 0;
-      box-shadow: 0 2px 12px rgba(212, 165, 116, 0.15);
-    }
-    .special-note-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #A14C41;
-      margin: 0 0 12px 0;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-family: -apple-system, sans-serif;
-    }
-    .special-note-content {
-      font-size: 15px;
-      color: #1C1A18;
-      line-height: 1.7;
-    }
-
-    /* Story section - more elegant */
-    .story-box {
-      background: #FFFCF7;
-      border: 2px dashed #E9DDD2;
-      border-radius: 8px;
-      padding: 24px;
-      margin: 20px 0;
-      font-style: italic;
-      color: #5A4A42;
-      line-height: 1.8;
-    }
-
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #E9DDD2, transparent);
-      margin: 32px 0;
-    }
-
-    /* Footer */
-    .footer {
-      background: linear-gradient(to bottom, #F5EFE7, #E9DDD2);
-      padding: 30px 40px;
-      text-align: center;
-      border-top: 3px solid #D4A574;
-    }
-    .footer-logo {
-      font-size: 20px;
-      font-weight: 600;
-      color: #A14C41;
-      margin-bottom: 8px;
-      letter-spacing: 0.1em;
-      font-family: 'Playfair Display', Georgia, serif;
-    }
-    .footer-tagline {
-      font-size: 13px;
-      color: #7B6A5A;
-      font-style: italic;
-      margin-bottom: 15px;
-    }
-    .footer-meta {
-      font-size: 11px;
-      color: #7B6A5A;
-      opacity: 0.7;
-      font-family: -apple-system, sans-serif;
-    }
-  </style>
+  <title>Consultation Request</title>
 </head>
-<body>
-  <div class="outer-envelope">
-    <div class="container">
-      <!-- Elegant Header -->
-      <div class="header">
-        <h1>New Consultation</h1>
-        <div class="couple-names">${partner1} & ${partner2}</div>
-        <div class="date-stamp">Submitted ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
-      </div>
+<body style="margin: 0; padding: 0; background-color: #FAFAFA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 
-    <!-- Content -->
-    <div class="content">
-      <!-- Contact Information -->
-      <div class="section">
-        <h2 class="section-title">Contact Information</h2>
+  <!-- Email Container -->
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background-color: #FAFAFA;">
+    <tr>
+      <td style="padding: 40px 20px;">
 
-        <div class="field">
-          <div class="field-label">Couple's Names</div>
-          <div class="field-value">${partner1} & ${partner2}</div>
-        </div>
+        <!-- Main Email Card -->
+        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width: 640px; margin: 0 auto; background-color: #FFFFFF; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
 
-        <div class="field">
-          <div class="field-label">Email</div>
-          <div class="field-value"><a href="mailto:${email}">${email}</a></div>
-        </div>
+          <!-- Header Section -->
+          <tr>
+            <td style="padding: 60px 50px 50px; text-align: center; border-bottom: 1px solid #E8E8E8;">
+              <h1 style="margin: 0 0 20px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 36px; font-weight: 400; color: #1A1A1A; letter-spacing: -0.02em; line-height: 1.2;">
+                Consultation Request
+              </h1>
+              <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-weight: 300; color: #4A4A4A; font-style: italic; line-height: 1.4;">
+                ${partner1} & ${partner2}
+              </p>
+              <p style="margin: 24px 0 0 0; font-size: 13px; font-weight: 500; color: #999999; letter-spacing: 0.1em; text-transform: uppercase;">
+                ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              </p>
+            </td>
+          </tr>
 
-        ${phone ? `
-        <div class="field">
-          <div class="field-label">Phone</div>
-          <div class="field-value"><a href="tel:${phone}">${phone}</a></div>
-        </div>
-        ` : ''}
+          <!-- Content Section -->
+          <tr>
+            <td style="padding: 50px;">
 
-        ${role === "planner" ? `
-        <div class="priority-box">
-          <strong>👔 Wedding Planner Inquiry</strong>
-          ${plannerName ? `<div style="margin-top: 8px;"><strong>Name:</strong> ${plannerName}</div>` : ''}
-          ${plannerEmail ? `<div><strong>Email:</strong> <a href="mailto:${plannerEmail}">${plannerEmail}</a></div>` : ''}
-          ${plannerPhone ? `<div><strong>Phone:</strong> <a href="tel:${plannerPhone}">${plannerPhone}</a></div>` : ''}
-          ${plannerCompany ? `<div><strong>Company:</strong> ${plannerCompany}</div>` : ''}
-        </div>
-        ` : ''}
+              <!-- Contact Information -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 40px;">
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 600; color: #2A2A2A; letter-spacing: 0.03em;">
+                      Contact Information
+                    </h2>
 
-        ${role === "parent" ? `
-        <div class="priority-box">
-          <strong>👨‍👩‍👧 Parent/Family Inquiry</strong>
-          ${parentName ? `<div style="margin-top: 8px;"><strong>Name:</strong> ${parentName}</div>` : ''}
-          ${parentRelation ? `<div><strong>Relation:</strong> ${parentRelation}</div>` : ''}
-          ${parentEmail ? `<div><strong>Email:</strong> <a href="mailto:${parentEmail}">${parentEmail}</a></div>` : ''}
-          ${parentPhone ? `<div><strong>Phone:</strong> <a href="tel:${parentPhone}">${parentPhone}</a></div>` : ''}
-          ${parentContactPreference ? `<div><strong>Preferred Contact:</strong> ${parentContactPreference}</div>` : ''}
-        </div>
-        ` : ''}
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Email</p>
+                          <p style="margin: 0; font-size: 16px; color: #2A2A2A; line-height: 1.5;">
+                            <a href="mailto:${email}" style="color: #2A2A2A; text-decoration: none; border-bottom: 1px solid #CCCCCC;">${email}</a>
+                          </p>
+                        </td>
+                      </tr>
+                      ${phone ? `
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Phone</p>
+                          <p style="margin: 0; font-size: 16px; color: #2A2A2A; line-height: 1.5;">
+                            <a href="tel:${phone}" style="color: #2A2A2A; text-decoration: none; border-bottom: 1px solid #CCCCCC;">${phone}</a>
+                          </p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      <tr>
+                        <td>
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Preferred Contact</p>
+                          <p style="margin: 0; font-size: 16px; color: #2A2A2A; line-height: 1.5;">${contactPreference || 'Email'}</p>
+                        </td>
+                      </tr>
+                    </table>
 
-        <div class="field">
-          <div class="field-label">Preferred Contact Method</div>
-          <div class="field-value">${contactPreference || 'Not specified'}</div>
-        </div>
-      </div>
+                    ${role === "planner" ? `
+                    <div style="margin-top: 24px; padding: 20px; background-color: #F9F9F9; border-left: 3px solid #2A2A2A;">
+                      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; color: #2A2A2A; letter-spacing: 0.08em; text-transform: uppercase;">Wedding Planner Inquiry</p>
+                      ${plannerName ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #4A4A4A;"><strong>Name:</strong> ${plannerName}</p>` : ''}
+                      ${plannerCompany ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #4A4A4A;"><strong>Company:</strong> ${plannerCompany}</p>` : ''}
+                      ${plannerEmail ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #4A4A4A;"><strong>Email:</strong> <a href="mailto:${plannerEmail}" style="color: #2A2A2A; text-decoration: none; border-bottom: 1px solid #CCCCCC;">${plannerEmail}</a></p>` : ''}
+                      ${plannerPhone ? `<p style="margin: 0; font-size: 15px; color: #4A4A4A;"><strong>Phone:</strong> ${plannerPhone}</p>` : ''}
+                    </div>
+                    ` : ''}
 
-      <!-- Event Details -->
-      <div class="section">
-        <h2 class="section-title">Event Details</h2>
+                    ${role === "parent" ? `
+                    <div style="margin-top: 24px; padding: 20px; background-color: #F9F9F9; border-left: 3px solid #2A2A2A;">
+                      <p style="margin: 0 0 12px 0; font-size: 12px; font-weight: 700; color: #2A2A2A; letter-spacing: 0.08em; text-transform: uppercase;">Parent/Family Inquiry</p>
+                      ${parentName ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #4A4A4A;"><strong>Name:</strong> ${parentName}</p>` : ''}
+                      ${parentRelation ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #4A4A4A;"><strong>Relation:</strong> ${parentRelation}</p>` : ''}
+                      ${parentEmail ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #4A4A4A;"><strong>Email:</strong> <a href="mailto:${parentEmail}" style="color: #2A2A2A; text-decoration: none; border-bottom: 1px solid #CCCCCC;">${parentEmail}</a></p>` : ''}
+                      ${parentPhone ? `<p style="margin: 0 0 8px 0; font-size: 15px; color: #4A4A4A;"><strong>Phone:</strong> ${parentPhone}</p>` : ''}
+                      ${parentContactPreference ? `<p style="margin: 0; font-size: 15px; color: #4A4A4A;"><strong>Best Contact:</strong> ${parentContactPreference}</p>` : ''}
+                    </div>
+                    ` : ''}
+                  </td>
+                </tr>
+              </table>
 
-        ${eventType ? `
-        <div class="field">
-          <div class="field-label">Event Type</div>
-          <div class="field-value">${formatEventType(eventType)}${isMultiDay ? ' (Multi-day celebration)' : ''}</div>
-        </div>
-        ` : ''}
+              <!-- Divider -->
+              <hr style="border: none; border-top: 1px solid #E8E8E8; margin: 0 0 40px 0;">
 
-        ${date ? `
-        <div class="field">
-          <div class="field-label">Event Date</div>
-          <div class="field-value">${formatDate(date)}</div>
-        </div>
-        ` : ''}
+              <!-- Event Details -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 40px;">
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 600; color: #2A2A2A; letter-spacing: 0.03em;">
+                      Event Details
+                    </h2>
 
-        ${traditionResolved ? `
-        <div class="field">
-          <div class="field-label">Tradition / Cultural Context</div>
-          <div class="field-value">${traditionResolved}</div>
-        </div>
-        ` : ''}
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      ${eventType ? `
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Event Type</p>
+                          <p style="margin: 0; font-size: 17px; font-weight: 500; color: #2A2A2A; line-height: 1.5;">${formatEventType(eventType)}${isMultiDay ? ' • Multi-Day' : ''}</p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      ${date ? `
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Date</p>
+                          <p style="margin: 0; font-size: 17px; font-weight: 500; color: #2A2A2A; line-height: 1.5;">${formatDate(date)}</p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      ${location ? `
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Location</p>
+                          <p style="margin: 0; font-size: 16px; color: #2A2A2A; line-height: 1.5;">${location}</p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      ${traditionResolved ? `
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Cultural Tradition</p>
+                          <p style="margin: 0; font-size: 16px; color: #2A2A2A; line-height: 1.5;">${traditionResolved}</p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      ${guestCount ? `
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Guest Count</p>
+                          <p style="margin: 0; font-size: 16px; color: #2A2A2A; line-height: 1.5;">${guestCount} guests</p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                      ${venueName || venueLink ? `
+                      <tr>
+                        <td>
+                          <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Venue</p>
+                          <p style="margin: 0; font-size: 16px; color: #2A2A2A; line-height: 1.5;">
+                            ${venueName || 'To be determined'}
+                            ${venueLink ? `<br><a href="${venueLink}" style="color: #2A2A2A; text-decoration: none; border-bottom: 1px solid #CCCCCC; font-size: 14px; margin-top: 4px; display: inline-block;">View Venue →</a>` : ''}
+                          </p>
+                        </td>
+                      </tr>
+                      ` : ''}
+                    </table>
+                  </td>
+                </tr>
+              </table>
 
-        ${location ? `
-        <div class="field">
-          <div class="field-label">Location</div>
-          <div class="field-value">${location}</div>
-        </div>
-        ` : ''}
+              ${budgetRange ? `
+              <!-- Divider -->
+              <hr style="border: none; border-top: 1px solid #E8E8E8; margin: 0 0 40px 0;">
 
-        ${guestCount ? `
-        <div class="field">
-          <div class="field-label">Guest Count</div>
-          <div class="field-value">${guestCount}</div>
-        </div>
-        ` : ''}
+              <!-- Investment -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 40px;">
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 600; color: #2A2A2A; letter-spacing: 0.03em;">
+                      Investment
+                    </h2>
+                    <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Budget Range</p>
+                    <p style="margin: 0; font-size: 20px; font-weight: 500; color: #2A2A2A;">$${budgetRange}</p>
+                  </td>
+                </tr>
+              </table>
+              ` : ''}
 
-        ${venueName || venueLink ? `
-        <div class="field">
-          <div class="field-label">Venue</div>
-          <div class="field-value">
-            ${venueName || 'Not specified'}
-            ${venueLink ? `<br><a href="${venueLink}" target="_blank">${venueLink}</a>` : ''}
-          </div>
-        </div>
-        ` : ''}
-      </div>
+              ${(filmFeel && filmFeel.length > 0) || howYouMet ? `
+              <!-- Divider -->
+              <hr style="border: none; border-top: 1px solid #E8E8E8; margin: 0 0 40px 0;">
 
-      <!-- Their Story -->
-      ${howYouMet || (filmFeel && filmFeel.length > 0) ? `
-      <div class="section">
-        <h2 class="section-title">Their Story & Vision</h2>
+              <!-- Story & Vision -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 40px;">
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 600; color: #2A2A2A; letter-spacing: 0.03em;">
+                      Story & Vision
+                    </h2>
 
-        ${howYouMet ? `
-        <div class="field">
-          <div class="field-label">How They Met</div>
-          <div class="field-value">${howYouMet}</div>
-        </div>
-        ` : ''}
+                    ${filmFeel && filmFeel.length > 0 ? `
+                    <div style="margin-bottom: ${howYouMet ? '24px' : '0'};">
+                      <p style="margin: 0 0 12px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Film Aesthetic</p>
+                      <div>
+                        ${filmFeel.map((feel) => `<span style="display: inline-block; padding: 6px 14px; margin: 0 8px 8px 0; background-color: #F5F5F5; color: #2A2A2A; font-size: 13px; font-weight: 500; letter-spacing: 0.02em;">${feel}</span>`).join('')}
+                      </div>
+                    </div>
+                    ` : ''}
 
-        ${filmFeel && filmFeel.length > 0 ? `
-        <div class="field">
-          <div class="field-label">Film Feel</div>
-          <div class="field-value">
-            ${filmFeel.map((feel: string) => `<span class="badge">${feel}</span>`).join('')}
-          </div>
-        </div>
-        ` : ''}
-      </div>
-      ` : ''}
+                    ${howYouMet ? `
+                    <div style="padding: 24px; background-color: #FAFAFA; border-left: 2px solid #E8E8E8;">
+                      <p style="margin: 0 0 8px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">How They Met</p>
+                      <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 16px; font-style: italic; color: #4A4A4A; line-height: 1.7;">
+                        ${howYouMet}
+                      </p>
+                    </div>
+                    ` : ''}
+                  </td>
+                </tr>
+              </table>
+              ` : ''}
 
-      <!-- Inspiration -->
-      ${pinterestBoardUrl || otherInspirationLinks ? `
-      <div class="section">
-        <h2 class="section-title">Inspiration</h2>
+              ${pinterestBoardUrl || otherInspirationLinks ? `
+              <!-- Divider -->
+              <hr style="border: none; border-top: 1px solid #E8E8E8; margin: 0 0 40px 0;">
 
-        ${pinterestBoardUrl ? `
-        <div class="field">
-          <div class="field-label">Pinterest Board</div>
-          <div class="field-value">
-            ${pinterestBoardTitle ? `${pinterestBoardTitle}<br>` : ''}
-            <a href="${pinterestBoardUrl}" target="_blank">${pinterestBoardUrl}</a>
-          </div>
-        </div>
-        ` : ''}
+              <!-- Inspiration -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin-bottom: 40px;">
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 600; color: #2A2A2A; letter-spacing: 0.03em;">
+                      Inspiration
+                    </h2>
 
-        ${otherInspirationLinks ? `
-        <div class="field">
-          <div class="field-label">Other Inspiration Links</div>
-          <div class="field-value">${otherInspirationLinks}</div>
-        </div>
-        ` : ''}
-      </div>
-      ` : ''}
+                    ${pinterestBoardUrl ? `
+                    <div style="margin-bottom: ${otherInspirationLinks ? '20px' : '0'};">
+                      <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">${pinterestBoardTitle || 'Pinterest Board'}</p>
+                      <p style="margin: 0;">
+                        <a href="${pinterestBoardUrl}" style="color: #2A2A2A; text-decoration: none; border-bottom: 1px solid #CCCCCC; font-size: 15px;">View Board →</a>
+                      </p>
+                    </div>
+                    ` : ''}
 
-      <!-- Budget & Notes -->
-      <div class="section">
-        <h2 class="section-title">Investment & Notes</h2>
+                    ${otherInspirationLinks ? `
+                    <div>
+                      <p style="margin: 0 0 4px 0; font-size: 11px; font-weight: 600; color: #999999; letter-spacing: 0.08em; text-transform: uppercase;">Other Links</p>
+                      <p style="margin: 0; font-size: 15px; color: #4A4A4A; line-height: 1.6;">${otherInspirationLinks}</p>
+                    </div>
+                    ` : ''}
+                  </td>
+                </tr>
+              </table>
+              ` : ''}
 
-        ${budgetRange ? `
-        <div class="field">
-          <div class="field-label">Budget Range</div>
-          <div class="field-value">$${budgetRange}</div>
-        </div>
-        ` : ''}
+              ${additionalNotes ? `
+              <!-- Divider -->
+              <hr style="border: none; border-top: 1px solid #E8E8E8; margin: 0 0 40px 0;">
 
-        ${additionalNotes ? `
-        <div class="field">
-          <div class="field-label">Additional Notes</div>
-          <div class="field-value">${additionalNotes}</div>
-        </div>
-        ` : ''}
-      </div>
-    </div>
+              <!-- Additional Notes -->
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                <tr>
+                  <td>
+                    <h2 style="margin: 0 0 24px 0; font-family: Georgia, 'Times New Roman', serif; font-size: 18px; font-weight: 600; color: #2A2A2A; letter-spacing: 0.03em;">
+                      Additional Notes
+                    </h2>
+                    <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 16px; font-style: italic; color: #4A4A4A; line-height: 1.7;">
+                      ${additionalNotes}
+                    </p>
+                  </td>
+                </tr>
+              </table>
+              ` : ''}
 
-    <!-- Footer -->
-    <div class="footer">
-      <p>Love, Violeta Rose — Luxury Wedding Films</p>
-      <p style="margin-top: 8px; font-size: 12px; opacity: 0.8;">
-        This consultation request was submitted via your website
-      </p>
-    </div>
-  </div>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 40px 50px; text-align: center; border-top: 1px solid #E8E8E8; background-color: #FAFAFA;">
+              <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 16px; font-weight: 400; color: #2A2A2A; letter-spacing: 0.05em;">
+                Love, Violeta Rose — Wedding Films
+              </p>
+            </td>
+          </tr>
+
+        </table>
+        <!-- End Main Email Card -->
+
+      </td>
+    </tr>
+  </table>
+  <!-- End Email Container -->
+
 </body>
 </html>
   `;
-}
-
 // Generate plain text email
 function generateEmailText(data: any): string {
   const {
