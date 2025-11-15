@@ -1,111 +1,47 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Resend } from "resend";
 
 /**
- * Test endpoint with comprehensive example data
- * Visit: /api/test-email in your browser
- * This sends a fully populated consultation email to test the design
+ * Preview email template in browser without sending
+ * Visit: /api/preview-email in your browser
  */
 export async function GET(request: NextRequest) {
-  try {
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY) {
-      return NextResponse.json(
-        {
-          status: "error",
-          message: "RESEND_API_KEY is not configured in environment variables",
-          hint: "Add it in Vercel project settings → Environment Variables",
-        },
-        { status: 500 }
-      );
-    }
+  // Comprehensive test data - everything filled out
+  const testData = {
+    partner1: "Sofia",
+    partner2: "Alessandro",
+    email: "sofia.alessandro@example.com",
+    phone: "(212) 555-0198",
+    role: "couple",
+    eventType: "destination",
+    date: "2025-09-20",
+    location: "Amalfi Coast, Italy",
+    traditionResolved: "Italian & Greek Orthodox",
+    guestCount: "85",
+    venueName: "Villa Cimbrone",
+    venueLink: "https://villacimbrone.com",
+    isMultiDay: true,
+    howYouMet: "We met during a summer art workshop in Florence. Alessandro was teaching watercolor techniques, and I was completely captivated—not just by his talent, but by the way he saw beauty in everything around him. After class, we spent hours wandering the city, and by sunset at Piazzale Michelangelo, we both knew something special had begun.",
+    filmFeel: ["Cinematic", "Editorial", "Romantic", "Timeless"],
+    budgetRange: "12,000-15,000",
+    contactPreference: "Email",
+    pinterestBoardUrl: "https://pinterest.com/sofiaandalessandro/amalfi-coast-wedding",
+    pinterestBoardTitle: "Our Amalfi Coast Dream",
+    otherInspirationLinks: "https://www.instagram.com/amalficoastweddings/\\nhttps://www.stylemepretty.com/italy-weddings",
+    additionalNotes: "We're planning an intimate, three-day celebration starting with a welcome dinner at a local trattoria, followed by the ceremony at Villa Cimbrone, and ending with a farewell brunch on a private yacht. We want the film to capture not just the big moments, but the quiet, in-between ones—the laughter over limoncello, the golden hour light on the cliffs, and the way our families from two cultures come together as one.",
+  };
 
-    // Check FROM and TO emails
-    const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
-    const toEmail = process.env.RESEND_TO_EMAIL || "not-set@example.com";
+  // Generate HTML
+  const html = generateEmailPreview(testData);
 
-    // Initialize Resend
-    const resend = new Resend(process.env.RESEND_API_KEY);
-
-    // Comprehensive test data - everything filled out
-    const testData = {
-      partner1: "Sofia",
-      partner2: "Alessandro",
-      email: "sofia.alessandro@example.com",
-      phone: "(212) 555-0198",
-      role: "couple",
-      eventType: "destination",
-      date: "2025-09-20",
-      location: "Amalfi Coast, Italy",
-      traditionResolved: "Italian & Greek Orthodox",
-      guestCount: "85",
-      venueName: "Villa Cimbrone",
-      venueLink: "https://villacimbrone.com",
-      isMultiDay: true,
-      howYouMet: "We met during a summer art workshop in Florence. Alessandro was teaching watercolor techniques, and I was completely captivated—not just by his talent, but by the way he saw beauty in everything around him. After class, we spent hours wandering the city, and by sunset at Piazzale Michelangelo, we both knew something special had begun.",
-      filmFeel: ["Cinematic", "Editorial", "Romantic", "Timeless"],
-      budgetRange: "12,000-15,000",
-      contactPreference: "Email",
-      pinterestBoardUrl: "https://pinterest.com/sofiaandalessandro/amalfi-coast-wedding",
-      pinterestBoardTitle: "Our Amalfi Coast Dream",
-      otherInspirationLinks: "https://www.instagram.com/amalficoastweddings/\nhttps://www.stylemepretty.com/italy-weddings",
-      additionalNotes: "We're planning an intimate, three-day celebration starting with a welcome dinner at a local trattoria, followed by the ceremony at Villa Cimbrone, and ending with a farewell brunch on a private yacht. We want the film to capture not just the big moments, but the quiet, in-between ones—the laughter over limoncello, the golden hour light on the cliffs, and the way our families from two cultures come together as one.",
-    };
-
-    // Generate email HTML using the consultation template
-    const emailHtml = await generateTestEmailHtml(testData);
-
-    // Send test email
-    const { data, error } = await resend.emails.send({
-      from: fromEmail,
-      to: toEmail,
-      replyTo: testData.email,
-      subject: `TEST: Consultation Request — ${testData.partner1} & ${testData.partner2}`,
-      html: emailHtml,
-    });
-
-    if (error) {
-      return NextResponse.json(
-        {
-          status: "error",
-          message: "Resend API returned an error",
-          error: error,
-          config: {
-            from: fromEmail,
-            to: toEmail,
-            apiKeyPrefix: process.env.RESEND_API_KEY.substring(0, 10),
-          },
-        },
-        { status: 500 }
-      );
-    }
-
-    return NextResponse.json({
-      status: "success",
-      message: "Test email sent successfully!",
-      emailId: data?.id,
-      sentFrom: fromEmail,
-      sentTo: toEmail,
-      instructions: [
-        "1. Check your inbox at: " + toEmail,
-        "2. Check spam/junk folder if not in inbox",
-        "3. Check Resend dashboard: https://resend.com/emails",
-        "4. If delivered, your consultation form should work!",
-      ],
-    });
-  } catch (error: any) {
-    return NextResponse.json(
-      {
-        status: "error",
-        message: "Unexpected error occurred",
-        error: error.message,
-      },
-      { status: 500 }
-      );
-  }
+  // Return HTML directly
+  return new NextResponse(html, {
+    headers: {
+      'Content-Type': 'text/html',
+    },
+  });
 }
 
-function generateTestEmailHtml(data: any): string {
+function generateEmailPreview(data: any): string {
   const {
     partner1,
     partner2,
@@ -135,7 +71,7 @@ function generateTestEmailHtml(data: any): string {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultation Request</title>
+  <title>Email Preview: Consultation Request</title>
 </head>
 <body style="margin: 0; padding: 0; background-color: #FAFAFA; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
 
