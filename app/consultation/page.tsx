@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import { pricing } from "@/content/pricing";
 import { TRADITION_CATEGORIES, SPECIAL_CHOICES, getTraditionLabel } from "@/data/traditions";
 import { formatPhoneSmart } from "@/lib/phone";
 import { trackMetaEvent } from "@/components/MetaPixel";
+import { trackConsultationFormView, trackConsultationFormSubmit } from "@/lib/analytics";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PinterestShare from "@/components/consultation/PinterestShare";
@@ -27,6 +28,11 @@ const LOCATIONS = [
 
 export default function ConsultationPage() {
   const router = useRouter();
+
+  // Track form view on mount
+  useEffect(() => {
+    trackConsultationFormView();
+  }, []);
 
   // Names
   const [partner1, setPartner1] = useState("");
@@ -211,6 +217,9 @@ export default function ConsultationPage() {
           content_name: "Consultation Form",
           content_category: "wedding_inquiry",
         });
+
+        // Track conversion in Google Analytics 4
+        trackConsultationFormSubmit(formData.eventType, formData.budgetRange);
 
         // Success - redirect to thank you page
         router.push("/consultation/success");

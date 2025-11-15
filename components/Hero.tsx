@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { hero } from "@/content/home";
+import { trackCTAClick } from "@/lib/analytics";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -94,12 +95,14 @@ export default function Hero() {
           >
             <a
               href={hero.ctas.primary.href}
+              onClick={() => trackCTAClick('hero', hero.ctas.primary.label, hero.ctas.primary.href)}
               className="group bg-white text-ink rounded-full px-8 py-4 font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl focus-ring"
             >
               {hero.ctas.primary.label}
             </a>
             <a
               href={hero.ctas.secondary.href}
+              onClick={() => trackCTAClick('hero', hero.ctas.secondary.label, hero.ctas.secondary.href)}
               className="rounded-full border-2 border-white/80 px-8 py-4 text-white font-medium backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:text-ink focus-ring"
             >
               {hero.ctas.secondary.label}
