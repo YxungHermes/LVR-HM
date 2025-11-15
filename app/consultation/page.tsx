@@ -7,6 +7,7 @@ import Link from "next/link";
 import { pricing } from "@/content/pricing";
 import { TRADITION_CATEGORIES, SPECIAL_CHOICES, getTraditionLabel } from "@/data/traditions";
 import { formatPhoneSmart } from "@/lib/phone";
+import { trackMetaEvent } from "@/components/MetaPixel";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PinterestShare from "@/components/consultation/PinterestShare";
@@ -205,6 +206,12 @@ export default function ConsultationPage() {
       const result = await response.json();
 
       if (response.ok) {
+        // Track conversion in Meta Pixel (Facebook/Instagram Ads)
+        trackMetaEvent("Lead", {
+          content_name: "Consultation Form",
+          content_category: "wedding_inquiry",
+        });
+
         // Success - redirect to thank you page
         router.push("/consultation/success");
       } else {

@@ -7,6 +7,7 @@ import ClickOrigin from "@/components/ClickOrigin";
 import PreloaderProvider from "@/components/PreloaderProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import MetaPixel from "@/components/MetaPixel";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -86,9 +87,14 @@ export default function RootLayout({
 
         <StagingBadge />
         <SpeedInsights />
+
+        {/* Google Analytics 4 - Website traffic tracking */}
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         )}
+
+        {/* Meta Pixel - Facebook/Instagram ad retargeting */}
+        <MetaPixel />
       </body>
     </html>
   );
