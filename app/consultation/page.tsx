@@ -7,6 +7,7 @@ import Link from "next/link";
 import { pricing } from "@/content/pricing";
 import { TRADITION_CATEGORIES, SPECIAL_CHOICES, getTraditionLabel } from "@/data/traditions";
 import { formatPhoneSmart } from "@/lib/phone";
+import { trackMetaEvent } from "@/components/MetaPixel";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PinterestShare from "@/components/consultation/PinterestShare";
@@ -98,7 +99,9 @@ export default function ConsultationPage() {
     setPhone(value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate names
@@ -165,8 +168,8 @@ export default function ConsultationPage() {
     // Resolve final location
     const finalLocation = location === "Other" ? locationOther : location;
 
-    // Handle form submission
-    console.log("Consultation form submitted:", {
+    // Prepare submission data
+    const submissionData = {
       partner1,
       partner2,
       phone,
@@ -186,10 +189,47 @@ export default function ConsultationPage() {
       multiTraditions: isMulti ? multiTraditions : undefined,
       traditionOther: isOther ? traditionOther : undefined,
       ...formData,
-    });
+    };
 
-    // Redirect to thank you page
-    router.push("/consultation/success");
+    // Submit to API
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/consultation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submissionData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        // Track conversion in Meta Pixel (Facebook/Instagram Ads)
+        trackMetaEvent("Lead", {
+          content_name: "Consultation Form",
+          content_category: "wedding_inquiry",
+        });
+
+        // Success - redirect to thank you page
+        router.push("/consultation/success");
+      } else {
+        // Handle error
+        console.error("Submission error:", result);
+        alert(
+          result.error ||
+          "There was an issue submitting your request. Please try again or contact us directly."
+        );
+        setIsSubmitting(false);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+      alert(
+        "There was a network error. Please check your connection and try again, or contact us directly."
+      );
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -915,22 +955,51 @@ export default function ConsultationPage() {
               <div className="text-center pt-4">
                 <button
                   type="submit"
-                  className="inline-flex items-center bg-rose-wax-red text-white px-10 py-4 rounded-full font-medium text-lg transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg focus-ring"
+                  disabled={isSubmitting}
+                  className="inline-flex items-center bg-rose-wax-red text-white px-10 py-4 rounded-full font-medium text-lg transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg focus-ring disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  Book My Consultation
-                  <svg
-                    className="ml-3 h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
+                  {isSubmitting ? (
+                    <>
+                      <svg
+                        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                      >
+                        <circle
+                          className="opacity-25"
+                          cx="12"
+                          cy="12"
+                          r="10"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                        ></circle>
+                        <path
+                          className="opacity-75"
+                          fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                        ></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      Book My Consultation
+                      <svg
+                        className="ml-3 h-5 w-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </>
+                  )}
                 </button>
                 <p className="mt-4 text-sm text-espresso/60">
                   I respond to all inquiries within 24 hours
