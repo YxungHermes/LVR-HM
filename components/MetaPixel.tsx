@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 
 /**
@@ -32,7 +32,6 @@ declare global {
 
 export default function MetaPixel() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const pixelId = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function MetaPixel() {
     if (pixelId && window.fbq) {
       window.fbq("track", "PageView");
     }
-  }, [pathname, searchParams, pixelId]);
+  }, [pathname, pixelId]);
 
   // Don't render if pixel ID is not configured
   if (!pixelId) {
