@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
-import Airtable from "airtable";
 
 export async function POST(request: NextRequest) {
   try {
@@ -14,124 +13,46 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    let airtableRecordId = null;
-    let emailId = null;
-
-    // ==========================================
-    // STEP 1: Write to Airtable (if configured)
-    // ==========================================
-    if (
-      process.env.AIRTABLE_API_TOKEN &&
-      process.env.AIRTABLE_BASE_ID &&
-      process.env.AIRTABLE_TABLE_ID
-    ) {
-      try {
-        const airtable = new Airtable({
-          apiKey: process.env.AIRTABLE_API_TOKEN,
-        });
-
-        const base = airtable.base(process.env.AIRTABLE_BASE_ID);
-        const table = base(process.env.AIRTABLE_TABLE_ID);
-
-        // Create Airtable record
-        const record = await table.create({
-          "Partner 1": body.partner1,
-          "Partner 2": body.partner2,
-          Email: body.email,
-          Phone: body.phone || "",
-          Status: "New Lead",
-          Role: body.role || "Couple",
-          "Event Type": body.eventType || "",
-          "Event Date": body.date || "",
-          Location: body.location || "",
-          "Guest Count": body.guestCount ? parseInt(body.guestCount) : null,
-          "Venue Name": body.venueName || "",
-          "Venue Link": body.venueLink || "",
-          "Is Multi-Day": body.isMultiDay || false,
-          Tradition: body.traditionResolved || "",
-          "Planner Name": body.plannerName || "",
-          "Planner Email": body.plannerEmail || "",
-          "Planner Phone": body.plannerPhone || "",
-          "Planner Company": body.plannerCompany || "",
-          "Parent Name": body.parentName || "",
-          "Parent Email": body.parentEmail || "",
-          "Parent Phone": body.parentPhone || "",
-          "Parent Relation": body.parentRelation || "",
-          "How They Met": body.howYouMet || "",
-          "Film Feel": body.filmFeel || [],
-          "Budget Range": body.budgetRange || "",
-          "Pinterest Board": body.pinterestBoardUrl || "",
-          "Pinterest Title": body.pinterestBoardTitle || "",
-          "Other Links": body.otherInspirationLinks || "",
-          "Additional Notes": body.additionalNotes || "",
-          "Contact Preference": body.contactPreference || "",
-          Source: "Website Form",
-        });
-
-        airtableRecordId = record.id;
-        console.log("✅ Airtable record created:", airtableRecordId);
-      } catch (airtableError: any) {
-        // Log error but don't fail the request
-        console.error("❌ Airtable error (continuing anyway):", airtableError.message);
-      }
-    } else {
-      console.log("ℹ️  Airtable not configured, skipping database write");
+    // Check if Resend is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.error("❌ RESEND_API_KEY is not configured");
+      return NextResponse.json(
+        { error: "Email service is not configured. Please contact us directly." },
+        { status: 500 }
+      );
     }
 
-    // ==========================================
-    // STEP 2: Send Email Notification (if configured)
-    // ==========================================
-    if (process.env.RESEND_API_KEY) {
-      try {
-        const resend = new Resend(process.env.RESEND_API_KEY);
-        const emailHtml = generateEmailHtml(body);
-        const emailText = generateEmailText(body);
+    // Initialize Resend (lazy initialization)
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-        const { data, error } = await resend.emails.send({
-          from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
-          to: process.env.RESEND_TO_EMAIL || body.email,
-          replyTo: body.email,
-          subject: `New Consultation Request: ${body.partner1} & ${body.partner2}`,
-          html: emailHtml,
-          text: emailText,
-        });
+    // Build email content
+    const emailHtml = generateEmailHtml(body);
+    const emailText = generateEmailText(body);
 
-        if (error) {
-          console.error("❌ Resend error:", error);
-          // Don't fail if email fails but Airtable succeeded
-          if (!airtableRecordId) {
-            return NextResponse.json(
-              { error: "Failed to send email" },
-              { status: 500 }
-            );
-          }
-        } else {
-          emailId = data?.id;
-          console.log("✅ Email sent:", emailId);
-        }
-      } catch (emailError: any) {
-        console.error("❌ Email sending error:", emailError.message);
-        // Don't fail if email fails but Airtable succeeded
-        if (!airtableRecordId) {
-          return NextResponse.json(
-            { error: "Failed to send email" },
-            { status: 500 }
-          );
-        }
-      }
-    } else {
-      console.log("ℹ️  Resend not configured, skipping email notification");
+    // Send email via Resend
+    const { data, error } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
+      to: process.env.RESEND_TO_EMAIL || body.email,
+      replyTo: body.email,
+      subject: `New Consultation Request: ${body.partner1} & ${body.partner2}`,
+      html: emailHtml,
+      text: emailText,
+    });
+
+    if (error) {
+      console.error("❌ Resend error:", error);
+      return NextResponse.json(
+        { error: "Failed to send email", details: error },
+        { status: 500 }
+      );
     }
 
-    // ==========================================
-    // STEP 3: Return Success Response
-    // ==========================================
+    console.log("✅ Email sent successfully:", data?.id);
     return NextResponse.json(
       {
         success: true,
         message: "Consultation request received",
-        airtableRecordId,
-        emailId,
+        emailId: data?.id,
       },
       { status: 200 }
     );
