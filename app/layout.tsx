@@ -6,6 +6,7 @@ import PageTransition from "@/components/PageTransition";
 import ClickOrigin from "@/components/ClickOrigin";
 import PreloaderProvider from "@/components/PreloaderProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -85,6 +86,9 @@ export default function RootLayout({
 
         <StagingBadge />
         <SpeedInsights />
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );
