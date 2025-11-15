@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@vercel/speed-insights": "^1.2.0",
-    "airtable": "^0.12.2",
     "clsx": "^2.1.1",
     "cookie": "^1.0.2",
     "framer-motion": "^11.2.10",
