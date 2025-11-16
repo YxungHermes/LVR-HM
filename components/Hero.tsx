@@ -7,7 +7,6 @@ import { trackCTAClick } from "@/lib/analytics";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
   // Track scroll position for scroll marker fade-out effect
   useEffect(() => {
@@ -26,12 +25,6 @@ export default function Hero() {
     }
   }, []);
 
-  // Fade in video from black immediately on load
-  useEffect(() => {
-    // Start video fade immediately for smooth cinematic reveal
-    setVideoLoaded(true);
-  }, []);
-
   // Calculate opacity for scroll marker: fades out after 100px of scroll
   const scrollMarkerOpacity = Math.max(0, 1 - scrollY / 100);
 
@@ -44,10 +37,7 @@ export default function Hero() {
   return (
     <section className="relative h-screen bg-black overflow-hidden">
       {/* Vimeo Video Background */}
-      <div
-        className="absolute inset-0 z-0 transition-opacity duration-[1500ms] ease-out"
-        style={{ opacity: videoLoaded ? 1 : 0 }}
-      >
+      <div className="absolute inset-0 z-0">
         <iframe
           src={`https://player.vimeo.com/video/${hero.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
           className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] min-w-full min-h-full object-cover"
