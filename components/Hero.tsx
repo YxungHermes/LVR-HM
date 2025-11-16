@@ -35,6 +35,9 @@ export default function Hero() {
   // Calculate opacity for scroll marker: fades out after 100px of scroll
   const scrollMarkerOpacity = Math.max(0, 1 - scrollY / 100);
 
+  // Calculate opacity for hero text: fades out over 300px of scroll with top-down effect
+  const heroTextOpacity = Math.max(0, 1 - scrollY / 300);
+
   // Scroll to next section smoothly
   const scrollToNext = () => {
     const nextSection = document.querySelector('#choose-your-story');
@@ -86,7 +89,11 @@ export default function Hero() {
           {/* Tagline above title */}
           <motion.p
             className="text-xs md:text-sm text-white/80 uppercase font-medium mb-6 md:mb-8"
-            style={{ letterSpacing: "0.25em" }}
+            style={{
+              letterSpacing: "0.25em",
+              opacity: heroTextOpacity,
+              transition: "opacity 0.3s ease-out"
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -96,6 +103,10 @@ export default function Hero() {
 
           <motion.h1
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
+            style={{
+              opacity: heroTextOpacity,
+              transition: "opacity 0.3s ease-out"
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.0 }}
@@ -105,6 +116,10 @@ export default function Hero() {
 
           <motion.p
             className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
+            style={{
+              opacity: heroTextOpacity,
+              transition: "opacity 0.3s ease-out"
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.4 }}
@@ -114,6 +129,10 @@ export default function Hero() {
 
           <motion.div
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
+            style={{
+              opacity: heroTextOpacity,
+              transition: "opacity 0.3s ease-out"
+            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.8 }}
