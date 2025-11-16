@@ -59,7 +59,7 @@ export const signatureWork = [
   },
   {
     title: "Brianna & Steven",
-    subtitle: "New York",
+    subtitle: "New Jersey",
     vimeoId: "1137492115"
   }
 ];
