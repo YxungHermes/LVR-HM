@@ -5,6 +5,7 @@ import StagingBadge from "@/components/StagingBadge";
 import PageTransition from "@/components/PageTransition";
 import ClickOrigin from "@/components/ClickOrigin";
 import PreloaderProvider from "@/components/PreloaderProvider";
+import ScrollDepthTracker from "@/components/ScrollDepthTracker";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import MetaPixel from "@/components/MetaPixel";
@@ -90,7 +91,10 @@ export default function RootLayout({
 
         {/* Google Analytics 4 - Website traffic tracking */}
         {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
-          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+          <>
+            <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+            <ScrollDepthTracker />
+          </>
         )}
 
         {/* Meta Pixel - Facebook/Instagram ad retargeting */}

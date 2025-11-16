@@ -4,7 +4,7 @@ export const hero = {
   location: "Based in New York • Traveling Worldwide",
   // Using Vimeo for reliable video hosting and streaming
   // 16:9 wedding video for hero background
-  vimeoId: "1057632056",
+  vimeoId: "1137323325",
   poster: "/media/hero-poster.jpg",
   ctas: {
     primary: {
