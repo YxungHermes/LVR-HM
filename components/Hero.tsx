@@ -26,12 +26,10 @@ export default function Hero() {
     }
   }, []);
 
-  // Fade in video from black on load
+  // Fade in video from black immediately on load
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setVideoLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
+    // Start video fade immediately for smooth cinematic reveal
+    setVideoLoaded(true);
   }, []);
 
   // Calculate opacity for scroll marker: fades out after 100px of scroll
@@ -91,7 +89,7 @@ export default function Hero() {
             style={{ letterSpacing: "0.25em" }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             {hero.location}
           </motion.p>
@@ -100,7 +98,7 @@ export default function Hero() {
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
           >
             {hero.title}
           </motion.h1>
@@ -109,7 +107,7 @@ export default function Hero() {
             className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={{ duration: 0.8, delay: 1.4 }}
           >
             {hero.sub}
           </motion.p>
@@ -118,7 +116,7 @@ export default function Hero() {
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
           >
             <a
               href={hero.ctas.primary.href}
@@ -153,7 +151,7 @@ export default function Hero() {
           y: [0, 8, 0],
         }}
         transition={{
-          opacity: { duration: 0.8, delay: 1.8 },
+          opacity: { duration: 0.8, delay: 2.2 },
           y: {
             duration: 2,
             repeat: Infinity,
