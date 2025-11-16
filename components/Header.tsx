@@ -216,9 +216,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         onMouseEnter={handleHeaderMouseEnter}
         onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] grid grid-cols-3 items-center gap-4">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] grid grid-cols-[1fr_auto_1fr] items-center gap-8">
           {/* LEFT: Nav items flush left */}
-          <div className="flex items-center gap-2 justify-start">
+          <div className="flex items-center gap-2 justify-start min-w-0">
             {/* Mobile hamburger */}
             <button
               className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl flex-shrink-0"
@@ -235,13 +235,13 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </button>
 
             {/* Desktop left nav */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Primary">
+            <nav className="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Primary">
               {navigation.left.map(renderNavItem)}
             </nav>
           </div>
 
           {/* CENTER: Logo perfectly centered */}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center flex-shrink-0">
             <a
               href="/"
               className="relative block origin-center focus-ring"
@@ -260,8 +260,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
           </div>
 
           {/* RIGHT: CTA flush right */}
-          <div className="flex items-center gap-6 lg:gap-8 justify-end">
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Secondary">
+          <div className="flex items-center gap-4 lg:gap-6 justify-end min-w-0">
+            <nav className="hidden md:flex items-center" aria-label="Secondary">
               {navigation.right.map(renderNavItem)}
             </nav>
             {/* Mobile spacer for centering */}
