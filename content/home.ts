@@ -57,9 +57,9 @@ export const signatureWork = [
     vimeoId: "1137409262"
   },
   {
-    title: "Brianna & Steven",
-    subtitle: "New York",
-    vimeoId: "1137408386"
+    title: "Destination Weddings",
+    subtitle: "Italy, Mexico, California & Beyond",
+    vimeoId: "1137400003"
   }
 ];
 
