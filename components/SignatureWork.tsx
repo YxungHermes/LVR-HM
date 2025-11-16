@@ -4,11 +4,12 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { signatureWork } from "@/content/home";
 
-function VideoCard({ title, subtitle, src, poster, index }: {
+function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
   title: string;
   subtitle: string;
-  src: string;
-  poster: string;
+  src?: string;
+  poster?: string;
+  vimeoId?: string;
   index: number;
 }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -39,16 +40,31 @@ function VideoCard({ title, subtitle, src, poster, index }: {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <video
-        ref={videoRef}
-        className="h-full w-full object-cover"
-        src={src}
-        poster={poster}
-        muted
-        loop
-        playsInline
-        preload="metadata"
-      />
+      {vimeoId ? (
+        <iframe
+          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover"
+          }}
+          frameBorder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          title={title}
+        />
+      ) : (
+        <video
+          ref={videoRef}
+          className="h-full w-full object-cover"
+          src={src}
+          poster={poster}
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        />
+      )}
 
       {/* Overlay */}
       <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-60"}`} />

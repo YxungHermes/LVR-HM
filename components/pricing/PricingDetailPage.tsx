@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 interface PricingDetailPageProps {
   title: string;
   heroImage: string;
+  vimeoId?: string;
   introHeading: string;
   introBody: string;
   startingFrom: string;
@@ -23,6 +24,7 @@ interface PricingDetailPageProps {
 export default function PricingDetailPage({
   title,
   heroImage,
+  vimeoId,
   introHeading,
   introBody,
   startingFrom,
@@ -62,24 +64,40 @@ export default function PricingDetailPage({
           </div>
         </section>
 
-        {/* Hero Image */}
+        {/* Hero Image/Video */}
         <section className="px-6 pb-12">
           <div className="mx-auto max-w-6xl">
             <motion.div
-              className="relative w-full aspect-[21/9] overflow-hidden rounded-lg"
+              className="relative w-full aspect-[21/9] overflow-hidden rounded-lg bg-black"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
             >
-              <Image
-                src={heroImage}
-                alt={title}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1536px) 100vw, 1536px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+              {vimeoId ? (
+                <iframe
+                  src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                  className="absolute inset-0 w-full h-full"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                  }}
+                  frameBorder="0"
+                  allow="autoplay; fullscreen; picture-in-picture"
+                  title={title}
+                />
+              ) : (
+                <>
+                  <Image
+                    src={heroImage}
+                    alt={title}
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 1536px) 100vw, 1536px"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+                </>
+              )}
             </motion.div>
           </div>
         </section>

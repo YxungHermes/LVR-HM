@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import ChooseYourStory from "@/components/ChooseYourStory";
-// import SignatureWork from "@/components/SignatureWork";
+import SignatureWork from "@/components/SignatureWork";
 // import Packages from "@/components/Packages";
 // import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
@@ -28,8 +28,10 @@ export default function Home() {
           <div data-snap-section>
             <ChooseYourStory />
           </div>
+          <div data-snap-section>
+            <SignatureWork />
+          </div>
           {/* Temporarily removed per spec - to be decided in future flow */}
-          {/* <SignatureWork /> */}
           {/* <Packages /> */}
           {/* <Testimonials /> */}
           <div data-snap-section>

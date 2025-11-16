@@ -171,10 +171,12 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       <a
         key={item.label}
         href={item.href}
-        className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-300 focus-ring"
+        className="group relative px-4 py-2 text-sm font-medium uppercase focus-ring"
         style={{
           // Color changes when header is solid OR when second section reaches nav
-          color: (solid || scrollProgress > 0.5) ? "#121212" : "white",
+          color: (solid || scrollProgress > 0.5) ? "#121212" : "rgba(255, 255, 255, 0.65)",
+          letterSpacing: "0.08em",
+          transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1)",
         }}
         onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
@@ -200,20 +202,23 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     <>
       <motion.header
         role="banner"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-50 ${
           solid
             ? "bg-white border-b border-black/8 shadow-sm"
             : "bg-transparent border-b-0"
         }`}
+        style={{
+          transition: "background-color 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1)",
+        }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         onMouseEnter={handleHeaderMouseEnter}
         onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] flex items-center">
-          {/* Left: Mobile hamburger + Desktop nav */}
-          <div className="flex items-center gap-2 flex-1 justify-start">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] grid grid-cols-[1fr_auto_1fr] items-center gap-8">
+          {/* LEFT: Nav items flush left */}
+          <div className="flex items-center gap-2 justify-start min-w-0">
             {/* Mobile hamburger */}
             <button
               className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl flex-shrink-0"
@@ -222,33 +227,31 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen(true)}
               style={{
-                // Color changes when header is solid OR when second section reaches nav
-                color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
-                transition: "color 0.3s ease",
+                color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
+                transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
               ☰
             </button>
 
-            {/* Desktop left nav - hidden on mobile */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Primary">
+            {/* Desktop left nav */}
+            <nav className="hidden md:flex items-center gap-4 lg:gap-6" aria-label="Primary">
               {navigation.left.map(renderNavItem)}
             </nav>
           </div>
 
-          {/* Center Brand - Wordmark only, stays same size */}
-          <div className="flex items-center justify-center flex-1 absolute left-0 right-0 pointer-events-none md:relative md:left-auto md:right-auto md:pointer-events-auto">
+          {/* CENTER: Logo perfectly centered */}
+          <div className="flex items-center justify-center flex-shrink-0">
             <a
               href="/"
-              className="relative block origin-center focus-ring pointer-events-auto"
+              className="relative block origin-center focus-ring"
             >
               <span
                 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
                 style={{
-                  letterSpacing: "0.025em",
-                  transition: "color 0.3s ease",
-                  // Color changes when header is solid OR when second section reaches nav
-                  color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
+                  letterSpacing: "0.035em",
+                  transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
+                  color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
                 }}
               >
                 Love, Violeta Rose
@@ -256,12 +259,12 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </a>
           </div>
 
-          {/* Right: Desktop nav + CTA (hidden on mobile) / Mobile spacer for symmetry */}
-          <div className="flex items-center gap-6 lg:gap-8 flex-1 justify-end">
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Secondary">
+          {/* RIGHT: CTA flush right */}
+          <div className="flex items-center gap-4 lg:gap-6 justify-end min-w-0">
+            <nav className="hidden md:flex items-center" aria-label="Secondary">
               {navigation.right.map(renderNavItem)}
             </nav>
-            {/* Mobile spacer to match hamburger width for perfect centering */}
+            {/* Mobile spacer for centering */}
             <div className="md:hidden w-10 flex-shrink-0" />
           </div>
         </div>

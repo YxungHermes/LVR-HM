@@ -8,12 +8,12 @@ export const hero = {
   poster: "/media/hero-poster.jpg",
   ctas: {
     primary: {
-      label: "View Film Collections",
-      href: "/offerings"
+      label: "View Our Work",
+      href: "#signature-work"
     },
     secondary: {
-      label: "Watch Our Films",
-      href: "#signature-work"
+      label: "Book Consultation",
+      href: "/consultation"
     }
   }
 };
@@ -59,10 +59,9 @@ export const signatureWork = [
     poster: "/media/reel-2.jpg"
   },
   {
-    title: "Caitlyn & Michael",
-    subtitle: "Santa Barbara, California",
-    src: "/media/reel-3.mp4",
-    poster: "/media/reel-3.jpg"
+    title: "Destination Weddings",
+    subtitle: "Italy, Mexico, California & Beyond",
+    vimeoId: "1137400003"
   }
 ];
 

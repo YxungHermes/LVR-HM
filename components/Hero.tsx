@@ -7,6 +7,7 @@ import { trackCTAClick } from "@/lib/analytics";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   // Track scroll position for scroll marker fade-out effect
   useEffect(() => {
@@ -25,6 +26,12 @@ export default function Hero() {
     }
   }, []);
 
+  // Fade in video from black immediately on load
+  useEffect(() => {
+    // Start video fade immediately for smooth cinematic reveal
+    setVideoLoaded(true);
+  }, []);
+
   // Calculate opacity for scroll marker: fades out after 100px of scroll
   const scrollMarkerOpacity = Math.max(0, 1 - scrollY / 100);
 
@@ -35,9 +42,12 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen bg-gradient-to-br from-cream via-rose-1/20 to-cream overflow-hidden">
+    <section className="relative h-screen bg-black overflow-hidden">
       {/* Vimeo Video Background */}
-      <div className="absolute inset-0 z-0">
+      <div
+        className="absolute inset-0 z-0 transition-opacity duration-[1500ms] ease-out"
+        style={{ opacity: videoLoaded ? 1 : 0 }}
+      >
         <iframe
           src={`https://player.vimeo.com/video/${hero.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
           className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] min-w-full min-h-full object-cover"
@@ -52,8 +62,22 @@ export default function Hero() {
           allow="autoplay; fullscreen; picture-in-picture"
           title="Hero Background Video"
         />
-        {/* Darker gradient overlay for better contrast and premium feel */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60" />
+
+        {/* Vignette effect on corners */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.3) 100%)',
+          }}
+        />
+
+        {/* Localized gradient overlay - only behind text area */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 120% 60% at 50% 50%, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.1) 70%, transparent 100%)',
+          }}
+        />
       </div>
 
       {/* Content - Full viewport height accounting for fixed header */}
@@ -61,49 +85,58 @@ export default function Hero() {
         <div className="w-full text-center max-w-4xl mx-auto">
           {/* Tagline above title */}
           <motion.p
-            className="text-xs md:text-sm text-white/80 uppercase tracking-[0.2em] font-medium mb-6 md:mb-8"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-xs md:text-sm text-white/80 uppercase font-medium mb-6 md:mb-8"
+            style={{
+              letterSpacing: "0.25em",
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
           >
             {hero.location}
           </motion.p>
 
           <motion.h1
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.0, ease: [0.4, 0, 0.2, 1] }}
           >
             {hero.title}
           </motion.h1>
 
           <motion.p
             className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.4, ease: [0.4, 0, 0.2, 1] }}
           >
             {hero.sub}
           </motion.p>
 
           <motion.div
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.8, ease: [0.4, 0, 0.2, 1] }}
           >
             <a
               href={hero.ctas.primary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.primary.label, hero.ctas.primary.href)}
-              className="group bg-white text-ink rounded-full px-8 py-4 font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl focus-ring"
+              className="group bg-white text-ink rounded-full px-8 py-4 font-medium hover:scale-105 hover:shadow-2xl focus-ring"
+              style={{
+                transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+              }}
             >
               {hero.ctas.primary.label}
             </a>
             <a
               href={hero.ctas.secondary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.secondary.label, hero.ctas.secondary.href)}
-              className="rounded-full border-2 border-white/80 px-8 py-4 text-white font-medium backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white hover:text-ink focus-ring"
+              className="rounded-full border-2 border-white/70 px-8 py-4 text-white font-medium hover:border-white hover:bg-white/10 backdrop-blur-sm focus-ring"
+              style={{
+                transition: "border-color 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+              }}
             >
               {hero.ctas.secondary.label}
             </a>
@@ -111,7 +144,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll affordance with scroll-linked fade animation */}
+      {/* Scroll affordance with continuous bounce animation */}
       <motion.button
         onClick={scrollToNext}
         className="fixed bottom-8 left-1/2 z-20 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group focus-ring rounded-lg px-4 py-2"
@@ -120,9 +153,19 @@ export default function Hero() {
           transform: `translateX(-50%) translateY(${scrollY * 0.5}px)`,
           pointerEvents: scrollMarkerOpacity < 0.1 ? 'none' : 'auto',
         }}
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.2 }}
+        initial={{ opacity: 0 }}
+        animate={{
+          opacity: 1,
+          y: [0, 8, 0],
+        }}
+        transition={{
+          opacity: { duration: 0.8, delay: 2.2 },
+          y: {
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
         aria-label="Scroll to next section"
       >
         <span className="text-xs uppercase tracking-widest font-medium">Scroll</span>

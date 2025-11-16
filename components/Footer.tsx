@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { navigation, socialLinks } from "@/content/home";
 
 export default function Footer() {
@@ -23,8 +24,17 @@ export default function Footer() {
             <p className="mt-3 text-sm text-espresso">
               Cinematic wedding films crafted with heart.
             </p>
-            {/* Micro illustration placeholder */}
-            <div className="mt-6 h-16 w-16 rounded-full border-2 border-coffee/20 bg-white" />
+            {/* Michael's photo */}
+            <div className="mt-6 h-16 w-16 rounded-full border-2 border-coffee/20 bg-white overflow-hidden relative">
+              <Image
+                src="/media/michael-andrade.jpg"
+                alt="Michael Andrade"
+                fill
+                className="object-cover"
+                style={{ objectPosition: "center 30%" }}
+                sizes="64px"
+              />
+            </div>
           </motion.div>
 
           {/* Center: Navigation */}
