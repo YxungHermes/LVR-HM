@@ -98,7 +98,6 @@ export default function Hero() {
       {/* Content - Full viewport height accounting for fixed header */}
       <div className="relative z-10 mx-auto flex h-full max-w-[1000px] items-center justify-center px-6 pt-[56px] md:pt-[72px]">
         <div className="w-full text-center max-w-4xl mx-auto">
-          {/* SECOND BEAT: Tagline - appears in second beat with subheading and CTAs */}
           {/* Tagline above title */}
           <motion.p
             className="text-xs md:text-sm text-white/80 uppercase font-medium mb-6 md:mb-8"
@@ -107,37 +106,37 @@ export default function Hero() {
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.location}
           </motion.p>
 
-          {/* FIRST BEAT: Main headline only - elegant solo entrance */}
+          {/* Main headline */}
           <motion.h1
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.title}
           </motion.h1>
 
-          {/* SECOND BEAT: Subheading - appears with tagline and CTAs */}
-
+          {/* Subheading */}
           <motion.p
             className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.sub}
           </motion.p>
 
+          {/* CTA Buttons */}
           <motion.div
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <a
               href={hero.ctas.primary.href}
@@ -178,7 +177,7 @@ export default function Hero() {
           y: [0, 8, 0],
         }}
         transition={{
-          opacity: { duration: 0.8, delay: 4.2 },
+          opacity: { duration: 0.8, delay: 2.4 },
           y: {
             duration: 2,
             repeat: Infinity,
