@@ -68,18 +68,25 @@ export default function PricingPage() {
                   {/* Collection Image/Video - Fixed aspect ratio */}
                   <div className="relative w-full aspect-[16/10] overflow-hidden bg-black">
                     {collection.vimeoId ? (
-                      <iframe
-                        src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-                        className="absolute inset-0 w-full h-full"
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          objectFit: "cover"
-                        }}
-                        frameBorder="0"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        title={collection.name}
-                      />
+                      <div className="absolute inset-0 w-full h-full overflow-hidden">
+                        <iframe
+                          src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                          className="absolute pointer-events-none"
+                          style={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            width: "100vw",
+                            height: "56.25vw", // 16:9 aspect ratio
+                            minHeight: "100%",
+                            minWidth: "177.78vh", // 16:9 aspect ratio
+                            transform: "translate(-50%, -50%)",
+                          }}
+                          frameBorder="0"
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          title={collection.name}
+                        />
+                      </div>
                     ) : (
                       <Image
                         src={collection.image}

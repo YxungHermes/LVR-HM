@@ -41,18 +41,25 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
       onMouseLeave={handleMouseLeave}
     >
       {vimeoId ? (
-        <iframe
-          src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover"
-          }}
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          title={title}
-        />
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          <iframe
+            src={`https://player.vimeo.com/video/${vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+            className="absolute pointer-events-none"
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "100vw",
+              height: "56.25vw", // 16:9 aspect ratio
+              minHeight: "100%",
+              minWidth: "177.78vh", // 16:9 aspect ratio (100 / (9/16))
+              transform: "translate(-50%, -50%)",
+            }}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            title={title}
+          />
+        </div>
       ) : (
         <video
           ref={videoRef}
