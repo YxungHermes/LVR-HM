@@ -223,7 +223,9 @@ export const navigation: Navigation = {
           }
         ]
       }
-    },
+    }
+  ],
+  right: [
     {
       label: "Process",
       href: "/process",
@@ -239,9 +241,7 @@ export const navigation: Navigation = {
           }
         ]
       }
-    }
-  ],
-  right: [
+    },
     {
       label: "Book Consultation",
       href: "/consultation",
