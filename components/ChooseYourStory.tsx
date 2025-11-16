@@ -67,33 +67,58 @@ export default function ChooseYourStory() {
           >
             <Link
               href={collection.href}
-              className={`group relative block h-full min-h-[30vh] md:min-h-0 ${cardGradients[index]}
+              className={`group relative block h-full min-h-[30vh] md:min-h-0 ${collection.vimeoId ? 'bg-black' : cardGradients[index]}
                 border border-coffee/10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:z-10 hover:shadow-2xl`}
             >
+              {/* Video background for destination weddings */}
+              {collection.vimeoId && (
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                  <iframe
+                    src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                    className="absolute pointer-events-none"
+                    style={{
+                      position: "absolute",
+                      top: "50%",
+                      left: "50%",
+                      width: "100vw",
+                      height: "56.25vw",
+                      minHeight: "100%",
+                      minWidth: "177.78vh",
+                      transform: "translate(-50%, -50%)",
+                    }}
+                    frameBorder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    title={collection.name}
+                  />
+                  {/* Darker overlay for better text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+                </div>
+              )}
+
               {/* Hover overlay - darkens on hover */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-500" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-500" />
 
               {/* Content - centered in card */}
               <div className="relative h-full flex flex-col items-center justify-center p-4 md:p-6 lg:p-8 text-center">
                 {/* Collection number - subtle */}
-                <span className="text-espresso/30 text-xs font-medium uppercase tracking-widest mb-2">
+                <span className={`${collection.vimeoId ? 'text-white/60' : 'text-espresso/30'} text-xs font-medium uppercase tracking-widest mb-2`}>
                   {String(index + 1).padStart(2, '0')}
                 </span>
 
                 {/* Collection name - scales by card size */}
-                <h3 className={`font-serif ${typographySizes[index]} font-bold text-ink mb-2 md:mb-4
+                <h3 className={`font-serif ${typographySizes[index]} font-bold ${collection.vimeoId ? 'text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]' : 'text-ink'} mb-2 md:mb-4
                   leading-tight max-w-md transition-all duration-500 group-hover:scale-105`}>
                   {collection.name}
                 </h3>
 
                 {/* Teaser - responsive sizing */}
-                <p className={`text-xs md:text-sm ${index === 0 ? 'lg:text-base' : ''} text-espresso/80 max-w-sm leading-relaxed`}>
+                <p className={`text-xs md:text-sm ${index === 0 ? 'lg:text-base' : ''} ${collection.vimeoId ? 'text-white/90 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]' : 'text-espresso/80'} max-w-sm leading-relaxed`}>
                   {collection.teaser}
                 </p>
 
                 {/* Explore arrow - appears on hover */}
                 <div className="mt-4 md:mt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
-                  <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-ink">
+                  <span className={`inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider ${collection.vimeoId ? 'text-white' : 'text-ink'}`}>
                     Explore
                     <svg className="w-3 h-3 md:w-4 md:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

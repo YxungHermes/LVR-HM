@@ -35,7 +35,8 @@ export const chooseYourStory = [
     slug: "destination-weddings",
     name: "Destination Wedding Films",
     teaser: "For weekends and celebrations around the world.",
-    href: "/offerings#destination-weddings"
+    href: "/offerings#destination-weddings",
+    vimeoId: "1137400003"
   },
   {
     slug: "adventure-sessions",
@@ -57,9 +58,9 @@ export const signatureWork = [
     vimeoId: "1137409262"
   },
   {
-    title: "Destination Weddings",
-    subtitle: "Italy, Mexico, California & Beyond",
-    vimeoId: "1137400003"
+    title: "Brianna & Steven",
+    subtitle: "New York",
+    vimeoId: "1137408386"
   }
 ];
 
