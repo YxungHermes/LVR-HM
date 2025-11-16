@@ -92,6 +92,17 @@ export default function ChooseYourStory() {
                   />
                   {/* Darker overlay for better text readability */}
                   <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+
+                  {/* Frosted glass overlay - luxury glass case effect */}
+                  <div
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      backdropFilter: "blur(0.5px) saturate(1.2)",
+                      WebkitBackdropFilter: "blur(0.5px) saturate(1.2)",
+                      background: "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.08) 100%)",
+                      boxShadow: "inset 0 0 40px rgba(255, 255, 255, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.15)",
+                    }}
+                  />
                 </div>
               )}
 
