@@ -176,7 +176,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
           // Color changes when header is solid OR when second section reaches nav
           color: (solid || scrollProgress > 0.5) ? "#121212" : "rgba(255, 255, 255, 0.65)",
           letterSpacing: "0.08em",
-          transition: "color 200ms ease, opacity 200ms ease",
+          transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1), opacity 200ms cubic-bezier(0.4, 0, 0.2, 1)",
         }}
         onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
@@ -208,7 +208,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             : "bg-transparent border-b-0"
         }`}
         style={{
-          transition: "background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease",
+          transition: "background-color 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1)",
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -216,9 +216,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         onMouseEnter={handleHeaderMouseEnter}
         onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] flex items-center relative">
-          {/* Left: Mobile hamburger + Desktop nav */}
-          <div className="flex items-center gap-2 justify-start z-20">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] grid grid-cols-3 items-center gap-4">
+          {/* LEFT: Nav items flush left */}
+          <div className="flex items-center gap-2 justify-start">
             {/* Mobile hamburger */}
             <button
               className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl flex-shrink-0"
@@ -227,22 +227,21 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               aria-controls="mobile-menu"
               onClick={() => setMobileOpen(true)}
               style={{
-                // Color changes when header is solid OR when second section reaches nav
                 color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
-                transition: "color 200ms ease",
+                transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
               }}
             >
               ☰
             </button>
 
-            {/* Desktop left nav - hidden on mobile */}
+            {/* Desktop left nav */}
             <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Primary">
               {navigation.left.map(renderNavItem)}
             </nav>
           </div>
 
-          {/* Center Brand - Absolutely centered in viewport */}
-          <div className="absolute left-1/2 -translate-x-1/2 z-10">
+          {/* CENTER: Logo perfectly centered */}
+          <div className="flex items-center justify-center">
             <a
               href="/"
               className="relative block origin-center focus-ring"
@@ -251,8 +250,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
                 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
                 style={{
                   letterSpacing: "0.035em",
-                  transition: "color 200ms ease",
-                  // Color changes when header is solid OR when second section reaches nav
+                  transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
                   color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
                 }}
               >
@@ -261,12 +259,12 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </a>
           </div>
 
-          {/* Right: Desktop nav + CTA (hidden on mobile) / Mobile spacer for symmetry */}
-          <div className="flex items-center gap-6 lg:gap-8 justify-end ml-auto z-20">
+          {/* RIGHT: CTA flush right */}
+          <div className="flex items-center gap-6 lg:gap-8 justify-end">
             <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Secondary">
               {navigation.right.map(renderNavItem)}
             </nav>
-            {/* Mobile spacer to match hamburger width for perfect centering */}
+            {/* Mobile spacer for centering */}
             <div className="md:hidden w-10 flex-shrink-0" />
           </div>
         </div>

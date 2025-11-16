@@ -35,8 +35,8 @@ export default function Hero() {
   // Calculate opacity for scroll marker: fades out after 100px of scroll
   const scrollMarkerOpacity = Math.max(0, 1 - scrollY / 100);
 
-  // Calculate opacity for hero text: fades out over 300px of scroll with top-down effect
-  const heroTextOpacity = Math.max(0, 1 - scrollY / 300);
+  // Calculate opacity for hero text: fast fade-out (150px down) / fast fade-in (100px up)
+  const heroTextOpacity = Math.max(0, 1 - scrollY / 150);
 
   // Scroll to next section smoothly
   const scrollToNext = () => {
@@ -95,7 +95,7 @@ export default function Hero() {
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: heroTextOpacity }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
           >
             {hero.location}
           </motion.p>
@@ -107,7 +107,7 @@ export default function Hero() {
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: heroTextOpacity }}
-            transition={{ duration: 0.8, delay: 1.0 }}
+            transition={{ duration: 0.8, delay: 1.0, ease: [0.4, 0, 0.2, 1] }}
           >
             {hero.title}
           </motion.h1>
@@ -119,31 +119,34 @@ export default function Hero() {
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: heroTextOpacity }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+            transition={{ duration: 0.8, delay: 1.4, ease: [0.4, 0, 0.2, 1] }}
           >
             {hero.sub}
           </motion.p>
 
           <motion.div
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
-            style={{
-              opacity: heroTextOpacity,
-            }}
             initial={{ opacity: 0 }}
             animate={{ opacity: heroTextOpacity }}
-            transition={{ duration: 0.8, delay: 1.8 }}
+            transition={{ duration: 0.8, delay: 1.8, ease: [0.4, 0, 0.2, 1] }}
           >
             <a
               href={hero.ctas.primary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.primary.label, hero.ctas.primary.href)}
-              className="group bg-white text-ink rounded-full px-8 py-4 font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl focus-ring"
+              className="group bg-white text-ink rounded-full px-8 py-4 font-medium hover:scale-105 hover:shadow-2xl focus-ring"
+              style={{
+                transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+              }}
             >
               {hero.ctas.primary.label}
             </a>
             <a
               href={hero.ctas.secondary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.secondary.label, hero.ctas.secondary.href)}
-              className="rounded-full border-2 border-white/70 px-8 py-4 text-white font-medium transition-all duration-300 hover:border-white hover:bg-white/10 backdrop-blur-sm focus-ring"
+              className="rounded-full border-2 border-white/70 px-8 py-4 text-white font-medium hover:border-white hover:bg-white/10 backdrop-blur-sm focus-ring"
+              style={{
+                transition: "border-color 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+              }}
             >
               {hero.ctas.secondary.label}
             </a>
