@@ -47,21 +47,19 @@ export const chooseYourStory = [
 
 export const signatureWork = [
   {
-    title: "Ari & Billy",
-    subtitle: "Malibu, California",
-    src: "/media/reel-1.mp4",
-    poster: "/media/reel-1.jpg"
+    title: "Selene & Isidro",
+    subtitle: "Utah",
+    vimeoId: "1137408954"
   },
   {
-    title: "Jeremy & Lourdes",
-    subtitle: "Palm Springs, California",
-    src: "/media/reel-2.mp4",
-    poster: "/media/reel-2.jpg"
+    title: "Courtney & Sterling",
+    subtitle: "New York",
+    vimeoId: "1137409262"
   },
   {
-    title: "Destination Weddings",
-    subtitle: "Italy, Mexico, California & Beyond",
-    vimeoId: "1137400003"
+    title: "Brianna & Steven",
+    subtitle: "New York",
+    vimeoId: "1137408386"
   }
 ];
 
