@@ -104,7 +104,7 @@ export const pricingPages = {
     ],
     addOnsNote:
       "Longer coverage, additional locations, or travel outside the city are available by custom quote.",
-    ctaLabel: "Share your elopement plans",
+    ctaLabel: "Book This Package",
     ctaHref: "/consultation",
   },
 
@@ -133,7 +133,7 @@ export const pricingPages = {
     ],
     addOnsNote:
       "Extras available: teaser film, extended highlight, raw footage delivery, rehearsal dinner coverage, drone where permitted.",
-    ctaLabel: "Check your date",
+    ctaLabel: "Book This Package",
     ctaHref: "/consultation",
   },
 
@@ -162,7 +162,7 @@ export const pricingPages = {
     ],
     addOnsNote:
       "Longer stays, extra events, or editorial-style story pieces can be added for a fully bespoke experience.",
-    ctaLabel: "Start your destination inquiry",
+    ctaLabel: "Book This Package",
     ctaHref: "/consultation",
   },
 
@@ -190,7 +190,7 @@ export const pricingPages = {
     ],
     addOnsNote:
       "Can be booked as stand-alone or as an add-on to a wedding collection for cohesive storytelling.",
-    ctaLabel: "Plan a session",
+    ctaLabel: "Book This Package",
     ctaHref: "/consultation",
   },
 };
