@@ -30,7 +30,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVideoLoaded(true);
-    }, 800); // Start fading video at same time as text begins
+    }, 2000); // Wait for video to fully load before starting fade
     return () => clearTimeout(timer);
   }, []);
 
