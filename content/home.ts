@@ -8,12 +8,12 @@ export const hero = {
   poster: "/media/hero-poster.jpg",
   ctas: {
     primary: {
-      label: "View Our Work",
-      href: "#signature-work"
-    },
-    secondary: {
       label: "Book Consultation",
       href: "/consultation"
+    },
+    secondary: {
+      label: "View Our Films",
+      href: "#signature-work"
     }
   }
 };
@@ -23,45 +23,44 @@ export const chooseYourStory = [
     slug: "elopements",
     name: "Elopements & Intimate Gatherings",
     teaser: "For small, intentional 'just us' celebrations.",
-    href: "/offerings#elopements"
+    href: "/offerings/elopements"
   },
   {
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     teaser: "For full wedding days close to home.",
-    href: "/offerings#wedding-day-films"
+    href: "/offerings/wedding-day-films"
   },
   {
     slug: "destination-weddings",
     name: "Destination Wedding Films",
     teaser: "For weekends and celebrations around the world.",
-    href: "/offerings#destination-weddings"
+    href: "/offerings/destination-weddings",
+    vimeoId: "1137400003"
   },
   {
     slug: "adventure-sessions",
     name: "Adventure Sessions & Stories",
     teaser: "For engagements, welcome parties, and day-after moments.",
-    href: "/offerings#adventure-sessions"
+    href: "/offerings/adventure-sessions"
   }
 ];
 
 export const signatureWork = [
   {
-    title: "Ari & Billy",
-    subtitle: "Malibu, California",
-    src: "/media/reel-1.mp4",
-    poster: "/media/reel-1.jpg"
+    title: "Selene & Isidro",
+    subtitle: "Utah",
+    vimeoId: "1057949189"
   },
   {
-    title: "Jeremy & Lourdes",
-    subtitle: "Palm Springs, California",
-    src: "/media/reel-2.mp4",
-    poster: "/media/reel-2.jpg"
+    title: "Courtney & Sterling",
+    subtitle: "New York",
+    vimeoId: "1137483566"
   },
   {
-    title: "Destination Weddings",
-    subtitle: "Italy, Mexico, California & Beyond",
-    vimeoId: "1137400003"
+    title: "Brianna & Steven",
+    subtitle: "New York",
+    vimeoId: "1137486347"
   }
 ];
 
