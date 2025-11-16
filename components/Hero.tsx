@@ -92,10 +92,9 @@ export default function Hero() {
             style={{
               letterSpacing: "0.25em",
               opacity: heroTextOpacity,
-              transition: "opacity 0.3s ease-out"
             }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: heroTextOpacity }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             {hero.location}
@@ -105,10 +104,9 @@ export default function Hero() {
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
             style={{
               opacity: heroTextOpacity,
-              transition: "opacity 0.3s ease-out"
             }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: heroTextOpacity }}
             transition={{ duration: 0.8, delay: 1.0 }}
           >
             {hero.title}
@@ -118,10 +116,9 @@ export default function Hero() {
             className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
             style={{
               opacity: heroTextOpacity,
-              transition: "opacity 0.3s ease-out"
             }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: heroTextOpacity }}
             transition={{ duration: 0.8, delay: 1.4 }}
           >
             {hero.sub}
@@ -131,10 +128,9 @@ export default function Hero() {
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
             style={{
               opacity: heroTextOpacity,
-              transition: "opacity 0.3s ease-out"
             }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: heroTextOpacity }}
             transition={{ duration: 0.8, delay: 1.8 }}
           >
             <a

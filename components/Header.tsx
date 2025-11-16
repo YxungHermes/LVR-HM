@@ -216,9 +216,9 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         onMouseEnter={handleHeaderMouseEnter}
         onMouseLeave={handleHeaderMouseLeave}
       >
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] flex items-center">
+        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] flex items-center relative">
           {/* Left: Mobile hamburger + Desktop nav */}
-          <div className="flex items-center gap-2 flex-1 justify-start">
+          <div className="flex items-center gap-2 justify-start z-20">
             {/* Mobile hamburger */}
             <button
               className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl flex-shrink-0"
@@ -241,11 +241,11 @@ export default function Header({ settled = false }: { settled?: boolean }) {
             </nav>
           </div>
 
-          {/* Center Brand - Wordmark only, stays same size */}
-          <div className="flex items-center justify-center flex-1 absolute left-0 right-0 pointer-events-none md:relative md:left-auto md:right-auto md:pointer-events-auto">
+          {/* Center Brand - Absolutely centered in viewport */}
+          <div className="absolute left-1/2 -translate-x-1/2 z-10">
             <a
               href="/"
-              className="relative block origin-center focus-ring pointer-events-auto"
+              className="relative block origin-center focus-ring"
             >
               <span
                 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
@@ -262,7 +262,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
           </div>
 
           {/* Right: Desktop nav + CTA (hidden on mobile) / Mobile spacer for symmetry */}
-          <div className="flex items-center gap-6 lg:gap-8 flex-1 justify-end">
+          <div className="flex items-center gap-6 lg:gap-8 justify-end ml-auto z-20">
             <nav className="hidden md:flex items-center gap-6 lg:gap-8" aria-label="Secondary">
               {navigation.right.map(renderNavItem)}
             </nav>
