@@ -8,12 +8,12 @@ export const hero = {
   poster: "/media/hero-poster.jpg",
   ctas: {
     primary: {
-      label: "View Film Collections",
-      href: "/offerings"
+      label: "View Our Work",
+      href: "#signature-work"
     },
     secondary: {
-      label: "Watch Our Films",
-      href: "#signature-work"
+      label: "Book Consultation",
+      href: "/consultation"
     }
   }
 };

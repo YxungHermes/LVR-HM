@@ -4,7 +4,6 @@ import "./globals.css";
 import StagingBadge from "@/components/StagingBadge";
 import PageTransition from "@/components/PageTransition";
 import ClickOrigin from "@/components/ClickOrigin";
-import PreloaderProvider from "@/components/PreloaderProvider";
 import ScrollDepthTracker from "@/components/ScrollDepthTracker";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -78,13 +77,10 @@ export default function RootLayout({
           </filter>
         </svg>
 
-        {/* Preloader - shows on initial page load */}
-        <PreloaderProvider>
-          {/* Page transitions - switch between "crossfade" or "radial" */}
-          <PageTransition mode="crossfade" tint="#FAF7F2">
-            {children}
-          </PageTransition>
-        </PreloaderProvider>
+        {/* Page transitions - switch between "crossfade" or "radial" */}
+        <PageTransition mode="crossfade" tint="#FAF7F2">
+          {children}
+        </PageTransition>
 
         <StagingBadge />
         <SpeedInsights />

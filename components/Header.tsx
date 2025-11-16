@@ -171,10 +171,12 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       <a
         key={item.label}
         href={item.href}
-        className="group relative px-4 py-2 text-sm font-medium uppercase tracking-wide transition-all duration-300 focus-ring"
+        className="group relative px-4 py-2 text-sm font-medium uppercase focus-ring"
         style={{
           // Color changes when header is solid OR when second section reaches nav
-          color: (solid || scrollProgress > 0.5) ? "#121212" : "white",
+          color: (solid || scrollProgress > 0.5) ? "#121212" : "rgba(255, 255, 255, 0.65)",
+          letterSpacing: "0.08em",
+          transition: "color 200ms ease, opacity 200ms ease",
         }}
         onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
         onMouseLeave={handleNavItemLeave}
@@ -200,11 +202,14 @@ export default function Header({ settled = false }: { settled?: boolean }) {
     <>
       <motion.header
         role="banner"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+        className={`fixed top-0 left-0 right-0 z-50 ${
           solid
             ? "bg-white border-b border-black/8 shadow-sm"
             : "bg-transparent border-b-0"
         }`}
+        style={{
+          transition: "background-color 200ms ease, border-color 200ms ease, box-shadow 200ms ease",
+        }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -223,8 +228,8 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               onClick={() => setMobileOpen(true)}
               style={{
                 // Color changes when header is solid OR when second section reaches nav
-                color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
-                transition: "color 0.3s ease",
+                color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
+                transition: "color 200ms ease",
               }}
             >
               ☰
@@ -245,10 +250,10 @@ export default function Header({ settled = false }: { settled?: boolean }) {
               <span
                 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
                 style={{
-                  letterSpacing: "0.025em",
-                  transition: "color 0.3s ease",
+                  letterSpacing: "0.035em",
+                  transition: "color 200ms ease",
                   // Color changes when header is solid OR when second section reaches nav
-                  color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "white",
+                  color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
                 }}
               >
                 Love, Violeta Rose
