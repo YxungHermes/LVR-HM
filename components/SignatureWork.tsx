@@ -73,6 +73,17 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
         />
       )}
 
+      {/* Frosted glass overlay - luxury glass case effect */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backdropFilter: "blur(0.5px) saturate(1.2)",
+          WebkitBackdropFilter: "blur(0.5px) saturate(1.2)",
+          background: "linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.08) 100%)",
+          boxShadow: "inset 0 0 40px rgba(255, 255, 255, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.15)",
+        }}
+      />
+
       {/* Overlay */}
       <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-60"}`} />
 

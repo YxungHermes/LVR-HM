@@ -205,9 +205,11 @@ export default function Header({ settled = false }: { settled?: boolean }) {
         className="fixed top-0 left-0 right-0 z-50"
         style={{
           backgroundColor: solid ? "rgb(255, 255, 255)" : "transparent",
-          borderBottom: solid ? "1px solid rgba(0, 0, 0, 0.08)" : "1px solid transparent",
+          borderBottomWidth: "1px",
+          borderBottomStyle: "solid",
+          borderBottomColor: solid ? "rgba(0, 0, 0, 0.08)" : "transparent",
           boxShadow: solid ? "0 1px 2px 0 rgb(0 0 0 / 0.05)" : "none",
-          transition: "background-color 200ms cubic-bezier(0.4, 0, 0.2, 1), border-bottom 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1)",
+          transition: "background-color 200ms cubic-bezier(0.4, 0, 0.2, 1), border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1)",
         }}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
