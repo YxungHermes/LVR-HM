@@ -59,10 +59,9 @@ export const signatureWork = [
     poster: "/media/reel-2.jpg"
   },
   {
-    title: "Caitlyn & Michael",
-    subtitle: "Santa Barbara, California",
-    src: "/media/reel-3.mp4",
-    poster: "/media/reel-3.jpg"
+    title: "Destination Weddings",
+    subtitle: "Italy, Mexico, California & Beyond",
+    vimeoId: "1137400003"
   }
 ];
 

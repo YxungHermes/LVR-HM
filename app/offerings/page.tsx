@@ -65,15 +65,30 @@ export default function PricingPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  {/* Collection Image - Fixed aspect ratio */}
-                  <div className="relative w-full aspect-[16/10] overflow-hidden">
-                    <Image
-                      src={collection.image}
-                      alt={collection.name}
-                      fill
-                      className="object-cover transition-transform duration-500 hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
+                  {/* Collection Image/Video - Fixed aspect ratio */}
+                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-black">
+                    {collection.vimeoId ? (
+                      <iframe
+                        src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                        className="absolute inset-0 w-full h-full"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover"
+                        }}
+                        frameBorder="0"
+                        allow="autoplay; fullscreen; picture-in-picture"
+                        title={collection.name}
+                      />
+                    ) : (
+                      <Image
+                        src={collection.image}
+                        alt={collection.name}
+                        fill
+                        className="object-cover transition-transform duration-500 hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    )}
                   </div>
 
                   <div className="p-8">

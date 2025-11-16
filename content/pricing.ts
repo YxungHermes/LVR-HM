@@ -65,6 +65,7 @@ export const pricingOverview = [
       "For celebrations in meaningful places around the world, with films that weave in people, place, and atmosphere.",
     href: "/offerings/destination-weddings",
     image: "/collections/destination.jpg",
+    vimeoId: "1137400003",
   },
   {
     slug: "adventure-sessions",
@@ -140,6 +141,7 @@ export const pricingPages = {
     title: "Destination Wedding Films",
     seoTitle: "Destination Wedding Videography | Love, Violeta Rose",
     heroImage: "/collections/destination.jpg",
+    vimeoId: "1137400003",
     introHeading: "For celebrations that live across borders and timelines.",
     introBody:
       "A destination wedding is more than one day. It is airport greetings, welcome dinners, slow mornings, boat rides, late-night toasts. This collection is for couples who want that full atmosphere held on film. We travel with you, move like guests, and create a film that feels like an heirloom from another world.",
