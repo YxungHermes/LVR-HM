@@ -141,22 +141,22 @@ export default function Hero() {
             <a
               href={hero.ctas.primary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.primary.label, hero.ctas.primary.href)}
-              className="group bg-white text-ink rounded-full px-8 py-4 font-medium hover:scale-105 hover:shadow-2xl focus-ring"
+              className="group inline-flex items-center gap-3 bg-white text-ink rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] focus-ring"
               style={{
-                transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+                transition: "box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1)"
               }}
             >
-              {hero.ctas.primary.label}
+              <span>{hero.ctas.primary.label}</span>
             </a>
             <a
               href={hero.ctas.secondary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.secondary.label, hero.ctas.secondary.href)}
-              className="rounded-full border-2 border-white/70 px-8 py-4 text-white font-medium hover:border-white hover:bg-white/10 backdrop-blur-sm focus-ring"
+              className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-white rounded-full text-white font-semibold uppercase tracking-wider text-sm hover:bg-white hover:text-ink hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] focus-ring"
               style={{
-                transition: "border-color 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1)"
+                transition: "background-color 400ms cubic-bezier(0.22, 1, 0.36, 1), color 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1)"
               }}
             >
-              {hero.ctas.secondary.label}
+              <span>{hero.ctas.secondary.label}</span>
             </a>
           </motion.div>
         </div>
