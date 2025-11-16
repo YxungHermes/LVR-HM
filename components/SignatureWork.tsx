@@ -84,8 +84,24 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
         }}
       />
 
-      {/* Overlay */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isHovered ? "opacity-100" : "opacity-60"}`} />
+      {/* Permanent dark gradient overlay - ensures text is always readable */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0.2) 100%)",
+        }}
+      />
+
+      {/* Vignette for containment - snow globe effect */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.25) 100%)",
+        }}
+      />
+
+      {/* Hover enhancement - additional darkening on hover */}
+      <div className={`absolute inset-0 bg-black/0 transition-opacity duration-300 ${isHovered ? "opacity-20" : "opacity-0"}`} />
 
       {/* Content */}
       <div className="absolute inset-x-0 bottom-0 p-6 text-white">

@@ -30,7 +30,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVideoLoaded(true);
-    }, 2000); // Wait for video to fully load before starting fade
+    }, 3000); // Wait 3 seconds for video to fully buffer and start playing
     return () => clearTimeout(timer);
   }, []);
 
@@ -51,7 +51,7 @@ export default function Hero() {
         style={{
           backgroundImage: `url(${hero.poster})`,
           opacity: videoLoaded ? 0 : 1,
-          transition: "opacity 2500ms cubic-bezier(0.22, 1, 0.36, 1)",
+          transition: "opacity 3000ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       />
 
@@ -60,7 +60,7 @@ export default function Hero() {
         className="absolute inset-0 z-0"
         style={{
           opacity: videoLoaded ? 1 : 0,
-          transition: "opacity 2500ms cubic-bezier(0.22, 1, 0.36, 1)",
+          transition: "opacity 3000ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
         <iframe
