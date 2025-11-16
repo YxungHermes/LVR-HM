@@ -30,7 +30,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVideoLoaded(true);
-    }, 1500); // 1.5s delay before fading in video
+    }, 800); // Start fading video at same time as text begins
     return () => clearTimeout(timer);
   }, []);
 
@@ -51,7 +51,7 @@ export default function Hero() {
         style={{
           backgroundImage: `url(${hero.poster})`,
           opacity: videoLoaded ? 0 : 1,
-          transition: "opacity 2000ms ease-out",
+          transition: "opacity 2500ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       />
 
@@ -60,7 +60,7 @@ export default function Hero() {
         className="absolute inset-0 z-0"
         style={{
           opacity: videoLoaded ? 1 : 0,
-          transition: "opacity 2000ms ease-out",
+          transition: "opacity 2500ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       >
         <iframe
@@ -104,9 +104,9 @@ export default function Hero() {
             style={{
               letterSpacing: "0.25em",
             }}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.location}
           </motion.p>
@@ -114,9 +114,9 @@ export default function Hero() {
           {/* Main headline */}
           <motion.h1
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.title}
           </motion.h1>
@@ -124,9 +124,9 @@ export default function Hero() {
           {/* Subheading */}
           <motion.p
             className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.sub}
           </motion.p>
@@ -134,9 +134,9 @@ export default function Hero() {
           {/* CTA Buttons */}
           <motion.div
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <a
               href={hero.ctas.primary.href}
@@ -177,7 +177,7 @@ export default function Hero() {
           y: [0, 8, 0],
         }}
         transition={{
-          opacity: { duration: 0.8, delay: 2.4 },
+          opacity: { duration: 0.8, delay: 3.0 },
           y: {
             duration: 2,
             repeat: Infinity,
