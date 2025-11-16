@@ -1,7 +1,7 @@
 export const hero = {
   title: "Love Stories Worth Reliving",
   sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
-  location: "Based in New York • Traveling Worldwide",
+  location: "Based in New York City • Traveling Worldwide",
   // Using Vimeo for reliable video hosting and streaming
   // 16:9 wedding video for hero background
   vimeoId: "1137323325",
@@ -54,7 +54,7 @@ export const signatureWork = [
   },
   {
     title: "Courtney & Sterling",
-    subtitle: "New York",
+    subtitle: "Connecticut",
     vimeoId: "1137483566"
   },
   {

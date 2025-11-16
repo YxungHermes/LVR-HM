@@ -7,6 +7,7 @@ import { trackCTAClick } from "@/lib/analytics";
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   // Track scroll position for scroll marker fade-out effect
   useEffect(() => {
@@ -25,6 +26,14 @@ export default function Hero() {
     }
   }, []);
 
+  // Simulate video load - give it time to start playing
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setVideoLoaded(true);
+    }, 1500); // 1.5s delay before fading in video
+    return () => clearTimeout(timer);
+  }, []);
+
   // Calculate opacity for scroll marker: fades out after 100px of scroll
   const scrollMarkerOpacity = Math.max(0, 1 - scrollY / 100);
 
@@ -36,8 +45,24 @@ export default function Hero() {
 
   return (
     <section className="relative h-screen bg-black overflow-hidden">
-      {/* Vimeo Video Background */}
-      <div className="absolute inset-0 z-0">
+      {/* Static Poster Image - shows immediately while video loads */}
+      <div
+        className="absolute inset-0 z-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${hero.poster})`,
+          opacity: videoLoaded ? 0 : 1,
+          transition: "opacity 2000ms ease-out",
+        }}
+      />
+
+      {/* Vimeo Video Background - fades in smoothly */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          opacity: videoLoaded ? 1 : 0,
+          transition: "opacity 2000ms ease-out",
+        }}
+      >
         <iframe
           src={`https://player.vimeo.com/video/${hero.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
           className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] min-w-full min-h-full object-cover"
@@ -52,63 +77,67 @@ export default function Hero() {
           allow="autoplay; fullscreen; picture-in-picture"
           title="Hero Background Video"
         />
-
-        {/* Vignette effect on corners */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.3) 100%)',
-          }}
-        />
-
-        {/* Localized gradient overlay - only behind text area */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'radial-gradient(ellipse 120% 60% at 50% 50%, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.1) 70%, transparent 100%)',
-          }}
-        />
       </div>
+
+      {/* Vignette effect on corners */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: 'radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.3) 100%)',
+        }}
+      />
+
+      {/* Localized gradient overlay - only behind text area */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[1]"
+        style={{
+          background: 'radial-gradient(ellipse 120% 60% at 50% 50%, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.1) 70%, transparent 100%)',
+        }}
+      />
 
       {/* Content - Full viewport height accounting for fixed header */}
       <div className="relative z-10 mx-auto flex h-full max-w-[1000px] items-center justify-center px-6 pt-[56px] md:pt-[72px]">
         <div className="w-full text-center max-w-4xl mx-auto">
+          {/* SECOND BEAT: Tagline - appears in second beat with subheading and CTAs */}
           {/* Tagline above title */}
           <motion.p
             className="text-xs md:text-sm text-white/80 uppercase font-medium mb-6 md:mb-8"
             style={{
               letterSpacing: "0.25em",
             }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.location}
           </motion.p>
 
+          {/* FIRST BEAT: Main headline only - elegant solo entrance */}
           <motion.h1
             className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.0, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.4, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.title}
           </motion.h1>
 
+          {/* SECOND BEAT: Subheading - appears with tagline and CTAs */}
+
           <motion.p
             className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.4, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
           >
             {hero.sub}
           </motion.p>
 
           <motion.div
             className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1.8, ease: [0.4, 0, 0.2, 1] }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 2.9, ease: [0.22, 1, 0.36, 1] }}
           >
             <a
               href={hero.ctas.primary.href}
@@ -149,7 +178,7 @@ export default function Hero() {
           y: [0, 8, 0],
         }}
         transition={{
-          opacity: { duration: 0.8, delay: 2.2 },
+          opacity: { duration: 0.8, delay: 4.2 },
           y: {
             duration: 2,
             repeat: Infinity,
