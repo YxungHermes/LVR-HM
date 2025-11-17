@@ -127,7 +127,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
         </h3>
         <p className="mt-2 text-base md:text-lg font-medium text-white/95 drop-shadow-md">{subtitle}</p>
 
-        {/* View Film Link - Enhanced with outline button style */}
+        {/* View Film Button - Solid white button that slides up on hover */}
         <div
           className={`mt-6 transition-all duration-500 ${
             isHovered ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
@@ -135,10 +135,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
         >
           <a
             href="#"
-            className="inline-flex items-center gap-3 px-6 py-3 border-2 border-white rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-ink transition-all duration-300"
-            style={{
-              boxShadow: isHovered ? "0 4px 12px rgba(255, 255, 255, 0.3)" : "none",
-            }}
+            className="inline-flex items-center gap-3 px-6 py-3 bg-white text-ink rounded-full text-sm font-semibold uppercase tracking-wider hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] transition-all duration-300"
           >
             <span>View Film</span>
             <svg
