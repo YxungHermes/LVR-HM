@@ -42,12 +42,17 @@ export default function LoginPage() {
     <div className="min-h-screen bg-black flex items-center justify-center px-4">
       <div className="max-w-md w-full space-y-8">
         <div>
-          <h1 className="text-4xl font-serif text-center text-white mb-2">
+          <h1 className="text-4xl font-serif text-center text-white mb-4">
             LVR
           </h1>
-          <p className="text-center text-gray-400">
-            This site is password protected
-          </p>
+          <div className="text-center space-y-3">
+            <p className="text-xl text-white font-light">
+              Website Currently Under Construction
+            </p>
+            <p className="text-gray-400">
+              Thanks for visiting! This site is password protected while we make updates.
+            </p>
+          </div>
         </div>
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
