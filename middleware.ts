@@ -1,16 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Only gate Preview deployments, never Production
-function isPreviewEnv(req: NextRequest) {
-  // Vercel sets these automatically
-  const vercelEnv = process.env.VERCEL_ENV; // "development" | "preview" | "production"
-  if (vercelEnv) return vercelEnv === "preview";
-
-  // Fallback: heuristic based on host
-  const host = req.headers.get("host") || "";
-  return host.includes("-vercel.app") && !host.startsWith("www.");
-}
+const SITE_PASSWORD = process.env.SITE_PASSWORD || "lvr2024";
 
 export function middleware(req: NextRequest) {
   const url = req.nextUrl;
@@ -20,7 +11,25 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/offerings", req.url));
   }
 
-  // No password protection - publicly accessible preview
+  // Allow access to login page, auth API, and static assets
+  if (
+    url.pathname === "/login" ||
+    url.pathname.startsWith("/api/auth") ||
+    url.pathname.startsWith("/_next") ||
+    url.pathname.startsWith("/static") ||
+    url.pathname.includes(".")
+  ) {
+    return NextResponse.next();
+  }
+
+  // Check for auth cookie
+  const authCookie = req.cookies.get("site-auth");
+
+  if (!authCookie || authCookie.value !== SITE_PASSWORD) {
+    // Redirect to login page
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
+
   return NextResponse.next();
 }
 
