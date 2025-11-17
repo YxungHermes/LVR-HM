@@ -8,6 +8,17 @@ import { trackCTAClick } from "@/lib/analytics";
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device - videos often don't autoplay on mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Track scroll position for scroll marker fade-out effect
   useEffect(() => {
@@ -19,13 +30,15 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Simulate video load - give it time to start playing
+  // Simulate video load - give it time to start playing (desktop only)
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setVideoLoaded(true);
-    }, 3000); // Wait 3 seconds for video to fully buffer and start playing
-    return () => clearTimeout(timer);
-  }, []);
+    if (!isMobile) {
+      const timer = setTimeout(() => {
+        setVideoLoaded(true);
+      }, 3000); // Wait 3 seconds for video to fully buffer and start playing
+      return () => clearTimeout(timer);
+    }
+  }, [isMobile]);
 
   // Calculate opacity for scroll marker: fades out after 100px of scroll
   const scrollMarkerOpacity = Math.max(0, 1 - scrollY / 100);
@@ -38,38 +51,40 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-[100dvh] md:h-screen bg-black overflow-hidden">
-      {/* Static Poster Image - shows immediately while video loads */}
+      {/* Static Poster Image - shows on mobile, or while video loads on desktop */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
           backgroundImage: `url(${hero.poster})`,
-          opacity: videoLoaded ? 0 : 1,
+          opacity: (isMobile || !videoLoaded) ? 1 : 0,
           transition: "opacity 3000ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
       />
 
-      {/* Vimeo Video Background - fades in smoothly */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          opacity: videoLoaded ? 1 : 0,
-          transition: "opacity 3000ms cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
-      >
-        <iframe
-          src={`https://player.vimeo.com/video/${hero.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vh] min-w-full min-h-full"
+      {/* Vimeo Video Background - desktop only, fades in smoothly */}
+      {!isMobile && (
+        <div
+          className="absolute inset-0 z-0"
           style={{
-            width: "100vw",
-            height: "56.25vw", // 16:9 aspect ratio
-            minHeight: "100dvh",
-            minWidth: "177.78vh", // 16:9 aspect ratio
+            opacity: videoLoaded ? 1 : 0,
+            transition: "opacity 3000ms cubic-bezier(0.22, 1, 0.36, 1)",
           }}
-          frameBorder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          title="Hero Background Video"
-        />
-      </div>
+        >
+          <iframe
+            src={`https://player.vimeo.com/video/${hero.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vh] min-w-full min-h-full"
+            style={{
+              width: "100vw",
+              height: "56.25vw", // 16:9 aspect ratio
+              minHeight: "100dvh",
+              minWidth: "177.78vh", // 16:9 aspect ratio
+            }}
+            frameBorder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            title="Hero Background Video"
+          />
+        </div>
+      )}
 
       {/* Vignette effect on corners */}
       <div
@@ -159,8 +174,8 @@ export default function Hero() {
         onClick={scrollToNext}
         className="fixed bottom-8 left-1/2 z-20 flex flex-col items-center gap-2 text-white/70 hover:text-white transition-colors duration-300 group focus-ring rounded-lg px-4 py-2"
         style={{
+          x: "-50%",
           opacity: scrollMarkerOpacity,
-          transform: `translateX(-50%) translateY(${scrollY * 0.5}px)`,
           pointerEvents: scrollMarkerOpacity < 0.1 ? 'none' : 'auto',
         }}
         initial={{ opacity: 0 }}

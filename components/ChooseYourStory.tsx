@@ -99,19 +99,8 @@ export default function ChooseYourStory() {
                     className="overflow-hidden"
                   >
                     <div className={`relative ${collection.vimeoId ? 'bg-black' : cardGradients[index]}`}>
-                      {/* Video/Image Background for expanded */}
-                      {collection.vimeoId && (
-                        <div className="relative aspect-video overflow-hidden">
-                          <iframe
-                            src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-                            className="absolute inset-0 w-full h-full"
-                            frameBorder="0"
-                            allow="autoplay; fullscreen; picture-in-picture"
-                            title={collection.name}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
-                        </div>
-                      )}
+                      {/* Video removed from mobile - videos don't autoplay reliably on mobile browsers */}
+                      {/* Keep simple gradient background instead */}
 
                       <div className="p-4">
                         <p className={`text-sm ${collection.vimeoId ? 'text-white/80' : 'text-espresso/80'} mb-4 leading-relaxed`}>
