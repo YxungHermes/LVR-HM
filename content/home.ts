@@ -41,7 +41,7 @@ export const chooseYourStory = [
   {
     slug: "adventure-sessions",
     name: "Adventure Sessions & Stories",
-    teaser: "For engagements, welcome parties, and day-after moments.",
+    teaser: "Affordable couples films. Anniversaries, birthdays, or just because.",
     href: "/offerings/adventure-sessions"
   }
 ];
