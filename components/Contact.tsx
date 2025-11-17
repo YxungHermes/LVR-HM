@@ -46,11 +46,11 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link
-              href="/contact/inquiry"
-              onClick={() => trackCTAClick('homepage-contact', 'Start Your Inquiry', '/contact/inquiry')}
+              href="/consultation"
+              onClick={() => trackCTAClick('homepage-contact', 'Book Consultation', '/consultation')}
               className="group inline-flex items-center gap-4 bg-rose-grad text-white rounded-full px-12 py-6 font-semibold uppercase tracking-wider text-base hover:shadow-[0_12px_32px_rgba(244,105,126,0.5)] focus-ring transition-all duration-300 hover:scale-105"
             >
-              <span>Start Your Inquiry</span>
+              <span>Book Consultation</span>
               <svg
                 className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
