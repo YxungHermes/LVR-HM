@@ -95,6 +95,7 @@ function AccordionSection({ number, title, isOpen, isCompleted, onClick, childre
 export default function BriefingPage() {
   const [openSection, setOpenSection] = useState<number>(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
@@ -140,8 +141,8 @@ export default function BriefingPage() {
         return formData.moments.length > 0;
       case 2: // Your Film's Vibe
         return !!formData.filmStyle;
-      case 3: // Special Details
-        return true; // All optional
+      case 3: // Special Details - optional but show complete if any field filled
+        return !!(formData.culturalTraditions || formData.familyDynamics || formData.surpriseMoments || formData.anythingElse);
       case 4: // What You'll Receive
         return formData.deliverables.length > 0;
       case 5: // Timeline & Investment
@@ -154,6 +155,67 @@ export default function BriefingPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Clear previous errors
+    setValidationErrors([]);
+
+    // Validate required sections
+    const errors: string[] = [];
+    let firstIncompleteSection: number | null = null;
+
+    // Section 0: Your Celebration
+    if (!formData.partner1Name || !formData.partner2Name) {
+      errors.push("Please enter both partner names in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+    if (!formData.weddingDate) {
+      errors.push("Please enter your wedding date in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+    if (!formData.location) {
+      errors.push("Please enter your wedding location in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+
+    // Section 1: Moments to Capture
+    if (formData.moments.length === 0) {
+      errors.push("Please select at least one moment to capture in 'Moments to Capture'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 1;
+    }
+
+    // Section 2: Your Film's Vibe
+    if (!formData.filmStyle) {
+      errors.push("Please select a film style in 'Your Film's Vibe'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 2;
+    }
+
+    // Section 4: What You'll Receive
+    if (formData.deliverables.length === 0) {
+      errors.push("Please select at least one deliverable in 'What You'll Receive'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 4;
+    }
+
+    // Section 5: Timeline & Investment
+    if (!formData.deliveryTimeline) {
+      errors.push("Please select a delivery timeline in 'Timeline & Investment'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 5;
+    }
+    if (!formData.budget) {
+      errors.push("Please select a budget range in 'Timeline & Investment'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 5;
+    }
+
+    // If there are errors, show them and open the first incomplete section
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      if (firstIncompleteSection !== null) {
+        setOpenSection(firstIncompleteSection);
+      }
+      // Scroll to error messages
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // All validation passed - submit the form
     // In production, send to your backend/email/CRM
     console.log('Form submitted:', formData);
 
@@ -261,6 +323,47 @@ export default function BriefingPage() {
             </motion.div>
           </div>
         </section>
+
+        {/* Validation Errors */}
+        {validationErrors.length > 0 && (
+          <section className="px-6 pb-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0">
+                    <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                    </svg>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-red-800 font-semibold mb-2">
+                      Please complete all required fields
+                    </h3>
+                    <ul className="space-y-1">
+                      {validationErrors.map((error, index) => (
+                        <li key={index} className="text-sm text-red-700">
+                          • {error}
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-sm text-red-600 mt-3">
+                      We've opened the first incomplete section for you. Please fill in all required information before submitting.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setValidationErrors([])}
+                    className="flex-shrink-0 text-red-400 hover:text-red-600 transition-colors"
+                    aria-label="Dismiss errors"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Main Form Section */}
         <section className="px-6 pb-20 md:pb-32">
