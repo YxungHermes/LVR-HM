@@ -82,7 +82,7 @@ export const pricingOverview = [
 export const pricingPages = {
   elopements: {
     title: "Elopements & Intimate Gatherings",
-    seoTitle: "Elopement Wedding Films | Love, Violeta Rose",
+    seoTitle: "Elopement Wedding Films | Weddings by Michael Andrade",
     heroImage: "/collections/elopements.jpg",
     introHeading: "For the couples choosing presence over spectacle.",
     introBody:
@@ -110,7 +110,7 @@ export const pricingPages = {
 
   "wedding-day-films": {
     title: "Wedding Day Films",
-    seoTitle: "Wedding Day Film Collections | Love, Violeta Rose",
+    seoTitle: "Wedding Day Film Collections | Weddings by Michael Andrade",
     heroImage: "/collections/wedding-day.jpg",
     introHeading: "A complete, cinematic record of the day you built.",
     introBody:
@@ -139,7 +139,7 @@ export const pricingPages = {
 
   "destination-weddings": {
     title: "Destination Wedding Films",
-    seoTitle: "Destination Wedding Videography | Love, Violeta Rose",
+    seoTitle: "Destination Wedding Videography | Weddings by Michael Andrade",
     heroImage: "/collections/destination.jpg",
     vimeoId: "1137400003",
     introHeading: "For celebrations that live across borders and timelines.",
@@ -168,7 +168,7 @@ export const pricingPages = {
 
   "adventure-sessions": {
     title: "Adventure Sessions & Stories",
-    seoTitle: "Adventure & Engagement Films | Love, Violeta Rose",
+    seoTitle: "Adventure & Engagement Films | Weddings by Michael Andrade",
     heroImage: "/collections/adventure.jpg",
     introHeading: "Chapters of your story beyond the wedding day.",
     introBody:

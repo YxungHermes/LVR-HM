@@ -273,7 +273,8 @@ export default function RotatingSquareSpiralPreloader({ onComplete }: PreloaderP
                     ease: "easeInOut",
                   }}
                 >
-                  Love, Violeta Rose
+                  <span className="font-bold">Weddings</span>
+                  <span className="italic opacity-80"> by Michael Andrade</span>
                 </motion.h1>
               </motion.div>
             </motion.div>

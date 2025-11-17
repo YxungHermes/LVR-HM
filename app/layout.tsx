@@ -25,9 +25,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Love, Violeta Rose — Cinematic Wedding Films",
+  title: "Weddings by Michael Andrade — Cinematic Wedding Films",
   description: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
-  keywords: ["wedding videography", "cinematic wedding films", "luxury wedding videographer", "love violeta rose"],
+  keywords: ["wedding videography", "cinematic wedding films", "luxury wedding videographer", "weddings by michael andrade"],
   icons: {
     icon: [
       { url: '/favicons/lvr-monogram.svg', type: 'image/svg+xml' },

@@ -252,15 +252,29 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
               href="/"
               className="relative block origin-center focus-ring"
             >
-              <span
-                className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
-                style={{
-                  letterSpacing: "0.035em",
-                  transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
-                  color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
-                }}
-              >
-                Love, Violeta Rose
+              <span className="flex items-baseline gap-1.5">
+                <span
+                  className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
+                  style={{
+                    letterSpacing: "0.035em",
+                    transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
+                  }}
+                >
+                  Weddings
+                </span>
+                <span
+                  className="font-serif text-xs sm:text-sm md:text-base italic whitespace-nowrap"
+                  style={{
+                    letterSpacing: "0.02em",
+                    transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
+                    color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
+                    opacity: 0.8,
+                    marginTop: "0.25rem",
+                  }}
+                >
+                  by Michael Andrade
+                </span>
               </span>
             </a>
           </div>

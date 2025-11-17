@@ -17,8 +17,13 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <a href="/" className="inline-block group focus-ring rounded">
-              <h3 className="font-serif text-2xl font-bold tracking-wider text-ink group-hover:text-rose-wax-red transition-colors">
-                Love, Violeta Rose
+              <h3 className="flex items-baseline gap-2">
+                <span className="font-serif text-2xl font-bold tracking-wider text-ink group-hover:text-rose-wax-red transition-colors">
+                  Weddings
+                </span>
+                <span className="font-serif text-base italic text-ink/80 group-hover:text-rose-wax-red/80 transition-colors">
+                  by Michael Andrade
+                </span>
               </h3>
             </a>
             <p className="mt-3 text-sm text-espresso">
@@ -95,7 +100,7 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="text-xs text-espresso/60">
-            © {new Date().getFullYear()} Love, Violeta Rose. All rights reserved.
+            © {new Date().getFullYear()} Weddings by Michael Andrade. All rights reserved.
           </p>
         </motion.div>
       </div>

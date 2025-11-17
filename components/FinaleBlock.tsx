@@ -61,8 +61,9 @@ export default function FinaleBlock() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="font-serif text-lg text-ink italic">
-              Love, Violeta Rose
+            <p className="font-serif text-lg text-ink">
+              <span className="font-bold">Weddings</span>
+              <span className="italic text-ink/80"> by Michael Andrade</span>
             </p>
           </motion.div>
         </div>

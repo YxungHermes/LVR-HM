@@ -30,14 +30,14 @@ export async function GET(request: NextRequest) {
     const { data, error } = await resend.emails.send({
       from: fromEmail,
       to: toEmail,
-      subject: "🧪 Test Email from Love, Violeta Rose",
+      subject: "🧪 Test Email from Weddings by Michael Andrade",
       html: `
         <!DOCTYPE html>
         <html>
         <body style="font-family: sans-serif; padding: 40px; background: #FAF7F2;">
           <div style="max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px;">
             <h1 style="color: #A14C41; margin-top: 0;">✅ Email Configuration Working!</h1>
-            <p>This is a test email from your Love, Violeta Rose consultation form backend.</p>
+            <p>This is a test email from your Weddings by Michael Andrade consultation form backend.</p>
             <hr style="border: none; border-top: 1px solid #E9DDD2; margin: 20px 0;">
             <p><strong>From:</strong> ${fromEmail}</p>
             <p><strong>To:</strong> ${toEmail}</p>
@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
       text: `
 Email Configuration Working!
 
-This is a test email from your Love, Violeta Rose consultation form backend.
+This is a test email from your Weddings by Michael Andrade consultation form backend.
 
 From: ${fromEmail}
 To: ${toEmail}

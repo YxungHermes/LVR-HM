@@ -387,7 +387,7 @@ function generateEmailHtml(data: any): string {
 
     <!-- Footer -->
     <div class="footer">
-      <p>Love, Violeta Rose — Luxury Wedding Films</p>
+      <p>Weddings by Michael Andrade — Luxury Wedding Films</p>
       <p style="margin-top: 8px; font-size: 12px; opacity: 0.8;">
         This consultation request was submitted via your website
       </p>
@@ -506,7 +506,7 @@ function generateEmailText(data: any): string {
   if (additionalNotes) text += `Additional Notes:\n${additionalNotes}\n`;
 
   text += `\n═════════════════════════════════════\n`;
-  text += `Love, Violeta Rose — Luxury Wedding Films\n`;
+  text += `Weddings by Michael Andrade — Luxury Wedding Films\n`;
   text += `This consultation request was submitted via your website\n`;
 
   return text;

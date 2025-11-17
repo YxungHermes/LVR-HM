@@ -244,7 +244,8 @@ export default function GeometryPreloader({ onComplete }: PreloaderProps) {
                 className="font-serif text-lg font-semibold tracking-wide"
                 style={{ color: "#6B5E57" }}
               >
-                Love, Violeta Rose
+                <span className="font-bold">Weddings</span>
+                <span className="italic text-[#6B5E57]/80"> by Michael Andrade</span>
               </p>
             </motion.div>
           </motion.div>
