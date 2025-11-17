@@ -22,6 +22,11 @@ interface FormData {
   guestCount: string;
   weddingPlanner: string;
 
+  // Timeline sharing
+  hasTimeline: string; // 'yes', 'no', 'both'
+  timelineLink: string;
+  timelineNotes: string;
+
   // Section 2: Moments to Capture
   moments: string[];
   otherMoments: string;
@@ -121,6 +126,9 @@ export default function BriefingPage() {
     numberOfDays: "1",
     guestCount: "",
     weddingPlanner: "",
+    hasTimeline: "",
+    timelineLink: "",
+    timelineNotes: "",
     moments: [],
     otherMoments: "",
     filmStyle: "",
@@ -301,8 +309,8 @@ export default function BriefingPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-espresso/80 mb-8 leading-relaxed">
-                We've received your preferences and are excited to create a custom proposal for you.
-                We'll review everything and send you detailed pricing and next steps within 48 hours.
+                We've received all your wedding details! We'll review everything and reach out
+                2-3 weeks before your wedding to confirm final timeline and logistics.
               </p>
 
               <p className="text-base text-espresso/70 mb-10">
@@ -343,14 +351,14 @@ export default function BriefingPage() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6">
-                Let's Plan Your Perfect Film
+                Your Wedding Film Planning Guide
               </h1>
               <p className="text-lg md:text-xl text-espresso/80 mb-4 leading-relaxed max-w-3xl mx-auto">
-                Take your time with these questions—they help us understand your vision and create a film
-                that's uniquely yours. We'll review your answers and send you a personalized proposal within 48 hours.
+                Now that you're booked, let's dive into the details! These questions help us plan every aspect
+                of your wedding day coverage to capture your celebration perfectly.
               </p>
               <p className="text-sm text-coffee/60">
-                Takes about 10-15 minutes
+                💡 Best filled out 60-90 days before your wedding • Takes about 15-20 minutes
               </p>
             </motion.div>
           </div>
@@ -585,6 +593,89 @@ export default function BriefingPage() {
                           className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                           placeholder="Name or company (if you have one, helps us coordinate)"
                         />
+                      </div>
+
+                      {/* Timeline Sharing Section */}
+                      <div className="pt-4 mt-4 border-t border-coffee/10">
+                        <h4 className="text-base font-semibold text-ink mb-3">Your Wedding Day Timeline</h4>
+                        <p className="text-sm text-espresso/70 mb-4">
+                          Save time! If you already have a timeline from your planner, just share the link.
+                          We'll extract all the details automatically.
+                        </p>
+
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-3">
+                              Do you have a wedding timeline already created?
+                            </label>
+                            <div className="space-y-2">
+                              {[
+                                { value: "yes", label: "Yes - I'll share a link or upload it" },
+                                { value: "no", label: "No - I'll fill out the details manually" },
+                                { value: "both", label: "I'll do both (share link + add key details)" }
+                              ].map((option) => (
+                                <label key={option.value} className="flex items-start gap-3 cursor-pointer group p-3 rounded-lg hover:bg-cream/30 transition-colors">
+                                  <input
+                                    type="radio"
+                                    name="hasTimeline"
+                                    value={option.value}
+                                    checked={formData.hasTimeline === option.value}
+                                    onChange={(e) => updateField('hasTimeline', e.target.value)}
+                                    className="mt-0.5 w-4 h-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                                  />
+                                  <span className="text-sm text-ink">{option.label}</span>
+                                </label>
+                              ))}
+                            </div>
+                          </div>
+
+                          {(formData.hasTimeline === "yes" || formData.hasTimeline === "both") && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              transition={{ duration: 0.3 }}
+                              className="space-y-4 p-4 bg-warm-sand/10 rounded-lg border border-coffee/10"
+                            >
+                              <div>
+                                <label className="block text-sm font-medium text-ink mb-2">
+                                  Share Your Timeline Link or Upload
+                                </label>
+                                <p className="text-xs text-coffee/60 mb-3">
+                                  💡 Accepted: Google Docs/Sheets, Aisle Planner, HoneyBook, PDFs, Dropbox/Drive links
+                                </p>
+                                <input
+                                  type="text"
+                                  value={formData.timelineLink}
+                                  onChange={(e) => updateField('timelineLink', e.target.value)}
+                                  className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-white focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                                  placeholder="Paste link here (e.g., https://docs.google.com/...)"
+                                />
+                              </div>
+
+                              <div>
+                                <label className="block text-sm font-medium text-ink mb-2">
+                                  Quick Notes or Highlights (optional)
+                                </label>
+                                <textarea
+                                  value={formData.timelineNotes}
+                                  onChange={(e) => updateField('timelineNotes', e.target.value)}
+                                  className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-white focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                                  rows={3}
+                                  placeholder="E.g., Ceremony at 4pm, golden hour portraits at 6pm..."
+                                />
+                              </div>
+                            </motion.div>
+                          )}
+
+                          {formData.hasTimeline && formData.hasTimeline !== "yes" && (
+                            <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                              <p className="text-sm text-blue-800">
+                                <strong>No timeline yet?</strong> No problem! We'll work with your planner closer to the date,
+                                or you can fill this out later. Just make sure to provide key timing details in the form below.
+                              </p>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </AccordionSection>
