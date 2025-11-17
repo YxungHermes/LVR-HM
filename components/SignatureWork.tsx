@@ -32,7 +32,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
 
   return (
     <motion.div
-      className="group relative h-[400px] md:h-[500px] overflow-hidden rounded-xl border border-white/10"
+      className="group relative h-[500px] md:h-[600px] overflow-hidden rounded-xl border border-white/10"
       style={{
         transform: isHovered ? "scale(1.04)" : "scale(1)",
         boxShadow: isHovered
@@ -187,7 +187,7 @@ export default function SignatureWork() {
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:gap-10 md:grid-cols-2">
           {signatureWork.map((work, index) => (
             <VideoCard key={work.title} {...work} index={index} />
           ))}

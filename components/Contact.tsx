@@ -26,20 +26,20 @@ export default function Contact() {
           </p>
 
           {/* Main heading */}
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight">
+          <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-ink mb-8 leading-tight">
             Let's Create Something
             <br />
             <span className="text-rose-2">Beautiful Together</span>
           </h2>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-espresso/80 max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="text-xl md:text-2xl text-espresso/80 max-w-3xl mx-auto leading-relaxed mb-16">
             Your love story deserves to be told with heart and artistry. Share your vision with me, and let's craft a film you'll treasure forever.
           </p>
 
-          {/* CTA Buttons */}
+          {/* Single CTA Button */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex justify-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -48,11 +48,11 @@ export default function Contact() {
             <Link
               href="/contact/inquiry"
               onClick={() => trackCTAClick('homepage-contact', 'Start Your Inquiry', '/contact/inquiry')}
-              className="group inline-flex items-center gap-3 bg-rose-grad text-white rounded-full px-10 py-5 font-semibold uppercase tracking-wider text-sm hover:shadow-[0_8px_24px_rgba(244,105,126,0.4)] focus-ring transition-all duration-300 hover:scale-105"
+              className="group inline-flex items-center gap-4 bg-rose-grad text-white rounded-full px-12 py-6 font-semibold uppercase tracking-wider text-base hover:shadow-[0_12px_32px_rgba(244,105,126,0.5)] focus-ring transition-all duration-300 hover:scale-105"
             >
               <span>Start Your Inquiry</span>
               <svg
-                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -64,14 +64,6 @@ export default function Contact() {
                   d="M17 8l4 4m0 0l-4 4m4-4H3"
                 />
               </svg>
-            </Link>
-
-            <Link
-              href="/consultation"
-              onClick={() => trackCTAClick('homepage-contact', 'Book a Consultation', '/consultation')}
-              className="group inline-flex items-center gap-3 px-10 py-5 border-2 border-ink/20 rounded-full text-ink font-semibold uppercase tracking-wider text-sm hover:border-rose-2 hover:text-rose-2 hover:shadow-[0_4px_16px_rgba(244,105,126,0.2)] focus-ring transition-all duration-300"
-            >
-              <span>Book a Consultation</span>
             </Link>
           </motion.div>
 
