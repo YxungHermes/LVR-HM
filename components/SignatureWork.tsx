@@ -32,7 +32,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
 
   return (
     <motion.div
-      className="group relative h-[450px] md:h-[520px] overflow-hidden rounded-xl border border-white/10"
+      className="group relative h-[300px] sm:h-[380px] md:h-[450px] lg:h-[520px] overflow-hidden rounded-lg sm:rounded-xl border border-white/10"
       style={{
         transform: isHovered ? "scale(1.04)" : "scale(1)",
         boxShadow: isHovered
@@ -121,9 +121,9 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
       <div className={`absolute inset-0 bg-black/0 transition-opacity duration-500 ${isHovered ? "opacity-10" : "opacity-0"}`} />
 
       {/* Content */}
-      <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+      <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-8">
         <h3
-          className="font-serif text-3xl md:text-4xl font-bold text-white mb-1"
+          className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1"
           style={{
             textShadow: '0 2px 12px rgba(0, 0, 0, 0.9), 0 4px 24px rgba(0, 0, 0, 0.6)',
             letterSpacing: '-0.01em'
@@ -132,7 +132,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
           {title}
         </h3>
         <p
-          className="text-sm md:text-base font-medium text-white/90 uppercase tracking-wider"
+          className="text-xs sm:text-sm md:text-base font-medium text-white/90 uppercase tracking-wider"
           style={{
             textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)'
           }}
@@ -171,32 +171,32 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
 
 export default function SignatureWork() {
   return (
-    <section id="signature-work" className="bg-cream px-6 py-20 md:py-32 min-h-screen flex flex-col justify-center overflow-hidden">
+    <section id="signature-work" className="bg-cream px-6 py-16 md:py-32 min-h-screen flex flex-col justify-center overflow-hidden">
       <div className="mx-auto max-w-7xl w-full">
         <motion.div
-          className="mb-12 md:mb-16 text-center"
+          className="mb-8 md:mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           {/* Eyebrow */}
-          <p className="text-xs md:text-sm text-espresso/60 uppercase font-medium mb-6 tracking-[0.25em]">
+          <p className="text-[10px] sm:text-xs md:text-sm text-espresso/60 uppercase font-medium mb-3 sm:mb-4 md:mb-6 tracking-[0.25em]">
             Featured Films
           </p>
 
           {/* Main heading */}
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 tracking-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-3 sm:mb-4 md:mb-6 tracking-tight">
             Signature Work
           </h2>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-espresso/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg md:text-xl text-espresso/80 max-w-2xl mx-auto leading-relaxed">
             Each film is a unique love story, crafted with artistry and intention.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 md:gap-8 md:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 md:gap-8 md:grid-cols-3">
           {signatureWork.map((work, index) => (
             <VideoCard key={work.title} {...work} index={index} />
           ))}

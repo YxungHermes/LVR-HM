@@ -88,7 +88,7 @@ export default function Hero() {
       />
 
       {/* Content - Full viewport height accounting for fixed header */}
-      <div className="relative z-10 mx-auto flex h-full max-w-[1000px] items-center justify-center px-6 pt-[56px] md:pt-[72px]">
+      <div className="relative z-10 mx-auto flex h-full max-w-[1000px] items-end md:items-center justify-center px-6 pb-20 md:pb-0 pt-[56px] md:pt-[72px]">
         <div className="w-full text-center max-w-4xl mx-auto">
           {/* Tagline above title */}
           <motion.p

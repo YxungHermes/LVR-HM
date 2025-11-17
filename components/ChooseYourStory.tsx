@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { chooseYourStory } from "@/content/home";
+import { useState } from "react";
 
 // Subtle gradient backgrounds for each card - premium, muted tones
 const cardGradients = [
@@ -29,14 +30,16 @@ const typographySizes = [
 ];
 
 export default function ChooseYourStory() {
+  const [expandedMobile, setExpandedMobile] = useState<number | null>(null);
+
   return (
     <section
       id="choose-your-story"
-      className="relative h-screen flex flex-col overflow-hidden"
+      className="relative min-h-screen md:h-screen flex flex-col overflow-hidden"
     >
       {/* Header - centered above grid, with minimal padding */}
       <motion.div
-        className="w-full text-center pt-20 md:pt-24 pb-4 md:pb-6 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent flex-shrink-0"
+        className="w-full text-center pt-20 md:pt-24 pb-6 md:pb-6 px-6 bg-gradient-to-b from-warm-sand/20 to-transparent flex-shrink-0"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
@@ -50,8 +53,91 @@ export default function ChooseYourStory() {
         </p>
       </motion.div>
 
-      {/* Bento Box Grid - Asymmetric, dynamic layout */}
-      <div className="flex-1 grid grid-cols-1 md:grid-cols-5 md:grid-rows-3 gap-0 overflow-hidden min-h-0">
+      {/* MOBILE: Compact accordion-style list */}
+      <div className="flex-1 md:hidden flex flex-col gap-3 px-6 pb-6 overflow-y-auto">
+        {chooseYourStory.map((collection, index) => (
+          <motion.div
+            key={collection.slug}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+          >
+            <button
+              onClick={() => setExpandedMobile(expandedMobile === index ? null : index)}
+              className={`w-full text-left transition-all duration-300 rounded-lg overflow-hidden border border-coffee/10
+                ${expandedMobile === index ? 'shadow-lg' : 'shadow-sm'}`}
+            >
+              {/* Collapsed State - Compact Row */}
+              <div className={`flex items-center justify-between p-4 ${collection.vimeoId ? 'bg-black text-white' : cardGradients[index]}`}>
+                <div className="flex items-center gap-3 flex-1">
+                  <span className={`text-xs font-mono ${collection.vimeoId ? 'text-white/60' : 'text-espresso/40'}`}>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className={`font-serif text-lg font-bold ${collection.vimeoId ? 'text-white' : 'text-ink'}`}>
+                    {collection.name}
+                  </h3>
+                </div>
+                <svg
+                  className={`w-5 h-5 transition-transform duration-300 ${expandedMobile === index ? 'rotate-180' : ''} ${collection.vimeoId ? 'text-white/60' : 'text-espresso/40'}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+
+              {/* Expanded State - Full Content */}
+              <AnimatePresence>
+                {expandedMobile === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className={`relative ${collection.vimeoId ? 'bg-black' : cardGradients[index]}`}>
+                      {/* Video/Image Background for expanded */}
+                      {collection.vimeoId && (
+                        <div className="relative aspect-video overflow-hidden">
+                          <iframe
+                            src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                            className="absolute inset-0 w-full h-full"
+                            frameBorder="0"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            title={collection.name}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60" />
+                        </div>
+                      )}
+
+                      <div className="p-4">
+                        <p className={`text-sm ${collection.vimeoId ? 'text-white/80' : 'text-espresso/80'} mb-4 leading-relaxed`}>
+                          {collection.teaser}
+                        </p>
+                        <Link
+                          href={collection.href}
+                          className={`inline-flex items-center gap-2 text-sm font-medium ${collection.vimeoId ? 'text-white' : 'text-ink'}`}
+                        >
+                          <span>Explore</span>
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* DESKTOP: Bento Box Grid - Asymmetric, dynamic layout */}
+      <div className="hidden md:grid flex-1 grid-cols-5 grid-rows-3 gap-0 overflow-hidden min-h-0">
         {chooseYourStory.map((collection, index) => (
           <motion.div
             key={collection.slug}
@@ -67,7 +153,7 @@ export default function ChooseYourStory() {
           >
             <Link
               href={collection.href}
-              className={`group relative block h-full min-h-[30vh] md:min-h-0 ${collection.vimeoId ? 'bg-black' : cardGradients[index]}
+              className={`group relative block h-full ${collection.vimeoId ? 'bg-black' : cardGradients[index]}
                 border border-coffee/10 overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:z-10 hover:shadow-2xl`}
             >
               {/* Video background for destination weddings */}
