@@ -121,13 +121,23 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
       <div className={`absolute inset-0 bg-black/0 transition-opacity duration-500 ${isHovered ? "opacity-10" : "opacity-0"}`} />
 
       {/* Content */}
-      <div className="absolute inset-x-0 bottom-0 p-8 text-white">
-        <h3 className="font-serif text-4xl md:text-5xl font-bold tracking-wide drop-shadow-lg">
+      <div className="absolute inset-x-0 bottom-0 p-8">
+        <h3
+          className="font-serif text-4xl md:text-5xl font-bold tracking-wide text-white"
+          style={{
+            textShadow: '0 2px 12px rgba(0, 0, 0, 0.9), 0 4px 24px rgba(0, 0, 0, 0.6)'
+          }}
+        >
           {title}
         </h3>
-        <p className="mt-2 text-base md:text-lg font-medium text-white/95 drop-shadow-md">{subtitle}</p>
+        <p
+          className="mt-2 text-base md:text-lg font-medium text-white/95"
+          style={{
+            textShadow: '0 2px 8px rgba(0, 0, 0, 0.8)'
+          }}
+        >{subtitle}</p>
 
-        {/* View Film Link - Enhanced with outline button style */}
+        {/* View Film Button - Solid white button that slides up on hover */}
         <div
           className={`mt-6 transition-all duration-500 ${
             isHovered ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
@@ -135,10 +145,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
         >
           <a
             href="#"
-            className="inline-flex items-center gap-3 px-6 py-3 border-2 border-white rounded-full text-sm font-semibold uppercase tracking-wider hover:bg-white hover:text-ink transition-all duration-300"
-            style={{
-              boxShadow: isHovered ? "0 4px 12px rgba(255, 255, 255, 0.3)" : "none",
-            }}
+            className="inline-flex items-center gap-3 px-6 py-3 bg-white text-ink rounded-full text-sm font-semibold uppercase tracking-wider hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] transition-all duration-300"
           >
             <span>View Film</span>
             <svg
