@@ -266,17 +266,17 @@ export default function ConsultationPage() {
       <Header settled />
       <main className="bg-cream">
         {/* Hero */}
-        <section className="px-6 pt-32 pb-16 md:pt-36 md:pb-20">
+        <section className="px-6 pt-32 pb-12 sm:pb-16 md:pt-36 md:pb-20">
           <div className="mx-auto max-w-3xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mb-6 tracking-wide">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-4 sm:mb-6 tracking-wide">
                 Let's Create Something Beautiful Together
               </h1>
-              <p className="text-lg text-espresso leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base sm:text-lg text-espresso leading-relaxed max-w-2xl mx-auto">
                 Tell me about your celebration — your story, your vision, and everything that matters most.
               </p>
             </motion.div>
@@ -284,18 +284,18 @@ export default function ConsultationPage() {
         </section>
 
         {/* Form */}
-        <section className="px-6 pb-24">
+        <section className="px-6 pb-16 sm:pb-20 md:pb-24">
           <div className="mx-auto max-w-3xl">
             <motion.form
               onSubmit={handleSubmit}
-              className="bg-white border border-coffee/10 rounded-lg p-8 md:p-12 space-y-8"
+              className="bg-white border border-coffee/10 rounded-lg p-5 sm:p-8 md:p-12 space-y-6 sm:space-y-8"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               {/* Contact Information */}
-              <div className="space-y-6">
-                <h3 className="font-serif text-2xl font-bold text-ink pb-3 border-b border-coffee/10">
+              <div className="space-y-4 sm:space-y-6">
+                <h3 className="font-serif text-xl sm:text-2xl font-bold text-ink pb-2 sm:pb-3 border-b border-coffee/10">
                   Your Information
                 </h3>
 

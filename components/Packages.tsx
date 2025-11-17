@@ -1,21 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { packages } from "@/content/home";
 
 function PackageCard({ pkg, index }: { pkg: typeof packages[0]; index: number }) {
   const [showPrice, setShowPrice] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile on mount
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <motion.div
-      className="group relative overflow-hidden rounded-lg border border-coffee/20 bg-white p-8 transition-all duration-300 hover:shadow-xl"
+      className="group relative overflow-hidden rounded-lg border border-coffee/20 bg-white p-6 sm:p-8 transition-all duration-300 hover:shadow-xl"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onMouseEnter={() => setShowPrice(true)}
       onMouseLeave={() => setShowPrice(false)}
+      onClick={() => isMobile && setShowPrice(!showPrice)}
     >
       {pkg.popular && (
         <div className="bg-rose-grad absolute right-4 top-4 rounded-full px-3 py-1 text-xs font-medium text-white">
@@ -24,15 +34,15 @@ function PackageCard({ pkg, index }: { pkg: typeof packages[0]; index: number })
       )}
 
       <div className="mb-4">
-        <h3 className="font-serif text-3xl font-bold tracking-wide text-ink">
+        <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-wide text-ink">
           {pkg.name}
         </h3>
-        <p className="mt-1 text-sm font-medium text-rose-2">{pkg.hours}</p>
+        <p className="mt-1 text-xs sm:text-sm font-medium text-rose-2">{pkg.hours}</p>
       </div>
 
       <p className="mb-6 text-sm text-espresso">{pkg.description}</p>
 
-      {/* Price reveal on hover */}
+      {/* Price reveal on hover/tap */}
       <div className="mb-6 h-12 overflow-hidden">
         <AnimatePresence mode="wait">
           {showPrice ? (
@@ -42,7 +52,7 @@ function PackageCard({ pkg, index }: { pkg: typeof packages[0]; index: number })
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="font-serif text-4xl font-bold text-ink"
+              className="font-serif text-3xl sm:text-4xl font-bold text-ink"
             >
               {pkg.price}
             </motion.div>
@@ -53,9 +63,9 @@ function PackageCard({ pkg, index }: { pkg: typeof packages[0]; index: number })
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="text-sm text-espresso/60"
+              className="text-xs sm:text-sm text-espresso/60"
             >
-              Hover to see pricing
+              {isMobile ? 'Tap to see pricing' : 'Hover to see pricing'}
             </motion.div>
           )}
         </AnimatePresence>
@@ -123,7 +133,7 @@ export default function Packages() {
           </button>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {packages.map((pkg, index) => (
             <PackageCard key={pkg.name} pkg={pkg} index={index} />
           ))}
@@ -134,29 +144,29 @@ export default function Packages() {
       <AnimatePresence>
         {showModal && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-6"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 sm:px-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setShowModal(false)}
           >
             <motion.div
-              className="max-h-[80vh] w-full max-w-4xl overflow-auto rounded-lg bg-white p-8"
+              className="max-h-[85vh] sm:max-h-[80vh] w-full max-w-4xl overflow-auto rounded-lg bg-white p-4 sm:p-6 md:p-8"
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="mb-6 flex items-start justify-between">
-                <h3 className="font-serif text-3xl font-bold text-ink">
+              <div className="mb-4 sm:mb-6 flex items-start justify-between">
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-ink pr-4">
                   Package Comparison
                 </h3>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-espresso/60 hover:text-espresso focus-ring"
+                  className="text-espresso/60 hover:text-espresso focus-ring flex-shrink-0"
                 >
                   <svg
-                    className="h-6 w-6"
+                    className="h-5 w-5 sm:h-6 sm:w-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -170,15 +180,15 @@ export default function Packages() {
                   </svg>
                 </button>
               </div>
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
                 {packages.map((pkg) => (
-                  <div key={pkg.name} className="border-t border-coffee/20 pt-4">
-                    <h4 className="font-serif text-xl font-bold text-ink">
+                  <div key={pkg.name} className="border-t border-coffee/20 pt-3 sm:pt-4">
+                    <h4 className="font-serif text-base sm:text-lg md:text-xl font-bold text-ink">
                       {pkg.name} — {pkg.price}
                     </h4>
-                    <ul className="mt-4 space-y-2">
+                    <ul className="mt-3 sm:mt-4 space-y-1.5 sm:space-y-2">
                       {pkg.features.map((feature, i) => (
-                        <li key={i} className="text-sm text-espresso">
+                        <li key={i} className="text-xs sm:text-sm text-espresso">
                           • {feature}
                         </li>
                       ))}

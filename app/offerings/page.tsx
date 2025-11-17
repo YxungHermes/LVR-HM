@@ -15,10 +15,10 @@ export default function PricingPage() {
       <Header settled />
       <main className="bg-cream">
         {/* Compact Hero */}
-        <section className="px-6 pt-32 pb-20 md:pt-36 md:pb-24">
+        <section className="px-6 pt-32 pb-16 md:pb-20 md:pt-36 md:pb-24">
           <div className="mx-auto max-w-4xl text-center">
             <motion.h1
-              className="font-serif text-4xl md:text-5xl font-bold tracking-wide text-ink"
+              className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide text-ink"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -26,7 +26,7 @@ export default function PricingPage() {
               Collections & Pricing
             </motion.h1>
             <motion.p
-              className="mt-5 text-base md:text-lg text-espresso max-w-2xl mx-auto leading-relaxed"
+              className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-espresso max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -36,14 +36,14 @@ export default function PricingPage() {
               and coverage needs.
             </motion.p>
             <motion.div
-              className="mt-8"
+              className="mt-6 sm:mt-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Link
                 href="/consultation"
-                className="inline-block bg-rose-wax-red text-white px-8 py-3 rounded-md font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring"
+                className="inline-block bg-rose-wax-red text-white px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-md font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring"
               >
                 Book Your Consultation
               </Link>
@@ -76,11 +76,9 @@ export default function PricingPage() {
                             position: "absolute",
                             top: "50%",
                             left: "50%",
-                            width: "100vw",
-                            height: "56.25vw", // 16:9 aspect ratio
-                            minHeight: "100%",
-                            minWidth: "177.78vh", // 16:9 aspect ratio
-                            transform: "translate(-50%, -50%)",
+                            width: "100%",
+                            height: "100%",
+                            transform: "translate(-50%, -50%) scale(1.5)",
                           }}
                           frameBorder="0"
                           allow="autoplay; fullscreen; picture-in-picture"
@@ -98,19 +96,19 @@ export default function PricingPage() {
                     )}
                   </div>
 
-                  <div className="p-8">
-                    <h3 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
+                  <div className="p-5 sm:p-6 md:p-8">
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-ink mb-3 sm:mb-4">
                       {collection.name}
                     </h3>
 
                   <div className="mb-4 pb-4 border-b border-coffee/10">
-                    <p className="text-xs font-medium text-coffee uppercase tracking-wider mb-2">
+                    <p className="text-[10px] sm:text-xs font-medium text-coffee uppercase tracking-wider mb-2">
                       Starting from
                     </p>
-                    <p className="font-serif text-3xl font-bold text-rose-wax-red">
+                    <p className="font-serif text-2xl sm:text-3xl font-bold text-rose-wax-red">
                       {collection.startingFrom}
                     </p>
-                    <p className="text-sm text-espresso/60 mt-1">
+                    <p className="text-xs sm:text-sm text-espresso/60 mt-1">
                       {collection.range}
                     </p>
                   </div>
@@ -149,23 +147,23 @@ export default function PricingPage() {
         <section className="px-6 py-20 bg-warm-sand/30 border-y border-coffee/10">
           <div className="mx-auto max-w-5xl">
             <motion.div
-              className="text-center mb-16"
+              className="text-center mb-12 sm:mb-16"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6">
+              <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-ink mb-4 sm:mb-6">
                 Which collection fits us best?
               </h2>
-              <p className="text-base md:text-lg text-espresso leading-relaxed max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg text-espresso leading-relaxed max-w-3xl mx-auto">
                 If you're unsure where to begin, start with the type of day
                 you're planning. Each collection is shaped around how you
                 celebrate, not just how many hours we're there.
               </p>
             </motion.div>
 
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
               {whatIOffer.map((collection, index) => (
                 <motion.div
                   key={collection.slug}
@@ -176,12 +174,12 @@ export default function PricingPage() {
                 >
                   <Link
                     href={collection.href}
-                    className="group block h-full bg-white rounded-lg p-8 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] focus-ring"
+                    className="group block h-full bg-white rounded-lg p-5 sm:p-6 md:p-8 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] focus-ring"
                   >
-                    <h3 className="font-serif text-xl md:text-2xl font-bold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
+                    <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-bold text-ink mb-2 sm:mb-3 group-hover:text-rose-wax-red transition-colors">
                       {collection.name}
                     </h3>
-                    <p className="text-base text-espresso leading-relaxed mb-4">
+                    <p className="text-sm sm:text-base text-espresso leading-relaxed mb-3 sm:mb-4">
                       {collection.description}
                     </p>
                     <div className="flex items-center text-sm font-medium text-rose-wax-red group-hover:translate-x-2 transition-transform">
@@ -211,24 +209,24 @@ export default function PricingPage() {
         <Roadmap variant="mini" cta />
 
         {/* Final CTA */}
-        <section className="px-6 py-24">
+        <section className="px-6 py-16 sm:py-20 md:py-24">
           <motion.div
-            className="mx-auto max-w-3xl text-center bg-warm-sand border border-coffee/10 rounded-lg p-12"
+            className="mx-auto max-w-3xl text-center bg-warm-sand border border-coffee/10 rounded-lg p-6 sm:p-8 md:p-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">
+            <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold text-ink mb-3 sm:mb-4">
               Not sure which path is right for you?
             </h3>
-            <p className="text-base text-espresso mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base text-espresso mb-6 sm:mb-8 leading-relaxed">
               Share your date, locations, guest count, and what matters most.
               I'll recommend a collection that fits — with transparent pricing.
             </p>
             <Link
               href="/consultation"
-              className="inline-block bg-rose-wax-red text-white px-8 py-3 rounded-md font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring"
+              className="inline-block bg-rose-wax-red text-white px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base rounded-md font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring"
             >
               Book Your Consultation
             </Link>

@@ -65,24 +65,29 @@ function AccordionSection({ number, title, isOpen, isCompleted, onClick, childre
     <div className="border-b border-coffee/10">
       <button
         onClick={onClick}
-        className="w-full flex items-center justify-between py-6 px-6 text-left hover:bg-cream/50 transition-colors duration-200 group"
+        className="w-full flex items-center justify-between py-4 sm:py-6 px-4 sm:px-6 text-left hover:bg-cream/50 transition-colors duration-200 group"
         aria-expanded={isOpen}
       >
-        <div className="flex items-center gap-4 flex-1">
+        <div className="flex items-center gap-3 sm:gap-4 flex-1">
           {isCompleted ? (
-            <div className="w-6 h-6 rounded-full bg-rose-wax-red flex items-center justify-center flex-shrink-0">
-              <Check size={16} className="text-white" strokeWidth={3} />
+            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-rose-wax-red flex items-center justify-center flex-shrink-0">
+              <Check size={14} className="sm:hidden text-white" strokeWidth={3} />
+              <Check size={16} className="hidden sm:block text-white" strokeWidth={3} />
             </div>
           ) : (
-            <span className="text-sm text-coffee/50 font-mono w-6 text-center flex-shrink-0">{number}</span>
+            <span className="text-xs sm:text-sm text-coffee/50 font-mono w-5 sm:w-6 text-center flex-shrink-0">{number}</span>
           )}
-          <h3 className="text-lg md:text-xl font-semibold text-ink group-hover:text-rose-wax-red transition-colors duration-200">
+          <h3 className="text-base sm:text-lg md:text-xl font-semibold text-ink group-hover:text-rose-wax-red transition-colors duration-200">
             {title}
           </h3>
         </div>
         <ChevronDown
+          size={20}
+          className={`sm:hidden text-coffee/40 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+        />
+        <ChevronDown
           size={24}
-          className={`text-coffee/40 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+          className={`hidden sm:block text-coffee/40 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -95,7 +100,7 @@ function AccordionSection({ number, title, isOpen, isCompleted, onClick, childre
         transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
         className="overflow-hidden"
       >
-        <div className="px-6 pb-8 pt-4">
+        <div className="px-4 sm:px-6 pb-6 sm:pb-8 pt-2 sm:pt-4">
           {children}
         </div>
       </motion.div>
@@ -296,7 +301,7 @@ export default function BriefingPage() {
                 <Check size={40} className="text-rose-wax-red" strokeWidth={2.5} />
               </div>
 
-              <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mb-6">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-ink mb-4 sm:mb-6">
                 Thank You, {formData.partner1Name} & {formData.partner2Name}!
               </h1>
 
@@ -335,21 +340,21 @@ export default function BriefingPage() {
       <Header settled hideCta />
       <main className="bg-cream">
         {/* Page Header */}
-        <section className="px-6 pt-32 pb-16 md:pt-40 md:pb-20">
+        <section className="px-6 pt-32 pb-12 sm:pb-16 md:pt-40 md:pb-20">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-4 sm:mb-6">
                 Let's Plan Your Perfect Film
               </h1>
-              <p className="text-lg md:text-xl text-espresso/80 mb-4 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl text-espresso/80 mb-3 sm:mb-4 leading-relaxed max-w-3xl mx-auto">
                 Take your time with these questions—they help us understand your vision and create a film
                 that's uniquely yours. We'll review your answers and send you a personalized proposal within 48 hours.
               </p>
-              <p className="text-sm text-coffee/60">
+              <p className="text-xs sm:text-sm text-coffee/60">
                 Takes about 10-15 minutes
               </p>
             </motion.div>
@@ -358,9 +363,9 @@ export default function BriefingPage() {
 
         {/* Validation Errors */}
         {validationErrors.length > 0 && (
-          <section className="px-6 pb-8">
+          <section className="px-6 pb-6 sm:pb-8">
             <div className="max-w-7xl mx-auto">
-              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-6">
+              <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4 sm:p-6">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0">
                     <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

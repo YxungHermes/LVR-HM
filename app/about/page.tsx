@@ -20,16 +20,16 @@ function AccordionItem({ number, title, description, isOpen, onClick }: Accordio
     <div className="border-b border-coffee/10">
       <button
         onClick={onClick}
-        className="w-full flex items-center justify-between py-6 text-left hover:bg-cream/50 transition-colors duration-200 group"
+        className="w-full flex items-center justify-between py-4 sm:py-6 px-2 sm:px-0 text-left hover:bg-cream/50 transition-colors duration-200 group"
         aria-expanded={isOpen}
       >
-        <div className="flex items-center gap-4 flex-1">
-          <span className="text-sm text-coffee/50 font-mono">{number}</span>
-          <h3 className="text-base md:text-lg font-semibold tracking-wider uppercase text-ink group-hover:text-rose-wax-red transition-colors duration-200" style={{ letterSpacing: '0.1em' }}>
+        <div className="flex items-center gap-2 sm:gap-4 flex-1">
+          <span className="text-xs sm:text-sm text-coffee/50 font-mono">{number}</span>
+          <h3 className="text-sm sm:text-base md:text-lg font-semibold tracking-wider uppercase text-ink group-hover:text-rose-wax-red transition-colors duration-200" style={{ letterSpacing: '0.1em' }}>
             {title}
           </h3>
         </div>
-        <div className="ml-4 text-coffee/40 text-2xl font-light">
+        <div className="ml-2 sm:ml-4 text-coffee/40 text-xl sm:text-2xl font-light">
           {isOpen ? '−' : '+'}
         </div>
       </button>
@@ -43,7 +43,7 @@ function AccordionItem({ number, title, description, isOpen, onClick }: Accordio
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         className="overflow-hidden"
       >
-        <div className="pb-6 pl-12 pr-12">
+        <div className="pb-6 pl-6 pr-4 sm:pl-12 sm:pr-12">
           <p className="text-sm md:text-base text-espresso leading-relaxed" style={{ lineHeight: '1.7' }}>
             {description}
           </p>
@@ -94,7 +94,7 @@ export default function AboutPage() {
             >
               {/* LEFT COLUMN - Professional Info */}
               <div className="lg:col-span-2 order-3 lg:order-1">
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   {/* Professional Title */}
                   <div>
                     <p className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-coffee/50 mb-1">
@@ -173,7 +173,7 @@ export default function AboutPage() {
 
               {/* CENTER COLUMN - Portrait Photo */}
               <div className="lg:col-span-4 order-1 lg:order-2">
-                <div className="relative aspect-[3/4] bg-warm-sand rounded-sm overflow-hidden shadow-sm">
+                <div className="relative aspect-[4/5] sm:aspect-[3/4] bg-warm-sand rounded-sm overflow-hidden shadow-sm max-w-md mx-auto lg:max-w-none">
                   <img
                     src="/media/michael-andrade.jpg"
                     alt="Michael Andrade - Wedding Filmmaker"
@@ -190,7 +190,7 @@ export default function AboutPage() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="max-w-[600px]"
                 >
-                  <p className="text-[15px] md:text-base text-ink/90 leading-relaxed" style={{ lineHeight: '1.75' }}>
+                  <p className="text-sm sm:text-[15px] md:text-base text-ink/90 leading-relaxed" style={{ lineHeight: '1.75' }}>
                     A videographer who captures more than moments—I capture the rhythm and stories through vivid images. Every project is a blend of technical precision and emotional storytelling. My work never fails to experiment; each frame is treated like a canvas where light, sound, and narrative converge.
                     <br /><br />
                     With experience across music, fashion, and commercial projects, the mission is to create films that feel alive—films that resonate emotionally and stay with you long after watching. Every wedding is unique, and my approach honors that individuality while creating something timeless.
@@ -213,7 +213,7 @@ export default function AboutPage() {
             >
               {/* LEFT HALF - Service Image */}
               <div className="order-2 lg:order-1">
-                <div className="relative aspect-[4/5] bg-warm-sand rounded-sm overflow-hidden shadow-sm sticky top-32">
+                <div className="relative aspect-[4/5] bg-warm-sand rounded-sm overflow-hidden shadow-sm lg:sticky lg:top-32">
                   {/* Placeholder for service image - replace with actual image */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center p-8">
@@ -240,10 +240,10 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-3">
+                  <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-ink mb-3">
                     What I Offer
                   </h2>
-                  <p className="text-base text-espresso/70 mb-12 leading-relaxed">
+                  <p className="text-sm sm:text-base text-espresso/70 mb-8 sm:mb-12 leading-relaxed">
                     Comprehensive wedding filmmaking services tailored to your unique story
                   </p>
 
@@ -274,15 +274,15 @@ export default function AboutPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-4 sm:mb-6">
               Ready to Create Something Beautiful?
             </h2>
-            <p className="text-base md:text-lg text-espresso/80 mb-10 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base md:text-lg text-espresso/80 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto">
               Let's discuss your vision and how we can bring your wedding story to life through cinematic film.
             </p>
             <a
               href="/consultation"
-              className="inline-block px-10 py-4 bg-rose-wax-red text-cream font-medium rounded-full hover:bg-rose-wax-red/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="inline-block px-8 sm:px-10 py-3 sm:py-4 bg-rose-wax-red text-cream font-medium rounded-full hover:bg-rose-wax-red/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 text-sm sm:text-base"
             >
               Book a Consultation
             </a>

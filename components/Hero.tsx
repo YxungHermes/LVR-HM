@@ -37,7 +37,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative h-screen bg-black overflow-hidden">
+    <section className="relative min-h-[100dvh] md:h-screen bg-black overflow-hidden">
       {/* Static Poster Image - shows immediately while video loads */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
@@ -58,12 +58,11 @@ export default function Hero() {
       >
         <iframe
           src={`https://player.vimeo.com/video/${hero.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
-          className="absolute top-1/2 left-1/2 w-[100vw] h-[100vh] min-w-full min-h-full object-cover"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] h-[100vh] min-w-full min-h-full"
           style={{
-            transform: "translate(-50%, -50%)",
             width: "100vw",
             height: "56.25vw", // 16:9 aspect ratio
-            minHeight: "100vh",
+            minHeight: "100dvh",
             minWidth: "177.78vh", // 16:9 aspect ratio
           }}
           frameBorder="0"
@@ -106,7 +105,7 @@ export default function Hero() {
 
           {/* Main headline */}
           <motion.h1
-            className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight"
+            className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.1] tracking-tight px-4 sm:px-0"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -116,7 +115,7 @@ export default function Hero() {
 
           {/* Subheading */}
           <motion.p
-            className="mt-6 md:mt-8 text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed"
+            className="mt-6 md:mt-8 text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed px-4 sm:px-0"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -126,7 +125,7 @@ export default function Hero() {
 
           {/* CTA Buttons */}
           <motion.div
-            className="mt-10 md:mt-14 flex flex-wrap gap-4 justify-center"
+            className="mt-10 md:mt-14 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.6, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -134,7 +133,7 @@ export default function Hero() {
             <a
               href={hero.ctas.primary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.primary.label, hero.ctas.primary.href)}
-              className="group inline-flex items-center gap-3 bg-white text-ink rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] focus-ring"
+              className="group inline-flex items-center justify-center gap-3 bg-white text-ink rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] focus-ring w-full sm:w-auto min-w-[200px]"
               style={{
                 transition: "box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1)"
               }}
@@ -144,7 +143,7 @@ export default function Hero() {
             <a
               href={hero.ctas.secondary.href}
               onClick={() => trackCTAClick('hero', hero.ctas.secondary.label, hero.ctas.secondary.href)}
-              className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-white rounded-full text-white font-semibold uppercase tracking-wider text-sm hover:bg-white hover:text-ink hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] focus-ring"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-4 border-2 border-white rounded-full text-white font-semibold uppercase tracking-wider text-sm hover:bg-white hover:text-ink hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] focus-ring w-full sm:w-auto min-w-[200px]"
               style={{
                 transition: "background-color 400ms cubic-bezier(0.22, 1, 0.36, 1), color 400ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 400ms cubic-bezier(0.22, 1, 0.36, 1)"
               }}
