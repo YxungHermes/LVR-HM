@@ -183,6 +183,7 @@ export const pricingPages = {
       "\"Just because\" love stories",
       "Long-distance reunion films",
       "Date day adventures — hikes, beach days, city explorations",
+      "Group trips with friends (Signature tier)",
     ],
     packages: [
       {
@@ -222,7 +223,7 @@ export const pricingPages = {
         price: "$2,000",
         duration: "4–5 hours",
         filmLength: "3–5 minute cinematic film",
-        description: "Full cinematic experience with documentary-style storytelling",
+        description: "Full cinematic experience for couples or friend groups on adventures",
         includes: [
           "4–5 hours of coverage",
           "3–5 minute cinematic film",
@@ -230,6 +231,7 @@ export const pricingPages = {
           "Multiple locations or activity-based",
           "Second filmmaker for proposals (full coverage)",
           "Secret coordination for surprise proposals",
+          "Perfect for group trips with friends",
           "Licensed music + professional audio recording",
           "Voice recording during or after session (audio interviews)",
           "Online delivery in 3-4 weeks",

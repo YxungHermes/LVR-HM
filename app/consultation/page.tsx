@@ -545,7 +545,7 @@ export default function ConsultationPage() {
                               <div className="font-semibold text-ink mb-1">The Signature</div>
                               <div className="text-2xl font-bold text-rose-wax-red mb-1">$2,000</div>
                               <div className="text-xs text-espresso/70">4-5 hours • 3-5 min film</div>
-                              <div className="text-xs text-espresso/70 mt-1">Full storytelling + audio</div>
+                              <div className="text-xs text-espresso/70 mt-1">Couples or friend groups</div>
                             </button>
                           </div>
                           <p className="text-xs text-espresso/60 mt-2">
@@ -636,22 +636,24 @@ export default function ConsultationPage() {
                         </motion.div>
                       ))}
 
-                      {/* Add Partner Button */}
-                      <div className="pt-2">
-                        <button
-                          type="button"
-                          onClick={addPartner}
-                          className="text-sm text-rose-wax-red hover:text-rose-wax-red/80 font-medium transition-colors flex items-center gap-2"
-                        >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                          </svg>
-                          Add another partner
-                        </button>
-                        <p className="text-xs text-espresso/60 mt-1">
-                          For partnerships with 3+ people
-                        </p>
-                      </div>
+                      {/* Add Partner Button - Only for adventure sessions */}
+                      {formData.eventType === 'adventure' && (
+                        <div className="pt-2">
+                          <button
+                            type="button"
+                            onClick={addPartner}
+                            className="text-sm text-rose-wax-red hover:text-rose-wax-red/80 font-medium transition-colors flex items-center gap-2"
+                          >
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Add another partner
+                          </button>
+                          <p className="text-xs text-espresso/60 mt-1">
+                            For partnerships with 3+ people, or group trips with friends
+                          </p>
+                        </div>
+                      )}
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
