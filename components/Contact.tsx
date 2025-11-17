@@ -1,47 +1,58 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { trackCTAClick } from "@/lib/analytics";
 
 export default function Contact() {
   return (
-    <section id="contact" className="bg-white px-6 h-screen flex flex-col justify-center overflow-hidden">
-      <div className="mx-auto max-w-4xl w-full text-center">
+    <section id="contact" className="relative bg-gradient-to-b from-white to-warm-sand/30 px-6 py-24 min-h-screen flex flex-col justify-center overflow-hidden">
+      {/* Subtle decorative elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-10 left-10 w-72 h-72 bg-rose-1 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-rose-2 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative mx-auto max-w-4xl w-full text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Main headline */}
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 tracking-tight">
-            Let's Create Something Beautiful
+          {/* Eyebrow */}
+          <p className="text-xs md:text-sm text-espresso/60 uppercase font-medium mb-6 tracking-[0.25em]">
+            Ready to Begin?
+          </p>
+
+          {/* Main heading */}
+          <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-ink mb-8 leading-tight">
+            Let's Create Something
+            <br />
+            <span className="text-rose-2">Beautiful Together</span>
           </h2>
 
           {/* Subheading */}
-          <p className="text-lg md:text-xl text-espresso max-w-2xl mx-auto mb-12 leading-relaxed">
-            Tell me about your love story. I reply within 24 hours.
+          <p className="text-xl md:text-2xl text-espresso/80 max-w-3xl mx-auto leading-relaxed mb-16">
+            Your love story deserves to be told with heart and artistry. Share your vision with me, and let's craft a film you'll treasure forever.
           </p>
 
-          {/* CTA Button */}
+          {/* Single CTA Button */}
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            className="flex justify-center"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
             <Link
               href="/consultation"
-              onClick={() => trackCTAClick('homepage-cta', 'Book Consultation', '/consultation')}
-              className="group inline-flex items-center gap-3 bg-white text-ink rounded-full px-10 py-5 font-semibold uppercase tracking-wider text-sm border-2 border-ink hover:bg-ink hover:text-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.2)] focus-ring"
-              style={{
-                transition: "all 400ms cubic-bezier(0.22, 1, 0.36, 1)"
-              }}
+              onClick={() => trackCTAClick('homepage-contact', 'Book Consultation', '/consultation')}
+              className="group inline-flex items-center gap-4 bg-rose-grad text-white rounded-full px-12 py-6 font-semibold uppercase tracking-wider text-base hover:shadow-[0_12px_32px_rgba(244,105,126,0.5)] focus-ring transition-all duration-300 hover:scale-105"
             >
               <span>Book Consultation</span>
               <svg
-                className="w-5 h-5 transition-transform group-hover:translate-x-1"
+                className="h-6 w-6 transition-transform duration-300 group-hover:translate-x-1"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -54,6 +65,34 @@ export default function Contact() {
                 />
               </svg>
             </Link>
+          </motion.div>
+
+          {/* Trust indicators */}
+          <motion.div
+            className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-espresso/60"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-rose-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>Reply within 24 hours</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-rose-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>Personalized consultation</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-rose-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span>No pressure, just possibilities</span>
+            </div>
           </motion.div>
         </motion.div>
       </div>
