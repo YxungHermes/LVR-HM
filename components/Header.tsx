@@ -171,7 +171,7 @@ export default function Header({ settled = false }: { settled?: boolean }) {
       <a
         key={item.label}
         href={item.href}
-        className="group relative px-4 py-2 text-sm font-medium uppercase focus-ring"
+        className="group relative px-4 py-2 text-xs font-medium uppercase focus-ring"
         style={{
           // Color changes when header is solid OR when second section reaches nav
           color: (solid || scrollProgress > 0.5) ? "#121212" : "rgba(255, 255, 255, 0.65)",

@@ -199,6 +199,11 @@ export const navigation: Navigation = {
       }
     },
     {
+      label: "About",
+      href: "/about"
+      // No mega menu - simple link to about page
+    },
+    {
       label: "Offerings",
       href: "/offerings",
       megaMenu: {
