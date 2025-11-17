@@ -497,52 +497,52 @@ export default function ConsultationPage() {
                             Choose Your Session Package *
                           </label>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            {/* Mini Tier */}
+                            {/* The Social Tier */}
                             <button
                               type="button"
-                              onClick={() => updateField('adventureTier', 'mini')}
-                              className={`p-4 rounded-lg border-2 text-left transition-all ${
-                                formData.adventureTier === 'mini'
-                                  ? 'border-rose-wax-red bg-rose-wax-red/5'
-                                  : 'border-coffee/20 hover:border-coffee/40'
-                              }`}
-                            >
-                              <div className="font-semibold text-ink mb-1">Mini Session</div>
-                              <div className="text-2xl font-bold text-rose-wax-red mb-1">$750</div>
-                              <div className="text-xs text-espresso/70">Up to 2 hours • 1-min film</div>
-                              <div className="text-xs text-espresso/70 mt-1">Social media ready</div>
-                            </button>
-
-                            {/* Classic Tier */}
-                            <button
-                              type="button"
-                              onClick={() => updateField('adventureTier', 'classic')}
+                              onClick={() => updateField('adventureTier', 'social')}
                               className={`p-4 rounded-lg border-2 text-left transition-all relative ${
-                                formData.adventureTier === 'classic'
+                                formData.adventureTier === 'social'
                                   ? 'border-rose-wax-red bg-rose-wax-red/5'
                                   : 'border-coffee/20 hover:border-coffee/40'
                               }`}
                             >
                               <div className="absolute -top-2 right-2 bg-rose-wax-red text-white text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase">
-                                Popular
+                                Most Popular
                               </div>
-                              <div className="font-semibold text-ink mb-1">Classic</div>
+                              <div className="font-semibold text-ink mb-1">The Social</div>
+                              <div className="text-2xl font-bold text-rose-wax-red mb-1">$750</div>
+                              <div className="text-xs text-espresso/70">Up to 2 hours • 1-min film</div>
+                              <div className="text-xs text-espresso/70 mt-1">Social media ready</div>
+                            </button>
+
+                            {/* The Story Tier */}
+                            <button
+                              type="button"
+                              onClick={() => updateField('adventureTier', 'story')}
+                              className={`p-4 rounded-lg border-2 text-left transition-all ${
+                                formData.adventureTier === 'story'
+                                  ? 'border-rose-wax-red bg-rose-wax-red/5'
+                                  : 'border-coffee/20 hover:border-coffee/40'
+                              }`}
+                            >
+                              <div className="font-semibold text-ink mb-1">The Story</div>
                               <div className="text-2xl font-bold text-rose-wax-red mb-1">$1,200</div>
                               <div className="text-xs text-espresso/70">3 hours • 2-3 min film</div>
                               <div className="text-xs text-espresso/70 mt-1">Up to 2 locations</div>
                             </button>
 
-                            {/* Premium Tier */}
+                            {/* The Signature Tier */}
                             <button
                               type="button"
-                              onClick={() => updateField('adventureTier', 'premium')}
+                              onClick={() => updateField('adventureTier', 'signature')}
                               className={`p-4 rounded-lg border-2 text-left transition-all ${
-                                formData.adventureTier === 'premium'
+                                formData.adventureTier === 'signature'
                                   ? 'border-rose-wax-red bg-rose-wax-red/5'
                                   : 'border-coffee/20 hover:border-coffee/40'
                               }`}
                             >
-                              <div className="font-semibold text-ink mb-1">Premium</div>
+                              <div className="font-semibold text-ink mb-1">The Signature</div>
                               <div className="text-2xl font-bold text-rose-wax-red mb-1">$2,000</div>
                               <div className="text-xs text-espresso/70">4-5 hours • 3-5 min film</div>
                               <div className="text-xs text-espresso/70 mt-1">Full storytelling + audio</div>
@@ -725,18 +725,18 @@ export default function ConsultationPage() {
                         </div>
                       )}
 
-                      {/* Location Details for Adventure Sessions - Classic and Premium only */}
-                      {formData.eventType === 'adventure' && (formData.adventureTier === 'classic' || formData.adventureTier === 'premium') && (
+                      {/* Location Details for Adventure Sessions - The Story and The Signature only */}
+                      {formData.eventType === 'adventure' && (formData.adventureTier === 'story' || formData.adventureTier === 'signature') && (
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           transition={{ duration: 0.3 }}
                         >
                           <label className="block text-sm font-medium text-ink mb-2">
-                            {formData.adventureTier === 'classic' ? 'Location(s) — Up to 2' : 'Locations — Tell Us Your Vision'}
+                            {formData.adventureTier === 'story' ? 'Location(s) — Up to 2' : 'Locations — Tell Us Your Vision'}
                           </label>
                           <p className="text-xs text-espresso/60 mb-3">
-                            {formData.adventureTier === 'classic'
+                            {formData.adventureTier === 'story'
                               ? 'Where would you like to film? You can choose up to 2 locations.'
                               : 'Describe the locations or activities you have in mind. Multiple locations or activity-based sessions welcome.'}
                           </p>
@@ -744,7 +744,7 @@ export default function ConsultationPage() {
                             value={formData.locationDetails}
                             onChange={(e) => updateField('locationDetails', e.target.value)}
                             className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                            placeholder={formData.adventureTier === 'classic'
+                            placeholder={formData.adventureTier === 'story'
                               ? 'e.g., Central Park and Brooklyn Bridge'
                               : 'e.g., Starting at our apartment in Brooklyn, then sunset at Dumbo waterfront, ending with dinner in Manhattan'}
                             rows={3}
@@ -946,8 +946,8 @@ export default function ConsultationPage() {
                                 const weddingOnly = ['ceremony', 'reception'];
                                 if (weddingOnly.includes(deliverable.id)) return false;
 
-                                // Only show premium options if Premium tier is selected
-                                if (deliverable.premiumOnly && formData.adventureTier !== 'premium') {
+                                // Only show premium options if The Signature tier is selected
+                                if (deliverable.premiumOnly && formData.adventureTier !== 'signature') {
                                   return false;
                                 }
                               } else {
@@ -1224,9 +1224,9 @@ export default function ConsultationPage() {
                             {formData.eventType === 'adventure' && formData.adventureTier && (
                               <div className="mt-2 inline-block px-3 py-1.5 bg-rose-wax-red/10 border border-rose-wax-red/30 rounded-full">
                                 <p className="text-xs font-semibold text-rose-wax-red uppercase tracking-wider">
-                                  {formData.adventureTier === 'mini' && 'Mini Session — $750'}
-                                  {formData.adventureTier === 'classic' && 'Classic — $1,200'}
-                                  {formData.adventureTier === 'premium' && 'Premium — $2,000'}
+                                  {formData.adventureTier === 'social' && 'The Social — $750'}
+                                  {formData.adventureTier === 'story' && 'The Story — $1,200'}
+                                  {formData.adventureTier === 'signature' && 'The Signature — $2,000'}
                                 </p>
                               </div>
                             )}

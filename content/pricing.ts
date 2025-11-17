@@ -186,13 +186,14 @@ export const pricingPages = {
     ],
     packages: [
       {
-        name: "Mini Session",
+        name: "The Social",
         price: "$750",
-        duration: "2 hours",
+        duration: "Up to 2 hours",
         filmLength: "1 minute social-ready film",
-        description: "Perfect for Instagram, TikTok, and social sharing",
+        description: "Made for sharing on Instagram, TikTok, and Reels",
+        popular: true,
         includes: [
-          "2 hours of coverage",
+          "Up to 2 hours of coverage",
           "1 minute highlight film optimized for social media",
           "Vertical format (9:16) for social media",
           "One location (NYC + 30 miles, travel extra)",
@@ -201,12 +202,11 @@ export const pricingPages = {
         ],
       },
       {
-        name: "Classic",
+        name: "The Story",
         price: "$1,200",
         duration: "3 hours",
         filmLength: "2–3 minute cinematic film",
-        description: "Our most popular session for couples who want a complete story",
-        popular: true,
+        description: "A complete narrative of your love story",
         includes: [
           "3 hours of coverage",
           "2–3 minute narrative film",
@@ -218,11 +218,11 @@ export const pricingPages = {
         ],
       },
       {
-        name: "Premium",
+        name: "The Signature",
         price: "$2,000",
         duration: "4–5 hours",
         filmLength: "3–5 minute cinematic film",
-        description: "For activity-based sessions, proposals, and documentary-style coverage",
+        description: "Full cinematic experience with documentary-style storytelling",
         includes: [
           "4–5 hours of coverage",
           "3–5 minute cinematic film",
