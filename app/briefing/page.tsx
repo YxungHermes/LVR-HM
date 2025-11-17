@@ -1,0 +1,838 @@
+"use client";
+
+import { useState } from "react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { Check, ChevronDown } from "lucide-react";
+
+// Types
+interface FormData {
+  // Section 1: Your Celebration
+  partner1Name: string;
+  partner2Name: string;
+  weddingDate: string;
+  venueName: string;
+  location: string;
+  celebrationType: string;
+  guestCount: string;
+
+  // Section 2: Moments to Capture
+  moments: string[];
+  otherMoments: string;
+
+  // Section 3: Your Film's Vibe
+  filmStyle: string;
+  musicVibeDescription: string;
+  firstDanceSong: string;
+
+  // Section 4: Special Details
+  culturalTraditions: string;
+  familyDynamics: string;
+  surpriseMoments: string;
+  anythingElse: string;
+
+  // Section 5: What You'll Receive
+  deliverables: string[];
+
+  // Section 6: Timeline & Investment
+  deliveryTimeline: string;
+  budget: string;
+}
+
+interface AccordionSectionProps {
+  number: string;
+  title: string;
+  isOpen: boolean;
+  isCompleted: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+function AccordionSection({ number, title, isOpen, isCompleted, onClick, children }: AccordionSectionProps) {
+  return (
+    <div className="border-b border-coffee/10">
+      <button
+        onClick={onClick}
+        className="w-full flex items-center justify-between py-6 px-6 text-left hover:bg-cream/50 transition-colors duration-200 group"
+        aria-expanded={isOpen}
+      >
+        <div className="flex items-center gap-4 flex-1">
+          {isCompleted ? (
+            <div className="w-6 h-6 rounded-full bg-rose-wax-red flex items-center justify-center flex-shrink-0">
+              <Check size={16} className="text-white" strokeWidth={3} />
+            </div>
+          ) : (
+            <span className="text-sm text-coffee/50 font-mono w-6 text-center flex-shrink-0">{number}</span>
+          )}
+          <h3 className="text-lg md:text-xl font-semibold text-ink group-hover:text-rose-wax-red transition-colors duration-200">
+            {title}
+          </h3>
+        </div>
+        <ChevronDown
+          size={24}
+          className={`text-coffee/40 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      <motion.div
+        initial={false}
+        animate={{
+          height: isOpen ? 'auto' : 0,
+          opacity: isOpen ? 1 : 0
+        }}
+        transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+        className="overflow-hidden"
+      >
+        <div className="px-6 pb-8 pt-4">
+          {children}
+        </div>
+      </motion.div>
+    </div>
+  );
+}
+
+export default function BriefingPage() {
+  const [openSection, setOpenSection] = useState<number>(0);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const [formData, setFormData] = useState<FormData>({
+    partner1Name: "",
+    partner2Name: "",
+    weddingDate: "",
+    venueName: "",
+    location: "",
+    celebrationType: "",
+    guestCount: "",
+    moments: [],
+    otherMoments: "",
+    filmStyle: "",
+    musicVibeDescription: "",
+    firstDanceSong: "",
+    culturalTraditions: "",
+    familyDynamics: "",
+    surpriseMoments: "",
+    anythingElse: "",
+    deliverables: [],
+    deliveryTimeline: "",
+    budget: ""
+  });
+
+  const updateField = (field: keyof FormData, value: any) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const toggleArrayField = (field: 'moments' | 'deliverables', value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: prev[field].includes(value)
+        ? prev[field].filter(item => item !== value)
+        : [...prev[field], value]
+    }));
+  };
+
+  // Check if section is completed
+  const isSectionCompleted = (sectionIndex: number): boolean => {
+    switch (sectionIndex) {
+      case 0: // Your Celebration
+        return !!(formData.partner1Name && formData.partner2Name && formData.weddingDate && formData.location);
+      case 1: // Moments to Capture
+        return formData.moments.length > 0;
+      case 2: // Your Film's Vibe
+        return !!formData.filmStyle;
+      case 3: // Special Details
+        return true; // All optional
+      case 4: // What You'll Receive
+        return formData.deliverables.length > 0;
+      case 5: // Timeline & Investment
+        return !!(formData.deliveryTimeline && formData.budget);
+      default:
+        return false;
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // In production, send to your backend/email/CRM
+    console.log('Form submitted:', formData);
+
+    setIsSubmitted(true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const moments = [
+    "Getting Ready",
+    "First Look",
+    "Ceremony",
+    "Family Formals",
+    "Wedding Party Portraits",
+    "Couple Portraits",
+    "Cocktail Hour",
+    "Reception Entrance",
+    "First Dance",
+    "Parent Dances",
+    "Toasts & Speeches",
+    "Cake Cutting",
+    "Bouquet/Garter Toss",
+    "Send-off/Grand Exit"
+  ];
+
+  const deliverables = [
+    { id: "highlight", name: "Highlight Film", duration: "5-7 minutes", description: "Your love story set to music—the perfect shareable film" },
+    { id: "ceremony", name: "Full Ceremony Edit", duration: "15-30 minutes", description: "Complete ceremony coverage, fully edited" },
+    { id: "reception", name: "Full Reception Edit", duration: "30-60 minutes", description: "All the big reception moments" },
+    { id: "teaser", name: "Short Teaser/Trailer", duration: "60-90 seconds", description: "Perfect for social media" },
+    { id: "documentary", name: "Documentary Edit", duration: "45-90 minutes", description: "Full day story from start to finish" },
+    { id: "raw", name: "Raw Footage Files", duration: "All clips", description: "Every single clip we capture" }
+  ];
+
+  if (isSubmitted) {
+    return (
+      <>
+        <Header settled />
+        <main className="bg-cream min-h-screen pt-32 pb-20 px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="w-20 h-20 rounded-full bg-rose-wax-red/10 flex items-center justify-center mx-auto mb-8">
+                <Check size={40} className="text-rose-wax-red" strokeWidth={2.5} />
+              </div>
+
+              <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mb-6">
+                Thank You, {formData.partner1Name} & {formData.partner2Name}!
+              </h1>
+
+              <p className="text-lg md:text-xl text-espresso/80 mb-8 leading-relaxed">
+                We've received your preferences and are excited to create a custom proposal for you.
+                We'll review everything and send you detailed pricing and next steps within 48 hours.
+              </p>
+
+              <p className="text-base text-espresso/70 mb-10">
+                In the meantime, feel free to reach out if you have any questions.
+              </p>
+
+              <p className="font-serif text-2xl text-ink italic">
+                — Michael
+              </p>
+
+              <div className="mt-12 pt-12 border-t border-coffee/10">
+                <p className="text-sm text-coffee/60 mb-4">Want to make changes?</p>
+                <button
+                  onClick={() => setIsSubmitted(false)}
+                  className="text-rose-wax-red hover:text-rose-wax-red/80 font-medium transition-colors"
+                >
+                  Edit Your Submission
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        </main>
+        <Footer />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Header settled />
+      <main className="bg-cream">
+        {/* Page Header */}
+        <section className="px-6 pt-32 pb-16 md:pt-40 md:pb-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6">
+                Let's Plan Your Perfect Film
+              </h1>
+              <p className="text-lg md:text-xl text-espresso/80 mb-4 leading-relaxed max-w-3xl mx-auto">
+                Take your time with these questions—they help us understand your vision and create a film
+                that's uniquely yours. We'll review your answers and send you a personalized proposal within 48 hours.
+              </p>
+              <p className="text-sm text-coffee/60">
+                Takes about 10-15 minutes
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Main Form Section */}
+        <section className="px-6 pb-20 md:pb-32">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+              {/* LEFT: Form Sections */}
+              <div className="lg:col-span-7">
+                <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-sm border border-coffee/5">
+                  {/* Section 1: Your Celebration */}
+                  <AccordionSection
+                    number="/01"
+                    title="Your Celebration"
+                    isOpen={openSection === 0}
+                    isCompleted={isSectionCompleted(0)}
+                    onClick={() => setOpenSection(0)}
+                  >
+                    <div className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Partner 1 Name *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.partner1Name}
+                            onChange={(e) => updateField('partner1Name', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="Sarah"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Partner 2 Name *
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.partner2Name}
+                            onChange={(e) => updateField('partner2Name', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="James"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Wedding Date *
+                        </label>
+                        <input
+                          type="date"
+                          value={formData.weddingDate}
+                          onChange={(e) => updateField('weddingDate', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Venue Name
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.venueName}
+                          onChange={(e) => updateField('venueName', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="The Estate at Sunset Farm"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Location (City, State) *
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.location}
+                          onChange={(e) => updateField('location', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="Hudson Valley, NY"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Type of Celebration
+                        </label>
+                        <select
+                          value={formData.celebrationType}
+                          onChange={(e) => updateField('celebrationType', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                        >
+                          <option value="">Select type...</option>
+                          <option value="elopement">Elopement (just us)</option>
+                          <option value="intimate">Intimate Gathering (under 50 guests)</option>
+                          <option value="full">Full Wedding (50-150 guests)</option>
+                          <option value="large">Large Celebration (150+ guests)</option>
+                          <option value="destination">Destination Wedding</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Guest Count (approximate)
+                        </label>
+                        <input
+                          type="number"
+                          value={formData.guestCount}
+                          onChange={(e) => updateField('guestCount', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="100"
+                          min="2"
+                        />
+                      </div>
+                    </div>
+                  </AccordionSection>
+
+                  {/* Section 2: Moments to Capture */}
+                  <AccordionSection
+                    number="/02"
+                    title="Moments to Capture"
+                    isOpen={openSection === 1}
+                    isCompleted={isSectionCompleted(1)}
+                    onClick={() => setOpenSection(1)}
+                  >
+                    <div className="space-y-6">
+                      <p className="text-sm text-espresso/70">
+                        Select all the moments you'd like included in your film. We'll make sure to capture everything that matters to you.
+                      </p>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {moments.map((moment) => (
+                          <label key={moment} className="flex items-center gap-3 cursor-pointer group">
+                            <input
+                              type="checkbox"
+                              checked={formData.moments.includes(moment)}
+                              onChange={() => toggleArrayField('moments', moment)}
+                              className="w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                            />
+                            <span className="text-sm text-ink group-hover:text-rose-wax-red transition-colors">
+                              {moment}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+
+                      <div className="pt-4">
+                        <label className="flex items-center gap-3 cursor-pointer group mb-3">
+                          <input
+                            type="checkbox"
+                            checked={formData.moments.includes('Other')}
+                            onChange={() => toggleArrayField('moments', 'Other')}
+                            className="w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                          />
+                          <span className="text-sm text-ink group-hover:text-rose-wax-red transition-colors">
+                            Other special moments
+                          </span>
+                        </label>
+
+                        {formData.moments.includes('Other') && (
+                          <textarea
+                            value={formData.otherMoments}
+                            onChange={(e) => updateField('otherMoments', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            rows={4}
+                            placeholder="Tell us about any other moments you want captured..."
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </AccordionSection>
+
+                  {/* Section 3: Your Film's Vibe */}
+                  <AccordionSection
+                    number="/03"
+                    title="Your Film's Vibe"
+                    isOpen={openSection === 2}
+                    isCompleted={isSectionCompleted(2)}
+                    onClick={() => setOpenSection(2)}
+                  >
+                    <div className="space-y-6">
+                      <div>
+                        <p className="text-sm text-espresso/70 mb-4">
+                          Every couple is unique. Help us understand the feeling you want your film to convey.
+                        </p>
+                        <label className="block text-sm font-medium text-ink mb-3">
+                          Which style speaks to you most?
+                        </label>
+                        <div className="space-y-3">
+                          {[
+                            { value: "cinematic", label: "Cinematic & Dramatic", description: "Bold, movie-like storytelling with emotional impact" },
+                            { value: "documentary", label: "Documentary & Candid", description: "Natural, unposed moments as they unfold" },
+                            { value: "romantic", label: "Romantic & Soft", description: "Dreamy, intimate, and tender" },
+                            { value: "energetic", label: "Bold & Energetic", description: "Dynamic, high-energy celebration" },
+                            { value: "classic", label: "Classic & Timeless", description: "Elegant, traditional, never goes out of style" }
+                          ].map((style) => (
+                            <label key={style.value} className="flex items-start gap-3 cursor-pointer group p-3 rounded-lg hover:bg-cream/50 transition-colors">
+                              <input
+                                type="radio"
+                                name="filmStyle"
+                                value={style.value}
+                                checked={formData.filmStyle === style.value}
+                                onChange={(e) => updateField('filmStyle', e.target.value)}
+                                className="mt-1 w-4 h-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                              />
+                              <div>
+                                <div className="font-medium text-ink group-hover:text-rose-wax-red transition-colors">
+                                  {style.label}
+                                </div>
+                                <div className="text-sm text-espresso/70">
+                                  {style.description}
+                                </div>
+                              </div>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Songs you love (that capture your vibe)
+                        </label>
+                        <p className="text-xs text-coffee/60 italic mb-3">
+                          Share any songs that capture the vibe you're going for! While we may not be able to use the exact song
+                          due to copyright restrictions, it gives us a great sense of your style and helps us find similar licensed music.
+                        </p>
+                        <textarea
+                          value={formData.musicVibeDescription}
+                          onChange={(e) => updateField('musicVibeDescription', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          rows={3}
+                          placeholder="Artist - Song Title (one per line)"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          First dance song (if you have one)
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.firstDanceSong}
+                          onChange={(e) => updateField('firstDanceSong', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="Artist - Song Title"
+                        />
+                        <p className="text-xs text-coffee/60 mt-2">
+                          We have access to an extensive library of licensed music across all genres and moods.
+                        </p>
+                      </div>
+                    </div>
+                  </AccordionSection>
+
+                  {/* Section 4: Special Details */}
+                  <AccordionSection
+                    number="/04"
+                    title="Special Details"
+                    isOpen={openSection === 3}
+                    isCompleted={isSectionCompleted(3)}
+                    onClick={() => setOpenSection(3)}
+                  >
+                    <div className="space-y-6">
+                      <p className="text-sm text-espresso/70">
+                        These details help us tell your story authentically and make sure we don't miss anything important.
+                      </p>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Cultural or religious traditions
+                        </label>
+                        <textarea
+                          value={formData.culturalTraditions}
+                          onChange={(e) => updateField('culturalTraditions', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          rows={4}
+                          placeholder="Describe any special ceremonies, rituals, or traditions..."
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Family dynamics we should be aware of
+                        </label>
+                        <p className="text-xs text-coffee/60 mb-2">
+                          This helps us be sensitive and thoughtful in our coverage.
+                        </p>
+                        <textarea
+                          value={formData.familyDynamics}
+                          onChange={(e) => updateField('familyDynamics', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          rows={3}
+                          placeholder="Blended families, parents who prefer not to be on camera, anyone we should give extra attention to, etc."
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Surprise moments planned
+                        </label>
+                        <textarea
+                          value={formData.surpriseMoments}
+                          onChange={(e) => updateField('surpriseMoments', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          rows={3}
+                          placeholder="Special performance, flash mob, surprise guest, etc."
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Anything else we should know
+                        </label>
+                        <textarea
+                          value={formData.anythingElse}
+                          onChange={(e) => updateField('anythingElse', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          rows={4}
+                          placeholder="Special heirlooms, meaningful details, inside jokes, must-capture moments..."
+                        />
+                      </div>
+                    </div>
+                  </AccordionSection>
+
+                  {/* Section 5: What You'll Receive */}
+                  <AccordionSection
+                    number="/05"
+                    title="What You'll Receive"
+                    isOpen={openSection === 4}
+                    isCompleted={isSectionCompleted(4)}
+                    onClick={() => setOpenSection(4)}
+                  >
+                    <div className="space-y-6">
+                      <p className="text-sm text-espresso/70">
+                        Select the deliverables you'd like. We'll include pricing for each in your custom proposal.
+                      </p>
+
+                      <div className="space-y-3">
+                        {deliverables.map((deliverable) => (
+                          <label
+                            key={deliverable.id}
+                            className="flex items-start gap-3 cursor-pointer group p-4 rounded-lg hover:bg-cream/50 transition-colors border border-transparent hover:border-coffee/10"
+                          >
+                            <input
+                              type="checkbox"
+                              checked={formData.deliverables.includes(deliverable.id)}
+                              onChange={() => toggleArrayField('deliverables', deliverable.id)}
+                              className="mt-1 w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                            />
+                            <div className="flex-1">
+                              <div className="font-semibold text-ink group-hover:text-rose-wax-red transition-colors">
+                                {deliverable.name}
+                                <span className="text-sm font-normal text-coffee/60 ml-2">
+                                  ({deliverable.duration})
+                                </span>
+                              </div>
+                              <div className="text-sm text-espresso/70 mt-1">
+                                {deliverable.description}
+                              </div>
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </AccordionSection>
+
+                  {/* Section 6: Timeline & Investment */}
+                  <AccordionSection
+                    number="/06"
+                    title="Timeline & Investment"
+                    isOpen={openSection === 5}
+                    isCompleted={isSectionCompleted(5)}
+                    onClick={() => setOpenSection(5)}
+                  >
+                    <div className="space-y-6">
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-3">
+                          When do you need your film?
+                        </label>
+                        <div className="space-y-3">
+                          {[
+                            { value: "standard", label: "Standard Timeline (8-12 weeks)", description: "Best value, allows for careful editing" },
+                            { value: "rush", label: "Rush Delivery (4-6 weeks)", description: "Additional fee applies" },
+                            { value: "flexible", label: "We're flexible", description: "Let's discuss what works" }
+                          ].map((timeline) => (
+                            <label key={timeline.value} className="flex items-start gap-3 cursor-pointer group p-3 rounded-lg hover:bg-cream/50 transition-colors">
+                              <input
+                                type="radio"
+                                name="deliveryTimeline"
+                                value={timeline.value}
+                                checked={formData.deliveryTimeline === timeline.value}
+                                onChange={(e) => updateField('deliveryTimeline', e.target.value)}
+                                className="mt-1 w-4 h-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                              />
+                              <div>
+                                <div className="font-medium text-ink group-hover:text-rose-wax-red transition-colors">
+                                  {timeline.label}
+                                </div>
+                                <div className="text-sm text-espresso/70">
+                                  {timeline.description}
+                                </div>
+                              </div>
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          What's your estimated budget for videography?
+                        </label>
+                        <p className="text-xs text-coffee/60 mb-3">
+                          This helps us create a proposal that fits your budget. We offer flexible packages and payment plans.
+                        </p>
+                        <select
+                          value={formData.budget}
+                          onChange={(e) => updateField('budget', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                        >
+                          <option value="">Select budget range...</option>
+                          <option value="2500-4000">$2,500 - $4,000</option>
+                          <option value="4000-6000">$4,000 - $6,000</option>
+                          <option value="6000-8000">$6,000 - $8,000</option>
+                          <option value="8000-10000">$8,000 - $10,000</option>
+                          <option value="10000+">$10,000+</option>
+                          <option value="not-sure">I'm not sure yet</option>
+                        </select>
+                      </div>
+                    </div>
+                  </AccordionSection>
+                </form>
+              </div>
+
+              {/* RIGHT: Sticky Summary Card */}
+              <div className="lg:col-span-5">
+                <div className="lg:sticky lg:top-32">
+                  <div className="bg-white rounded-lg shadow-lg border border-coffee/5 p-8">
+                    <div className="mb-6 pb-6 border-b border-coffee/10">
+                      <h2 className="font-serif text-2xl font-bold text-ink mb-2">
+                        Your Selections
+                      </h2>
+                      <p className="text-sm text-espresso/70">
+                        We'll review these and send you a custom proposal
+                      </p>
+                    </div>
+
+                    <div className="space-y-6 mb-8">
+                      {/* Your Celebration */}
+                      {(formData.partner1Name || formData.partner2Name || formData.weddingDate || formData.location) && (
+                        <div>
+                          <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
+                            Your Celebration
+                          </h3>
+                          <div className="space-y-1 text-sm text-ink">
+                            {formData.partner1Name && formData.partner2Name && (
+                              <p className="font-medium">{formData.partner1Name} & {formData.partner2Name}</p>
+                            )}
+                            {formData.weddingDate && (
+                              <p>{new Date(formData.weddingDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
+                            )}
+                            {formData.location && <p>{formData.location}</p>}
+                            {formData.celebrationType && (
+                              <p className="text-espresso/70 capitalize">{formData.celebrationType.replace('-', ' ')}</p>
+                            )}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Moments */}
+                      {formData.moments.length > 0 && (
+                        <div>
+                          <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
+                            Moments
+                          </h3>
+                          <p className="text-sm text-ink">
+                            {formData.moments.length} moment{formData.moments.length !== 1 ? 's' : ''} selected
+                          </p>
+                          {formData.moments.slice(0, 3).map((moment, i) => (
+                            <p key={i} className="text-sm text-espresso/70">• {moment}</p>
+                          ))}
+                          {formData.moments.length > 3 && (
+                            <p className="text-sm text-coffee/60 italic">+ {formData.moments.length - 3} more...</p>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Film Style */}
+                      {formData.filmStyle && (
+                        <div>
+                          <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
+                            Film Style
+                          </h3>
+                          <p className="text-sm text-ink capitalize">
+                            {formData.filmStyle.replace('-', ' ')} style
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Deliverables */}
+                      {formData.deliverables.length > 0 && (
+                        <div>
+                          <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
+                            Deliverables
+                          </h3>
+                          <p className="text-sm text-ink mb-1">
+                            {formData.deliverables.length} item{formData.deliverables.length !== 1 ? 's' : ''} selected
+                          </p>
+                          {formData.deliverables.map((id) => {
+                            const deliverable = deliverables.find(d => d.id === id);
+                            return deliverable ? (
+                              <p key={id} className="text-sm text-espresso/70">• {deliverable.name}</p>
+                            ) : null;
+                          })}
+                        </div>
+                      )}
+
+                      {/* Timeline & Budget */}
+                      {(formData.deliveryTimeline || formData.budget) && (
+                        <div>
+                          <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
+                            Timeline & Budget
+                          </h3>
+                          {formData.deliveryTimeline && (
+                            <p className="text-sm text-ink capitalize">
+                              {formData.deliveryTimeline} timeline
+                            </p>
+                          )}
+                          {formData.budget && (
+                            <p className="text-sm text-espresso/70">
+                              Budget: ${formData.budget.replace('-', ' - $')}
+                            </p>
+                          )}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Contact Info */}
+                    <div className="mb-6 p-4 bg-cream/50 rounded-lg">
+                      <p className="text-xs text-coffee/70 mb-2">
+                        Have questions while filling this out?
+                      </p>
+                      <div className="space-y-1 text-sm">
+                        <a href="mailto:michael@violetarose.com" className="block text-rose-wax-red hover:text-rose-wax-red/80 transition-colors">
+                          michael@violetarose.com
+                        </a>
+                        <a href="tel:+12125551234" className="block text-rose-wax-red hover:text-rose-wax-red/80 transition-colors">
+                          (212) 555-1234
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      onClick={handleSubmit}
+                      className="w-full py-4 bg-rose-wax-red text-white font-semibold rounded-full hover:bg-rose-wax-red/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 uppercase tracking-wider text-sm"
+                    >
+                      Submit My Preferences
+                    </button>
+                    <p className="text-xs text-center text-coffee/60 mt-3">
+                      We'll send your custom proposal within 48 hours
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
