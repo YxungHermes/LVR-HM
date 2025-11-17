@@ -55,13 +55,13 @@ export const signatureWork = [
   },
   {
     title: "Courtney & Sterling",
-    subtitle: "New York",
+    subtitle: "Connecticut",
     vimeoId: "1137483566",
     slug: "courtney-sterling"
   },
   {
     title: "Brianna & Steven",
-    subtitle: "New York",
+    subtitle: "New Jersey",
     vimeoId: "1137486347",
     slug: "brianna-steven"
   }
@@ -186,8 +186,8 @@ export const navigation: Navigation = {
             title: "Featured Films",
             links: [
               { label: "Selene & Isidro", href: "/films/selene-isidro", subtitle: "Utah" },
-              { label: "Courtney & Sterling", href: "/films/courtney-sterling", subtitle: "New York" },
-              { label: "Brianna & Steven", href: "/films/brianna-steven", subtitle: "New York" }
+              { label: "Courtney & Sterling", href: "/films/courtney-sterling", subtitle: "Connecticut" },
+              { label: "Brianna & Steven", href: "/films/brianna-steven", subtitle: "New Jersey" }
             ]
           },
           {
