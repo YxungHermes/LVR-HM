@@ -25,7 +25,9 @@ interface FormData {
   weddingDate: string;
   venueName: string;
   location: string;
+  locationDetails: string; // For adventure sessions with multiple locations
   eventType: string;
+  adventureTier: string; // Mini, Classic, or Premium for adventure sessions
   isMultiDay: boolean;
   numberOfDays: string;
   guestCount: string;
@@ -123,7 +125,9 @@ export default function ConsultationPage() {
     weddingDate: "",
     venueName: "",
     location: "",
+    locationDetails: "",
     eventType: "",
+    adventureTier: "",
     isMultiDay: false,
     numberOfDays: "",
     guestCount: "",
@@ -362,7 +366,10 @@ export default function ConsultationPage() {
     { id: "reception", name: "Full Reception Edit", duration: "30-60 minutes", description: "All the big reception moments" },
     { id: "teaser", name: "Social Media Teaser", duration: "60-90 seconds", description: "Perfect for sharing" },
     { id: "documentary", name: "Documentary Edit", duration: "45-90 minutes", description: "Full day story" },
-    { id: "raw", name: "Raw Footage Files", duration: "All clips", description: "Every clip we capture" }
+    { id: "raw", name: "Raw Footage Files", duration: "All clips", description: "Every clip we capture" },
+    // Adventure Session-specific options (Premium only)
+    { id: "cinematic-storytelling", name: "Cinematic Storytelling", duration: "Premium only", description: "Documentary-style filming with narrative structure", premiumOnly: true },
+    { id: "voice-recording", name: "Voice & Story Recording", duration: "Premium only", description: "Audio interviews woven into your film", premiumOnly: true }
   ];
 
   const traditions = [
@@ -478,6 +485,74 @@ export default function ConsultationPage() {
                           <option value="adventure">Adventure Sessions & Stories (Couples)</option>
                         </select>
                       </div>
+
+                      {/* Adventure Tier Selection - Only shown for adventure sessions */}
+                      {formData.eventType === 'adventure' && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          <label className="block text-sm font-medium text-ink mb-3">
+                            Choose Your Session Package *
+                          </label>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {/* Mini Tier */}
+                            <button
+                              type="button"
+                              onClick={() => updateField('adventureTier', 'mini')}
+                              className={`p-4 rounded-lg border-2 text-left transition-all ${
+                                formData.adventureTier === 'mini'
+                                  ? 'border-rose-wax-red bg-rose-wax-red/5'
+                                  : 'border-coffee/20 hover:border-coffee/40'
+                              }`}
+                            >
+                              <div className="font-semibold text-ink mb-1">Mini Session</div>
+                              <div className="text-2xl font-bold text-rose-wax-red mb-1">$750</div>
+                              <div className="text-xs text-espresso/70">2 hours • 1-min film</div>
+                              <div className="text-xs text-espresso/70 mt-1">Social media ready</div>
+                            </button>
+
+                            {/* Classic Tier */}
+                            <button
+                              type="button"
+                              onClick={() => updateField('adventureTier', 'classic')}
+                              className={`p-4 rounded-lg border-2 text-left transition-all relative ${
+                                formData.adventureTier === 'classic'
+                                  ? 'border-rose-wax-red bg-rose-wax-red/5'
+                                  : 'border-coffee/20 hover:border-coffee/40'
+                              }`}
+                            >
+                              <div className="absolute -top-2 right-2 bg-rose-wax-red text-white text-[10px] font-semibold px-2 py-0.5 rounded-full uppercase">
+                                Popular
+                              </div>
+                              <div className="font-semibold text-ink mb-1">Classic</div>
+                              <div className="text-2xl font-bold text-rose-wax-red mb-1">$1,200</div>
+                              <div className="text-xs text-espresso/70">3 hours • 2-3 min film</div>
+                              <div className="text-xs text-espresso/70 mt-1">Up to 2 locations</div>
+                            </button>
+
+                            {/* Premium Tier */}
+                            <button
+                              type="button"
+                              onClick={() => updateField('adventureTier', 'premium')}
+                              className={`p-4 rounded-lg border-2 text-left transition-all ${
+                                formData.adventureTier === 'premium'
+                                  ? 'border-rose-wax-red bg-rose-wax-red/5'
+                                  : 'border-coffee/20 hover:border-coffee/40'
+                              }`}
+                            >
+                              <div className="font-semibold text-ink mb-1">Premium</div>
+                              <div className="text-2xl font-bold text-rose-wax-red mb-1">$2,000</div>
+                              <div className="text-xs text-espresso/70">4-5 hours • 3-5 min film</div>
+                              <div className="text-xs text-espresso/70 mt-1">Full storytelling + audio</div>
+                            </button>
+                          </div>
+                          <p className="text-xs text-espresso/60 mt-2">
+                            Different features available based on package selected
+                          </p>
+                        </motion.div>
+                      )}
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
@@ -634,34 +709,67 @@ export default function ConsultationPage() {
                         />
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-2">
-                          Venue Name
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.venueName}
-                          onChange={(e) => updateField('venueName', e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                          placeholder="If you have one"
-                        />
-                      </div>
+                      {/* Venue Name - Hidden for adventure sessions */}
+                      {formData.eventType !== 'adventure' && (
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Venue Name
+                          </label>
+                          <input
+                            type="text"
+                            value={formData.venueName}
+                            onChange={(e) => updateField('venueName', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="If you have one"
+                          />
+                        </div>
+                      )}
 
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-2">
-                          How many guests are you expecting?
-                        </label>
-                        <p className="text-xs text-espresso/60 mb-3">
-                          An estimate is fine - this helps us understand the scale of your celebration.
-                        </p>
-                        <input
-                          type="text"
-                          value={formData.guestCount}
-                          onChange={(e) => updateField('guestCount', e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                          placeholder="e.g., 75-100 guests"
-                        />
-                      </div>
+                      {/* Location Details for Adventure Sessions - Classic and Premium only */}
+                      {formData.eventType === 'adventure' && (formData.adventureTier === 'classic' || formData.adventureTier === 'premium') && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            {formData.adventureTier === 'classic' ? 'Location(s) — Up to 2' : 'Locations — Tell Us Your Vision'}
+                          </label>
+                          <p className="text-xs text-espresso/60 mb-3">
+                            {formData.adventureTier === 'classic'
+                              ? 'Where would you like to film? You can choose up to 2 locations.'
+                              : 'Describe the locations or activities you have in mind. Multiple locations or activity-based sessions welcome.'}
+                          </p>
+                          <textarea
+                            value={formData.locationDetails}
+                            onChange={(e) => updateField('locationDetails', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder={formData.adventureTier === 'classic'
+                              ? 'e.g., Central Park and Brooklyn Bridge'
+                              : 'e.g., Starting at our apartment in Brooklyn, then sunset at Dumbo waterfront, ending with dinner in Manhattan'}
+                            rows={3}
+                          />
+                        </motion.div>
+                      )}
+
+                      {/* Guest Count - Hidden for adventure sessions */}
+                      {formData.eventType !== 'adventure' && (
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            How many guests are you expecting?
+                          </label>
+                          <p className="text-xs text-espresso/60 mb-3">
+                            An estimate is fine - this helps us understand the scale of your celebration.
+                          </p>
+                          <input
+                            type="text"
+                            value={formData.guestCount}
+                            onChange={(e) => updateField('guestCount', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="e.g., 75-100 guests"
+                          />
+                        </div>
+                      )}
 
                       <div>
                         <label className="block text-sm font-medium text-ink mb-3">
@@ -830,10 +938,32 @@ export default function ConsultationPage() {
                           Select all that you're interested in. We'll include pricing for each in your proposal.
                         </p>
                         <div className="space-y-3">
-                          {deliverables.map((deliverable) => (
+                          {deliverables
+                            .filter((deliverable) => {
+                              // For adventure sessions, show only relevant options
+                              if (formData.eventType === 'adventure') {
+                                // Hide wedding-specific deliverables
+                                const weddingOnly = ['ceremony', 'reception'];
+                                if (weddingOnly.includes(deliverable.id)) return false;
+
+                                // Only show premium options if Premium tier is selected
+                                if (deliverable.premiumOnly && formData.adventureTier !== 'premium') {
+                                  return false;
+                                }
+                              } else {
+                                // For weddings, hide adventure-specific premium options
+                                if (deliverable.premiumOnly) return false;
+                              }
+                              return true;
+                            })
+                            .map((deliverable) => (
                             <label
                               key={deliverable.id}
-                              className="flex items-start gap-3 cursor-pointer group p-4 rounded-lg hover:bg-cream/50 transition-colors border border-transparent hover:border-coffee/10"
+                              className={`flex items-start gap-3 cursor-pointer group p-4 rounded-lg transition-colors border ${
+                                deliverable.premiumOnly
+                                  ? 'border-rose-wax-red/30 bg-rose-wax-red/5 hover:bg-rose-wax-red/10'
+                                  : 'border-transparent hover:border-coffee/10 hover:bg-cream/50'
+                              }`}
                             >
                               <input
                                 type="checkbox"
@@ -844,6 +974,11 @@ export default function ConsultationPage() {
                               <div className="flex-1">
                                 <div className="font-semibold text-ink group-hover:text-rose-wax-red transition-colors">
                                   {deliverable.name}
+                                  {deliverable.premiumOnly && (
+                                    <span className="ml-2 text-xs bg-rose-wax-red text-white px-2 py-0.5 rounded-full uppercase font-semibold">
+                                      Premium
+                                    </span>
+                                  )}
                                   <span className="text-sm font-normal text-coffee/60 ml-2">
                                     ({deliverable.duration})
                                   </span>
