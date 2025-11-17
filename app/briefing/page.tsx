@@ -20,6 +20,7 @@ interface FormData {
   isMultiDay: boolean;
   numberOfDays: string;
   guestCount: string;
+  weddingPlanner: string;
 
   // Section 2: Moments to Capture
   moments: string[];
@@ -37,6 +38,8 @@ interface FormData {
   familyDynamics: string;
   surpriseMoments: string;
   anythingElse: string;
+  moodBoardLinks: string;
+  inspirationNotes: string;
 
   // Section 5: What You'll Receive
   deliverables: string[];
@@ -117,6 +120,7 @@ export default function BriefingPage() {
     isMultiDay: false,
     numberOfDays: "1",
     guestCount: "",
+    weddingPlanner: "",
     moments: [],
     otherMoments: "",
     filmStyle: "",
@@ -128,6 +132,8 @@ export default function BriefingPage() {
     familyDynamics: "",
     surpriseMoments: "",
     anythingElse: "",
+    moodBoardLinks: "",
+    inspirationNotes: "",
     deliverables: [],
     deliveryTimeline: "",
     bookingTimeline: "",
@@ -567,6 +573,19 @@ export default function BriefingPage() {
                           </p>
                         </div>
                       </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Wedding Planner/Coordinator
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.weddingPlanner}
+                          onChange={(e) => updateField('weddingPlanner', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="Name or company (if you have one, helps us coordinate)"
+                        />
+                      </div>
                     </div>
                   </AccordionSection>
 
@@ -829,6 +848,47 @@ export default function BriefingPage() {
                           rows={4}
                           placeholder="Special heirlooms, meaningful details, inside jokes, must-capture moments..."
                         />
+                      </div>
+
+                      <div className="pt-4 border-t border-coffee/10">
+                        <h4 className="text-sm font-semibold text-ink mb-3">Share Your Vision (Optional)</h4>
+                        <p className="text-xs text-espresso/70 mb-4">
+                          Share mood boards, Pinterest boards, wedding planner documents, or any inspiration that helps us understand your vision!
+                        </p>
+
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              Mood Board / Inspiration Links
+                            </label>
+                            <p className="text-xs text-coffee/60 mb-2">
+                              Share links to Pinterest boards, Google Drive folders, Dropbox, etc.
+                            </p>
+                            <textarea
+                              value={formData.moodBoardLinks}
+                              onChange={(e) => updateField('moodBoardLinks', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              rows={3}
+                              placeholder="Paste links here (one per line)&#10;https://pinterest.com/yourboard&#10;https://drive.google.com/folder/..."
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              Inspiration Notes
+                            </label>
+                            <p className="text-xs text-coffee/60 mb-2">
+                              Describe your vision, color palette, overall aesthetic, or any films/photos that inspire you
+                            </p>
+                            <textarea
+                              value={formData.inspirationNotes}
+                              onChange={(e) => updateField('inspirationNotes', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              rows={4}
+                              placeholder="e.g., We love earthy tones, romantic lighting, films that feel like a love letter..."
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </AccordionSection>
