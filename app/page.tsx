@@ -11,14 +11,27 @@ export default function Home() {
   return (
     <div className="relative">
       <Header />
-      <main>
-        <Hero />
-        <ChooseYourStory />
-        <SignatureWork />
+      <main
+        className="snap-y snap-proximity"
+        style={{
+          scrollSnapType: "y proximity",
+        }}
+      >
+        <div className="snap-start">
+          <Hero />
+        </div>
+        <div className="snap-start">
+          <ChooseYourStory />
+        </div>
+        <div className="snap-start">
+          <SignatureWork />
+        </div>
         {/* Temporarily removed per spec - to be decided in future flow */}
         {/* <Packages /> */}
         {/* <Testimonials /> */}
-        <Contact />
+        <div className="snap-start">
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>
