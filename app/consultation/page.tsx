@@ -509,7 +509,7 @@ export default function ConsultationPage() {
                             >
                               <div className="font-semibold text-ink mb-1">Mini Session</div>
                               <div className="text-2xl font-bold text-rose-wax-red mb-1">$750</div>
-                              <div className="text-xs text-espresso/70">2 hours • 1-min film</div>
+                              <div className="text-xs text-espresso/70">Up to 2 hours • 1-min film</div>
                               <div className="text-xs text-espresso/70 mt-1">Social media ready</div>
                             </button>
 
@@ -1217,8 +1217,18 @@ export default function ConsultationPage() {
                                 {formData.eventType === 'full' && 'Full Wedding'}
                                 {formData.eventType === 'large' && 'Large Celebration'}
                                 {formData.eventType === 'destination' && 'Destination Wedding'}
+                                {formData.eventType === 'adventure' && 'Couples Session'}
                                 {formData.isMultiDay && formData.numberOfDays && ` • ${formData.numberOfDays} days`}
                               </p>
+                            )}
+                            {formData.eventType === 'adventure' && formData.adventureTier && (
+                              <div className="mt-2 inline-block px-3 py-1.5 bg-rose-wax-red/10 border border-rose-wax-red/30 rounded-full">
+                                <p className="text-xs font-semibold text-rose-wax-red uppercase tracking-wider">
+                                  {formData.adventureTier === 'mini' && 'Mini Session — $750'}
+                                  {formData.adventureTier === 'classic' && 'Classic — $1,200'}
+                                  {formData.adventureTier === 'premium' && 'Premium — $2,000'}
+                                </p>
+                              </div>
                             )}
                           </div>
                         </div>
