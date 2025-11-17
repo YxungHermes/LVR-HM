@@ -50,17 +50,20 @@ export const signatureWork = [
   {
     title: "Selene & Isidro",
     subtitle: "Utah",
-    vimeoId: "1057949189"
+    vimeoId: "1057949189",
+    slug: "selene-isidro"
   },
   {
     title: "Courtney & Sterling",
     subtitle: "New York",
-    vimeoId: "1137483566"
+    vimeoId: "1137483566",
+    slug: "courtney-sterling"
   },
   {
     title: "Brianna & Steven",
     subtitle: "New York",
-    vimeoId: "1137486347"
+    vimeoId: "1137486347",
+    slug: "brianna-steven"
   }
 ];
 
@@ -180,19 +183,19 @@ export const navigation: Navigation = {
       megaMenu: {
         sections: [
           {
-            title: "Latest Films",
+            title: "Featured Films",
             links: [
-              { label: "Ari & Billy", href: "#signature-work", subtitle: "Malibu" },
-              { label: "Jeremy & Lourdes", href: "#signature-work", subtitle: "Palm Springs" },
-              { label: "Caitlyn & Michael", href: "#signature-work", subtitle: "Santa Barbara" }
+              { label: "Selene & Isidro", href: "/films/selene-isidro", subtitle: "Utah" },
+              { label: "Courtney & Sterling", href: "/films/courtney-sterling", subtitle: "New York" },
+              { label: "Brianna & Steven", href: "/films/brianna-steven", subtitle: "New York" }
             ]
           },
           {
             title: "Collections",
             links: [
-              { label: "Full Weddings", href: "#signature-work" },
+              { label: "View All Films", href: "#signature-work" },
               { label: "Elopements", href: "#signature-work" },
-              { label: "Highlight Reels", href: "#signature-work" }
+              { label: "Full Weddings", href: "#signature-work" }
             ]
           }
         ]

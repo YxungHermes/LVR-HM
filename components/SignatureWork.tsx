@@ -4,12 +4,13 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { signatureWork } from "@/content/home";
 
-function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
+function VideoCard({ title, subtitle, src, poster, vimeoId, slug, index }: {
   title: string;
   subtitle: string;
   src?: string;
   poster?: string;
   vimeoId?: string;
+  slug: string;
   index: number;
 }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -78,15 +79,15 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
 
       {/* Content */}
       <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-        <h3 className="font-serif text-3xl font-bold tracking-wide">
+        <h3 className="font-serif text-3xl font-bold tracking-wide text-white">
           {title}
         </h3>
-        <p className="mt-1 text-sm text-white/80">{subtitle}</p>
+        <p className="mt-1 text-sm text-white/90">{subtitle}</p>
 
         {/* View Film Link */}
         <a
-          href="#"
-          className={`mt-4 inline-flex items-center text-sm font-medium transition-all duration-300 ${
+          href={`/films/${slug}`}
+          className={`mt-4 inline-flex items-center text-sm font-medium text-white transition-all duration-300 ${
             isHovered ? "translate-x-0 opacity-100" : "-translate-x-2 opacity-0"
           }`}
         >
