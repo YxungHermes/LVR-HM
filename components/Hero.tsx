@@ -12,18 +12,11 @@ export default function Hero() {
   // Track scroll position for scroll marker fade-out effect
   useEffect(() => {
     const handleScroll = () => {
-      // Get scroll position from the main scroll container
-      const mainContainer = document.querySelector('.overflow-y-auto');
-      if (mainContainer) {
-        setScrollY(mainContainer.scrollTop);
-      }
+      setScrollY(window.scrollY);
     };
 
-    const mainContainer = document.querySelector('.overflow-y-auto');
-    if (mainContainer) {
-      mainContainer.addEventListener('scroll', handleScroll);
-      return () => mainContainer.removeEventListener('scroll', handleScroll);
-    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Simulate video load - give it time to start playing

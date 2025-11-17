@@ -144,7 +144,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
           }`}
         >
           <a
-            href="#"
+            href="/films"
             className="inline-flex items-center gap-3 px-6 py-3 bg-white text-ink rounded-full text-sm font-semibold uppercase tracking-wider hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] transition-all duration-300"
           >
             <span>View Film</span>
@@ -170,8 +170,8 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
 
 export default function SignatureWork() {
   return (
-    <section id="signature-work" className="bg-cream px-6 py-24">
-      <div className="mx-auto max-w-7xl">
+    <section id="signature-work" className="bg-cream px-6 py-24 min-h-screen flex flex-col justify-center">
+      <div className="mx-auto max-w-7xl w-full">
         <motion.div
           className="mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
