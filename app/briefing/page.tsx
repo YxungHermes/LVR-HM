@@ -11,10 +11,14 @@ interface FormData {
   // Section 1: Your Celebration
   partner1Name: string;
   partner2Name: string;
+  email: string;
+  phone: string;
   weddingDate: string;
   venueName: string;
   location: string;
   celebrationType: string;
+  isMultiDay: boolean;
+  numberOfDays: string;
   guestCount: string;
 
   // Section 2: Moments to Capture
@@ -35,9 +39,11 @@ interface FormData {
   // Section 5: What You'll Receive
   deliverables: string[];
 
-  // Section 6: Timeline & Investment
+  // Section 6: Timeline & Next Steps
   deliveryTimeline: string;
-  budget: string;
+  bookingTimeline: string;
+  howDidYouHear: string;
+  questionsForUs: string;
 }
 
 interface AccordionSectionProps {
@@ -95,14 +101,19 @@ function AccordionSection({ number, title, isOpen, isCompleted, onClick, childre
 export default function BriefingPage() {
   const [openSection, setOpenSection] = useState<number>(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
     partner2Name: "",
+    email: "",
+    phone: "",
     weddingDate: "",
     venueName: "",
     location: "",
     celebrationType: "",
+    isMultiDay: false,
+    numberOfDays: "1",
     guestCount: "",
     moments: [],
     otherMoments: "",
@@ -115,7 +126,9 @@ export default function BriefingPage() {
     anythingElse: "",
     deliverables: [],
     deliveryTimeline: "",
-    budget: ""
+    bookingTimeline: "",
+    howDidYouHear: "",
+    questionsForUs: ""
   });
 
   const updateField = (field: keyof FormData, value: any) => {
@@ -135,17 +148,17 @@ export default function BriefingPage() {
   const isSectionCompleted = (sectionIndex: number): boolean => {
     switch (sectionIndex) {
       case 0: // Your Celebration
-        return !!(formData.partner1Name && formData.partner2Name && formData.weddingDate && formData.location);
+        return !!(formData.partner1Name && formData.partner2Name && formData.email && formData.weddingDate && formData.location);
       case 1: // Moments to Capture
         return formData.moments.length > 0;
       case 2: // Your Film's Vibe
         return !!formData.filmStyle;
-      case 3: // Special Details
-        return true; // All optional
+      case 3: // Special Details - optional but show complete if any field filled
+        return !!(formData.culturalTraditions || formData.familyDynamics || formData.surpriseMoments || formData.anythingElse);
       case 4: // What You'll Receive
         return formData.deliverables.length > 0;
-      case 5: // Timeline & Investment
-        return !!(formData.deliveryTimeline && formData.budget);
+      case 5: // Timeline & Next Steps
+        return !!formData.deliveryTimeline;
       default:
         return false;
     }
@@ -154,6 +167,72 @@ export default function BriefingPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Clear previous errors
+    setValidationErrors([]);
+
+    // Validate required sections
+    const errors: string[] = [];
+    let firstIncompleteSection: number | null = null;
+
+    // Section 0: Your Celebration
+    if (!formData.partner1Name || !formData.partner2Name) {
+      errors.push("Please enter both partner names in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+    if (!formData.email) {
+      errors.push("Please enter your email address in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+    // Basic email validation
+    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+      errors.push("Please enter a valid email address in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+    if (!formData.weddingDate) {
+      errors.push("Please enter your wedding date in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+    if (!formData.location) {
+      errors.push("Please enter your wedding location in 'Your Celebration'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 0;
+    }
+
+    // Section 1: Moments to Capture
+    if (formData.moments.length === 0) {
+      errors.push("Please select at least one moment to capture in 'Moments to Capture'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 1;
+    }
+
+    // Section 2: Your Film's Vibe
+    if (!formData.filmStyle) {
+      errors.push("Please select a film style in 'Your Film's Vibe'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 2;
+    }
+
+    // Section 4: What You'll Receive
+    if (formData.deliverables.length === 0) {
+      errors.push("Please select at least one deliverable in 'What You'll Receive'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 4;
+    }
+
+    // Section 5: Timeline & Next Steps
+    if (!formData.deliveryTimeline) {
+      errors.push("Please select a delivery timeline in 'Timeline & Next Steps'");
+      if (firstIncompleteSection === null) firstIncompleteSection = 5;
+    }
+
+    // If there are errors, show them and open the first incomplete section
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      if (firstIncompleteSection !== null) {
+        setOpenSection(firstIncompleteSection);
+      }
+      // Scroll to error messages
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // All validation passed - submit the form
     // In production, send to your backend/email/CRM
     console.log('Form submitted:', formData);
 
@@ -307,6 +386,34 @@ export default function BriefingPage() {
                         </div>
                       </div>
 
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Email Address *
+                          </label>
+                          <input
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => updateField('email', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="sarah@email.com"
+                            required
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Phone Number
+                          </label>
+                          <input
+                            type="tel"
+                            value={formData.phone}
+                            onChange={(e) => updateField('phone', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="(555) 123-4567"
+                          />
+                        </div>
+                      </div>
+
                       <div>
                         <label className="block text-sm font-medium text-ink mb-2">
                           Wedding Date *
@@ -357,26 +464,58 @@ export default function BriefingPage() {
                           className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                         >
                           <option value="">Select type...</option>
-                          <option value="elopement">Elopement (just us)</option>
-                          <option value="intimate">Intimate Gathering (under 50 guests)</option>
-                          <option value="full">Full Wedding (50-150 guests)</option>
-                          <option value="large">Large Celebration (150+ guests)</option>
+                          <option value="elopement">Elopement</option>
+                          <option value="intimate">Intimate Gathering</option>
+                          <option value="full">Full Wedding</option>
+                          <option value="large">Large Celebration</option>
                           <option value="destination">Destination Wedding</option>
                         </select>
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-2">
-                          Guest Count (approximate)
-                        </label>
-                        <input
-                          type="number"
-                          value={formData.guestCount}
-                          onChange={(e) => updateField('guestCount', e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                          placeholder="100"
-                          min="2"
-                        />
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Guest Count (approximate)
+                          </label>
+                          <input
+                            type="number"
+                            value={formData.guestCount}
+                            onChange={(e) => updateField('guestCount', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="100"
+                            min="2"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Number of Days
+                          </label>
+                          <div className="flex items-center gap-3">
+                            <label className="flex items-center gap-2 cursor-pointer">
+                              <input
+                                type="checkbox"
+                                checked={formData.isMultiDay}
+                                onChange={(e) => updateField('isMultiDay', e.target.checked)}
+                                className="w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                              />
+                              <span className="text-sm text-ink">Multi-day event</span>
+                            </label>
+                            {formData.isMultiDay && (
+                              <input
+                                type="number"
+                                value={formData.numberOfDays}
+                                onChange={(e) => updateField('numberOfDays', e.target.value)}
+                                className="w-24 px-3 py-2 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                                placeholder="2"
+                                min="2"
+                                max="7"
+                              />
+                            )}
+                          </div>
+                          <p className="text-xs text-coffee/60 mt-1">
+                            Check if your celebration spans multiple days
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </AccordionSection>
@@ -629,10 +768,10 @@ export default function BriefingPage() {
                     </div>
                   </AccordionSection>
 
-                  {/* Section 6: Timeline & Investment */}
+                  {/* Section 6: Timeline & Next Steps */}
                   <AccordionSection
                     number="/06"
-                    title="Timeline & Investment"
+                    title="Timeline & Next Steps"
                     isOpen={openSection === 5}
                     isCompleted={isSectionCompleted(5)}
                     onClick={() => setOpenSection(5)}
@@ -640,7 +779,7 @@ export default function BriefingPage() {
                     <div className="space-y-6">
                       <div>
                         <label className="block text-sm font-medium text-ink mb-3">
-                          When do you need your film?
+                          When do you need your film delivered?
                         </label>
                         <div className="space-y-3">
                           {[
@@ -672,24 +811,46 @@ export default function BriefingPage() {
 
                       <div>
                         <label className="block text-sm font-medium text-ink mb-2">
-                          What's your estimated budget for videography?
+                          When are you hoping to book your videographer?
                         </label>
-                        <p className="text-xs text-coffee/60 mb-3">
-                          This helps us create a proposal that fits your budget. We offer flexible packages and payment plans.
-                        </p>
                         <select
-                          value={formData.budget}
-                          onChange={(e) => updateField('budget', e.target.value)}
+                          value={formData.bookingTimeline}
+                          onChange={(e) => updateField('bookingTimeline', e.target.value)}
                           className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                         >
-                          <option value="">Select budget range...</option>
-                          <option value="2500-4000">$2,500 - $4,000</option>
-                          <option value="4000-6000">$4,000 - $6,000</option>
-                          <option value="6000-8000">$6,000 - $8,000</option>
-                          <option value="8000-10000">$8,000 - $10,000</option>
-                          <option value="10000+">$10,000+</option>
-                          <option value="not-sure">I'm not sure yet</option>
+                          <option value="">Select timeframe...</option>
+                          <option value="asap">As soon as possible</option>
+                          <option value="1-2-weeks">Within 1-2 weeks</option>
+                          <option value="2-4-weeks">Within 2-4 weeks</option>
+                          <option value="1-2-months">Within 1-2 months</option>
+                          <option value="still-researching">Still researching options</option>
                         </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          How did you hear about us?
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.howDidYouHear}
+                          onChange={(e) => updateField('howDidYouHear', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="Instagram, Google search, referral from a friend, etc."
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Any questions for us?
+                        </label>
+                        <textarea
+                          value={formData.questionsForUs}
+                          onChange={(e) => updateField('questionsForUs', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          rows={4}
+                          placeholder="Feel free to ask us anything about our services, process, pricing, or your wedding day..."
+                        />
                       </div>
                     </div>
                   </AccordionSection>
@@ -779,20 +940,25 @@ export default function BriefingPage() {
                         </div>
                       )}
 
-                      {/* Timeline & Budget */}
-                      {(formData.deliveryTimeline || formData.budget) && (
+                      {/* Timeline & Next Steps */}
+                      {(formData.deliveryTimeline || formData.bookingTimeline || formData.howDidYouHear) && (
                         <div>
                           <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
-                            Timeline & Budget
+                            Timeline & Next Steps
                           </h3>
                           {formData.deliveryTimeline && (
                             <p className="text-sm text-ink capitalize">
-                              {formData.deliveryTimeline} timeline
+                              Delivery: {formData.deliveryTimeline}
                             </p>
                           )}
-                          {formData.budget && (
+                          {formData.bookingTimeline && (
                             <p className="text-sm text-espresso/70">
-                              Budget: ${formData.budget.replace('-', ' - $')}
+                              Booking: {formData.bookingTimeline}
+                            </p>
+                          )}
+                          {formData.howDidYouHear && (
+                            <p className="text-sm text-espresso/70">
+                              Referral: {formData.howDidYouHear}
                             </p>
                           )}
                         </div>
