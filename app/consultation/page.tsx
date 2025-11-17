@@ -49,16 +49,17 @@ interface AccordionSectionProps {
   title: string;
   isOpen: boolean;
   isCompleted: boolean;
+  hasError?: boolean;
   onClick: () => void;
   children: React.ReactNode;
 }
 
-function AccordionSection({ number, title, isOpen, isCompleted, onClick, children }: AccordionSectionProps) {
+function AccordionSection({ number, title, isOpen, isCompleted, hasError, onClick, children }: AccordionSectionProps) {
   return (
-    <div className="border-b border-coffee/10">
+    <div className={`border-b ${hasError && !isCompleted ? 'border-l-4 border-l-red-500 border-b-coffee/10' : 'border-coffee/10'}`}>
       <button
         onClick={onClick}
-        className="w-full flex items-center justify-between py-6 px-6 text-left hover:bg-cream/50 transition-colors duration-200 group"
+        className={`w-full flex items-center justify-between py-6 px-6 text-left hover:bg-cream/50 transition-colors duration-200 group ${hasError && !isCompleted ? 'bg-red-50/30' : ''}`}
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-4 flex-1">
@@ -101,6 +102,7 @@ export default function ConsultationPage() {
   const [openSection, setOpenSection] = useState<number>(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
+  const [sectionsWithErrors, setSectionsWithErrors] = useState<Set<number>>(new Set());
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
@@ -142,6 +144,23 @@ export default function ConsultationPage() {
     }));
   };
 
+  // Format phone number as user types
+  const formatPhoneNumber = (value: string) => {
+    // Remove all non-digits
+    const phoneNumber = value.replace(/\D/g, '');
+
+    // Format based on length
+    if (phoneNumber.length === 0) return '';
+    if (phoneNumber.length <= 3) return `(${phoneNumber}`;
+    if (phoneNumber.length <= 6) return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
+  const handlePhoneChange = (value: string) => {
+    const formatted = formatPhoneNumber(value);
+    updateField('phone', formatted);
+  };
+
   // Toggle section open/close - Allow any section to be opened
   const toggleSection = (sectionIndex: number) => {
     setOpenSection(prevSection => prevSection === sectionIndex ? -1 : sectionIndex);
@@ -170,6 +189,7 @@ export default function ConsultationPage() {
 
     // Clear previous errors
     setValidationErrors([]);
+    const errorSections = new Set<number>();
 
     // Validate required sections
     const errors: string[] = [];
@@ -178,64 +198,79 @@ export default function ConsultationPage() {
     // Section 0: About Your Celebration
     if (!formData.partner1Name || !formData.partner2Name) {
       errors.push("Please enter both partner names in 'About Your Celebration'");
+      errorSections.add(0);
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
     if (!formData.email) {
       errors.push("Please enter your email address");
+      errorSections.add(0);
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
     if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
       errors.push("Please enter a valid email address");
+      errorSections.add(0);
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
     if (!formData.weddingDate) {
       errors.push("Please enter your wedding date");
+      errorSections.add(0);
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
     if (!formData.location) {
       errors.push("Please enter your wedding location");
+      errorSections.add(0);
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
 
     // Section 1: Your Vision & Style
     if (!formData.tradition) {
       errors.push("Please select a tradition/cultural context");
+      errorSections.add(1);
       if (firstIncompleteSection === null) firstIncompleteSection = 1;
     }
     if (formData.tradition === "other" && !formData.traditionOther) {
       errors.push("Please describe your tradition");
+      errorSections.add(1);
       if (firstIncompleteSection === null) firstIncompleteSection = 1;
     }
     if (!formData.filmStyle) {
       errors.push("Please select a film style");
+      errorSections.add(1);
       if (firstIncompleteSection === null) firstIncompleteSection = 1;
     }
 
     // Section 2: What You're Looking For
     if (formData.deliverables.length === 0) {
       errors.push("Please select at least one deliverable");
+      errorSections.add(2);
       if (firstIncompleteSection === null) firstIncompleteSection = 2;
     }
     if (!formData.budgetRange) {
       errors.push("Please select a budget range");
+      errorSections.add(2);
       if (firstIncompleteSection === null) firstIncompleteSection = 2;
     }
 
     // Section 4: Next Steps
     if (!formData.howDidYouHear) {
       errors.push("Please let us know how you heard about us");
+      errorSections.add(4);
       if (firstIncompleteSection === null) firstIncompleteSection = 4;
     }
 
     // If there are errors, show them and open the first incomplete section
     if (errors.length > 0) {
       setValidationErrors(errors);
+      setSectionsWithErrors(errorSections);
       if (firstIncompleteSection !== null) {
         setOpenSection(firstIncompleteSection);
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
+
+    // Clear error sections if validation passed
+    setSectionsWithErrors(new Set());
 
     // All validation passed - submit the form
     setIsSubmitting(true);
@@ -385,6 +420,7 @@ export default function ConsultationPage() {
                     title="About Your Celebration"
                     isOpen={openSection === 0}
                     isCompleted={isSectionCompleted(0)}
+                    hasError={sectionsWithErrors.has(0)}
                     onClick={() => toggleSection(0)}
                   >
                     <div className="space-y-6">
@@ -435,9 +471,10 @@ export default function ConsultationPage() {
                           <input
                             type="tel"
                             value={formData.phone}
-                            onChange={(e) => updateField('phone', e.target.value)}
+                            onChange={(e) => handlePhoneChange(e.target.value)}
                             className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                             placeholder="(555) 123-4567"
+                            maxLength={14}
                           />
                         </div>
                       </div>
@@ -562,6 +599,7 @@ export default function ConsultationPage() {
                     title="Your Vision & Style"
                     isOpen={openSection === 1}
                     isCompleted={isSectionCompleted(1)}
+                    hasError={sectionsWithErrors.has(1)}
                     onClick={() => toggleSection(1)}
                   >
                     <div className="space-y-6">
@@ -668,6 +706,7 @@ export default function ConsultationPage() {
                     title="What You're Looking For"
                     isOpen={openSection === 2}
                     isCompleted={isSectionCompleted(2)}
+                    hasError={sectionsWithErrors.has(2)}
                     onClick={() => toggleSection(2)}
                   >
                     <div className="space-y-6">
@@ -768,6 +807,7 @@ export default function ConsultationPage() {
                     title="Tell Us Your Story"
                     isOpen={openSection === 3}
                     isCompleted={isSectionCompleted(3)}
+                    hasError={sectionsWithErrors.has(3)}
                     onClick={() => toggleSection(3)}
                   >
                     <div className="space-y-6">
@@ -825,6 +865,7 @@ export default function ConsultationPage() {
                     title="Next Steps"
                     isOpen={openSection === 4}
                     isCompleted={isSectionCompleted(4)}
+                    hasError={sectionsWithErrors.has(4)}
                     onClick={() => toggleSection(4)}
                   >
                     <div className="space-y-6">
@@ -952,11 +993,15 @@ export default function ConsultationPage() {
                       {formData.keyMoments.length > 0 && (
                         <div>
                           <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
-                            Key Moments
+                            Key Moments ({formData.keyMoments.length})
                           </h3>
-                          <p className="text-sm text-ink">
-                            {formData.keyMoments.length} moment{formData.keyMoments.length !== 1 ? 's' : ''} selected
-                          </p>
+                          <div className="grid grid-cols-2 gap-x-3 gap-y-1">
+                            {formData.keyMoments.map((moment) => (
+                              <p key={moment} className="text-xs text-espresso/70">
+                                • {moment}
+                              </p>
+                            ))}
+                          </div>
                         </div>
                       )}
 
