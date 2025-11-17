@@ -174,21 +174,11 @@ export default function AboutPage() {
               {/* CENTER COLUMN - Portrait Photo */}
               <div className="lg:col-span-4 order-1 lg:order-2">
                 <div className="relative aspect-[3/4] bg-warm-sand rounded-sm overflow-hidden shadow-sm">
-                  {/* Placeholder for portrait - replace with actual image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <p className="text-coffee/40 text-sm mb-2">Portrait Photo Placeholder</p>
-                      <p className="text-coffee/30 text-xs">3:4 ratio (~600x800px)</p>
-                      <p className="text-coffee/30 text-xs mt-1">Warm neutral background</p>
-                    </div>
-                  </div>
-                  {/* Uncomment and replace when image is ready:
                   <img
-                    src="/media/about-portrait.jpg"
-                    alt="Violeta Rose - Wedding Filmmaker"
+                    src="/media/michael-andrade.jpg"
+                    alt="Michael Andrade - Wedding Filmmaker"
                     className="w-full h-full object-cover"
                   />
-                  */}
                 </div>
               </div>
 
