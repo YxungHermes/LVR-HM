@@ -46,7 +46,7 @@ export default function ConsultationSuccessPage() {
                 We're already envisioning your story.
               </p>
               <p className="text-base text-espresso/70 leading-relaxed max-w-xl mx-auto">
-                Your inquiry has been received. We'll respond within 24 hours with next steps and a personalized proposal.
+                Your request has been received. We'll send you a personalized proposal with pricing and package options within 24 hours.
               </p>
             </motion.div>
           </div>
@@ -73,7 +73,7 @@ export default function ConsultationSuccessPage() {
                   <div>
                     <h3 className="font-semibold text-ink mb-1">Confirmation Email</h3>
                     <p className="text-sm text-espresso">
-                      You'll receive an automated confirmation shortly with a copy of your inquiry.
+                      You'll receive an automated confirmation shortly with a copy of your request.
                     </p>
                   </div>
                 </div>
@@ -83,9 +83,9 @@ export default function ConsultationSuccessPage() {
                     <span className="text-rose-wax-red font-bold text-sm">2</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-ink mb-1">Personal Response</h3>
+                    <h3 className="font-semibold text-ink mb-1">We Review Your Details</h3>
                     <p className="text-sm text-espresso">
-                      Violeta will review your details and send a thoughtful, personalized message.
+                      We'll carefully review your celebration details, vision, and preferences.
                     </p>
                   </div>
                 </div>
@@ -95,9 +95,9 @@ export default function ConsultationSuccessPage() {
                     <span className="text-rose-wax-red font-bold text-sm">3</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-ink mb-1">Consultation Scheduling</h3>
+                    <h3 className="font-semibold text-ink mb-1">Personalized Proposal</h3>
                     <p className="text-sm text-espresso">
-                      We'll coordinate a phone or video call to learn more about your vision and answer questions.
+                      Within 24 hours, you'll receive a custom proposal with 2-3 package options tailored to your celebration.
                     </p>
                   </div>
                 </div>
@@ -107,9 +107,9 @@ export default function ConsultationSuccessPage() {
                     <span className="text-rose-wax-red font-bold text-sm">4</span>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-ink mb-1">Custom Proposal</h3>
+                    <h3 className="font-semibold text-ink mb-1">Let's Connect</h3>
                     <p className="text-sm text-espresso">
-                      Within 48 hours, you'll receive a tailored collection designed specifically for your day.
+                      We're happy to hop on a call to answer questions, or you can book directly from the proposal.
                     </p>
                   </div>
                 </div>

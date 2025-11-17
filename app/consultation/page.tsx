@@ -19,6 +19,7 @@ interface FormData {
   location: string;
   eventType: string;
   isMultiDay: boolean;
+  numberOfDays: string;
   guestCount: string;
 
   // Section 2: Your Vision & Style
@@ -111,6 +112,7 @@ export default function ConsultationPage() {
     location: "",
     eventType: "",
     isMultiDay: false,
+    numberOfDays: "",
     guestCount: "",
     tradition: "",
     traditionOther: "",
@@ -140,7 +142,7 @@ export default function ConsultationPage() {
     }));
   };
 
-  // Toggle section open/close
+  // Toggle section open/close - Allow any section to be opened
   const toggleSection = (sectionIndex: number) => {
     setOpenSection(prevSection => prevSection === sectionIndex ? -1 : sectionIndex);
   };
@@ -488,41 +490,68 @@ export default function ConsultationPage() {
                           className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                         >
                           <option value="">Select type...</option>
-                          <option value="elopement">Elopement (2-20 guests)</option>
-                          <option value="intimate">Intimate Wedding (20-75 guests)</option>
-                          <option value="full">Full Wedding (75-150 guests)</option>
-                          <option value="large">Large Celebration (150+ guests)</option>
+                          <option value="elopement">Elopement</option>
+                          <option value="intimate">Intimate Wedding</option>
+                          <option value="full">Full Wedding</option>
+                          <option value="large">Large Celebration</option>
                           <option value="destination">Destination Wedding</option>
                         </select>
                       </div>
 
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-medium text-ink mb-2">
-                            Guest Count (approximate)
-                          </label>
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          How many guests are you expecting?
+                        </label>
+                        <p className="text-xs text-espresso/60 mb-3">
+                          An estimate is fine - this helps us understand the scale of your celebration.
+                        </p>
+                        <input
+                          type="text"
+                          value={formData.guestCount}
+                          onChange={(e) => updateField('guestCount', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="e.g., 75-100 guests"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-3">
+                          Is this a multi-day celebration?
+                        </label>
+                        <label className="flex items-center gap-3 cursor-pointer">
                           <input
-                            type="text"
-                            value={formData.guestCount}
-                            onChange={(e) => updateField('guestCount', e.target.value)}
-                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                            placeholder="e.g., 100"
+                            type="checkbox"
+                            checked={formData.isMultiDay}
+                            onChange={(e) => updateField('isMultiDay', e.target.checked)}
+                            className="w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
                           />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-ink mb-2">
-                            Multi-day Celebration?
-                          </label>
-                          <label className="flex items-center gap-3 cursor-pointer pt-3">
+                          <span className="text-sm text-ink">Yes, we're celebrating across multiple days</span>
+                        </label>
+
+                        {formData.isMultiDay && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-4"
+                          >
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              How many days total? (including the wedding day)
+                            </label>
                             <input
-                              type="checkbox"
-                              checked={formData.isMultiDay}
-                              onChange={(e) => updateField('isMultiDay', e.target.checked)}
-                              className="w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                              type="number"
+                              value={formData.numberOfDays || ""}
+                              onChange={(e) => updateField('numberOfDays', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              placeholder="e.g., 3"
+                              min="2"
+                              max="7"
                             />
-                            <span className="text-sm text-ink">Yes, multiple days</span>
-                          </label>
-                        </div>
+                            <p className="text-xs text-espresso/60 mt-2">
+                              For example, if you have a welcome dinner, wedding day, and farewell brunch, that's 3 days.
+                            </p>
+                          </motion.div>
+                        )}
                       </div>
                     </div>
                   </AccordionSection>
@@ -693,7 +722,8 @@ export default function ConsultationPage() {
                           <option value="2000-4000">$2,000 - $4,000</option>
                           <option value="4000-7000">$4,000 - $7,000</option>
                           <option value="7000-12000">$7,000 - $12,000</option>
-                          <option value="12000+">$12,000+</option>
+                          <option value="12000-20000">$12,000 - $20,000</option>
+                          <option value="20000+">$20,000+</option>
                           <option value="flexible">Flexible / Not sure yet</option>
                         </select>
                       </div>
@@ -876,7 +906,7 @@ export default function ConsultationPage() {
 
                     <div className="space-y-6 mb-8">
                       {/* Your Celebration */}
-                      {(formData.partner1Name || formData.partner2Name || formData.weddingDate || formData.location) && (
+                      {(formData.partner1Name || formData.partner2Name || formData.weddingDate || formData.location || formData.venueName) && (
                         <div>
                           <h3 className="text-xs uppercase tracking-wider text-coffee/60 mb-2 font-semibold">
                             Your Celebration
@@ -888,9 +918,19 @@ export default function ConsultationPage() {
                             {formData.weddingDate && (
                               <p>{new Date(formData.weddingDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
                             )}
-                            {formData.location && <p>{formData.location}</p>}
+                            {formData.venueName && (
+                              <p className="text-espresso/90">{formData.venueName}</p>
+                            )}
+                            {formData.location && <p className="text-espresso/70">{formData.location}</p>}
                             {formData.eventType && (
-                              <p className="text-espresso/70 capitalize">{formData.eventType.replace('-', ' ')}</p>
+                              <p className="text-espresso/70">
+                                {formData.eventType === 'elopement' && 'Elopement'}
+                                {formData.eventType === 'intimate' && 'Intimate Wedding'}
+                                {formData.eventType === 'full' && 'Full Wedding'}
+                                {formData.eventType === 'large' && 'Large Celebration'}
+                                {formData.eventType === 'destination' && 'Destination Wedding'}
+                                {formData.isMultiDay && formData.numberOfDays && ` • ${formData.numberOfDays} days`}
+                              </p>
                             )}
                           </div>
                         </div>
@@ -944,7 +984,12 @@ export default function ConsultationPage() {
                             Investment Range
                           </h3>
                           <p className="text-sm text-ink">
-                            {formData.budgetRange === 'flexible' ? 'Flexible' : `$${formData.budgetRange.replace('-', ' - $')}`}
+                            {formData.budgetRange === 'flexible'
+                              ? 'Flexible'
+                              : formData.budgetRange.includes('+')
+                                ? `$${formData.budgetRange.replace('+', '')}+`
+                                : `$${formData.budgetRange.replace('-', ' - $')}`
+                            }
                           </p>
                         </div>
                       )}
