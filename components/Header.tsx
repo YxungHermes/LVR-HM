@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { navigation, type NavItem } from "@/content/home";
 import MobileNav from "@/components/MobileNav";
 
-export default function Header({ settled = false }: { settled?: boolean }) {
+export default function Header({ settled = false, hideCta = false }: { settled?: boolean; hideCta?: boolean }) {
   const [solid, setSolid] = useState(settled);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
@@ -148,6 +148,11 @@ export default function Header({ settled = false }: { settled?: boolean }) {
   };
 
   const renderNavItem = (item: NavItem) => {
+    // Skip CTA button if hideCta prop is true
+    if (item.isCta && hideCta) {
+      return null;
+    }
+
     // Render primary CTA with enhanced animations - no dropdown
     if (item.isCta) {
       return (

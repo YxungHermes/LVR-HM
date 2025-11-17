@@ -269,7 +269,7 @@ export default function BriefingPage() {
   if (isSubmitted) {
     return (
       <>
-        <Header settled />
+        <Header settled hideCta />
         <main className="bg-cream min-h-screen pt-32 pb-20 px-6">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
@@ -317,7 +317,7 @@ export default function BriefingPage() {
 
   return (
     <>
-      <Header settled />
+      <Header settled hideCta />
       <main className="bg-cream">
         {/* Page Header */}
         <section className="px-6 pt-32 pb-16 md:pt-40 md:pb-20">
@@ -971,11 +971,11 @@ export default function BriefingPage() {
                         Have questions while filling this out?
                       </p>
                       <div className="space-y-1 text-sm">
-                        <a href="mailto:michael@violetarose.com" className="block text-rose-wax-red hover:text-rose-wax-red/80 transition-colors">
-                          michael@violetarose.com
+                        <a href="mailto:contact@michael-andrade.com" className="block text-rose-wax-red hover:text-rose-wax-red/80 transition-colors">
+                          contact@michael-andrade.com
                         </a>
-                        <a href="tel:+12125551234" className="block text-rose-wax-red hover:text-rose-wax-red/80 transition-colors">
-                          (212) 555-1234
+                        <a href="tel:+13477747840" className="block text-rose-wax-red hover:text-rose-wax-red/80 transition-colors">
+                          (347) 774-7840
                         </a>
                       </div>
                     </div>
