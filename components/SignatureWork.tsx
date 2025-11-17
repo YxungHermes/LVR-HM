@@ -32,7 +32,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
 
   return (
     <motion.div
-      className="group relative h-[600px] overflow-hidden rounded-xl border border-white/10"
+      className="group relative h-[400px] md:h-[500px] overflow-hidden rounded-xl border border-white/10"
       style={{
         transform: isHovered ? "scale(1.04)" : "scale(1)",
         boxShadow: isHovered
@@ -144,7 +144,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
           }`}
         >
           <a
-            href="/films"
+            href="#"
             className="inline-flex items-center gap-3 px-6 py-3 bg-white text-ink rounded-full text-sm font-semibold uppercase tracking-wider hover:shadow-[0_4px_16px_rgba(255,255,255,0.4)] transition-all duration-300"
           >
             <span>View Film</span>
@@ -170,10 +170,10 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
 
 export default function SignatureWork() {
   return (
-    <section id="signature-work" className="bg-cream px-6 py-24 min-h-screen flex flex-col justify-center">
+    <section id="signature-work" className="bg-cream px-6 h-screen flex flex-col justify-center overflow-hidden">
       <div className="mx-auto max-w-7xl w-full">
         <motion.div
-          className="mb-16 text-center"
+          className="mb-8 md:mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -187,7 +187,7 @@ export default function SignatureWork() {
           </p>
         </motion.div>
 
-        <div className="grid gap-10 md:gap-12 md:grid-cols-3">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-3">
           {signatureWork.map((work, index) => (
             <VideoCard key={work.title} {...work} index={index} />
           ))}
