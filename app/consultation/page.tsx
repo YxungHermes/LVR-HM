@@ -8,10 +8,18 @@ import { Check, ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 // Types
+interface AdditionalPartner {
+  name: string;
+  pronouns: string;
+}
+
 interface FormData {
   // Section 1: About Your Celebration
   partner1Name: string;
+  partner1Pronouns: string;
   partner2Name: string;
+  partner2Pronouns: string;
+  additionalPartners: AdditionalPartner[];
   email: string;
   phone: string;
   weddingDate: string;
@@ -106,7 +114,10 @@ export default function ConsultationPage() {
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
+    partner1Pronouns: "",
     partner2Name: "",
+    partner2Pronouns: "",
+    additionalPartners: [],
     email: "",
     phone: "",
     weddingDate: "",
@@ -159,6 +170,30 @@ export default function ConsultationPage() {
   const handlePhoneChange = (value: string) => {
     const formatted = formatPhoneNumber(value);
     updateField('phone', formatted);
+  };
+
+  // Additional partner management
+  const addPartner = () => {
+    setFormData(prev => ({
+      ...prev,
+      additionalPartners: [...prev.additionalPartners, { name: '', pronouns: '' }]
+    }));
+  };
+
+  const removePartner = (index: number) => {
+    setFormData(prev => ({
+      ...prev,
+      additionalPartners: prev.additionalPartners.filter((_, i) => i !== index)
+    }));
+  };
+
+  const updateAdditionalPartner = (index: number, field: 'name' | 'pronouns', value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      additionalPartners: prev.additionalPartners.map((partner, i) =>
+        i === index ? { ...partner, [field]: value } : partner
+      )
+    }));
   };
 
   // Toggle section open/close - Allow any section to be opened
@@ -424,6 +459,26 @@ export default function ConsultationPage() {
                     onClick={() => toggleSection(0)}
                   >
                     <div className="space-y-6">
+                      {/* Type of Celebration - Moved to top */}
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Type of Celebration
+                        </label>
+                        <select
+                          value={formData.eventType}
+                          onChange={(e) => updateField('eventType', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                        >
+                          <option value="">Select type...</option>
+                          <option value="elopement">Elopement</option>
+                          <option value="intimate">Intimate Wedding</option>
+                          <option value="full">Full Wedding</option>
+                          <option value="large">Large Celebration</option>
+                          <option value="destination">Destination Wedding</option>
+                          <option value="adventure">Adventure Sessions & Stories (Couples)</option>
+                        </select>
+                      </div>
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                           <label className="block text-sm font-medium text-ink mb-2">
@@ -435,6 +490,13 @@ export default function ConsultationPage() {
                             onChange={(e) => updateField('partner1Name', e.target.value)}
                             className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                             placeholder="Your name"
+                          />
+                          <input
+                            type="text"
+                            value={formData.partner1Pronouns}
+                            onChange={(e) => updateField('partner1Pronouns', e.target.value)}
+                            className="mt-2 w-full px-4 py-2 text-sm rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="Pronouns (optional)"
                           />
                         </div>
                         <div>
@@ -448,7 +510,72 @@ export default function ConsultationPage() {
                             className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                             placeholder="Partner's name"
                           />
+                          <input
+                            type="text"
+                            value={formData.partner2Pronouns}
+                            onChange={(e) => updateField('partner2Pronouns', e.target.value)}
+                            className="mt-2 w-full px-4 py-2 text-sm rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                            placeholder="Pronouns (optional)"
+                          />
                         </div>
+                      </div>
+
+                      {/* Additional Partners */}
+                      {formData.additionalPartners.map((partner, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="grid grid-cols-1 md:grid-cols-2 gap-4 relative pt-4 border-t border-coffee/10"
+                        >
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              Partner {index + 3} Name
+                            </label>
+                            <input
+                              type="text"
+                              value={partner.name}
+                              onChange={(e) => updateAdditionalPartner(index, 'name', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              placeholder="Partner's name"
+                            />
+                            <input
+                              type="text"
+                              value={partner.pronouns}
+                              onChange={(e) => updateAdditionalPartner(index, 'pronouns', e.target.value)}
+                              className="mt-2 w-full px-4 py-2 text-sm rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              placeholder="Pronouns (optional)"
+                            />
+                          </div>
+                          <div className="flex items-start">
+                            <button
+                              type="button"
+                              onClick={() => removePartner(index)}
+                              className="mt-8 px-4 py-2 text-sm text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
+                            >
+                              Remove Partner {index + 3}
+                            </button>
+                          </div>
+                        </motion.div>
+                      ))}
+
+                      {/* Add Partner Button */}
+                      <div className="pt-2">
+                        <button
+                          type="button"
+                          onClick={addPartner}
+                          className="text-sm text-rose-wax-red hover:text-rose-wax-red/80 font-medium transition-colors flex items-center gap-2"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                          </svg>
+                          Add another partner
+                        </button>
+                        <p className="text-xs text-espresso/60 mt-1">
+                          For partnerships with 3+ people
+                        </p>
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -457,12 +584,15 @@ export default function ConsultationPage() {
                             Email Address *
                           </label>
                           <input
-                            type="email"
+                            type="text"
                             value={formData.email}
                             onChange={(e) => updateField('email', e.target.value)}
                             className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                            placeholder="you@email.com"
+                            placeholder="you@email.com or you@email.com, partner@email.com"
                           />
+                          <p className="text-xs text-espresso/60 mt-1">
+                            Separate multiple emails with commas
+                          </p>
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-ink mb-2">
@@ -481,7 +611,7 @@ export default function ConsultationPage() {
 
                       <div>
                         <label className="block text-sm font-medium text-ink mb-2">
-                          Wedding Date *
+                          {formData.eventType === 'adventure' ? 'Session Date *' : 'Wedding Date *'}
                         </label>
                         <input
                           type="date"
@@ -515,24 +645,6 @@ export default function ConsultationPage() {
                           className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                           placeholder="If you have one"
                         />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-2">
-                          Type of Celebration
-                        </label>
-                        <select
-                          value={formData.eventType}
-                          onChange={(e) => updateField('eventType', e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                        >
-                          <option value="">Select type...</option>
-                          <option value="elopement">Elopement</option>
-                          <option value="intimate">Intimate Wedding</option>
-                          <option value="full">Full Wedding</option>
-                          <option value="large">Large Celebration</option>
-                          <option value="destination">Destination Wedding</option>
-                        </select>
                       </div>
 
                       <div>
