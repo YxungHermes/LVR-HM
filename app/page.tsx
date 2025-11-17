@@ -6,41 +6,21 @@ import SignatureWork from "@/components/SignatureWork";
 // import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import SmoothSnapScroll from "@/components/SmoothSnapScroll";
 
 export default function Home() {
   return (
     <div className="relative">
       <Header />
-      {/*
-        Smooth snap scroll container
-        - Detects when user stops scrolling
-        - Smoothly eases into nearest section instead of abrupt snap
-        - Only snaps if within 30% of section boundary
-        - Footer remains freely scrollable
-      */}
-      <SmoothSnapScroll>
-        <main>
-          {/* Each major section smoothly snaps with data-snap-section */}
-          <div data-snap-section>
-            <Hero />
-          </div>
-          <div data-snap-section>
-            <ChooseYourStory />
-          </div>
-          <div data-snap-section>
-            <SignatureWork />
-          </div>
-          {/* Temporarily removed per spec - to be decided in future flow */}
-          {/* <Packages /> */}
-          {/* <Testimonials /> */}
-          <div data-snap-section>
-            <Contact />
-          </div>
-        </main>
-        {/* Footer: no snap attribute, flows naturally after Contact */}
-        <Footer />
-      </SmoothSnapScroll>
+      <main>
+        <Hero />
+        <ChooseYourStory />
+        <SignatureWork />
+        {/* Temporarily removed per spec - to be decided in future flow */}
+        {/* <Packages /> */}
+        {/* <Testimonials /> */}
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 }

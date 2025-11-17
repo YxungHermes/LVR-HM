@@ -13,7 +13,7 @@ export const hero = {
     },
     secondary: {
       label: "View Our Films",
-      href: "#signature-work"
+      href: "/films"
     }
   }
 };
@@ -176,23 +176,22 @@ export const navigation: Navigation = {
     },
     {
       label: "Films",
-      href: "#signature-work",
+      href: "/films",
       megaMenu: {
         sections: [
           {
             title: "Latest Films",
             links: [
-              { label: "Ari & Billy", href: "#signature-work", subtitle: "Malibu" },
-              { label: "Jeremy & Lourdes", href: "#signature-work", subtitle: "Palm Springs" },
-              { label: "Caitlyn & Michael", href: "#signature-work", subtitle: "Santa Barbara" }
+              { label: "Selene & Isidro", href: "/films", subtitle: "Utah" },
+              { label: "Courtney & Sterling", href: "/films", subtitle: "Connecticut" },
+              { label: "Brianna & Steven", href: "/films", subtitle: "New Jersey" }
             ]
           },
           {
-            title: "Collections",
+            title: "Explore",
             links: [
-              { label: "Full Weddings", href: "#signature-work" },
-              { label: "Elopements", href: "#signature-work" },
-              { label: "Highlight Reels", href: "#signature-work" }
+              { label: "View All Films", href: "/films" },
+              { label: "Book Consultation", href: "/consultation" }
             ]
           }
         ]
