@@ -194,8 +194,8 @@ export const pricingPages = {
         includes: [
           "2 hours of coverage",
           "1 minute highlight film optimized for social media",
+          "Vertical format (9:16) for social media",
           "One location (NYC + 30 miles, travel extra)",
-          "Vertical & horizontal formats included",
           "Simple planning — one call, no fuss",
           "Online delivery in 3-4 weeks",
         ],
@@ -210,6 +210,7 @@ export const pricingPages = {
         includes: [
           "3 hours of coverage",
           "2–3 minute narrative film",
+          "Your choice: vertical or horizontal format",
           "Up to 2 locations",
           "Styling and location guidance",
           "Licensed music safe for sharing",
