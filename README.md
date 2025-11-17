@@ -272,6 +272,46 @@ A shared component that appears at the bottom of `/process` and `/consultation/s
 - Responsive spacing and Framer Motion animations
 - Border separator between Instagram invitation and sign-off
 
+## 🤖 Working with Claude Code
+
+This repository includes AI context files to help Claude Code understand our complete technology ecosystem and provide better recommendations.
+
+### AI Context Files
+
+- **`.claude/instructions.md`** - Auto-loaded context (tech stack, patterns, principles)
+- **`.claude/project-context.md`** - Detailed business context and decision frameworks
+- **`TECH_STACK.md`** - Complete technology inventory and integration map
+
+### Quick Commands
+
+When working with Claude Code, you can reference these contexts:
+
+```
+"Based on our tech stack, how should I..."
+"Check project-context and recommend..."
+"Given our n8n setup, what's the best way to..."
+"Review TECH_STACK.md and suggest integrations for..."
+```
+
+### What Claude Code Knows
+
+- **Business model**: Wedding videography, bootstrapped, automation-focused
+- **Tech stack**: Next.js 14 + TypeScript + Tailwind + Resend + Vimeo
+- **Operations**: n8n (automation) + Airtable (CRM) + Notion (content)
+- **Priorities**: Mobile-first, performance, SEO, automation, low-cost solutions
+- **Brand voice**: Warm, authentic, cinematic storytelling
+
+### Adding New Features
+
+Claude Code is configured to:
+- ✅ Suggest n8n-compatible tools and automation workflows
+- ✅ Recommend Airtable-first for data storage
+- ✅ Prioritize mobile-first and performance
+- ✅ Follow existing Tailwind patterns and brand colors
+- ✅ Keep solutions simple and cost-effective
+
+---
+
 ## License
 
 © 2025 Love, Violeta Rose. All rights reserved.
