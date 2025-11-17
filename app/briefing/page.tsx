@@ -20,6 +20,7 @@ interface FormData {
   isMultiDay: boolean;
   numberOfDays: string;
   guestCount: string;
+  weddingPlanner: string;
 
   // Section 2: Moments to Capture
   moments: string[];
@@ -29,12 +30,16 @@ interface FormData {
   filmStyle: string;
   musicVibeDescription: string;
   firstDanceSong: string;
+  spotifyPlaylistUrl: string;
+  appleMusicPlaylistUrl: string;
 
   // Section 4: Special Details
   culturalTraditions: string;
   familyDynamics: string;
   surpriseMoments: string;
   anythingElse: string;
+  moodBoardLinks: string;
+  inspirationNotes: string;
 
   // Section 5: What You'll Receive
   deliverables: string[];
@@ -115,15 +120,20 @@ export default function BriefingPage() {
     isMultiDay: false,
     numberOfDays: "1",
     guestCount: "",
+    weddingPlanner: "",
     moments: [],
     otherMoments: "",
     filmStyle: "",
     musicVibeDescription: "",
     firstDanceSong: "",
+    spotifyPlaylistUrl: "",
+    appleMusicPlaylistUrl: "",
     culturalTraditions: "",
     familyDynamics: "",
     surpriseMoments: "",
     anythingElse: "",
+    moodBoardLinks: "",
+    inspirationNotes: "",
     deliverables: [],
     deliveryTimeline: "",
     bookingTimeline: "",
@@ -142,6 +152,11 @@ export default function BriefingPage() {
         ? prev[field].filter(item => item !== value)
         : [...prev[field], value]
     }));
+  };
+
+  // Toggle section open/close
+  const toggleSection = (sectionIndex: number) => {
+    setOpenSection(prevSection => prevSection === sectionIndex ? -1 : sectionIndex);
   };
 
   // Check if section is completed
@@ -395,7 +410,7 @@ export default function BriefingPage() {
                     title="Your Celebration"
                     isOpen={openSection === 0}
                     isCompleted={isSectionCompleted(0)}
-                    onClick={() => setOpenSection(0)}
+                    onClick={() => toggleSection(0)}
                   >
                     <div className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -558,6 +573,19 @@ export default function BriefingPage() {
                           </p>
                         </div>
                       </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-ink mb-2">
+                          Wedding Planner/Coordinator
+                        </label>
+                        <input
+                          type="text"
+                          value={formData.weddingPlanner}
+                          onChange={(e) => updateField('weddingPlanner', e.target.value)}
+                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          placeholder="Name or company (if you have one, helps us coordinate)"
+                        />
+                      </div>
                     </div>
                   </AccordionSection>
 
@@ -567,7 +595,7 @@ export default function BriefingPage() {
                     title="Moments to Capture"
                     isOpen={openSection === 1}
                     isCompleted={isSectionCompleted(1)}
-                    onClick={() => setOpenSection(1)}
+                    onClick={() => toggleSection(1)}
                   >
                     <div className="space-y-6">
                       <p className="text-sm text-espresso/70">
@@ -622,7 +650,7 @@ export default function BriefingPage() {
                     title="Your Film's Vibe"
                     isOpen={openSection === 2}
                     isCompleted={isSectionCompleted(2)}
-                    onClick={() => setOpenSection(2)}
+                    onClick={() => toggleSection(2)}
                   >
                     <div className="space-y-6">
                       <div>
@@ -694,6 +722,63 @@ export default function BriefingPage() {
                           We have access to an extensive library of licensed music across all genres and moods.
                         </p>
                       </div>
+
+                      <div className="pt-4 border-t border-coffee/10">
+                        <h4 className="text-sm font-semibold text-ink mb-3">Share Your Playlists (Optional)</h4>
+                        <p className="text-xs text-espresso/70 mb-4">
+                          Share your Spotify or Apple Music playlist to give us a complete picture of your musical taste!
+                        </p>
+
+                        <div className="space-y-4">
+                          {/* Spotify Playlist */}
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              Spotify Playlist URL
+                            </label>
+                            <input
+                              type="url"
+                              value={formData.spotifyPlaylistUrl}
+                              onChange={(e) => updateField('spotifyPlaylistUrl', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              placeholder="https://open.spotify.com/playlist/..."
+                            />
+                            {formData.spotifyPlaylistUrl && formData.spotifyPlaylistUrl.includes('spotify.com/playlist/') && (
+                              <div className="mt-3">
+                                <iframe
+                                  src={`https://open.spotify.com/embed/playlist/${formData.spotifyPlaylistUrl.split('playlist/')[1].split('?')[0]}`}
+                                  width="100%"
+                                  height="152"
+                                  frameBorder="0"
+                                  allow="encrypted-media"
+                                  className="rounded-lg"
+                                  title="Spotify Playlist Preview"
+                                />
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Apple Music Playlist */}
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              Apple Music Playlist URL
+                            </label>
+                            <input
+                              type="url"
+                              value={formData.appleMusicPlaylistUrl}
+                              onChange={(e) => updateField('appleMusicPlaylistUrl', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              placeholder="https://music.apple.com/us/playlist/..."
+                            />
+                            {formData.appleMusicPlaylistUrl && formData.appleMusicPlaylistUrl.includes('music.apple.com') && (
+                              <div className="mt-3 p-3 bg-cream/50 rounded-lg border border-coffee/10">
+                                <p className="text-xs text-espresso/70">
+                                  ✓ Apple Music playlist link detected - we'll check it out!
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </AccordionSection>
 
@@ -703,7 +788,7 @@ export default function BriefingPage() {
                     title="Special Details"
                     isOpen={openSection === 3}
                     isCompleted={isSectionCompleted(3)}
-                    onClick={() => setOpenSection(3)}
+                    onClick={() => toggleSection(3)}
                   >
                     <div className="space-y-6">
                       <p className="text-sm text-espresso/70">
@@ -764,6 +849,47 @@ export default function BriefingPage() {
                           placeholder="Special heirlooms, meaningful details, inside jokes, must-capture moments..."
                         />
                       </div>
+
+                      <div className="pt-4 border-t border-coffee/10">
+                        <h4 className="text-sm font-semibold text-ink mb-3">Share Your Vision (Optional)</h4>
+                        <p className="text-xs text-espresso/70 mb-4">
+                          Share mood boards, Pinterest boards, wedding planner documents, or any inspiration that helps us understand your vision!
+                        </p>
+
+                        <div className="space-y-4">
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              Mood Board / Inspiration Links
+                            </label>
+                            <p className="text-xs text-coffee/60 mb-2">
+                              Share links to Pinterest boards, Google Drive folders, Dropbox, etc.
+                            </p>
+                            <textarea
+                              value={formData.moodBoardLinks}
+                              onChange={(e) => updateField('moodBoardLinks', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              rows={3}
+                              placeholder="Paste links here (one per line)&#10;https://pinterest.com/yourboard&#10;https://drive.google.com/folder/..."
+                            />
+                          </div>
+
+                          <div>
+                            <label className="block text-sm font-medium text-ink mb-2">
+                              Inspiration Notes
+                            </label>
+                            <p className="text-xs text-coffee/60 mb-2">
+                              Describe your vision, color palette, overall aesthetic, or any films/photos that inspire you
+                            </p>
+                            <textarea
+                              value={formData.inspirationNotes}
+                              onChange={(e) => updateField('inspirationNotes', e.target.value)}
+                              className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              rows={4}
+                              placeholder="e.g., We love earthy tones, romantic lighting, films that feel like a love letter..."
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </AccordionSection>
 
@@ -773,7 +899,7 @@ export default function BriefingPage() {
                     title="What You'll Receive"
                     isOpen={openSection === 4}
                     isCompleted={isSectionCompleted(4)}
-                    onClick={() => setOpenSection(4)}
+                    onClick={() => toggleSection(4)}
                   >
                     <div className="space-y-6">
                       <p className="text-sm text-espresso/70">
@@ -815,7 +941,7 @@ export default function BriefingPage() {
                     title="Timeline & Next Steps"
                     isOpen={openSection === 5}
                     isCompleted={isSectionCompleted(5)}
-                    onClick={() => setOpenSection(5)}
+                    onClick={() => toggleSection(5)}
                   >
                     <div className="space-y-6">
                       <div>
