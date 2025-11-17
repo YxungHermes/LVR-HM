@@ -12,26 +12,27 @@ export default function Home() {
     <div className="relative">
       <Header />
       <main
-        className="snap-y snap-proximity"
+        className="snap-y snap-proximity scroll-smooth"
         style={{
           scrollSnapType: "y proximity",
+          scrollBehavior: "smooth",
         }}
       >
-        <div className="snap-start">
+        <section className="snap-start snap-always">
           <Hero />
-        </div>
-        <div className="snap-start">
+        </section>
+        <section className="snap-start snap-always">
           <ChooseYourStory />
-        </div>
-        <div className="snap-start">
+        </section>
+        <section className="snap-start snap-always">
           <SignatureWork />
-        </div>
+        </section>
         {/* Temporarily removed per spec - to be decided in future flow */}
         {/* <Packages /> */}
         {/* <Testimonials /> */}
-        <div className="snap-start">
+        <section className="snap-start snap-always">
           <Contact />
-        </div>
+        </section>
       </main>
       <Footer />
     </div>
