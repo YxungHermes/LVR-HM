@@ -207,13 +207,17 @@ export default function ConsultationPage() {
 
   // Check if section is completed
   const isSectionCompleted = (sectionIndex: number): boolean => {
+    const isAdventure = formData.eventType === 'adventure';
+
     switch (sectionIndex) {
       case 0: // About Your Celebration
         return !!(formData.partner1Name && formData.partner2Name && formData.email && formData.weddingDate && formData.location);
       case 1: // Your Vision & Style
-        return !!(formData.tradition && formData.filmStyle);
+        // For adventure: only filmStyle required. For weddings: tradition AND filmStyle
+        return isAdventure ? !!formData.filmStyle : !!(formData.tradition && formData.filmStyle);
       case 2: // What You're Looking For
-        return !!(formData.deliverables.length > 0 && formData.budgetRange);
+        // For adventure: tier selection handles pricing, so just check filmStyle. For weddings: deliverables AND budget
+        return isAdventure ? true : !!(formData.deliverables.length > 0 && formData.budgetRange);
       case 3: // Tell Us Your Story - optional
         return !!(formData.howYouMet || formData.inspirationLinks || formData.additionalNotes);
       case 4: // Next Steps
@@ -233,6 +237,7 @@ export default function ConsultationPage() {
     // Validate required sections
     const errors: string[] = [];
     let firstIncompleteSection: number | null = null;
+    const isAdventure = formData.eventType === 'adventure';
 
     // Section 0: About Your Celebration
     if (!formData.partner1Name || !formData.partner2Name) {
@@ -251,26 +256,28 @@ export default function ConsultationPage() {
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
     if (!formData.weddingDate) {
-      errors.push("Please enter your wedding date");
+      errors.push(isAdventure ? "Please enter your session date" : "Please enter your wedding date");
       errorSections.add(0);
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
     if (!formData.location) {
-      errors.push("Please enter your wedding location");
+      errors.push(isAdventure ? "Please enter your session location" : "Please enter your wedding location");
       errorSections.add(0);
       if (firstIncompleteSection === null) firstIncompleteSection = 0;
     }
 
-    // Section 1: Your Vision & Style
-    if (!formData.tradition) {
-      errors.push("Please select a tradition/cultural context");
-      errorSections.add(1);
-      if (firstIncompleteSection === null) firstIncompleteSection = 1;
-    }
-    if (formData.tradition === "other" && !formData.traditionOther) {
-      errors.push("Please describe your tradition");
-      errorSections.add(1);
-      if (firstIncompleteSection === null) firstIncompleteSection = 1;
+    // Section 1: Your Vision & Style - Skip tradition for adventure sessions
+    if (!isAdventure) {
+      if (!formData.tradition) {
+        errors.push("Please select a tradition/cultural context");
+        errorSections.add(1);
+        if (firstIncompleteSection === null) firstIncompleteSection = 1;
+      }
+      if (formData.tradition === "other" && !formData.traditionOther) {
+        errors.push("Please describe your tradition");
+        errorSections.add(1);
+        if (firstIncompleteSection === null) firstIncompleteSection = 1;
+      }
     }
     if (!formData.filmStyle) {
       errors.push("Please select a film style");
@@ -278,16 +285,18 @@ export default function ConsultationPage() {
       if (firstIncompleteSection === null) firstIncompleteSection = 1;
     }
 
-    // Section 2: What You're Looking For
-    if (formData.deliverables.length === 0) {
-      errors.push("Please select at least one deliverable");
-      errorSections.add(2);
-      if (firstIncompleteSection === null) firstIncompleteSection = 2;
-    }
-    if (!formData.budgetRange) {
-      errors.push("Please select a budget range");
-      errorSections.add(2);
-      if (firstIncompleteSection === null) firstIncompleteSection = 2;
+    // Section 2: What You're Looking For - Skip for adventure (tier handles pricing)
+    if (!isAdventure) {
+      if (formData.deliverables.length === 0) {
+        errors.push("Please select at least one deliverable");
+        errorSections.add(2);
+        if (firstIncompleteSection === null) firstIncompleteSection = 2;
+      }
+      if (!formData.budgetRange) {
+        errors.push("Please select a budget range");
+        errorSections.add(2);
+        if (firstIncompleteSection === null) firstIncompleteSection = 2;
+      }
     }
 
     // Section 4: Next Steps
@@ -825,42 +834,45 @@ export default function ConsultationPage() {
                     onClick={() => toggleSection(1)}
                   >
                     <div className="space-y-6">
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-2">
-                          Tradition / Cultural Context *
-                        </label>
-                        <p className="text-xs text-espresso/60 mb-3">
-                          This helps us plan coverage respectfully and understand your celebration.
-                        </p>
-                        <select
-                          value={formData.tradition}
-                          onChange={(e) => updateField('tradition', e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                        >
-                          <option value="">Select one...</option>
-                          {traditions.map((trad) => (
-                            <option key={trad.value} value={trad.value}>
-                              {trad.label}
-                            </option>
-                          ))}
-                        </select>
-
-                        {formData.tradition === "other" && (
-                          <motion.div
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            transition={{ duration: 0.3 }}
+                      {/* Tradition / Cultural Context - Hidden for adventure sessions */}
+                      {formData.eventType !== 'adventure' && (
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Tradition / Cultural Context *
+                          </label>
+                          <p className="text-xs text-espresso/60 mb-3">
+                            This helps us plan coverage respectfully and understand your celebration.
+                          </p>
+                          <select
+                            value={formData.tradition}
+                            onChange={(e) => updateField('tradition', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
                           >
-                            <input
-                              type="text"
-                              value={formData.traditionOther}
-                              onChange={(e) => updateField('traditionOther', e.target.value)}
-                              placeholder="Please describe your tradition"
-                              className="mt-4 w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                            />
-                          </motion.div>
-                        )}
-                      </div>
+                            <option value="">Select one...</option>
+                            {traditions.map((trad) => (
+                              <option key={trad.value} value={trad.value}>
+                                {trad.label}
+                              </option>
+                            ))}
+                          </select>
+
+                          {formData.tradition === "other" && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <input
+                                type="text"
+                                value={formData.traditionOther}
+                                onChange={(e) => updateField('traditionOther', e.target.value)}
+                                placeholder="Please describe your tradition"
+                                className="mt-4 w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                              />
+                            </motion.div>
+                          )}
+                        </div>
+                      )}
 
                       <div>
                         <label className="block text-sm font-medium text-ink mb-3">
@@ -896,29 +908,32 @@ export default function ConsultationPage() {
                         </div>
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-3">
-                          Key Moments You Care About
-                        </label>
-                        <p className="text-xs text-espresso/60 mb-4">
-                          Select the moments that matter most to you (optional but helpful)
-                        </p>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                          {keyMoments.map((moment) => (
-                            <label key={moment} className="flex items-center gap-3 cursor-pointer group">
-                              <input
-                                type="checkbox"
-                                checked={formData.keyMoments.includes(moment)}
-                                onChange={() => toggleArrayField('keyMoments', moment)}
-                                className="w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
-                              />
-                              <span className="text-sm text-ink group-hover:text-rose-wax-red transition-colors">
-                                {moment}
-                              </span>
-                            </label>
-                          ))}
+                      {/* Key Moments - Hidden for adventure sessions (wedding-specific) */}
+                      {formData.eventType !== 'adventure' && (
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-3">
+                            Key Moments You Care About
+                          </label>
+                          <p className="text-xs text-espresso/60 mb-4">
+                            Select the moments that matter most to you (optional but helpful)
+                          </p>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            {keyMoments.map((moment) => (
+                              <label key={moment} className="flex items-center gap-3 cursor-pointer group">
+                                <input
+                                  type="checkbox"
+                                  checked={formData.keyMoments.includes(moment)}
+                                  onChange={() => toggleArrayField('keyMoments', moment)}
+                                  className="w-5 h-5 rounded border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                                />
+                                <span className="text-sm text-ink group-hover:text-rose-wax-red transition-colors">
+                                  {moment}
+                                </span>
+                              </label>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </AccordionSection>
 
@@ -994,59 +1009,65 @@ export default function ConsultationPage() {
                         </div>
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-2">
-                          Investment Range *
-                        </label>
-                        <p className="text-xs text-espresso/60 mb-3">
-                          This helps us recommend the right package for your needs.
-                        </p>
-                        <select
-                          value={formData.budgetRange}
-                          onChange={(e) => updateField('budgetRange', e.target.value)}
-                          className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
-                        >
-                          <option value="">Select a budget range</option>
-                          <option value="2000-4000">$2,000 - $4,000</option>
-                          <option value="4000-7000">$4,000 - $7,000</option>
-                          <option value="7000-12000">$7,000 - $12,000</option>
-                          <option value="12000-20000">$12,000 - $20,000</option>
-                          <option value="20000+">$20,000+</option>
-                          <option value="flexible">Flexible / Not sure yet</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-3">
-                          When do you need your film delivered?
-                        </label>
-                        <div className="space-y-3">
-                          {[
-                            { value: "standard", label: "Standard (8-12 weeks)", description: "Best value, allows for careful editing" },
-                            { value: "rush", label: "Rush (4-6 weeks)", description: "Additional fee applies" },
-                            { value: "flexible", label: "Flexible", description: "We can discuss what works best" }
-                          ].map((timeline) => (
-                            <label key={timeline.value} className="flex items-start gap-3 cursor-pointer group p-3 rounded-lg hover:bg-cream/50 transition-colors">
-                              <input
-                                type="radio"
-                                name="deliveryTimeline"
-                                value={timeline.value}
-                                checked={formData.deliveryTimeline === timeline.value}
-                                onChange={(e) => updateField('deliveryTimeline', e.target.value)}
-                                className="mt-1 w-4 h-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
-                              />
-                              <div>
-                                <div className="font-medium text-ink group-hover:text-rose-wax-red transition-colors">
-                                  {timeline.label}
-                                </div>
-                                <div className="text-sm text-espresso/70">
-                                  {timeline.description}
-                                </div>
-                              </div>
-                            </label>
-                          ))}
+                      {/* Investment Range - Hidden for adventure sessions (tier sets pricing) */}
+                      {formData.eventType !== 'adventure' && (
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Investment Range *
+                          </label>
+                          <p className="text-xs text-espresso/60 mb-3">
+                            This helps us recommend the right package for your needs.
+                          </p>
+                          <select
+                            value={formData.budgetRange}
+                            onChange={(e) => updateField('budgetRange', e.target.value)}
+                            className="w-full px-4 py-3 rounded-lg border border-coffee/20 bg-cream focus:border-rose-wax-red focus:outline-none focus:ring-2 focus:ring-rose-wax-red/20 transition-all"
+                          >
+                            <option value="">Select a budget range</option>
+                            <option value="2000-4000">$2,000 - $4,000</option>
+                            <option value="4000-7000">$4,000 - $7,000</option>
+                            <option value="7000-12000">$7,000 - $12,000</option>
+                            <option value="12000-20000">$12,000 - $20,000</option>
+                            <option value="20000+">$20,000+</option>
+                            <option value="flexible">Flexible / Not sure yet</option>
+                          </select>
                         </div>
-                      </div>
+                      )}
+
+                      {/* Delivery Timeline - Hidden for adventure sessions (timeline is set by tier) */}
+                      {formData.eventType !== 'adventure' && (
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-3">
+                            When do you need your film delivered?
+                          </label>
+                          <div className="space-y-3">
+                            {[
+                              { value: "standard", label: "Standard (8-12 weeks)", description: "Best value, allows for careful editing" },
+                              { value: "rush", label: "Rush (4-6 weeks)", description: "Additional fee applies" },
+                              { value: "flexible", label: "Flexible", description: "We can discuss what works best" }
+                            ].map((timeline) => (
+                              <label key={timeline.value} className="flex items-start gap-3 cursor-pointer group p-3 rounded-lg hover:bg-cream/50 transition-colors">
+                                <input
+                                  type="radio"
+                                  name="deliveryTimeline"
+                                  value={timeline.value}
+                                  checked={formData.deliveryTimeline === timeline.value}
+                                  onChange={(e) => updateField('deliveryTimeline', e.target.value)}
+                                  className="mt-1 w-4 h-4 border-coffee/30 text-rose-wax-red focus:ring-rose-wax-red focus:ring-offset-0 cursor-pointer"
+                                />
+                                <div>
+                                  <div className="font-medium text-ink group-hover:text-rose-wax-red transition-colors">
+                                    {timeline.label}
+                                  </div>
+                                  <div className="text-sm text-espresso/70">
+                                    {timeline.description}
+                                  </div>
+                                </div>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </AccordionSection>
 
