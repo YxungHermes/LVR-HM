@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import type { ConsultationFormData, N8nWebhookPayload } from "@/types/consultation";
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,6 +49,12 @@ export async function POST(request: NextRequest) {
     }
 
     console.log("✅ Email sent successfully:", data?.id);
+
+    // Send data to n8n webhook (fire-and-forget - don't block response)
+    sendToN8nWebhook(body).catch((error) => {
+      console.error("⚠️ n8n webhook error (non-blocking):", error.message);
+    });
+
     return NextResponse.json(
       {
         success: true,
@@ -678,5 +685,121 @@ function formatDate(dateStr: string): string {
     });
   } catch {
     return dateStr;
+  }
+}
+
+// =============================================================================
+// n8n Webhook Integration
+// =============================================================================
+
+/**
+ * Prepare consultation form data for n8n webhook
+ * Includes both raw values and formatted/human-readable versions
+ */
+function prepareN8nPayload(data: ConsultationFormData): N8nWebhookPayload {
+  const traditionResolved = data.tradition === 'other' ? data.traditionOther : data.tradition;
+
+  return {
+    // Primary contact info
+    partner1Name: data.partner1Name,
+    partner1Pronouns: data.partner1Pronouns,
+    partner2Name: data.partner2Name,
+    partner2Pronouns: data.partner2Pronouns,
+    additionalPartners: data.additionalPartners,
+    email: data.email,
+    phone: data.phone,
+
+    // Event details
+    weddingDate: data.weddingDate,
+    eventType: data.eventType,
+    eventTypeFormatted: formatEventType(data.eventType),
+    location: data.location,
+    venueName: data.venueName,
+    locationDetails: data.locationDetails,
+    guestCount: data.guestCount,
+
+    // Adventure session specific
+    adventureTier: data.adventureTier,
+    adventureTierFormatted: data.adventureTier ? formatAdventureTier(data.adventureTier) : undefined,
+    isMultiDay: data.isMultiDay,
+    numberOfDays: data.numberOfDays,
+
+    // Cultural context
+    tradition: traditionResolved,
+    traditionFormatted: traditionResolved ? formatTradition(traditionResolved) : undefined,
+
+    // Vision & preferences
+    filmStyle: data.filmStyle,
+    filmStyleFormatted: formatFilmStyle(data.filmStyle),
+    keyMoments: data.keyMoments,
+    keyMomentsCount: data.keyMoments?.length,
+
+    // Deliverables & budget
+    deliverables: data.deliverables,
+    deliverablesFormatted: data.deliverables?.map(formatDeliverable),
+    budgetRange: data.budgetRange,
+    budgetRangeFormatted: data.budgetRange ? formatBudgetRange(data.budgetRange) : undefined,
+    deliveryTimeline: data.deliveryTimeline,
+    deliveryTimelineFormatted: data.deliveryTimeline ? formatDeliveryTimeline(data.deliveryTimeline) : undefined,
+
+    // Story & inspiration
+    howYouMet: data.howYouMet,
+    inspirationLinks: data.inspirationLinks,
+    additionalNotes: data.additionalNotes,
+
+    // Lead source & urgency
+    howDidYouHear: data.howDidYouHear,
+    howDidYouHearFormatted: data.howDidYouHear ? formatHowDidYouHear(data.howDidYouHear) : undefined,
+    bookingTimeline: data.bookingTimeline,
+    bookingTimelineFormatted: data.bookingTimeline ? formatBookingTimeline(data.bookingTimeline) : undefined,
+    contactPreference: data.contactPreference,
+
+    // Metadata
+    submittedAt: new Date().toISOString(),
+    source: 'consultation-form',
+  };
+}
+
+/**
+ * Send consultation data to n8n webhook
+ * This is fire-and-forget - errors are logged but don't block the form submission
+ */
+async function sendToN8nWebhook(formData: ConsultationFormData): Promise<void> {
+  const webhookUrl = process.env.N8N_WEBHOOK_URL;
+
+  // Skip if webhook URL is not configured
+  if (!webhookUrl) {
+    console.log("ℹ️ N8N_WEBHOOK_URL not configured - skipping webhook");
+    return;
+  }
+
+  try {
+    const payload = prepareN8nPayload(formData);
+
+    console.log("📤 Sending consultation data to n8n webhook...");
+
+    const response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+      // Don't wait too long - this is non-blocking
+      signal: AbortSignal.timeout(5000), // 5 second timeout
+    });
+
+    if (!response.ok) {
+      throw new Error(`Webhook responded with status ${response.status}`);
+    }
+
+    console.log("✅ n8n webhook delivered successfully");
+  } catch (error) {
+    // Log error but don't throw - this shouldn't break the form submission
+    if (error instanceof Error) {
+      console.error("❌ Failed to send to n8n webhook:", error.message);
+    } else {
+      console.error("❌ Failed to send to n8n webhook:", error);
+    }
+    throw error; // Re-throw so the catch in POST handler can log it
   }
 }
