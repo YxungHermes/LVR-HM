@@ -156,7 +156,7 @@ export default function ProcessPage() {
                   <div className="text-rose-wax-red font-bold text-sm mb-2">6 WEEKS BEFORE</div>
                   <h3 className="font-serif text-lg font-semibold text-ink mb-2">Pre-Production</h3>
                   <p className="text-sm text-espresso leading-relaxed">
-                    We finalize your timeline, shot list, and creative direction together.
+                    Ideally, we sync up with you, your photographer, planner, and DJ together to finalize the timeline, shot list, and ensure everyone's coordinated.
                   </p>
                 </motion.div>
 
@@ -562,10 +562,10 @@ export default function ProcessPage() {
                       2
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-serif text-lg font-semibold text-ink mb-2">6 Weeks Before Your Wedding</h3>
+                      <h3 className="font-serif text-lg font-semibold text-ink mb-2">6 Weeks Before Your Wedding (Pre-Production Meeting)</h3>
+                      <p className="text-sm text-espresso mb-3">Ideally, we coordinate a meeting with you, your photographer, wedding planner, and DJ together to sync up the timeline and ensure everyone's on the same page. We'll need:</p>
                       <ul className="space-y-2 text-sm text-espresso">
                         <li>• Finalized wedding timeline (with buffer time for delays)</li>
-                        <li>• Contact list for vendors (photographer, planner, DJ, venue coordinator)</li>
                         <li>• Family dynamics & VIP list (grandparents, parents, anyone who needs special attention)</li>
                         <li>• List of must-capture moments (vows, first look, specific dances, family photos, etc.)</li>
                         <li>• Venue restrictions (drone rules, ceremony movement, quiet hours)</li>
