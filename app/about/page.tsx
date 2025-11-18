@@ -71,7 +71,7 @@ export default function AboutPage() {
     },
     {
       title: "Engagement & Adventure Sessions",
-      description: "Pre-wedding stories that showcase your connection in natural, authentic ways. These sessions create space for spontaneity and genuine interaction, resulting in films that capture who you are as a couple—your laughter, your comfort with each other, your unique dynamic."
+      description: "Pre-wedding stories that showcase your connection in natural, authentic ways. These sessions create space for spontaneity and genuine interaction, resulting in films that capture who you are as a couple: your laughter, your comfort with each other, your unique dynamic."
     },
     {
       title: "Post-Production & Delivery",
@@ -191,9 +191,9 @@ export default function AboutPage() {
                   className="max-w-[600px]"
                 >
                   <p className="text-[15px] md:text-base text-ink/90 leading-relaxed" style={{ lineHeight: '1.75' }}>
-                    A videographer who captures more than moments—I capture the rhythm and stories through vivid images. Every project is a blend of technical precision and emotional storytelling. My work never fails to experiment; each frame is treated like a canvas where light, sound, and narrative converge.
+                    A videographer who captures more than moments. I capture the rhythm and stories through vivid images. Every project is a blend of technical precision and emotional storytelling. My work never fails to experiment; each frame is treated like a canvas where light, sound, and narrative converge.
                     <br /><br />
-                    With experience across music, fashion, and commercial projects, the mission is to create films that feel alive—films that resonate emotionally and stay with you long after watching. Every wedding is unique, and my approach honors that individuality while creating something timeless.
+                    With experience across music, fashion, and commercial projects, the mission is to create films that feel alive. Films that resonate emotionally and stay with you long after watching. Every wedding is unique, and my approach honors that individuality while creating something timeless.
                   </p>
                 </motion.div>
               </div>
