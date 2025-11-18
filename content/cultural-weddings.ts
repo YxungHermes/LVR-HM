@@ -2,13 +2,13 @@
 
 export const culturalWeddings = {
   "catholic": {
-    title: "Catholic Wedding Films",
-    seoTitle: "Catholic Wedding Videography NYC | Love Stories by Michael Andrade",
-    seoDescription: "Expert Catholic wedding videography that honors the Mass, sacraments, and traditions. We understand the liturgy and work respectfully with your church.",
+    title: "Catholic Wedding Traditions",
+    seoTitle: "Catholic Wedding Ceremony Guide | Understanding Catholic Wedding Traditions",
+    seoDescription: "Learn about Catholic wedding ceremony structure, the Mass, sacraments, and sacred traditions. Complete guide to understanding the flow and significance of Catholic weddings.",
     heroImage: "/weddings/catholic-wedding.jpg",
 
-    introHeading: "Filming the sacrament with reverence and artistry.",
-    introBody: "A Catholic wedding is more than a ceremony—it's a sacred Mass, a sacrament, and a covenant witnessed by your community. We understand the liturgy, know when to film and when to pause, and work seamlessly with your parish to create a film that honors both your faith and your love story.",
+    introHeading: "Understanding the sacred traditions of a Catholic wedding ceremony.",
+    introBody: "A Catholic wedding is more than a ceremony—it's a sacred Mass, a sacrament, and a covenant witnessed by your community. The ceremony follows a rich liturgical structure with deep spiritual significance, typically lasting 60-90 minutes for a full Nuptial Mass or 30-45 minutes for a ceremony without Mass.",
 
     keyMoments: [
       {
@@ -45,66 +45,50 @@ export const culturalWeddings = {
       }
     ],
 
-    whatWeKnow: {
-      heading: "We understand Catholic wedding protocols.",
+    culturalConsiderations: {
+      heading: "Important Things to Know",
       points: [
-        "Many churches restrict movement during the consecration and Eucharist",
-        "Flash photography and videography may be limited during Mass",
-        "We coordinate with your priest beforehand to understand your parish's rules",
-        "We position cameras discreetly and never interrupt the sacrament",
-        "Audio is captured with professional wireless mics (with permission)",
-        "We film the full ceremony while respecting the sanctity of the Mass"
+        "Many churches restrict movement and photography during the consecration and Eucharist",
+        "Couples must typically complete Pre-Cana (marriage preparation) classes",
+        "The ceremony may include full Mass with Communion or just the ceremony of the word",
+        "Interfaith couples may have a ceremony without Mass, which is shorter",
+        "Music selections are often limited to approved sacred music or hymns",
+        "The ceremony structure is deeply rooted in centuries of Catholic liturgical tradition"
       ]
-    },
-
-    idealFor: [
-      "Couples having a full Catholic Mass (60-90 minutes)",
-      "Couples marrying in their home parish or family church",
-      "Interfaith couples (Catholic + another faith) with a ceremony of the word",
-      "Traditional Catholic ceremonies with multiple cultural elements",
-      "Couples who value both cinematic artistry and religious reverence"
-    ],
-
-    pricing: {
-      starting: "$3,500",
-      note: "Catholic wedding coverage typically requires 6-10 hours to include getting ready, the full Mass, family portraits, and reception. We recommend our Classic or Premium packages."
     },
 
     commonQuestions: [
       {
-        q: "Do you know how to film a Catholic Mass?",
-        a: "Yes. We've filmed dozens of Catholic weddings and understand the structure of the Mass, the sacraments, and the moments that matter most. We always coordinate with your priest before the day to understand your church's specific guidelines."
+        q: "How long does a Catholic wedding ceremony typically last?",
+        a: "A full Catholic wedding Mass typically runs 60-90 minutes, including the Liturgy of the Word and Liturgy of the Eucharist. A ceremony without Mass (ceremony of the word) is usually 30-45 minutes and is often used for interfaith marriages."
       },
       {
-        q: "Will you be able to film during Communion?",
-        a: "It depends on your parish's rules. Many churches allow discreet filming from the back or side during Communion, while others restrict all movement. We always follow your church's protocol and discuss this during planning."
+        q: "What is Pre-Cana and is it required?",
+        a: "Pre-Cana is the Catholic Church's marriage preparation program that engaged couples must complete before their wedding. It typically involves classes or a retreat covering topics like communication, finances, faith, and family planning. Requirements vary by diocese but usually involve 6-8 months of preparation."
       },
       {
-        q: "How long is a Catholic wedding ceremony?",
-        a: "A full Catholic wedding Mass typically runs 60-90 minutes. A ceremony without Mass (ceremony of the word) is usually 30-45 minutes. We plan coverage accordingly."
+        q: "Can couples write their own vows in a Catholic wedding?",
+        a: "While couples must exchange the traditional consent ('I do' or the longer form), many priests allow couples to include personal vows or promises after the official exchange. The traditional vows are non-negotiable as they constitute the sacrament, but personalization is often welcomed in addition."
       },
       {
-        q: "Do you capture the homily and readings?",
-        a: "Absolutely. We use professional audio equipment to capture the readings, homily, vows, and any personalized elements clearly. Your film will include the full ceremony with clean audio."
+        q: "What's the difference between a Nuptial Mass and a ceremony without Mass?",
+        a: "A Nuptial Mass includes the full Catholic Mass with Communion and typically lasts 60-90 minutes. A ceremony without Mass (also called a ceremony of the word) includes readings, vows, and blessings but no Eucharist, lasting 30-45 minutes. This shorter version is common for interfaith marriages or when one partner is not Catholic."
       },
       {
-        q: "Can you film in any Catholic church?",
-        a: "Yes, but every parish has different rules. Some churches are very flexible, while others have strict restrictions on vendor access. We always reach out to your church ahead of time to ensure we're working within their guidelines."
+        q: "Are Catholic weddings always held in a church?",
+        a: "Traditionally, yes. The Catholic Church requires weddings to take place in a Catholic church or chapel, as marriage is considered a sacrament. However, some dioceses may grant permission for outdoor or alternative venue weddings in special circumstances, though this is rare and requires bishop approval."
       }
-    ],
-
-    ctaLabel: "Book Your Catholic Wedding Film",
-    ctaHref: "/consultation"
+    ]
   },
 
   "jewish": {
-    title: "Jewish Wedding Films",
-    seoTitle: "Jewish Wedding Videography NYC | Love Stories by Michael Andrade",
-    seoDescription: "Cinematic Jewish wedding films capturing the chuppah, ketubah signing, breaking of the glass, and hora. We understand Jewish traditions and customs.",
+    title: "Jewish Wedding Traditions",
+    seoTitle: "Jewish Wedding Ceremony Guide | Understanding Jewish Wedding Traditions & Customs",
+    seoDescription: "Complete guide to Jewish wedding traditions including the chuppah, ketubah signing, breaking of the glass, and hora. Learn the meaning and flow of Jewish wedding ceremonies.",
     heroImage: "/weddings/jewish-wedding.jpg",
 
-    introHeading: "From the ketubah to the glass—capturing every sacred tradition.",
-    introBody: "Jewish weddings are rich with meaning, ritual, and joy. From the bedeken and ketubah signing to the seven blessings under the chuppah and the exuberant hora, we understand the significance of each moment and film them with both reverence and celebration.",
+    introHeading: "From the ketubah to the glass—understanding Jewish wedding traditions.",
+    introBody: "Jewish weddings are rich with meaning, ritual, and joy. From the bedeken and ketubah signing to the seven blessings under the chuppah and the exuberant hora, each tradition carries deep significance rooted in Jewish law and centuries of cultural practice. The ceremony itself typically lasts 30-45 minutes, with pre-ceremony rituals and a celebratory reception following.",
 
     keyMoments: [
       {
@@ -145,66 +129,50 @@ export const culturalWeddings = {
       }
     ],
 
-    whatWeKnow: {
-      heading: "We understand Jewish wedding customs.",
+    culturalConsiderations: {
+      heading: "Important Things to Know",
       points: [
-        "Orthodox, Conservative, and Reform weddings have different levels of formality",
-        "Some couples incorporate Israeli folk music, klezmer, or contemporary Jewish artists",
-        "Sabbath-observant couples may have restrictions on filming during Shabbat",
-        "The hora and chair lift are high-energy moments requiring multiple angles",
-        "Many Jewish weddings feature elaborate cocktail hours with passed appetizers",
-        "Cultural fusion weddings (Jewish + another tradition) require sensitivity to both customs"
+        "Orthodox, Conservative, and Reform weddings have varying levels of formality and tradition observance",
+        "Weddings typically cannot take place on Shabbat (Friday evening to Saturday evening) or major Jewish holidays",
+        "The ketubah is a legally binding contract written in Aramaic outlining marital obligations",
+        "Breaking the glass represents the destruction of the Temple in Jerusalem and life's fragility",
+        "Music often includes traditional Israeli folk songs, klezmer, or contemporary Jewish artists",
+        "Interfaith weddings may blend Jewish traditions with other cultural or religious customs"
       ]
-    },
-
-    idealFor: [
-      "Orthodox, Conservative, or Reform Jewish weddings",
-      "Interfaith couples incorporating Jewish traditions",
-      "Couples marrying in synagogues, temples, or outdoor venues",
-      "Destination Jewish weddings in Israel or other meaningful locations",
-      "Couples who value both tradition and modern cinematic storytelling"
-    ],
-
-    pricing: {
-      starting: "$3,500",
-      note: "Jewish weddings often include pre-ceremony rituals (ketubah, bedeken) and extended receptions with the hora. We recommend full-day coverage to capture every tradition."
     },
 
     commonQuestions: [
       {
-        q: "Do you understand Jewish wedding traditions?",
-        a: "Yes. We've filmed Orthodox, Conservative, and Reform Jewish weddings and understand the significance of the ketubah, chuppah, seven blessings, breaking of the glass, and the hora. We know which moments to prioritize and how to film them respectfully."
+        q: "What is the significance of the ketubah?",
+        a: "The ketubah is a Jewish marriage contract that has been used for over 2,000 years. Written in Aramaic, it outlines the husband's obligations to his wife including food, clothing, and conjugal rights. Today, many couples use egalitarian ketubot (plural) with modern language and beautiful artistic designs. It's signed before the ceremony by the couple and two witnesses."
       },
       {
-        q: "Can you film on Shabbat?",
-        a: "If your wedding falls on Shabbat or a Jewish holiday, we coordinate with you and your rabbi to understand any restrictions. Some Orthodox couples prefer no filming during Shabbat, while others allow it. We're flexible and respectful of your observance level."
+        q: "Why do Jewish weddings take place under a chuppah?",
+        a: "The chuppah (wedding canopy) symbolizes the home the couple will build together. It's open on all sides, representing hospitality and welcoming guests, and is often decorated with flowers or a tallit (prayer shawl). The openness also recalls Abraham's tent, which was open on all four sides to welcome travelers."
       },
       {
-        q: "Will you capture the ketubah signing?",
-        a: "Absolutely. The ketubah signing is often one of the most intimate, emotional moments of the day. We film it discreetly and ensure you have beautiful footage of this sacred tradition."
+        q: "What does breaking the glass symbolize?",
+        a: "Breaking the glass has multiple meanings: it commemorates the destruction of the Temple in Jerusalem (a reminder that even in joy, we remember sorrow), represents the fragility of human relationships (requiring constant care), and serves as a reminder that marriage will have both joyous and challenging moments. When the groom steps on the glass, guests shout 'Mazel Tov!' (congratulations)."
       },
       {
-        q: "How do you film the hora?",
-        a: "The hora is pure energy and joy—we use multiple angles and cameras to capture the circle dance, the chair lift, and the crowd's excitement. It's one of our favorite moments to film."
+        q: "What is the hora and why is it danced?",
+        a: "The hora is a traditional circle dance performed at Jewish celebrations. During weddings, guests dance in circles around the couple, who are often lifted on chairs while holding a handkerchief or napkin between them. It's a joyous celebration of the new marriage and represents the community's support for the couple."
       },
       {
-        q: "Do you work with Jewish venues and vendors?",
-        a: "Yes. We've worked with countless synagogues, temples, Jewish caterers, and cultural centers throughout New York. We understand kosher catering timelines and coordinate seamlessly with your vendors."
+        q: "What's the difference between Orthodox, Conservative, and Reform Jewish weddings?",
+        a: "Orthodox weddings are the most traditional, with men and women often separated during the ceremony and reception. Conservative weddings blend tradition with modernity, typically allowing mixed seating. Reform weddings are the most flexible, often incorporating personalized elements and modern interpretations. All three include core traditions like the chuppah, ketubah, and breaking of the glass, but vary in strictness of observance."
       }
-    ],
-
-    ctaLabel: "Book Your Jewish Wedding Film",
-    ctaHref: "/consultation"
+    ]
   },
 
   "hindu": {
-    title: "Hindu & Indian Wedding Films",
-    seoTitle: "Hindu Indian Wedding Videography NYC | Love Stories by Michael Andrade",
-    seoDescription: "Cinematic Hindu and Indian wedding films capturing the Mehendi, Sangeet, Baraat, ceremony rituals, and reception. Multi-day coverage available.",
+    title: "Hindu & Indian Wedding Traditions",
+    seoTitle: "Hindu Indian Wedding Ceremony Guide | Understanding Indian Wedding Traditions & Customs",
+    seoDescription: "Complete guide to Hindu and Indian wedding traditions including Mehendi, Sangeet, Baraat, ceremony rituals, and multi-day celebrations. Learn the meaning behind each tradition.",
     heroImage: "/weddings/hindu-wedding.jpg",
 
-    introHeading: "Multi-day celebrations told as one cinematic story.",
-    introBody: "Hindu and Indian weddings are vibrant, multi-day celebrations rich with color, ritual, music, and family. From the Mehendi and Sangeet to the Baraat procession and sacred ceremony, we understand the significance of each tradition and film them with energy, artistry, and respect.",
+    introHeading: "Multi-day celebrations rich with meaning and tradition.",
+    introBody: "Hindu and Indian weddings are vibrant, multi-day celebrations rich with color, ritual, music, and family. From the Mehendi and Sangeet to the Baraat procession and sacred ceremony, each event carries deep cultural and spiritual significance. The main wedding ceremony typically lasts 2-4 hours and is presided over by a pandit (priest), with pre-wedding events spanning 2-3 days.",
 
     keyMoments: [
       {
@@ -253,57 +221,40 @@ export const culturalWeddings = {
       }
     ],
 
-    whatWeKnow: {
-      heading: "We understand Hindu and Indian wedding traditions.",
+    culturalConsiderations: {
+      heading: "Important Things to Know",
       points: [
-        "Multi-day events require strategic coverage planning (Mehendi, Sangeet, ceremony, reception)",
-        "Ceremonies can run 2-4 hours with continuous rituals and mantras",
-        "Vibrant colors, intricate details, and decor require careful filming",
-        "The Baraat is high-energy and requires wide-angle coverage and mobility",
-        "Family dynamics and large guest counts (200-500+) need multiple cameras",
-        "Cultural fusion weddings (Hindu + Christian, Hindu + Jewish) blend traditions beautifully"
+        "Hindu weddings typically span 2-4 days with multiple pre-wedding ceremonies and events",
+        "The main ceremony can last 2-4 hours with continuous Sanskrit mantras and Vedic rituals",
+        "Auspicious timing (muhurat) is determined by astrological calculations and is very important",
+        "Regional variations exist—Punjabi, Gujarati, South Indian, and Bengali weddings have unique customs",
+        "Vibrant colors are encouraged; red is traditional for brides, while white is avoided as it symbolizes mourning",
+        "Guest lists are often large (200-500+) as extended family and community are central to celebrations"
       ]
-    },
-
-    idealFor: [
-      "Traditional Hindu weddings with full ceremony rituals",
-      "Multi-day Indian celebrations (Mehendi, Sangeet, ceremony, reception)",
-      "Sikh, Gujarati, Punjabi, South Indian, and regional variations",
-      "Fusion weddings blending Indian and Western traditions",
-      "Large Indian weddings with 200-500+ guests",
-      "Destination Indian weddings in India or around the world"
-    ],
-
-    pricing: {
-      starting: "$5,500",
-      note: "Hindu and Indian weddings typically span 2-4 days with multiple events. We offer custom multi-day packages and work with your timeline to capture the events that matter most. Pricing depends on the number of days, hours, and deliverables."
     },
 
     commonQuestions: [
       {
-        q: "Do you understand Hindu wedding rituals?",
-        a: "Yes. We've filmed traditional Hindu ceremonies and understand the significance of the Agni Puja, Saat Phere, Kanyadaan, and other key rituals. We coordinate with your pandit (priest) beforehand to understand the ceremony structure and ensure we capture every meaningful moment."
+        q: "What is the significance of the Saat Phere (seven circles)?",
+        a: "The Saat Phere (seven circles around the sacred fire) are the core of a Hindu wedding ceremony. Each circle represents a vow for married life: nourishment, strength, prosperity, happiness, progeny, longevity, and harmony. The Agni (fire) serves as a divine witness to these promises. This ritual is considered the moment the couple is officially married."
       },
       {
-        q: "Can you film the entire multi-day celebration?",
-        a: "Absolutely. We offer custom multi-day packages for Indian weddings. We'll work with you to decide which events you want fully filmed (Mehendi, Sangeet, ceremony, reception) versus highlight coverage. Most couples choose 2-3 full days of coverage."
+        q: "What is Kanyadaan and why is it emotional?",
+        a: "Kanyadaan literally means 'giving away the daughter' and is one of the most emotional moments of an Indian wedding. The bride's father (or parents) places her hand in the groom's, symbolizing the transfer of responsibility and blessing for the new union. It represents the parents entrusting their daughter to her new family and is often accompanied by tears and deep emotion."
       },
       {
-        q: "How do you handle the Baraat?",
-        a: "The Baraat is one of the most exciting moments—we use multiple cameras, wide-angle lenses, and mobility to capture the dhol drummers, dancing family, and groom's grand entrance. We coordinate with your Baraat team to get the best angles."
+        q: "What happens during the Baraat?",
+        a: "The Baraat is the groom's wedding procession to the ceremony venue. Traditionally, the groom arrives on a decorated horse (though cars and elephants are also used) accompanied by family and friends dancing to dhol drums and music. This celebratory procession announces the groom's arrival and is greeted by the bride's family with the Milni ceremony, where both families formally meet and exchange garlands."
       },
       {
-        q: "Do you capture all the ceremony rituals?",
-        a: "Yes. Hindu ceremonies are long and ritual-heavy (2-4 hours), but every ritual has meaning. We film the full ceremony with multiple angles and professional audio to capture the mantras, vows, and emotional family moments."
+        q: "Why do Hindu weddings last so long?",
+        a: "Hindu wedding ceremonies are long (2-4 hours) because they consist of numerous Vedic rituals, each with specific meaning and Sanskrit mantras. The pandit (priest) guides the couple through rituals like Ganesh Puja (removing obstacles), Kanyadaan (giving away the bride), Saat Phere (seven circles), and applying Sindoor and Mangalsutra. Each ritual cannot be rushed and must be performed at auspicious times."
       },
       {
-        q: "Have you worked with Indian vendors before?",
-        a: "Yes. We've partnered with Indian caterers, decorators, DJs, and planners throughout New York and understand the coordination required for large-scale Indian weddings. We work seamlessly with your vendor team."
+        q: "What are the main differences between regional Indian weddings?",
+        a: "Indian weddings vary significantly by region and community. North Indian (Punjabi/Hindi) weddings feature the Baraat and often more elaborate sangeet celebrations. South Indian weddings may include rituals like tying the Thali (sacred thread). Gujarati weddings have unique customs like the Garba dance. Bengali weddings involve rituals with a betel leaf. Despite differences, most include core elements like sacred fire, seven vows, and multi-day celebrations."
       }
-    ],
-
-    ctaLabel: "Book Your Indian Wedding Film",
-    ctaHref: "/consultation"
+    ]
   }
 };
 

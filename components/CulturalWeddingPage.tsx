@@ -49,10 +49,10 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4 text-center">
-                Key Moments We Capture
+                Ceremony Timeline & Key Moments
               </h2>
               <p className="text-base text-espresso/70 text-center mb-12 max-w-2xl mx-auto">
-                Every tradition has sacred moments that deserve to be filmed with intention and respect.
+                Understanding the flow and sacred moments of the ceremony.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -78,7 +78,7 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
           </div>
         </section>
 
-        {/* What We Know Section */}
+        {/* Cultural Considerations Section */}
         <section className="px-6 py-20 bg-warm-sand/20">
           <div className="mx-auto max-w-4xl">
             <motion.div
@@ -88,12 +88,12 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6 text-center">
-                {content.whatWeKnow.heading}
+                {content.culturalConsiderations.heading}
               </h2>
 
               <div className="bg-white border border-coffee/10 rounded-lg p-8 md:p-10">
                 <ul className="space-y-4">
-                  {content.whatWeKnow.points.map((point, index) => (
+                  {content.culturalConsiderations.points.map((point, index) => (
                     <motion.li
                       key={index}
                       className="flex items-start gap-3"
@@ -124,71 +124,6 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
           </div>
         </section>
 
-        {/* Ideal For Section */}
-        <section className="px-6 py-20 bg-cream">
-          <div className="mx-auto max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6 text-center">
-                Ideal For
-              </h2>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {content.idealFor.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-3 p-4 rounded-lg hover:bg-warm-sand/30 transition-colors"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                  >
-                    <svg
-                      className="w-5 h-5 text-rose-wax-red flex-shrink-0 mt-0.5"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="text-base text-espresso">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Pricing Section */}
-        <section className="px-6 py-20 bg-warm-sand/30">
-          <div className="mx-auto max-w-3xl text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6">
-                Investment
-              </h2>
-              <div className="bg-white border border-coffee/10 rounded-lg p-8 md:p-10">
-                <p className="text-4xl font-bold text-rose-wax-red mb-4">
-                  Starting at {content.pricing.starting}
-                </p>
-                <p className="text-base text-espresso leading-relaxed">
-                  {content.pricing.note}
-                </p>
-              </div>
-            </motion.div>
-          </div>
-        </section>
 
         {/* FAQ Section */}
         <section className="px-6 py-20 bg-white">
@@ -200,10 +135,10 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4 text-center">
-                Common Questions
+                Frequently Asked Questions
               </h2>
               <p className="text-base text-espresso/70 text-center mb-12 max-w-2xl mx-auto">
-                Here's what couples usually ask about filming their {content.title.toLowerCase()}.
+                Common questions about {content.title.toLowerCase()} traditions and customs.
               </p>
 
               <div className="space-y-8">
@@ -229,7 +164,7 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Learn More Section */}
         <section className="px-6 py-20 bg-gradient-to-b from-warm-sand/30 to-cream">
           <div className="mx-auto max-w-3xl text-center">
             <motion.div
@@ -239,16 +174,16 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6">
-                Let's Create Your Film
+                Learn More
               </h2>
               <p className="text-lg text-espresso mb-8 leading-relaxed">
-                We understand your traditions and will work with you to create a film that honors your faith, your family, and your love story.
+                Interested in learning about other wedding traditions? Explore our educational guides.
               </p>
               <Link
-                href={content.ctaHref}
+                href="/weddings"
                 className="inline-flex items-center bg-rose-wax-red text-white px-10 py-4 rounded-full font-medium text-lg transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg focus-ring"
               >
-                {content.ctaLabel}
+                Explore More Traditions
                 <svg
                   className="ml-3 h-5 w-5"
                   fill="none"
