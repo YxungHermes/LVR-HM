@@ -291,31 +291,31 @@ export default function ProcessPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.2 }}
                 >
-                  <h3 className="font-serif text-xl font-semibold text-ink mb-4">Equipment & Gear</h3>
+                  <h3 className="font-serif text-xl font-semibold text-ink mb-4">Equipment & Approach</h3>
                   <ul className="space-y-3 text-sm text-espresso">
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-rose-wax-red flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span><strong>2 cinema cameras</strong> (Sony FX6 or equivalent) with 3-4 professional lenses</span>
+                      <span><strong>Professional cinema cameras</strong> with multiple lenses for every moment and lighting condition</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-rose-wax-red flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span><strong>Gimbal stabilizer</strong> for smooth, cinematic movement shots</span>
+                      <span><strong>Stabilization equipment</strong> for smooth, cinematic movement without distraction</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-rose-wax-red flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span><strong>Wireless lavalier microphones</strong> for the groom, officiant, and bride (discreet and invisible)</span>
+                      <span><strong>Professional wireless audio</strong>—discreet microphones capture vows, toasts, and reactions crystal clear</span>
                     </li>
                     <li className="flex items-start gap-3">
                       <svg className="w-5 h-5 text-rose-wax-red flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span><strong>Backup everything</strong>—cameras, batteries, memory cards, audio recorders</span>
+                      <span><strong>Full redundancy</strong>—backup cameras, batteries, cards, and recorders so nothing is left to chance</span>
                     </li>
                   </ul>
                 </motion.div>
@@ -499,10 +499,10 @@ export default function ProcessPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-espresso/70">
                     <div>• Raw footage archive (+$500)</div>
                     <div>• Second filmmaker (+$800)</div>
-                    <div>• Rush delivery 2-week turnaround (+$1000)</div>
-                    <div>• Same-day edit (not recommended)</div>
-                    <div>• Drone footage (if venue permits)</div>
+                    <div>• Rush delivery under 2 weeks (+$1000)</div>
+                    <div>• Drone footage (+varies by location)</div>
                     <div>• USB keepsake box (+$150)</div>
+                    <div>• Extended coverage hours (+varies)</div>
                   </div>
                 </div>
               </div>
