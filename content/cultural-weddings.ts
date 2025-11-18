@@ -1,6 +1,57 @@
 // Cultural and religious wedding content
 
-export const culturalWeddings = {
+// Type definitions for cultural wedding content
+interface QuickFacts {
+  duration: string;
+  venue: string;
+  dressCode: string;
+  guestCount: string;
+  musicStyle: string;
+}
+
+interface GlossaryTerm {
+  term: string;
+  pronunciation: string;
+  definition: string;
+}
+
+interface GuestEtiquette {
+  heading: string;
+  points: string[];
+}
+
+interface KeyMoment {
+  title: string;
+  duration?: string;
+  description: string;
+}
+
+interface CulturalConsiderations {
+  heading: string;
+  points: string[];
+}
+
+interface CommonQuestion {
+  q: string;
+  a: string;
+}
+
+interface CulturalWeddingContent {
+  title: string;
+  seoTitle: string;
+  seoDescription: string;
+  heroImage: string;
+  introHeading: string;
+  introBody: string;
+  quickFacts?: QuickFacts;
+  glossary?: GlossaryTerm[];
+  guestEtiquette?: GuestEtiquette;
+  keyMoments: KeyMoment[];
+  culturalConsiderations: CulturalConsiderations;
+  commonQuestions: CommonQuestion[];
+}
+
+export const culturalWeddings: Record<string, CulturalWeddingContent> = {
   "catholic": {
     title: "Catholic Wedding Traditions",
     seoTitle: "Catholic Wedding Ceremony Guide | Understanding Catholic Wedding Traditions",
