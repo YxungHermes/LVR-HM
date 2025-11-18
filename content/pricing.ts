@@ -26,11 +26,11 @@ export const whatIOffer = [
     image: "/collections/destination.jpg",
   },
   {
-    slug: "adventure-sessions",
-    name: "Adventure Sessions & Stories",
+    slug: "couples-films",
+    name: "Couples Films",
     description:
-      "For engagements, welcome parties, day-after sessions, anniversaries, or creative stories beyond the wedding day.",
-    href: "/offerings/adventure-sessions",
+      "For couples celebrating love—anniversaries, birthdays, or just because. No wedding required.",
+    href: "/offerings/couples-films",
     image: "/collections/adventure.jpg",
   },
 ];
@@ -68,13 +68,13 @@ export const pricingOverview = [
     vimeoId: "1137400003",
   },
   {
-    slug: "adventure-sessions",
-    name: "Adventure Sessions & Stories",
-    startingFrom: "$1,200",
-    range: "$1,200 — $3,000",
+    slug: "couples-films",
+    name: "Couples Films",
+    startingFrom: "$750",
+    range: "$750 — $2,000",
     description:
-      "For engagements, welcome parties, day-after sessions, anniversaries, or brand stories with the same cinematic care.",
-    href: "/offerings/adventure-sessions",
+      "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
+    href: "/offerings/couples-films",
     image: "/collections/adventure.jpg",
   },
 ];
@@ -82,7 +82,7 @@ export const pricingOverview = [
 export const pricingPages = {
   elopements: {
     title: "Elopements & Intimate Gatherings",
-    seoTitle: "Elopement Wedding Films | Love, Violeta Rose",
+    seoTitle: "Elopement Wedding Films | Weddings by Michael Andrade",
     heroImage: "/collections/elopements.jpg",
     introHeading: "For the couples choosing presence over spectacle.",
     introBody:
@@ -110,7 +110,7 @@ export const pricingPages = {
 
   "wedding-day-films": {
     title: "Wedding Day Films",
-    seoTitle: "Wedding Day Film Collections | Love, Violeta Rose",
+    seoTitle: "Wedding Day Film Collections | Weddings by Michael Andrade",
     heroImage: "/collections/wedding-day.jpg",
     introHeading: "A complete, cinematic record of the day you built.",
     introBody:
@@ -139,7 +139,7 @@ export const pricingPages = {
 
   "destination-weddings": {
     title: "Destination Wedding Films",
-    seoTitle: "Destination Wedding Videography | Love, Violeta Rose",
+    seoTitle: "Destination Wedding Videography | Weddings by Michael Andrade",
     heroImage: "/collections/destination.jpg",
     vimeoId: "1137400003",
     introHeading: "For celebrations that live across borders and timelines.",
@@ -166,31 +166,83 @@ export const pricingPages = {
     ctaHref: "/consultation",
   },
 
-  "adventure-sessions": {
-    title: "Adventure Sessions & Stories",
-    seoTitle: "Adventure & Engagement Films | Love, Violeta Rose",
+  "couples-films": {
+    title: "Couples Films",
+    seoTitle: "Couples Films & Love Story Sessions | Love Stories by Michael Andrade",
     heroImage: "/collections/adventure.jpg",
-    introHeading: "Chapters of your story beyond the wedding day.",
+    introHeading: "Your relationship deserves more than iPhone footage.",
     introBody:
-      "Some of the most honest moments happen far from the aisle. These sessions are for engagements, anniversaries, day-before walks, day-after swims, at-home mornings, or creative collaborations that deserve more than phone footage.",
-    startingFrom: "$1,200",
+      "Not getting married (yet)? Doesn't matter. Anniversaries, birthdays, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These films are for couples who want cinematic storytelling without the wedding day price tag—because your love story matters now, not just on a future wedding day.",
+    startingFrom: "$750",
     rangeNote:
-      "Most sessions fall between $1,200 — $3,000 depending on length, location, and concept.",
+      "Most couples invest between $750 — $2,000 depending on coverage and film length.",
     idealFor: [
-      "Engagement or proposal films",
-      "Welcome party or rehearsal coverage",
-      "Anniversary or in-home sessions",
-      "Brand or editorial work with the same LVR cinematic feel",
+      "Couples NOT getting married (yet) who want a film together",
+      "Anniversary celebrations (make it an annual tradition)",
+      "Birthday surprises — the gift they'll actually treasure",
+      "Proposal films with secret coordination",
+      "\"Just because\" love stories — you don't need a reason",
+      "Long-distance reunion films",
+      "Date day adventures — hikes, beach days, city explorations",
+      "Couples moving in together or hitting relationship milestones",
+      "Group trips with friends (Signature tier)",
     ],
-    includes: [
-      "2–4 hours of on-location filming",
-      "Cinematic short film (45–90 seconds for social, or 2–3 minutes for narrative)",
-      "Location and styling guidance",
-      "Online delivery formatted for easy sharing",
+    packages: [
+      {
+        name: "The Social",
+        price: "$750",
+        duration: "Up to 2 hours",
+        filmLength: "1 minute social-ready film",
+        description: "Made for sharing on Instagram, TikTok, and Reels",
+        popular: true,
+        includes: [
+          "Up to 2 hours of coverage",
+          "1 minute highlight film optimized for social media",
+          "Vertical format (9:16) for social media",
+          "One location (NYC + 30 miles, travel extra)",
+          "Simple planning — one call, no fuss",
+          "Online delivery in 3-4 weeks",
+        ],
+      },
+      {
+        name: "The Story",
+        price: "$1,200",
+        duration: "3 hours",
+        filmLength: "2–3 minute cinematic film",
+        description: "A complete narrative of your love story",
+        includes: [
+          "3 hours of coverage",
+          "2–3 minute narrative film",
+          "Your choice: vertical or horizontal format",
+          "Up to 2 locations",
+          "Styling and location guidance",
+          "Licensed music safe for sharing",
+          "Online delivery in 3-4 weeks",
+        ],
+      },
+      {
+        name: "The Signature",
+        price: "$2,000",
+        duration: "4–5 hours",
+        filmLength: "3–5 minute cinematic film",
+        description: "Full cinematic experience for couples or friend groups on adventures",
+        includes: [
+          "4–5 hours of coverage",
+          "3–5 minute cinematic film",
+          "Documentary-style filming option",
+          "Multiple locations or activity-based",
+          "Second filmmaker for proposals (full coverage)",
+          "Secret coordination for surprise proposals",
+          "Perfect for group trips with friends",
+          "Licensed music + professional audio recording",
+          "Voice recording during or after session (audio interviews)",
+          "Online delivery in 3-4 weeks",
+        ],
+      },
     ],
     addOnsNote:
-      "Can be booked as stand-alone or as an add-on to a wedding collection for cohesive storytelling.",
-    ctaLabel: "Book This Package",
+      "Gift certificates available. Ask about our Anniversary Film Club — book 3 sessions over 3 years and save.",
+    ctaLabel: "Book a Session",
     ctaHref: "/consultation",
   },
 };
@@ -219,10 +271,10 @@ export const pricing = {
       "For celebrations in meaningful destinations, where the setting becomes part of the story.",
   },
   adventure: {
-    title: "Adventure Sessions & Stories",
-    starting: 1200,
-    range: [1200, 3000],
+    title: "Couples Films",
+    starting: 750,
+    range: [750, 2000],
     description:
-      "For engagements, welcome parties, anniversaries, or creative stories beyond the wedding day.",
+      "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
   },
 };

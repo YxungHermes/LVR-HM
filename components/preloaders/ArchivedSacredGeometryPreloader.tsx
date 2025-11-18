@@ -172,7 +172,8 @@ export default function ArchivedSacredGeometryPreloader({ onComplete }: Preloade
                 className="font-serif text-lg font-semibold tracking-wide"
                 style={{ color: "#6B5E57" }}
               >
-                Love, Violeta Rose
+                <span className="font-bold">Weddings</span>
+                <span className="italic opacity-80"> by Michael Andrade</span>
               </p>
             </motion.div>
           </motion.div>

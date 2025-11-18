@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
             <hr style="border: none; border-top: 1px solid #eee; margin: 30px 0;">
 
             <p style="color: #666; font-size: 14px; text-align: center;">
-              Sent from Love, Violeta Rose website inquiry form
+              Sent from Weddings by Michael Andrade website inquiry form
             </p>
           </div>
         </body>
@@ -94,7 +94,7 @@ Message:
 ${body.message}
 
 ---
-Sent from Love, Violeta Rose website inquiry form
+Sent from Weddings by Michael Andrade website inquiry form
     `.trim();
 
     // Send email via Resend

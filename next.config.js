@@ -4,6 +4,15 @@ const nextConfig = {
   images: {
     domains: ['www.dropbox.com'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/offerings/adventure-sessions',
+        destination: '/offerings/couples-films',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig

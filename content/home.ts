@@ -39,10 +39,10 @@ export const chooseYourStory = [
     vimeoId: "1137400003"
   },
   {
-    slug: "adventure-sessions",
-    name: "Adventure Sessions & Stories",
-    teaser: "For engagements, welcome parties, and day-after moments.",
-    href: "/offerings/adventure-sessions"
+    slug: "couples-films",
+    name: "Couples Films",
+    teaser: "For couples celebrating love. Anniversaries, birthdays, or just because—not wedding required.",
+    href: "/offerings/couples-films"
   }
 ];
 
@@ -213,7 +213,15 @@ export const navigation: Navigation = {
               { label: "Elopements & Intimate Gatherings", href: "/offerings#elopements" },
               { label: "Wedding Day Films", href: "/offerings#wedding-day-films" },
               { label: "Destination Wedding Films", href: "/offerings#destination-weddings" },
-              { label: "Adventure Sessions & Stories", href: "/offerings#adventure-sessions" }
+              { label: "Couples Films", href: "/offerings#couples-films" }
+            ]
+          },
+          {
+            title: "By Tradition",
+            links: [
+              { label: "Catholic Weddings", href: "/weddings/catholic" },
+              { label: "Jewish Weddings", href: "/weddings/jewish" },
+              { label: "Hindu & Indian Weddings", href: "/weddings/hindu" }
             ]
           },
           {

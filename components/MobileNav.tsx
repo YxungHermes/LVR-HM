@@ -73,8 +73,13 @@ export default function MobileNav({
           >
             {/* Header */}
             <div className="px-5 pt-4 pb-3 border-b border-black/10 flex items-center justify-between">
-              <span className="font-serif text-xl font-semibold text-[#1C1A18]">
-                Love, Violeta Rose
+              <span className="relative inline-block">
+                <span className="font-serif text-xl font-semibold text-[#1C1A18] block">
+                  Love Stories
+                </span>
+                <span className="font-serif text-[10px] italic text-[#1C1A18]/70 absolute -bottom-1 right-0 transform translate-y-full whitespace-nowrap">
+                  by Michael Andrade
+                </span>
               </span>
               <button
                 onClick={onClose}

@@ -11,42 +11,50 @@ interface RoadmapProps {
 const roadmapSteps = [
   {
     title: "Inquiry",
-    text: "You reach out and share your wedding date, location, and a bit of your story.",
+    text: "You reach out through our consultation form or send us an email. Share your date, your location, and what kind of film speaks to you. We'll respond within 24 hours to start the conversation.",
+    shortText: "You reach out and we start the conversation.",
     icon: "✉️",
   },
   {
     title: "Consultation",
-    text: "We meet for a relaxed conversation to understand your vision and energy as a couple.",
+    text: "We meet for a relaxed video call (or in-person if you're local) to talk about your vision, your story, and what this day means to you. No sales pitch—just a genuine conversation about what feels right.",
+    shortText: "We meet to understand your vision and story.",
     icon: "💬",
   },
   {
     title: "Proposal",
-    text: "You receive a curated proposal outlining your tailored film experience and investment.",
+    text: "Within 2–3 days, you'll receive a personalized proposal outlining the exact deliverables, timeline, and investment for your film. Everything is transparent and tailored to what we discussed.",
+    shortText: "You receive a custom proposal within 2–3 days.",
     icon: "📋",
   },
   {
     title: "Booking",
-    text: "Once your date is secured, we officially begin this creative journey together.",
+    text: "Once you sign the agreement and submit your deposit, your date is officially reserved. We'll send you a welcome guide with everything you need to know leading up to your day.",
+    shortText: "Sign the agreement and your date is secured.",
     icon: "📝",
   },
   {
     title: "Pre-Production",
-    text: "We collaborate on your timeline, visual tone, and creative direction.",
+    text: "About 4–6 weeks before your day, we collaborate on your timeline, shot list, and creative direction. We'll discuss everything from your ceremony vows to the family dynamics, so nothing is left to chance.",
+    shortText: "We plan your timeline and creative direction together.",
     icon: "🎬",
   },
   {
-    title: "Wedding Day",
-    text: "We capture your story from quiet moments to the celebration itself with artful precision.",
+    title: "Your Day",
+    text: "We arrive early, blend in naturally, and capture your story as it unfolds. From quiet getting-ready moments to the dance floor celebration, we're there with intention and artistry—never intrusive, always present.",
+    shortText: "We capture your story with intention and artistry.",
     icon: "🎥",
   },
   {
-    title: "Post Production",
-    text: "Your footage is crafted into a timeless film through editing, color, and sound.",
+    title: "Post-Production",
+    text: "Your footage is meticulously edited, color-graded, and sound-designed to create a film that feels timeless. We pour over every frame, every transition, every note of music to craft something you'll treasure forever.",
+    shortText: "Your footage becomes a timeless, cinematic film.",
     icon: "✂️",
   },
   {
     title: "Delivery",
-    text: "Your finished films arrive — cinematic, emotional, and beautifully packaged.",
+    text: "Your films arrive via private online gallery with download links and streaming access. Teasers arrive first (2–3 weeks), followed by highlights (6–8 weeks), and your full feature film (10–12 weeks).",
+    shortText: "Your films arrive, beautifully packaged and ready to share.",
     icon: "🎁",
   },
 ];
@@ -161,10 +169,10 @@ export default function Roadmap({ variant = "full", cta = false }: RoadmapProps)
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4">
-            The Journey From Inquiry to Delivery
+            From First Hello to Final Film
           </h2>
           <p className="text-lg text-espresso max-w-2xl mx-auto leading-relaxed">
-            Your film begins long before the camera rolls. Here's how we make it seamless, beautiful, and true to you.
+            Your film begins long before the camera rolls. Here's how we make the entire journey seamless, intentional, and unforgettable.
           </p>
         </motion.div>
 
@@ -194,7 +202,7 @@ export default function Roadmap({ variant = "full", cta = false }: RoadmapProps)
                 </div>
 
                 {/* Content */}
-                <div className="bg-white border border-coffee/10 rounded-lg p-6 md:p-8 group-hover:border-rose-wax-red/30 transition-colors">
+                <div className="bg-white border border-coffee/10 rounded-lg p-6 md:p-8 group-hover:border-rose-wax-red/30 group-hover:shadow-sm transition-all">
                   <h3 className="font-serif text-xl md:text-2xl font-bold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
                     {step.title}
                   </h3>
@@ -209,7 +217,7 @@ export default function Roadmap({ variant = "full", cta = false }: RoadmapProps)
 
         {/* Timeline Note */}
         <motion.div
-          className="mt-16 p-8 bg-warm-sand border border-coffee/10 rounded-lg text-center"
+          className="mt-16 p-8 bg-warm-sand/50 border border-coffee/10 rounded-lg text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -234,6 +242,9 @@ export default function Roadmap({ variant = "full", cta = false }: RoadmapProps)
               <span>10–12 weeks</span>
             </div>
           </div>
+          <p className="mt-4 text-xs text-espresso/70 italic">
+            Rush delivery available for an additional fee
+          </p>
         </motion.div>
 
         {/* CTA */}
@@ -249,7 +260,7 @@ export default function Roadmap({ variant = "full", cta = false }: RoadmapProps)
               href="/consultation"
               className="inline-flex items-center bg-rose-wax-red text-white px-10 py-4 rounded-full font-medium text-lg transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg focus-ring"
             >
-              Book Your Consultation
+              Start Your Film Journey
               <svg
                 className="ml-3 h-5 w-5"
                 fill="none"
