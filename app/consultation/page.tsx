@@ -491,7 +491,7 @@ export default function ConsultationPage() {
                           <option value="full">Full Wedding</option>
                           <option value="large">Large Celebration</option>
                           <option value="destination">Destination Wedding</option>
-                          <option value="adventure">Adventure Sessions & Stories (Couples)</option>
+                          <option value="adventure">Couples Film (Not a wedding—anniversaries, birthdays, or just because)</option>
                         </select>
                       </div>
 

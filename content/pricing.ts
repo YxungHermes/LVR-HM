@@ -26,11 +26,11 @@ export const whatIOffer = [
     image: "/collections/destination.jpg",
   },
   {
-    slug: "adventure-sessions",
-    name: "Adventure Sessions & Stories",
+    slug: "couples-films",
+    name: "Couples Films",
     description:
-      "For engagements, welcome parties, day-after sessions, anniversaries, or creative stories beyond the wedding day.",
-    href: "/offerings/adventure-sessions",
+      "For couples celebrating love—anniversaries, birthdays, or just because. No wedding required.",
+    href: "/offerings/couples-films",
     image: "/collections/adventure.jpg",
   },
 ];
@@ -68,13 +68,13 @@ export const pricingOverview = [
     vimeoId: "1137400003",
   },
   {
-    slug: "adventure-sessions",
-    name: "Adventure Sessions & Stories",
-    startingFrom: "$1,200",
-    range: "$1,200 — $3,000",
+    slug: "couples-films",
+    name: "Couples Films",
+    startingFrom: "$750",
+    range: "$750 — $2,000",
     description:
-      "For engagements, welcome parties, day-after sessions, anniversaries, or brand stories with the same cinematic care.",
-    href: "/offerings/adventure-sessions",
+      "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
+    href: "/offerings/couples-films",
     image: "/collections/adventure.jpg",
   },
 ];
@@ -166,23 +166,25 @@ export const pricingPages = {
     ctaHref: "/consultation",
   },
 
-  "adventure-sessions": {
-    title: "Adventure Sessions & Stories",
-    seoTitle: "Couples Films & Love Story Sessions | Weddings by Michael Andrade",
+  "couples-films": {
+    title: "Couples Films",
+    seoTitle: "Couples Films & Love Story Sessions | Love Stories by Michael Andrade",
     heroImage: "/collections/adventure.jpg",
     introHeading: "Your relationship deserves more than iPhone footage.",
     introBody:
-      "Birthdays, anniversaries, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These sessions are for couples who want cinematic storytelling without the wedding day price tag. Affordable luxury that captures your love story exactly as it is right now.",
+      "Not getting married (yet)? Doesn't matter. Anniversaries, birthdays, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These films are for couples who want cinematic storytelling without the wedding day price tag—because your love story matters now, not just on a future wedding day.",
     startingFrom: "$750",
     rangeNote:
       "Most couples invest between $750 — $2,000 depending on coverage and film length.",
     idealFor: [
-      "Anniversary celebrations (annual tradition, anyone?)",
+      "Couples NOT getting married (yet) who want a film together",
+      "Anniversary celebrations (make it an annual tradition)",
       "Birthday surprises — the gift they'll actually treasure",
       "Proposal films with secret coordination",
-      "\"Just because\" love stories",
+      "\"Just because\" love stories — you don't need a reason",
       "Long-distance reunion films",
       "Date day adventures — hikes, beach days, city explorations",
+      "Couples moving in together or hitting relationship milestones",
       "Group trips with friends (Signature tier)",
     ],
     packages: [
@@ -269,10 +271,10 @@ export const pricing = {
       "For celebrations in meaningful destinations, where the setting becomes part of the story.",
   },
   adventure: {
-    title: "Adventure Sessions & Stories",
-    starting: 1200,
-    range: [1200, 3000],
+    title: "Couples Films",
+    starting: 750,
+    range: [750, 2000],
     description:
-      "For engagements, welcome parties, anniversaries, or creative stories beyond the wedding day.",
+      "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
   },
 };

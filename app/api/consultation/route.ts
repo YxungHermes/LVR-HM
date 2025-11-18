@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: process.env.RESEND_TO_EMAIL || body.email,
       replyTo: body.email,
-      subject: `New Consultation: ${body.partner1Name} & ${body.partner2Name}${body.eventType === 'adventure' ? ' (Couples Session)' : ''}`,
+      subject: `New Consultation: ${body.partner1Name} & ${body.partner2Name}${body.eventType === 'adventure' ? ' (Couples Film)' : ''}`,
       html: emailHtml,
       text: emailText,
     });
@@ -556,7 +556,7 @@ function formatEventType(eventType: string): string {
     full: "Full Wedding",
     large: "Large Celebration",
     destination: "Destination Wedding",
-    adventure: "Adventure Sessions & Stories (Couples)",
+    adventure: "Couples Film",
   };
   return types[eventType] || eventType;
 }
