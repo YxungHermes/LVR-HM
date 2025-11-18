@@ -38,6 +38,72 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
           </div>
         </section>
 
+        {/* Quick Facts Section */}
+        {content.quickFacts && (
+          <section className="px-6 py-16 bg-white">
+            <div className="mx-auto max-w-5xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-8 text-center">
+                  At a Glance
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <svg className="w-6 h-6 text-rose-wax-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <h3 className="font-semibold text-ink">Duration</h3>
+                    </div>
+                    <p className="text-espresso text-sm">{content.quickFacts.duration}</p>
+                  </div>
+                  <div className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <svg className="w-6 h-6 text-rose-wax-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                      <h3 className="font-semibold text-ink">Venue</h3>
+                    </div>
+                    <p className="text-espresso text-sm">{content.quickFacts.venue}</p>
+                  </div>
+                  <div className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <svg className="w-6 h-6 text-rose-wax-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                      </svg>
+                      <h3 className="font-semibold text-ink">Dress Code</h3>
+                    </div>
+                    <p className="text-espresso text-sm">{content.quickFacts.dressCode}</p>
+                  </div>
+                  <div className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6">
+                    <div className="flex items-center gap-3 mb-2">
+                      <svg className="w-6 h-6 text-rose-wax-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      <h3 className="font-semibold text-ink">Typical Size</h3>
+                    </div>
+                    <p className="text-espresso text-sm">{content.quickFacts.guestCount}</p>
+                  </div>
+                  <div className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6 md:col-span-2 lg:col-span-1">
+                    <div className="flex items-center gap-3 mb-2">
+                      <svg className="w-6 h-6 text-rose-wax-red" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                      </svg>
+                      <h3 className="font-semibold text-ink">Music</h3>
+                    </div>
+                    <p className="text-espresso text-sm">{content.quickFacts.musicStyle}</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
         {/* Key Moments Section */}
         <section className="px-6 py-20 bg-white">
           <div className="mx-auto max-w-5xl">
@@ -64,9 +130,16 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                   >
-                    <h3 className="font-serif text-xl font-semibold text-ink mb-3">
-                      {moment.title}
-                    </h3>
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h3 className="font-serif text-xl font-semibold text-ink">
+                        {moment.title}
+                      </h3>
+                      {moment.duration && (
+                        <span className="text-xs font-medium text-rose-wax-red bg-rose-wax-red/10 px-3 py-1 rounded-full whitespace-nowrap flex-shrink-0">
+                          {moment.duration}
+                        </span>
+                      )}
+                    </div>
                     <p className="text-base text-espresso leading-relaxed">
                       {moment.description}
                     </p>
@@ -76,6 +149,100 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
             </motion.div>
           </div>
         </section>
+
+        {/* Glossary Section */}
+        {content.glossary && (
+          <section className="px-6 py-20 bg-cream">
+            <div className="mx-auto max-w-4xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4 text-center">
+                  Key Terms & Pronunciation
+                </h2>
+                <p className="text-base text-espresso/70 text-center mb-12 max-w-2xl mx-auto">
+                  Helpful vocabulary to know before attending the ceremony.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {content.glossary.map((term, index) => (
+                    <motion.div
+                      key={index}
+                      className="bg-white border border-coffee/10 rounded-lg p-6"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                    >
+                      <div className="mb-2">
+                        <h3 className="font-serif text-xl font-bold text-ink inline">
+                          {term.term}
+                        </h3>
+                        <span className="text-sm text-rose-wax-red ml-3 italic">
+                          ({term.pronunciation})
+                        </span>
+                      </div>
+                      <p className="text-base text-espresso leading-relaxed">
+                        {term.definition}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
+        {/* Guest Etiquette Section */}
+        {content.guestEtiquette && (
+          <section className="px-6 py-20 bg-white">
+            <div className="mx-auto max-w-4xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6 text-center">
+                  {content.guestEtiquette.heading}
+                </h2>
+
+                <div className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-8 md:p-10">
+                  <ul className="space-y-5">
+                    {content.guestEtiquette.points.map((point, index) => (
+                      <motion.li
+                        key={index}
+                        className="flex items-start gap-4"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.08 }}
+                      >
+                        <svg
+                          className="w-6 h-6 text-rose-wax-red flex-shrink-0 mt-0.5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                          />
+                        </svg>
+                        <span className="text-base text-espresso leading-relaxed">{point}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
 
         {/* Cultural Considerations Section */}
         <section className="px-6 py-20 bg-warm-sand/20">

@@ -90,41 +90,82 @@ export const culturalWeddings = {
     introHeading: "From the ketubah to the glass—understanding Jewish wedding traditions.",
     introBody: "Jewish weddings are rich with meaning, ritual, and joy. From the bedeken and ketubah signing to the seven blessings under the chuppah and the exuberant hora, each tradition carries deep significance rooted in Jewish law and centuries of cultural practice. The ceremony itself typically lasts 30-45 minutes, with pre-ceremony rituals and a celebratory reception following.",
 
+    quickFacts: {
+      duration: "30-45 minutes (ceremony) + pre-ceremony rituals",
+      venue: "Synagogue, hotel, outdoor venue, or private home",
+      dressCode: "Formal or semi-formal; modest attire appreciated (covered shoulders/knees for Orthodox)",
+      guestCount: "Varies widely—from intimate gatherings to 200+ guests",
+      musicStyle: "Traditional klezmer, Israeli folk songs, contemporary Jewish music, live band"
+    },
+
+    glossary: [
+      { term: "Chuppah", pronunciation: "KHOO-pah", definition: "Wedding canopy symbolizing the couple's new home" },
+      { term: "Ketubah", pronunciation: "ke-TOO-bah", definition: "Jewish marriage contract outlining obligations" },
+      { term: "Bedeken", pronunciation: "be-DEK-en", definition: "Veiling ceremony where groom covers bride's face" },
+      { term: "Yichud", pronunciation: "yee-KHUD", definition: "Private alone time for newlyweds immediately after ceremony" },
+      { term: "Hora", pronunciation: "HOR-ah", definition: "Traditional circle dance celebrating the couple" },
+      { term: "Mazel Tov", pronunciation: "MAH-zel tov", definition: "Congratulations! (literally 'good luck')" },
+      { term: "Sheva Brachot", pronunciation: "SHEH-vah brah-KHOT", definition: "Seven wedding blessings recited during ceremony" }
+    ],
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Men may be asked to wear a kippah (yarmulke/head covering)—they're usually provided at the entrance",
+        "Arrive on time; Jewish weddings often start promptly and pre-ceremony rituals may be open to guests",
+        "The ceremony is relatively short (30-45 min), but expect a lively, long reception with lots of dancing",
+        "At Orthodox weddings, men and women may be seated separately during the ceremony and dance separately",
+        "When the glass breaks, shout 'Mazel Tov!' enthusiastically—it's a joyful, participatory moment",
+        "Cash gifts or checks are traditional (often in multiples of 18, a lucky number in Judaism)",
+        "The hora is your chance to join the celebration—don't be shy, everyone dances!",
+        "Photography may be restricted on Shabbat (Friday evening/Saturday) if observed"
+      ]
+    },
+
     keyMoments: [
       {
         title: "Ketubah Signing",
+        duration: "10-15 min",
         description: "The bride, groom, and witnesses sign the Jewish marriage contract—often before the ceremony in a private room."
       },
       {
         title: "Bedeken (Veiling Ceremony)",
+        duration: "5-10 min",
         description: "The groom veils the bride, referencing the biblical story of Jacob and Rachel—an intimate, emotional pre-ceremony tradition."
       },
       {
         title: "Processional",
+        duration: "5 min",
         description: "The groom, parents, wedding party, and bride walk down the aisle to the chuppah, often accompanied by live music."
       },
       {
         title: "The Chuppah",
+        duration: "20-30 min",
         description: "The wedding canopy symbolizing the couple's new home together. The ceremony takes place underneath with family and the rabbi."
       },
       {
         title: "Seven Blessings (Sheva Brachot)",
+        duration: "10 min",
         description: "Seven blessings recited over wine, celebrating creation, joy, and the sanctity of marriage."
       },
       {
         title: "Ring Exchange",
+        duration: "2-3 min",
         description: "The groom (and sometimes bride) places the ring and recites the traditional declaration: 'Behold, you are consecrated to me...'"
       },
       {
         title: "Breaking of the Glass",
+        duration: "1 min",
         description: "The groom steps on a glass wrapped in cloth—symbolizing the destruction of the Temple and the fragility of relationships. The crowd shouts 'Mazel Tov!'"
       },
       {
         title: "Yichud",
+        duration: "10-20 min",
         description: "The newlyweds spend their first moments alone together in a private room—a deeply personal tradition."
       },
       {
         title: "The Hora",
+        duration: "15-20 min",
         description: "The exuberant circle dance where the couple is lifted on chairs—one of the most joyful moments of the reception."
       }
     ],
