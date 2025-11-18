@@ -61,6 +61,27 @@ const traditions = [
     description: "Honoring family through elegant Confucian ceremonies",
     highlights: ["Pyebaek Ceremony", "Hanbok Attire", "Wooden Ducks", "Formal Bows"],
     color: "from-pink-50 to-rose-50"
+  },
+  {
+    slug: "filipino",
+    title: "Filipino Wedding Traditions",
+    description: "Catholic traditions blended with unique Filipino customs",
+    highlights: ["Cord Ceremony", "Veil & Coin Ritual", "Money Dance", "Releasing Doves"],
+    color: "from-amber-50 to-yellow-50"
+  },
+  {
+    slug: "sikh",
+    title: "Sikh Wedding Traditions",
+    description: "Sacred Anand Karaj ceremony rooted in equality and devotion",
+    highlights: ["Anand Karaj", "Laavan Phere", "Ardas Prayer", "Langar Feast"],
+    color: "from-orange-50 to-amber-50"
+  },
+  {
+    slug: "mexican",
+    title: "Mexican Wedding Traditions",
+    description: "Catholic rituals infused with vibrant Mexican celebrations",
+    highlights: ["Lazo Ceremony", "Arras Coins", "Mariachi Music", "La Vibora Dance"],
+    color: "from-lime-50 to-green-50"
   }
 ];
 
@@ -84,7 +105,7 @@ export default function WeddingTraditionsClient() {
                 Educational resources for understanding wedding ceremonies around the world
               </p>
               <p className="text-lg text-espresso leading-relaxed max-w-3xl mx-auto">
-                Explore comprehensive guides to Catholic, Jewish, Hindu, Muslim, Greek Orthodox, Chinese, Nigerian, and Korean wedding traditions. Learn about ceremony timelines, sacred rituals, cultural customs, and the meaning behind each tradition.
+                Explore comprehensive guides to Catholic, Jewish, Hindu, Muslim, Greek Orthodox, Chinese, Nigerian, Korean, Filipino, Sikh, and Mexican wedding traditions. Learn about ceremony timelines, sacred rituals, cultural customs, and the meaning behind each tradition.
               </p>
             </motion.div>
           </div>

@@ -228,15 +228,18 @@ export const navigation: Navigation = {
               { label: "Jewish Weddings", href: "/weddings/jewish" },
               { label: "Hindu & Indian Weddings", href: "/weddings/hindu" },
               { label: "Muslim & Islamic Weddings", href: "/weddings/muslim" },
-              { label: "Greek Orthodox Weddings", href: "/weddings/greek-orthodox" }
+              { label: "Greek Orthodox Weddings", href: "/weddings/greek-orthodox" },
+              { label: "Sikh Weddings", href: "/weddings/sikh" }
             ]
           },
           {
             title: "Cultural Traditions",
             links: [
               { label: "Chinese Weddings", href: "/weddings/chinese" },
-              { label: "Nigerian Weddings", href: "/weddings/nigerian" },
-              { label: "Korean Weddings", href: "/weddings/korean" }
+              { label: "Filipino Weddings", href: "/weddings/filipino" },
+              { label: "Korean Weddings", href: "/weddings/korean" },
+              { label: "Mexican Weddings", href: "/weddings/mexican" },
+              { label: "Nigerian Weddings", href: "/weddings/nigerian" }
             ]
           },
           {
