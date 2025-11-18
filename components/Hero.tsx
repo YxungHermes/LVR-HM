@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { hero } from "@/content/home";
 import { trackCTAClick } from "@/lib/analytics";
 
@@ -23,7 +24,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVideoLoaded(true);
-    }, 3000); // Wait 3 seconds for video to fully buffer and start playing
+    }, 1500); // Wait 1.5 seconds for video to start playing (optimized for LCP)
     return () => clearTimeout(timer);
   }, []);
 
@@ -40,13 +41,22 @@ export default function Hero() {
     <section className="relative h-screen bg-black overflow-hidden">
       {/* Static Poster Image - shows immediately while video loads */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
+        className="absolute inset-0 z-0"
         style={{
-          backgroundImage: `url(${hero.poster})`,
           opacity: videoLoaded ? 0 : 1,
           transition: "opacity 3000ms cubic-bezier(0.22, 1, 0.36, 1)",
         }}
-      />
+      >
+        <Image
+          src={hero.poster}
+          alt="Wedding film hero background"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover"
+        />
+      </div>
 
       {/* Vimeo Video Background - fades in smoothly */}
       <div

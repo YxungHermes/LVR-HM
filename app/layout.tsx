@@ -50,6 +50,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        {/* Preconnect to Vimeo for faster video loading */}
+        <link rel="preconnect" href="https://player.vimeo.com" />
+        <link rel="preconnect" href="https://i.vimeocdn.com" />
+        <link rel="dns-prefetch" href="https://player.vimeo.com" />
+        <link rel="dns-prefetch" href="https://i.vimeocdn.com" />
+      </head>
       <body
         className="font-sans antialiased"
         style={{

@@ -69,6 +69,7 @@ function VideoCard({ title, subtitle, src, poster, vimeoId, index }: {
               transform: "translate(-50%, -50%)",
             }}
             frameBorder="0"
+            loading="lazy"
             allow="autoplay; fullscreen; picture-in-picture"
             title={title}
           />
