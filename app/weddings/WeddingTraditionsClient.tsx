@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FinaleBlock from "@/components/FinaleBlock";
 
 const traditions = [
   {
@@ -337,9 +336,6 @@ export default function WeddingTraditionsClient() {
             </motion.div>
           </div>
         </section>
-
-        {/* Finale Block */}
-        <FinaleBlock />
       </main>
       <Footer />
     </>

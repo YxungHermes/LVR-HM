@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FinaleBlock from "@/components/FinaleBlock";
 import { culturalWeddings, CulturalWeddingKey } from "@/content/cultural-weddings";
 
 interface CulturalWeddingPageProps {
@@ -201,9 +200,6 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
             </motion.div>
           </div>
         </section>
-
-        {/* Finale Block */}
-        <FinaleBlock />
       </main>
       <Footer />
     </>
