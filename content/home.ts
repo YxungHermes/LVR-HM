@@ -217,6 +217,14 @@ export const navigation: Navigation = {
             ]
           },
           {
+            title: "By Tradition",
+            links: [
+              { label: "Catholic Weddings", href: "/weddings/catholic" },
+              { label: "Jewish Weddings", href: "/weddings/jewish" },
+              { label: "Hindu & Indian Weddings", href: "/weddings/hindu" }
+            ]
+          },
+          {
             title: "Explore",
             links: [
               { label: "View All Collections", href: "/offerings" },
