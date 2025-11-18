@@ -252,25 +252,25 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
               href="/"
               className="relative block origin-center focus-ring"
             >
-              <span className="flex items-baseline gap-1.5">
+              <span className="relative inline-block">
                 <span
-                  className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap"
+                  className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap block"
                   style={{
                     letterSpacing: "0.035em",
                     transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
                     color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
                   }}
                 >
-                  Weddings
+                  Love Stories
                 </span>
                 <span
-                  className="font-serif text-xs sm:text-sm md:text-base italic whitespace-nowrap"
+                  className="font-serif text-[10px] sm:text-xs italic whitespace-nowrap absolute -bottom-1 right-0 transform translate-y-full"
                   style={{
-                    letterSpacing: "0.02em",
+                    letterSpacing: "0.05em",
                     transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
                     color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
-                    opacity: 0.8,
-                    marginTop: "0.25rem",
+                    opacity: 0.7,
+                    fontStyle: "italic",
                   }}
                 >
                   by Michael Andrade

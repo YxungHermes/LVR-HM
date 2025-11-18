@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       from: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
       to: process.env.RESEND_TO_EMAIL || body.email,
       replyTo: body.email,
-      subject: `New Consultation Request: ${body.partner1Name} & ${body.partner2Name}${body.eventType === 'adventure' ? ' (Couples Session)' : ''}`,
+      subject: `New Consultation: ${body.partner1Name} & ${body.partner2Name}${body.eventType === 'adventure' ? ' (Couples Session)' : ''}`,
       html: emailHtml,
       text: emailText,
     });
@@ -426,7 +426,7 @@ function generateEmailHtml(data: any): string {
 
     <!-- Footer -->
     <div class="footer">
-      <p>Weddings by Michael Andrade — Luxury Wedding Films</p>
+      <p>Love Stories by Michael Andrade — Cinematic Wedding & Couples Films</p>
       <p style="margin-top: 8px; font-size: 12px; opacity: 0.8;">
         This consultation request was submitted via your website
       </p>
@@ -542,7 +542,7 @@ function generateEmailText(data: any): string {
   }
 
   text += `═════════════════════════════════════\n`;
-  text += `Weddings by Michael Andrade — Luxury Wedding Films\n`;
+  text += `Love Stories by Michael Andrade — Cinematic Wedding & Couples Films\n`;
   text += `This consultation request was submitted via your website\n`;
 
   return text;

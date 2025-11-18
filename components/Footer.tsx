@@ -17,17 +17,17 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <a href="/" className="inline-block group focus-ring rounded">
-              <h3 className="flex items-baseline gap-2">
-                <span className="font-serif text-2xl font-bold tracking-wider text-ink group-hover:text-rose-wax-red transition-colors">
-                  Weddings
+              <h3 className="relative inline-block">
+                <span className="font-serif text-2xl font-bold tracking-wider text-ink group-hover:text-rose-wax-red transition-colors block">
+                  Love Stories
                 </span>
-                <span className="font-serif text-base italic text-ink/80 group-hover:text-rose-wax-red/80 transition-colors">
+                <span className="font-serif text-sm italic text-ink/70 group-hover:text-rose-wax-red/70 transition-colors absolute -bottom-1 right-0 transform translate-y-full whitespace-nowrap">
                   by Michael Andrade
                 </span>
               </h3>
             </a>
-            <p className="mt-3 text-sm text-espresso">
-              Cinematic wedding films crafted with heart.
+            <p className="mt-6 text-sm text-espresso">
+              Cinematic wedding & couples films crafted with heart.
             </p>
             {/* Michael's photo */}
             <div className="mt-6 h-16 w-16 rounded-full border-2 border-coffee/20 bg-white overflow-hidden relative">
@@ -100,7 +100,7 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="text-xs text-espresso/60">
-            © {new Date().getFullYear()} Weddings by Michael Andrade. All rights reserved.
+            © {new Date().getFullYear()} Love Stories by Michael Andrade. All rights reserved.
           </p>
         </motion.div>
       </div>

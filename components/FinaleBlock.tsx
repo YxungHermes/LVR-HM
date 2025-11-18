@@ -61,9 +61,9 @@ export default function FinaleBlock() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="font-serif text-lg text-ink">
-              <span className="font-bold">Weddings</span>
-              <span className="italic text-ink/80"> by Michael Andrade</span>
+            <p className="font-serif text-lg text-ink inline-block relative">
+              <span className="font-bold block">Love Stories</span>
+              <span className="italic text-ink/70 text-sm absolute -bottom-1 right-0 transform translate-y-full whitespace-nowrap">by Michael Andrade</span>
             </p>
           </motion.div>
         </div>
