@@ -255,6 +255,438 @@ export const culturalWeddings = {
         a: "Indian weddings vary significantly by region and community. North Indian (Punjabi/Hindi) weddings feature the Baraat and often more elaborate sangeet celebrations. South Indian weddings may include rituals like tying the Thali (sacred thread). Gujarati weddings have unique customs like the Garba dance. Bengali weddings involve rituals with a betel leaf. Despite differences, most include core elements like sacred fire, seven vows, and multi-day celebrations."
       }
     ]
+  },
+
+  "muslim": {
+    title: "Muslim & Islamic Wedding Traditions",
+    seoTitle: "Muslim Islamic Wedding Ceremony Guide | Understanding Islamic Wedding Traditions & Nikah",
+    seoDescription: "Complete guide to Muslim and Islamic wedding traditions including the Nikah ceremony, Mahr, Walima, and cultural customs. Learn about Islamic marriage rituals and celebrations.",
+    heroImage: "/weddings/muslim-wedding.jpg",
+
+    introHeading: "Understanding the sacred Islamic marriage ceremony and celebrations.",
+    introBody: "Muslim weddings center around the Nikah, a sacred marriage contract performed according to Islamic law (Sharia). While the Nikah ceremony itself is simple and often brief (20-30 minutes), celebrations can span multiple days with events like the Mehndi, Nikah, and Walima. Customs vary widely across cultures—from Pakistani and Bangladeshi to Arab, Turkish, and African Muslim traditions.",
+
+    keyMoments: [
+      {
+        title: "Istikhara (Prayer for Guidance)",
+        description: "Before the engagement, families may perform this special prayer asking Allah for guidance about the union."
+      },
+      {
+        title: "Mangni/Engagement",
+        description: "Formal engagement where families meet, exchange gifts, and may present rings. The couple is considered engaged but not yet married."
+      },
+      {
+        title: "Mehndi/Henna Night",
+        description: "Pre-wedding celebration (often the night before) where the bride's hands and feet are decorated with intricate henna designs, surrounded by female family and friends with music and dancing."
+      },
+      {
+        title: "Nikah Ceremony",
+        description: "The Islamic marriage contract. An Imam or religious officiant leads the ceremony, which includes recitation of Quranic verses, the marriage proposal and acceptance, and signing of the Nikah Nama (marriage contract)."
+      },
+      {
+        title: "Mahr (Dowry)",
+        description: "A mandatory gift from the groom to the bride, specified in the Nikah contract. It can be money, property, or valuables and belongs solely to the bride."
+      },
+      {
+        title: "Ijab-e-Qubool (Acceptance)",
+        description: "The groom proposes marriage ('Qubool Hai' - I accept) and the bride accepts, typically saying 'Qubool Hai' three times. This mutual consent is witnessed by two male witnesses or equivalent."
+      },
+      {
+        title: "Dua (Prayer)",
+        description: "Prayers for the couple's happiness, prosperity, and blessings are recited by the Imam and congregation."
+      },
+      {
+        title: "Signing the Nikah Nama",
+        description: "The bride and groom sign the official Islamic marriage contract in the presence of witnesses, making the marriage legally and religiously binding."
+      },
+      {
+        title: "Walima (Reception)",
+        description: "The wedding banquet hosted by the groom's family, traditionally held within three days after the Nikah. This is considered a Sunnah (practice of the Prophet Muhammad) and announces the marriage publicly."
+      },
+      {
+        title: "Rukhsati (Bride's Departure)",
+        description: "An emotional farewell as the bride leaves her family home to begin her new life with her husband. Often accompanied by Quran recitation and duas for protection."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "The Nikah ceremony is the actual Islamic marriage contract and is required; all other events are cultural celebrations",
+        "Men and women are often separated during the Nikah and celebrations in more traditional ceremonies",
+        "Alcohol is prohibited in Islamic tradition and typically not served at Muslim weddings",
+        "Modest dress is expected; women often wear hijabs and both genders dress conservatively",
+        "Cultural practices vary widely—Pakistani/South Asian, Arab, Turkish, Persian, and African Muslim weddings each have unique customs",
+        "The Mahr (bride's gift) is a religious requirement and represents the groom's commitment and the bride's financial security"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "What is the Nikah ceremony?",
+        a: "The Nikah is the Islamic marriage contract and the most important part of a Muslim wedding. Led by an Imam, it includes the marriage proposal (Ijab), acceptance (Qubool) by both parties, specification of the Mahr (bride's gift), recitation of Quranic verses, and signing of the marriage contract. The ceremony is relatively brief (20-30 minutes) but is the religious and legal binding of the marriage in Islam."
+      },
+      {
+        q: "What is Mahr and why is it important?",
+        a: "Mahr is a mandatory gift from the groom to the bride, specified in the Islamic marriage contract. It can be money, jewelry, property, or anything of value. The Mahr belongs exclusively to the bride and represents her financial security and the groom's commitment. The amount is agreed upon before the Nikah and can be given immediately or deferred. It's a religious obligation, not optional."
+      },
+      {
+        q: "Why are men and women sometimes separated at Muslim weddings?",
+        a: "In more traditional or conservative Muslim communities, gender separation during celebrations honors Islamic principles of modesty (hijab). The level of separation varies by culture and family—some weddings have completely separate halls, others have divided sections, and more liberal celebrations may be mixed. The Nikah ceremony itself may be mixed or separated depending on cultural tradition."
+      },
+      {
+        q: "What is the Walima and is it required?",
+        a: "The Walima is the wedding banquet or reception traditionally hosted by the groom's family after the Nikah. It's considered a Sunnah (recommended practice following the Prophet Muhammad's example) and serves to publicly announce the marriage to the community. While not religiously mandatory like the Nikah, it's highly encouraged and is an important part of Islamic wedding tradition."
+      },
+      {
+        q: "How do Muslim weddings differ across cultures?",
+        a: "While the Nikah ceremony follows Islamic law, cultural practices vary significantly. South Asian Muslim weddings (Pakistani, Indian, Bangladeshi) often include elaborate multi-day celebrations with Mehndi, Baraat, and colorful attire. Arab weddings may feature traditional dabke dancing and zaffe (grand entrance). Turkish weddings include the henna night and flag ceremony. Persian weddings feature the sofreh aghd (ceremonial spread). Despite cultural differences, all include the essential Nikah ceremony."
+      }
+    ]
+  },
+
+  "greek-orthodox": {
+    title: "Greek Orthodox Wedding Traditions",
+    seoTitle: "Greek Orthodox Wedding Ceremony Guide | Understanding Greek Wedding Traditions & Customs",
+    seoDescription: "Complete guide to Greek Orthodox wedding traditions including the Stefana crowning, Koufeta, and Greek wedding customs. Learn about the sacred ceremony and celebrations.",
+    heroImage: "/weddings/greek-wedding.jpg",
+
+    introHeading: "Ancient traditions meet sacred ceremony in Greek Orthodox weddings.",
+    introBody: "Greek Orthodox weddings are deeply rooted in Byzantine Christian tradition and rich with symbolism. The ceremony, called the Sacrament of Holy Matrimony, typically lasts 45-60 minutes and includes ancient rituals like the crowning of the couple, the common cup, and the ceremonial walk. Greek weddings are known for their vibrant celebrations, traditional music, dancing, and the famous 'Opa!' spirit.",
+
+    keyMoments: [
+      {
+        title: "Betrothal/Engagement Ceremony",
+        description: "The first part of the wedding where rings are blessed and exchanged three times between the bride and groom by the Koumbaro/Koumbara (sponsor), symbolizing the Holy Trinity."
+      },
+      {
+        title: "The Blessing of the Rings",
+        description: "The priest blesses the wedding rings on the altar, and the best man (Koumbaro) exchanges them three times over the couple's heads before placing them on their right hands."
+      },
+      {
+        title: "The Sacrament of Marriage",
+        description: "The main ceremony begins with readings from the Epistles and Gospel, followed by prayers for the couple. This is when the marriage is officially blessed by the Church."
+      },
+      {
+        title: "The Crowning (Stefana)",
+        description: "The most iconic moment—two crowns (stefana) connected by a ribbon are placed on the couple's heads, representing glory, honor, and the crowns of martyrdom for the sacrifices marriage requires. The Koumbaro exchanges them three times over the couple's heads."
+      },
+      {
+        title: "The Common Cup",
+        description: "The couple shares wine from a common cup three times, symbolizing the sharing of life's joys and sorrows. The wine represents the Blood of Christ and the couple's union."
+      },
+      {
+        title: "The Isaiah Dance (Dance of Isaiah)",
+        description: "The priest leads the newly crowned couple in three circular walks around the altar table while the congregation sings. This represents the beginning of their eternal journey together and the dance of Isaiah around the altar."
+      },
+      {
+        title: "Removal of the Crowns",
+        description: "The priest removes the stefana and offers blessings, praying that the couple's marriage will be as strong as the martyrs and saints who have been crowned in heaven."
+      },
+      {
+        title: "The Benediction",
+        description: "Final prayers and blessings are offered, and the couple receives the priest's blessing before being presented as husband and wife."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "The Koumbaro/Koumbara (male/female sponsor, like a best man/maid of honor) plays a crucial role and becomes the couple's spiritual sponsor for life",
+        "The wedding crowns (stefana) are often kept as family heirlooms and displayed in the couple's home",
+        "Greek Orthodox weddings typically cannot take place during Lent or on certain holy days",
+        "Both bride and groom must be baptized Orthodox Christian, or one must convert before the wedding",
+        "The reception often features traditional Greek music, the Kalamatiano dance, plate breaking/smashing, and shouting 'Opa!'",
+        "Koufeta (sugar-coated almonds) are given to guests in odd numbers (usually 5 or 7) symbolizing wishes for the couple"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "What is the significance of the Stefana (crowns)?",
+        a: "The Stefana are ceremonial crowns joined by a ribbon, representing the glory and honor bestowed upon the couple as they become king and queen of their own domestic church. They also symbolize the martyrdom of marriage—the sacrifices spouses make for each other. The crowns are a visible sign of God's blessing and the couple's new roles. Many couples preserve their stefana as precious family heirlooms."
+      },
+      {
+        q: "What role does the Koumbaro/Koumbara play?",
+        a: "The Koumbaro (male) or Koumbara (female) is more than a best man or maid of honor—they're a spiritual sponsor who participates actively in the ceremony. They exchange the rings and crowns three times over the couple's heads, assist throughout the ceremony, and become lifelong spiritual advisors to the couple and often godparents to their children. This is a sacred, lifelong bond of responsibility."
+      },
+      {
+        q: "Why do the couple walk around the altar three times?",
+        a: "The Isaiah Dance (also called the Dance of Isaiah) involves the priest leading the couple in three circular walks around the altar table. This represents their first steps as a married couple on their eternal journey together. The three circles honor the Holy Trinity, and the circular motion symbolizes the eternity of their marriage bond with no beginning and no end."
+      },
+      {
+        q: "What are Koufeta and why are they given in odd numbers?",
+        a: "Koufeta are sugar-coated almonds traditionally given to wedding guests in odd numbers (5 or 7 pieces). Each almond in a set of five represents a wish: health, wealth, happiness, fertility, and long life. Odd numbers are indivisible, symbolizing that the couple will remain undivided. The bitter almond coated in sweet sugar represents life's bitter and sweet moments that the couple will share."
+      },
+      {
+        q: "Can non-Orthodox people have a Greek Orthodox wedding?",
+        a: "For a valid Greek Orthodox wedding, at least one partner must be a baptized member of the Orthodox Church. If one partner is not Orthodox, they may need to convert before the wedding, though requirements vary by jurisdiction. The Church typically does not perform interfaith marriages, though some exceptions may be made. Couples should consult with their parish priest well in advance."
+      }
+    ]
+  },
+
+  "chinese": {
+    title: "Chinese Wedding Traditions",
+    seoTitle: "Chinese Wedding Ceremony Guide | Understanding Traditional Chinese Wedding Customs & Tea Ceremony",
+    seoDescription: "Complete guide to Chinese wedding traditions including the tea ceremony, door games, red envelopes, and traditional customs. Learn about modern and traditional Chinese weddings.",
+    heroImage: "/weddings/chinese-wedding.jpg",
+
+    introHeading: "Ancient customs blended with modern celebrations.",
+    introBody: "Chinese weddings beautifully blend thousands of years of tradition with contemporary celebrations. From the symbolic tea ceremony and elaborate door games to the vibrant red color symbolizing luck and prosperity, Chinese weddings are rich with meaning. Modern Chinese weddings often combine traditional Chinese customs with Western elements, creating unique multi-cultural celebrations that honor heritage while embracing modernity.",
+
+    keyMoments: [
+      {
+        title: "Hair Combing Ceremony (Shang Tou)",
+        description: "The night before the wedding, the bride's hair is combed four times by a woman of good fortune while blessings are recited. Each stroke represents a blessing: a long-lasting marriage, harmony, children, and good fortune."
+      },
+      {
+        title: "Door Games (Guo Da Li)",
+        description: "The groom and groomsmen must pass playful challenges set by the bridesmaids before 'earning' access to the bride. Games may include push-ups, trivia about the bride, karaoke, or eating spicy/sour foods. Red envelopes (hongbao) are often used to bribe their way through."
+      },
+      {
+        title: "Bride Pickup and Procession",
+        description: "The groom arrives at the bride's home to formally collect her. The bride may playfully refuse to leave, and the groom must persuade her (sometimes with gifts or promises). Her family sees her off with tears and well wishes."
+      },
+      {
+        title: "Tea Ceremony (Jing Cha)",
+        description: "One of the most important traditions—the couple serves tea to their elders (parents, grandparents, aunts, uncles) in order of seniority, kneeling or bowing respectfully. In return, elders offer red envelopes with money and jewelry, officially welcoming them into the family."
+      },
+      {
+        title: "The Wedding Ceremony",
+        description: "Modern Chinese weddings may have a Western-style ceremony with vows and ring exchange, a traditional Chinese ceremony, or both. The bride often wears a white Western gown for the ceremony."
+      },
+      {
+        title: "Three Bows (San Bai)",
+        description: "In traditional ceremonies, the couple bows three times: first to heaven and earth, second to their parents, and third to each other, symbolizing respect and commitment."
+      },
+      {
+        title: "Costume Changes",
+        description: "The bride typically changes into multiple outfits throughout the day—often starting with a white Western gown, then changing into a traditional red qipao or cheongsam, and sometimes a third glamorous evening gown."
+      },
+      {
+        title: "The Banquet",
+        description: "An elaborate multi-course dinner (often 8-10 courses, as 8 is a lucky number) where the couple toasts each table of guests. Speeches, games, and entertainment are common. The number of dishes is always even, symbolizing good fortune for the couple."
+      },
+      {
+        title: "Gate Crashing/Reception Entrance",
+        description: "The couple makes a grand entrance to the banquet, sometimes with special effects, music, and choreography. They move from table to table, toasting guests and receiving red envelopes."
+      },
+      {
+        title: "Wedding Night Traditions",
+        description: "Traditional customs include having children jump on the marriage bed for fertility, eating sweet desserts like tangyuan (glutinous rice balls) for harmony, and the bride entering the groom's home stepping over a saddle and charcoal for safety."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "Red is the primary wedding color symbolizing luck, joy, and prosperity—never wear white or black to a Chinese wedding as they symbolize mourning",
+        "The number 8 is extremely lucky (sounds like 'prosperity'), while 4 is unlucky (sounds like 'death')—this affects dates, guest counts, and gift amounts",
+        "Red envelopes (hongbao) with money are traditional gifts; amounts should be even numbers (except 4) and given in new bills",
+        "Many couples have two ceremonies—one traditional Chinese and one Western-style—and the bride may change outfits 3-4 times",
+        "The tea ceremony is one of the most important moments and deeply symbolic of family unity and respect",
+        "Gifts of clocks, scissors, or umbrellas are considered bad luck and should never be given"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "Why is red so important in Chinese weddings?",
+        a: "Red is the most auspicious color in Chinese culture, symbolizing luck, joy, happiness, and prosperity. The bride traditionally wears a red qipao or cheongsam, decorations are predominantly red and gold, and even invitations may be red. Red is believed to ward off evil spirits and bring good fortune to the marriage. This is why guests should never wear red to a Chinese wedding—it's reserved for the bride."
+      },
+      {
+        q: "What is the tea ceremony and why is it so important?",
+        a: "The tea ceremony (Jing Cha) is when the couple serves tea to their elders and family members in order of seniority, often kneeling or bowing as a sign of respect. It's a formal way of introducing the bride and groom to each side of the family and symbolizes the joining of two families. Elders give red envelopes and jewelry in return, officially welcoming the couple. This ritual is considered one of the most meaningful Chinese wedding traditions."
+      },
+      {
+        q: "What are the door games and why do they happen?",
+        a: "Door games are playful challenges the groom and groomsmen must complete before the groom can see and collect his bride. Set up by the bridesmaids, they may include physical challenges, answering questions about the bride, eating spicy food, or singing songs. The groom typically offers red envelopes (bribes) to pass through. This tradition symbolizes that the bride is precious and the groom must prove his worth and dedication."
+      },
+      {
+        q: "Why do brides change outfits multiple times?",
+        a: "Multiple outfit changes showcase different aspects of the bride and honor both traditional and modern customs. Typically, she wears a white Western gown for the ceremony, a traditional red qipao/cheongsam (often heavily embroidered with gold) for the tea ceremony and formal photos, and sometimes a glamorous evening gown for the reception. Each outfit represents a different cultural influence and moment of the celebration."
+      },
+      {
+        q: "What should I give as a wedding gift at a Chinese wedding?",
+        a: "Red envelopes (hongbao) with money are the traditional and most appreciated gift. Give amounts in even numbers (except 4, which is unlucky), preferably containing the lucky number 8. Use new, crisp bills and never give coins. The amount should cover your meal cost plus a gift amount. Physical gifts like clocks (symbolize death), scissors/knives (cutting ties), or umbrellas (breaking up) should be avoided."
+      }
+    ]
+  },
+
+  "nigerian": {
+    title: "Nigerian Wedding Traditions",
+    seoTitle: "Nigerian Wedding Ceremony Guide | Understanding Nigerian & West African Wedding Traditions",
+    seoDescription: "Complete guide to Nigerian wedding traditions including traditional engagement, bride price, cultural attire, and vibrant celebrations across Yoruba, Igbo, and Hausa cultures.",
+    heroImage: "/weddings/nigerian-wedding.jpg",
+
+    introHeading: "Vibrant celebrations honoring family, culture, and unity.",
+    introBody: "Nigerian weddings are spectacular multi-day celebrations filled with color, music, dancing, and rich cultural traditions. Nigeria has over 250 ethnic groups, with Yoruba, Igbo, and Hausa being the largest, each with unique wedding customs. Most Nigerian weddings include a traditional ceremony (with cultural attire and rituals), a white wedding (Western-style church ceremony), and an elaborate reception with entertainment, food, and dancing.",
+
+    keyMoments: [
+      {
+        title: "Introduction Ceremony (Ikutu Aka/Knocking on the Door)",
+        description: "The groom's family formally visits the bride's family to express their son's intention to marry. This is the official first step, where both families meet and discuss the union."
+      },
+      {
+        title: "Bride Price Negotiation (Lobola/Wine Carrying)",
+        description: "A significant tradition where the groom's family presents gifts, money, and items requested by the bride's family. This is not 'buying' the bride but honoring her family and showing the groom's commitment and ability to provide."
+      },
+      {
+        title: "Traditional Engagement (Igba Nkwu/Idana)",
+        description: "An elaborate ceremony with both families dressed in traditional attire (aso ebi). The bride is 'presented' to guests, prayers are offered, and the bride price is formally accepted. This is often the most colorful and cultural-rich ceremony."
+      },
+      {
+        title: "Bride's Grand Entrance",
+        description: "The bride makes multiple grand entrances in different traditional outfits, often accompanied by bridesmaids and female family members dancing to traditional music. Her face may be veiled until a specific moment."
+      },
+      {
+        title: "Wine Carrying/Searching for the Groom",
+        description: "A playful tradition where the bride is given a cup of palm wine and must find her groom among the guests while blindfolded or with her face covered. When she finds him, she offers him the wine, and he drinks to accept her."
+      },
+      {
+        title: "Kola Nut Breaking",
+        description: "In Igbo tradition, the breaking and sharing of kola nuts symbolizes hospitality, good fortune, and the joining of families. The eldest person typically breaks the kola nut while prayers are said."
+      },
+      {
+        title: "Prayer and Blessings",
+        description: "Elders from both families offer prayers and blessings for the couple's marriage, fertility, prosperity, and happiness. This is a deeply respected moment."
+      },
+      {
+        title: "White Wedding Ceremony",
+        description: "Many Nigerian couples also have a Western-style church wedding (Christian) or Islamic Nikah ceremony. The bride wears a white gown, and the ceremony follows traditional Western or Islamic customs."
+      },
+      {
+        title: "The Reception",
+        description: "An extravagant celebration with live music, DJs, traditional drummers, elaborate meals, and energetic dancing. Guests 'spray' money on the dancing couple by throwing cash or placing bills on their foreheads—a sign of blessing and celebration."
+      },
+      {
+        title: "Cake Cutting and First Dance",
+        description: "Western-influenced traditions incorporated into modern Nigerian weddings, often with elaborate multi-tiered cakes and choreographed dances."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "Nigerian weddings typically have two separate ceremonies—a traditional/cultural ceremony and a white wedding (church) or Islamic ceremony",
+        "Aso ebi (matching family/group fabric) is worn by different groups to show unity—often elaborate lace, ankara, or gele (head wraps)",
+        "The bride changes into multiple traditional outfits throughout the day, showcasing different cultural attire",
+        "Money spraying during dancing is customary—guests throw money at the couple or attach bills to their clothing as blessings",
+        "Guest lists are large (often 300-1000+ people) as extended family and community are central to celebrations",
+        "Each ethnic group (Yoruba, Igbo, Hausa) has distinct traditions, languages, foods, and customs during ceremonies"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "What is the bride price and what does it include?",
+        a: "The bride price (also called lobola or wine carrying) is a cultural tradition where the groom's family presents gifts and money to the bride's family. It's not 'buying' the bride but demonstrating respect, gratitude, and the groom's ability to care for her. Items may include cash, kola nuts, palm wine, yams, fabric, livestock, or jewelry—depending on the ethnic group and family. The bride's family creates a list, and negotiations are part of the tradition."
+      },
+      {
+        q: "What is Aso Ebi and who wears it?",
+        a: "Aso ebi means 'family cloth' and refers to matching fabric worn by different groups at the wedding—bride's family, groom's family, friends, age groups, etc. It shows solidarity and creates a stunning visual unity. Aso ebi is typically elaborate lace, ankara (African print), or other fine fabrics in coordinated colors. Guests purchase the fabric in advance and have it tailored into traditional outfits. It's a significant part of Nigerian wedding culture."
+      },
+      {
+        q: "What is money spraying and why do people do it?",
+        a: "Money spraying is a joyful tradition where guests throw money at the dancing couple, place bills on their foreheads, or 'make it rain' cash during the reception. It's a way of blessing the couple with prosperity, showing generosity, and celebrating their union. The money belongs to the couple. In modern weddings, professional 'money sprayers' with currency machines create spectacular cash showers while the DJ hypes up the moment."
+      },
+      {
+        q: "Why do brides change into multiple outfits?",
+        a: "Nigerian brides typically wear 3-5 different outfits throughout the wedding celebrations to showcase their beauty and honor different cultural traditions. She may wear traditional Yoruba iro and buba, Igbo George wrapper, a white wedding gown for the church ceremony, and glamorous reception gowns. Each outfit change is an event in itself, often with choreographed entrances, dancing, and celebration."
+      },
+      {
+        q: "What's the difference between Yoruba, Igbo, and Hausa weddings?",
+        a: "Each Nigerian ethnic group has distinct traditions. Yoruba weddings feature aso oke fabric, alaga (MC/coordinator), and elaborate prayers. Igbo weddings include the Igba Nkwu ceremony, kola nut breaking, and wine carrying tradition. Hausa weddings (typically Islamic) include the Kunshi (henna), Nikah ceremony, and may feature more conservative celebrations. Despite differences, all emphasize family, community, colorful attire, music, dancing, and generous celebrations."
+      }
+    ]
+  },
+
+  "korean": {
+    title: "Korean Wedding Traditions",
+    seoTitle: "Korean Wedding Ceremony Guide | Understanding Traditional Korean Wedding Customs & Pyebaek",
+    seoDescription: "Complete guide to Korean wedding traditions including the Pyebaek ceremony, Hanbok attire, Paebaek, and modern Korean-American wedding customs.",
+    heroImage: "/weddings/korean-wedding.jpg",
+
+    introHeading: "Honoring family and tradition through elegant ceremonies.",
+    introBody: "Korean weddings beautifully blend Confucian values of family and respect with modern celebrations. While contemporary Korean-American weddings often follow Western ceremony formats, many couples incorporate traditional elements like the Pyebaek (family ceremony), wearing Hanbok (traditional Korean dress), and honoring parents. Traditional Korean weddings emphasize the union of two families, filial piety, and respect for elders through meaningful rituals.",
+
+    keyMoments: [
+      {
+        title: "Engagement (Yak-hon)",
+        description: "Traditionally, families exchange gifts and formal letters (Saju) containing the bride and groom's birth dates and times for astrological compatibility. Modern engagements are more casual but may still include family gift exchanges."
+      },
+      {
+        title: "Ham Delivery (Hahm)",
+        description: "The night before or days before the wedding, the groom's family sends a wedding box (hahm) to the bride's home containing gifts like silk, jewelry, and traditional items. Friends of the groom playfully 'sell' the box for money or food before delivering it."
+      },
+      {
+        title: "Modern Wedding Ceremony (Ye-shik)",
+        description: "Most Korean-American couples have a Western-style ceremony with a white dress, tuxedo, vows, and rings. This takes place in a wedding hall, hotel, or church and typically lasts 20-30 minutes."
+      },
+      {
+        title: "Processional",
+        description: "The groom enters first, sometimes with his mother carrying a white goose (or wooden goose)—symbolizing fidelity since geese mate for life. The bride then enters, often escorted by both parents."
+      },
+      {
+        title: "Kunbere (Big Bows)",
+        description: "In traditional ceremonies, the couple performs deep formal bows to each other and to their parents, showing respect and commitment. This is less common in modern ceremonies but may be incorporated."
+      },
+      {
+        title: "Drinking from the Gourd",
+        description: "A traditional ritual where the couple drinks wine or liquor from cups made from two halves of a gourd tied together with red thread, symbolizing their union and the joining of two families into one."
+      },
+      {
+        title: "Pyebaek/Paebaek (Family Ceremony)",
+        description: "The most important traditional element—a private ceremony after the main wedding where the couple, dressed in Hanbok, bows to the groom's family elders. Parents sit at a table with food offerings (jujubes, chestnuts) and the couple performs formal deep bows."
+      },
+      {
+        title: "Throwing Dates and Chestnuts",
+        description: "During Pyebaek, parents throw jujubes (dates) and chestnuts at the bride as she tries to catch them in her skirt. The number caught symbolizes how many children she'll have. Dates represent daughters, chestnuts represent sons."
+      },
+      {
+        title: "Reception and Photo Time",
+        description: "Elaborate receptions with speeches, toasts, and formal photos with family. Korean weddings often include a 'food buffet' for guests and multiple outfit changes for photos in traditional Hanbok."
+      },
+      {
+        title: "Duck or Geese Gifts",
+        description: "Wooden ducks or geese are often given as wedding gifts or used as ceremony décor, symbolizing a faithful marriage as these birds mate for life."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "Most Korean-American weddings combine Western ceremony style with traditional Korean elements like Pyebaek",
+        "The Pyebaek ceremony is often private (family only) and held after the main ceremony in a separate room",
+        "Hanbok (traditional Korean dress) is worn during Pyebaek—bride in colorful jeogori and chima, groom in baji and jeogori",
+        "Bowing is central to Korean tradition and shows deep respect to elders—the depth and formality of bows have specific meanings",
+        "Money gifts are customary—brought in white envelopes (not red like Chinese weddings) with new bills",
+        "Korean wedding halls are efficient and may host multiple weddings per day with structured time slots"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "What is the Pyebaek ceremony and why is it important?",
+        a: "Pyebaek (also spelled Paebaek) is a traditional Korean family ceremony where the newlyweds, dressed in Hanbok, formally greet and bow to the groom's family elders for the first time as a married couple. The couple performs deep formal bows (called 'big bows' or kunbere) while elders sit at a low table with symbolic foods. This private ceremony is deeply meaningful, representing respect, family unity, and the bride's official welcome into the groom's family."
+      },
+      {
+        q: "What is the significance of dates and chestnuts in Korean weddings?",
+        a: "Jujubes (Korean dates) and chestnuts are symbolic foods representing fertility and prosperity. During Pyebaek, parents throw them at the bride, who tries to catch them in her skirt. Folklore says the number she catches predicts how many children she'll have—dates represent daughters and chestnuts represent sons. These foods also appear on the ceremonial table, symbolizing good fortune and healthy offspring."
+      },
+      {
+        q: "What should I wear to a Korean wedding?",
+        a: "Guests typically wear semi-formal or formal Western attire—suits for men, cocktail dresses or dressy outfits for women. Avoid wearing white (reserved for the bride) or black (traditionally associated with funerals, though becoming more accepted). If attending a traditional ceremony or Pyebaek, modest, respectful attire is appreciated. Only family members wear Hanbok unless specifically requested."
+      },
+      {
+        q: "What is appropriate as a wedding gift?",
+        a: "Money is the standard wedding gift in Korean culture, given in a white envelope (not red). Use crisp, new bills in even amounts. The amount depends on your relationship to the couple—closer relationships warrant more generous gifts. Cash is practical and appreciated as Korean couples often use wedding gifts to offset ceremony costs. Some couples have registry items for non-Korean guests."
+      },
+      {
+        q: "Why are there wooden ducks at Korean weddings?",
+        a: "Wooden ducks (or geese) called 'wedding ducks' symbolize faithfulness and a harmonious marriage because these birds mate for life. Traditionally, the groom carried a live goose to the bride's family at the wedding, but today decorative wooden ducks are used as ceremony décor and popular wedding gifts. They're often displayed in the couple's home as a symbol of their commitment."
+      }
+    ]
   }
 };
 
