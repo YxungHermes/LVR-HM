@@ -687,6 +687,270 @@ export const culturalWeddings = {
         a: "Wooden ducks (or geese) called 'wedding ducks' symbolize faithfulness and a harmonious marriage because these birds mate for life. Traditionally, the groom carried a live goose to the bride's family at the wedding, but today decorative wooden ducks are used as ceremony décor and popular wedding gifts. They're often displayed in the couple's home as a symbol of their commitment."
       }
     ]
+  },
+
+  "filipino": {
+    title: "Filipino Wedding Traditions",
+    seoTitle: "Filipino Wedding Ceremony Guide | Understanding Filipino Catholic Wedding Traditions & Customs",
+    seoDescription: "Complete guide to Filipino wedding traditions including the Veil, Cord, Coins ceremony, Arras, and cultural customs. Learn about Filipino Catholic wedding rituals.",
+    heroImage: "/weddings/filipino-wedding.jpg",
+
+    introHeading: "Blending Catholic faith with vibrant Filipino cultural traditions.",
+    introBody: "Filipino weddings beautifully merge Catholic ceremony traditions with unique Filipino customs that symbolize unity, prosperity, and family bonds. While the ceremony follows Catholic Mass structure, Filipino weddings are distinguished by the symbolic Veil, Cord, and Coins (Arras) ceremonies, traditional attire like the Barong Tagalog and Filipiniana dress, and vibrant receptions with cultural dances and customs.",
+
+    keyMoments: [
+      {
+        title: "Catholic Ceremony",
+        description: "Most Filipino weddings are Catholic Masses following traditional liturgy with readings, vows, ring exchange, and communion. The ceremony incorporates unique Filipino traditions."
+      },
+      {
+        title: "Veil Ceremony (Pamamanhikan)",
+        description: "Sponsors (typically godparents or close family) drape a white veil over the bride's head and groom's shoulders in a figure-eight pattern, symbolizing unity as one. The veil represents being clothed as one in God."
+      },
+      {
+        title: "Cord Ceremony (Lasso/Yugal)",
+        description: "A decorative silk cord or floral garland is placed around the couple's shoulders in a figure-eight or infinity loop, symbolizing their eternal bond and unity. It's removed only after the final blessing."
+      },
+      {
+        title: "Coins Ceremony (Arras/Arrhae)",
+        description: "The groom presents 13 gold or silver coins to the bride, symbolizing his commitment to provide for the family and share his earthly possessions. The bride accepts them, showing her trust and commitment to managing their home."
+      },
+      {
+        title: "Candle Lighting",
+        description: "The couple's mothers light candles, then the bride and groom use these to light a unity candle together, symbolizing two families becoming one and Christ as the light of their marriage."
+      },
+      {
+        title: "Ring Blessing and Exchange",
+        description: "Wedding rings are blessed and exchanged with traditional Catholic vows, often with the priest invoking God's blessing on the symbols of their commitment."
+      },
+      {
+        title: "Sign of Peace (Kiss)",
+        description: "After receiving the priest's blessing, the couple shares their first kiss as husband and wife, followed by the congregation's sign of peace."
+      },
+      {
+        title: "Money Dance (Salu-Salo/Dollar Dance)",
+        description: "During the reception, guests pin money on the couple's clothing while dancing with them. This helps the newlyweds financially and is a joyful, interactive tradition."
+      },
+      {
+        title: "Rice Tossing",
+        description: "Guests shower the couple with rice (or flower petals) as they exit the church, symbolizing wishes for prosperity, fertility, and good fortune."
+      },
+      {
+        title: "Release of Doves or Butterflies",
+        description: "Some couples release white doves or butterflies after the ceremony, symbolizing peace, love, and the beginning of their new life together."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "Filipino weddings blend Catholic tradition with Spanish colonial influences and indigenous Filipino customs",
+        "The ceremony includes both Catholic sacramental elements and unique Filipino symbolic rituals (veil, cord, coins)",
+        "Traditional attire: men wear Barong Tagalog (embroidered formal shirt), women wear Filipiniana dresses or terno",
+        "Principal sponsors (Ninong/Ninang) play important roles—like godparents who witness and support the marriage",
+        "Receptions often feature lechon (roast pig), lumpia, pancit, and traditional Filipino foods",
+        "Family is central—extended family involvement is significant, and weddings are often large (200-400 guests)"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "What are the Veil, Cord, and Coins ceremonies?",
+        a: "These are the three unique Filipino wedding traditions performed during the Catholic ceremony. The Veil ceremony involves sponsors draping a white veil over the couple, symbolizing unity. The Cord (or Lasso) is a decorative loop placed around them in a figure-eight, representing their eternal bond. The Coins (Arras) are 13 coins given by the groom to the bride, symbolizing his promise to provide and their shared commitment to prosperity. These rituals are performed after the vows and before communion."
+      },
+      {
+        q: "What is a Barong Tagalog and when is it worn?",
+        a: "The Barong Tagalog is a traditional Filipino formal shirt made of lightweight fabric (often piña or jusi) with intricate embroidery. It's worn untucked and is the formal attire for Filipino grooms and male guests at weddings. The Barong represents Filipino cultural pride and elegance. Women wear the Filipiniana dress or terno, which features butterfly sleeves and elegant embroidery."
+      },
+      {
+        q: "Who are the principal sponsors and what do they do?",
+        a: "Principal sponsors (Ninong and Ninang) are like godparents for the marriage—respected elders chosen by the couple to guide and support them throughout their married life. They participate in the ceremony by performing the Veil and Cord rituals and signing as official witnesses. Having many sponsors is common, showing the community's support for the marriage."
+      },
+      {
+        q: "What is the money dance and why do guests pin money?",
+        a: "The money dance (also called Salu-Salo or Dollar Dance) is a reception tradition where guests take turns dancing with the bride and groom while pinning paper money on their clothing. It's a fun, interactive way to celebrate and help the newlyweds start their married life with financial blessings. The money belongs to the couple and helps offset wedding costs or honeymoon expenses."
+      },
+      {
+        q: "Are Filipino weddings always Catholic?",
+        a: "The majority of Filipino weddings are Catholic due to the Philippines' strong Catholic heritage (over 80% of Filipinos are Catholic). However, there are Protestant, Iglesia ni Cristo, and Muslim Filipino weddings as well. Even secular Filipino weddings often incorporate cultural elements like the veil, cord, and coins ceremonies adapted for non-religious contexts."
+      }
+    ]
+  },
+
+  "sikh": {
+    title: "Sikh Wedding Traditions",
+    seoTitle: "Sikh Wedding Ceremony Guide | Understanding Anand Karaj & Sikh Wedding Traditions",
+    seoDescription: "Complete guide to Sikh wedding traditions including the Anand Karaj ceremony, Four Lavaan, Gurdwara customs, and Punjabi Sikh wedding rituals. Learn the sacred traditions.",
+    heroImage: "/weddings/sikh-wedding.jpg",
+
+    introHeading: "Sacred union before the Guru Granth Sahib.",
+    introBody: "Sikh weddings center around the Anand Karaj (literally 'blissful union'), a spiritual ceremony performed in a Gurdwara (Sikh temple) before the Guru Granth Sahib (holy scripture). The ceremony emphasizes equality, with both bride and groom walking around the Guru Granth Sahib four times while the Lavaan (wedding hymns) are recited. Sikh weddings blend profound spiritual significance with vibrant Punjabi cultural celebrations.",
+
+    keyMoments: [
+      {
+        title: "Roka & Thaka",
+        description: "The engagement ceremony where families formally agree to the marriage. The couple exchanges rings and receives blessings from elders with dried dates and coconuts."
+      },
+      {
+        title: "Kurmai (Engagement Party)",
+        description: "Formal engagement celebration where families exchange gifts, sweets, and the couple may exchange rings if not done during Roka."
+      },
+      {
+        title: "Sangeet & Mehndi",
+        description: "Pre-wedding celebrations with music, dancing, Punjabi folk songs, and henna application for the bride and female guests. High-energy Bhangra and Giddha dancing."
+      },
+      {
+        title: "Chooda Ceremony",
+        description: "The bride's maternal uncle presents her with a set of red and white bangles (chooda) that she will wear for the first 40 days or longer of marriage. They're blessed and washed with milk before wearing."
+      },
+      {
+        title: "Jaggo/Jaggo",
+        description: "A late-night celebration the night before the wedding where female family members dance through the streets with a decorated pot (jaggo) carrying oil lamps, singing traditional songs."
+      },
+      {
+        title: "Baraat (Groom's Procession)",
+        description: "The groom arrives on horseback accompanied by family and friends dancing to dhol drums. The bride's family greets them with Milni (meeting of families) where both sides exchange garlands and gifts."
+      },
+      {
+        title: "Anand Karaj Ceremony",
+        description: "The sacred wedding ceremony in the Gurdwara. The couple sits before the Guru Granth Sahib while the Granthi (priest) reads from scripture and explains the marriage's spiritual significance."
+      },
+      {
+        title: "Four Lavaan (Circles)",
+        description: "The core of the ceremony—the couple walks clockwise around the Guru Granth Sahib four times while the Lavaan (wedding hymns by Guru Ram Das) are sung. Each round represents a stage of married life and spiritual union."
+      },
+      {
+        title: "Ardas (Prayer)",
+        description: "The congregation stands for the final prayer seeking blessings for the couple's married life. This is followed by distribution of Karah Prasad (sacred sweet offering)."
+      },
+      {
+        title: "Doli (Bride's Farewell)",
+        description: "An emotional moment when the bride leaves her family home. Rice is thrown over her head as she departs, symbolizing prosperity and her family's blessings."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "All Sikh weddings must take place in a Gurdwara before the Guru Granth Sahib to be religiously valid",
+        "Both bride and groom must cover their heads in the Gurdwara (women wear dupattas, men wear turbans or head coverings)",
+        "Shoes must be removed before entering the Gurdwara, and guests should sit on the floor during the ceremony",
+        "The ceremony emphasizes equality—the bride leads in the first three Lavaan, the groom in the fourth",
+        "Alcohol and meat are not served at Sikh weddings as Gurdwaras are alcohol-free and many Sikhs are vegetarian",
+        "Langar (free community meal) is often served to all guests after the ceremony, sitting together on the floor"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "What is the Anand Karaj and what does it mean?",
+        a: "Anand Karaj means 'blissful union' in Punjabi and is the Sikh wedding ceremony. It's a sacred spiritual union performed before the Guru Granth Sahib (Sikh holy scripture) in a Gurdwara. The ceremony emphasizes that marriage is a spiritual partnership where two souls become one, joining in devotion to God. Unlike other traditions, it's not just a social contract but a path to spiritual enlightenment together."
+      },
+      {
+        q: "What are the Four Lavaan and what do they represent?",
+        a: "The Four Lavaan are wedding hymns written by Guru Ram Das, the fourth Sikh Guru. During the ceremony, the couple walks around the Guru Granth Sahib four times while these hymns are sung. Each Lavan represents a stage: 1) Emphasis on duty and worldly life, 2) Meeting the True Guru and beginning spiritual journey, 3) Detachment from worldly attractions and love for God, 4) Achievement of spiritual union and bliss. Walking together symbolizes their journey through married life toward enlightenment."
+      },
+      {
+        q: "Why must Sikh weddings take place in a Gurdwara?",
+        a: "Sikh weddings must occur in a Gurdwara before the Guru Granth Sahib because the Guru is the central witness to the marriage. The Guru Granth Sahib represents the eternal Guru for Sikhs, and the marriage vows are made in its presence, not just between two people. Having the ceremony anywhere else would not be considered a valid Anand Karaj according to Sikh religious law."
+      },
+      {
+        q: "What should I wear and what is the etiquette in a Gurdwara?",
+        a: "Cover your head (women with a scarf/dupatta, men with a handkerchief or turban), remove shoes before entering, and dress modestly (shoulders and legs covered). Avoid alcohol before attending. Sit cross-legged or with legs folded on the floor during the ceremony—never point your feet toward the Guru Granth Sahib. Participate respectfully in the Ardas (prayer) by standing, and accept Karah Prasad (sweet offering) with both hands as a blessing."
+      },
+      {
+        q: "How is a Sikh wedding different from a Hindu wedding?",
+        a: "While both may share Punjabi cultural elements (Sangeet, Mehndi, Baraat), Sikh weddings are religiously distinct. Sikh ceremonies occur in a Gurdwara before the Guru Granth Sahib with Four Lavaan, while Hindu weddings occur around a sacred fire with Saat Phere (seven circles). Sikh weddings emphasize spiritual equality and partnership, while Hindu ceremonies involve more elaborate rituals and a pandit. Sikh weddings are typically shorter (30-45 minutes) and alcohol-free."
+      }
+    ]
+  },
+
+  "mexican": {
+    title: "Mexican Wedding Traditions",
+    seoTitle: "Mexican Wedding Ceremony Guide | Understanding Mexican Catholic Wedding Traditions & Customs",
+    seoDescription: "Complete guide to Mexican wedding traditions including the Lazo, Arras, Las Madrinas, and vibrant celebrations. Learn about Mexican Catholic wedding rituals and customs.",
+    heroImage: "/weddings/mexican-wedding.jpg",
+
+    introHeading: "Vibrant celebrations honoring faith, family, and cultural heritage.",
+    introBody: "Mexican weddings beautifully blend Catholic traditions with indigenous Mexican customs, creating colorful, festive celebrations centered on family and faith. From the symbolic Lazo (lasso) and Arras (coins) ceremonies to the vibrant Mariachi music and traditional dances, Mexican weddings are rich with meaning and joy. These celebrations often involve the entire community, with godparents (padrinos and madrinas) playing essential roles.",
+
+    keyMoments: [
+      {
+        title: "Las Arras (Wedding Coins)",
+        description: "The groom gives the bride 13 gold coins, blessed by the priest, symbolizing his commitment to support the family and share his worldly goods. The bride accepts them in her hands, showing her trust and commitment to the household."
+      },
+      {
+        title: "El Lazo (The Lasso)",
+        description: "A large floral garland, rosary, or silk cord is placed in a figure-eight around the couple's shoulders after vows, symbolizing their unity and eternal bond. Los padrinos de lazo (godparents of the lasso) perform this ritual."
+      },
+      {
+        title: "Las Madrinas & Los Padrinos (Godparents)",
+        description: "Multiple sets of godparents sponsor different aspects of the wedding—rings, flowers, Bible, Lazo, Arras. They provide financial support, spiritual guidance, and mentorship to the couple."
+      },
+      {
+        title: "La Marcha (Processional)",
+        description: "The bride enters with both parents (or father), symbolizing both families blessing the union. The groom also enters with his parents, emphasizing family involvement."
+      },
+      {
+        title: "Veil & Bible Presentation",
+        description: "The bride may carry a white Bible and rosary, gifts from godparents. A veil is sometimes placed over the bride, blessed by the priest, symbolizing purity and protection."
+      },
+      {
+        title: "Catholic Mass",
+        description: "Full Catholic ceremony with readings, Gospel, vows, ring exchange, and communion. The ceremony emphasizes the sacrament of marriage before God and the Church."
+      },
+      {
+        title: "Mariachi Serenade",
+        description: "Live Mariachi band performs traditional songs during the ceremony or reception. The groom may serenade the bride with 'Las Mañanitas' or romantic ballads."
+      },
+      {
+        title: "La Vibora de la Mar (Sea Snake Dance)",
+        description: "A festive reception tradition where guests form a human chain and try to bring down the bride and groom standing on chairs. It's playful, energetic, and involves everyone."
+      },
+      {
+        title: "El Baile del Dólar (Money Dance)",
+        description: "Guests pin money on the couple's clothing while dancing with them, providing financial help and blessings for their future together."
+      },
+      {
+        title: "Tequila & Horchata Toasts",
+        description: "Traditional drinks are served—tequila for toasts, horchata (sweet rice drink), and Mexican hot chocolate. Champagne is also common for modern celebrations."
+      }
+    ],
+
+    culturalConsiderations: {
+      heading: "Important Things to Know",
+      points: [
+        "Most Mexican weddings are Catholic ceremonies, often with full Mass including communion",
+        "Family involvement is central—parents walk the couple down the aisle, godparents sponsor various elements",
+        "Colors are vibrant—bold jewel tones, embroidered dresses, and festive decorations are common",
+        "Papel picado (decorative paper banners) and marigolds are traditional decorations",
+        "Receptions feature traditional foods like mole, tamales, pozole, and tres leches cake",
+        "Regional variations exist—Northern vs Southern Mexican traditions, indigenous influences vary by region"
+      ]
+    },
+
+    commonQuestions: [
+      {
+        q: "What is the Lazo ceremony and who performs it?",
+        a: "El Lazo is a lasso or cord (often a large rosary, silk rope, or floral garland) placed over the couple's shoulders in a figure-eight after they exchange vows. It symbolizes their unity as one and their eternal bond. Los padrinos de lazo (godparents of the lasso) are chosen to place it on the couple during the ceremony. The Lazo remains on them through communion and is removed only at the end, symbolizing that they are bound together."
+      },
+      {
+        q: "What are Las Arras and what do the 13 coins represent?",
+        a: "Las Arras are 13 gold or silver coins presented by the groom to the bride during the ceremony. The 13 coins represent Jesus and his 12 apostles. They symbolize the groom's promise to provide for the family and share his earthly possessions, while the bride's acceptance shows her trust and commitment to managing their household wisely. The coins are often kept as family heirlooms."
+      },
+      {
+        q: "What role do padrinos and madrinas play in Mexican weddings?",
+        a: "Padrinos (godfathers) and madrinas (godmothers) are sponsors who provide financial, spiritual, and emotional support to the couple. Different padrinos sponsor specific items: rings, Lazo, Arras, Bible, flowers, or even the entire reception. Being asked to be a padrino/madrina is a great honor and creates a lifelong bond with the couple. They're like godparents for the marriage, offering guidance and support."
+      },
+      {
+        q: "What is La Vibora de la Mar?",
+        a: "La Vibora de la Mar ('The Sea Snake') is a fun reception tradition where all the single guests form a conga line/chain and dance around while the bride and groom stand on chairs. The 'snake' of guests tries to bring the couple down by moving closer and creating waves. It's playful, energetic, and gets everyone involved in the celebration."
+      },
+      {
+        q: "What should I expect at a Mexican wedding reception?",
+        a: "Mexican wedding receptions are lively, colorful celebrations with live Mariachi music, traditional dancing, and abundant food. Expect traditional dishes like mole, tamales, carnitas, and tres leches cake. There will be tequila toasts, the money dance, and La Vibora de la Mar. Celebrations often last late into the night with continuous music and dancing. Family and community participation is central, making everyone feel welcome."
+      }
+    ]
   }
 };
 
