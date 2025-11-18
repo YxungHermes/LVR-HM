@@ -222,24 +222,24 @@ export const navigation: Navigation = {
       megaMenu: {
         sections: [
           {
-            title: "Religious Traditions",
+            title: "Wedding Traditions A-K",
             links: [
               { label: "Catholic Weddings", href: "/weddings/catholic" },
-              { label: "Jewish Weddings", href: "/weddings/jewish" },
-              { label: "Hindu & Indian Weddings", href: "/weddings/hindu" },
-              { label: "Muslim & Islamic Weddings", href: "/weddings/muslim" },
+              { label: "Chinese Weddings", href: "/weddings/chinese" },
+              { label: "Filipino Weddings", href: "/weddings/filipino" },
               { label: "Greek Orthodox Weddings", href: "/weddings/greek-orthodox" },
-              { label: "Sikh Weddings", href: "/weddings/sikh" }
+              { label: "Hindu & Indian Weddings", href: "/weddings/hindu" },
+              { label: "Jewish Weddings", href: "/weddings/jewish" },
+              { label: "Korean Weddings", href: "/weddings/korean" }
             ]
           },
           {
-            title: "Cultural Traditions",
+            title: "Wedding Traditions M-S",
             links: [
-              { label: "Chinese Weddings", href: "/weddings/chinese" },
-              { label: "Filipino Weddings", href: "/weddings/filipino" },
-              { label: "Korean Weddings", href: "/weddings/korean" },
               { label: "Mexican Weddings", href: "/weddings/mexican" },
-              { label: "Nigerian Weddings", href: "/weddings/nigerian" }
+              { label: "Muslim & Islamic Weddings", href: "/weddings/muslim" },
+              { label: "Nigerian Weddings", href: "/weddings/nigerian" },
+              { label: "Sikh Weddings", href: "/weddings/sikh" }
             ]
           },
           {
