@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: "What if I'm not sure which collection fits my needs?",
-    answer: "That's exactly what the consultation is for. We'll talk through your day, your vision, your priorities, and your timeline. Then we'll create a custom proposal that feels tailored to you—not a one-size-fits-all package. No pressure, just clarity."
+    answer: "You can get a rough sense of pricing from our collections on the website, which helps you know if we're in your ballpark. But if you want something tailored to your specific day—your hours, your priorities, your add-ons—that's what the consultation is for. We'll create a custom proposal that fits you perfectly, not a one-size-fits-all package. No pressure, just clarity."
   },
   {
     question: "Do you travel for destination weddings and adventure sessions?",
@@ -111,10 +111,10 @@ export default function ProcessPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.2 }}
                 >
-                  <div className="text-rose-wax-red font-bold text-sm mb-2">DAY 3-7</div>
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">WITHIN A WEEK</div>
                   <h3 className="font-serif text-lg font-semibold text-ink mb-2">Consultation Call</h3>
                   <p className="text-sm text-espresso leading-relaxed">
-                    30-45 min video call to understand your story, vision, and priorities.
+                    30-45 min video call (scheduled around your availability) to understand your story, vision, and priorities.
                   </p>
                 </motion.div>
 
@@ -125,10 +125,10 @@ export default function ProcessPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.3 }}
                 >
-                  <div className="text-rose-wax-red font-bold text-sm mb-2">DAY 10</div>
-                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">Proposal Sent</h3>
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">WITHIN 2-3 DAYS</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">Custom Proposal</h3>
                   <p className="text-sm text-espresso leading-relaxed">
-                    Custom proposal with pricing, deliverables, and timeline within 2-3 days.
+                    Tailored pricing based on your specific needs—coverage hours, deliverables, add-ons. (Rough pricing is on our site if you just want a ballpark first.)
                   </p>
                 </motion.div>
 
@@ -139,7 +139,7 @@ export default function ProcessPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.4 }}
                 >
-                  <div className="text-rose-wax-red font-bold text-sm mb-2">DAY 14</div>
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">ONCE YOU'RE READY</div>
                   <h3 className="font-serif text-lg font-semibold text-ink mb-2">You're Booked</h3>
                   <p className="text-sm text-espresso leading-relaxed">
                     Sign agreement, submit 30% deposit, and your date is officially secured.
