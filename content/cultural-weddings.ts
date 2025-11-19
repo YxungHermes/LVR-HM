@@ -30,7 +30,7 @@ interface FullDayTimelineSegment {
   time: string;
   title: string;
   description: string;
-  vendorNotes?: string;
+  whatIllBeDoing?: string;
 }
 
 interface CulturalConsiderations {
@@ -139,68 +139,68 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       {
         time: "2-3 hours before ceremony",
         title: "Getting Ready & Details",
-        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. Photographer captures detail shots (rings, dress, shoes, invitations) and candid moments.",
-        vendorNotes: "Ideal lighting for getting ready photos. Videographer captures audio messages from family. Coordinate with planner for timeline buffer."
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. This is when I capture detail shots (rings, dress, shoes, invitations) and candid moments of you getting ready.",
+        whatIllBeDoing: "I'll be moving between both locations to capture the emotions, laughter, and anticipation. I'll film detail shots in natural light and might grab quick audio messages from family members. My photographer (usually on my team) and I coordinate to make sure we're not in each other's shots."
       },
       {
         time: "1 hour before ceremony",
         title: "First Look (Optional) & Family Portraits",
-        description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. Alternatively, family formals happen after the ceremony.",
-        vendorNotes: "First look allows 30-45 min of couple portraits before ceremony. Reduces post-ceremony timeline pressure. Have family photo list ready."
+        description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. This moment is just for you two. If you skip the first look, family formals happen after the ceremony instead.",
+        whatIllBeDoing: "If you're doing a first look, I'll capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
       },
       {
         time: "30 minutes before",
         title: "Guests Arrive & Pre-Ceremony",
-        description: "Guests arrive and are seated by ushers. Mothers are seated last, signaling ceremony is about to begin. Priest and wedding party gather in preparation area.",
-        vendorNotes: "Photographer captures guest arrivals and church details. Videographer sets up ceremony audio (lapel mics on priest/couple, audio recorder)."
+        description: "Guests arrive and are seated by ushers. Mothers are seated last, signaling the ceremony is about to begin. The priest and wedding party gather in the preparation area.",
+        whatIllBeDoing: "I'll be setting up ceremony audio (wireless lapel mics on the priest and both of you, plus an audio recorder near the altar). The photographer captures guest arrivals and church details while I do final tech checks and position myself for the processional."
       },
       {
         time: "Ceremony Start",
         title: "Catholic Wedding Mass (60-90 min)",
-        description: "Processional, readings, vows, ring exchange, Liturgy of the Eucharist (if full Mass), blessing, and recessional. See ceremony timeline above for detailed breakdown.",
-        vendorNotes: "Confirm church photography restrictions (no flash during consecration, stay in designated areas). Capture altar reactions, family emotions, key moments."
+        description: "Processional, readings, vows, ring exchange, Liturgy of the Eucharist (if full Mass), blessing, and recessional. See the ceremony timeline section above for the detailed breakdown.",
+        whatIllBeDoing: "I'll confirm the church's photography restrictions with the priest (no flash during consecration, designated movement areas, etc.). During the ceremony, I'm capturing altar reactions, your faces, family emotions, and all the key moments. Audio quality is critical here, so I monitor levels throughout."
       },
       {
         time: "Immediately after ceremony",
         title: "Receiving Line & Family Formals",
-        description: "Couple may greet guests in receiving line outside church. Family formal portraits taken at church or moving to reception venue. Wedding party photos.",
-        vendorNotes: "Work quickly but naturally. Have shot list prepared. Coordinate with planner to keep on schedule. Aim for 30-45 min max for all formals."
+        description: "You might greet guests in a receiving line outside the church. Family formal portraits are taken either at the church or we move to the reception venue. Wedding party photos happen here too.",
+        whatIllBeDoing: "I work with the photographer to capture family formals efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group photos so you're not exhausted before the reception."
       },
       {
         time: "1-2 hours after ceremony",
         title: "Cocktail Hour",
-        description: "Guests enjoy drinks and appetizers while couple finishes portraits. Musicians or DJ provide background music. Often includes signature cocktails.",
-        vendorNotes: "Capture candid guest interactions, décor details, and atmosphere. Couple may make a brief appearance. Coordinate sunset portraits if timing works."
+        description: "Guests enjoy drinks and appetizers while you finish portraits. Musicians or DJ provide background music. Many couples have signature cocktails that reflect their story.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, décor details, and the overall atmosphere. You might make a brief appearance during cocktail hour. If timing works with sunset, your planner and I will coordinate to grab those golden hour couple portraits."
       },
       {
         time: "Reception Start",
         title: "Grand Entrance & First Dances",
-        description: "Wedding party introduced, couple's grand entrance, first dance, parent dances (father-daughter, mother-son), welcome speech.",
-        vendorNotes: "Position for entrance reactions. Get wide shots and close-ups of dances. Capture parent emotions. Audio is critical for speeches."
+        description: "Wedding party is introduced, followed by your grand entrance. First dance as a married couple, then parent dances (father-daughter, mother-son), and welcome speech.",
+        whatIllBeDoing: "I'll position myself to capture entrance reactions from multiple angles. For the first dances, I get wide shots to show the full scene and close-ups of your faces and emotions. Audio is critical for speeches, so I'll be monitoring levels and capturing both the speaker and your reactions."
       },
       {
         time: "Dinner Service",
         title: "Dinner & Toasts",
-        description: "Blessing/prayer before meal, dinner service (typically 3-4 courses for Catholic receptions), best man and maid of honor toasts, possibly parent toasts.",
-        vendorNotes: "Roam for candid table moments. Focus on toasters' faces and couple reactions. Get B-roll of food and table settings."
+        description: "Blessing or prayer before the meal, then dinner service (typically 3-4 courses for Catholic receptions). Best man and maid of honor toasts, possibly parent toasts.",
+        whatIllBeDoing: "I'll roam the room for candid table moments while also getting B-roll of the food and table settings. During toasts, I focus on the speaker's face and your reactions. These genuine moments are often the most emotional parts of the film."
       },
       {
         time: "After Dinner",
         title: "Cake Cutting & Bouquet/Garter",
-        description: "Cake cutting ceremony, bouquet toss, garter toss (optional), and special dances or cultural traditions.",
-        vendorNotes: "Front and back angle for cake cutting. Catch bouquet/garter toss action. High energy moments, anticipate reactions."
+        description: "Cake cutting ceremony, bouquet toss, garter toss (optional), and any special dances or cultural traditions specific to your families.",
+        whatIllBeDoing: "I position myself to get both front and back angles for the cake cutting. For bouquet and garter tosses, I'm anticipating the action and reactions. These are high-energy moments, and I'm watching for genuine laughter and surprise."
       },
       {
         time: "Open Dancing",
         title: "Reception & Dancing",
-        description: "Open dance floor for all guests. DJ or band keeps energy high. Various cultural dances may occur (Italian tarantella, Polish dollar dance, etc).",
-        vendorNotes: "Capture dance floor energy, group shots, candid moments. Wide shots of packed dance floor. Look for emotional family moments."
+        description: "Open dance floor for all guests. DJ or band keeps the energy high. Various cultural dances may happen (Italian tarantella, Polish dollar dance, etc.) depending on your family traditions.",
+        whatIllBeDoing: "I'm capturing the dance floor energy, group moments, and candid interactions. Wide shots of a packed dance floor, close-ups of your family dancing, and those emotional moments when you're surrounded by everyone you love. I'm always looking for authentic reactions."
       },
       {
         time: "Final Hour",
-        title: "Last Dance & Exit",
-        description: "Farewell songs, last dance, sparkler or ribbon exit if planned. Couple departs in decorated car or to suite.",
-        vendorNotes: "Coordinate exit timing with planner. Set up lighting for sparkler/exit shots. Get wide and tight shots of sendoff. Capture couple's final waves."
+        title: "Last Dance & Sendoff",
+        description: "Farewell songs, last dance, sparkler or ribbon exit if you've planned one. You depart in a decorated car or head to your suite.",
+        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for sparkler or exit shots and capture both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always say my goodbyes, give hugs, share my thanks and blessings. I'll find you to say farewell unless you've already left for the night."
       }
     ],
 

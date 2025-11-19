@@ -259,8 +259,11 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4 text-center">
                   Complete Wedding Day Timeline
                 </h2>
-                <p className="text-base text-espresso/70 text-center mb-12 max-w-3xl mx-auto">
-                  From getting ready to the last dance. A comprehensive breakdown from a photographer, videographer, and planner's perspective.
+                <p className="text-base text-espresso/70 text-center mb-6 max-w-3xl mx-auto">
+                  From getting ready to the last dance. Here's how I approach filming your day and what you can expect from me as your videographer.
+                </p>
+                <p className="text-sm text-espresso/60 text-center mb-12 max-w-2xl mx-auto italic">
+                  Note: This timeline is flexible and can be adjusted based on your preferences and coordination with your planner. Every wedding is unique, and we'll work together to create the flow that works best for your day.
                 </p>
 
                 <div className="space-y-6">
@@ -292,10 +295,10 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
                           <p className="text-base text-espresso leading-relaxed mb-3">
                             {segment.description}
                           </p>
-                          {segment.vendorNotes && (
+                          {segment.whatIllBeDoing && (
                             <div className="bg-cream/50 border-l-4 border-rose-wax-red pl-4 py-2">
-                              <p className="text-sm text-espresso/80 italic">
-                                <strong className="text-rose-wax-red not-italic">Vendor notes:</strong> {segment.vendorNotes}
+                              <p className="text-sm text-espresso/80">
+                                <strong className="text-rose-wax-red">What I'll be doing:</strong> {segment.whatIllBeDoing}
                               </p>
                             </div>
                           )}
