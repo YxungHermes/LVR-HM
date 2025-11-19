@@ -174,18 +174,28 @@ export default function ProcessPage() {
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6">
                 Why the Process Matters
               </h2>
-              <p className="text-base md:text-lg text-espresso leading-relaxed max-w-3xl mx-auto mb-8">
+              <p className="text-base md:text-lg text-espresso leading-relaxed max-w-3xl mx-auto mb-10">
                 Great films don't happen by accident. They're the result of preparation, communication, and trust. When we take time upfront to understand your story, we can anticipate the shots that will make you feel something years from now.
               </p>
-              <Link
-                href="/process/approach"
-                className="inline-flex items-center text-rose-wax-red font-medium hover:underline"
-              >
-                Learn more about our approach
-                <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
+
+              {/* Two-button CTA pattern */}
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link
+                  href="/process/approach"
+                  className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Next: Our Approach</span>
+                  <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/consultation"
+                  className="group inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  <span>Book Consultation</span>
+                </Link>
+              </div>
             </motion.div>
           </div>
         </section>

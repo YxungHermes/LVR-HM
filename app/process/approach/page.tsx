@@ -202,26 +202,26 @@ export default function ApproachPage() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">
-                Ready to Learn More?
+                Ready to Continue?
               </h2>
               <p className="text-base text-espresso mb-8">
-                Explore what to expect on your wedding day, or dive into investment details and FAQs.
+                Learn what to expect on your wedding day, or get in touch to start the conversation.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-wrap gap-4 justify-center">
                 <Link
                   href="/process/what-to-expect"
-                  className="inline-flex items-center justify-center bg-rose-wax-red text-white px-8 py-3 rounded-full font-medium text-base transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg"
+                  className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
                 >
-                  What to Expect
-                  <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <span>Next: What to Expect</span>
+                  <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
                 <Link
-                  href="/process/investment"
-                  className="inline-flex items-center justify-center border-2 border-rose-wax-red text-rose-wax-red px-8 py-3 rounded-full font-medium text-base transition-all hover:bg-rose-wax-red hover:text-white hover:scale-105"
+                  href="/consultation"
+                  className="group inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
-                  Investment Details
+                  <span>Book Consultation</span>
                 </Link>
               </div>
             </motion.div>
