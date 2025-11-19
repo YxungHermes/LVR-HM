@@ -75,7 +75,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Sacrament", pronunciation: "", definition: "Sacred rite recognized as a channel of divine grace in Catholic faith" },
       { term: "Liturgy of the Eucharist", pronunciation: "", definition: "The part of Mass including consecration and Holy Communion" },
       { term: "Homily", pronunciation: "", definition: "The priest's sermon or reflection on scripture and marriage" },
-      { term: "Consecration", pronunciation: "", definition: "The blessing of bread and wine, transforming them into the body and blood of Christ" }
+      { term: "Consecration", pronunciation: "", definition: "The blessing of bread and wine, transforming them into the body and blood of Christ" },
     ],
 
     guestEtiquette: {
@@ -187,7 +187,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Yichud", pronunciation: "yee-KHUD", definition: "Private alone time for newlyweds immediately after ceremony" },
       { term: "Hora", pronunciation: "HOR-ah", definition: "Traditional circle dance celebrating the couple" },
       { term: "Mazel Tov", pronunciation: "MAH-zel tov", definition: "Congratulations! (literally 'good luck')" },
-      { term: "Sheva Brachot", pronunciation: "SHEH-vah brah-KHOT", definition: "Seven wedding blessings recited during ceremony" }
+      { term: "Sheva Brachot", pronunciation: "SHEH-vah brah-KHOT", definition: "Seven wedding blessings recited during ceremony" },
     ],
 
     guestEtiquette: {
@@ -304,7 +304,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Baraat", pronunciation: "buh-RAHT", definition: "Groom's wedding procession with dancing and music" },
       { term: "Mehendi", pronunciation: "may-HEN-dee", definition: "Henna designs applied to bride's hands and feet" },
       { term: "Sangeet", pronunciation: "sun-GEET", definition: "Pre-wedding celebration with music, dancing, and performances" },
-      { term: "Mangalsutra", pronunciation: "mun-gul-SOO-truh", definition: "Sacred necklace tied by groom, symbolizing marriage" }
+      { term: "Mangalsutra", pronunciation: "mun-gul-SOO-truh", definition: "Sacred necklace tied by groom, symbolizing marriage" },
     ],
 
     guestEtiquette: {
@@ -427,7 +427,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Walima", pronunciation: "wah-LEE-mah", definition: "Wedding banquet hosted by groom's family after the Nikah" },
       { term: "Qubool Hai", pronunciation: "kuh-BOOL high", definition: "'I accept' - the phrase spoken by bride and groom during Nikah" },
       { term: "Imam", pronunciation: "ih-MAHM", definition: "Islamic religious leader who often officiates the Nikah ceremony" },
-      { term: "Rukhsati", pronunciation: "rook-suh-TEE", definition: "Bride's emotional farewell to her family" }
+      { term: "Rukhsati", pronunciation: "rook-suh-TEE", definition: "Bride's emotional farewell to her family" },
     ],
 
     guestEtiquette: {
@@ -657,8 +657,8 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Qipao/Cheongsam", pronunciation: "chee-pow / chong-sahm", definition: "Traditional Chinese dress, typically red, worn by the bride" },
       { term: "Guo Da Li", pronunciation: "gwoh dah lee", definition: "Door games where groom and groomsmen complete challenges to 'earn' the bride" },
       { term: "San Bai", pronunciation: "sahn bye", definition: "Three bows performed in traditional ceremonies to heaven/earth, parents, and each other" },
-      { term: "Shang Tou", pronunciation: "shahng toh", definition: "Hair combing ceremony performed the night before wedding for good fortune" }
-    },
+      { term: "Shang Tou", pronunciation: "shahng toh", definition: "Hair combing ceremony performed the night before wedding for good fortune" },
+    ],
 
     guestEtiquette: {
       heading: "What to Expect as a Guest",
@@ -776,8 +776,8 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Lobola", pronunciation: "loh-BOH-lah", definition: "Bride price; gifts and money presented by groom's family to bride's family" },
       { term: "Gele", pronunciation: "geh-LEH", definition: "Elaborate head wrap worn by women, tied in intricate styles" },
       { term: "Ankara", pronunciation: "ahn-KAH-rah", definition: "Colorful African wax print fabric with vibrant patterns" },
-      { term: "Alaga", pronunciation: "ah-LAH-gah", definition: "Traditional Yoruba MC/coordinator who guides the ceremony proceedings" }
-    },
+      { term: "Alaga", pronunciation: "ah-LAH-gah", definition: "Traditional Yoruba MC/coordinator who guides the ceremony proceedings" },
+    ],
 
     guestEtiquette: {
       heading: "What to Expect as a Guest",
@@ -895,8 +895,8 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Hahm", pronunciation: "hahm", definition: "Wedding box containing gifts sent from groom's family to bride's family before wedding" },
       { term: "Kunbere", pronunciation: "koon-BEH-reh", definition: "Deep formal bows performed by couple to show respect and commitment" },
       { term: "Jujube", pronunciation: "JOO-joob", definition: "Red dates thrown to couple during Pyebaek, symbolizing children and fertility" },
-      { term: "Saju", pronunciation: "sah-JOO", definition: "Traditional exchange of birthdates for astrological compatibility matching" }
-    },
+      { term: "Saju", pronunciation: "sah-JOO", definition: "Traditional exchange of birthdates for astrological compatibility matching" },
+    ],
 
     guestEtiquette: {
       heading: "What to Expect as a Guest",
@@ -1014,8 +1014,8 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Filipiniana", pronunciation: "fee-lee-pee-nee-AH-nah", definition: "Traditional Filipino dress for women with butterfly sleeves and elegant embroidery" },
       { term: "Ninong/Ninang", pronunciation: "nee-NONG / nee-NAHNG", definition: "Principal sponsors (godparents) who support the couple and participate in ceremonies" },
       { term: "Yugal", pronunciation: "yoo-GAHL", definition: "Decorative cord or lasso placed around couple in figure-eight, symbolizing eternal unity" },
-      { term: "Pamamanhikan", pronunciation: "pah-mah-mahn-HEE-kahn", definition: "Formal meeting where groom's family asks bride's family for her hand in marriage" }
-    },
+      { term: "Pamamanhikan", pronunciation: "pah-mah-mahn-HEE-kahn", definition: "Formal meeting where groom's family asks bride's family for her hand in marriage" },
+    ],
 
     guestEtiquette: {
       heading: "What to Expect as a Guest",
@@ -1133,8 +1133,8 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Guru Granth Sahib", pronunciation: "goo-ROO grahnth sah-HEEB", definition: "Sikh holy scripture; central spiritual authority present at wedding" },
       { term: "Gurdwara", pronunciation: "goor-DWAH-rah", definition: "Sikh place of worship where Anand Karaj ceremony takes place" },
       { term: "Chooda", pronunciation: "CHOO-dah", definition: "Red and white bangles worn by bride, blessed and gifted by maternal uncle" },
-      { term: "Langar", pronunciation: "LAHN-gahr", definition: "Free communal meal served to all guests at Gurdwara after ceremony" }
-    },
+      { term: "Langar", pronunciation: "LAHN-gahr", definition: "Free communal meal served to all guests at Gurdwara after ceremony" },
+    ],
 
     guestEtiquette: {
       heading: "What to Expect as a Guest",
@@ -1252,8 +1252,8 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Padrinos/Madrinas", pronunciation: "pah-DREE-nohs / mah-DREE-nahs", definition: "Godparents who sponsor wedding elements and provide lifelong spiritual guidance" },
       { term: "La Vibora de la Mar", pronunciation: "lah vee-BOH-rah deh lah mahr", definition: "Sea snake dance where guests form a chain trying to bring down the standing couple" },
       { term: "Papel Picado", pronunciation: "pah-PEL pee-KAH-doh", definition: "Decorative perforated paper banners hung at ceremonies and receptions" },
-      { term: "Mariachi", pronunciation: "mah-ree-AH-chee", definition: "Traditional Mexican musical ensemble with violins, trumpets, guitars, and traditional dress" }
-    },
+      { term: "Mariachi", pronunciation: "mah-ree-AH-chee", definition: "Traditional Mexican musical ensemble with violins, trumpets, guitars, and traditional dress" },
+    ],
 
     guestEtiquette: {
       heading: "What to Expect as a Guest",
