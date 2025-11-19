@@ -152,19 +152,19 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "30 minutes before",
         title: "Guests Arrive & Pre-Ceremony",
         description: "Guests arrive and are seated by ushers. Mothers are seated last, signaling the ceremony is about to begin. The priest and wedding party gather in the preparation area.",
-        whatIllBeDoing: "I'll be setting up ceremony audio (wireless lapel mics on the priest and both of you, plus an audio recorder near the altar). While guest arrivals and church details are being captured, I do final tech checks and position myself for the processional."
+        whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics on the priest and groom, plus connecting to the church's audio system if possible to capture everything clearly. The team positions ourselves strategically out of the way, ready for the processional. Final tech checks and we're set."
       },
       {
         time: "Ceremony Start",
         title: "Catholic Wedding Mass (60-90 min)",
         description: "Processional, readings, vows, ring exchange, Liturgy of the Eucharist (if full Mass), blessing, and recessional. See the ceremony timeline section above for the detailed breakdown.",
-        whatIllBeDoing: "I'll confirm the church's photography restrictions with the priest (no flash during consecration, designated movement areas, etc.). My other shooter and I position ourselves to capture multiple angles - altar reactions, your faces, family emotions, and all the key moments. Audio quality is critical here, so I monitor levels throughout the ceremony."
+        whatIllBeDoing: "During the processional, I position myself down the center aisle near the altar to capture your walk and the emotions of your families. When the bride is close, I move to capture the presentation moment when the father gives her away to the groom. From there, my other shooter and I stay positioned at the altar to capture multiple angles throughout the Mass - your faces during vows, family reactions, and all the sacred moments. Audio quality is critical, so I'm monitoring levels the entire time."
       },
       {
         time: "Immediately after ceremony",
         title: "Receiving Line & Family Formals",
         description: "You might greet guests in a receiving line outside the church. Family formal portraits are taken either at the church or we move to the reception venue. Wedding party photos happen here too.",
-        whatIllBeDoing: "I'll work with the photo team to capture family formals efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group photos so you're not exhausted before the reception."
+        whatIllBeDoing: "I'll capture some coverage of the receiving line, then the photo session begins. I work with the photo team to film family formals and couple portraits efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group coverage so you're not exhausted before the reception."
       },
       {
         time: "1-2 hours after ceremony",
