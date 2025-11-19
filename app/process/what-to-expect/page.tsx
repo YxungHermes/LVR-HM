@@ -169,6 +169,38 @@ export default function WhatToExpectPage() {
           </div>
         </section>
 
+        {/* Full Day Timeline Link */}
+        <section className="px-6 py-16 bg-white">
+          <div className="mx-auto max-w-4xl">
+            <motion.div
+              className="bg-gradient-to-br from-warm-sand/20 to-cream border border-coffee/10 rounded-xl p-8 md:p-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">
+                Want to See a Complete Wedding Day Timeline?
+              </h2>
+              <p className="text-base text-espresso leading-relaxed mb-6 max-w-2xl mx-auto">
+                We've created a detailed hour-by-hour breakdown showing exactly how we work from getting ready through the last dance. See what we're doing at every moment and how we coordinate with your team.
+              </p>
+              <Link
+                href="/weddings/catholic#complete-timeline"
+                className="inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+              >
+                <span>View Full Day Timeline</span>
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <p className="text-xs text-espresso/60 mt-4 italic">
+                Timeline shown uses a Catholic wedding as an example. Specific moments may vary based on your ceremony type and cultural traditions.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="px-6 py-20 bg-warm-sand/30">
           <div className="mx-auto max-w-4xl text-center">

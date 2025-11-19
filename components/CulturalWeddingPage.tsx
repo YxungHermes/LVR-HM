@@ -248,7 +248,7 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
 
         {/* Full Day Timeline Section - Vendor Perspective */}
         {content.fullDayTimeline && (
-          <section className="px-6 py-20 bg-white">
+          <section id="complete-timeline" className="px-6 py-20 bg-white scroll-mt-20">
             <div className="mx-auto max-w-5xl">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}

@@ -126,7 +126,7 @@ export default function ProcessPage() {
                   <div className="text-rose-wax-red font-bold text-sm mb-2">WEDDING DAY</div>
                   <h3 className="font-serif text-lg font-semibold text-ink mb-2">We Film</h3>
                   <p className="text-sm text-espresso leading-relaxed">
-                    We arrive 30 min early and capture your story with intention and artistry.
+                    We arrive 30 min early and capture your story as it unfolds naturally.
                   </p>
                 </motion.div>
 
