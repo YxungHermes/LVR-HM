@@ -4,51 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Roadmap from "@/components/Roadmap";
 import FinaleBlock from "@/components/FinaleBlock";
-
-const faqs = [
-  {
-    question: "When should I book my film?",
-    answer: "Most couples book 8–12 months in advance to secure their date, though we occasionally have availability for shorter timelines. If you have your date confirmed and you love our work, reach out soon—our calendar fills quickly, especially during peak season (May–October)."
-  },
-  {
-    question: "What if I'm not sure which collection fits my needs?",
-    answer: "That's exactly what the consultation is for. We'll talk through your day, your vision, your priorities, and your timeline. Then we'll create a custom proposal that feels tailored to you—not a one-size-fits-all package. No pressure, just clarity."
-  },
-  {
-    question: "Do you travel for destination weddings and adventure sessions?",
-    answer: "Absolutely. We've filmed in Italy, Mexico, California, the Redwoods, mountaintops, and everywhere in between. Travel fees are included transparently in your proposal. If the location is meaningful to your story, we'll be there."
-  },
-  {
-    question: "How long does editing and delivery take?",
-    answer: "Teasers arrive in 2–3 weeks (perfect for sharing the excitement while it's fresh). Highlight films take 6–8 weeks, and full feature films are delivered in 10–12 weeks. Rush delivery is available for an additional fee if you need your film sooner."
-  },
-  {
-    question: "Can we request specific shots or moments to be captured?",
-    answer: "Yes, absolutely. During pre-production, we'll create a shot list together based on what matters most to you—whether that's capturing your grandparents dancing, a specific family portrait, or the quiet moment before you walk down the aisle. We balance thoughtful direction with documentary-style observation to keep everything authentic."
-  },
-  {
-    question: "What happens if something goes wrong on the day?",
-    answer: "We always bring backup cameras, audio recorders, batteries, and memory cards. We've filmed through power outages, rainstorms, and last-minute timeline changes. Our priority is staying calm, adaptable, and focused on capturing your story no matter what happens."
-  },
-  {
-    question: "Do you offer raw footage or unedited files?",
-    answer: "Raw footage can be added to any collection for an additional fee. We'll deliver all usable clips organized by moment (getting ready, ceremony, reception, etc.) via secure download link."
-  },
-  {
-    question: "How do payments and deposits work?",
-    answer: "We require a 30% non-refundable deposit to secure your date. The remaining balance is due 14 days before your event. We accept credit cards, bank transfers, and payment plans can be arranged if needed."
-  },
-  {
-    question: "What's your cancellation and refund policy?",
-    answer: "Your deposit is non-refundable as it reserves your date and turns away other inquiries. However, if you need to reschedule due to unforeseen circumstances, we'll work with you to find a new date based on availability—no rescheduling fee."
-  },
-  {
-    question: "Can we choose the music for our film?",
-    answer: "We typically handle music selection to ensure the emotional arc and pacing of your film feels cohesive. That said, if you have a meaningful song (your first dance, a song that represents your relationship), we'll absolutely incorporate it. We use fully licensed music from premium libraries."
-  },
-];
 
 export default function ProcessPage() {
   return (
@@ -67,16 +23,146 @@ export default function ProcessPage() {
                 The Process
               </h1>
               <p className="text-lg md:text-xl text-espresso leading-relaxed max-w-2xl mx-auto">
-                Your film starts long before the cameras roll. Here's how we keep everything calm, clear, and beautifully told—from first hello to final delivery.
+                Your film starts long before the cameras roll. Here's how we keep everything calm, clear, and beautifully told, from first hello to final delivery.
               </p>
             </motion.div>
           </div>
         </section>
 
-        {/* Roadmap Component */}
-        <Roadmap variant="full" cta />
+        {/* At-a-Glance Timeline */}
+        <section className="px-6 py-16 bg-white">
+          <div className="mx-auto max-w-5xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4 text-center">
+                Your Complete Timeline
+              </h2>
+              <p className="text-base text-espresso/70 text-center mb-12 max-w-2xl mx-auto">
+                From the day you reach out to the day your final film arrives, here's exactly what happens and when.
+              </p>
 
-        {/* Why It Matters Section */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">DAY 0-1</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">First Contact</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    You submit an inquiry. We respond within 24 hours to schedule a consultation.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">WITHIN A WEEK</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">Consultation Call</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    30-45 min video call (scheduled around your availability) to understand your story, vision, and priorities.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">WITHIN 2-3 DAYS</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">Custom Proposal</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    Tailored pricing based on your specific needs: coverage hours, deliverables, add-ons. (Rough pricing is on our site if you just want a ballpark first.)
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">ONCE YOU'RE READY</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">You're Booked</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    Sign agreement, submit 30% deposit, and your date is officially secured.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">6 WEEKS BEFORE</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">Pre-Production</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    Ideally, we sync up with you, your photographer, planner, and DJ together to finalize the timeline, shot list, and ensure everyone's coordinated.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.6 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">WEDDING DAY</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">We Film</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    We arrive 30 min early and capture your story as it unfolds naturally.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.7 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">+2-3 WEEKS</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">Teaser Arrives</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    Your 60-90 second teaser film, perfect for sharing while the excitement is fresh.
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.8 }}
+                >
+                  <div className="text-rose-wax-red font-bold text-sm mb-2">+6-12 WEEKS</div>
+                  <h3 className="font-serif text-lg font-semibold text-ink mb-2">Final Films</h3>
+                  <p className="text-sm text-espresso leading-relaxed">
+                    Highlight film (6-8 weeks) and full feature film (10-12 weeks) delivered.
+                  </p>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Why It Matters - Brief */}
         <section className="px-6 py-20 bg-warm-sand/30">
           <div className="mx-auto max-w-4xl text-center">
             <motion.div
@@ -88,92 +174,124 @@ export default function ProcessPage() {
               <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-6">
                 Why the Process Matters
               </h2>
-              <div className="space-y-6 text-base md:text-lg text-espresso leading-relaxed text-left max-w-3xl mx-auto">
-                <p>
-                  Great films don't happen by accident. They're the result of preparation, communication, and trust. When we take time upfront to understand your story—how you met, what your day means, what moments matter most—we can anticipate the shots that will make you feel something years from now.
-                </p>
-                <p>
-                  This process also means fewer surprises. You'll know exactly what to expect on your wedding day, what your deliverables include, and when your films will arrive. No guesswork, no confusion—just clarity, intention, and beautiful work.
-                </p>
-                <p className="text-center italic text-espresso/80 pt-4">
-                  "We felt like Michael knew us before he even showed up. The planning process made the whole day feel seamless."
-                  <span className="block mt-2 text-sm not-italic">— Sarah & James, 2024</span>
-                </p>
+              <p className="text-base md:text-lg text-espresso leading-relaxed max-w-3xl mx-auto mb-10">
+                Great films don't happen by accident. They're the result of preparation, communication, and trust. When we take time upfront to understand your story, we can anticipate the shots that will make you feel something years from now.
+              </p>
+
+              {/* Two-button CTA pattern */}
+              <div className="flex flex-wrap gap-4 justify-center">
+                <Link
+                  href="/process/approach"
+                  className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Next: Our Approach</span>
+                  <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/consultation"
+                  className="group inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  <span>Book Consultation</span>
+                </Link>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* Explore More - Navigation Cards */}
         <section className="px-6 py-20 bg-white">
-          <div className="mx-auto max-w-3xl">
+          <div className="mx-auto max-w-5xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4 text-center">
-                Common Questions
+              <h2 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4 text-center">
+                Explore the Details
               </h2>
               <p className="text-base text-espresso/70 text-center mb-12 max-w-2xl mx-auto">
-                Everything you need to know about booking, filming, and receiving your final films.
+                Dive deeper into how we work, what to expect, and how to plan your investment.
               </p>
 
-              <div className="space-y-8">
-                {faqs.map((faq, index) => (
-                  <motion.div
-                    key={index}
-                    className="border-b border-coffee/10 pb-6 last:border-b-0"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.05 }}
-                  >
-                    <h3 className="font-serif text-xl font-semibold text-ink mb-3">
-                      {faq.question}
-                    </h3>
-                    <p className="text-base text-espresso leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Still Have Questions CTA */}
-              <motion.div
-                className="mt-12 p-8 bg-warm-sand/50 rounded-lg text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-              >
-                <h3 className="font-serif text-xl font-semibold text-ink mb-3">
-                  Still have questions?
-                </h3>
-                <p className="text-base text-espresso mb-6">
-                  The best way to get answers is to talk. Book a consultation and we'll cover everything specific to your day.
-                </p>
-                <Link
-                  href="/consultation"
-                  className="inline-flex items-center bg-rose-wax-red text-white px-8 py-3 rounded-full font-medium text-base transition-all hover:bg-rose-wax-red/90 hover:scale-105 hover:shadow-lg focus-ring"
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
                 >
-                  Book Your Consultation
-                  <svg
-                    className="ml-2 h-5 w-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14 5l7 7m0 0l-7 7m7-7H3"
-                    />
-                  </svg>
-                </Link>
-              </motion.div>
+                  <Link href="/process/approach" className="block group">
+                    <div className="bg-cream border border-coffee/10 rounded-lg p-8 h-full transition-all hover:shadow-lg hover:border-rose-wax-red/30">
+                      <div className="text-rose-wax-red text-3xl mb-4">🎯</div>
+                      <h3 className="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
+                        Our Approach
+                      </h3>
+                      <p className="text-sm text-espresso leading-relaxed mb-4">
+                        Our philosophy, collaborative process, and what we need from you to create something extraordinary.
+                      </p>
+                      <span className="text-rose-wax-red text-sm font-medium flex items-center group-hover:underline">
+                        Learn more
+                        <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <Link href="/process/what-to-expect" className="block group">
+                    <div className="bg-cream border border-coffee/10 rounded-lg p-8 h-full transition-all hover:shadow-lg hover:border-rose-wax-red/30">
+                      <div className="text-rose-wax-red text-3xl mb-4">📹</div>
+                      <h3 className="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
+                        What to Expect
+                      </h3>
+                      <p className="text-sm text-espresso leading-relaxed mb-4">
+                        Exactly how we show up on your wedding day, where we'll be, and what equipment we bring.
+                      </p>
+                      <span className="text-rose-wax-red text-sm font-medium flex items-center group-hover:underline">
+                        See the details
+                        <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                >
+                  <Link href="/process/investment" className="block group">
+                    <div className="bg-cream border border-coffee/10 rounded-lg p-8 h-full transition-all hover:shadow-lg hover:border-rose-wax-red/30">
+                      <div className="text-rose-wax-red text-3xl mb-4">💳</div>
+                      <h3 className="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
+                        Investment & Payment
+                      </h3>
+                      <p className="text-sm text-espresso leading-relaxed mb-4">
+                        Transparent pricing, payment structure, what's included, and answers to common questions.
+                      </p>
+                      <span className="text-rose-wax-red text-sm font-medium flex items-center group-hover:underline">
+                        View pricing details
+                        <svg className="ml-1 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </section>

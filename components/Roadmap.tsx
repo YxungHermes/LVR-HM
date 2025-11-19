@@ -17,7 +17,7 @@ const roadmapSteps = [
   },
   {
     title: "Consultation",
-    text: "We meet for a relaxed video call (or in-person if you're local) to talk about your vision, your story, and what this day means to you. No sales pitch—just a genuine conversation about what feels right.",
+    text: "We meet for a relaxed video call (or in-person if you're local) to talk about your vision, your story, and what this day means to you. No sales pitch, just a genuine conversation about what feels right.",
     shortText: "We meet to understand your vision and story.",
     icon: "💬",
   },
@@ -41,7 +41,7 @@ const roadmapSteps = [
   },
   {
     title: "Your Day",
-    text: "We arrive early, blend in naturally, and capture your story as it unfolds. From quiet getting-ready moments to the dance floor celebration, we're there with intention and artistry—never intrusive, always present.",
+    text: "We arrive early, blend in naturally, and capture your story as it unfolds. From quiet getting-ready moments to the dance floor celebration, we're there with intention and artistry. Never intrusive, always present.",
     shortText: "We capture your story with intention and artistry.",
     icon: "🎥",
   },

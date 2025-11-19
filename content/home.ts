@@ -12,8 +12,8 @@ export const hero = {
       href: "/consultation"
     },
     secondary: {
-      label: "View Our Films",
-      href: "/films"
+      label: "How We Work",
+      href: "/process"
     }
   }
 };
@@ -170,11 +170,6 @@ export type Navigation = {
 export const navigation: Navigation = {
   left: [
     {
-      label: "Home",
-      href: "/"
-      // No mega menu - simple link to homepage
-    },
-    {
       label: "Films",
       href: "/films",
       megaMenu: {
@@ -198,37 +193,59 @@ export const navigation: Navigation = {
       }
     },
     {
-      label: "About",
-      href: "/about"
-      // No mega menu - simple link to about page
-    },
-    {
-      label: "Offerings",
+      label: "Services",
       href: "/offerings",
       megaMenu: {
         sections: [
           {
             title: "Collections",
             links: [
-              { label: "Elopements & Intimate Gatherings", href: "/offerings#elopements" },
-              { label: "Wedding Day Films", href: "/offerings#wedding-day-films" },
-              { label: "Destination Wedding Films", href: "/offerings#destination-weddings" },
-              { label: "Couples Films", href: "/offerings#couples-films" }
-            ]
-          },
-          {
-            title: "By Tradition",
-            links: [
-              { label: "Catholic Weddings", href: "/weddings/catholic" },
-              { label: "Jewish Weddings", href: "/weddings/jewish" },
-              { label: "Hindu & Indian Weddings", href: "/weddings/hindu" }
+              { label: "Elopements", href: "/offerings/elopements" },
+              { label: "Wedding Day Films", href: "/offerings/wedding-day-films" },
+              { label: "Destination Weddings", href: "/offerings/destination-weddings" },
+              { label: "Couples Films", href: "/offerings/couples-films" }
             ]
           },
           {
             title: "Explore",
             links: [
-              { label: "View All Collections", href: "/offerings" },
+              { label: "View All Services", href: "/offerings" },
               { label: "Book Consultation", href: "/consultation" }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      label: "Traditions",
+      href: "/weddings",
+      megaMenu: {
+        sections: [
+          {
+            title: "Wedding Traditions A-K",
+            links: [
+              { label: "Catholic Weddings", href: "/weddings/catholic" },
+              { label: "Chinese Weddings", href: "/weddings/chinese" },
+              { label: "Filipino Weddings", href: "/weddings/filipino" },
+              { label: "Greek Orthodox Weddings", href: "/weddings/greek-orthodox" },
+              { label: "Hindu & Indian Weddings", href: "/weddings/hindu" },
+              { label: "Jewish Weddings", href: "/weddings/jewish" },
+              { label: "Korean Weddings", href: "/weddings/korean" }
+            ]
+          },
+          {
+            title: "Wedding Traditions M-S",
+            links: [
+              { label: "Mexican Weddings", href: "/weddings/mexican" },
+              { label: "Muslim & Islamic Weddings", href: "/weddings/muslim" },
+              { label: "Nigerian Weddings", href: "/weddings/nigerian" },
+              { label: "Sikh Weddings", href: "/weddings/sikh" }
+            ]
+          },
+          {
+            title: "Explore",
+            links: [
+              { label: "View All Traditions", href: "/weddings" }
             ]
           }
         ]
@@ -237,6 +254,11 @@ export const navigation: Navigation = {
   ],
   right: [
     {
+      label: "About",
+      href: "/about"
+      // No mega menu - simple link to about page
+    },
+    {
       label: "Process",
       href: "/process",
       megaMenu: {
@@ -244,9 +266,10 @@ export const navigation: Navigation = {
           {
             title: "How We Work",
             links: [
-              { label: "Our Approach", href: "/process#approach" },
-              { label: "Timeline & Planning", href: "/process#timeline" },
-              { label: "What to Expect", href: "/process#expect" }
+              { label: "Timeline Overview", href: "/process", subtitle: "Start here" },
+              { label: "Our Approach", href: "/process/approach", subtitle: "Philosophy" },
+              { label: "What to Expect", href: "/process/what-to-expect", subtitle: "Wedding day" },
+              { label: "Investment", href: "/process/investment", subtitle: "Pricing & payments" }
             ]
           }
         ]

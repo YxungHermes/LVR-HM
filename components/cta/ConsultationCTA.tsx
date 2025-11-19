@@ -35,7 +35,7 @@ export default function ConsultationCTA({
       </h2>
       <p className={p}>
         Share your date, location, guest count, and what matters most. I'll
-        recommend the perfect fit — with clear pricing.
+        recommend the perfect fit, with clear pricing.
       </p>
 
       <div className="mt-6">

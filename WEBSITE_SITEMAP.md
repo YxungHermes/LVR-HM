@@ -1,505 +1,532 @@
-# Love, Violeta Rose - Website Sitemap & Architecture
+# Love, Violeta Rose - Complete Website Sitemap
 
-## Current Website Structure (Bird's Eye View)
+*Last Updated: 2025-11-19*
+
+---
+
+## 🗺️ Complete Site Structure
 
 ```
-/ (Home)
-├── /films (NEW!)
+/ (Homepage)
+├── /films
+├── /about
+├── /weddings (Wedding Traditions Hub)
+│   ├── /catholic
+│   ├── /hindu
+│   ├── /muslim
+│   ├── /jewish
+│   ├── /greek-orthodox
+│   ├── /chinese
+│   ├── /nigerian
+│   ├── /korean
+│   ├── /filipino
+│   ├── /sikh
+│   └── /mexican
 ├── /offerings
 │   ├── /elopements
 │   ├── /wedding-day-films
 │   ├── /destination-weddings
-│   └── /adventure-sessions
+│   └── /couples-films
 ├── /process
-├── /consultation (Comprehensive Form)
+│   ├── /approach
+│   ├── /what-to-expect
+│   └── /investment
+├── /consultation
 │   └── /success
-└── /contact
-    └── /inquiry (NEW! Simple Inquiry Form)
+├── /briefing (Post-booking client questionnaire)
+├── /contact
+│   └── /inquiry
+└── /login (Client portal)
 ```
 
 ---
 
-## Page Details & Navigation Flow
+## 📄 Page-by-Page Breakdown
 
 ### 🏠 **Homepage** (`/`)
-**Purpose:** Primary landing page, brand introduction, drive conversions
+**Purpose:** Primary landing, brand intro, drive conversions
 
 **Sections:**
-1. **Hero** - Video background with CTAs
+1. **Hero** - Video background with poster image
    - Primary CTA: "Book Consultation" → `/consultation`
-   - Secondary CTA: "View Our Films" → `/films` ✅ (just updated!)
+   - Secondary CTA: "View Our Films" → `/films`
 
-2. **Choose Your Story** (Full-screen section)
+2. **Choose Your Story** - Full-screen section
    - Grid of 4 offering types (bento-box layout)
-   - Links to each offering page:
+   - Links to:
      - Elopements → `/offerings/elopements`
      - Wedding Day Films → `/offerings/wedding-day-films`
      - Destination Weddings → `/offerings/destination-weddings`
-     - Adventure Sessions → `/offerings/adventure-sessions`
+     - Couples Films → `/offerings/couples-films`
 
-3. **Signature Work** (Full-screen section)
-   - 3 featured films displayed as video cards
-   - Each card links to → `/films`
-   - Films shown:
-     - Selene & Isidro (Utah)
-     - Courtney & Sterling (Connecticut)
-     - Brianna & Steven (New Jersey)
-
-4. **Contact CTA** (Full-screen section) ✅ NEW!
+3. **Contact CTA** - Full-screen section
    - Primary CTA: "Start Your Inquiry" → `/contact/inquiry`
    - Secondary CTA: "Book a Consultation" → `/consultation`
-   - Trust indicators (24hr reply, personalized consultation, etc.)
 
-**Footer:**
-- Links to social media
-- Navigation menu
-- Copyright
+**What Changed:**
+- ✅ Removed SignatureWork component (was showing 3 featured films)
+- Now cleaner: Hero → Choose Your Story → Contact
 
 ---
 
-### 🎬 **Films Page** (`/films`) ✅ NEW!
-**Purpose:** Showcase portfolio, allow clients to view work in carousel format
+### 🎬 **Films Page** (`/films`)
+**Purpose:** Portfolio showcase, film carousel
 
 **Sections:**
-1. **Hero Carousel** (Full-screen)
-   - Interactive carousel of signature films
-   - Full-screen Vimeo video backgrounds
+1. **Hero Carousel** - Full-screen interactive carousel
+   - Vimeo video backgrounds for each film
    - Navigation arrows + thumbnail dots
-   - "Watch Full Film" CTA opens Vimeo player in new tab
+   - "Watch Full Film" opens Vimeo in new tab
 
-2. **All Films Grid**
-   - All 3 signature films displayed as cards
-   - Click to jump to carousel at top
-   - Scroll to view
+2. **All Films Grid** - Card layout of all films
+   - Click to jump to carousel
+   - Film info overlays
 
-3. **CTA Section**
-   - "Ready to Create Your Film?"
-   - "Book Consultation" → `/consultation`
+3. **CTA Section** - "Ready to Create Your Film?" → `/consultation`
 
-**Navigation TO:**
-- `/consultation` (Book button)
-- External Vimeo player (Watch Full Film)
+**Films Featured:**
+- Selene & Isidro (Utah)
+- Courtney & Sterling (Connecticut)
+- Brianna & Steven (New Jersey)
 
-**Navigation FROM:**
-- Homepage (Hero CTA, Signature Work cards)
-- Header navigation (Films menu)
-- Header mega menu (Latest Films submenu)
+---
+
+### 👰 **About Page** (`/about`)
+**Purpose:** Personal connection, brand story, build trust
+
+**Sections:**
+1. **Hero** - Introduction to Michael/Violeta Rose
+2. **Story** - Background and philosophy
+3. **My Approach** - Filmmaking style and values
+4. **Services Offered** - Grid of what's offered
+5. **CTA** - Book consultation
+
+**Navigation TO:** `/consultation`, `/films`
+**Navigation FROM:** Header navigation (About)
+
+---
+
+### 💒 **Wedding Traditions Hub** (`/weddings`)
+**Purpose:** Educational resource for couples and guests
+
+**Overview Page Sections:**
+1. **Hero** - "Understanding Cultural & Religious Wedding Traditions"
+2. **Traditions Grid** - 11 tradition cards with hero images
+3. **Why This Matters** - Educational value proposition
+4. **CTA** - Soft CTA, purely educational (no booking pressure)
+
+**Individual Tradition Pages:** (`/weddings/[tradition]`)
+
+**Current Status:**
+- ✅ Catholic - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Hindu - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Muslim - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Jewish - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Greek Orthodox - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Chinese - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Nigerian - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Korean - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Filipino - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Sikh - Complete with quickFacts, glossary, guestEtiquette
+- ✅ Mexican - Complete with quickFacts, glossary, guestEtiquette
+
+**Each Complete Tradition Page Includes:**
+- Hero with tradition-specific image
+- Introduction
+- Quick Facts (duration, venue, dress code, guest count, music)
+- Glossary of key terms with pronunciations (foreign language only)
+- Guest Etiquette (8 tips for guests attending)
+- Key Moments (ceremony flow)
+- Cultural Considerations
+- Common Questions FAQ
+
+**Purpose:**
+- Educational SEO content
+- Helpful for guests preparing to attend weddings
+- Position as cultural expert
+- No sales pressure, purely informative
 
 ---
 
 ### 📋 **Offerings Hub** (`/offerings`)
-**Purpose:** Overview of all service collections, pricing information
+**Purpose:** Service collections, pricing transparency
 
 **Sections:**
-- Overview of 4 main collections
-- Pricing for each collection
-- "Book Consultation" CTAs
+1. **Hero** - "Collections & Investment"
+2. **Collections Overview** - 4 main collections with pricing
+3. **What's Included** - Deliverables breakdown
+4. **Optional Add-ons** - Extra services available
+5. **CTA** - Multiple "Book Consultation" buttons
 
 **Sub-pages:**
-- `/offerings/elopements`
-- `/offerings/wedding-day-films`
-- `/offerings/destination-weddings`
-- `/offerings/adventure-sessions`
+- `/offerings/elopements` - Intimate weddings, micro-weddings
+- `/offerings/wedding-day-films` - Full wedding day coverage
+- `/offerings/destination-weddings` - Travel weddings
+- `/offerings/couples-films` - Anniversary, engagement, love story films
 
-**Navigation TO:**
-- `/consultation` (multiple CTAs)
-- Individual offering pages
-
-**Navigation FROM:**
-- Homepage (Choose Your Story section)
-- Header navigation (Offerings menu)
-- Header mega menu
+Each sub-page has:
+- Detailed description
+- Pricing tiers
+- What's included
+- Sample timeline
+- CTAs to book
 
 ---
 
-### 💼 **Process Page** (`/process`)
-**Purpose:** Explain workflow, timeline, what to expect
+### ⚙️ **Process Pages** (NEW STRUCTURE!)
 
+**Main Page** (`/process`)
 **Sections:**
-- How We Work
-- Timeline & Planning
-- What to Expect
+1. **Hero** - "The Process"
+2. **Your Complete Timeline** - 8 timeline cards from inquiry to delivery
+3. **Why the Process Matters** - Brief philosophy
+4. **Explore the Details** - 3 navigation cards pointing to subpages
 
-**Navigation TO:**
-- `/consultation` (CTAs)
+**Subpage: Our Approach** (`/process/approach`)
+**Sections:**
+1. **Hero** - "Our Approach"
+2. **Why the Process Matters** - Full expanded philosophy
+3. **What We Need from You** - 5 collaborative checkpoints with timelines
+4. **Testimonial** - Client quote
+5. **CTA** - Links to What to Expect & Investment
 
-**Navigation FROM:**
-- Header navigation (Process menu)
+**Subpage: What to Expect** (`/process/what-to-expect`)
+**Sections:**
+1. **Hero** - "What to Expect"
+2. **Wedding Day Details** - 4-grid layout:
+   - Arrival & Setup
+   - Equipment & Approach
+   - During the Ceremony
+   - Reception & Timeline
+3. **CTA** - Link to Investment & Consultation
+
+**Subpage: Investment & Payment** (`/process/investment`)
+**Sections:**
+1. **Hero** - "Investment & Payment"
+2. **How Payments Work** - 3-step payment structure
+3. **What's Included** - Comprehensive grid of deliverables
+4. **Optional Add-ons** - Extra services with pricing
+5. **FAQ Section** - 10 common questions answered
+6. **Still Have Questions CTA** - Book consultation
+
+**What Changed:**
+- ✅ Split massive single /process page into 4 focused pages
+- ✅ Removed redundant Roadmap component (save for consultation success only)
+- ✅ Clean information architecture with natural flow
+- ✅ Cross-page CTAs guide user journey
 
 ---
 
 ### 📝 **Consultation Page** (`/consultation`)
 **Purpose:** Comprehensive booking form for serious inquiries
 
-**Sections:**
-- Detailed multi-section form:
-  - Your Information (names, email, phone, role selector)
-  - Event Details (type, date, location, tradition, venue)
-  - Your Story (how you met, film feel preferences)
-  - Pinterest Inspiration Board integration
-  - Investment & Preferences (budget, contact method)
-  - Additional Notes
+**Form Sections:**
+1. Your Information (names, email, phone, role)
+2. Event Details (type, date, location, tradition, venue)
+3. Your Story (how you met, film feel preferences)
+4. Pinterest Inspiration Board integration
+5. Investment & Preferences (budget, contact method)
+6. Additional Notes
 
 **Success Page:** `/consultation/success`
+- Shows Roadmap component (1-8 step process)
+- Confirmation message
+- What happens next
 
-**Navigation TO:**
-- `/consultation/success` (on successful submission)
-- `/offerings` (back link)
-- Pinterest API integration
-
+**Navigation TO:** `/consultation/success`
 **Navigation FROM:**
-- Homepage (Hero primary CTA, Contact section secondary CTA)
-- Films page (CTA section)
-- Offerings pages (multiple CTAs)
-- Process page (CTAs)
-- Header navigation (primary CTA button)
-- Contact inquiry page (upgrade link)
+- Homepage Hero (primary CTA)
+- Films page
+- All offerings pages
+- Process pages
+- Header (Book Consultation button)
 
 ---
 
-### 📧 **Inquiry Page** (`/contact/inquiry`) ✅ NEW!
+### 📧 **Contact Inquiry Page** (`/contact/inquiry`)
 **Purpose:** Quick, simple contact form for initial inquiries
 
-**Sections:**
-- Simple 3-section form:
-  - Tell Me About You (names, email, phone)
-  - Your Celebration (event type, date, location)
-  - Your Vision (message/details)
+**Form Sections:**
+1. Tell Me About You (names, email, phone)
+2. Your Celebration (event type, date, location)
+3. Your Vision (message/details)
 
 **Navigation TO:**
-- `/consultation/success` (on successful submission)
-- `/consultation` (link to upgrade to full consultation)
+- `/consultation/success` (shared success page)
+- `/consultation` (upgrade link)
 
 **Navigation FROM:**
-- Homepage (Contact section primary CTA)
+- Homepage Contact section
 
 ---
 
-## 📊 Current Navigation Structure
+### 📋 **Briefing Page** (`/briefing`)
+**Purpose:** Post-booking client questionnaire for booked couples
 
-### Header Navigation (Left Side)
+**Form Sections:**
+1. Basic Information
+2. Event Details
+3. Shot List / Must-Capture Moments
+4. Music Preferences
+5. Deliverable Preferences
+6. Special Requests
+
+**Access:** Typically sent to clients after booking
+**Navigation:** Limited (internal tool)
+
+---
+
+### 🔐 **Login Page** (`/login`)
+**Purpose:** Client portal access (future development)
+
+**Current Status:** Placeholder/basic implementation
+**Future Use:** Client gallery access, file sharing, communication
+
+---
+
+## 🧭 Header Navigation Structure
+
+**Left Side:**
 - **Home** → `/`
 - **Films** → `/films`
-  - Mega Menu:
-    - Latest Films
-      - Selene & Isidro → `/films`
-      - Courtney & Sterling → `/films`
-      - Brianna & Steven → `/films`
-    - Explore
-      - View All Films → `/films`
-      - Book Consultation → `/consultation`
+- **About** → `/about`
 - **Offerings** → `/offerings`
-  - Mega Menu:
-    - Collections
-      - Elopements & Intimate Gatherings → `/offerings#elopements`
-      - Wedding Day Films → `/offerings#wedding-day-films`
-      - Destination Wedding Films → `/offerings#destination-weddings`
-      - Adventure Sessions & Stories → `/offerings#adventure-sessions`
-    - Explore
-      - View All Collections → `/offerings`
-      - Book Consultation → `/consultation`
+  - Dropdown:
+    - Elopements → `/offerings/elopements`
+    - Wedding Day Films → `/offerings/wedding-day-films`
+    - Destination Weddings → `/offerings/destination-weddings`
+    - Couples Films → `/offerings/couples-films`
 
-### Header Navigation (Right Side)
+**Right Side:**
 - **Process** → `/process`
-  - Mega Menu:
-    - How We Work
-      - Our Approach → `/process#approach`
-      - Timeline & Planning → `/process#timeline`
-      - What to Expect → `/process#expect`
-- **Book Consultation** → `/consultation` (Primary CTA button)
+  - Dropdown:
+    - Our Approach → `/process/approach`
+    - What to Expect → `/process/what-to-expect`
+    - Investment → `/process/investment`
+- **Book Consultation** (Primary CTA button) → `/consultation`
 
 ---
 
-## 🔄 User Journey Flows
+## 🎯 Key User Journeys
 
-### Primary Conversion Paths
-
-**Path 1: Direct Consultation (High Intent)**
+### Journey 1: High Intent (Direct Booking)
 ```
-/ (Homepage)
-  → Hero CTA "Book Consultation"
-    → /consultation
-      → /consultation/success ✅
+/ → Book Consultation → /consultation → /consultation/success ✅
 ```
 
-**Path 2: Browse Then Book (Research Phase)**
+### Journey 2: Portfolio First
 ```
-/ (Homepage)
-  → "View Our Films"
-    → /films
-      → View carousel, watch films
-        → "Book Consultation" CTA
-          → /consultation
-            → /consultation/success ✅
+/ → View Films → /films → Watch → Book → /consultation → Success ✅
 ```
 
-**Path 3: Explore Offerings (Price Discovery)**
+### Journey 3: Price Discovery
 ```
-/ (Homepage)
-  → Choose Your Story section
-    → /offerings/[collection]
-      → Review pricing & details
-        → "Book Consultation" CTA
-          → /consultation
-            → /consultation/success ✅
+/ → Choose Your Story → /offerings/[type] → Review Pricing → Book → /consultation → Success ✅
 ```
 
-**Path 4: Quick Inquiry (Low Friction)**
+### Journey 4: Quick Inquiry (Low Friction)
 ```
-/ (Homepage)
-  → Contact CTA section
-    → "Start Your Inquiry"
-      → /contact/inquiry
-        → /consultation/success ✅
-        OR
-        → upgrade to /consultation ↑
+/ → Contact CTA → /contact/inquiry → Submit → Success ✅
+OR upgrade to → /consultation
+```
+
+### Journey 5: Educational (Wedding Traditions)
+```
+Google Search "Hindu wedding traditions"
+→ /weddings/hindu
+→ Learn about ceremony
+→ Soft CTA to /consultation (if they're planning a wedding)
+```
+
+### Journey 6: Process Understanding
+```
+/ → Process → /process
+→ Explore: /process/approach, /process/what-to-expect, /process/investment
+→ CTA to /consultation
 ```
 
 ---
 
-## ✨ Recommendations & Potential Enhancements
+## 📊 Pages Missing / Future Considerations
 
-### 1. **About/Story Page** 🆕 SUGGESTED
-**Proposed URL:** `/about` or `/story`
-**Purpose:** Personal connection, build trust, tell Violeta's story
-**Content:**
-- Violeta's background & philosophy
-- Why she started Love, Violeta Rose
-- Team (if applicable)
-- Personal photos
-- Values & approach
-**Links TO:** `/consultation`, `/films`
-**Links FROM:** Footer, possibly header "About" menu
+### High Priority (Suggested)
+1. **Testimonials Page** (`/testimonials`)
+   - Client reviews
+   - Video testimonials
+   - Social proof aggregation
 
-### 2. **Blog/Journal** 🆕 SUGGESTED
-**Proposed URL:** `/journal` or `/blog`
-**Purpose:** SEO, showcase expertise, inspire couples, share recent work
-**Content:**
-- Real weddings (detailed stories)
-- Planning tips
-- Vendor recommendations
-- Behind-the-scenes
-- Inspiration boards
-**Links TO:** `/consultation`, `/offerings/[collection]`, `/films`
-**Links FROM:** Header navigation, homepage
+2. **FAQ Page** (`/faq`)
+   - Answer common questions
+   - Reduce consultation friction
+   - SEO benefit
 
-### 3. **Testimonials/Reviews Page** 🆕 SUGGESTED
-**Proposed URL:** `/testimonials` or `/reviews`
-**Purpose:** Social proof, build credibility
-**Content:**
-- Full client testimonials
-- Video testimonials (if available)
-- Review aggregation (Google, WeddingWire, The Knot)
-**Links TO:** `/consultation`
-**Links FROM:** Header navigation, homepage, offerings pages
+3. **Privacy Policy** (`/privacy`) - LEGAL REQUIREMENT
+   - GDPR compliance
+   - Data usage
 
-### 4. **FAQ Page** 🆕 SUGGESTED
-**Proposed URL:** `/faq`
-**Purpose:** Answer common questions, reduce consultation form friction
-**Content:**
-- Pricing questions
-- Process questions
-- Technical questions (formats, delivery, etc.)
-- Travel & availability
-**Links TO:** `/consultation`, `/process`, `/offerings`
-**Links FROM:** Footer, possibly header, offerings pages
-
-### 5. **Individual Film Pages** 🆕 CONSIDERATION
-**Proposed URL:** `/films/[slug]` (e.g., `/films/selene-and-isidro`)
-**Purpose:** Deep dive into each wedding story, SEO, shareable links
-**Content:**
-- Full film embed
-- Couple's story
-- Event details
-- Photo gallery
-- Vendor credits
-**Links TO:** `/consultation`, related offerings
-**Links FROM:** `/films` grid, homepage signature work
-
-### 6. **Resources/Planning Tools** 🆕 CONSIDERATION
-**Proposed URL:** `/resources`
-**Purpose:** Lead generation, provide value, build email list
-**Content:**
-- Wedding planning checklist
-- Timeline templates
-- Vendor questionnaire
-- Music licensing info
-- Gated content (email signup)
-**Links TO:** `/consultation`
-**Links FROM:** Header navigation, blog posts
-
-### 7. **Contact Page Consolidation** 🔄 IMPROVE
-**Current:**
-- `/contact/inquiry` (simple form)
-- `/consultation` (comprehensive form)
-
-**Consideration:**
-- Create `/contact` as hub page
-- Explain differences between inquiry vs. consultation
-- Let users choose their path
-- Better UX than having two separate entry points
-
----
-
-## 🎯 SEO & Link Optimization Recommendations
-
-### Internal Linking Strategy
-1. **Homepage** should link to ALL main sections (currently good ✅)
-2. **Offerings pages** should cross-link to each other ("Also consider...")
-3. **Process page** should link to relevant offerings
-4. **Blog posts** (if created) should link to offerings, films, consultation
-5. **Every page** should have at least ONE CTA to `/consultation`
-
-### Missing Breadcrumbs
-Consider adding breadcrumbs to:
-- Offering sub-pages (e.g., `Home > Offerings > Elopements`)
-- Film individual pages (if created)
-- Blog posts (if created)
-
-### Footer Navigation
-Ensure footer includes:
-- All main pages
-- Social media links (Instagram, Vimeo) ✅
-- Legal pages (Privacy Policy, Terms - currently missing?)
-
----
-
-## 📱 Mobile Experience Check
-
-All pages should prioritize mobile:
-- Full-screen sections ✅ (just implemented!)
-- Touch-friendly navigation
-- Optimized video loading
-- Simplified forms on mobile
-- Sticky header ✅
-
----
-
-## 🔐 Missing Legal/Required Pages
-
-### Recommended Additions:
-1. **Privacy Policy** (`/privacy`)
-   - Required for GDPR, email collection
-   - Explain data usage, analytics
-
-2. **Terms of Service** (`/terms`)
+4. **Terms of Service** (`/terms`) - LEGAL REQUIREMENT
    - Contract terms
-   - Usage rights
    - Booking policies
 
-3. **Accessibility Statement** (`/accessibility`)
-   - WCAG compliance
-   - Contact for accessibility issues
+### Medium Priority (Future)
+1. **Blog/Journal** (`/journal` or `/blog`)
+   - Real wedding stories
+   - Planning tips
+   - SEO content
+   - Recent work showcase
+
+2. **Individual Film Pages** (`/films/[slug]`)
+   - Deep dive per wedding
+   - Couple's story
+   - SEO benefit
+   - Shareable links
+
+3. **Resources Page** (`/resources`)
+   - Planning checklists
+   - Timeline templates
+   - Lead generation
 
 ---
 
-## 📈 Analytics & Conversion Tracking
-
-### Key Conversion Points:
-1. ✅ Consultation form submission → `/consultation/success`
-2. ✅ Inquiry form submission → `/consultation/success`
-3. Film views (Vimeo embeds)
-4. Outbound clicks (social media, Vimeo full-screen)
-5. Navigation mega menu clicks
-
-### Recommended Goal Tracking:
-- Time on site
-- Pages per session
-- Most viewed films
-- Most popular offerings
-- Form abandonment rates
-- CTA button click rates
-
----
-
-## 🎨 Visual Sitemap
+## 🎨 Visual Site Map
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    HOMEPAGE (/)                          │
-│  • Hero (video + CTAs)                                  │
-│  • Choose Your Story (4 offerings)                      │
-│  • Signature Work (3 films)                             │
-│  • Contact CTA                                          │
-└─────┬───────────────────────────────────────────────────┘
-      │
-      ├─────> /films (NEW!)
-      │       └─> Carousel + Grid + CTAs
-      │
-      ├─────> /offerings
-      │       ├─> /elopements
-      │       ├─> /wedding-day-films
-      │       ├─> /destination-weddings
-      │       └─> /adventure-sessions
-      │
-      ├─────> /process
-      │
-      ├─────> /consultation (Comprehensive Form)
-      │       └─> /success
-      │
-      └─────> /contact/inquiry (NEW! Simple Form)
-              └─> /success (shared)
-
-POTENTIAL ADDITIONS:
-├─> /about (Tell Violeta's story)
-├─> /journal (Blog/real weddings)
-├─> /testimonials (Social proof)
-├─> /faq (Answer questions)
-├─> /resources (Planning tools)
-├─> /privacy (Legal)
-└─> /terms (Legal)
+                    ┌─────────────┐
+                    │  HOMEPAGE   │
+                    │      /      │
+                    └──────┬──────┘
+                           │
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+   ┌────▼────┐      ┌─────▼─────┐     ┌─────▼─────┐
+   │  FILMS  │      │  ABOUT    │     │ WEDDINGS  │
+   │ /films  │      │  /about   │     │ /weddings │
+   └─────────┘      └───────────┘     └─────┬─────┘
+                                             │
+                                      ┌──────┴──────┐
+                                      │ 11 Tradition│
+                                      │   Pages     │
+                                      └─────────────┘
+        ┌──────────────────┼──────────────────┐
+        │                  │                  │
+   ┌────▼────┐      ┌─────▼─────┐     ┌─────▼─────┐
+   │OFFERINGS│      │ PROCESS   │     │CONSULTATION│
+   │/offerings│     │ /process  │     │/consultation│
+   └────┬────┘      └─────┬─────┘     └─────┬─────┘
+        │                 │                  │
+   ┌────┴────┐      ┌─────┴─────┐          │
+   │4 Service│      │3 Subpages:│          │
+   │  Pages  │      │ approach  │          │
+   └─────────┘      │ what-to-  │          │
+                    │  expect   │          │
+                    │ investment│          │
+                    └───────────┘          │
+                                           │
+                    ┌──────────────────────┘
+                    │
+             ┌──────▼──────┐
+             │   SUCCESS   │
+             │  /success   │
+             └─────────────┘
 ```
 
 ---
 
-## 🚀 Priority Implementation Roadmap
+## ✨ Recent Major Changes
 
-### Phase 1: Polish Current Structure ✅ COMPLETE
-- [x] Fix scrolling issues (remove snap behavior)
-- [x] Make all sections full-screen
-- [x] Create Films page with carousel
-- [x] Create inquiry form page
-- [x] Update navigation to reflect actual films
-- [x] Create inquiry API endpoint
+### November 19, 2025
+- ✅ Removed SignatureWork from homepage (cleaner flow)
+- ✅ Split Process page into 4 focused subpages
+- ✅ Removed Roadmap from /process (keep only on success page)
+- ✅ Added educational sections to all 11 wedding traditions (quickFacts, glossary, guestEtiquette)
+- ✅ Removed all em dashes site-wide (except testimonial attributions)
+- ✅ Removed pronunciation guides for English terms
+- ✅ Removed duration times from all keyMoments
 
-### Phase 2: Content & Trust (SUGGESTED NEXT)
-- [ ] Create About/Story page
-- [ ] Add Testimonials page
-- [ ] Add FAQ page
-- [ ] Add Privacy Policy & Terms
+### Previous Updates
+- ✅ Created Films page with carousel
+- ✅ Created Contact Inquiry page
+- ✅ Added About page
+- ✅ Created Wedding Traditions hub with 11 traditions
+- ✅ Made all sections full-screen
+- ✅ Updated navigation structure
 
-### Phase 3: Content Marketing (FUTURE)
-- [ ] Set up Blog/Journal
-- [ ] Create individual film pages
-- [ ] Add Resources section
+---
+
+## 🚀 Implementation Roadmap
+
+### ✅ Phase 1: Core Pages (COMPLETE)
+- [x] Homepage with Hero, Choose Your Story, Contact
+- [x] Films page with carousel
+- [x] Offerings hub + 4 sub-pages
+- [x] Process overview + 3 sub-pages
+- [x] Consultation form
+- [x] Contact inquiry form
+- [x] About page
+- [x] Wedding traditions hub + 11 tradition pages
+- [x] Briefing questionnaire
+
+### ✅ Phase 2: Polish & Content (COMPLETE)
+- [x] Remove unnecessary CTAs
+- [x] Clean up copy (remove AI tells)
+- [x] Add educational content to all 11 wedding traditions
+- [x] Complete educational sections (quickFacts, glossary, guestEtiquette) for all traditions
+
+### 🚧 Phase 2.5: Additional Content (PENDING)
+- [ ] Add testimonials to relevant pages
+- [ ] Create FAQ page
+- [ ] Add Privacy Policy
+- [ ] Add Terms of Service
+
+### 📅 Phase 3: Content Marketing (FUTURE)
+- [ ] Blog/Journal system
+- [ ] Individual film pages
+- [ ] Resources/downloads
 - [ ] Email capture integration
 
-### Phase 4: Optimization (ONGOING)
+### 📅 Phase 4: Optimization (ONGOING)
 - [ ] A/B test CTAs
 - [ ] Optimize form conversion
-- [ ] Improve mobile experience
+- [ ] Mobile experience improvements
 - [ ] SEO optimization
 - [ ] Performance optimization
+- [ ] Analytics setup
 
 ---
 
-## 📝 Notes
+## 📈 SEO Strategy
 
-- All full-screen sections now implemented ✅
-- Scrolling issues fixed (removed SmoothSnapScroll) ✅
-- Two inquiry paths: simple (`/contact/inquiry`) and comprehensive (`/consultation`) ✅
-- Films page fully functional with carousel ✅
-- Navigation updated with correct film names ✅
-- API endpoints created for both forms ✅
+### Primary Keywords Target
+- "NYC wedding videographer"
+- "NYC wedding filmmaker"
+- "Luxury wedding films NYC"
+- "Destination wedding videographer"
+- "Elopement videographer"
+- "[Culture] wedding traditions" (Hindu, Jewish, Muslim, etc.)
 
-**Next Steps:**
-1. Test all navigation flows
-2. Review mobile experience
-3. Consider adding About page
-4. Plan blog/journal strategy
-5. Add legal pages (privacy, terms)
+### Content Strategy
+- Wedding traditions pages for educational SEO
+- Blog posts for long-tail keywords
+- Individual film pages for location-based SEO
+- Process pages for service-based queries
 
 ---
 
-*Last Updated: 2025-11-17*
-*Website: Love, Violeta Rose (lovevioletarose.com)*
+## 📱 Mobile Optimization Status
+
+### ✅ Optimized
+- Full-screen sections
+- Touch-friendly navigation
+- Responsive forms
+- Optimized video loading
+- Sticky header
+
+### 🔄 Needs Review
+- Form input sizes on mobile
+- Video carousel swipe gestures
+- Long page scroll performance
+
+---
+
+*Website: lovevioletarose.com*
+*Documentation maintained in: `/WEBSITE_SITEMAP.md`*

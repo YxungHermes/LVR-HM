@@ -23,7 +23,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVideoLoaded(true);
-    }, 3000); // Wait 3 seconds for video to fully buffer and start playing
+    }, 1500); // Wait 1.5 seconds for video to start playing (optimized for LCP)
     return () => clearTimeout(timer);
   }, []);
 

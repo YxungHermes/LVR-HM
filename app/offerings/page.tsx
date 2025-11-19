@@ -224,7 +224,7 @@ export default function PricingPage() {
             </h3>
             <p className="text-base text-espresso mb-8 leading-relaxed">
               Share your date, locations, guest count, and what matters most.
-              I'll recommend a collection that fits — with transparent pricing.
+              I'll recommend a collection that fits, with transparent pricing.
             </p>
             <Link
               href="/consultation"

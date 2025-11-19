@@ -491,7 +491,7 @@ export default function ConsultationPage() {
                           <option value="full">Full Wedding</option>
                           <option value="large">Large Celebration</option>
                           <option value="destination">Destination Wedding</option>
-                          <option value="adventure">Couples Film (Not a wedding—anniversaries, birthdays, or just because)</option>
+                          <option value="adventure">Couples Film (Not a wedding: anniversaries, birthdays, or just because)</option>
                         </select>
                       </div>
 
@@ -744,7 +744,7 @@ export default function ConsultationPage() {
                           transition={{ duration: 0.3 }}
                         >
                           <label className="block text-sm font-medium text-ink mb-2">
-                            {formData.adventureTier === 'story' ? 'Location(s) — Up to 2' : 'Locations — Tell Us Your Vision'}
+                            {formData.adventureTier === 'story' ? 'Location(s): Up to 2' : 'Locations: Tell Us Your Vision'}
                           </label>
                           <p className="text-xs text-espresso/60 mb-3">
                             {formData.adventureTier === 'story'
@@ -1247,9 +1247,9 @@ export default function ConsultationPage() {
                             {formData.eventType === 'adventure' && formData.adventureTier && (
                               <div className="mt-2 inline-block px-3 py-1.5 bg-rose-wax-red/10 border border-rose-wax-red/30 rounded-full">
                                 <p className="text-xs font-semibold text-rose-wax-red uppercase tracking-wider">
-                                  {formData.adventureTier === 'social' && 'The Social — $750'}
-                                  {formData.adventureTier === 'story' && 'The Story — $1,200'}
-                                  {formData.adventureTier === 'signature' && 'The Signature — $2,000'}
+                                  {formData.adventureTier === 'social' && 'The Social: $750'}
+                                  {formData.adventureTier === 'story' && 'The Story: $1,200'}
+                                  {formData.adventureTier === 'signature' && 'The Signature: $2,000'}
                                 </p>
                               </div>
                             )}

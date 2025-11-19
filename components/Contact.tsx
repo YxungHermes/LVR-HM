@@ -67,9 +67,27 @@ export default function Contact() {
             </Link>
           </motion.div>
 
+          {/* Secondary link to process */}
+          <motion.p
+            className="mt-6 text-sm text-espresso/70"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            Want to learn more first?{" "}
+            <Link
+              href="/process"
+              onClick={() => trackCTAClick('homepage-contact', 'Learn About Our Process', '/process')}
+              className="text-rose-2 hover:text-rose-1 underline underline-offset-2 transition-colors"
+            >
+              See how we work
+            </Link>
+          </motion.p>
+
           {/* Trust indicators */}
           <motion.div
-            className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-espresso/60"
+            className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-espresso/60"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
