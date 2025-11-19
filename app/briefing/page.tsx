@@ -281,7 +281,7 @@ export default function BriefingPage() {
   ];
 
   const deliverables = [
-    { id: "highlight", name: "Highlight Film", duration: "5-7 minutes", description: "Your love story set to music—the perfect shareable film" },
+    { id: "highlight", name: "Highlight Film", duration: "5-7 minutes", description: "Your love story set to music. The perfect shareable film" },
     { id: "ceremony", name: "Full Ceremony Edit", duration: "15-30 minutes", description: "Complete ceremony coverage, fully edited" },
     { id: "reception", name: "Full Reception Edit", duration: "30-60 minutes", description: "All the big reception moments" },
     { id: "teaser", name: "Short Teaser/Trailer", duration: "60-90 seconds", description: "Perfect for social media" },
