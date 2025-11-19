@@ -102,10 +102,10 @@ export default function WeddingTraditionsClient() {
                 Wedding Traditions Guide
               </h1>
               <p className="text-xl md:text-2xl text-rose-wax-red font-medium mb-8 italic">
-                Educational resources for understanding wedding ceremonies around the world
+                For couples, guests, and anyone who wants to understand wedding ceremonies around the world
               </p>
               <p className="text-lg text-espresso leading-relaxed max-w-3xl mx-auto">
-                Explore comprehensive guides to Catholic, Jewish, Hindu, Muslim, Greek Orthodox, Chinese, Nigerian, Korean, Filipino, Sikh, and Mexican wedding traditions. Learn about ceremony timelines, sacred rituals, cultural customs, and the meaning behind each tradition.
+                Whether you're planning your own wedding, attending your first ceremony from a different culture, or simply curious about traditions around the world, these guides will help you understand the rituals, meanings, and etiquette behind diverse wedding ceremonies.
               </p>
             </motion.div>
           </div>
@@ -207,10 +207,10 @@ export default function WeddingTraditionsClient() {
 
                 <div>
                   <h3 className="font-serif text-xl font-semibold text-ink mb-2">
-                    For Wedding Guests
+                    For Wedding Guests & First-Timers
                   </h3>
                   <p className="text-base text-espresso leading-relaxed">
-                    Being invited to a wedding from a different culture is an honor. Learn about proper etiquette, dress codes, gift-giving customs, and what to expect during the ceremony so you can participate respectfully and confidently.
+                    Attending your first Catholic Mass wedding? Invited to a Hindu ceremony and not sure what to wear? Being invited to a wedding from a different culture is an honor. Our guest etiquette guides cover proper dress codes, gift-giving customs, what to expect during the ceremony, and how to participate respectfully and confidently.
                   </p>
                 </div>
 

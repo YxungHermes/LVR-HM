@@ -3,7 +3,7 @@ import WeddingTraditionsClient from "./WeddingTraditionsClient";
 
 export const metadata: Metadata = {
   title: "Wedding Traditions Guide | Understanding Cultural & Religious Wedding Ceremonies",
-  description: "Educational guides to Catholic, Jewish, Hindu, Muslim, Greek Orthodox, Sikh, Chinese, Filipino, Korean, Mexican, and Nigerian wedding traditions. Learn ceremony timelines, rituals, customs, and cultural meanings.",
+  description: "For couples, guests, and anyone curious about different cultures. Comprehensive guides to 11 wedding traditions from around the world with etiquette tips, ceremony timelines, and cultural meanings.",
 };
 
 export default function WeddingTraditionsPage() {
