@@ -140,7 +140,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "2-3 hours before ceremony",
         title: "Getting Ready & Details",
         description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. This is when I capture detail shots (rings, dress, shoes, invitations) and candid moments of you getting ready.",
-        whatIllBeDoing: "I'll be moving between both locations to capture the emotions, laughter, and anticipation. I'll film detail shots in natural light and might grab quick audio messages from family members. The photo and video team coordinates throughout to capture everything seamlessly."
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, so we capture both of you getting ready simultaneously. I'll film detail shots in natural light (rings, dress, shoes, invitations), candid emotions, and any special moments like letter readings or gift exchanges. For letters, I'll ask if you'd like audio recorded - it's always a plus for the final film, but I respect your wishes either way. If there's anything meaningful happening during prep, we're there for it."
       },
       {
         time: "1 hour before ceremony",
