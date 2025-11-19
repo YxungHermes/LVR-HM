@@ -181,9 +181,11 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
                         <h3 className="font-serif text-xl font-bold text-ink inline">
                           {term.term}
                         </h3>
-                        <span className="text-sm text-rose-wax-red ml-3 italic">
-                          ({term.pronunciation})
-                        </span>
+                        {term.pronunciation && (
+                          <span className="text-sm text-rose-wax-red ml-3 italic">
+                            ({term.pronunciation})
+                          </span>
+                        )}
                       </div>
                       <p className="text-base text-espresso leading-relaxed">
                         {term.definition}

@@ -70,12 +70,12 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     },
 
     glossary: [
-      { term: "Nuptial Mass", pronunciation: "NUP-shuhl mass", definition: "Full Catholic wedding ceremony including Mass and Communion" },
+      { term: "Nuptial Mass", pronunciation: "", definition: "Full Catholic wedding ceremony including Mass and Communion" },
       { term: "Pre-Cana", pronunciation: "pree-KAH-nah", definition: "Required marriage preparation program for Catholic couples" },
-      { term: "Sacrament", pronunciation: "SAK-ruh-ment", definition: "Sacred rite recognized as a channel of divine grace in Catholic faith" },
-      { term: "Liturgy of the Eucharist", pronunciation: "LIT-ur-jee of the YOO-kuh-rist", definition: "The part of Mass including consecration and Holy Communion" },
-      { term: "Homily", pronunciation: "HOM-uh-lee", definition: "The priest's sermon or reflection on scripture and marriage" },
-      { term: "Consecration", pronunciation: "kon-suh-KRAY-shun", definition: "The blessing of bread and wine, transforming them into the body and blood of Christ" }
+      { term: "Sacrament", pronunciation: "", definition: "Sacred rite recognized as a channel of divine grace in Catholic faith" },
+      { term: "Liturgy of the Eucharist", pronunciation: "", definition: "The part of Mass including consecration and Holy Communion" },
+      { term: "Homily", pronunciation: "", definition: "The priest's sermon or reflection on scripture and marriage" },
+      { term: "Consecration", pronunciation: "", definition: "The blessing of bread and wine, transforming them into the body and blood of Christ" }
     ],
 
     guestEtiquette: {
@@ -95,42 +95,34 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     keyMoments: [
       {
         title: "The Procession",
-        duration: "5 min",
         description: "Entrance of the wedding party, parents, and bride, often accompanied by sacred music or hymns."
       },
       {
         title: "Opening Prayer & Readings",
-        duration: "10-15 min",
         description: "Scripture readings (Old Testament, Psalm, New Testament) chosen by the couple, followed by the Gospel."
       },
       {
         title: "Homily",
-        duration: "10-15 min",
         description: "The priest's reflection on marriage, faith, and the couple's journey together."
       },
       {
         title: "Exchange of Vows",
-        duration: "5 min",
         description: "The couple declares their consent before God and the Church. 'I do' or personalized vows if permitted."
       },
       {
         title: "Blessing and Exchange of Rings",
-        duration: "3-5 min",
         description: "Rings are blessed and exchanged as symbols of unending love and fidelity."
       },
       {
         title: "Nuptial Blessing",
-        duration: "5 min",
         description: "A special blessing invoking God's grace upon the marriage."
       },
       {
         title: "The Mass (if included)",
-        duration: "30-40 min",
         description: "Liturgy of the Eucharist: Offertory, Consecration, and Holy Communion (60-90 min total with full Mass)."
       },
       {
         title: "Final Blessing & Recessional",
-        duration: "5 min",
         description: "The priest's blessing, kiss, and the couple's exit down the aisle as husband and wife."
       }
     ],
@@ -215,48 +207,39 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     keyMoments: [
       {
         title: "Ketubah Signing",
-        duration: "10-15 min",
-        description: "The bride, groom, and witnesses sign the Jewish marriage contract—often before the ceremony in a private room."
+        description: "The bride, groom, and witnesses sign the Jewish marriage contract, often before the ceremony in a private room."
       },
       {
         title: "Bedeken (Veiling Ceremony)",
-        duration: "5-10 min",
-        description: "The groom veils the bride, referencing the biblical story of Jacob and Rachel—an intimate, emotional pre-ceremony tradition."
+        description: "The groom veils the bride, referencing the biblical story of Jacob and Rachel. An intimate, emotional pre-ceremony tradition."
       },
       {
         title: "Processional",
-        duration: "5 min",
         description: "The groom, parents, wedding party, and bride walk down the aisle to the chuppah, often accompanied by live music."
       },
       {
         title: "The Chuppah",
-        duration: "20-30 min",
         description: "The wedding canopy symbolizing the couple's new home together. The ceremony takes place underneath with family and the rabbi."
       },
       {
         title: "Seven Blessings (Sheva Brachot)",
-        duration: "10 min",
         description: "Seven blessings recited over wine, celebrating creation, joy, and the sanctity of marriage."
       },
       {
         title: "Ring Exchange",
-        duration: "2-3 min",
         description: "The groom (and sometimes bride) places the ring and recites the traditional declaration: 'Behold, you are consecrated to me...'"
       },
       {
         title: "Breaking of the Glass",
-        duration: "1 min",
-        description: "The groom steps on a glass wrapped in cloth—symbolizing the destruction of the Temple and the fragility of relationships. The crowd shouts 'Mazel Tov!'"
+        description: "The groom steps on a glass wrapped in cloth, symbolizing the destruction of the Temple and the fragility of relationships. The crowd shouts 'Mazel Tov!'"
       },
       {
         title: "Yichud",
-        duration: "10-20 min",
-        description: "The newlyweds spend their first moments alone together in a private room—a deeply personal tradition."
+        description: "The newlyweds spend their first moments alone together in a private room. A deeply personal tradition."
       },
       {
         title: "The Hora",
-        duration: "15-20 min",
-        description: "The exuberant circle dance where the couple is lifted on chairs—one of the most joyful moments of the reception."
+        description: "The exuberant circle dance where the couple is lifted on chairs. One of the most joyful moments of the reception."
       }
     ],
 
@@ -341,57 +324,46 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     keyMoments: [
       {
         title: "Mehendi (Henna) Ceremony",
-        duration: "3-4 hours",
         description: "The bride's hands and feet are adorned with intricate henna designs, surrounded by female family and friends, often the night before the wedding."
       },
       {
         title: "Sangeet",
-        duration: "3-5 hours",
         description: "A night of music, dancing, and performances by family and friends. Think Bollywood-style choreography, DJ, and celebration."
       },
       {
         title: "Haldi Ceremony",
-        duration: "1-2 hours",
         description: "Turmeric paste is applied to the bride and groom by family for blessings, purification, and radiant skin."
       },
       {
         title: "Baraat (Groom's Procession)",
-        duration: "30-60 min",
         description: "The groom arrives on horseback (or luxury car) with his family dancing through the streets to dhol drums. Pure energy and spectacle."
       },
       {
         title: "Milni (Meeting of Families)",
-        duration: "15-20 min",
         description: "The bride's and groom's families formally meet and exchange garlands, symbolizing the union of two families."
       },
       {
         title: "Jai Mala (Garland Exchange)",
-        duration: "10-15 min",
         description: "The bride and groom exchange floral garlands on stage, often with playful moments as families lift them up."
       },
       {
         title: "Kanyadaan",
-        duration: "10-15 min",
         description: "The bride's father gives her hand in marriage. One of the most emotional moments of the ceremony."
       },
       {
         title: "Agni Puja & Saat Phere (Seven Circles)",
-        duration: "30-45 min",
         description: "The couple circles the sacred fire seven times, taking vows for their life together."
       },
       {
         title: "Sindoor & Mangalsutra",
-        duration: "5-10 min",
         description: "The groom applies vermillion to the bride's hair parting and ties the sacred necklace, marking her as married."
       },
       {
         title: "Bidaai (Bride's Farewell)",
-        duration: "15-20 min",
         description: "The bride throws rice over her shoulder and says goodbye to her family. An emotional, tear-filled moment."
       },
       {
         title: "Reception",
-        duration: "4-6 hours",
         description: "Evening celebration with speeches, cake cutting, first dance, and often Bollywood DJ and dancing."
       }
     ],
@@ -475,7 +447,6 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     keyMoments: [
       {
         title: "Istikhara (Prayer for Guidance)",
-        duration: "Private/ongoing",
         description: "Before the engagement, families may perform this special prayer asking Allah for guidance about the union."
       },
       {
@@ -496,7 +467,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       },
       {
         title: "Ijab-e-Qubool (Acceptance)",
-        description: "The groom proposes marriage ('Qubool Hai' - I accept) and the bride accepts, typically saying 'Qubool Hai' three times. This mutual consent is witnessed by two male witnesses or equivalent."
+        description: "The groom proposes marriage ('Qubool Hai', I accept) and the bride accepts, typically saying 'Qubool Hai' three times. This mutual consent is witnessed by two male witnesses or equivalent."
       },
       {
         title: "Dua (Prayer)",
