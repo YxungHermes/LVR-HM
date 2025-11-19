@@ -246,6 +246,69 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
           </section>
         )}
 
+        {/* Full Day Timeline Section - Vendor Perspective */}
+        {content.fullDayTimeline && (
+          <section className="px-6 py-20 bg-white">
+            <div className="mx-auto max-w-5xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4 text-center">
+                  Complete Wedding Day Timeline
+                </h2>
+                <p className="text-base text-espresso/70 text-center mb-12 max-w-3xl mx-auto">
+                  From getting ready to the last dance. A comprehensive breakdown from a photographer, videographer, and planner's perspective.
+                </p>
+
+                <div className="space-y-6">
+                  {content.fullDayTimeline.map((segment, index) => (
+                    <motion.div
+                      key={index}
+                      className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6 md:p-8"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                    >
+                      <div className="flex flex-col md:flex-row md:items-start md:gap-6">
+                        {/* Time Badge */}
+                        <div className="flex-shrink-0 mb-3 md:mb-0">
+                          <span className="inline-flex items-center gap-2 bg-rose-wax-red/10 text-rose-wax-red px-4 py-2 rounded-full text-sm font-semibold">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {segment.time}
+                          </span>
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex-1">
+                          <h3 className="font-serif text-xl font-semibold text-ink mb-2">
+                            {segment.title}
+                          </h3>
+                          <p className="text-base text-espresso leading-relaxed mb-3">
+                            {segment.description}
+                          </p>
+                          {segment.vendorNotes && (
+                            <div className="bg-cream/50 border-l-4 border-rose-wax-red pl-4 py-2">
+                              <p className="text-sm text-espresso/80 italic">
+                                <strong className="text-rose-wax-red not-italic">Vendor notes:</strong> {segment.vendorNotes}
+                              </p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
         {/* Cultural Considerations Section */}
         <section className="px-6 py-20 bg-warm-sand/20">
           <div className="mx-auto max-w-4xl">

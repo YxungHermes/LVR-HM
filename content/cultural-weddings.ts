@@ -26,6 +26,13 @@ interface KeyMoment {
   description: string;
 }
 
+interface FullDayTimelineSegment {
+  time: string;
+  title: string;
+  description: string;
+  vendorNotes?: string;
+}
+
 interface CulturalConsiderations {
   heading: string;
   points: string[];
@@ -47,6 +54,7 @@ interface CulturalWeddingContent {
   glossary?: GlossaryTerm[];
   guestEtiquette?: GuestEtiquette;
   keyMoments: KeyMoment[];
+  fullDayTimeline?: FullDayTimelineSegment[];
   culturalConsiderations: CulturalConsiderations;
   commonQuestions: CommonQuestion[];
 }
@@ -124,6 +132,75 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       {
         title: "Final Blessing & Recessional",
         description: "The priest's blessing, kiss, and the couple's exit down the aisle as husband and wife."
+      }
+    ],
+
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before ceremony",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. Photographer captures detail shots (rings, dress, shoes, invitations) and candid moments.",
+        vendorNotes: "Ideal lighting for getting ready photos. Videographer captures audio messages from family. Coordinate with planner for timeline buffer."
+      },
+      {
+        time: "1 hour before ceremony",
+        title: "First Look (Optional) & Family Portraits",
+        description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. Alternatively, family formals happen after the ceremony.",
+        vendorNotes: "First look allows 30-45 min of couple portraits before ceremony. Reduces post-ceremony timeline pressure. Have family photo list ready."
+      },
+      {
+        time: "30 minutes before",
+        title: "Guests Arrive & Pre-Ceremony",
+        description: "Guests arrive and are seated by ushers. Mothers are seated last, signaling ceremony is about to begin. Priest and wedding party gather in preparation area.",
+        vendorNotes: "Photographer captures guest arrivals and church details. Videographer sets up ceremony audio (lapel mics on priest/couple, audio recorder)."
+      },
+      {
+        time: "Ceremony Start",
+        title: "Catholic Wedding Mass (60-90 min)",
+        description: "Processional, readings, vows, ring exchange, Liturgy of the Eucharist (if full Mass), blessing, and recessional. See ceremony timeline above for detailed breakdown.",
+        vendorNotes: "Confirm church photography restrictions (no flash during consecration, stay in designated areas). Capture altar reactions, family emotions, key moments."
+      },
+      {
+        time: "Immediately after ceremony",
+        title: "Receiving Line & Family Formals",
+        description: "Couple may greet guests in receiving line outside church. Family formal portraits taken at church or moving to reception venue. Wedding party photos.",
+        vendorNotes: "Work quickly but naturally. Have shot list prepared. Coordinate with planner to keep on schedule. Aim for 30-45 min max for all formals."
+      },
+      {
+        time: "1-2 hours after ceremony",
+        title: "Cocktail Hour",
+        description: "Guests enjoy drinks and appetizers while couple finishes portraits. Musicians or DJ provide background music. Often includes signature cocktails.",
+        vendorNotes: "Capture candid guest interactions, décor details, and atmosphere. Couple may make a brief appearance. Coordinate sunset portraits if timing works."
+      },
+      {
+        time: "Reception Start",
+        title: "Grand Entrance & First Dances",
+        description: "Wedding party introduced, couple's grand entrance, first dance, parent dances (father-daughter, mother-son), welcome speech.",
+        vendorNotes: "Position for entrance reactions. Get wide shots and close-ups of dances. Capture parent emotions. Audio is critical for speeches."
+      },
+      {
+        time: "Dinner Service",
+        title: "Dinner & Toasts",
+        description: "Blessing/prayer before meal, dinner service (typically 3-4 courses for Catholic receptions), best man and maid of honor toasts, possibly parent toasts.",
+        vendorNotes: "Roam for candid table moments. Focus on toasters' faces and couple reactions. Get B-roll of food and table settings."
+      },
+      {
+        time: "After Dinner",
+        title: "Cake Cutting & Bouquet/Garter",
+        description: "Cake cutting ceremony, bouquet toss, garter toss (optional), and special dances or cultural traditions.",
+        vendorNotes: "Front and back angle for cake cutting. Catch bouquet/garter toss action. High energy moments, anticipate reactions."
+      },
+      {
+        time: "Open Dancing",
+        title: "Reception & Dancing",
+        description: "Open dance floor for all guests. DJ or band keeps energy high. Various cultural dances may occur (Italian tarantella, Polish dollar dance, etc).",
+        vendorNotes: "Capture dance floor energy, group shots, candid moments. Wide shots of packed dance floor. Look for emotional family moments."
+      },
+      {
+        time: "Final Hour",
+        title: "Last Dance & Exit",
+        description: "Farewell songs, last dance, sparkler or ribbon exit if planned. Couple departs in decorated car or to suite.",
+        vendorNotes: "Coordinate exit timing with planner. Set up lighting for sparkler/exit shots. Get wide and tight shots of sendoff. Capture couple's final waves."
       }
     ],
 
