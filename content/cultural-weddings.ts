@@ -547,7 +547,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       { term: "Sacrament of Holy Matrimony", pronunciation: "", definition: "The official name for the Greek Orthodox wedding ceremony" },
       { term: "Isaiah Dance", pronunciation: "", definition: "Three ceremonial walks around the altar led by the priest, symbolizing the couple's eternal journey" },
       { term: "Kalamatiano", pronunciation: "kah-lah-mah-tee-AH-no", definition: "Traditional Greek circle dance performed at weddings and celebrations" },
-    },
+    ],
 
     guestEtiquette: {
       heading: "What to Expect as a Guest",
