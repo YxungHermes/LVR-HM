@@ -532,6 +532,37 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     introHeading: "Ancient traditions meet sacred ceremony in Greek Orthodox weddings.",
     introBody: "Greek Orthodox weddings are deeply rooted in Byzantine Christian tradition and rich with symbolism. The ceremony, called the Sacrament of Holy Matrimony, typically lasts 45-60 minutes and includes ancient rituals like the crowning of the couple, the common cup, and the ceremonial walk. Greek weddings are known for their vibrant celebrations, traditional music, dancing, and the famous 'Opa!' spirit.",
 
+    quickFacts: {
+      duration: "45-60 minutes for the ceremony, plus 3-5 hours for the reception",
+      venue: "Greek Orthodox church (ceremony must be in an Orthodox church)",
+      dressCode: "Formal or cocktail attire; women should have shoulders covered in church",
+      guestCount: "Typically 100-300 guests; Greek weddings are known for large, festive celebrations",
+      musicStyle: "Byzantine hymns during ceremony, traditional Greek music (bouzouki, clarinet) and dancing at reception"
+    },
+
+    glossary: [
+      { term: "Stefana", pronunciation: "steh-FAH-nah", definition: "Wedding crowns joined by ribbon, placed on couple's heads symbolizing glory and honor" },
+      { term: "Koumbaro/Koumbara", pronunciation: "koom-BAH-roh / koom-BAH-rah", definition: "Male/female sponsor (like best man/maid of honor) who becomes couple's lifelong spiritual advisor" },
+      { term: "Koufeta", pronunciation: "koo-FEH-tah", definition: "Sugar-coated almonds given to guests in odd numbers, symbolizing life's bittersweet moments" },
+      { term: "Sacrament of Holy Matrimony", pronunciation: "", definition: "The official name for the Greek Orthodox wedding ceremony" },
+      { term: "Isaiah Dance", pronunciation: "", definition: "Three ceremonial walks around the altar led by the priest, symbolizing the couple's eternal journey" },
+      { term: "Kalamatiano", pronunciation: "kah-lah-mah-tee-AH-no", definition: "Traditional Greek circle dance performed at weddings and celebrations" }
+    },
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Arrive 15-20 minutes early. Greek Orthodox ceremonies are punctual and seating may fill quickly",
+        "Dress modestly for church. Women should cover shoulders; bring a shawl or cardigan if needed",
+        "The ceremony is in Greek and English. Follow along with the program and stand/sit when others do",
+        "Photography may be restricted during certain sacred moments. Respect church policies",
+        "If you're not Orthodox, you may remain seated during Communion or go forward for a blessing",
+        "The ceremony is long (45-60 minutes). Avoid leaving early out of respect",
+        "At the reception, expect traditional Greek music, dancing, plate smashing, and lots of 'Opa!' Join in the fun",
+        "Bring a monetary gift in a card or give a check. Red envelopes are not traditional for Greek weddings"
+      ]
+    },
+
     keyMoments: [
       {
         title: "Betrothal/Engagement Ceremony",
@@ -611,6 +642,37 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
 
     introHeading: "Ancient customs blended with modern celebrations.",
     introBody: "Chinese weddings beautifully blend thousands of years of tradition with contemporary celebrations. From the symbolic tea ceremony and elaborate door games to the vibrant red color symbolizing luck and prosperity, Chinese weddings are rich with meaning. Modern Chinese weddings often combine traditional Chinese customs with Western elements, creating unique multi-cultural celebrations that honor heritage while embracing modernity.",
+
+    quickFacts: {
+      duration: "Full day event (4-8 hours) with morning pickup, tea ceremony, and evening banquet",
+      venue: "Hotel banquet hall, restaurant, or outdoor venue; tea ceremony often at family homes",
+      dressCode: "Formal attire; avoid white, black, or red (reserved for bride). Guests often wear bright, festive colors",
+      guestCount: "100-400 guests; Chinese weddings tend to be large with extended family and family friends",
+      musicStyle: "Traditional Chinese instruments (erhu, guzheng) for ceremony; mix of pop and traditional at reception"
+    },
+
+    glossary: [
+      { term: "Jing Cha", pronunciation: "jing chah", definition: "Tea ceremony where couple serves tea to elders, receiving blessings and red envelopes" },
+      { term: "Hongbao", pronunciation: "hong-bow", definition: "Red envelopes containing money, given as wedding gifts in even amounts (avoiding 4)" },
+      { term: "Qipao/Cheongsam", pronunciation: "chee-pow / chong-sahm", definition: "Traditional Chinese dress, typically red, worn by the bride" },
+      { term: "Guo Da Li", pronunciation: "gwoh dah lee", definition: "Door games where groom and groomsmen complete challenges to 'earn' the bride" },
+      { term: "San Bai", pronunciation: "sahn bye", definition: "Three bows performed in traditional ceremonies to heaven/earth, parents, and each other" },
+      { term: "Shang Tou", pronunciation: "shahng toh", definition: "Hair combing ceremony performed the night before wedding for good fortune" }
+    },
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Never wear white, black, or red. White and black symbolize mourning; red is reserved for the bride",
+        "Bring a red envelope (hongbao) with money as a gift. Use new bills in even amounts (avoid number 4)",
+        "Arrive on time. Chinese banquets often start promptly with many courses planned",
+        "The bride may change outfits 3-4 times throughout the day. This is normal and expected",
+        "Expect a long, elaborate banquet (8-10 courses). Pace yourself and enjoy each dish",
+        "The couple will visit each table to toast. Have your drink ready and stand to toast back",
+        "Games and activities may happen during the banquet. Participate with enthusiasm",
+        "Don't gift clocks, scissors, umbrellas, or anything in sets of 4. These are considered bad luck"
+      ]
+    },
 
     keyMoments: [
       {
@@ -700,6 +762,37 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     introHeading: "Vibrant celebrations honoring family, culture, and unity.",
     introBody: "Nigerian weddings are spectacular multi-day celebrations filled with color, music, dancing, and rich cultural traditions. Nigeria has over 250 ethnic groups, with Yoruba, Igbo, and Hausa being the largest, each with unique wedding customs. Most Nigerian weddings include a traditional ceremony (with cultural attire and rituals), a white wedding (Western-style church ceremony), and an elaborate reception with entertainment, food, and dancing.",
 
+    quickFacts: {
+      duration: "Multiple events over 2-3 days; traditional ceremony 3-5 hours, reception 4-6 hours",
+      venue: "Family compound or event hall for traditional ceremony; church for white wedding; hotel for reception",
+      dressCode: "Aso ebi (matching family fabric) or formal Nigerian attire for traditional; formal Western for white wedding",
+      guestCount: "300-1000+ guests; Nigerian weddings emphasize large family and community gatherings",
+      musicStyle: "Live drummers, highlife, Afrobeats, juju music, traditional folk songs, and contemporary Nigerian pop"
+    },
+
+    glossary: [
+      { term: "Aso Ebi", pronunciation: "ah-SHOH eh-BEE", definition: "Matching fabric worn by family groups to show unity; often elaborate lace or ankara" },
+      { term: "Igba Nkwu", pronunciation: "ee-gbah n-KWOO", definition: "Traditional Igbo engagement/wine carrying ceremony" },
+      { term: "Lobola", pronunciation: "loh-BOH-lah", definition: "Bride price; gifts and money presented by groom's family to bride's family" },
+      { term: "Gele", pronunciation: "geh-LEH", definition: "Elaborate head wrap worn by women, tied in intricate styles" },
+      { term: "Ankara", pronunciation: "ahn-KAH-rah", definition: "Colorful African wax print fabric with vibrant patterns" },
+      { term: "Alaga", pronunciation: "ah-LAH-gah", definition: "Traditional Yoruba MC/coordinator who guides the ceremony proceedings" }
+    },
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Purchase and wear aso ebi if invited to do so. It shows respect and solidarity with the family",
+        "Bring a monetary gift. Cash in an envelope or bank transfer is customary and appreciated",
+        "Arrive on time for the traditional ceremony, but expect the event to start late (Nigerian time is flexible)",
+        "Expect long, multi-part celebrations. Bring energy for dancing and celebrating",
+        "Participate in money spraying during dancing. Bring small bills to throw or place on the couple",
+        "The bride will change outfits multiple times. Each entrance is a celebration in itself",
+        "Food will be plentiful. Expect traditional Nigerian dishes like jollof rice, pounded yam, and pepper soup",
+        "Respect elders. Stand when they enter, greet them properly, and show deference throughout"
+      ]
+    },
+
     keyMoments: [
       {
         title: "Introduction Ceremony (Ikutu Aka/Knocking on the Door)",
@@ -787,6 +880,37 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
 
     introHeading: "Honoring family and tradition through elegant ceremonies.",
     introBody: "Korean weddings beautifully blend Confucian values of family and respect with modern celebrations. While contemporary Korean-American weddings often follow Western ceremony formats, many couples incorporate traditional elements like the Pyebaek (family ceremony), wearing Hanbok (traditional Korean dress), and honoring parents. Traditional Korean weddings emphasize the union of two families, filial piety, and respect for elders through meaningful rituals.",
+
+    quickFacts: {
+      duration: "Western ceremony 30-45 minutes; Pyebaek (private family ceremony) 30-60 minutes",
+      venue: "Wedding hall, hotel ballroom, or church for Western ceremony; private room for Pyebaek",
+      dressCode: "Formal Western attire for ceremony; Hanbok worn by couple and sometimes family during Pyebaek",
+      guestCount: "100-300 guests; smaller than other Asian weddings, focused on close family and friends",
+      musicStyle: "Mix of Western ceremony music, K-pop, and traditional Korean instruments during Pyebaek"
+    },
+
+    glossary: [
+      { term: "Pyebaek", pronunciation: "pyeh-BECK", definition: "Private family ceremony where couple bows to parents and receives blessings" },
+      { term: "Hanbok", pronunciation: "hahn-BOK", definition: "Traditional Korean dress; women wear jeogori (jacket) and chima (skirt)" },
+      { term: "Hahm", pronunciation: "hahm", definition: "Wedding box containing gifts sent from groom's family to bride's family before wedding" },
+      { term: "Kunbere", pronunciation: "koon-BEH-reh", definition: "Deep formal bows performed by couple to show respect and commitment" },
+      { term: "Jujube", pronunciation: "JOO-joob", definition: "Red dates thrown to couple during Pyebaek, symbolizing children and fertility" },
+      { term: "Saju", pronunciation: "sah-JOO", definition: "Traditional exchange of birthdates for astrological compatibility matching" }
+    },
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Bring a monetary gift in a white envelope. Cash is preferred and practical",
+        "Arrive on time. Korean ceremonies are punctual and efficient, often 30-45 minutes",
+        "The Pyebaek is a private family ceremony. Unless invited, guests attend only the main ceremony",
+        "Dress formally but not in white (reserved for bride). Conservative, respectful attire is appreciated",
+        "The ceremony will likely be short. Reception or dinner may follow immediately after",
+        "Parents and elders are highly respected. Stand and greet them with a bow if introduced",
+        "Food at the reception may include Korean dishes like bulgogi, japchae, and kimchi alongside Western options",
+        "Photos during the ceremony may be restricted. Follow venue rules and be respectful"
+      ]
+    },
 
     keyMoments: [
       {
@@ -876,6 +1000,37 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     introHeading: "Blending Catholic faith with vibrant Filipino cultural traditions.",
     introBody: "Filipino weddings beautifully merge Catholic ceremony traditions with unique Filipino customs that symbolize unity, prosperity, and family bonds. While the ceremony follows Catholic Mass structure, Filipino weddings are distinguished by the symbolic Veil, Cord, and Coins (Arras) ceremonies, traditional attire like the Barong Tagalog and Filipiniana dress, and vibrant receptions with cultural dances and customs.",
 
+    quickFacts: {
+      duration: "60-90 minutes for Catholic Mass wedding; reception 4-6 hours",
+      venue: "Catholic church for ceremony; hotel ballroom or event hall for reception",
+      dressCode: "Formal; traditional Barong Tagalog for men, Filipiniana or terno for women (optional for guests)",
+      guestCount: "200-400 guests; Filipino weddings are large, family-centered celebrations",
+      musicStyle: "Catholic hymns during ceremony; mix of Filipino love songs, kundiman, and contemporary pop at reception"
+    },
+
+    glossary: [
+      { term: "Arras", pronunciation: "ah-RAHS", definition: "13 coins given by groom to bride, symbolizing commitment to provide and shared prosperity" },
+      { term: "Barong Tagalog", pronunciation: "bah-RONG tah-GAH-log", definition: "Traditional Filipino embroidered formal shirt worn by groom and male guests" },
+      { term: "Filipiniana", pronunciation: "fee-lee-pee-nee-AH-nah", definition: "Traditional Filipino dress for women with butterfly sleeves and elegant embroidery" },
+      { term: "Ninong/Ninang", pronunciation: "nee-NONG / nee-NAHNG", definition: "Principal sponsors (godparents) who support the couple and participate in ceremonies" },
+      { term: "Yugal", pronunciation: "yoo-GAHL", definition: "Decorative cord or lasso placed around couple in figure-eight, symbolizing eternal unity" },
+      { term: "Pamamanhikan", pronunciation: "pah-mah-mahn-HEE-kahn", definition: "Formal meeting where groom's family asks bride's family for her hand in marriage" }
+    },
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Arrive 15-20 minutes early. Filipino Catholic ceremonies start on time and may fill quickly",
+        "Dress modestly for church. Women should cover shoulders; men wear suits or Barong Tagalog if desired",
+        "The ceremony will be long (60-90 minutes) with full Catholic Mass. Plan accordingly",
+        "Bring a monetary gift in an envelope. Cash gifts are traditional and preferred",
+        "Participate in the money dance at the reception. Bring small bills to pin on the couple while dancing",
+        "Expect abundant Filipino food: lechon (roast pig), lumpia, pancit, adobo, and more",
+        "Family and elders are highly respected. Greet them with 'po' and 'opo' (yes, sir/ma'am)",
+        "The reception will be lively with music, dancing, speeches, and games. Join in the celebration"
+      ]
+    },
+
     keyMoments: [
       {
         title: "Catholic Ceremony",
@@ -964,6 +1119,37 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     introHeading: "Sacred union before the Guru Granth Sahib.",
     introBody: "Sikh weddings center around the Anand Karaj (literally 'blissful union'), a spiritual ceremony performed in a Gurdwara (Sikh temple) before the Guru Granth Sahib (holy scripture). The ceremony emphasizes equality, with both bride and groom walking around the Guru Granth Sahib four times while the Lavaan (wedding hymns) are recited. Sikh weddings blend profound spiritual significance with vibrant Punjabi cultural celebrations.",
 
+    quickFacts: {
+      duration: "Anand Karaj ceremony 60-90 minutes; multi-day celebrations with Sangeet, Mehndi, and reception",
+      venue: "Gurdwara (Sikh temple) for Anand Karaj; banquet hall for reception and pre-wedding events",
+      dressCode: "Modest attire; head covering required in Gurdwara for all guests. Traditional Punjabi suits or lehenga common",
+      guestCount: "200-500 guests; Sikh weddings are large community celebrations with Langar (free meal) for all",
+      musicStyle: "Kirtan (devotional hymns) at Gurdwara; Bhangra, Punjabi folk, and Bollywood music at reception"
+    },
+
+    glossary: [
+      { term: "Anand Karaj", pronunciation: "ah-NAHND kah-RAHJ", definition: "Blissful union; the Sikh wedding ceremony performed before Guru Granth Sahib" },
+      { term: "Lavaan", pronunciation: "lah-VAHN", definition: "Four wedding hymns recited during ceremony as couple circles Guru Granth Sahib" },
+      { term: "Guru Granth Sahib", pronunciation: "goo-ROO grahnth sah-HEEB", definition: "Sikh holy scripture; central spiritual authority present at wedding" },
+      { term: "Gurdwara", pronunciation: "goor-DWAH-rah", definition: "Sikh place of worship where Anand Karaj ceremony takes place" },
+      { term: "Chooda", pronunciation: "CHOO-dah", definition: "Red and white bangles worn by bride, blessed and gifted by maternal uncle" },
+      { term: "Langar", pronunciation: "LAHN-gahr", definition: "Free communal meal served to all guests at Gurdwara after ceremony" }
+    },
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Cover your head before entering the Gurdwara. Scarves are usually provided at the entrance",
+        "Remove your shoes before entering. Socks are fine; shoes are stored in designated areas",
+        "Sit on the floor during the ceremony (cushions provided). Men and women typically sit on opposite sides",
+        "Dress modestly. Shoulders and knees should be covered; avoid low-cut or revealing clothing",
+        "Do not turn your back to the Guru Granth Sahib. Show respect to the holy scripture",
+        "Langar (free meal) will be served to all guests after the ceremony. Everyone eats together regardless of status",
+        "Alcohol and tobacco are strictly prohibited at Gurdwara and often at Sikh wedding receptions",
+        "The reception will be lively with Bhangra dancing. Join in the celebration and dancing"
+      ]
+    },
+
     keyMoments: [
       {
         title: "Roka & Thaka",
@@ -1051,6 +1237,37 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
 
     introHeading: "Vibrant celebrations honoring faith, family, and cultural heritage.",
     introBody: "Mexican weddings beautifully blend Catholic traditions with indigenous Mexican customs, creating colorful, festive celebrations centered on family and faith. From the symbolic Lazo (lasso) and Arras (coins) ceremonies to the vibrant Mariachi music and traditional dances, Mexican weddings are rich with meaning and joy. These celebrations often involve the entire community, with godparents (padrinos and madrinas) playing essential roles.",
+
+    quickFacts: {
+      duration: "60-90 minutes for Catholic Mass ceremony; reception 5-8 hours (often into late night)",
+      venue: "Catholic church for ceremony; banquet hall, hacienda, or outdoor venue for reception",
+      dressCode: "Formal or semi-formal; vibrant colors encouraged. White is reserved for bride",
+      guestCount: "150-400 guests; Mexican weddings emphasize large family and community celebrations",
+      musicStyle: "Catholic hymns during ceremony; Mariachi, banda, norteño, cumbia, and regional Mexican music at reception"
+    },
+
+    glossary: [
+      { term: "Las Arras", pronunciation: "lahs AH-rahs", definition: "13 gold coins given by groom to bride, symbolizing commitment to provide and share" },
+      { term: "El Lazo", pronunciation: "el LAH-soh", definition: "Lasso or cord placed in figure-eight around couple, symbolizing unity and eternal bond" },
+      { term: "Padrinos/Madrinas", pronunciation: "pah-DREE-nohs / mah-DREE-nahs", definition: "Godparents who sponsor wedding elements and provide lifelong spiritual guidance" },
+      { term: "La Vibora de la Mar", pronunciation: "lah vee-BOH-rah deh lah mahr", definition: "Sea snake dance where guests form a chain trying to bring down the standing couple" },
+      { term: "Papel Picado", pronunciation: "pah-PEL pee-KAH-doh", definition: "Decorative perforated paper banners hung at ceremonies and receptions" },
+      { term: "Mariachi", pronunciation: "mah-ree-AH-chee", definition: "Traditional Mexican musical ensemble with violins, trumpets, guitars, and traditional dress" }
+    },
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Arrive on time for the church ceremony. Mexican Catholic ceremonies are punctual and follow Mass structure",
+        "Dress modestly for church. Women should cover shoulders; men wear suits or guayaberas",
+        "Bring a monetary gift or physical gift from the registry. Cash in an envelope is traditional and appreciated",
+        "The reception will start later than stated. 'Mexican time' is relaxed; arrive within 30-60 minutes of start time",
+        "Participate in the money dance. Bring small bills to pin on the couple while dancing",
+        "Join in La Vibora de la Mar when invited. It's a fun, inclusive tradition for all single guests",
+        "Expect abundant food and drink. Traditional Mexican dishes, tequila, and festive toasts are common",
+        "Be prepared to stay late. Mexican weddings often go until midnight or later with continuous dancing and celebration"
+      ]
+    },
 
     keyMoments: [
       {
