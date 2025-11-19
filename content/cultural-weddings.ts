@@ -31,6 +31,7 @@ interface FullDayTimelineSegment {
   title: string;
   description: string;
   whatIllBeDoing?: string;
+  hasDetails?: boolean;
 }
 
 interface CulturalConsiderations {
@@ -137,67 +138,51 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
 
     fullDayTimeline: [
       {
-        time: "2-3 hours before ceremony",
+        time: "2-3 hours before",
         title: "Getting Ready & Details",
         description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. This is when I capture detail shots (rings, dress, shoes, invitations) and candid moments of you getting ready.",
         whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, so we capture both of you getting ready simultaneously. I'll film detail shots in natural light (rings, dress, shoes, invitations), candid emotions, and any special moments like letter readings or gift exchanges. For letters, I'll ask if you'd like audio recorded - it's always a plus for the final film, but I respect your wishes either way. If there's anything meaningful happening during prep, we're there for it."
       },
       {
-        time: "1 hour before ceremony",
-        title: "First Look (Optional) & Family Portraits",
+        time: "1 hour before",
+        title: "First Look (Optional)",
         description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. This moment is just for you two. If you skip the first look, family formals happen after the ceremony instead.",
         whatIllBeDoing: "If you're doing a first look, my other shooter and I will capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
       },
       {
-        time: "30 minutes before",
+        time: "30 min before",
         title: "Guests Arrive & Pre-Ceremony",
         description: "Guests arrive and are seated by ushers. Mothers are seated last, signaling the ceremony is about to begin. The priest and wedding party gather in the preparation area.",
         whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics on the priest and groom, plus connecting to the church's audio system if possible to capture everything clearly. The team positions ourselves strategically out of the way, ready for the processional. Final tech checks and we're set."
       },
       {
-        time: "Ceremony Start",
-        title: "Catholic Wedding Mass (60-90 min)",
-        description: "Processional, readings, vows, ring exchange, Liturgy of the Eucharist (if full Mass), blessing, and recessional. See the ceremony timeline section above for the detailed breakdown.",
-        whatIllBeDoing: "During the processional, I position myself down the center aisle near the altar to capture your walk and the emotions of your families. When the bride is close, I move to capture the presentation moment when the father gives her away to the groom. From there, my other shooter and I stay positioned at the altar to capture multiple angles throughout the Mass - your faces during vows, family reactions, and all the sacred moments. Audio quality is critical, so I'm monitoring levels the entire time."
+        time: "60-90 min",
+        title: "Ceremony",
+        description: "The Catholic wedding ceremony includes the processional, readings, vows, ring exchange, and recessional. If you're having a full Nuptial Mass, it also includes the Liturgy of the Eucharist.",
+        whatIllBeDoing: "My other shooter and I capture multiple angles throughout the ceremony - your processional, the emotions of your families, your faces during vows, and all the sacred moments. We position ourselves discreetly to respect the sanctity of the Mass while ensuring every important moment is documented. Audio quality is critical, so I'm monitoring levels the entire time.",
+        hasDetails: true
       },
       {
-        time: "Immediately after ceremony",
-        title: "Receiving Line & Family Formals",
-        description: "You might greet guests in a receiving line outside the church. Family formal portraits are taken either at the church or we move to the reception venue. Wedding party photos happen here too.",
-        whatIllBeDoing: "I'll capture some coverage of the receiving line, then the photo session begins. I work with the photo team to film family formals and couple portraits efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group coverage so you're not exhausted before the reception."
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits are taken either at the church or at the reception venue. Wedding party photos happen here too.",
+        whatIllBeDoing: "I work with the photo team to film family formals and couple portraits efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group coverage so you're not exhausted before the reception."
       },
       {
-        time: "1-2 hours after ceremony",
+        time: "1 hour",
         title: "Cocktail Hour",
         description: "Guests enjoy drinks and appetizers while you finish portraits. Musicians or DJ provide background music. Many couples have signature cocktails that reflect their story.",
         whatIllBeDoing: "I'm capturing candid guest interactions, décor details, and the overall atmosphere. You might make a brief appearance during cocktail hour. If timing works with sunset, your planner and I will coordinate to grab those golden hour couple portraits."
       },
       {
-        time: "Reception Start",
-        title: "Grand Entrance & First Dances",
-        description: "Wedding party is introduced, followed by your grand entrance. First dance as a married couple, then parent dances (father-daughter, mother-son), and welcome speech.",
-        whatIllBeDoing: "My other shooter and I position ourselves to capture entrance reactions from multiple angles. For the first dances, we get wide shots to show the full scene and close-ups of your faces and emotions. Audio is critical for speeches, so I'll be monitoring levels and capturing both the speaker and your reactions."
+        time: "3-4 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, and dancing. This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every key moment - from your grand entrance and first dances to toasts, cake cutting, and dance floor energy. We position ourselves to get multiple angles for important moments and roam for candid interactions. We're always watching for genuine emotions and authentic reactions throughout the celebration.",
+        hasDetails: true
       },
       {
-        time: "Dinner Service",
-        title: "Dinner & Toasts",
-        description: "Blessing or prayer before the meal, then dinner service (typically 3-4 courses for Catholic receptions). Best man and maid of honor toasts, possibly parent toasts.",
-        whatIllBeDoing: "I'll roam the room for candid table moments while also getting B-roll of the food and table settings. During toasts, I focus on the speaker's face and your reactions. These genuine moments are often the most emotional parts of the film."
-      },
-      {
-        time: "After Dinner",
-        title: "Cake Cutting & Bouquet/Garter",
-        description: "Cake cutting ceremony, bouquet toss, garter toss (optional), and any special dances or cultural traditions specific to your families.",
-        whatIllBeDoing: "My other shooter and I position ourselves to get multiple angles for the cake cutting - front, back, and reactions. For bouquet and garter tosses, we're anticipating the action and reactions from different perspectives. These are high-energy moments, and we're watching for genuine laughter and surprise."
-      },
-      {
-        time: "Open Dancing",
-        title: "Reception & Dancing",
-        description: "Open dance floor for all guests. DJ or band keeps the energy high. Various cultural dances may happen (Italian tarantella, Polish dollar dance, etc.) depending on your family traditions.",
-        whatIllBeDoing: "I'm capturing the dance floor energy, group moments, and candid interactions. Wide shots of a packed dance floor, close-ups of your family dancing, and those emotional moments when you're surrounded by everyone you love. I'm always looking for authentic reactions."
-      },
-      {
-        time: "Final Hour",
+        time: "15-30 min",
         title: "Last Dance & Sendoff",
         description: "Farewell songs, last dance, sparkler or ribbon exit if you've planned one. You depart in a decorated car or head to your suite.",
         whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for sparkler or exit shots and capture both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always find you to say my goodbyes, give hugs, and share my thanks and blessings."
@@ -317,6 +302,65 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       {
         title: "The Hora",
         description: "The exuberant circle dance where the couple is lifted on chairs. One of the most joyful moments of the reception."
+      }
+    ],
+
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. This is when I capture detail shots (rings, ketubah, dress, shoes) and candid moments of you getting ready.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, so we capture both of you getting ready simultaneously. I'll film detail shots in natural light (rings, ketubah artwork, dress, shoes, invitations), candid emotions, and any special moments like letter readings or gift exchanges. For letters, I'll ask if you'd like audio recorded - it's always a plus for the final film, but I respect your wishes either way."
+      },
+      {
+        time: "1 hour before",
+        title: "Ketubah Signing & Bedeken",
+        description: "Pre-ceremony rituals where the ketubah is signed by witnesses and the groom veils the bride. These are intimate, emotional moments often shared with close family.",
+        whatIllBeDoing: "I'll capture the ketubah signing ceremony with close-ups of the artwork, signatures, and emotions. The bedeken is one of the most beautiful moments - the groom approaching the bride surrounded by singing and dancing family. I'll position myself to capture both your faces and the joy of those around you."
+      },
+      {
+        time: "30 min before",
+        title: "Guests Arrive & Pre-Ceremony",
+        description: "Guests arrive and are seated. Kippahs are distributed at the entrance. The chuppah is prepared and the processional is about to begin.",
+        whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics on the rabbi and groom to capture vows and blessings clearly. My team positions ourselves strategically for the processional and ceremony coverage. Final tech checks and we're ready."
+      },
+      {
+        time: "30-45 min",
+        title: "Ceremony",
+        description: "The wedding ceremony under the chuppah includes the processional, seven blessings, ring exchange, and breaking of the glass. Everyone shouts 'Mazel Tov!' when the glass breaks.",
+        whatIllBeDoing: "My other shooter and I capture multiple angles throughout the ceremony - the processional as both of you walk down with your parents, emotions during the seven blessings, the ring exchange, and of course the breaking of the glass with everyone's joyful reactions. We position ourselves to respect the sacred space while documenting every meaningful moment.",
+        hasDetails: true
+      },
+      {
+        time: "15-20 min",
+        title: "Yichud",
+        description: "The newlyweds spend their first private moments together alone in a room. This deeply personal tradition gives you time to breathe and be together.",
+        whatIllBeDoing: "This is your private time - we don't film yichud. My team and I use this time to capture guest reactions, atmosphere, and décor details while you have your moment together."
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits with both sides of the family, plus wedding party photos. We work through the shot list efficiently.",
+        whatIllBeDoing: "I work with the photo team to film family formals and couple portraits efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group coverage so you're not exhausted before the party begins."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour",
+        description: "Guests enjoy drinks and appetizers while you finish portraits. Live music or DJ provides atmosphere. This is when everyone mingles and the energy builds.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, décor details, and the overall atmosphere. You might make a brief appearance during cocktail hour. If timing works with sunset, your planner and I will coordinate to grab those golden hour couple portraits."
+      },
+      {
+        time: "3-4 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, the exuberant hora, and dancing. This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every key moment - from your grand entrance to the hora (one of the most joyful moments we'll film). We position ourselves to get multiple angles when you're lifted on chairs. We'll capture toasts, cake cutting, and all the dance floor energy. The hora alone requires strategic positioning to get both wide celebration shots and your reactions up on the chairs.",
+        hasDetails: true
+      },
+      {
+        time: "15-30 min",
+        title: "Last Dance & Sendoff",
+        description: "Final songs, last dance, and your exit. Whether it's a sparkler sendoff or something else, this is your grand goodbye.",
+        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for sparkler or exit shots and capture both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always find you to say my goodbyes, give hugs, and share my thanks and blessings."
       }
     ],
 
@@ -445,6 +489,59 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       }
     ],
 
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into elaborate attire. For the bride, this includes draping the sari or lehenga and jewelry. This is when I capture detail shots of your vibrant attire, jewelry, and mehendi designs.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots of your stunning attire, jewelry, mehendi designs, and any emotional moments with family. The colors and details of Indian weddings are incredible - I make sure to capture all of it in beautiful natural light."
+      },
+      {
+        time: "30-45 min",
+        title: "Baraat (Groom's Procession)",
+        description: "The groom arrives on horseback or in a luxury car, accompanied by his family and friends dancing to dhol drums. Pure celebration and spectacle - one of the most energetic moments of the day.",
+        whatIllBeDoing: "The Baraat is pure energy and joy. I position myself to capture the procession arriving, the dancing family members, the dhol drummers, and the groom's entrance. This requires mobile coverage - I'm moving with the procession to get dynamic shots of the celebration. The music, colors, and energy are incredible to film."
+      },
+      {
+        time: "15-20 min",
+        title: "Milni & Jai Mala",
+        description: "The families meet and exchange garlands, followed by the bride and groom's garland exchange on stage. Often playful as families lift the couple to make it challenging.",
+        whatIllBeDoing: "I'll capture the formal meeting of families and then the fun, playful moments of the Jai Mala. The families often lift you both up, making you reach for the garlands - these moments are joyful and full of laughter. I position myself to get both your reactions and the energy of your families."
+      },
+      {
+        time: "2-4 hours",
+        title: "Ceremony",
+        description: "The Hindu wedding ceremony under the mandap includes sacred rituals guided by the pandit - Kanyadaan, circling the sacred fire seven times (Saat Phere), and the tying of the Mangalsutra. Each ritual carries deep spiritual significance.",
+        whatIllBeDoing: "My other shooter and I capture the ceremony from multiple angles - the sacred fire, your faces during the Saat Phere, the emotional Kanyadaan when your father gives you away, and the Mangalsutra tying. We work respectfully around the mandap, capturing both wide shots of the rituals and close-ups of your emotions. The ceremony is long, but every moment matters.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits with both sides of the family. With large Indian families, this requires organization and patience.",
+        whatIllBeDoing: "I work with the photo team to film family formals efficiently. Indian weddings often have large families and many groupings to capture. We'll have a shot list ready and work through it systematically so you can get to the reception. I aim for 30-45 minutes max."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour",
+        description: "Guests enjoy appetizers and drinks while you finish portraits or rest after the long ceremony. Music sets the tone for the evening celebration ahead.",
+        whatIllBeDoing: "I'm capturing the vibrant décor, guest interactions, and the overall atmosphere. Indian wedding décor is always stunning - flowers, colors, lighting - and I make sure to document it all. If there's time, your planner and I will coordinate couple portraits during golden hour."
+      },
+      {
+        time: "3-4 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, and dancing to Bollywood music. This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every key moment - your grand entrance, first dance (often choreographed!), speeches and toasts, cake cutting, and all the Bollywood dance floor energy. Indian receptions are incredibly fun to film - the music, dancing, and joy are infectious. We position ourselves to capture both the scheduled moments and spontaneous celebration.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Bidaai (Bride's Farewell)",
+        description: "The emotional farewell as the bride leaves her family. She throws rice over her shoulder, symbolizing prosperity for her family. One of the most tear-filled moments of the day.",
+        whatIllBeDoing: "The Bidaai is incredibly emotional - I position myself to capture both the bride's tears and her family's reactions. This moment requires sensitivity and closeness. I'll film the rice throwing, the hugs, and the departure. It's a beautiful, bittersweet moment that families treasure in the final film."
+      }
+    ],
+
     culturalConsiderations: {
       heading: "Important Things to Know",
       points: [
@@ -564,6 +661,53 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       }
     ],
 
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire - whether that's a colorful shalwar kameez, lehenga, or traditional dress from your cultural background. This is when I capture detail shots of your attire, jewelry, and mehendi designs.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots in natural light - your attire, jewelry, mehendi designs if you have them, and the Nikah Nama document. I also capture candid emotional moments with family as you prepare for this sacred commitment."
+      },
+      {
+        time: "30 min before",
+        title: "Guests Arrive & Pre-Ceremony",
+        description: "Guests arrive and are seated. In traditional ceremonies, men and women may be seated separately. The Imam prepares, and family gathers for the Nikah ceremony to begin.",
+        whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics on the Imam and groom to capture the vows, Mahr discussion, and Qubool Hai clearly. If there's gender separation, my team positions ourselves to respect those boundaries while ensuring both sides are documented. Final tech checks and we're ready."
+      },
+      {
+        time: "20-30 min",
+        title: "Nikah Ceremony",
+        description: "The Islamic marriage contract ceremony. The Imam leads recitation of Quranic verses, the Mahr is specified, and both bride and groom say 'Qubool Hai' (I accept) to formalize the marriage. The Nikah Nama is signed by the couple and witnesses.",
+        whatIllBeDoing: "The Nikah is brief but sacred. My other shooter and I capture the Imam's recitation, your faces during the vows, the moment you both say 'Qubool Hai,' and the signing of the Nikah Nama. We work respectfully, especially in mosque settings, to document this meaningful ceremony without being intrusive. Audio is critical to capture the vows and prayers clearly.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits with both sides of the family. Wedding party photos happen here too. We work efficiently to get you to the celebration.",
+        whatIllBeDoing: "I work with the photo team to film family formals efficiently. We'll have a shot list prepared with your planner and work through it systematically. In traditional weddings with gender separation, we coordinate respectfully to capture family groupings. I aim for 30-45 minutes max so you can enjoy the Walima."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour (or Pre-Reception Gathering)",
+        description: "Guests enjoy mocktails and appetizers while you finish portraits. No alcohol is served, in accordance with Islamic tradition. Music or nasheeds provide atmosphere.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, the beautiful décor, and the overall atmosphere. Muslim weddings often have stunning décor with rich colors and elegant details. If there's time and light permits, your planner and I will coordinate for golden hour couple portraits."
+      },
+      {
+        time: "3-4 hours",
+        title: "Walima (Reception)",
+        description: "The wedding banquet celebration includes your grand entrance, speeches and duas, dinner service, cake cutting, and dancing (if part of your cultural tradition). This is where the community celebrates your marriage and offers blessings.",
+        whatIllBeDoing: "My team and I capture every key moment of the Walima - your grand entrance, duas and blessings from family and the Imam, speeches, cake cutting, and any cultural dances or performances. We position ourselves respectfully, especially if there's gender separation, to document both the formal moments and candid joy throughout the celebration.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Rukhsati (Bride's Farewell)",
+        description: "The emotional farewell as the bride leaves her family. Quran recitation and duas are offered for protection and blessings. One of the most tear-filled moments of the day.",
+        whatIllBeDoing: "The Rukhsati is incredibly emotional - I position myself to capture both the bride's tears and her family's reactions as she departs. I'll film the Quran being held over her head, the hugs with family, and the departure. This moment requires sensitivity and closeness to capture the raw emotion that families treasure in the final film."
+      }
+    ],
+
     culturalConsiderations: {
       heading: "Important Things to Know",
       points: [
@@ -672,6 +816,59 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       {
         title: "The Benediction",
         description: "Final prayers and blessings are offered, and the couple receives the priest's blessing before being presented as husband and wife."
+      }
+    ],
+
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. This is when I capture detail shots (rings, stefana crowns, dress, shoes, koufeta) and candid moments of you getting ready.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, so we capture both of you getting ready simultaneously. I'll film detail shots in natural light - the wedding rings, the stefana crowns (which are beautiful and ornate), your dress, shoes, and any special family heirlooms. The stefana are particularly important to document artistically given their significance."
+      },
+      {
+        time: "1 hour before",
+        title: "First Look (Optional)",
+        description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. This moment is just for you two.",
+        whatIllBeDoing: "If you're doing a first look, my other shooter and I will capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
+      },
+      {
+        time: "30 min before",
+        title: "Guests Arrive & Pre-Ceremony",
+        description: "Guests arrive and are seated. The church fills with anticipation. The priest and Koumbaro/Koumbara prepare for the ceremony to begin.",
+        whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics on the priest and groom to capture the bilingual ceremony (Greek and English), vows, and blessings clearly. My team positions ourselves strategically in the church, respecting the sacred space while ensuring we capture every important moment. Final tech checks and we're ready."
+      },
+      {
+        time: "45-60 min",
+        title: "Ceremony",
+        description: "The Sacrament of Holy Matrimony includes the betrothal, blessing of rings, the iconic crowning with stefana, sharing the common cup, and the Isaiah Dance around the altar. Rich with Byzantine Christian symbolism and tradition.",
+        whatIllBeDoing: "My other shooter and I capture multiple angles throughout the ceremony - the ring exchange by the Koumbaro/Koumbara, the crowning with stefana (one of the most iconic moments), the common cup, and the Isaiah Dance as you walk around the altar three times. We position ourselves to respect the sacred nature of the Orthodox ceremony while documenting every meaningful ritual. The bilingual nature requires excellent audio capture.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits at the church or venue. The stefana often stay on for some portraits. Wedding party and family photos are taken efficiently.",
+        whatIllBeDoing: "I work with the photo team to film family formals and couple portraits efficiently. Greek families are often large and close-knit, so we'll have an organized shot list. Some couples keep the stefana on for portraits, which makes for beautiful images. I aim for 30-45 minutes max for all group coverage."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour",
+        description: "Guests enjoy drinks, appetizers, and ouzo while you finish portraits. Greek music may play as everyone mingles and the celebration energy builds.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, Greek décor details, and the overall atmosphere. Greek weddings have beautiful aesthetic details - from the blue and white color schemes to traditional decorations. If timing works with sunset, your planner and I will coordinate to grab those golden hour couple portraits."
+      },
+      {
+        time: "3-4 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, traditional Greek dancing (Kalamatiano, Hasapiko), plate smashing, and lots of 'Opa!' This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every key moment - from your grand entrance to the traditional Greek dances. Greek receptions are incredibly energetic and joyful - the circle dances, plate smashing, and 'Opa!' moments are pure celebration. We position ourselves to get both the organized moments (first dance, toasts, cake cutting) and the spontaneous joy of Greek dancing and celebration throughout the night.",
+        hasDetails: true
+      },
+      {
+        time: "15-30 min",
+        title: "Last Dance & Sendoff",
+        description: "Final songs, last dance, and your exit. Whether it's sparklers or a traditional Greek sendoff, this is your grand goodbye.",
+        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for sparkler or exit shots and capture both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always find you to say my goodbyes, give hugs, and share my thanks and blessings."
       }
     ],
 
@@ -794,6 +991,59 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       }
     ],
 
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into the first outfit (often Western attire). This is when I capture detail shots of your dress, jewelry, red envelopes, and any traditional items.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots - your attire (especially the red qipao/cheongsam if you're wearing it), jewelry, tea ceremony set, red envelopes, and any family heirlooms. The vibrant red and gold colors are beautiful to capture."
+      },
+      {
+        time: "1-2 hours",
+        title: "Door Games & Bride Pickup",
+        description: "The groom and groomsmen arrive at the bride's home to complete playful challenges set by the bridesmaids before they can 'collect' the bride. Red envelopes and lots of laughter are involved.",
+        whatIllBeDoing: "The door games are so much fun to film - pure energy and laughter. I'll capture the challenges, the negotiation, the red envelope bribes, and everyone's reactions. This is one of the most entertaining parts of a Chinese wedding. I position myself to get both the groomsmen's struggle and the bridesmaids' mischievous joy."
+      },
+      {
+        time: "45-60 min",
+        title: "Tea Ceremony (Jing Cha)",
+        description: "One of the most sacred moments - the couple serves tea to elders in order of seniority, kneeling or bowing respectfully. Elders offer blessings and red envelopes, officially welcoming the couple into the family.",
+        whatIllBeDoing: "The tea ceremony is incredibly meaningful and emotional. I'll capture each elder being served tea, the couple kneeling, the exchanges of red envelopes, and the emotions on everyone's faces. This requires sensitivity and respect - I position myself to document without intruding on these intimate family moments."
+      },
+      {
+        time: "30-45 min",
+        title: "Ceremony",
+        description: "The wedding ceremony, which may be Western-style with vows and rings, traditional Chinese with San Bai (three bows), or a combination of both.",
+        whatIllBeDoing: "My other shooter and I capture multiple angles of the ceremony - whether it's Western vows, traditional bowing, or both. Chinese weddings often blend traditions beautifully, and we document it all. If you're doing costume changes between ceremony and reception, I'll capture those transitions as well.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits with both sides of the family. Chinese families are often large, so this requires organization and efficiency.",
+        whatIllBeDoing: "I work with the photo team to film family formals efficiently. Chinese weddings often have large extended families with many groupings to capture. We'll have a shot list ready and work through it systematically. I aim for 30-45 minutes max so you can prepare for the banquet."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour (or Interlude)",
+        description: "Guests enjoy appetizers and drinks while you finish portraits or change into your next outfit. The bride may change from Western gown to traditional red qipao.",
+        whatIllBeDoing: "I'll capture you changing into the traditional red qipao if that's part of your plan - these moments of transformation are beautiful. Meanwhile, I'm also documenting the décor (red and gold details are always stunning), guest interactions, and building anticipation for the banquet."
+      },
+      {
+        time: "3-4 hours",
+        title: "Reception (Banquet)",
+        description: "The evening celebration includes your grand entrance, the elaborate multi-course dinner (8-10 courses), table-to-table toasts with guests, speeches, games, and possibly more costume changes. This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every moment of the banquet - your grand entrance (often elaborate with special effects), each table toast as you move through the room, the beautiful food presentation, speeches, games, and your costume changes if you have more. Chinese banquets are long and filled with tradition - we pace ourselves to stay energized throughout and capture both the formal moments and candid joy.",
+        hasDetails: true
+      },
+      {
+        time: "15-30 min",
+        title: "Farewell & Sendoff",
+        description: "Final toasts, farewells to family, and your departure. Traditional couples may have additional customs as the bride enters her new home.",
+        whatIllBeDoing: "I'll capture your final moments with guests, the emotional farewells with family, and your departure. If you're incorporating traditional customs at the groom's home (stepping over saddle, entering the home), we can coordinate coverage of those moments as well."
+      }
+    ],
+
     culturalConsiderations: {
       heading: "Important Things to Know",
       points: [
@@ -910,6 +1160,53 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       {
         title: "Cake Cutting and First Dance",
         description: "Western-influenced traditions incorporated into modern Nigerian weddings, often with elaborate multi-tiered cakes and choreographed dances."
+      }
+    ],
+
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into elaborate traditional attire - aso ebi, gele (head wrap), and stunning African fabrics. This is when I capture detail shots of your vibrant attire, jewelry, and traditional items.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots - the gorgeous aso ebi fabrics, the intricate gele tying process, jewelry, traditional accessories, and any ceremonial items. Nigerian weddings have incredible colors and textures that are stunning on film."
+      },
+      {
+        time: "1 hour before",
+        title: "Traditional Ceremony Begins",
+        description: "The traditional engagement ceremony starts with both families arriving in coordinated aso ebi. Prayers are offered, and the celebration begins with music and dancing.",
+        whatIllBeDoing: "I'll capture the arrival of both families in their beautiful matching aso ebi, the setup of the traditional ceremony space, and the energy as guests arrive. The colors, fabrics, and sense of community are incredible to document. I position myself to capture both wide shots of the gathering and intimate family moments."
+      },
+      {
+        time: "2-3 hours",
+        title: "Traditional Ceremony (Igba Nkwu/Traditional Engagement)",
+        description: "The cultural ceremony includes the bride's grand entrances in multiple traditional outfits, wine carrying tradition (searching for the groom), bride price presentation, kola nut breaking, prayers, and blessings from elders.",
+        whatIllBeDoing: "My other shooter and I capture every element of the traditional ceremony - the bride's multiple grand entrances with her entourage dancing, the wine carrying as she searches for you, the bride price presentation, kola nut breaking, and elder blessings. Nigerian traditional ceremonies are incredibly vibrant and energetic - we position ourselves to capture the pageantry, colors, dancing, and emotional moments. Each outfit change is an event in itself.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits with both sides of the family in their traditional attire. Nigerian families are large, so this requires organization.",
+        whatIllBeDoing: "I work with the photo team to film family formals efficiently. The aso ebi creates stunning unified looks for group photos. With large Nigerian families, we'll have an organized shot list and work through it systematically. The vibrant colors make for beautiful portraits."
+      },
+      {
+        time: "1 hour",
+        title: "Interlude / Preparation for Reception",
+        description: "Break between traditional ceremony and reception. The couple may rest or change into reception attire. Guests continue celebrating, eating traditional Nigerian food, and socializing.",
+        whatIllBeDoing: "I'll capture candid guest interactions, the incredible traditional Nigerian food spread (jollof rice, pounded yam, pepper soup), décor details, and the continued celebration. If you're changing outfits again, I'll document that transformation."
+      },
+      {
+        time: "4-5 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance (possibly in new outfits), first dances, dinner service, cake cutting, money spraying, and energetic dancing to Afrobeats and highlife music. This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every moment of the reception - your grand entrance, first dance, speeches, cake cutting, and the incredible money spraying tradition. Nigerian receptions are some of the most energetic celebrations we film - the dancing, money spraying, live drummers, and pure joy are infectious. We position ourselves to capture both the scheduled moments and the spontaneous celebration throughout the night.",
+        hasDetails: true
+      },
+      {
+        time: "15-30 min",
+        title: "Final Dance & Sendoff",
+        description: "Last songs, final money spraying, and your departure. Guests shower you with blessings and celebration.",
+        whatIllBeDoing: "I'll capture the final moments of celebration, any last money spraying, farewells with family, and your departure. Nigerian sendoffs are joyful and loud - we document all the energy and love as you leave as husband and wife."
       }
     ],
 
@@ -1032,6 +1329,65 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       }
     ],
 
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into Western wedding attire (you'll change into Hanbok later for Pyebaek). This is when I capture detail shots of your dress, suit, rings, and any Korean traditional items.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots - your Western wedding attire, rings, Hanbok waiting for later, wooden geese/ducks if you have them, and any family heirlooms. I also capture candid moments as you prepare for this meaningful day."
+      },
+      {
+        time: "1 hour before",
+        title: "First Look (Optional)",
+        description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. This moment is just for you two.",
+        whatIllBeDoing: "If you're doing a first look, my other shooter and I will capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
+      },
+      {
+        time: "30 min before",
+        title: "Guests Arrive & Pre-Ceremony",
+        description: "Guests arrive and are seated. Korean wedding ceremonies are efficient and punctual, often starting exactly on time.",
+        whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics to capture vows and any Korean elements clearly. My team positions ourselves strategically for the processional. If you're incorporating the wooden goose procession, we'll be ready to capture that traditional element. Final tech checks and we're set."
+      },
+      {
+        time: "30-45 min",
+        title: "Ceremony",
+        description: "The wedding ceremony, typically Western-style with vows and rings. Some couples incorporate traditional Korean elements like the kunbere (formal bows) or drinking from the gourd.",
+        whatIllBeDoing: "My other shooter and I capture multiple angles throughout the ceremony - your processional (including the wooden goose if you have that tradition), vows, ring exchange, and any Korean customs you're incorporating. We work efficiently as Korean ceremonies are often shorter and more structured than other traditions.",
+        hasDetails: true
+      },
+      {
+        time: "45-60 min",
+        title: "Pyebaek (Private Family Ceremony)",
+        description: "The traditional Korean family ceremony where you change into Hanbok and perform formal bows to the groom's family elders. Parents throw jujubes and chestnuts for you to catch, symbolizing future children.",
+        whatIllBeDoing: "The Pyebaek is one of the most meaningful moments we film. I'll capture you changing into the beautiful Hanbok, the setup of the traditional table with food offerings, your formal deep bows to family elders, the joyful jujube and chestnut throwing, and the emotions on everyone's faces. This ceremony is often intimate and private - I work respectfully to document it without intruding on these sacred family moments."
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits, often in both Western attire and Hanbok. Korean families value formal portraits highly.",
+        whatIllBeDoing: "I work with the photo team to film family formals efficiently in both your Western wedding attire and Hanbok if desired. Korean families often want organized, formal portraits with various groupings. We'll have a shot list ready and work through it systematically. The Hanbok creates stunning portraits."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour",
+        description: "Guests enjoy appetizers and drinks while you finish portraits. Food may include Korean dishes alongside Western options.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, décor details including any wooden geese or traditional Korean elements, and the overall atmosphere. If there's time and light permits, your planner and I will coordinate for golden hour couple portraits."
+      },
+      {
+        time: "3-4 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, and dancing. This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every key moment - from your grand entrance and first dances to toasts, cake cutting, and dance floor energy. We position ourselves to get multiple angles for important moments and roam for candid interactions. We're always watching for genuine emotions and authentic reactions throughout the celebration.",
+        hasDetails: true
+      },
+      {
+        time: "15-30 min",
+        title: "Last Dance & Sendoff",
+        description: "Final songs, last dance, and your exit. Whether it's sparklers or a traditional sendoff, this is your grand goodbye.",
+        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for sparkler or exit shots and capture both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always find you to say my goodbyes, give hugs, and share my thanks and blessings."
+      }
+    ],
+
     culturalConsiderations: {
       heading: "Important Things to Know",
       points: [
@@ -1148,6 +1504,59 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       {
         title: "Release of Doves or Butterflies",
         description: "Some couples release white doves or butterflies after the ceremony, symbolizing peace, love, and the beginning of their new life together."
+      }
+    ],
+
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire - whether Western wedding dress or traditional Filipiniana and Barong Tagalog. This is when I capture detail shots of your dress, rings, Arras coins, veil, and cord.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots - your attire (especially the beautiful Barong Tagalog embroidery or Filipiniana dress), rings, the Arras coins, ceremonial veil and cord, and any family heirlooms. I also capture candid moments with family as you prepare."
+      },
+      {
+        time: "1 hour before",
+        title: "First Look (Optional)",
+        description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. This moment is just for you two.",
+        whatIllBeDoing: "If you're doing a first look, my other shooter and I will capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
+      },
+      {
+        time: "30 min before",
+        title: "Guests Arrive & Pre-Ceremony",
+        description: "Guests arrive at the church. Principal sponsors (Ninong/Ninang) and the wedding party prepare for the processional. Filipino Catholic ceremonies are known for their punctuality.",
+        whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics on the priest and groom to capture the Catholic Mass, vows, and Filipino ceremony elements clearly. My team positions ourselves strategically in the church, ready to capture the processional with your many sponsors and entourage. Final tech checks and we're set."
+      },
+      {
+        time: "60-90 min",
+        title: "Ceremony",
+        description: "The Catholic wedding Mass includes readings, homily, vows, ring exchange, and Communion. The unique Filipino traditions - Veil, Cord, and Coins ceremonies - are incorporated during the Mass, performed by your principal sponsors.",
+        whatIllBeDoing: "My other shooter and I capture multiple angles throughout the ceremony - your processional with all the principal sponsors, the Veil ceremony as sponsors drape the veil over both of you, the Cord ceremony creating the infinity symbol, the Arras coins presentation, candle lighting, and all the sacred moments of the Mass. We position ourselves respectfully in the church while documenting these meaningful Filipino-Catholic traditions.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits at the church or venue, including photos with all the principal sponsors. Filipino weddings often have large wedding parties and many sponsor groupings.",
+        whatIllBeDoing: "I work with the photo team to film family formals efficiently. Filipino weddings have many principal sponsors and large families, so we'll have an organized shot list. The traditional Barong Tagalog and Filipiniana attire create beautiful, cohesive portraits. I aim for 30-45 minutes max for all group coverage."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour",
+        description: "Guests enjoy appetizers and drinks while you finish portraits. Filipino appetizers like lumpia and pork skewers may be served.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, Filipino décor details, and the overall atmosphere. If there's time and light permits, your planner and I will coordinate for golden hour couple portraits."
+      },
+      {
+        time: "4-5 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, the money dance tradition, and dancing. Filipino receptions are known for abundant food (lechon, pancit, adobo), energetic music, and warm hospitality.",
+        whatIllBeDoing: "My team and I capture every key moment - from your grand entrance and first dances to toasts, cake cutting, and the money dance where guests pin bills on you while dancing. Filipino receptions are joyful and family-centered - we document the traditional foods, cultural performances if you have them, and all the warmth and celebration. We position ourselves to capture both scheduled moments and spontaneous joy.",
+        hasDetails: true
+      },
+      {
+        time: "15-30 min",
+        title: "Last Dance & Sendoff",
+        description: "Final songs, last dance, and your exit. Whether it's rice tossing, doves, or sparklers, this is your grand goodbye.",
+        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll capture the rice tossing, dove release if you have it, or sparkler exit - along with both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always find you to say my goodbyes, give hugs, and share my thanks and blessings."
       }
     ],
 
@@ -1270,6 +1679,65 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       }
     ],
 
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into traditional Punjabi attire - lehenga and dupatta for the bride, sherwani or suit for the groom. This is when I capture detail shots of your vibrant attire, chooda bangles, jewelry, and details.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots - your colorful Punjabi attire, the bride's chooda (red and white bangles), jewelry, dupatta, and any family heirlooms. I also capture the chooda ceremony if it happens this morning, as it's a meaningful tradition."
+      },
+      {
+        time: "30-45 min",
+        title: "Baraat (Groom's Procession)",
+        description: "The groom arrives on horseback accompanied by his family and friends dancing to dhol drums. Pure celebration and spectacle - one of the most energetic moments of a Sikh wedding.",
+        whatIllBeDoing: "The Baraat is incredible energy. I position myself to capture the procession arriving, the dhol drummers, family dancing (Bhangra!), and the groom on horseback. This requires mobile coverage - I'm moving with the procession to get dynamic shots. The colors, music, and energy are amazing to film."
+      },
+      {
+        time: "15-20 min",
+        title: "Milni (Meeting of Families)",
+        description: "The bride's and groom's families formally meet and exchange garlands and gifts, symbolizing the union of two families.",
+        whatIllBeDoing: "I'll capture the formal meeting of families and the exchange of garlands and embraces. This is a warm, welcoming moment that sets the tone for the sacred ceremony to come. I position myself to get both the exchanges and the emotions on everyone's faces."
+      },
+      {
+        time: "30 min before",
+        title: "Guests Arrive at Gurdwara",
+        description: "Guests remove shoes, cover their heads with scarves or turbans, and enter the Gurdwara to sit on the floor. The Guru Granth Sahib is placed at the front, and everyone shows respect by not turning their backs to it.",
+        whatIllBeDoing: "I'll be setting up ceremony audio and positioning myself respectfully in the Gurdwara. We cover our heads, remove our shoes, and position ourselves to capture the ceremony without intruding on the sacred space. My team prepares to film the Anand Karaj with deep respect for the spiritual significance."
+      },
+      {
+        time: "60-90 min",
+        title: "Anand Karaj Ceremony",
+        description: "The sacred wedding ceremony before the Guru Granth Sahib. The couple sits as the Granthi reads scripture, then walks around the Guru Granth Sahib four times while the Lavaan (wedding hymns) are sung. Each circle represents a stage of spiritual union.",
+        whatIllBeDoing: "My other shooter and I capture the Anand Karaj with reverence - the couple sitting before the Guru Granth Sahib, the Granthi's readings, and each of the four Lavaan as you circle the holy scripture. We position ourselves to document this sacred ceremony respectfully, capturing your emotions, the kirtan (hymns), and the spiritual atmosphere. The Lavaan are the heart of the ceremony - we ensure every circle is beautifully filmed.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Langar & Family Portraits",
+        description: "After the ceremony, everyone partakes in Langar (free communal meal) served at the Gurdwara. Family portraits are taken, often both at the Gurdwara and later at the reception venue.",
+        whatIllBeDoing: "I'll capture the Langar service - everyone sitting together on the floor, being served the communal meal. This equality and community aspect is beautiful. Then I work with the photo team for family formals, which we do efficiently to stay on schedule. I aim for 30-45 minutes max."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour",
+        description: "Guests enjoy appetizers and mocktails (no alcohol at Sikh weddings) while you finish portraits. Traditional Punjabi snacks may be served.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, the vibrant décor, and the overall atmosphere. Sikh weddings have beautiful colorful decorations and details. If there's time and light permits, your planner and I will coordinate for golden hour couple portraits."
+      },
+      {
+        time: "3-4 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, and energetic Bhangra dancing. This is where the party really begins and your community celebrates with you.",
+        whatIllBeDoing: "My team and I capture every key moment - from your grand entrance to the Bhangra dancing (which is absolutely incredible to film). We'll capture toasts, cake cutting, and all the dance floor energy. Punjabi receptions are some of the most energetic celebrations - the dhol, the dancing, the joy. We position ourselves to capture both the formal moments and the spontaneous celebration.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Doli (Bride's Farewell)",
+        description: "The emotional farewell as the bride leaves her family. Rice is thrown over her head as she departs, symbolizing prosperity and blessings.",
+        whatIllBeDoing: "The Doli is incredibly emotional - I position myself to capture both the bride's tears and her family's reactions. I'll film the rice throwing, the hugs, the final moments with her parents, and the departure. This is a deeply moving moment that requires sensitivity and closeness to capture authentically."
+      }
+    ],
+
     culturalConsiderations: {
       heading: "Important Things to Know",
       points: [
@@ -1386,6 +1854,59 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
       {
         title: "Tequila & Horchata Toasts",
         description: "Traditional drinks are served—tequila for toasts, horchata (sweet rice drink), and Mexican hot chocolate. Champagne is also common for modern celebrations."
+      }
+    ],
+
+    fullDayTimeline: [
+      {
+        time: "2-3 hours before",
+        title: "Getting Ready & Details",
+        description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. This is when I capture detail shots of your dress, rings, Las Arras coins, El Lazo, and any traditional Mexican items.",
+        whatIllBeDoing: "My other shooter and I split coverage between the bride and groom, capturing both of you getting ready simultaneously. I'll film detail shots - your dress, suit, rings, the Arras coins, El Lazo, the white Bible and rosary if you have them, and any family heirlooms. I also capture candid moments with family as you prepare for this sacred day."
+      },
+      {
+        time: "1 hour before",
+        title: "First Look (Optional)",
+        description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. This moment is just for you two.",
+        whatIllBeDoing: "If you're doing a first look, my other shooter and I will capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
+      },
+      {
+        time: "30 min before",
+        title: "Guests Arrive & Pre-Ceremony",
+        description: "Guests arrive at the church. The padrinos and madrinas prepare for their roles. Mariachi band may play as guests are seated.",
+        whatIllBeDoing: "I'll be setting up ceremony audio - wireless mics on the priest and groom to capture the Catholic Mass, vows, and Mexican ceremony elements clearly. If there's a Mariachi band, I'll position myself to capture them as well. My team gets ready for the processional with both sets of parents. Final tech checks and we're set."
+      },
+      {
+        time: "60-90 min",
+        title: "Ceremony",
+        description: "The Catholic wedding Mass includes readings, homily, vows, ring exchange, and Communion. The unique Mexican traditions - Las Arras coins ceremony and El Lazo - are incorporated during the Mass, performed by the padrinos and madrinas.",
+        whatIllBeDoing: "My other shooter and I capture multiple angles throughout the ceremony - your processional with both sets of parents, the Arras coins presentation and blessing, El Lazo being placed in the figure-eight around you by the padrinos, and all the sacred moments of the Mass. We position ourselves respectfully in the church while documenting these meaningful Mexican-Catholic traditions. If there's a Mariachi serenade, we capture that too.",
+        hasDetails: true
+      },
+      {
+        time: "30-45 min",
+        title: "Family Portraits",
+        description: "Family formal portraits at the church or venue, including photos with all the padrinos and madrinas. Mexican families are often large and close-knit.",
+        whatIllBeDoing: "I work with the photo team to film family formals efficiently. Mexican weddings have many padrinos/madrinas and large families, so we'll have an organized shot list. The vibrant colors and family groupings create beautiful portraits. I aim for 30-45 minutes max for all group coverage."
+      },
+      {
+        time: "1 hour",
+        title: "Cocktail Hour",
+        description: "Guests enjoy appetizers, drinks, and perhaps tequila or margaritas while you finish portraits. Mexican appetizers and festive atmosphere set the tone for the celebration.",
+        whatIllBeDoing: "I'm capturing candid guest interactions, Mexican décor details (papel picado, marigolds, vibrant colors), and the overall atmosphere. If there's time and light permits, your planner and I will coordinate for golden hour couple portraits."
+      },
+      {
+        time: "5-6 hours",
+        title: "Reception",
+        description: "The evening celebration includes your grand entrance, first dances, dinner service with toasts, cake cutting, money dance, La Vibora de la Mar, and dancing to Mariachi, banda, or cumbia music. Mexican receptions are known for lasting late into the night with continuous celebration.",
+        whatIllBeDoing: "My team and I capture every key moment - from your grand entrance and first dances to toasts, cake cutting, the money dance, and the incredible La Vibora de la Mar where guests form a human chain. Mexican receptions are vibrant and energetic - the Mariachi music, traditional dances, family joy, and celebration that goes late into the night. We position ourselves to capture both the scheduled moments and the spontaneous cultural celebrations throughout.",
+        hasDetails: true
+      },
+      {
+        time: "15-30 min",
+        title: "Last Dance & Sendoff",
+        description: "Final songs, last dance, and your exit. The celebration may continue, but this is your grand goodbye to officially depart.",
+        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for your sendoff and capture both wide and tight shots of the exit, your final waves, and the car pulling away. Before I leave, I always find you to say my goodbyes, give hugs, and share my thanks and blessings."
       }
     ],
 

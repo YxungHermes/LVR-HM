@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { culturalWeddings, CulturalWeddingKey } from "@/content/cultural-weddings";
@@ -12,6 +13,14 @@ interface CulturalWeddingPageProps {
 
 export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPageProps) {
   const content = culturalWeddings[weddingType];
+  const [expandedSegments, setExpandedSegments] = useState<Record<number, boolean>>({});
+
+  const toggleSegment = (index: number) => {
+    setExpandedSegments(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }));
+  };
 
   return (
     <>
@@ -266,44 +275,102 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
                   Note: This timeline is flexible and can be adjusted based on your preferences and coordination with your planner. Every wedding is unique, and we'll work together to create the flow that works best for your day.
                 </p>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {content.fullDayTimeline.map((segment, index) => (
                     <motion.div
                       key={index}
-                      className="bg-warm-sand/10 border border-coffee/10 rounded-lg p-6 md:p-8"
+                      className="bg-warm-sand/10 border border-coffee/10 rounded-lg overflow-hidden hover:border-rose-wax-red/30 transition-all"
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: index * 0.05 }}
                     >
-                      <div className="flex flex-col md:flex-row md:items-start md:gap-6">
-                        {/* Time Badge */}
-                        <div className="flex-shrink-0 mb-3 md:mb-0">
-                          <span className="inline-flex items-center gap-2 bg-rose-wax-red/10 text-rose-wax-red px-4 py-2 rounded-full text-sm font-semibold">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="p-6 md:p-8">
+                        <div className="flex items-start gap-4 mb-3">
+                          {/* Time Badge - More Compact */}
+                          <span className="inline-flex items-center gap-1.5 bg-rose-wax-red/10 text-rose-wax-red px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap">
+                            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             {segment.time}
                           </span>
-                        </div>
 
-                        {/* Content */}
-                        <div className="flex-1">
-                          <h3 className="font-serif text-xl font-semibold text-ink mb-2">
+                          {/* Title */}
+                          <h3 className="font-serif text-xl font-semibold text-ink flex-1">
                             {segment.title}
                           </h3>
-                          <p className="text-base text-espresso leading-relaxed mb-4">
-                            {segment.description}
-                          </p>
-                          {segment.whatIllBeDoing && (
-                            <div className="bg-cream/50 border-l-4 border-rose-wax-red pl-4 pr-3 py-3">
-                              <p className="text-sm text-espresso/80 leading-relaxed">
-                                <strong className="text-rose-wax-red">What I'll be doing:</strong> {segment.whatIllBeDoing}
-                              </p>
-                            </div>
+
+                          {/* Expand Button for Details */}
+                          {segment.hasDetails && (
+                            <button
+                              onClick={() => toggleSegment(index)}
+                              className="text-rose-wax-red hover:text-rose-wax-red/80 transition-colors"
+                              aria-label={expandedSegments[index] ? "Collapse details" : "Expand details"}
+                            >
+                              <svg
+                                className={`w-5 h-5 transition-transform ${expandedSegments[index] ? 'rotate-180' : ''}`}
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </button>
                           )}
                         </div>
+
+                        {/* Description */}
+                        <p className="text-base text-espresso leading-relaxed mb-4">
+                          {segment.description}
+                        </p>
+
+                        {/* What I'll Be Doing */}
+                        {segment.whatIllBeDoing && (
+                          <div className="bg-cream/50 border-l-4 border-rose-wax-red pl-4 pr-3 py-3 rounded-r">
+                            <p className="text-sm text-espresso/80 leading-relaxed">
+                              <strong className="text-rose-wax-red">What I'll be doing:</strong> {segment.whatIllBeDoing}
+                            </p>
+                          </div>
+                        )}
                       </div>
+
+                      {/* Expandable Details Section */}
+                      {segment.hasDetails && expandedSegments[index] && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="border-t border-coffee/10 bg-cream/30"
+                        >
+                          <div className="p-6 md:p-8">
+                            <h4 className="font-serif text-lg font-semibold text-ink mb-4">
+                              {segment.title === "Ceremony" ? "Ceremony Timeline & Key Moments" : "Reception Breakdown"}
+                            </h4>
+                            <p className="text-sm text-espresso/70 mb-4">
+                              {segment.title === "Ceremony"
+                                ? "For a detailed breakdown of what happens during the ceremony, see the 'Ceremony Timeline & Key Moments' section above."
+                                : "The reception includes: Grand entrance and first dances, dinner service with toasts from your wedding party, cake cutting and special moments, open dance floor with music and celebration, and all the joyful interactions with your guests."}
+                            </p>
+                            <Link
+                              href={segment.title === "Ceremony" ? "#" : "#"}
+                              onClick={(e) => {
+                                e.preventDefault();
+                                const targetSection = document.querySelector(segment.title === "Ceremony" ? 'section:has(h2:contains("Ceremony Timeline"))' : 'section:has(h2:contains("Complete Wedding"))');
+                                if (targetSection) {
+                                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }
+                              }}
+                              className="inline-flex items-center gap-2 text-sm text-rose-wax-red hover:text-rose-wax-red/80 font-medium transition-colors"
+                            >
+                              <span>View detailed timeline above</span>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                              </svg>
+                            </Link>
+                          </div>
+                        </motion.div>
+                      )}
                     </motion.div>
                   ))}
                 </div>
