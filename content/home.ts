@@ -12,8 +12,8 @@ export const hero = {
       href: "/consultation"
     },
     secondary: {
-      label: "View Our Films",
-      href: "/films"
+      label: "How We Work",
+      href: "/process"
     }
   }
 };
@@ -266,9 +266,10 @@ export const navigation: Navigation = {
           {
             title: "How We Work",
             links: [
-              { label: "Our Approach", href: "/process#approach" },
-              { label: "Timeline & Planning", href: "/process#timeline" },
-              { label: "What to Expect", href: "/process#expect" }
+              { label: "Timeline Overview", href: "/process", subtitle: "Start here" },
+              { label: "Our Approach", href: "/process/approach", subtitle: "Philosophy" },
+              { label: "What to Expect", href: "/process/what-to-expect", subtitle: "Wedding day" },
+              { label: "Investment", href: "/process/investment", subtitle: "Pricing & payments" }
             ]
           }
         ]
