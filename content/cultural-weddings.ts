@@ -59,39 +59,78 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     heroImage: "/weddings/catholic-wedding.jpg",
 
     introHeading: "Understanding the sacred traditions of a Catholic wedding ceremony.",
-    introBody: "A Catholic wedding is more than a ceremony—it's a sacred Mass, a sacrament, and a covenant witnessed by your community. The ceremony follows a rich liturgical structure with deep spiritual significance, typically lasting 60-90 minutes for a full Nuptial Mass or 30-45 minutes for a ceremony without Mass.",
+    introBody: "A Catholic wedding is more than a ceremony. It's a sacred Mass, a sacrament, and a covenant witnessed by your community. The ceremony follows a rich liturgical structure with deep spiritual significance, typically lasting 60-90 minutes for a full Nuptial Mass or 30-45 minutes for a ceremony without Mass.",
+
+    quickFacts: {
+      duration: "60-90 minutes (with Mass), 30-45 minutes (ceremony only)",
+      venue: "Catholic church or chapel (rarely granted permission for outdoor)",
+      dressCode: "Formal or semi-formal; modest attire appreciated (covered shoulders for church)",
+      guestCount: "Varies from intimate to 300+ depending on church capacity",
+      musicStyle: "Sacred hymns, classical, organ music, Catholic liturgical songs"
+    },
+
+    glossary: [
+      { term: "Nuptial Mass", pronunciation: "NUP-shuhl mass", definition: "Full Catholic wedding ceremony including Mass and Communion" },
+      { term: "Pre-Cana", pronunciation: "pree-KAH-nah", definition: "Required marriage preparation program for Catholic couples" },
+      { term: "Sacrament", pronunciation: "SAK-ruh-ment", definition: "Sacred rite recognized as a channel of divine grace in Catholic faith" },
+      { term: "Liturgy of the Eucharist", pronunciation: "LIT-ur-jee of the YOO-kuh-rist", definition: "The part of Mass including consecration and Holy Communion" },
+      { term: "Homily", pronunciation: "HOM-uh-lee", definition: "The priest's sermon or reflection on scripture and marriage" },
+      { term: "Consecration", pronunciation: "kon-suh-KRAY-shun", definition: "The blessing of bread and wine, transforming them into the body and blood of Christ" }
+    ],
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Dress modestly and respectfully. Women should cover shoulders in church (bring a shawl if needed)",
+        "Arrive 15-20 minutes early. Catholic ceremonies start promptly and seating may be reserved",
+        "Silence phones and refrain from talking once the ceremony begins",
+        "Only baptized Catholics in a state of grace should receive Communion. Others may remain seated or go forward for a blessing (cross arms over chest)",
+        "Stand, sit, and kneel when the congregation does. Follow along with the program if you're unfamiliar",
+        "Photography may be restricted during the consecration and Communion. Respect church rules",
+        "The ceremony may be 60-90 minutes if it includes full Mass. Plan accordingly",
+        "Do not leave during Mass. Wait until the recessional (couple's exit) to leave if absolutely necessary"
+      ]
+    },
 
     keyMoments: [
       {
         title: "The Procession",
-        description: "Entrance of the wedding party, parents, and bride—often accompanied by sacred music or hymns."
+        duration: "5 min",
+        description: "Entrance of the wedding party, parents, and bride, often accompanied by sacred music or hymns."
       },
       {
         title: "Opening Prayer & Readings",
+        duration: "10-15 min",
         description: "Scripture readings (Old Testament, Psalm, New Testament) chosen by the couple, followed by the Gospel."
       },
       {
         title: "Homily",
+        duration: "10-15 min",
         description: "The priest's reflection on marriage, faith, and the couple's journey together."
       },
       {
         title: "Exchange of Vows",
-        description: "The couple declares their consent before God and the Church—'I do' or personalized vows if permitted."
+        duration: "5 min",
+        description: "The couple declares their consent before God and the Church. 'I do' or personalized vows if permitted."
       },
       {
         title: "Blessing and Exchange of Rings",
+        duration: "3-5 min",
         description: "Rings are blessed and exchanged as symbols of unending love and fidelity."
       },
       {
         title: "Nuptial Blessing",
+        duration: "5 min",
         description: "A special blessing invoking God's grace upon the marriage."
       },
       {
         title: "The Mass (if included)",
-        description: "Liturgy of the Eucharist—Offertory, Consecration, and Holy Communion (60-90 min total with full Mass)."
+        duration: "30-40 min",
+        description: "Liturgy of the Eucharist: Offertory, Consecration, and Holy Communion (60-90 min total with full Mass)."
       },
       {
         title: "Final Blessing & Recessional",
+        duration: "5 min",
         description: "The priest's blessing, kiss, and the couple's exit down the aisle as husband and wife."
       }
     ],
@@ -266,49 +305,93 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     introHeading: "Multi-day celebrations rich with meaning and tradition.",
     introBody: "Hindu and Indian weddings are vibrant, multi-day celebrations rich with color, ritual, music, and family. From the Mehendi and Sangeet to the Baraat procession and sacred ceremony, each event carries deep cultural and spiritual significance. The main wedding ceremony typically lasts 2-4 hours and is presided over by a pandit (priest), with pre-wedding events spanning 2-3 days.",
 
+    quickFacts: {
+      duration: "2-4 hours (main ceremony), 2-3 days total with pre-wedding events",
+      venue: "Banquet hall, hotel ballroom, outdoor venue, or temple",
+      dressCode: "Colorful formal attire encouraged; avoid white/black (mourning colors). Sari, lehenga, or sherwani",
+      guestCount: "200-500+ guests (extended family and community)",
+      musicStyle: "Bollywood songs, traditional bhangra, dhol drums, live DJ, Indian classical"
+    },
+
+    glossary: [
+      { term: "Saat Phere", pronunciation: "saht FEH-ray", definition: "Seven circles around the sacred fire representing seven vows" },
+      { term: "Mandap", pronunciation: "MUN-dup", definition: "Decorated canopy or platform where the ceremony takes place" },
+      { term: "Pandit", pronunciation: "PUN-dit", definition: "Hindu priest who presides over the wedding ceremony" },
+      { term: "Kanyadaan", pronunciation: "KAHN-yah-dahn", definition: "Ritual where bride's father gives her hand to the groom" },
+      { term: "Baraat", pronunciation: "buh-RAHT", definition: "Groom's wedding procession with dancing and music" },
+      { term: "Mehendi", pronunciation: "may-HEN-dee", definition: "Henna designs applied to bride's hands and feet" },
+      { term: "Sangeet", pronunciation: "sun-GEET", definition: "Pre-wedding celebration with music, dancing, and performances" },
+      { term: "Mangalsutra", pronunciation: "mun-gul-SOO-truh", definition: "Sacred necklace tied by groom, symbolizing marriage" }
+    ],
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Wear vibrant colors! Red, pink, gold, green are all encouraged. Avoid white and black (colors of mourning)",
+        "Weddings often span 2-3 days. Check which events you're invited to (Mehendi, Sangeet, ceremony, reception)",
+        "Arrive on time for the ceremony. The muhurat (auspicious time) is calculated precisely and cannot be delayed",
+        "Remove shoes before entering the mandap (ceremony area) if requested",
+        "The ceremony is long (2-4 hours) with continuous Sanskrit mantras. It's okay to step out quietly if needed",
+        "Bring cash gifts in amounts ending in '1' (e.g., $101, $501) for good luck. Place in decorative envelope",
+        "Join the dancing at Sangeet and reception! Bollywood and bhangra dancing is expected and encouraged",
+        "Vegetarian food is common. Respect dietary customs and don't bring outside food or alcohol unless permitted"
+      ]
+    },
+
     keyMoments: [
       {
         title: "Mehendi (Henna) Ceremony",
-        description: "The bride's hands and feet are adorned with intricate henna designs, surrounded by female family and friends—often the night before the wedding."
+        duration: "3-4 hours",
+        description: "The bride's hands and feet are adorned with intricate henna designs, surrounded by female family and friends, often the night before the wedding."
       },
       {
         title: "Sangeet",
+        duration: "3-5 hours",
         description: "A night of music, dancing, and performances by family and friends. Think Bollywood-style choreography, DJ, and celebration."
       },
       {
         title: "Haldi Ceremony",
+        duration: "1-2 hours",
         description: "Turmeric paste is applied to the bride and groom by family for blessings, purification, and radiant skin."
       },
       {
         title: "Baraat (Groom's Procession)",
-        description: "The groom arrives on horseback (or luxury car) with his family dancing through the streets to dhol drums—pure energy and spectacle."
+        duration: "30-60 min",
+        description: "The groom arrives on horseback (or luxury car) with his family dancing through the streets to dhol drums. Pure energy and spectacle."
       },
       {
         title: "Milni (Meeting of Families)",
+        duration: "15-20 min",
         description: "The bride's and groom's families formally meet and exchange garlands, symbolizing the union of two families."
       },
       {
         title: "Jai Mala (Garland Exchange)",
+        duration: "10-15 min",
         description: "The bride and groom exchange floral garlands on stage, often with playful moments as families lift them up."
       },
       {
         title: "Kanyadaan",
-        description: "The bride's father gives her hand in marriage—one of the most emotional moments of the ceremony."
+        duration: "10-15 min",
+        description: "The bride's father gives her hand in marriage. One of the most emotional moments of the ceremony."
       },
       {
         title: "Agni Puja & Saat Phere (Seven Circles)",
+        duration: "30-45 min",
         description: "The couple circles the sacred fire seven times, taking vows for their life together."
       },
       {
         title: "Sindoor & Mangalsutra",
-        description: "The groom applies vermillion to the bride's hair parting and ties the sacred necklace—marking her as married."
+        duration: "5-10 min",
+        description: "The groom applies vermillion to the bride's hair parting and ties the sacred necklace, marking her as married."
       },
       {
         title: "Bidaai (Bride's Farewell)",
-        description: "The bride throws rice over her shoulder and says goodbye to her family—an emotional, tear-filled moment."
+        duration: "15-20 min",
+        description: "The bride throws rice over her shoulder and says goodbye to her family. An emotional, tear-filled moment."
       },
       {
         title: "Reception",
+        duration: "4-6 hours",
         description: "Evening celebration with speeches, cake cutting, first dance, and often Bollywood DJ and dancing."
       }
     ],
