@@ -439,11 +439,43 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
     heroImage: "/weddings/muslim-wedding.jpg",
 
     introHeading: "Understanding the sacred Islamic marriage ceremony and celebrations.",
-    introBody: "Muslim weddings center around the Nikah, a sacred marriage contract performed according to Islamic law (Sharia). While the Nikah ceremony itself is simple and often brief (20-30 minutes), celebrations can span multiple days with events like the Mehndi, Nikah, and Walima. Customs vary widely across cultures—from Pakistani and Bangladeshi to Arab, Turkish, and African Muslim traditions.",
+    introBody: "Muslim weddings center around the Nikah, a sacred marriage contract performed according to Islamic law (Sharia). While the Nikah ceremony itself is simple and often brief (20-30 minutes), celebrations can span multiple days with events like the Mehndi, Nikah, and Walima. Customs vary widely across cultures, from Pakistani and Bangladeshi to Arab, Turkish, and African Muslim traditions.",
+
+    quickFacts: {
+      duration: "20-30 minutes (Nikah ceremony), 2-3 days total with celebrations",
+      venue: "Mosque, banquet hall, home, or outdoor venue",
+      dressCode: "Modest formal attire; women often wear hijab, colorful shalwar kameez, or abaya. Men wear suits or kurta",
+      guestCount: "50-500+ depending on culture and family size",
+      musicStyle: "Nasheeds (Islamic songs), cultural music (varies by region), no instruments in strict traditional ceremonies"
+    },
+
+    glossary: [
+      { term: "Nikah", pronunciation: "nih-KAH", definition: "Islamic marriage contract ceremony that legally and religiously binds the couple" },
+      { term: "Mahr", pronunciation: "MAH-her", definition: "Mandatory gift from groom to bride, specified in marriage contract" },
+      { term: "Walima", pronunciation: "wah-LEE-mah", definition: "Wedding banquet hosted by groom's family after the Nikah" },
+      { term: "Qubool Hai", pronunciation: "kuh-BOOL high", definition: "'I accept' - the phrase spoken by bride and groom during Nikah" },
+      { term: "Imam", pronunciation: "ih-MAHM", definition: "Islamic religious leader who often officiates the Nikah ceremony" },
+      { term: "Rukhsati", pronunciation: "rook-suh-TEE", definition: "Bride's emotional farewell to her family" }
+    ],
+
+    guestEtiquette: {
+      heading: "What to Expect as a Guest",
+      points: [
+        "Dress modestly. Women should cover shoulders, chest, and knees. Headscarf may be required in mosque or traditional settings",
+        "Men and women may be seated separately during ceremony and reception. Respect this custom if present",
+        "No alcohol will be served. This is a strict Islamic prohibition",
+        "Remove shoes before entering a mosque or prayer area",
+        "The Nikah ceremony is brief (20-30 minutes). Celebrations may be several hours or span multiple days",
+        "Cash gifts are traditional and appreciated. Place in decorative envelope",
+        "Photography may be restricted during the Nikah ceremony. Ask before taking photos",
+        "Be respectful during prayers (dua). Remain quiet even if you don't participate"
+      ]
+    },
 
     keyMoments: [
       {
         title: "Istikhara (Prayer for Guidance)",
+        duration: "Private/ongoing",
         description: "Before the engagement, families may perform this special prayer asking Allah for guidance about the union."
       },
       {
