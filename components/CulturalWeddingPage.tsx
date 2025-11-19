@@ -292,12 +292,12 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
                           <h3 className="font-serif text-xl font-semibold text-ink mb-2">
                             {segment.title}
                           </h3>
-                          <p className="text-base text-espresso leading-relaxed mb-3">
+                          <p className="text-base text-espresso leading-relaxed mb-4">
                             {segment.description}
                           </p>
                           {segment.whatIllBeDoing && (
-                            <div className="bg-cream/50 border-l-4 border-rose-wax-red pl-4 py-2">
-                              <p className="text-sm text-espresso/80">
+                            <div className="bg-cream/50 border-l-4 border-rose-wax-red pl-4 pr-3 py-3">
+                              <p className="text-sm text-espresso/80 leading-relaxed">
                                 <strong className="text-rose-wax-red">What I'll be doing:</strong> {segment.whatIllBeDoing}
                               </p>
                             </div>
@@ -307,6 +307,28 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
                     </motion.div>
                   ))}
                 </div>
+
+                {/* Process CTA */}
+                <motion.div
+                  className="mt-12 text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                >
+                  <p className="text-base text-espresso/70 mb-6">
+                    Want to learn more about how I work with couples from start to finish?
+                  </p>
+                  <Link
+                    href="/process"
+                    className="inline-flex items-center gap-3 px-8 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
+                  >
+                    <span>View My Complete Process</span>
+                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                </motion.div>
               </motion.div>
             </div>
           </section>

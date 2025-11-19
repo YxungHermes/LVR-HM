@@ -140,7 +140,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "2-3 hours before ceremony",
         title: "Getting Ready & Details",
         description: "Bride and groom preparation in separate locations. Hair, makeup, getting into attire. This is when I capture detail shots (rings, dress, shoes, invitations) and candid moments of you getting ready.",
-        whatIllBeDoing: "I'll be moving between both locations to capture the emotions, laughter, and anticipation. I'll film detail shots in natural light and might grab quick audio messages from family members. My photographer (usually on my team) and I coordinate to make sure we're not in each other's shots."
+        whatIllBeDoing: "I'll be moving between both locations to capture the emotions, laughter, and anticipation. I'll film detail shots in natural light and might grab quick audio messages from family members. The photo and video team coordinates throughout to capture everything seamlessly."
       },
       {
         time: "1 hour before ceremony",
@@ -152,7 +152,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "30 minutes before",
         title: "Guests Arrive & Pre-Ceremony",
         description: "Guests arrive and are seated by ushers. Mothers are seated last, signaling the ceremony is about to begin. The priest and wedding party gather in the preparation area.",
-        whatIllBeDoing: "I'll be setting up ceremony audio (wireless lapel mics on the priest and both of you, plus an audio recorder near the altar). The photographer captures guest arrivals and church details while I do final tech checks and position myself for the processional."
+        whatIllBeDoing: "I'll be setting up ceremony audio (wireless lapel mics on the priest and both of you, plus an audio recorder near the altar). While guest arrivals and church details are being captured, I do final tech checks and position myself for the processional."
       },
       {
         time: "Ceremony Start",
@@ -164,7 +164,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "Immediately after ceremony",
         title: "Receiving Line & Family Formals",
         description: "You might greet guests in a receiving line outside the church. Family formal portraits are taken either at the church or we move to the reception venue. Wedding party photos happen here too.",
-        whatIllBeDoing: "I work with the photographer to capture family formals efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group photos so you're not exhausted before the reception."
+        whatIllBeDoing: "I'll work with the photo team to capture family formals efficiently but naturally. We'll have a shot list prepared with your planner to stay on schedule. I aim for 30-45 minutes max for all group photos so you're not exhausted before the reception."
       },
       {
         time: "1-2 hours after ceremony",
@@ -200,7 +200,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "Final Hour",
         title: "Last Dance & Sendoff",
         description: "Farewell songs, last dance, sparkler or ribbon exit if you've planned one. You depart in a decorated car or head to your suite.",
-        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for sparkler or exit shots and capture both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always say my goodbyes, give hugs, share my thanks and blessings. I'll find you to say farewell unless you've already left for the night."
+        whatIllBeDoing: "I'll coordinate the exit timing with your planner to make sure everything's ready. I'll set up lighting for sparkler or exit shots and capture both wide and tight shots of the sendoff, your final waves, and the car pulling away. Before I leave, I always find you to say my goodbyes, give hugs, and share my thanks and blessings."
       }
     ],
 
