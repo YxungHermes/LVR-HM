@@ -146,7 +146,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "1 hour before ceremony",
         title: "First Look (Optional) & Family Portraits",
         description: "Many couples choose a private first look before the ceremony to ease nerves and get portraits done early. This moment is just for you two. If you skip the first look, family formals happen after the ceremony instead.",
-        whatIllBeDoing: "If you're doing a first look, I'll capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
+        whatIllBeDoing: "If you're doing a first look, my other shooter and I will capture the reveal and your reactions from multiple angles. This gives us 30-45 minutes of couple portraits before the ceremony starts, which takes pressure off the post-ceremony timeline. Your planner and I will coordinate to keep things flowing smoothly."
       },
       {
         time: "30 minutes before",
@@ -158,7 +158,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "Ceremony Start",
         title: "Catholic Wedding Mass (60-90 min)",
         description: "Processional, readings, vows, ring exchange, Liturgy of the Eucharist (if full Mass), blessing, and recessional. See the ceremony timeline section above for the detailed breakdown.",
-        whatIllBeDoing: "I'll confirm the church's photography restrictions with the priest (no flash during consecration, designated movement areas, etc.). During the ceremony, I'm capturing altar reactions, your faces, family emotions, and all the key moments. Audio quality is critical here, so I monitor levels throughout."
+        whatIllBeDoing: "I'll confirm the church's photography restrictions with the priest (no flash during consecration, designated movement areas, etc.). My other shooter and I position ourselves to capture multiple angles - altar reactions, your faces, family emotions, and all the key moments. Audio quality is critical here, so I monitor levels throughout the ceremony."
       },
       {
         time: "Immediately after ceremony",
@@ -176,7 +176,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "Reception Start",
         title: "Grand Entrance & First Dances",
         description: "Wedding party is introduced, followed by your grand entrance. First dance as a married couple, then parent dances (father-daughter, mother-son), and welcome speech.",
-        whatIllBeDoing: "I'll position myself to capture entrance reactions from multiple angles. For the first dances, I get wide shots to show the full scene and close-ups of your faces and emotions. Audio is critical for speeches, so I'll be monitoring levels and capturing both the speaker and your reactions."
+        whatIllBeDoing: "My other shooter and I position ourselves to capture entrance reactions from multiple angles. For the first dances, we get wide shots to show the full scene and close-ups of your faces and emotions. Audio is critical for speeches, so I'll be monitoring levels and capturing both the speaker and your reactions."
       },
       {
         time: "Dinner Service",
@@ -188,7 +188,7 @@ export const culturalWeddings: Record<string, CulturalWeddingContent> = {
         time: "After Dinner",
         title: "Cake Cutting & Bouquet/Garter",
         description: "Cake cutting ceremony, bouquet toss, garter toss (optional), and any special dances or cultural traditions specific to your families.",
-        whatIllBeDoing: "I position myself to get both front and back angles for the cake cutting. For bouquet and garter tosses, I'm anticipating the action and reactions. These are high-energy moments, and I'm watching for genuine laughter and surprise."
+        whatIllBeDoing: "My other shooter and I position ourselves to get multiple angles for the cake cutting - front, back, and reactions. For bouquet and garter tosses, we're anticipating the action and reactions from different perspectives. These are high-energy moments, and we're watching for genuine laughter and surprise."
       },
       {
         time: "Open Dancing",
