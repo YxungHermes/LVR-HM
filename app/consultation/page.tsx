@@ -282,7 +282,7 @@ export default function ConsultationWizard() {
                         {[
                           { value: "wedding", label: "Wedding Day Film", description: "Full day or partial coverage" },
                           { value: "elopement", label: "Elopement/Intimate Gathering", description: "Small, intimate celebrations" },
-                          { value: "engagement", label: "Engagement/Couples Session", description: "Pre-wedding or couples film" },
+                          { value: "engagement", label: "Engagement/Couples Session", description: "Pre-wedding, proposals, or couples film" },
                           { value: "anniversary", label: "Anniversary Film", description: "Celebrate your milestone" },
                           { value: "other", label: "Something Else", description: "Tell us what you have in mind" }
                         ].map((type) => (
@@ -344,7 +344,7 @@ export default function ConsultationWizard() {
                                 </label>
                                 <div className="space-y-2">
                                   {[
-                                    { value: "engagement", label: "Engagement Session", description: "Celebrating your engagement" },
+                                    { value: "engagement", label: "Engagement Session", description: "Celebrating your engagement or surprise proposal" },
                                     { value: "couples-session", label: "Couples Adventure", description: "Date night, anniversary, or just because" }
                                   ].map((subtype) => (
                                     <label
@@ -747,6 +747,58 @@ export default function ConsultationWizard() {
                         Select the deliverables and investment range that works for you.
                       </p>
                     </div>
+
+                    {/* Summary bubbles if everything is answered */}
+                    {formData.deliverables.length > 0 && formData.budgetRange && (
+                      <div className="bg-rose-wax-red/5 border border-rose-wax-red/20 rounded-lg p-6">
+                        <h3 className="text-sm font-semibold text-ink mb-3">Your Selection Summary</h3>
+                        <div className="space-y-3">
+                          <div>
+                            <p className="text-xs text-coffee/60 mb-2">Deliverables:</p>
+                            <div className="flex flex-wrap gap-2">
+                              {formData.deliverables.map((id) => {
+                                const deliverableNames: Record<string, string> = {
+                                  highlight: "Highlight Film",
+                                  ceremony: "Full Ceremony",
+                                  reception: "Full Reception",
+                                  teaser: "Social Teaser",
+                                  documentary: "Documentary Edit",
+                                  raw: "Raw Footage"
+                                };
+                                return (
+                                  <CompactAnswer
+                                    key={id}
+                                    label=""
+                                    value={deliverableNames[id]}
+                                    icon={
+                                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                      </svg>
+                                    }
+                                  />
+                                );
+                              })}
+                            </div>
+                          </div>
+                          <div>
+                            <p className="text-xs text-coffee/60 mb-2">Investment Range:</p>
+                            <CompactAnswer
+                              label=""
+                              value={
+                                formData.budgetRange === "under-3k" ? "Under $3,000" :
+                                formData.budgetRange === "3k-5k" ? "$3,000 - $5,000" :
+                                formData.budgetRange === "5k-8k" ? "$5,000 - $8,000" : "$8,000+"
+                              }
+                              icon={
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                              }
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     <div>
                       <label className="block text-sm font-medium text-ink mb-3">
