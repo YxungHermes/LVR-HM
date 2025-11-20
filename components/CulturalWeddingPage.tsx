@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -26,24 +27,83 @@ export default function CulturalWeddingPage({ weddingType }: CulturalWeddingPage
     <>
       <Header settled />
       <main className="bg-cream">
-        {/* Hero Section */}
-        <section className="px-6 pt-32 pb-20 md:pt-40 md:pb-24 bg-gradient-to-b from-warm-sand/30 to-cream">
-          <div className="mx-auto max-w-4xl text-center">
+        {/* Hero Section with Image */}
+        <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
+          {/* Hero Image or Gradient Background */}
+          {content.heroImage ? (
+            <>
+              <div className="absolute inset-0">
+                <Image
+                  src={content.heroImage}
+                  alt={`${content.title} ceremony`}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="100vw"
+                />
+              </div>
+              {/* Dark overlay for text readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+            </>
+          ) : (
+            // Fallback gradient if no image
+            <div className="absolute inset-0 bg-gradient-to-br from-warm-sand via-rose-wax-red/10 to-cream" />
+          )}
+
+          {/* Hero Content */}
+          <div className="relative h-full flex items-center justify-center px-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
+              className="text-center max-w-4xl"
             >
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 tracking-wide">
+              <h1 className={`font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-wide ${
+                content.heroImage ? 'text-white' : 'text-ink'
+              }`}>
                 {content.title}
               </h1>
-              <p className="text-xl md:text-2xl text-rose-wax-red font-medium mb-8 italic">
+              <p className={`text-xl md:text-2xl font-medium mb-6 italic ${
+                content.heroImage ? 'text-white/90' : 'text-rose-wax-red'
+              }`}>
                 {content.introHeading}
               </p>
-              <p className="text-lg text-espresso leading-relaxed max-w-3xl mx-auto">
+              <p className={`text-lg leading-relaxed max-w-3xl mx-auto ${
+                content.heroImage ? 'text-white/80' : 'text-espresso'
+              }`}>
                 {content.introBody}
               </p>
             </motion.div>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className={`w-6 h-10 border-2 rounded-full flex items-start justify-center p-2 ${
+                content.heroImage ? 'border-white/50' : 'border-ink/30'
+              }`}
+            >
+              <div className={`w-1.5 h-1.5 rounded-full ${
+                content.heroImage ? 'bg-white/70' : 'bg-ink/50'
+              }`} />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Quick intro text section (moved from hero) */}
+        <section className="px-6 py-16 md:py-20 bg-white">
+          <div className="mx-auto max-w-3xl text-center">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-lg md:text-xl text-espresso/80 leading-relaxed"
+            >
+              As a videographer who specializes in capturing diverse cultural celebrations, I understand the sacred rituals, meaningful traditions, and emotional moments that make your ceremony unique.
+            </motion.p>
           </div>
         </section>
 

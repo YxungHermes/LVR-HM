@@ -48,7 +48,7 @@ interface CulturalWeddingContent {
   title: string;
   seoTitle: string;
   seoDescription: string;
-  heroImage: string;
+  heroImage?: string; // Optional - will use gradient fallback if not provided
   introHeading: string;
   introBody: string;
   quickFacts?: QuickFacts;
