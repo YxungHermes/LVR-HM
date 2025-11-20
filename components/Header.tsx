@@ -158,9 +158,9 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           <motion.div
             className="transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
             animate={{
-              scale: isScrolled ? 0.75 : 1,
-              y: isScrolled ? -8 : 0,
-              opacity: isScrolled ? 0.85 : 1
+              scale: logoAbove ? 1 : (isScrolled ? 0.75 : 1),
+              y: logoAbove ? 0 : (isScrolled ? -8 : 0),
+              opacity: logoAbove ? 1 : (isScrolled ? 0.85 : 1)
             }}
           >
             <a href="/" className="group pointer-events-auto block">
