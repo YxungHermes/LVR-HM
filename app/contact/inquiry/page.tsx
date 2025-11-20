@@ -6,10 +6,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Turnstile from "@/components/Turnstile";
 
 export default function InquiryPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [captchaError, setCaptchaError] = useState<string>("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,6 +25,13 @@ export default function InquiryPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate CAPTCHA
+    if (!turnstileToken) {
+      setCaptchaError("Please complete the CAPTCHA verification");
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
@@ -30,7 +40,10 @@ export default function InquiryPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken
+        }),
       });
 
       const result = await response.json();
@@ -257,11 +270,35 @@ export default function InquiryPage() {
                 </div>
               </div>
 
+              {/* CAPTCHA Verification */}
+              <div className="space-y-3">
+                <label className="block text-sm font-medium text-espresso">
+                  Verify you're human <span className="text-rose-2">*</span>
+                </label>
+                <Turnstile
+                  onVerify={(token) => {
+                    setTurnstileToken(token);
+                    setCaptchaError("");
+                  }}
+                  onError={() => {
+                    setTurnstileToken("");
+                    setCaptchaError("CAPTCHA verification failed. Please try again.");
+                  }}
+                  onExpire={() => {
+                    setTurnstileToken("");
+                    setCaptchaError("CAPTCHA expired. Please verify again.");
+                  }}
+                />
+                {captchaError && (
+                  <p className="text-sm text-rose-2">{captchaError}</p>
+                )}
+              </div>
+
               {/* Submit Button */}
               <div className="text-center pt-4">
                 <button
                   type="submit"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !turnstileToken}
                   className="inline-flex items-center gap-3 bg-rose-grad text-white px-10 py-5 rounded-full font-semibold uppercase tracking-wider text-sm hover:shadow-[0_8px_24px_rgba(244,105,126,0.4)] focus-ring transition-all duration-300 hover:scale-105 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
                   {isSubmitting ? (

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Turnstile from "@/components/Turnstile";
 
 // Form data interface
 interface FormData {
@@ -50,6 +51,7 @@ export default function ConsultationWizard() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
@@ -134,6 +136,7 @@ export default function ConsultationWizard() {
         break;
       case 5:
         if (!formData.howDidYouHear) newErrors.howDidYouHear = "Please let us know how you heard about us";
+        if (!turnstileToken) newErrors.captcha = "Please complete the CAPTCHA verification";
         break;
     }
 
@@ -162,7 +165,10 @@ export default function ConsultationWizard() {
       const response = await fetch("/api/consultation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          turnstileToken
+        }),
       });
 
       if (response.ok) {
@@ -1026,6 +1032,37 @@ export default function ConsultationWizard() {
                           We'll schedule a call to discuss your vision and answer questions
                         </li>
                       </ul>
+                    </div>
+
+                    {/* CAPTCHA Verification */}
+                    <div>
+                      <label className="block text-sm font-medium text-ink mb-3">
+                        Verify you're human *
+                      </label>
+                      <Turnstile
+                        onVerify={(token) => {
+                          setTurnstileToken(token);
+                          // Clear CAPTCHA error if exists
+                          if (errors.captcha) {
+                            setErrors(prev => {
+                              const newErrors = { ...prev };
+                              delete newErrors.captcha;
+                              return newErrors;
+                            });
+                          }
+                        }}
+                        onError={() => {
+                          setTurnstileToken("");
+                          setErrors(prev => ({ ...prev, captcha: "CAPTCHA verification failed. Please try again." }));
+                        }}
+                        onExpire={() => {
+                          setTurnstileToken("");
+                          setErrors(prev => ({ ...prev, captcha: "CAPTCHA expired. Please verify again." }));
+                        }}
+                      />
+                      {errors.captcha && (
+                        <p className="text-sm text-red-500 mt-2">{errors.captcha}</p>
+                      )}
                     </div>
                   </div>
                 )}
