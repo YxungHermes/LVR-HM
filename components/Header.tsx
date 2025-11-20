@@ -153,15 +153,15 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         </motion.div>
       )}
 
-      {/* Main Navigation Bar with Glass Morphism */}
-      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}>
+      {/* Desktop/Tablet Navigation Bar with Glass Morphism */}
+      <nav className={`hidden lg:flex fixed left-0 right-0 z-50 justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}>
         <div
           className={`
             relative flex items-center justify-between
             backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
               ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/98 border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
-              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-10 bg-white/85 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
+              : 'w-[95%] max-w-7xl rounded-3xl py-5 px-10 bg-white/85 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
             }
           `}
           style={{
@@ -221,13 +221,13 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             ))}
           </div>
 
-          {/* CTA & Mobile Toggle - Right Side */}
+          {/* CTA - Right Side */}
           <div className={`flex items-center justify-end gap-4 min-w-0 ${logoAbove && isScrolled ? 'flex-1' : logoAbove ? '' : 'flex-1'}`}>
             {!hideCta && (
               <a
                 href="/consultation"
                 className={`
-                  hidden md:block px-6 py-2 rounded-full bg-stone-800 text-white
+                  px-6 py-2 rounded-full bg-stone-800 text-white
                   text-[9px] font-bold tracking-[0.25em] uppercase
                   transition-all duration-500 hover:bg-rose-wax-red hover:shadow-lg hover:-translate-y-0.5
                   ${isScrolled ? 'scale-95' : 'scale-100'}
@@ -236,19 +236,47 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                 Book
               </a>
             )}
-
-            <button
-              onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors flex-shrink-0 touch-target"
-              aria-label="Open menu"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
           </div>
         </div>
       </nav>
+
+      {/* Mobile Navigation - Centered Logo Pill with Menu Underneath */}
+      <div className={`lg:hidden fixed left-0 right-0 z-50 flex flex-col items-center transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}>
+        {/* Logo Pill - Centered */}
+        <motion.div
+          className="px-8 py-3 rounded-full bg-white/98 backdrop-blur-2xl border border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]"
+          style={{
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          }}
+          initial={false}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+        >
+          <a href="/" className="group block">
+            <span className="font-serif text-base sm:text-lg text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red whitespace-nowrap">
+              Love, Violeta Rose<span className="text-rose-wax-red">.</span>
+            </span>
+          </a>
+        </motion.div>
+
+        {/* Menu Button - Centered Below */}
+        <motion.button
+          onClick={() => setMobileOpen(true)}
+          className="mt-4 p-2 rounded-full bg-white/80 backdrop-blur-md border border-white/60 text-stone-800 hover:text-rose-wax-red hover:bg-white/95 transition-all duration-300 shadow-lg touch-target"
+          style={{
+            backdropFilter: 'blur(16px) saturate(150%)',
+            WebkitBackdropFilter: 'blur(16px) saturate(150%)',
+          }}
+          aria-label="Open menu"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </motion.button>
+      </div>
 
       {/* Mega Menu - Desktop Only - Premium Fluid Design */}
       <div className="hidden xl:block">
@@ -267,15 +295,15 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <motion.div
                 className={`
                   relative w-[95%] max-w-7xl
-                  bg-white/95 backdrop-blur-2xl
+                  bg-white/88 backdrop-blur-2xl
                   border border-white/60
                   rounded-2xl
                   shadow-[0_12px_48px_rgba(0,0,0,0.15),0_0_40px_rgba(244,105,126,0.08)]
                   overflow-hidden
                 `}
                 style={{
-                  backdropFilter: "blur(32px) saturate(180%)",
-                  WebkitBackdropFilter: "blur(32px) saturate(180%)",
+                  backdropFilter: "blur(40px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(40px) saturate(180%)",
                 }}
                 initial={{ scale: 0.98 }}
                 animate={{ scale: 1 }}
