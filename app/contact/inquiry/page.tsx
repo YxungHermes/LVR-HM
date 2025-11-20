@@ -77,7 +77,7 @@ export default function InquiryPage() {
 
   return (
     <>
-      <Header settled />
+      <Header settled logoAbove />
       <main className="bg-gradient-to-b from-cream to-white min-h-screen">
         {/* Hero */}
         <section className="px-6 pt-32 pb-16 md:pt-36 md:pb-20">

@@ -199,7 +199,7 @@ export default function ConsultationWizard() {
 
   return (
     <>
-      <Header settled hideCta />
+      <Header settled hideCta logoAbove />
       <main className="bg-cream min-h-screen">
         {/* Hero Section */}
         <section className="px-6 pt-32 pb-12 md:pt-40 md:pb-16 bg-gradient-to-b from-warm-sand/30 to-cream">

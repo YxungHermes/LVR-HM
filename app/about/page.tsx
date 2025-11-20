@@ -81,7 +81,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <Header settled />
+      <Header settled logoAbove />
       <main className="bg-cream">
         {/* SECTION 1: PROFILE HEADER */}
         <section className="px-6 md:px-12 lg:px-24 xl:px-32 pt-32 md:pt-40 pb-20 md:pb-28">

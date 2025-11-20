@@ -47,7 +47,7 @@ export default function FilmsPage() {
 
   return (
     <>
-      <Header settled />
+      <Header settled logoAbove />
       <main className="bg-black min-h-screen">
         {/* Hero Section */}
         <section className="relative h-screen flex flex-col">
