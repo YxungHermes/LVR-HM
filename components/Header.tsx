@@ -55,8 +55,24 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(true);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
+
+  // Detect screen size for responsive logo positioning
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 1536); // 2xl breakpoint
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
+
+  // Determine if logo should be above based on screen size or prop
+  const shouldLogoBeAbove = logoAbove || (!isLargeScreen && !logoAbove);
 
   // Smooth scroll progress
   const { scrollYProgress } = useScroll();
@@ -137,7 +153,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       />
 
       {/* Logo Above Navbar (Optional) */}
-      {logoAbove && (
+      {shouldLogoBeAbove && (
         <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
           <motion.div
             className="transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
@@ -157,7 +173,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       )}
 
       {/* Main Navigation Bar with Glass Morphism */}
-      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-16' : 'top-24') : 'top-6'}`}>
+      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${shouldLogoBeAbove ? (isScrolled ? 'top-16' : 'top-24') : 'top-6'}`}>
         <div
           className={`
             relative flex items-center justify-between
@@ -173,7 +189,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           }}
         >
           {/* Logo - Left Side (Only if not above) */}
-          {!logoAbove && (
+          {!shouldLogoBeAbove && (
             <div className="flex items-center flex-1 min-w-0">
               <a href="/" className="group relative z-10 flex-shrink-0">
                 <span className={`font-serif text-stone-800 tracking-tight transition-all duration-700 group-hover:text-rose-wax-red whitespace-nowrap ${isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl lg:text-3xl'}`}>
@@ -184,7 +200,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           )}
 
           {/* Desktop Navigation - Centered */}
-          <div className={`hidden xl:flex items-center justify-center gap-2 ${logoAbove ? 'flex-1' : 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'} pointer-events-auto`}>
+          <div className={`hidden lg:flex items-center justify-center gap-2 ${shouldLogoBeAbove ? 'flex-1' : 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'} pointer-events-auto`}>
             {navigation.left.map((item) => (
               <RolloverLink
                 key={item.label}
@@ -204,7 +220,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           </div>
 
           {/* CTA & Mobile Toggle - Right Side */}
-          <div className={`flex items-center justify-end gap-4 min-w-0 ${logoAbove ? '' : 'flex-1'}`}>
+          <div className={`flex items-center justify-end gap-4 min-w-0 ${shouldLogoBeAbove ? '' : 'flex-1'}`}>
             {!hideCta && (
               <a
                 href="/consultation"
@@ -221,7 +237,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="xl:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors flex-shrink-0"
+              className="lg:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors flex-shrink-0"
               aria-label="Open menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -233,11 +249,11 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       </nav>
 
       {/* Mega Menu */}
-      <div className="hidden xl:block">
+      <div className="hidden lg:block">
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className={`fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[120px]') : 'top-[100px]'}`}
+              className={`fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${shouldLogoBeAbove ? (isScrolled ? 'top-[88px]' : 'top-[120px]') : 'top-[100px]'}`}
               style={{
                 boxShadow: "0 8px 48px rgba(0,0,0,.12), 0 0 40px rgba(244,105,126,0.06)",
                 backdropFilter: "blur(24px) saturate(180%)",
