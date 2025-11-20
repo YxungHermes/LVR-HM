@@ -136,28 +136,25 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         style={{ scaleX }}
       />
 
-      {/* Logo Above Navbar (Optional) */}
-      {logoAbove && (
-        <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-          <motion.div
-            className="transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-            animate={{
-              scale: isScrolled ? 0.75 : 1,
-              y: isScrolled ? -8 : 0,
-              opacity: isScrolled ? 0.85 : 1
-            }}
-          >
-            <a href="/" className="group pointer-events-auto block">
-              <span className="font-serif text-2xl md:text-3xl lg:text-4xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red whitespace-nowrap drop-shadow-sm">
-                Love, Violeta Rose<span className="text-rose-wax-red text-3xl md:text-4xl lg:text-5xl">.</span>
-              </span>
-            </a>
-          </motion.div>
-        </div>
+      {/* Logo Above Navbar (Optional) - Only visible when not scrolled */}
+      {logoAbove && !isScrolled && (
+        <motion.div
+          className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
+          initial={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+        >
+          <a href="/" className="group pointer-events-auto block">
+            <span className="font-serif text-2xl md:text-3xl lg:text-4xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red whitespace-nowrap drop-shadow-sm">
+              Love, Violeta Rose<span className="text-rose-wax-red text-3xl md:text-4xl lg:text-5xl">.</span>
+            </span>
+          </a>
+        </motion.div>
       )}
 
       {/* Main Navigation Bar with Glass Morphism */}
-      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-16' : 'top-24') : 'top-6'}`}>
+      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}>
         <div
           className={`
             relative flex items-center justify-between
@@ -172,19 +169,30 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'blur(20px) saturate(150%)',
           }}
         >
-          {/* Logo - Left Side (Only if not above) */}
-          {!logoAbove && (
+          {/* Logo - Left Side */}
+          {(!logoAbove || isScrolled) && (
             <div className="flex items-center flex-1 min-w-0">
               <a href="/" className="group relative z-10 flex-shrink-0">
-                <span className={`font-serif text-stone-800 tracking-tight transition-all duration-700 group-hover:text-rose-wax-red whitespace-nowrap ${isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl lg:text-3xl'}`}>
-                  Love, Violeta Rose<span className="text-rose-wax-red">.</span>
-                </span>
+                <motion.span
+                  className="font-serif text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red whitespace-nowrap"
+                  initial={false}
+                  animate={{
+                    fontSize: isScrolled ? 'clamp(1rem, 2.5vw, 1.25rem)' : 'clamp(1.25rem, 3vw, 1.875rem)'
+                  }}
+                  transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
+                >
+                  {logoAbove && isScrolled ? (
+                    <>LVR<span className="text-rose-wax-red">.</span></>
+                  ) : (
+                    <>Love, Violeta Rose<span className="text-rose-wax-red">.</span></>
+                  )}
+                </motion.span>
               </a>
             </div>
           )}
 
-          {/* Desktop Navigation - Centered */}
-          <div className={`hidden xl:flex items-center justify-center gap-2 ${logoAbove ? 'flex-1' : 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'} pointer-events-auto`}>
+          {/* Desktop Navigation - Full (1280px+) */}
+          <div className={`hidden xl:flex items-center justify-center gap-2 ${logoAbove && isScrolled ? '' : logoAbove ? 'flex-1' : 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'} pointer-events-auto`}>
             {navigation.left.map((item) => (
               <RolloverLink
                 key={item.label}
@@ -203,8 +211,22 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             ))}
           </div>
 
+          {/* Tablet Navigation - Compact (1024px-1279px) */}
+          <div className={`hidden lg:flex xl:hidden items-center justify-center gap-1 ${logoAbove && isScrolled ? '' : logoAbove ? 'flex-1' : 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'} pointer-events-auto`}>
+            {/* Show only key navigation items on tablet */}
+            {[...navigation.left, ...navigation.right].filter(item => !item.isCta).slice(0, 3).map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="px-4 py-1 text-[9px] font-medium tracking-[0.2em] uppercase text-stone-800 hover:text-rose-wax-red transition-colors"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
           {/* CTA & Mobile Toggle - Right Side */}
-          <div className={`flex items-center justify-end gap-4 min-w-0 ${logoAbove ? '' : 'flex-1'}`}>
+          <div className={`flex items-center justify-end gap-4 min-w-0 ${logoAbove && isScrolled ? 'flex-1' : logoAbove ? '' : 'flex-1'}`}>
             {!hideCta && (
               <a
                 href="/consultation"
@@ -221,7 +243,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="xl:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors flex-shrink-0"
+              className="lg:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors flex-shrink-0 touch-target"
               aria-label="Open menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -232,12 +254,12 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         </div>
       </nav>
 
-      {/* Mega Menu */}
+      {/* Mega Menu - Desktop Only */}
       <div className="hidden xl:block">
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className={`fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[120px]') : 'top-[100px]'}`}
+              className={`fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[100px]' : 'top-[120px]') : 'top-[100px]'}`}
               style={{
                 boxShadow: "0 8px 48px rgba(0,0,0,.12), 0 0 40px rgba(244,105,126,0.06)",
                 backdropFilter: "blur(24px) saturate(180%)",
@@ -298,69 +320,130 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         </AnimatePresence>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`
-          fixed inset-0 z-[100] bg-white transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
-          ${mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}
-        `}
-      >
-        <button
-          onClick={() => setMobileOpen(false)}
-          className="absolute top-8 right-8 p-2 rounded-full border border-gray-100 hover:border-stone-800 transition-colors duration-300"
-          aria-label="Close menu"
-        >
-          <svg className="w-6 h-6 text-stone-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+      {/* Premium Mobile Menu with Frosted Glass */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            className="fixed inset-0 z-[100]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {/* Frosted Glass Background with Gradient */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-cream via-warm-sand/80 to-cream"
+              style={{
+                backdropFilter: 'blur(40px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            />
 
-        <div className="h-full flex flex-col items-center justify-center p-8 overflow-y-auto">
-          <div className="mb-12 text-center">
-            <span className="font-serif text-2xl md:text-3xl text-stone-800 tracking-tight">Love, Violeta Rose</span>
-            <div className="w-12 h-px bg-rose-wax-red mx-auto mt-4"></div>
-          </div>
+            {/* Subtle Pattern Overlay */}
+            <div
+              className="absolute inset-0 opacity-[0.03]"
+              style={{
+                backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.15) 1px, transparent 0)',
+                backgroundSize: '32px 32px'
+              }}
+            />
 
-          <nav className="flex flex-col items-center space-y-6">
-            {[...navigation.left, ...navigation.right].filter(item => !item.isCta).map((item, idx) => (
-              <a
-                key={idx}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className={`
-                  group text-center transition-all duration-700 ease-out
-                  ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
-                `}
-                style={{ transitionDelay: `${150 + (idx * 100)}ms` }}
-              >
-                <span className="block font-serif text-3xl md:text-4xl text-stone-800 group-hover:text-rose-wax-red transition-colors duration-300 mb-1">
-                  {item.label}
-                </span>
-                <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-400 group-hover:text-rose-wax-red transition-colors duration-300">
-                  {item.href === '/films' ? 'Gallery' :
-                   item.href === '/offerings' ? 'Collections' :
-                   item.href === '/weddings' ? 'Cultural' :
-                   item.href === '/about' ? 'Our Story' :
-                   item.href === '/process' ? 'How We Work' : 'Explore'}
-                </span>
-              </a>
-            ))}
-          </nav>
-
-          <div className={`
-            mt-12 transition-all duration-1000 delay-500
-            ${mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-          `}>
-            <a
-              href="/consultation"
+            {/* Close Button */}
+            <motion.button
               onClick={() => setMobileOpen(false)}
-              className="block px-10 py-4 bg-stone-800 text-white text-xs font-bold tracking-[0.25em] uppercase hover:bg-rose-wax-red transition-colors rounded-full text-center"
+              className="absolute top-8 right-8 z-10 p-3 rounded-full bg-white/60 backdrop-blur-md border border-stone-200/50 hover:bg-white/80 hover:border-rose-wax-red/30 transition-all duration-300 shadow-lg hover:shadow-xl group"
+              aria-label="Close menu"
+              initial={{ opacity: 0, scale: 0.8, rotate: -90 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.8, rotate: 90 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Book Consultation
-            </a>
-          </div>
-        </div>
-      </div>
+              <svg className="w-5 h-5 text-stone-700 group-hover:text-rose-wax-red transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </motion.button>
+
+            {/* Menu Content */}
+            <div className="relative h-full flex flex-col items-center justify-center p-8 overflow-y-auto">
+              {/* Logo Header */}
+              <motion.div
+                className="mb-16 text-center"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <span className="font-serif text-3xl md:text-4xl text-stone-800 tracking-tight drop-shadow-sm">
+                  Love, Violeta Rose<span className="text-rose-wax-red">.</span>
+                </span>
+                <motion.div
+                  className="w-16 h-px bg-gradient-to-r from-transparent via-rose-wax-red to-transparent mx-auto mt-6"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                />
+              </motion.div>
+
+              {/* Navigation Links */}
+              <nav className="flex flex-col items-center space-y-8 mb-16">
+                {[...navigation.left, ...navigation.right].filter(item => !item.isCta).map((item, idx) => (
+                  <motion.a
+                    key={idx}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="group text-center relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.3 + (idx * 0.08) }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {/* Hover Background Glow */}
+                    <div className="absolute inset-0 -m-4 rounded-2xl bg-gradient-to-r from-rose-wax-red/0 via-rose-wax-red/5 to-rose-wax-red/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl" />
+
+                    <span className="relative block font-serif text-3xl md:text-4xl text-stone-800 group-hover:text-rose-wax-red transition-all duration-300 mb-2 tracking-tight">
+                      {item.label}
+                    </span>
+                    <span className="relative block font-sans text-[10px] tracking-[0.3em] uppercase text-stone-400 group-hover:text-rose-wax-red/70 transition-colors duration-300">
+                      {item.href === '/films' ? 'Gallery' :
+                       item.href === '/offerings' ? 'Collections' :
+                       item.href === '/weddings' ? 'Cultural' :
+                       item.href === '/about' ? 'Our Story' :
+                       item.href === '/process' ? 'How We Work' : 'Explore'}
+                    </span>
+                  </motion.a>
+                ))}
+              </nav>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <a
+                  href="/consultation"
+                  onClick={() => setMobileOpen(false)}
+                  className="group relative inline-flex items-center justify-center px-10 py-4 bg-gradient-to-r from-stone-800 to-stone-900 text-white text-xs font-bold tracking-[0.25em] uppercase rounded-full overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300"
+                >
+                  {/* Shimmer Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
+                  {/* Rose Glow on Hover */}
+                  <div className="absolute inset-0 bg-rose-wax-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  <span className="relative">Book Consultation</span>
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Scroll to Top */}
       <AnimatePresence>
