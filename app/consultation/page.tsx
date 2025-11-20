@@ -10,12 +10,19 @@ import Footer from "@/components/Footer";
 interface FormData {
   // Step 1: About Your Celebration
   partner1Name: string;
+  partner1Pronouns: string;
   partner2Name: string;
+  partner2Pronouns: string;
   email: string;
   phone: string;
   weddingDate: string;
   location: string;
   eventType: string;
+
+  // Event type specific fields
+  eventSubtype: string; // For engagement/couples: "engagement" or "couples-session"
+  sessionTier: string; // For engagement/couples: "essential" | "signature" | "cinematic"
+
   guestCount: string;
 
   // Step 2: Vision & Style
@@ -46,12 +53,16 @@ export default function ConsultationWizard() {
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
+    partner1Pronouns: "",
     partner2Name: "",
+    partner2Pronouns: "",
     email: "",
     phone: "",
     weddingDate: "",
     location: "",
-    eventType: "wedding",
+    eventType: "",
+    eventSubtype: "",
+    sessionTier: "",
     guestCount: "",
     tradition: "",
     traditionOther: "",
@@ -110,6 +121,7 @@ export default function ConsultationWizard() {
         else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Please enter a valid email";
         if (!formData.weddingDate) newErrors.weddingDate = "Date is required";
         if (!formData.location) newErrors.location = "Location is required";
+        if (!formData.eventType) newErrors.eventType = "Please select an event type";
         break;
       case 2:
         if (!formData.tradition) newErrors.tradition = "Please select a tradition";
@@ -169,6 +181,15 @@ export default function ConsultationWizard() {
 
   // Progress bar
   const progress = ((currentStep - 1) / (TOTAL_STEPS - 1)) * 100;
+
+  // Smart bubble component for collapsed answers
+  const CompactAnswer = ({ label, value, icon }: { label: string; value: string; icon?: React.ReactNode }) => (
+    <div className="inline-flex items-center gap-2 bg-rose-wax-red/5 border border-rose-wax-red/20 rounded-full px-4 py-2 text-sm">
+      {icon && <span className="text-rose-wax-red">{icon}</span>}
+      <span className="text-coffee/60">{label}:</span>
+      <span className="text-ink font-medium">{value}</span>
+    </div>
+  );
 
   return (
     <>
@@ -236,6 +257,27 @@ export default function ConsultationWizard() {
                       <label className="block text-sm font-medium text-ink mb-3">
                         What type of film are you looking for? *
                       </label>
+
+                      {/* Show compact answer if already selected */}
+                      {formData.eventType && (
+                        <div className="mb-4">
+                          <CompactAnswer
+                            label="Event Type"
+                            value={
+                              formData.eventType === "wedding" ? "Wedding Day Film" :
+                              formData.eventType === "elopement" ? "Elopement/Intimate Gathering" :
+                              formData.eventType === "engagement" ? "Engagement/Couples Session" :
+                              formData.eventType === "anniversary" ? "Anniversary Film" : "Other"
+                            }
+                            icon={
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                            }
+                          />
+                        </div>
+                      )}
+
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         {[
                           { value: "wedding", label: "Wedding Day Film", description: "Full day or partial coverage" },
@@ -267,43 +309,226 @@ export default function ConsultationWizard() {
                           </label>
                         ))}
                       </div>
+
+                      {/* Event Type Specific Questions - Expanding/Collapsing */}
+                      <AnimatePresence>
+                        {formData.eventType === "engagement" && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="mt-4 overflow-hidden"
+                          >
+                            <div className="bg-warm-sand/20 border border-coffee/10 rounded-lg p-6 space-y-4">
+                              {/* Show compact answers if already filled */}
+                              {formData.eventSubtype && formData.sessionTier && (
+                                <div className="flex flex-wrap gap-2 mb-4">
+                                  <CompactAnswer
+                                    label="Type"
+                                    value={formData.eventSubtype === "engagement" ? "Engagement Session" : "Couples Adventure"}
+                                  />
+                                  <CompactAnswer
+                                    label="Tier"
+                                    value={
+                                      formData.sessionTier === "essential" ? "Essential" :
+                                      formData.sessionTier === "signature" ? "Signature" : "Cinematic"
+                                    }
+                                  />
+                                </div>
+                              )}
+
+                              <div>
+                                <label className="block text-sm font-medium text-ink mb-3">
+                                  What's the occasion?
+                                </label>
+                                <div className="space-y-2">
+                                  {[
+                                    { value: "engagement", label: "Engagement Session", description: "Celebrating your engagement" },
+                                    { value: "couples-session", label: "Couples Adventure", description: "Date night, anniversary, or just because" }
+                                  ].map((subtype) => (
+                                    <label
+                                      key={subtype.value}
+                                      className={`flex items-start p-3 border rounded-lg cursor-pointer transition-all ${
+                                        formData.eventSubtype === subtype.value
+                                          ? 'border-rose-wax-red bg-rose-wax-red/5'
+                                          : 'border-coffee/20 hover:border-rose-wax-red/20'
+                                      }`}
+                                    >
+                                      <input
+                                        type="radio"
+                                        name="eventSubtype"
+                                        value={subtype.value}
+                                        checked={formData.eventSubtype === subtype.value}
+                                        onChange={(e) => updateField('eventSubtype', e.target.value)}
+                                        className="mr-3 mt-0.5"
+                                      />
+                                      <div>
+                                        <div className="font-medium text-ink text-sm">{subtype.label}</div>
+                                        <div className="text-xs text-espresso/60">{subtype.description}</div>
+                                      </div>
+                                    </label>
+                                  ))}
+                                </div>
+                              </div>
+
+                              <div>
+                                <label className="block text-sm font-medium text-ink mb-3">
+                                  Which experience level?
+                                </label>
+                                <div className="space-y-2">
+                                  {[
+                                    { value: "essential", label: "Essential", duration: "1-2 hours", description: "Single location, casual & authentic" },
+                                    { value: "signature", label: "Signature", duration: "2-3 hours", description: "Multiple locations, outfit changes" },
+                                    { value: "cinematic", label: "Cinematic Adventure", duration: "Half/Full day", description: "Epic locations, multiple scenes, custom experience" }
+                                  ].map((tier) => (
+                                    <label
+                                      key={tier.value}
+                                      className={`flex items-start p-3 border rounded-lg cursor-pointer transition-all ${
+                                        formData.sessionTier === tier.value
+                                          ? 'border-rose-wax-red bg-rose-wax-red/5'
+                                          : 'border-coffee/20 hover:border-rose-wax-red/20'
+                                      }`}
+                                    >
+                                      <input
+                                        type="radio"
+                                        name="sessionTier"
+                                        value={tier.value}
+                                        checked={formData.sessionTier === tier.value}
+                                        onChange={(e) => updateField('sessionTier', e.target.value)}
+                                        className="mr-3 mt-0.5"
+                                      />
+                                      <div className="flex-1">
+                                        <div className="flex items-center justify-between mb-1">
+                                          <div className="font-medium text-ink text-sm">{tier.label}</div>
+                                          <div className="text-xs text-rose-wax-red font-medium">{tier.duration}</div>
+                                        </div>
+                                        <div className="text-xs text-espresso/60">{tier.description}</div>
+                                      </div>
+                                    </label>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Partner Names with Pronouns */}
+                    <div className="space-y-6">
+                      {/* Partner 1 */}
                       <div>
                         <label className="block text-sm font-medium text-ink mb-2">
                           Partner 1 Name *
                         </label>
-                        <input
-                          type="text"
-                          value={formData.partner1Name}
-                          onChange={(e) => updateField('partner1Name', e.target.value)}
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                            errors.partner1Name ? 'border-red-500' : 'border-coffee/20'
-                          }`}
-                          placeholder="Your name"
-                        />
-                        {errors.partner1Name && (
-                          <p className="text-sm text-red-500 mt-1">{errors.partner1Name}</p>
+
+                        {/* Show compact answer if complete */}
+                        {formData.partner1Name && formData.partner1Pronouns && (
+                          <div className="mb-3">
+                            <CompactAnswer
+                              label="Partner 1"
+                              value={`${formData.partner1Name} (${formData.partner1Pronouns})`}
+                            />
+                          </div>
                         )}
+
+                        <div className="space-y-3">
+                          <input
+                            type="text"
+                            value={formData.partner1Name}
+                            onChange={(e) => updateField('partner1Name', e.target.value)}
+                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                              errors.partner1Name ? 'border-red-500' : 'border-coffee/20'
+                            }`}
+                            placeholder="Your name"
+                          />
+                          {errors.partner1Name && (
+                            <p className="text-sm text-red-500 mt-1">{errors.partner1Name}</p>
+                          )}
+
+                          {/* Pronouns dropdown - appears after name is entered */}
+                          <AnimatePresence>
+                            {formData.partner1Name && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden"
+                              >
+                                <select
+                                  value={formData.partner1Pronouns}
+                                  onChange={(e) => updateField('partner1Pronouns', e.target.value)}
+                                  className="w-full px-4 py-3 border border-coffee/20 rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors bg-white"
+                                >
+                                  <option value="">Select pronouns (optional)</option>
+                                  <option value="she/her">she/her</option>
+                                  <option value="he/him">he/him</option>
+                                  <option value="they/them">they/them</option>
+                                  <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
                       </div>
 
+                      {/* Partner 2 */}
                       <div>
                         <label className="block text-sm font-medium text-ink mb-2">
                           Partner 2 Name *
                         </label>
-                        <input
-                          type="text"
-                          value={formData.partner2Name}
-                          onChange={(e) => updateField('partner2Name', e.target.value)}
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                            errors.partner2Name ? 'border-red-500' : 'border-coffee/20'
-                          }`}
-                          placeholder="Partner's name"
-                        />
-                        {errors.partner2Name && (
-                          <p className="text-sm text-red-500 mt-1">{errors.partner2Name}</p>
+
+                        {/* Show compact answer if complete */}
+                        {formData.partner2Name && formData.partner2Pronouns && (
+                          <div className="mb-3">
+                            <CompactAnswer
+                              label="Partner 2"
+                              value={`${formData.partner2Name} (${formData.partner2Pronouns})`}
+                            />
+                          </div>
                         )}
+
+                        <div className="space-y-3">
+                          <input
+                            type="text"
+                            value={formData.partner2Name}
+                            onChange={(e) => updateField('partner2Name', e.target.value)}
+                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                              errors.partner2Name ? 'border-red-500' : 'border-coffee/20'
+                            }`}
+                            placeholder="Partner's name"
+                          />
+                          {errors.partner2Name && (
+                            <p className="text-sm text-red-500 mt-1">{errors.partner2Name}</p>
+                          )}
+
+                          {/* Pronouns dropdown - appears after name is entered */}
+                          <AnimatePresence>
+                            {formData.partner2Name && (
+                              <motion.div
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden"
+                              >
+                                <select
+                                  value={formData.partner2Pronouns}
+                                  onChange={(e) => updateField('partner2Pronouns', e.target.value)}
+                                  className="w-full px-4 py-3 border border-coffee/20 rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors bg-white"
+                                >
+                                  <option value="">Select pronouns (optional)</option>
+                                  <option value="she/her">she/her</option>
+                                  <option value="he/him">he/him</option>
+                                  <option value="they/them">they/them</option>
+                                  <option value="prefer-not-to-say">Prefer not to say</option>
+                                </select>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
                       </div>
                     </div>
 
@@ -343,7 +568,9 @@ export default function ConsultationWizard() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-ink mb-2">
-                          Wedding/Event Date *
+                          {formData.eventType === "engagement" ? "Session Date" :
+                           formData.eventType === "anniversary" ? "Anniversary Date" :
+                           "Wedding/Event Date"} *
                         </label>
                         <input
                           type="date"
@@ -358,22 +585,24 @@ export default function ConsultationWizard() {
                         )}
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-ink mb-2">
-                          Guest Count
-                        </label>
-                        <select
-                          value={formData.guestCount}
-                          onChange={(e) => updateField('guestCount', e.target.value)}
-                          className="w-full px-4 py-3 border border-coffee/20 rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors"
-                        >
-                          <option value="">Select guest count</option>
-                          <option value="intimate">Intimate (Under 50)</option>
-                          <option value="small">Small (50-100)</option>
-                          <option value="medium">Medium (100-200)</option>
-                          <option value="large">Large (200+)</option>
-                        </select>
-                      </div>
+                      {formData.eventType !== "engagement" && (
+                        <div>
+                          <label className="block text-sm font-medium text-ink mb-2">
+                            Guest Count
+                          </label>
+                          <select
+                            value={formData.guestCount}
+                            onChange={(e) => updateField('guestCount', e.target.value)}
+                            className="w-full px-4 py-3 border border-coffee/20 rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors"
+                          >
+                            <option value="">Select guest count</option>
+                            <option value="intimate">Intimate (Under 50)</option>
+                            <option value="small">Small (50-100)</option>
+                            <option value="medium">Medium (100-200)</option>
+                            <option value="large">Large (200+)</option>
+                          </select>
+                        </div>
+                      )}
                     </div>
 
                     <div>
