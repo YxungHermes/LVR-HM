@@ -181,11 +181,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                   }}
                   transition={{ duration: 0.5, ease: [0.25, 1, 0.5, 1] }}
                 >
-                  {logoAbove && isScrolled ? (
-                    <>LVR<span className="text-rose-wax-red">.</span></>
-                  ) : (
-                    <>Love, Violeta Rose<span className="text-rose-wax-red">.</span></>
-                  )}
+                  <>Love, Violeta Rose<span className="text-rose-wax-red">.</span></>
                 </motion.span>
               </a>
             </div>
@@ -254,67 +250,85 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         </div>
       </nav>
 
-      {/* Mega Menu - Desktop Only */}
+      {/* Mega Menu - Desktop Only - Premium Fluid Design */}
       <div className="hidden xl:block">
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className={`fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[100px]' : 'top-[120px]') : 'top-[100px]'}`}
-              style={{
-                boxShadow: "0 8px 48px rgba(0,0,0,.12), 0 0 40px rgba(244,105,126,0.06)",
-                backdropFilter: "blur(24px) saturate(180%)",
-                WebkitBackdropFilter: "blur(24px) saturate(180%)",
-              }}
-              initial={{ opacity: 0, y: -12 }}
+              className={`fixed left-0 right-0 z-40 flex justify-center px-4 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[132px]') : 'top-[88px]'}`}
+              initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={handleMegaMenuEnter}
               onMouseLeave={handleNavItemLeave}
             >
-              <div className="mx-auto max-w-[1280px] px-8 py-8">
-                <div className="grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-16">
-                  {[...navigation.left, ...navigation.right]
-                    .find((item) => item.label === activeMegaMenu && item.megaMenu)
-                    ?.megaMenu?.sections.map((section, idx) => (
-                      <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: idx * 0.05, duration: 0.3 }}
-                      >
-                        <h3 className="mb-5 text-xs font-semibold uppercase tracking-widest text-[#6B5E57] flex items-center gap-2">
-                          <span className="w-8 h-[1px] bg-rose-wax-red/30" />
-                          {section.title}
-                        </h3>
-                        <ul className="space-y-4">
-                          {section.links.map((link, linkIdx) => (
-                            <motion.li
-                              key={linkIdx}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: idx * 0.05 + linkIdx * 0.03, duration: 0.3 }}
-                            >
-                              <a
-                                href={link.href}
-                                className="group block p-3 -mx-3 rounded-lg transition-all duration-200 hover:bg-warm-sand/30"
+              {/* Fluid Rounded Card Container */}
+              <motion.div
+                className={`
+                  relative w-[95%] max-w-7xl
+                  bg-white/95 backdrop-blur-2xl
+                  border border-white/60
+                  rounded-2xl
+                  shadow-[0_12px_48px_rgba(0,0,0,0.15),0_0_40px_rgba(244,105,126,0.08)]
+                  overflow-hidden
+                `}
+                style={{
+                  backdropFilter: "blur(32px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(32px) saturate(180%)",
+                }}
+                initial={{ scale: 0.98 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.2 }}
+              >
+                {/* Subtle Top Gradient Bar for Connection */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rose-wax-red/20 to-transparent" />
+
+                {/* Content */}
+                <div className="px-10 py-10">
+                  <div className="grid grid-cols-2 gap-10 md:grid-cols-3 md:gap-16">
+                    {[...navigation.left, ...navigation.right]
+                      .find((item) => item.label === activeMegaMenu && item.megaMenu)
+                      ?.megaMenu?.sections.map((section, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: idx * 0.05, duration: 0.3 }}
+                        >
+                          <h3 className="mb-5 text-xs font-semibold uppercase tracking-widest text-[#6B5E57] flex items-center gap-2">
+                            <span className="w-8 h-[1px] bg-rose-wax-red/30" />
+                            {section.title}
+                          </h3>
+                          <ul className="space-y-4">
+                            {section.links.map((link, linkIdx) => (
+                              <motion.li
+                                key={linkIdx}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: idx * 0.05 + linkIdx * 0.03, duration: 0.3 }}
                               >
-                                <span className="font-serif text-lg font-semibold text-[#121212] block group-hover:text-rose-wax-red transition-colors">
-                                  {link.label}
-                                </span>
-                                {link.subtitle && (
-                                  <span className="text-sm text-[#6B5E57] mt-1 block">
-                                    {link.subtitle}
+                                <a
+                                  href={link.href}
+                                  className="group block p-3 -mx-3 rounded-lg transition-all duration-200 hover:bg-warm-sand/30"
+                                >
+                                  <span className="font-serif text-lg font-semibold text-[#121212] block group-hover:text-rose-wax-red transition-colors">
+                                    {link.label}
                                   </span>
-                                )}
-                              </a>
-                            </motion.li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    ))}
+                                  {link.subtitle && (
+                                    <span className="text-sm text-[#6B5E57] mt-1 block">
+                                      {link.subtitle}
+                                    </span>
+                                  )}
+                                </a>
+                              </motion.li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      ))}
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>
