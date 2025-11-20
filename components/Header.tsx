@@ -173,14 +173,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       )}
 
       {/* Main Navigation Bar with Glass Morphism */}
-      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${shouldLogoBeAbove ? (isScrolled ? 'top-16' : 'top-24') : 'top-6'}`}>
+      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${shouldLogoBeAbove ? 'top-24' : 'top-6'}`}>
         <div
           className={`
             relative flex items-center justify-between
             backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
-              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/85 border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
-              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-10 bg-white/80 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
+              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/70 border-white/50 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
+              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-10 bg-white/70 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
             }
           `}
           style={{
@@ -253,7 +253,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className={`fixed left-0 right-0 z-40 bg-white/80 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${shouldLogoBeAbove ? (isScrolled ? 'top-[88px]' : 'top-[120px]') : 'top-[100px]'}`}
+              className={`fixed left-0 right-0 z-40 bg-white/70 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${shouldLogoBeAbove ? 'top-[120px]' : 'top-[100px]'}`}
               style={{
                 boxShadow: "0 8px 48px rgba(0,0,0,.12), 0 0 40px rgba(244,105,126,0.06)",
                 backdropFilter: "blur(24px) saturate(180%)",
