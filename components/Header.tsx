@@ -4,16 +4,56 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { navigation, type NavItem } from "@/content/home";
-import MobileNav from "@/components/MobileNav";
+
+// Rollover Link Component
+interface RolloverLinkProps {
+  item: NavItem;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
+
+const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouseLeave }) => {
+  const pathname = usePathname();
+  const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+
+  return (
+    <a
+      href={item.href}
+      className="relative group h-5 overflow-hidden px-6 block"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-[20px]">
+        {/* Idle State */}
+        <span className={`
+          block h-[20px] flex items-center justify-center
+          text-[10px] font-medium tracking-[0.2em] uppercase
+          ${isActive ? 'text-rose-wax-red' : 'text-stone-800'}
+        `}>
+          {item.label}
+          {item.megaMenu && (
+            <svg className="inline w-2.5 h-2.5 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+            </svg>
+          )}
+        </span>
+
+        {/* Hover State */}
+        <span className="
+          block h-[20px] flex items-center justify-center
+          font-serif text-lg italic text-rose-wax-red whitespace-nowrap
+        ">
+          {item.label.toLowerCase()}
+        </span>
+      </div>
+    </a>
+  );
+};
 
 export default function Header({ settled = false, hideCta = false }: { settled?: boolean; hideCta?: boolean }) {
-  const pathname = usePathname();
-  const [solid, setSolid] = useState(settled);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(settled);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
@@ -26,38 +66,18 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
     restDelta: 0.001
   });
 
-  // Detect mobile viewport
+  // Lock body scroll when mobile menu is open
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(max-width: 767px)").matches);
-    };
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+    document.body.style.overflow = mobileOpen ? 'hidden' : 'unset';
+  }, [mobileOpen]);
 
-  // Keep header solid when mega menu is active
-  useEffect(() => {
-    if (activeMegaMenu !== null) {
-      setSolid(true);
-    }
-  }, [activeMegaMenu]);
-
+  // Scroll detection
   useEffect(() => {
     const handleScroll = () => {
       const mainContainer = document.querySelector('.overflow-y-auto');
       const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
-      const heroSection = document.querySelector('section');
-      const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
-      const headerHeight = 72;
-      const secondSectionAtHeader = scrollY >= (heroHeight - headerHeight);
-      const progress = secondSectionAtHeader ? 1 : 0;
 
-      setScrollProgress(progress);
-      setSolid(secondSectionAtHeader || settled || activeMegaMenu !== null);
-      setIsScrolled(secondSectionAtHeader);
-
-      // Show scroll to top button after scrolling 400px
+      setIsScrolled(scrollY > 50 || settled);
       setShowScrollTop(scrollY > 400);
     };
 
@@ -74,28 +94,10 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
       }
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [settled, activeMegaMenu]);
+  }, [settled]);
 
-  const handleHeaderMouseEnter = () => {
-    setSolid(true);
-  };
-
-  const handleHeaderMouseLeave = () => {
-    const mainContainer = document.querySelector('.overflow-y-auto');
-    const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
-    const heroSection = document.querySelector('section');
-    const heroHeight = heroSection ? heroSection.offsetHeight : window.innerHeight;
-    const headerHeight = 72;
-    const secondSectionAtHeader = scrollY >= (heroHeight - headerHeight);
-    const canBeTransparent = !secondSectionAtHeader && !settled && activeMegaMenu === null;
-
-    if (canBeTransparent) {
-      setSolid(false);
-    }
-  };
-
-  const handleNavItemEnter = (label: string, isCta?: boolean, hasMegaMenu?: boolean) => {
-    if (isMobile || isCta || !hasMegaMenu) return;
+  const handleNavItemEnter = (label: string, hasMegaMenu?: boolean) => {
+    if (!hasMegaMenu) return;
 
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
@@ -117,12 +119,6 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
   };
 
-  const handleNavItemFocus = (label: string, isCta?: boolean, hasMegaMenu?: boolean) => {
-    setSolid(true);
-    if (isMobile || isCta || !hasMegaMenu) return;
-    setActiveMegaMenu(label);
-  };
-
   const scrollToTop = () => {
     const mainContainer = document.querySelector('.overflow-y-auto');
     if (mainContainer) {
@@ -132,83 +128,6 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
     }
   };
 
-  const isActivePage = (href: string) => {
-    if (href === '/') return pathname === '/';
-    return pathname.startsWith(href);
-  };
-
-  const renderNavItem = (item: NavItem) => {
-    if (item.isCta && hideCta) return null;
-    const isActive = isActivePage(item.href);
-
-    // CTA button
-    if (item.isCta) {
-      return (
-        <a
-          key={item.label}
-          href={item.href}
-          className={`lvr-glass-cta ml-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7C3AED]/70 ${!solid ? 'lvr-glass-cta--transparent lvr-cta-boost' : ''}`}
-          onMouseEnter={() => handleNavItemEnter(item.label, true)}
-          onMouseLeave={handleNavItemLeave}
-          onFocus={() => handleNavItemFocus(item.label, true)}
-          aria-label="Book a consultation"
-        >
-          <span className="relative z-10">{item.label}</span>
-          <span aria-hidden="true" className="lvr-cta-sparkles"></span>
-        </a>
-      );
-    }
-
-    // Regular nav items with enhanced hover
-    return (
-      <a
-        key={item.label}
-        href={item.href}
-        className="group relative px-4 py-2 text-xs font-medium uppercase focus-ring rounded-lg"
-        style={{
-          color: (solid || scrollProgress > 0.5) ? (isActive ? "#A14C41" : "#121212") : isActive ? "rgba(255, 255, 255, 0.95)" : "rgba(255, 255, 255, 0.65)",
-          letterSpacing: "0.08em",
-          transition: "all 200ms cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
-        onMouseEnter={() => handleNavItemEnter(item.label, false, !!item.megaMenu)}
-        onMouseLeave={handleNavItemLeave}
-        onFocus={() => handleNavItemFocus(item.label, false, !!item.megaMenu)}
-      >
-        {/* Glassmorphism hover background */}
-        <span className="absolute inset-0 rounded-lg bg-white/0 group-hover:bg-white/10 backdrop-blur-sm transition-all duration-300" />
-
-        <span className="relative flex items-center gap-1.5">
-          {item.label}
-          {item.megaMenu && (
-            <svg className="w-3 h-3 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          )}
-
-          {/* Active indicator */}
-          {isActive && (
-            <motion.span
-              className={`absolute -bottom-1 left-0 right-0 h-[2px] ${solid ? 'bg-rose-wax-red' : 'bg-white'}`}
-              layoutId="activeNav"
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            />
-          )}
-
-          {/* Hover underline */}
-          {!isActive && (
-            <span
-              className={`absolute -bottom-1 left-0 h-[1px] w-0 transition-all duration-200 group-hover:w-full ${
-                solid ? "bg-[#121212]/40" : "bg-white/55"
-              }`}
-            />
-          )}
-        </span>
-      </a>
-    );
-  };
-
-  const ctaItem = { label: "Book Consultation", href: "/consultation" };
-
   return (
     <>
       {/* Scroll Progress Bar */}
@@ -217,87 +136,87 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
         style={{ scaleX }}
       />
 
-      <motion.header
-        role="banner"
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{
-          backgroundColor: solid ? "rgba(255, 255, 255, 0.95)" : "transparent",
-          backdropFilter: solid ? "blur(12px)" : "none",
-          borderBottomWidth: "1px",
-          borderBottomStyle: "solid",
-          borderBottomColor: solid ? "rgba(0, 0, 0, 0.08)" : "transparent",
-          boxShadow: solid ? "0 1px 2px 0 rgb(0 0 0 / 0.05)" : "none",
-          transition: "all 200ms cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        onMouseEnter={handleHeaderMouseEnter}
-        onMouseLeave={handleHeaderMouseLeave}
-      >
-        <div className="mx-auto max-w-[1280px] px-4 sm:px-8 md:px-12 h-[56px] md:h-[72px] grid grid-cols-[1fr_auto_1fr] items-center gap-8">
-          {/* LEFT: Nav items */}
-          <div className="flex items-center gap-2 justify-start min-w-0">
-            {/* Mobile hamburger */}
-            <button
-              className="md:hidden h-10 w-10 rounded-full hover:bg-black/5 focus:outline-none focus:ring-2 focus:ring-[#7C3AED]/70 flex items-center justify-center text-xl flex-shrink-0 transition-colors"
-              aria-label="Open menu"
-              aria-expanded={mobileOpen}
-              aria-controls="mobile-menu"
-              onClick={() => setMobileOpen(true)}
-              style={{
-                color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
-                transition: "color 200ms cubic-bezier(0.4, 0, 0.2, 1)",
-              }}
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-
-            {/* Desktop left nav */}
-            <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Primary">
-              {navigation.left.map(renderNavItem)}
-            </nav>
-          </div>
-
-          {/* CENTER: Logo */}
-          <div className="flex items-center justify-center flex-shrink-0">
-            <a href="/" className="relative block origin-center focus-ring group">
-              <span className="relative inline-block">
-                <span
-                  className="font-serif text-xl sm:text-2xl md:text-3xl font-bold whitespace-nowrap block transition-all duration-200 group-hover:scale-105"
-                  style={{
-                    letterSpacing: "0.035em",
-                    transition: "all 200ms cubic-bezier(0.4, 0, 0.2, 1)",
-                    color: (solid || scrollProgress > 0.5) ? "#1C1A18" : "rgba(255, 255, 255, 0.65)",
-                  }}
-                >
-                  Love, Violeta Rose
+      {/* Main Navigation Bar */}
+      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+        <div
+          className={`
+            relative flex items-center justify-between
+            bg-white/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.04)]
+            border border-white/50
+            transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+            ${isScrolled
+              ? 'w-[90%] max-w-4xl rounded-full py-3 px-6'
+              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-8'
+            }
+          `}
+        >
+          {/* Logo - Left */}
+          <div className="flex items-center flex-1">
+            <a href="/" className="group relative z-10">
+              <div className="flex flex-col leading-none">
+                <span className="font-serif text-xl md:text-2xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red">
+                  Love, Violeta Rose<span className="text-rose-wax-red text-2xl md:text-3xl">.</span>
                 </span>
-              </span>
+              </div>
             </a>
           </div>
 
-          {/* RIGHT: CTA */}
-          <div className="flex items-center gap-1 lg:gap-2 justify-end min-w-0">
-            <nav className="hidden md:flex items-center" aria-label="Secondary">
-              {navigation.right.map(renderNavItem)}
-            </nav>
-            <div className="md:hidden w-10 flex-shrink-0" />
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden lg:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            {navigation.left.map((item) => (
+              <RolloverLink
+                key={item.label}
+                item={item}
+                onMouseEnter={() => handleNavItemEnter(item.label, !!item.megaMenu)}
+                onMouseLeave={handleNavItemLeave}
+              />
+            ))}
+            {navigation.right.filter(item => !item.isCta).map((item) => (
+              <RolloverLink
+                key={item.label}
+                item={item}
+                onMouseEnter={() => handleNavItemEnter(item.label, !!item.megaMenu)}
+                onMouseLeave={handleNavItemLeave}
+              />
+            ))}
+          </div>
+
+          {/* CTA & Mobile Toggle - Right */}
+          <div className="flex items-center justify-end flex-1 gap-4">
+            {!hideCta && (
+              <a
+                href="/consultation"
+                className={`
+                  hidden md:block px-6 py-2 rounded-full bg-stone-800 text-white
+                  text-[9px] font-bold tracking-[0.25em] uppercase
+                  transition-all duration-500 hover:bg-rose-wax-red hover:shadow-lg hover:-translate-y-0.5
+                  ${isScrolled ? 'scale-95' : 'scale-100'}
+                `}
+              >
+                Book
+              </a>
+            )}
+
+            <button
+              onClick={() => setMobileOpen(true)}
+              className="lg:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors"
+              aria-label="Open menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            </button>
           </div>
         </div>
-      </motion.header>
+      </nav>
 
-      {/* Enhanced Mega Menu */}
-      <div className="hidden md:block">
+      {/* Mega Menu */}
+      <div className="hidden lg:block">
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-b border-black/8 top-[56px] md:top-[72px]"
-              style={{
-                boxShadow: "0 8px 32px rgba(0,0,0,.08)",
-              }}
+              className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-b border-black/8 top-[88px]"
+              style={{ boxShadow: "0 8px 32px rgba(0,0,0,.08)" }}
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
@@ -353,7 +272,71 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
         </AnimatePresence>
       </div>
 
-      {/* Scroll to Top Button */}
+      {/* Mobile Menu */}
+      <div
+        className={`
+          fixed inset-0 z-[100] bg-white transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+          ${mobileOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}
+        `}
+      >
+        <button
+          onClick={() => setMobileOpen(false)}
+          className="absolute top-8 right-8 p-2 rounded-full border border-gray-100 hover:border-stone-800 transition-colors duration-300"
+          aria-label="Close menu"
+        >
+          <svg className="w-6 h-6 text-stone-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div className="h-full flex flex-col items-center justify-center p-8 overflow-y-auto">
+          <div className="mb-12 text-center">
+            <span className="font-serif text-2xl md:text-3xl text-stone-800 tracking-tight">Love, Violeta Rose</span>
+            <div className="w-12 h-px bg-rose-wax-red mx-auto mt-4"></div>
+          </div>
+
+          <nav className="flex flex-col items-center space-y-6">
+            {[...navigation.left, ...navigation.right].filter(item => !item.isCta).map((item, idx) => (
+              <a
+                key={idx}
+                href={item.href}
+                onClick={() => setMobileOpen(false)}
+                className={`
+                  group text-center transition-all duration-700 ease-out
+                  ${mobileOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
+                `}
+                style={{ transitionDelay: `${150 + (idx * 100)}ms` }}
+              >
+                <span className="block font-serif text-3xl md:text-4xl text-stone-800 group-hover:text-rose-wax-red transition-colors duration-300 mb-1">
+                  {item.label}
+                </span>
+                <span className="font-sans text-[10px] tracking-[0.3em] uppercase text-gray-400 group-hover:text-rose-wax-red transition-colors duration-300">
+                  {item.href === '/films' ? 'Gallery' :
+                   item.href === '/offerings' ? 'Collections' :
+                   item.href === '/weddings' ? 'Cultural' :
+                   item.href === '/about' ? 'Our Story' :
+                   item.href === '/process' ? 'How We Work' : 'Explore'}
+                </span>
+              </a>
+            ))}
+          </nav>
+
+          <div className={`
+            mt-12 transition-all duration-1000 delay-500
+            ${mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
+          `}>
+            <a
+              href="/consultation"
+              onClick={() => setMobileOpen(false)}
+              className="block px-10 py-4 bg-stone-800 text-white text-xs font-bold tracking-[0.25em] uppercase hover:bg-rose-wax-red transition-colors rounded-full text-center"
+            >
+              Book Consultation
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll to Top */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
@@ -372,15 +355,6 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
           </motion.button>
         )}
       </AnimatePresence>
-
-      {/* Mobile Navigation */}
-      <MobileNav
-        open={mobileOpen}
-        onClose={() => setMobileOpen(false)}
-        itemsLeft={navigation.left}
-        itemsRight={navigation.right}
-        cta={ctaItem}
-      />
     </>
   );
 }
