@@ -1,15 +1,50 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import type { ConsultationFormData, N8nWebhookPayload } from "@/types/consultation";
+import { sanitizeObject, isValidEmail } from "@/lib/sanitize";
+import { rateLimit } from "@/lib/rateLimit";
+
+// Rate limit: 5 requests per 15 minutes per IP
+const limiter = rateLimit({
+  interval: 15 * 60 * 1000, // 15 minutes
+  maxRequests: 5,
+});
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
+    // Apply rate limiting
+    const rateLimitResult = await limiter(request);
+    if (!rateLimitResult.success) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: {
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': '0',
+            'Retry-After': '900', // 15 minutes in seconds
+          },
+        }
+      );
+    }
+
+    const rawBody = await request.json();
+
+    // Sanitize all input to prevent XSS
+    const body = sanitizeObject(rawBody);
 
     // Validate required fields
     if (!body.partner1Name || !body.partner2Name || !body.email) {
       return NextResponse.json(
         { error: "Missing required fields" },
+        { status: 400 }
+      );
+    }
+
+    // Validate email format
+    if (!isValidEmail(body.email)) {
+      return NextResponse.json(
+        { error: "Invalid email address" },
         { status: 400 }
       );
     }
