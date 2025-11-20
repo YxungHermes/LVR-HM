@@ -225,7 +225,11 @@ export default function ProcessPage() {
                 >
                   <Link href="/process/approach" className="block group">
                     <div className="bg-cream border border-coffee/10 rounded-lg p-8 h-full transition-all hover:shadow-lg hover:border-rose-wax-red/30">
-                      <div className="text-rose-wax-red text-3xl mb-4">🎯</div>
+                      <div className="text-rose-wax-red mb-4">
+                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
                       <h3 className="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
                         Our Approach
                       </h3>
@@ -250,7 +254,11 @@ export default function ProcessPage() {
                 >
                   <Link href="/process/what-to-expect" className="block group">
                     <div className="bg-cream border border-coffee/10 rounded-lg p-8 h-full transition-all hover:shadow-lg hover:border-rose-wax-red/30">
-                      <div className="text-rose-wax-red text-3xl mb-4">📹</div>
+                      <div className="text-rose-wax-red mb-4">
+                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      </div>
                       <h3 className="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
                         What to Expect
                       </h3>
@@ -275,7 +283,11 @@ export default function ProcessPage() {
                 >
                   <Link href="/process/investment" className="block group">
                     <div className="bg-cream border border-coffee/10 rounded-lg p-8 h-full transition-all hover:shadow-lg hover:border-rose-wax-red/30">
-                      <div className="text-rose-wax-red text-3xl mb-4">💳</div>
+                      <div className="text-rose-wax-red mb-4">
+                        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                        </svg>
+                      </div>
                       <h3 className="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-rose-wax-red transition-colors">
                         Investment & Payment
                       </h3>
