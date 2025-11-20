@@ -151,18 +151,18 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
           `}
         >
           {/* Logo - Left */}
-          <div className="flex items-center flex-1">
-            <a href="/" className="group relative z-10">
+          <div className="flex items-center flex-1 min-w-0">
+            <a href="/" className="group relative z-10 flex-shrink-0">
               <div className="flex flex-col leading-none">
-                <span className="font-serif text-xl md:text-2xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red">
-                  Love, Violeta Rose<span className="text-rose-wax-red text-2xl md:text-3xl">.</span>
+                <span className="font-serif text-lg md:text-xl lg:text-2xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red whitespace-nowrap">
+                  Love, Violeta Rose<span className="text-rose-wax-red text-xl md:text-2xl lg:text-3xl">.</span>
                 </span>
               </div>
             </a>
           </div>
 
           {/* Desktop Navigation - Centered */}
-          <div className="hidden lg:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="hidden xl:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
             {navigation.left.map((item) => (
               <RolloverLink
                 key={item.label}
@@ -199,7 +199,7 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="lg:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors"
+              className="xl:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors"
               aria-label="Open menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -211,7 +211,7 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
       </nav>
 
       {/* Mega Menu */}
-      <div className="hidden lg:block">
+      <div className="hidden xl:block">
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
