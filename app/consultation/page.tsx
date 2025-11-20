@@ -231,6 +231,44 @@ export default function ConsultationWizard() {
                       </p>
                     </div>
 
+                    {/* Event Type Selection */}
+                    <div>
+                      <label className="block text-sm font-medium text-ink mb-3">
+                        What type of film are you looking for? *
+                      </label>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        {[
+                          { value: "wedding", label: "Wedding Day Film", description: "Full day or partial coverage" },
+                          { value: "elopement", label: "Elopement/Intimate Gathering", description: "Small, intimate celebrations" },
+                          { value: "engagement", label: "Engagement/Couples Session", description: "Pre-wedding or couples film" },
+                          { value: "anniversary", label: "Anniversary Film", description: "Celebrate your milestone" },
+                          { value: "other", label: "Something Else", description: "Tell us what you have in mind" }
+                        ].map((type) => (
+                          <label
+                            key={type.value}
+                            className={`flex items-start p-4 border rounded-lg cursor-pointer transition-all ${
+                              formData.eventType === type.value
+                                ? 'border-rose-wax-red bg-rose-wax-red/5'
+                                : 'border-coffee/20 hover:border-rose-wax-red/30'
+                            }`}
+                          >
+                            <input
+                              type="radio"
+                              name="eventType"
+                              value={type.value}
+                              checked={formData.eventType === type.value}
+                              onChange={(e) => updateField('eventType', e.target.value)}
+                              className="mr-3 mt-1"
+                            />
+                            <div>
+                              <div className="font-medium text-ink">{type.label}</div>
+                              <div className="text-sm text-espresso/60">{type.description}</div>
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
                         <label className="block text-sm font-medium text-ink mb-2">
