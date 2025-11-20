@@ -213,10 +213,16 @@ export default function ConsultationWizard() {
           </div>
         </section>
 
-        {/* Progress Bar */}
-        <div className="sticky top-0 z-40 bg-white shadow-sm">
-          <div className="mx-auto max-w-3xl px-6 py-4">
-            <div className="flex items-center justify-between mb-2">
+        {/* Progress Bar - Glassmorphic Design */}
+        <div className="sticky top-24 z-40 px-4 flex justify-center">
+          <div
+            className="w-full max-w-3xl px-6 py-4 bg-white/85 backdrop-blur-xl border border-white/60 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)] transition-all duration-700"
+            style={{
+              backdropFilter: "blur(20px) saturate(150%)",
+              WebkitBackdropFilter: "blur(20px) saturate(150%)",
+            }}
+          >
+            <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-medium text-ink">
                 Step {currentStep} of {TOTAL_STEPS}
               </span>
@@ -226,7 +232,7 @@ export default function ConsultationWizard() {
             </div>
             <div className="h-2 bg-warm-sand/30 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-rose-wax-red"
+                className="h-full bg-rose-wax-red rounded-full"
                 initial={{ width: 0 }}
                 animate={{ width: `${progress}%` }}
                 transition={{ duration: 0.3 }}

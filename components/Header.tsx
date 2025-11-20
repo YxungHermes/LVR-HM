@@ -136,33 +136,15 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
         style={{ scaleX }}
       />
 
-      {/* Logo Above Nav Bar */}
-      <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-        <motion.div
-          className="transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-          animate={{
-            scale: isScrolled ? 0.75 : 1,
-            y: isScrolled ? -8 : 0,
-            opacity: isScrolled ? 0.85 : 1
-          }}
-        >
-          <a href="/" className="group pointer-events-auto block">
-            <span className="font-serif text-2xl md:text-3xl lg:text-4xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red whitespace-nowrap drop-shadow-sm">
-              Love, Violeta Rose<span className="text-rose-wax-red text-3xl md:text-4xl lg:text-5xl">.</span>
-            </span>
-          </a>
-        </motion.div>
-      </div>
-
       {/* Main Navigation Bar with Glass Morphism */}
-      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isScrolled ? 'top-16' : 'top-24'}`}>
+      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
         <div
           className={`
-            relative flex items-center justify-center
+            relative flex items-center justify-between
             backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
-              ? 'w-[75%] max-w-2xl rounded-full py-3 px-8 bg-white/98 border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
-              : 'w-[90%] max-w-6xl rounded-2xl py-5 px-12 bg-white/85 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
+              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/98 border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
+              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-10 bg-white/85 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
             }
           `}
           style={{
@@ -170,8 +152,17 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
             WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'blur(20px) saturate(150%)',
           }}
         >
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden xl:flex items-center justify-center gap-2">
+          {/* Logo - Left Side */}
+          <div className="flex items-center flex-1 min-w-0">
+            <a href="/" className="group relative z-10 flex-shrink-0">
+              <span className={`font-serif text-stone-800 tracking-tight transition-all duration-700 group-hover:text-rose-wax-red whitespace-nowrap ${isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl lg:text-3xl'}`}>
+                Love, Violeta Rose<span className="text-rose-wax-red">.</span>
+              </span>
+            </a>
+          </div>
+
+          {/* Desktop Navigation - Absolutely Centered */}
+          <div className="hidden xl:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto gap-2">
             {navigation.left.map((item) => (
               <RolloverLink
                 key={item.label}
@@ -190,8 +181,8 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
             ))}
           </div>
 
-          {/* CTA & Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* CTA & Mobile Toggle - Right Side */}
+          <div className="flex items-center justify-end flex-1 gap-4 min-w-0">
             {!hideCta && (
               <a
                 href="/consultation"
@@ -208,7 +199,7 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="xl:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors"
+              className="xl:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors flex-shrink-0"
               aria-label="Open menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -224,7 +215,7 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className={`fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${isScrolled ? 'top-[88px]' : 'top-[120px]'}`}
+              className="fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 top-[100px]"
               style={{
                 boxShadow: "0 8px 48px rgba(0,0,0,.12), 0 0 40px rgba(244,105,126,0.06)",
                 backdropFilter: "blur(24px) saturate(180%)",
