@@ -295,15 +295,15 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <motion.div
                 className={`
                   relative w-[95%] max-w-7xl
-                  bg-white/88 backdrop-blur-2xl
-                  border border-white/60
+                  bg-white/72 backdrop-blur-2xl
+                  border border-white/40
                   rounded-2xl
                   shadow-[0_12px_48px_rgba(0,0,0,0.15),0_0_40px_rgba(244,105,126,0.08)]
                   overflow-hidden
                 `}
                 style={{
-                  backdropFilter: "blur(40px) saturate(180%)",
-                  WebkitBackdropFilter: "blur(40px) saturate(180%)",
+                  backdropFilter: "blur(48px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(48px) saturate(180%)",
                 }}
                 initial={{ scale: 0.98 }}
                 animate={{ scale: 1 }}
@@ -311,6 +311,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               >
                 {/* Subtle Top Gradient Bar for Connection */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rose-wax-red/20 to-transparent" />
+
+                {/* Radial gradient overlay for text readability */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 40%, transparent 70%)'
+                  }}
+                />
 
                 {/* Content */}
                 <div className="px-10 py-10">
