@@ -141,11 +141,10 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
         <div
           className={`
             relative flex items-center justify-between
-            backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)]
-            border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+            backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
-              ? 'w-[90%] max-w-4xl rounded-full py-3 px-6 bg-white/70 border-white/40 shadow-[0_8px_48px_rgba(0,0,0,0.12)]'
-              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-8 bg-white/85 border-white/60'
+              ? 'w-[85%] max-w-3xl rounded-full py-3 px-6 bg-white/90 border-white/50 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
+              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-8 bg-white/85 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
             }
           `}
           style={{
@@ -218,9 +217,9 @@ export default function Header({ settled = false, hideCta = false }: { settled?:
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className="fixed left-0 right-0 z-40 bg-white/75 backdrop-blur-2xl border-b border-white/40 top-[88px]"
+              className="fixed left-0 right-0 z-40 bg-white/85 backdrop-blur-2xl border-b border-white/40 top-[88px]"
               style={{
-                boxShadow: "0 8px 48px rgba(0,0,0,.12)",
+                boxShadow: "0 8px 48px rgba(0,0,0,.12), 0 0 40px rgba(244,105,126,0.06)",
                 backdropFilter: "blur(24px) saturate(180%)",
                 WebkitBackdropFilter: "blur(24px) saturate(180%)",
               }}
