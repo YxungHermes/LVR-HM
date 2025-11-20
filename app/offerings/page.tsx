@@ -12,7 +12,7 @@ import Roadmap from "@/components/Roadmap";
 export default function PricingPage() {
   return (
     <>
-      <Header settled />
+      <Header settled logoAbove />
       <main className="bg-cream">
         {/* Compact Hero */}
         <section className="px-6 pt-32 pb-20 md:pt-36 md:pb-24">

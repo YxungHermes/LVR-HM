@@ -72,10 +72,7 @@ export default function MobileNav({
               transition={{ delay: 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="font-serif text-2xl font-semibold text-[#1C1A18] block">
-                Love Stories
-              </span>
-              <span className="font-serif text-[11px] italic text-[#1C1A18]/70 absolute -bottom-1 right-0 transform translate-y-full whitespace-nowrap">
-                by Michael Andrade
+                Love, Violeta Rose
               </span>
             </motion.span>
             <motion.button

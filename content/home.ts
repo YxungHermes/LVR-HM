@@ -50,17 +50,32 @@ export const signatureWork = [
   {
     title: "Selene & Isidro",
     subtitle: "Utah",
-    vimeoId: "1057949189"
+    location: "Utah",
+    date: "Summer 2024",
+    style: "Cinematic & Artistic",
+    tradition: "Catholic",
+    vimeoId: "1057949189",
+    description: "A breathtaking mountain celebration filled with genuine emotion and timeless moments."
   },
   {
     title: "Courtney & Sterling",
     subtitle: "Connecticut",
-    vimeoId: "1137483566"
+    location: "Connecticut",
+    date: "Fall 2024",
+    style: "Romantic & Timeless",
+    tradition: "Western",
+    vimeoId: "1137483566",
+    description: "An elegant New England wedding capturing autumn beauty and heartfelt vows."
   },
   {
     title: "Brianna & Steven",
     subtitle: "New Jersey",
-    vimeoId: "1137492115"
+    location: "New Jersey",
+    date: "Spring 2024",
+    style: "Documentary Style",
+    tradition: "Jewish",
+    vimeoId: "1137492115",
+    description: "A joyful Jewish celebration with the hora, emotional ketubah signing, and pure celebration."
   }
 ];
 
@@ -129,14 +144,36 @@ export const packages = [
 
 export const testimonials = [
   {
-    quote: "Violeta captured our day in a way that felt like a dream. Every time we watch our film, we're transported back to that perfect moment.",
-    couple: "Sarah & James",
-    location: "Napa Valley"
+    quote: "From the moment we met, we knew this wasn't just a videographer - this was someone who truly understood our story. The film captured emotions we didn't even know existed. Our families still cry watching it.",
+    couple: "Sarah & Michael",
+    location: "Napa Valley, CA",
+    date: "June 2024",
+    tradition: "Multicultural",
+    image: "/testimonials/couple-1.jpg" // Placeholder - add actual image path
   },
   {
-    quote: "The attention to detail and artistry is unmatched. Our film is a work of art that we'll cherish for generations.",
-    couple: "Maria & David",
-    location: "Los Angeles"
+    quote: "Our three-day Hindu wedding was so complex, but every ritual, every emotion, every detail was captured beautifully. The Baraat, the Saat Phere, the Bidaai - watching our film feels like reliving the most magical weekend of our lives.",
+    couple: "Priya & Raj",
+    location: "San Francisco, CA",
+    date: "August 2024",
+    tradition: "Hindu",
+    image: "/testimonials/couple-2.jpg"
+  },
+  {
+    quote: "The Pyebaek ceremony was so important to us, and it was filmed with such respect and artistry. Our parents were moved to tears watching the final film. This is more than a wedding video - it's a family heirloom.",
+    couple: "David & Jonathan",
+    location: "Los Angeles, CA",
+    date: "October 2024",
+    tradition: "Korean",
+    image: "/testimonials/couple-3.jpg"
+  },
+  {
+    quote: "We wanted something cinematic and timeless, and that's exactly what we got. The way our vows were captured, the golden hour shots, the reception energy - it all feels like a movie we never want to end.",
+    couple: "Emma & James",
+    location: "Big Sur, CA",
+    date: "May 2024",
+    tradition: "Catholic",
+    image: "/testimonials/couple-4.jpg"
   }
 ];
 

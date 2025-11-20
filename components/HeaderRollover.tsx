@@ -5,7 +5,7 @@ import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { navigation, type NavItem } from "@/content/home";
 
-// Rollover Link Component
+// Rollover Link with dual state animation
 interface RolloverLinkProps {
   item: NavItem;
   onMouseEnter?: () => void;
@@ -24,7 +24,7 @@ const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouse
       onMouseLeave={onMouseLeave}
     >
       <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-[20px]">
-        {/* Idle State */}
+        {/* Idle State: Sans-serif Uppercase */}
         <span className={`
           block h-[20px] flex items-center justify-center
           text-[10px] font-medium tracking-[0.2em] uppercase
@@ -38,7 +38,7 @@ const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouse
           )}
         </span>
 
-        {/* Hover State */}
+        {/* Hover State: Serif Italic Gold */}
         <span className="
           block h-[20px] flex items-center justify-center
           font-serif text-lg italic text-rose-wax-red whitespace-nowrap
@@ -50,7 +50,8 @@ const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouse
   );
 };
 
-export default function Header({ settled = false, hideCta = false, logoAbove = false }: { settled?: boolean; hideCta?: boolean; logoAbove?: boolean }) {
+export default function HeaderRollover({ settled = false, hideCta = false }: { settled?: boolean; hideCta?: boolean }) {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(settled);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -136,55 +137,33 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         style={{ scaleX }}
       />
 
-      {/* Logo Above Navbar (Optional) */}
-      {logoAbove && (
-        <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
-          <motion.div
-            className="transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
-            animate={{
-              scale: isScrolled ? 0.75 : 1,
-              y: isScrolled ? -8 : 0,
-              opacity: isScrolled ? 0.85 : 1
-            }}
-          >
-            <a href="/" className="group pointer-events-auto block">
-              <span className="font-serif text-2xl md:text-3xl lg:text-4xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red whitespace-nowrap drop-shadow-sm">
-                Love, Violeta Rose<span className="text-rose-wax-red text-3xl md:text-4xl lg:text-5xl">.</span>
-              </span>
-            </a>
-          </motion.div>
-        </div>
-      )}
-
-      {/* Main Navigation Bar with Glass Morphism */}
-      <nav className={`fixed left-0 right-0 z-50 flex justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-16' : 'top-24') : 'top-6'}`}>
+      {/* Main Navigation Bar with Morphing Effect */}
+      <nav className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
         <div
           className={`
             relative flex items-center justify-between
-            backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+            bg-white/85 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,0.04)]
+            border border-white/50
+            transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
-              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/98 border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
-              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-10 bg-white/85 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
+              ? 'w-[90%] max-w-4xl rounded-full py-3 px-6'
+              : 'w-[95%] max-w-7xl rounded-2xl py-5 px-8'
             }
           `}
-          style={{
-            backdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'blur(20px) saturate(150%)',
-            WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'blur(20px) saturate(150%)',
-          }}
         >
-          {/* Logo - Left Side (Only if not above) */}
-          {!logoAbove && (
-            <div className="flex items-center flex-1 min-w-0">
-              <a href="/" className="group relative z-10 flex-shrink-0">
-                <span className={`font-serif text-stone-800 tracking-tight transition-all duration-700 group-hover:text-rose-wax-red whitespace-nowrap ${isScrolled ? 'text-lg md:text-xl' : 'text-xl md:text-2xl lg:text-3xl'}`}>
-                  Love, Violeta Rose<span className="text-rose-wax-red">.</span>
+          {/* Logo Area - Left */}
+          <div className="flex items-center flex-1">
+            <a href="/" className="group relative z-10">
+              <div className="flex flex-col leading-none">
+                <span className="font-serif text-xl md:text-2xl text-stone-800 tracking-tight transition-colors group-hover:text-rose-wax-red">
+                  Love, Violeta Rose<span className="text-rose-wax-red text-2xl md:text-3xl">.</span>
                 </span>
-              </a>
-            </div>
-          )}
+              </div>
+            </a>
+          </div>
 
-          {/* Desktop Navigation - Centered */}
-          <div className={`hidden xl:flex items-center justify-center gap-2 ${logoAbove ? 'flex-1' : 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'} pointer-events-auto`}>
+          {/* Desktop Navigation - Centered Absolute */}
+          <div className="hidden lg:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             {navigation.left.map((item) => (
               <RolloverLink
                 key={item.label}
@@ -203,8 +182,8 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             ))}
           </div>
 
-          {/* CTA & Mobile Toggle - Right Side */}
-          <div className={`flex items-center justify-end gap-4 min-w-0 ${logoAbove ? '' : 'flex-1'}`}>
+          {/* CTA & Mobile Toggle - Right Aligned */}
+          <div className="flex items-center justify-end flex-1 gap-4">
             {!hideCta && (
               <a
                 href="/consultation"
@@ -221,7 +200,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
 
             <button
               onClick={() => setMobileOpen(true)}
-              className="xl:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors flex-shrink-0"
+              className="lg:hidden p-2 text-stone-800 hover:text-rose-wax-red transition-colors"
               aria-label="Open menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
@@ -232,16 +211,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         </div>
       </nav>
 
-      {/* Mega Menu */}
-      <div className="hidden xl:block">
+      {/* Enhanced Mega Menu */}
+      <div className="hidden lg:block">
         <AnimatePresence>
           {activeMegaMenu && (
             <motion.div
-              className={`fixed left-0 right-0 z-40 bg-white/90 backdrop-blur-2xl border-b border-white/40 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[120px]') : 'top-[100px]'}`}
+              className="fixed left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-b border-black/8 top-[88px]"
               style={{
-                boxShadow: "0 8px 48px rgba(0,0,0,.12), 0 0 40px rgba(244,105,126,0.06)",
-                backdropFilter: "blur(24px) saturate(180%)",
-                WebkitBackdropFilter: "blur(24px) saturate(180%)",
+                boxShadow: "0 8px 32px rgba(0,0,0,.08)",
               }}
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -298,7 +275,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         </AnimatePresence>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Full Screen Mobile Menu Overlay */}
       <div
         className={`
           fixed inset-0 z-[100] bg-white transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
@@ -321,6 +298,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             <div className="w-12 h-px bg-rose-wax-red mx-auto mt-4"></div>
           </div>
 
+          {/* Mobile Links with Staggered Animation */}
           <nav className="flex flex-col items-center space-y-6">
             {[...navigation.left, ...navigation.right].filter(item => !item.isCta).map((item, idx) => (
               <a
@@ -362,7 +340,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
         </div>
       </div>
 
-      {/* Scroll to Top */}
+      {/* Scroll to Top Button */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button

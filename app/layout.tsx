@@ -5,6 +5,7 @@ import StagingBadge from "@/components/StagingBadge";
 import PageTransition from "@/components/PageTransition";
 import ClickOrigin from "@/components/ClickOrigin";
 import ScrollDepthTracker from "@/components/ScrollDepthTracker";
+import StructuredData from "@/components/StructuredData";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import MetaPixel from "@/components/MetaPixel";
@@ -25,9 +26,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Love Stories by Michael Andrade — Cinematic Wedding & Couples Films",
+  metadataBase: new URL('https://lovevioletarose.com'),
+  title: {
+    default: "Love, Violeta Rose — Cinematic Wedding & Couples Films",
+    template: "%s | Love, Violeta Rose"
+  },
   description: "Cinematic wedding and couples films crafted with heart. From intimate elopements to grand celebrations, adventure sessions to anniversary films—we create films you'll treasure forever.",
-  keywords: ["wedding videography", "cinematic wedding films", "couples films", "adventure sessions", "anniversary films", "luxury wedding videographer", "love stories by michael andrade"],
+  keywords: ["wedding videography", "cinematic wedding films", "couples films", "adventure sessions", "anniversary films", "luxury wedding videographer", "love violeta rose"],
+  authors: [{ name: "Violeta Rose" }],
+  creator: "Violeta Rose",
+  publisher: "Love, Violeta Rose",
   icons: {
     icon: [
       { url: '/favicons/lvr-monogram.svg', type: 'image/svg+xml' },
@@ -36,6 +44,29 @@ export const metadata: Metadata = {
     apple: [
       { url: '/favicons/lvr-monogram.svg', sizes: '180x180', type: 'image/svg+xml' },
     ],
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://lovevioletarose.com',
+    siteName: 'Love, Violeta Rose',
+    title: "Love, Violeta Rose — Cinematic Wedding & Couples Films",
+    description: "Cinematic wedding and couples films crafted with heart. From intimate elopements to grand celebrations, adventure sessions to anniversary films—we create films you'll treasure forever.",
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Love, Violeta Rose - Cinematic Wedding Films',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Love, Violeta Rose — Cinematic Wedding & Couples Films",
+    description: "Cinematic wedding and couples films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
+    images: ['/og-image.jpg'],
+    creator: '@lovevioletarose',
   },
   robots:
     process.env.VERCEL_ENV === "preview"
@@ -56,6 +87,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://i.vimeocdn.com" />
         <link rel="dns-prefetch" href="https://player.vimeo.com" />
         <link rel="dns-prefetch" href="https://i.vimeocdn.com" />
+
+        {/* Structured Data for SEO */}
+        <StructuredData />
       </head>
       <body
         className="font-sans antialiased"

@@ -19,21 +19,18 @@ export default function Footer() {
             <a href="/" className="inline-block group focus-ring rounded">
               <h3 className="relative inline-block">
                 <span className="font-serif text-2xl font-bold tracking-wider text-ink group-hover:text-rose-wax-red transition-colors block">
-                  Love Stories
-                </span>
-                <span className="font-serif text-sm italic text-ink/70 group-hover:text-rose-wax-red/70 transition-colors absolute -bottom-1 right-0 transform translate-y-full whitespace-nowrap">
-                  by Michael Andrade
+                  Love, Violeta Rose
                 </span>
               </h3>
             </a>
             <p className="mt-6 text-sm text-espresso">
               Cinematic wedding & couples films crafted with heart.
             </p>
-            {/* Michael's photo */}
+            {/* Violeta's photo */}
             <div className="mt-6 h-16 w-16 rounded-full border-2 border-coffee/20 bg-white overflow-hidden relative">
               <Image
-                src="/media/michael-andrade.jpg"
-                alt="Michael Andrade"
+                src="/media/violeta-rose.jpg"
+                alt="Violeta Rose"
                 fill
                 className="object-cover"
                 style={{ objectPosition: "center 30%" }}
@@ -100,7 +97,7 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <p className="text-xs text-espresso/60">
-            © {new Date().getFullYear()} Love Stories by Michael Andrade. All rights reserved.
+            © {new Date().getFullYear()} Love, Violeta Rose. All rights reserved.
           </p>
         </motion.div>
       </div>
