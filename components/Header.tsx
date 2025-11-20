@@ -160,13 +160,13 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             relative flex items-center justify-between
             backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
-              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/98 border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
-              : 'w-[95%] max-w-7xl rounded-3xl py-5 px-10 bg-white/85 border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
+              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/75 border-white/50 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
+              : 'w-[95%] max-w-7xl rounded-3xl py-5 px-10 bg-white/70 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
             }
           `}
           style={{
-            backdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'blur(20px) saturate(150%)',
-            WebkitBackdropFilter: isScrolled ? 'blur(24px) saturate(180%)' : 'blur(20px) saturate(150%)',
+            backdropFilter: isScrolled ? 'blur(32px) saturate(180%)' : 'blur(28px) saturate(160%)',
+            WebkitBackdropFilter: isScrolled ? 'blur(32px) saturate(180%)' : 'blur(28px) saturate(160%)',
           }}
         >
           {/* Logo - Left Side */}
@@ -295,15 +295,15 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <motion.div
                 className={`
                   relative w-[95%] max-w-7xl
-                  bg-white/72 backdrop-blur-2xl
-                  border border-white/40
+                  bg-white/65 backdrop-blur-2xl
+                  border border-white/35
                   rounded-2xl
                   shadow-[0_12px_48px_rgba(0,0,0,0.15),0_0_40px_rgba(244,105,126,0.08)]
                   overflow-hidden
                 `}
                 style={{
-                  backdropFilter: "blur(48px) saturate(180%)",
-                  WebkitBackdropFilter: "blur(48px) saturate(180%)",
+                  backdropFilter: "blur(56px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(56px) saturate(180%)",
                 }}
                 initial={{ scale: 0.98 }}
                 animate={{ scale: 1 }}
