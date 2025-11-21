@@ -59,7 +59,10 @@ export default function PricingPage() {
                 <motion.div
                   key={collection.slug}
                   id={collection.slug}
-                  className="bg-white border border-coffee/10 rounded-lg overflow-hidden scroll-mt-24"
+                  className="group bg-white border-2 border-coffee/10 rounded-lg overflow-hidden scroll-mt-24 transition-all duration-500 hover:border-rose-wax-red/30 hover:shadow-2xl"
+                  style={{
+                    boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.05)'
+                  }}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -90,6 +93,36 @@ export default function PricingPage() {
                           allow="autoplay; fullscreen; picture-in-picture"
                           title={collection.name}
                         />
+
+                        {/* Elegant Number Badge - Top Left */}
+                        <div className="absolute top-4 left-4 z-10">
+                          <div className="w-12 h-12 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 flex items-center justify-center shadow-lg">
+                            <span className="font-serif text-lg font-bold text-rose-wax-red">
+                              {String(index + 1).padStart(2, '0')}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Price Badge - Top Right */}
+                        <div className="absolute top-4 right-4 z-10">
+                          <div className="px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 shadow-lg">
+                            <div className="flex flex-col items-end">
+                              <span className="text-[10px] uppercase tracking-wider text-espresso/70 font-medium leading-none">From</span>
+                              <span className="font-serif text-base font-bold text-rose-wax-red leading-none mt-1">
+                                {collection.startingFrom}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Popular Badge - Center Top */}
+                        {collection.slug === "wedding-day-films" && (
+                          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+                            <div className="px-4 py-1.5 rounded-full bg-rose-wax-red text-white shadow-lg">
+                              <span className="text-[10px] uppercase tracking-widest font-bold">Most Popular</span>
+                            </div>
+                          </div>
+                        )}
                       </div>
                     ) : (
                       <Image
