@@ -47,6 +47,20 @@ export default function PricingDetailPage({
   ctaLabel,
   ctaHref,
 }: PricingDetailPageProps) {
+  // Determine video positioning and scale based on offering type
+  const getVideoStyle = () => {
+    const isElopements = title.includes("Elopements");
+    const isDestination = title.includes("Destination");
+    const isCouples = title.includes("Couples");
+
+    return {
+      top: isCouples ? "40%" : "50%",
+      scale: isDestination ? "1.05" : (isElopements || isCouples) ? "1.4" : "1.2"
+    };
+  };
+
+  const videoStyle = getVideoStyle();
+
   return (
     <>
       <Header settled />
@@ -92,11 +106,11 @@ export default function PricingDetailPage({
                     className="absolute pointer-events-none"
                     style={{
                       position: "absolute",
-                      top: "50%",
+                      top: videoStyle.top,
                       left: "50%",
                       width: "100%",
                       height: "100%",
-                      transform: "translate(-50%, -50%) scale(1.2)",
+                      transform: `translate(-50%, -50%) scale(${videoStyle.scale})`,
                     }}
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
