@@ -141,7 +141,11 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       {/* Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-rose-wax-red via-rose-wax-red to-transparent origin-left z-[60]"
-        style={{ scaleX }}
+        style={{
+          scaleX,
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+        }}
       />
 
       {/* Logo Above Navbar (Optional) - Only visible when not scrolled */}
@@ -162,7 +166,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       )}
 
       {/* Desktop/Tablet Navigation Bar with Glass Morphism */}
-      <nav className={`hidden lg:flex fixed left-0 right-0 z-50 justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}>
+      <nav
+        className={`hidden lg:flex fixed left-0 right-0 z-50 justify-center px-4 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}
+        style={{
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          willChange: 'transform',
+        }}
+      >
         <div
           className={`
             relative flex items-center justify-between
@@ -249,7 +260,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       </nav>
 
       {/* Mobile Navigation - Centered Logo Pill with Menu Underneath */}
-      <div className={`lg:hidden fixed left-0 right-0 z-50 flex flex-col items-center transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}>
+      <div
+        className={`lg:hidden fixed left-0 right-0 z-50 flex flex-col items-center transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${logoAbove ? (isScrolled ? 'top-6' : 'top-24') : 'top-6'}`}
+        style={{
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          willChange: 'transform',
+        }}
+      >
         {/* Logo Pill - Centered */}
         <motion.div
           className="px-8 py-3 rounded-full bg-white/98 backdrop-blur-2xl border border-white/60 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]"
