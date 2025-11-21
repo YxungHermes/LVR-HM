@@ -45,6 +45,7 @@ export const pricingOverview = [
       "For intentional ceremonies, city hall 'I do's, rooftops, and small gatherings where every face matters.",
     href: "/offerings/elopements",
     image: "/collections/elopements.jpg",
+    vimeoId: "1139445343",
   },
   {
     slug: "wedding-day-films",
@@ -55,6 +56,7 @@ export const pricingOverview = [
       "For full wedding days at home, crafted as emotive, cinematic films you'll want to revisit often.",
     href: "/offerings/wedding-day-films",
     image: "/collections/wedding-day.jpg",
+    vimeoId: "1139429379",
   },
   {
     slug: "destination-weddings",
@@ -76,6 +78,7 @@ export const pricingOverview = [
       "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
     href: "/offerings/couples-films",
     image: "/collections/adventure.jpg",
+    vimeoId: "1139450155",
   },
 ];
 
@@ -84,6 +87,7 @@ export const pricingPages = {
     title: "Elopements & Intimate Gatherings",
     seoTitle: "Elopement Wedding Films | Weddings by Michael Andrade",
     heroImage: "/collections/elopements.jpg",
+    vimeoId: "1139445343",
     introHeading: "For the couples choosing presence over spectacle.",
     introBody:
       "Some vows are whispered on a rooftop, in a quiet courthouse, or under a tree with only your closest people. These celebrations deserve the same cinematic respect as any ballroom. This collection is for couples who want a refined, honest film that reflects the intimacy of the day.",
@@ -112,6 +116,7 @@ export const pricingPages = {
     title: "Wedding Day Films",
     seoTitle: "Wedding Day Film Collections | Weddings by Michael Andrade",
     heroImage: "/collections/wedding-day.jpg",
+    vimeoId: "1139429379",
     introHeading: "A complete, cinematic record of the day you built.",
     introBody:
       "From getting ready through the final song, your wedding day moves quickly. Our focus is to craft a film that feels like you: how your families hold you, the energy in the room, the way the night turns into story. This collection is for couples who want their full day told with intention.",
@@ -170,6 +175,7 @@ export const pricingPages = {
     title: "Couples Films",
     seoTitle: "Couples Films & Love Story Sessions | Love Stories by Michael Andrade",
     heroImage: "/collections/adventure.jpg",
+    vimeoId: "1139450155",
     introHeading: "Your relationship deserves more than iPhone footage.",
     introBody:
       "Not getting married (yet)? Doesn't matter. Anniversaries, birthdays, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These films are for couples who want cinematic storytelling without the wedding day price tag—because your love story matters now, not just on a future wedding day.",

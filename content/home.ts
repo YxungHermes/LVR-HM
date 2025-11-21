@@ -23,13 +23,15 @@ export const chooseYourStory = [
     slug: "elopements",
     name: "Elopements & Intimate Gatherings",
     teaser: "For small, intentional 'just us' celebrations.",
-    href: "/offerings/elopements"
+    href: "/offerings/elopements",
+    vimeoId: "1139445343"
   },
   {
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     teaser: "For full wedding days close to home.",
-    href: "/offerings/wedding-day-films"
+    href: "/offerings/wedding-day-films",
+    vimeoId: "1139429379"
   },
   {
     slug: "destination-weddings",
@@ -42,7 +44,8 @@ export const chooseYourStory = [
     slug: "couples-films",
     name: "Couples Films",
     teaser: "For couples celebrating love. Anniversaries, birthdays, or just because—not wedding required.",
-    href: "/offerings/couples-films"
+    href: "/offerings/couples-films",
+    vimeoId: "1139450155"
   }
 ];
 

@@ -76,11 +76,9 @@ export default function PricingPage() {
                             position: "absolute",
                             top: "50%",
                             left: "50%",
-                            width: "100vw",
-                            height: "56.25vw", // 16:9 aspect ratio
-                            minHeight: "100%",
-                            minWidth: "177.78vh", // 16:9 aspect ratio
-                            transform: "translate(-50%, -50%)",
+                            width: "100%",
+                            height: "100%",
+                            transform: "translate(-50%, -50%) scale(1.05)",
                           }}
                           frameBorder="0"
                           allow="autoplay; fullscreen; picture-in-picture"
