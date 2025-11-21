@@ -163,12 +163,17 @@ const DatePicker = ({ value, onChange, placeholder = "Select a date", error, min
 
         .react-datepicker__day {
           width: 40px;
+          height: 40px;
           line-height: 40px;
           margin: 2px;
           color: #2E2726;
           border-radius: 10px;
           transition: all 0.2s ease;
           font-size: 14px;
+          font-weight: 500;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
         }
 
         .react-datepicker__day:hover {
