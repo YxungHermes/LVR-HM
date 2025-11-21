@@ -55,7 +55,7 @@ export default function PricingDetailPage({
 
     return {
       top: isCouples ? "40%" : "50%",
-      scale: isDestination ? "1.05" : isElopements ? "1.5" : isCouples ? "1.4" : "1.2"
+      scale: isDestination ? "2.0" : isElopements ? "1.5" : isCouples ? "1.4" : "1.2"
     };
   };
 
