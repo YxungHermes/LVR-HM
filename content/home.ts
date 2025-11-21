@@ -67,6 +67,17 @@ export const signatureWork = [
     collection: "wedding-day"
   },
   {
+    title: "Chrislady & Emanuel",
+    subtitle: "Majorca, Spain",
+    location: "Majorca, Spain",
+    date: "Summer 2023",
+    style: "Romantic & Cinematic",
+    tradition: "Destination",
+    vimeoId: "859109463",
+    description: "A stunning Mediterranean destination wedding on the beautiful island of Majorca.",
+    collection: "destination"
+  },
+  {
     title: "Selene & Isidro",
     subtitle: "Utah",
     location: "Utah",
