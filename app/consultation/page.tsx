@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Turnstile from "@/components/Turnstile";
 import PlacesAutocomplete from "@/components/PlacesAutocomplete";
+import DatePicker from "@/components/DatePicker";
+import Toast from "@/components/Toast";
 
 // Form data interface
 interface FormData {
@@ -53,6 +55,7 @@ export default function ConsultationWizard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
@@ -77,6 +80,29 @@ export default function ConsultationWizard() {
     howDidYouHear: "",
     bookingTimeline: ""
   });
+
+  // Auto-save form data to localStorage
+  useEffect(() => {
+    const savedData = localStorage.getItem('consultationFormDraft');
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData);
+        setFormData(parsed);
+        setToast({ message: "Your previous form progress has been restored!", type: "info" });
+      } catch (e) {
+        console.error("Failed to restore form data:", e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save to localStorage whenever formData changes
+    if (Object.values(formData).some(value =>
+      Array.isArray(value) ? value.length > 0 : Boolean(value)
+    )) {
+      localStorage.setItem('consultationFormDraft', JSON.stringify(formData));
+    }
+  }, [formData]);
 
   const updateField = (field: keyof FormData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -173,15 +199,26 @@ export default function ConsultationWizard() {
       });
 
       if (response.ok) {
-        router.push("/consultation/success");
+        // Clear saved draft on successful submission
+        localStorage.removeItem('consultationFormDraft');
+        setToast({ message: "Your consultation request has been submitted successfully!", type: "success" });
+        setTimeout(() => {
+          router.push("/consultation/success");
+        }, 1500);
       } else {
         const result = await response.json();
-        alert(result.error || "There was an issue submitting your request. Please try again.");
+        setToast({
+          message: result.error || "There was an issue submitting your request. Please try again.",
+          type: "error"
+        });
         setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Network error:", error);
-      alert("There was a network error. Please check your connection and try again.");
+      setToast({
+        message: "There was a network error. Please check your connection and try again.",
+        type: "error"
+      });
       setIsSubmitting(false);
     }
   };
@@ -200,6 +237,17 @@ export default function ConsultationWizard() {
 
   return (
     <>
+      {/* Toast Notifications */}
+      <AnimatePresence>
+        {toast && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </AnimatePresence>
+
       <Header settled hideCta logoAbove />
       <main className="bg-cream min-h-screen">
         {/* Hero Section */}
@@ -447,15 +495,26 @@ export default function ConsultationWizard() {
                         )}
 
                         <div className="space-y-3">
-                          <input
-                            type="text"
-                            value={formData.partner1Name}
-                            onChange={(e) => updateField('partner1Name', e.target.value)}
-                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                              errors.partner1Name ? 'border-red-500' : 'border-coffee/20'
-                            }`}
-                            placeholder="Your name"
-                          />
+                          <div className="relative">
+                            <input
+                              type="text"
+                              value={formData.partner1Name}
+                              onChange={(e) => updateField('partner1Name', e.target.value)}
+                              className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                                errors.partner1Name ? 'border-red-500' :
+                                formData.partner1Name && !errors.partner1Name ? 'border-green-500' :
+                                'border-coffee/20'
+                              }`}
+                              placeholder="Your name"
+                            />
+                            {formData.partner1Name && !errors.partner1Name && (
+                              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
                           {errors.partner1Name && (
                             <p className="text-sm text-red-500 mt-1">{errors.partner1Name}</p>
                           )}
@@ -504,15 +563,26 @@ export default function ConsultationWizard() {
                         )}
 
                         <div className="space-y-3">
-                          <input
-                            type="text"
-                            value={formData.partner2Name}
-                            onChange={(e) => updateField('partner2Name', e.target.value)}
-                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                              errors.partner2Name ? 'border-red-500' : 'border-coffee/20'
-                            }`}
-                            placeholder="Partner's name"
-                          />
+                          <div className="relative">
+                            <input
+                              type="text"
+                              value={formData.partner2Name}
+                              onChange={(e) => updateField('partner2Name', e.target.value)}
+                              className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                                errors.partner2Name ? 'border-red-500' :
+                                formData.partner2Name && !errors.partner2Name ? 'border-green-500' :
+                                'border-coffee/20'
+                              }`}
+                              placeholder="Partner's name"
+                            />
+                            {formData.partner2Name && !errors.partner2Name && (
+                              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
                           {errors.partner2Name && (
                             <p className="text-sm text-red-500 mt-1">{errors.partner2Name}</p>
                           )}
@@ -550,15 +620,26 @@ export default function ConsultationWizard() {
                         <label className="block text-sm font-medium text-ink mb-2">
                           Email Address *
                         </label>
-                        <input
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => updateField('email', e.target.value)}
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                            errors.email ? 'border-red-500' : 'border-coffee/20'
-                          }`}
-                          placeholder="you@email.com"
-                        />
+                        <div className="relative">
+                          <input
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => updateField('email', e.target.value)}
+                            className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                              errors.email ? 'border-red-500' :
+                              formData.email && /\S+@\S+\.\S+/.test(formData.email) && !errors.email ? 'border-green-500' :
+                              'border-coffee/20'
+                            }`}
+                            placeholder="you@email.com"
+                          />
+                          {formData.email && /\S+@\S+\.\S+/.test(formData.email) && !errors.email && (
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                          )}
+                        </div>
                         {errors.email && (
                           <p className="text-sm text-red-500 mt-1">{errors.email}</p>
                         )}
@@ -570,6 +651,7 @@ export default function ConsultationWizard() {
                         </label>
                         <input
                           type="tel"
+                          inputMode="numeric"
                           value={formData.phone}
                           onChange={(e) => handlePhoneChange(e.target.value)}
                           className="w-full px-4 py-3 border border-coffee/20 rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors"
@@ -585,13 +667,15 @@ export default function ConsultationWizard() {
                            formData.eventType === "anniversary" ? "Anniversary Date" :
                            "Wedding/Event Date"} *
                         </label>
-                        <input
-                          type="date"
+                        <DatePicker
                           value={formData.weddingDate}
-                          onChange={(e) => updateField('weddingDate', e.target.value)}
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                            errors.weddingDate ? 'border-red-500' : 'border-coffee/20'
-                          }`}
+                          onChange={(date) => updateField('weddingDate', date)}
+                          placeholder={
+                            formData.eventType === "engagement" ? "Select session date" :
+                            formData.eventType === "anniversary" ? "Select anniversary date" :
+                            "Select wedding/event date"
+                          }
+                          error={errors.weddingDate}
                         />
                         {errors.weddingDate && (
                           <p className="text-sm text-red-500 mt-1">{errors.weddingDate}</p>

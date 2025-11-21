@@ -38,6 +38,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
+  // Legal pages
+  const legalPages = [
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+  ]
+
   // Offerings pages
   const offeringsPages = [
     'elopements',
@@ -86,6 +102,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Combine all pages
   return [
     ...corePages,
+    ...legalPages,
     ...offeringsPages,
     ...processPages,
     ...culturalPages,

@@ -223,6 +223,36 @@
     line-height: 1.6;
   }
 
+  /* Consistent section spacing system */
+  .section-padding-sm {
+    @apply py-16 md:py-20;
+  }
+
+  .section-padding-md {
+    @apply py-20 md:py-28;
+  }
+
+  .section-padding-lg {
+    @apply py-24 md:py-32;
+  }
+
+  .section-padding-xl {
+    @apply py-32 md:py-40;
+  }
+
+  /* Container widths */
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-6;
+  }
+
+  .container-base {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
   /* Boost visibility when CTA is on transparent header */
   .lvr-cta-boost {
     filter: drop-shadow(0 4px 10px rgba(0,0,0,.15));

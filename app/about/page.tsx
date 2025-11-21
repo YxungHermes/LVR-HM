@@ -121,12 +121,12 @@ export default function AboutPage() {
                       Website
                     </p>
                     <a
-                      href="https://violetarose.com"
+                      href="https://michael-andrade.com"
                       className="text-sm md:text-[15px] text-ink font-medium hover:text-rose-wax-red transition-colors duration-200"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      VIOLETAROSE.COM
+                      Michael-andrade.com
                     </a>
                   </div>
 
@@ -137,7 +137,7 @@ export default function AboutPage() {
                     </p>
                     <div className="flex gap-4">
                       <a
-                        href="https://instagram.com"
+                        href="https://instagram.com/lovevioletarose"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-coffee/60 hover:text-rose-wax-red transition-colors duration-200"
@@ -146,7 +146,7 @@ export default function AboutPage() {
                         <Instagram size={22} strokeWidth={1.5} />
                       </a>
                       <a
-                        href="https://vimeo.com"
+                        href="https://vimeo.com/user30343004"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-coffee/60 hover:text-rose-wax-red transition-colors duration-200"
@@ -158,7 +158,7 @@ export default function AboutPage() {
                         </svg>
                       </a>
                       <a
-                        href="https://linkedin.com"
+                        href="https://www.linkedin.com/in/michael-andrade-439377ab/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-coffee/60 hover:text-rose-wax-red transition-colors duration-200"
@@ -180,6 +180,9 @@ export default function AboutPage() {
                     className="w-full h-full object-cover"
                   />
                 </div>
+                <p className="text-xs text-coffee/50 mt-3 italic text-center">
+                  Multi-day Destination Wedding 2025 in Italy
+                </p>
               </div>
 
               {/* RIGHT COLUMN - Bio */}
@@ -205,35 +208,14 @@ export default function AboutPage() {
         <section className="px-6 md:px-12 lg:px-24 xl:px-32 py-20 md:py-28">
           <div className="mx-auto max-w-[1400px]">
             <motion.div
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 lg:gap-20"
+              className="max-w-4xl mx-auto"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              {/* LEFT HALF - Service Image */}
-              <div className="order-2 lg:order-1">
-                <div className="relative aspect-[4/5] bg-warm-sand rounded-sm overflow-hidden shadow-sm sticky top-32">
-                  {/* Placeholder for service image - replace with actual image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center p-8">
-                      <p className="text-coffee/40 text-sm mb-2">Service Image Placeholder</p>
-                      <p className="text-coffee/30 text-xs">4:5 ratio (portrait)</p>
-                      <p className="text-coffee/30 text-xs mt-1">Behind-the-scenes or wedding detail</p>
-                    </div>
-                  </div>
-                  {/* Uncomment and replace when image is ready:
-                  <img
-                    src="/media/about-service.jpg"
-                    alt="Behind the scenes filming"
-                    className="w-full h-full object-cover"
-                  />
-                  */}
-                </div>
-              </div>
-
-              {/* RIGHT HALF - Accordion */}
-              <div className="order-1 lg:order-2">
+              {/* Services Accordion */}
+              <div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
