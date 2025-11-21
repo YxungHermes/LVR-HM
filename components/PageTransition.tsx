@@ -42,7 +42,7 @@ export default function PageTransition({
         style={{ background: tint, pointerEvents: "none" }}
       />
 
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="wait">
         <motion.div
           key={pathname}
           {...(mode === "crossfade"
