@@ -23,9 +23,9 @@ export default function Footer() {
   };
 
   const stats = [
-    { label: "Weddings Filmed", value: "150+" },
-    { label: "Countries", value: "25+" },
-    { label: "Five-Star Reviews", value: "100%" },
+    { label: "Weddings Filmed", value: "150+" }, // Update to your actual number
+    { label: "Countries", value: "25+" }, // Update to your actual number
+    { label: "Five-Star Reviews", value: "100%" }, // Update to your actual percentage
   ];
 
   return (
@@ -142,28 +142,19 @@ export default function Footer() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  Based in California, Available Worldwide
+                  Based in New York City • Traveling Worldwide
                 </p>
 
-                {/* Contact Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                {/* Contact Button */}
+                <div>
                   <a
-                    href="mailto:hello@lovevioletarose.com"
+                    href="mailto:Michael.a@lovevioletarose.com"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-coffee/20 rounded-full text-ink font-medium hover:border-rose-wax-red hover:text-rose-wax-red transition-all hover:scale-105 focus-ring"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    Email Us
-                  </a>
-                  <a
-                    href="tel:+15551234567"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-coffee/20 rounded-full text-ink font-medium hover:border-rose-wax-red hover:text-rose-wax-red transition-all hover:scale-105 focus-ring"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    (555) 123-4567
+                    Michael.a@lovevioletarose.com
                   </a>
                 </div>
               </motion.div>
@@ -224,11 +215,6 @@ export default function Footer() {
                         {link.platform === "Vimeo" && (
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/>
-                          </svg>
-                        )}
-                        {link.platform === "Pinterest" && (
-                          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/>
                           </svg>
                         )}
                       </div>
