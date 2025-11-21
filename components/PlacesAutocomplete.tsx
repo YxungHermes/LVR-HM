@@ -80,18 +80,28 @@ export default function PlacesAutocomplete({
 
   // Initialize autocomplete
   useEffect(() => {
-    if (!isLoaded || !inputRef.current || autocompleteRef.current) return;
+    if (!isLoaded || !inputRef.current || autocompleteRef.current) {
+      console.log("Skipping autocomplete init:", { isLoaded, hasInputRef: !!inputRef.current, hasAutocompleteRef: !!autocompleteRef.current });
+      return;
+    }
 
     try {
+      console.log("🎯 Initializing Google Places Autocomplete on input element:", inputRef.current);
+
       autocompleteRef.current = new google.maps.places.Autocomplete(inputRef.current, {
         types: ["establishment", "geocode"],
         fields: ["address_components", "formatted_address", "geometry", "name"],
       });
 
+      console.log("✅ Autocomplete object created:", autocompleteRef.current);
+
       autocompleteRef.current.addListener("place_changed", () => {
+        console.log("📍 Place changed event fired!");
         const place = autocompleteRef.current?.getPlace();
+        console.log("Place object:", place);
 
         if (!place || !place.geometry) {
+          console.log("⚠️ Place missing geometry");
           return;
         }
 
@@ -144,6 +154,7 @@ export default function PlacesAutocomplete({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
+          autoComplete="off"
           className={`w-full px-4 py-3 pr-10 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
             error ? "border-red-500" : "border-coffee/20"
           } ${className}`}
