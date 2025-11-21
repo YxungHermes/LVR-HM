@@ -7,6 +7,7 @@ import { whatIOffer, pricingOverview } from "@/content/pricing";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Roadmap from "@/components/Roadmap";
+import AnimatedPrice from "@/components/AnimatedPrice";
 
 
 export default function PricingPage() {
@@ -103,14 +104,15 @@ export default function PricingPage() {
                           </div>
                         </div>
 
-                        {/* Price Badge - Top Right */}
+                        {/* Price Badge - Top Right with animated range */}
                         <div className="absolute top-4 right-4 z-10">
                           <div className="px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 shadow-lg">
                             <div className="flex flex-col items-end">
                               <span className="text-[10px] uppercase tracking-wider text-espresso/70 font-medium leading-none">From</span>
-                              <span className="font-serif text-base font-bold text-rose-wax-red leading-none mt-1">
-                                {collection.startingFrom}
-                              </span>
+                              <AnimatedPrice
+                                range={collection.range}
+                                className="font-serif text-base font-bold text-rose-wax-red leading-none mt-1"
+                              />
                             </div>
                           </div>
                         </div>

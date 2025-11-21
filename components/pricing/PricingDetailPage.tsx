@@ -21,6 +21,7 @@ interface PricingDetailPageProps {
   heroImage: string;
   vimeoId?: string;
   introHeading: string;
+  cinematicIntro?: string;
   introBody: string;
   startingFrom: string;
   rangeNote: string;
@@ -37,6 +38,7 @@ export default function PricingDetailPage({
   heroImage,
   vimeoId,
   introHeading,
+  cinematicIntro,
   introBody,
   startingFrom,
   rangeNote,
@@ -116,6 +118,22 @@ export default function PricingDetailPage({
                     allow="autoplay; fullscreen; picture-in-picture"
                     title={title}
                   />
+
+                  {/* Subtle vignette overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
+
+                  {/* Category badge overlay - top left */}
+                  <div className="absolute top-6 left-6 z-10">
+                    <div className="px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-coffee/20 shadow-lg">
+                      <span className="text-xs uppercase tracking-widest text-espresso/80 font-semibold">
+                        {title.includes("Elopements") ? "Elopements" :
+                         title.includes("Wedding Day") ? "Wedding Day" :
+                         title.includes("Destination") ? "Destination" :
+                         title.includes("Couples") ? "Couples Films" :
+                         "Film Collection"}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <>
@@ -160,6 +178,14 @@ export default function PricingDetailPage({
               <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-4 italic">
                 {introHeading}
               </h2>
+
+              {/* Cinematic intro paragraph - sensory and emotive */}
+              {cinematicIntro && (
+                <p className="text-lg md:text-xl text-ink/90 leading-relaxed mb-6 font-light italic border-l-4 border-rose-wax-red/30 pl-6 py-2">
+                  {cinematicIntro}
+                </p>
+              )}
+
               <p className="text-lg text-espresso leading-relaxed">
                 {introBody}
               </p>

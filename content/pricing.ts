@@ -117,6 +117,7 @@ export const pricingPages = {
     heroImage: "/collections/elopements.jpg",
     vimeoId: "1139445343",
     introHeading: "For the couples choosing presence over spectacle.",
+    cinematicIntro: "You're exchanging vows on a rooftop at sunrise. Just the two of you, your officiant, and the city waking up below. No timeline pressure. No coordinating 150 people. Just pure, unfiltered intimacy—the kind of ceremony that fits in a single breath. This is what we capture.",
     introBody:
       "Some vows are whispered on a rooftop, in a quiet courthouse, or under a tree with only your closest people. These celebrations deserve the same cinematic respect as any ballroom. This collection is for couples who want a refined, honest film that reflects the intimacy of the day.",
     startingFrom: "$2,200",
@@ -146,6 +147,7 @@ export const pricingPages = {
     heroImage: "/collections/wedding-day.jpg",
     vimeoId: "1139429379",
     introHeading: "A complete, cinematic record of the day you built.",
+    cinematicIntro: "Your mom helps with your dress. Your partner tears up during first look. The ceremony runs long because your grandmother tells a story no one expected. The dance floor erupts. These aren't just moments—they're chapters. We film the whole book.",
     introBody:
       "From getting ready through the final song, your wedding day moves quickly. Our focus is to craft a film that feels like you: how your families hold you, the energy in the room, the way the night turns into story. This collection is for couples who want their full day told with intention.",
     startingFrom: "$3,500",
@@ -176,6 +178,7 @@ export const pricingPages = {
     heroImage: "/collections/destination.jpg",
     vimeoId: "1137400003",
     introHeading: "For celebrations that live across borders and timelines.",
+    cinematicIntro: "The ocean at sunrise. Cobblestone streets echoing with laughter. A ceremony where place becomes character. When you marry somewhere meaningful, location isn't backdrop—it's part of the promise. We weave people, place, and atmosphere into a film that feels like an heirloom from another world.",
     introBody:
       "A destination wedding is more than one day. It is airport greetings, welcome dinners, slow mornings, boat rides, late-night toasts. This collection is for couples who want that full atmosphere held on film. We travel with you, move like guests, and create a film that feels like an heirloom from another world.",
     startingFrom: "$5,500 + travel",
@@ -205,6 +208,7 @@ export const pricingPages = {
     heroImage: "/collections/adventure.jpg",
     vimeoId: "1139450155",
     introHeading: "Your relationship deserves more than iPhone footage.",
+    cinematicIntro: "Not every love story needs a ceremony. Anniversaries. Proposals. Just because. Your relationship deserves to be documented beautifully, regardless of rings or vows. This is for couples who know that love doesn't wait for a wedding day.",
     introBody:
       "Not getting married (yet)? Doesn't matter. Anniversaries, birthdays, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These films are for couples who want cinematic storytelling without the wedding day price tag—because your love story matters now, not just on a future wedding day.",
     startingFrom: "$750",
