@@ -29,7 +29,8 @@ export const chooseYourStory = [
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     teaser: "For full wedding days close to home.",
-    href: "/offerings/wedding-day-films"
+    href: "/offerings/wedding-day-films",
+    vimeoId: "1139429379"
   },
   {
     slug: "destination-weddings",
