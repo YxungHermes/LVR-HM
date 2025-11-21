@@ -41,8 +41,15 @@ export const pricingOverview = [
     name: "Elopements & Intimate Gatherings",
     startingFrom: "$2,200",
     range: "$2,200 — $4,800",
+    forWho: "For couples who value presence over performance",
+    tagline: "Small celebrations, infinite intimacy",
     description:
       "For intentional ceremonies, city hall 'I do's, rooftops, and small gatherings where every face matters.",
+    highlights: [
+      "2–6 hours of coverage",
+      "Ceremony + intimate portraits",
+      "2–4 minute cinematic film"
+    ],
     href: "/offerings/elopements",
     image: "/collections/elopements.jpg",
     vimeoId: "1139445343",
@@ -52,8 +59,15 @@ export const pricingOverview = [
     name: "Wedding Day Films",
     startingFrom: "$3,500",
     range: "$3,500 — $7,500",
+    forWho: "For couples who want the whole story preserved",
+    tagline: "Every moment from getting ready to last dance",
     description:
       "For full wedding days at home, crafted as emotive, cinematic films you'll want to revisit often.",
+    highlights: [
+      "6–10 hours of coverage",
+      "Full ceremony + reception film",
+      "Highlight reel for sharing"
+    ],
     href: "/offerings/wedding-day-films",
     image: "/collections/wedding-day.jpg",
     vimeoId: "1139429379",
@@ -63,8 +77,15 @@ export const pricingOverview = [
     name: "Destination Wedding Films",
     startingFrom: "$5,500",
     range: "$5,500 — $12,000+",
+    forWho: "For celebrations where location becomes part of your story",
+    tagline: "Travel, tradition, and timeless film",
     description:
       "For celebrations in meaningful places around the world, with films that weave in people, place, and atmosphere.",
+    highlights: [
+      "Multi-day coverage available",
+      "Travel expenses included",
+      "Location scout + planning"
+    ],
     href: "/offerings/destination-weddings",
     image: "/collections/destination.jpg",
     vimeoId: "1137400003",
@@ -74,8 +95,15 @@ export const pricingOverview = [
     name: "Couples Films",
     startingFrom: "$750",
     range: "$750 — $2,000",
+    forWho: "For relationships worth documenting at any milestone",
+    tagline: "Love documented, ceremony optional",
     description:
       "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
+    highlights: [
+      "1–3 hours of coverage",
+      "Any milestone or occasion",
+      "Cinematic 1–2 minute film"
+    ],
     href: "/offerings/couples-films",
     image: "/collections/adventure.jpg",
     vimeoId: "1139450155",

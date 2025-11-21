@@ -135,34 +135,46 @@ export default function PricingPage() {
                     )}
                   </div>
 
-                  <div className="p-8">
-                    <h3 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
+                  <div className="p-8 md:p-10">
+                    {/* "For Who" Label */}
+                    <p className="font-serif text-sm md:text-base italic text-espresso/80 mb-3">
+                      {collection.forWho}
+                    </p>
+
+                    {/* Title */}
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-3">
                       {collection.name}
                     </h3>
 
-                  <div className="mb-4 pb-4 border-b border-coffee/10">
-                    <p className="text-xs font-medium text-coffee uppercase tracking-wider mb-2">
-                      Starting from
+                    {/* Tagline */}
+                    <p className="font-serif text-base md:text-lg italic text-rose-wax-red/90 mb-6 leading-relaxed">
+                      {collection.tagline}
                     </p>
-                    <p className="font-serif text-3xl font-bold text-rose-wax-red">
-                      {collection.startingFrom}
-                    </p>
-                    <p className="text-sm text-espresso/60 mt-1">
-                      {collection.range}
-                    </p>
-                  </div>
 
-                  <p className="text-sm text-espresso leading-relaxed mb-6">
-                    {collection.description}
-                  </p>
+                    {/* Highlights */}
+                    <div className="mb-6 pb-6 border-b border-coffee/10">
+                      <ul className="space-y-2.5">
+                        {collection.highlights.map((highlight: string, idx: number) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <svg className="w-5 h-5 text-rose-wax-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span className="text-sm text-espresso leading-relaxed">
+                              {highlight}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
+                    {/* CTA */}
                     <Link
                       href={collection.href}
-                      className="inline-flex items-center text-sm font-medium text-rose-wax-red hover:text-rose-wax-red/80 transition-colors focus-ring"
+                      className="group inline-flex items-center gap-2 px-6 py-3 bg-stone-800 text-white rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-300 hover:bg-rose-wax-red hover:shadow-lg hover:scale-105"
                     >
-                      <span>View details</span>
+                      <span>Learn More</span>
                       <svg
-                        className="ml-2 h-4 w-4"
+                        className="w-4 h-4 transition-transform group-hover:translate-x-1"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
