@@ -24,28 +24,33 @@ export const chooseYourStory = [
     name: "Elopements & Intimate Gatherings",
     teaser: "For small, intentional 'just us' celebrations.",
     href: "/offerings/elopements",
-    vimeoId: "1139445343"
+    vimeoId: "1139445343",
+    startingFrom: "$2,200"
   },
   {
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     teaser: "For full wedding days close to home.",
     href: "/offerings/wedding-day-films",
-    vimeoId: "1139429379"
+    vimeoId: "1139429379",
+    startingFrom: "$3,500",
+    popular: true
   },
   {
     slug: "destination-weddings",
     name: "Destination Wedding Films",
     teaser: "For weekends and celebrations around the world.",
     href: "/offerings/destination-weddings",
-    vimeoId: "1137400003"
+    vimeoId: "1137400003",
+    startingFrom: "$5,500"
   },
   {
     slug: "couples-films",
     name: "Couples Films",
     teaser: "For couples celebrating love. Anniversaries, birthdays, or just because—not wedding required.",
     href: "/offerings/couples-films",
-    vimeoId: "1139450155"
+    vimeoId: "1139450155",
+    startingFrom: "$750"
   }
 ];
 
