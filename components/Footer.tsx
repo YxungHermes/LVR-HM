@@ -270,10 +270,10 @@ export default function Footer() {
       {/* Back to Top Button */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-rose-wax-red text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all focus-ring z-50 flex items-center justify-center group"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-rose-wax-red text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-[transform,shadow] duration-200 ease-out focus-ring z-50 flex items-center justify-center group"
         aria-label="Back to top"
       >
-        <svg className="w-6 h-6 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
         </svg>
       </button>
