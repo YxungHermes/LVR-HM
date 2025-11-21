@@ -115,14 +115,6 @@ export default function PricingPage() {
                           </div>
                         </div>
 
-                        {/* Popular Badge - Center Top */}
-                        {collection.slug === "wedding-day-films" && (
-                          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
-                            <div className="px-4 py-1.5 rounded-full bg-rose-wax-red text-white shadow-lg">
-                              <span className="text-[10px] uppercase tracking-widest font-bold">Most Popular</span>
-                            </div>
-                          </div>
-                        )}
                       </div>
                     ) : (
                       <Image
