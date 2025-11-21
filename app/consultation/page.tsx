@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Turnstile from "@/components/Turnstile";
 import PlacesAutocomplete from "@/components/PlacesAutocomplete";
+import DatePicker from "@/components/DatePicker";
 
 // Form data interface
 interface FormData {
@@ -585,13 +586,15 @@ export default function ConsultationWizard() {
                            formData.eventType === "anniversary" ? "Anniversary Date" :
                            "Wedding/Event Date"} *
                         </label>
-                        <input
-                          type="date"
+                        <DatePicker
                           value={formData.weddingDate}
-                          onChange={(e) => updateField('weddingDate', e.target.value)}
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                            errors.weddingDate ? 'border-red-500' : 'border-coffee/20'
-                          }`}
+                          onChange={(date) => updateField('weddingDate', date)}
+                          placeholder={
+                            formData.eventType === "engagement" ? "Select session date" :
+                            formData.eventType === "anniversary" ? "Select anniversary date" :
+                            "Select wedding/event date"
+                          }
+                          error={errors.weddingDate}
                         />
                         {errors.weddingDate && (
                           <p className="text-sm text-red-500 mt-1">{errors.weddingDate}</p>
