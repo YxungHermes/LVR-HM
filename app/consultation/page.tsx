@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import Turnstile from "@/components/Turnstile";
 import PlacesAutocomplete from "@/components/PlacesAutocomplete";
 import DatePicker from "@/components/DatePicker";
+import Toast from "@/components/Toast";
 
 // Form data interface
 interface FormData {
@@ -54,6 +55,7 @@ export default function ConsultationWizard() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" } | null>(null);
 
   const [formData, setFormData] = useState<FormData>({
     partner1Name: "",
@@ -78,6 +80,29 @@ export default function ConsultationWizard() {
     howDidYouHear: "",
     bookingTimeline: ""
   });
+
+  // Auto-save form data to localStorage
+  useEffect(() => {
+    const savedData = localStorage.getItem('consultationFormDraft');
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData);
+        setFormData(parsed);
+        setToast({ message: "Your previous form progress has been restored!", type: "info" });
+      } catch (e) {
+        console.error("Failed to restore form data:", e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save to localStorage whenever formData changes
+    if (Object.values(formData).some(value =>
+      Array.isArray(value) ? value.length > 0 : Boolean(value)
+    )) {
+      localStorage.setItem('consultationFormDraft', JSON.stringify(formData));
+    }
+  }, [formData]);
 
   const updateField = (field: keyof FormData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -174,15 +199,26 @@ export default function ConsultationWizard() {
       });
 
       if (response.ok) {
-        router.push("/consultation/success");
+        // Clear saved draft on successful submission
+        localStorage.removeItem('consultationFormDraft');
+        setToast({ message: "Your consultation request has been submitted successfully!", type: "success" });
+        setTimeout(() => {
+          router.push("/consultation/success");
+        }, 1500);
       } else {
         const result = await response.json();
-        alert(result.error || "There was an issue submitting your request. Please try again.");
+        setToast({
+          message: result.error || "There was an issue submitting your request. Please try again.",
+          type: "error"
+        });
         setIsSubmitting(false);
       }
     } catch (error) {
       console.error("Network error:", error);
-      alert("There was a network error. Please check your connection and try again.");
+      setToast({
+        message: "There was a network error. Please check your connection and try again.",
+        type: "error"
+      });
       setIsSubmitting(false);
     }
   };
@@ -201,6 +237,17 @@ export default function ConsultationWizard() {
 
   return (
     <>
+      {/* Toast Notifications */}
+      <AnimatePresence>
+        {toast && (
+          <Toast
+            message={toast.message}
+            type={toast.type}
+            onClose={() => setToast(null)}
+          />
+        )}
+      </AnimatePresence>
+
       <Header settled hideCta logoAbove />
       <main className="bg-cream min-h-screen">
         {/* Hero Section */}
@@ -571,6 +618,7 @@ export default function ConsultationWizard() {
                         </label>
                         <input
                           type="tel"
+                          inputMode="numeric"
                           value={formData.phone}
                           onChange={(e) => handlePhoneChange(e.target.value)}
                           className="w-full px-4 py-3 border border-coffee/20 rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors"
