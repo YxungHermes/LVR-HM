@@ -243,13 +243,13 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <a
                 href="/consultation"
                 className={`
-                  px-6 py-2 rounded-full bg-stone-800 text-white
+                  rounded-full bg-stone-800 text-white
                   text-[9px] font-bold tracking-[0.25em] uppercase
                   transition-all duration-500 hover:bg-rose-wax-red hover:shadow-lg hover:-translate-y-0.5
-                  ${isScrolled ? 'scale-95' : 'scale-100'}
+                  ${isScrolled ? 'px-6 py-2' : 'px-8 py-3'}
                 `}
               >
-                Book
+                {isScrolled ? 'Book' : 'Book Consultation'}
               </a>
             )}
           </div>
