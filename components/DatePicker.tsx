@@ -70,7 +70,11 @@ const DatePicker = ({ value, onChange, placeholder = "Select a date", error, min
         customInput={<CustomInput placeholder={placeholder} />}
         dateFormat="MMMM d, yyyy"
         minDate={minDate || new Date()}
+        maxDate={new Date(new Date().getFullYear() + 3, 11, 31)}
         showPopperArrow={false}
+        showMonthDropdown
+        showYearDropdown
+        dropdownMode="select"
         calendarClassName="custom-calendar"
         popperClassName="custom-popper"
         portalId="root-portal"
@@ -102,6 +106,42 @@ const DatePicker = ({ value, onChange, placeholder = "Select a date", error, min
           font-weight: 600;
           color: #2E2726;
           margin-bottom: 12px;
+          display: none; /* Hide default month display since we have dropdowns */
+        }
+
+        .react-datepicker__month-dropdown-container,
+        .react-datepicker__year-dropdown-container {
+          margin: 0 4px;
+        }
+
+        .react-datepicker__month-select,
+        .react-datepicker__year-select {
+          padding: 8px 12px;
+          border: 1px solid rgba(160, 113, 95, 0.2);
+          border-radius: 8px;
+          background-color: white;
+          color: #2E2726;
+          font-size: 14px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .react-datepicker__month-select:hover,
+        .react-datepicker__year-select:hover {
+          border-color: #F4697E;
+          background-color: rgba(244, 105, 126, 0.05);
+        }
+
+        .react-datepicker__month-select:focus,
+        .react-datepicker__year-select:focus {
+          outline: none;
+          border-color: #F4697E;
+          box-shadow: 0 0 0 3px rgba(244, 105, 126, 0.1);
+        }
+
+        .react-datepicker__header__dropdown {
+          padding-bottom: 12px;
         }
 
         .react-datepicker__day-names {
