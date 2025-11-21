@@ -169,7 +169,47 @@ export default function TermsOfService() {
                 <li>Ensure adequate lighting and access to key moments and locations</li>
                 <li>Provide a designated point of contact on the event day</li>
                 <li>Respect our equipment and working space during the event</li>
+                <li>Disclose any additional videographers or video services contracted for the event</li>
               </ul>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="font-serif text-2xl font-bold text-ink mb-4">Exclusive Videography Services</h2>
+
+              <h3 className="font-serif text-xl font-semibold text-ink mb-3 mt-6">Single Videography Team Policy</h3>
+              <p className="text-espresso leading-relaxed mb-4">
+                Love, Violeta Rose operates under an exclusive videography policy. This means we require that we are the sole professional videography team contracted for your event. Our creative process, storytelling approach, and filming methodology are carefully designed to capture your celebration authentically and artistically—a process that cannot be compromised by the presence of competing film crews.
+              </p>
+
+              <h3 className="font-serif text-xl font-semibold text-ink mb-3 mt-6">Why This Matters</h3>
+              <p className="text-espresso leading-relaxed mb-4">
+                Multiple videography teams at a single event create several challenges:
+              </p>
+              <ul className="list-disc pl-6 text-espresso space-y-2 mb-4">
+                <li>Conflicting filming styles and crew coordination issues that disrupt the natural flow of your day</li>
+                <li>Teams blocking each other's shots, resulting in compromised footage quality for all parties</li>
+                <li>Confusion among guests and wedding party about which crew to follow for specific moments</li>
+                <li>Divided attention during key moments, preventing us from delivering the cinematic experience you've hired us for</li>
+                <li>Potential creative conflicts over directing the couple, family, and wedding party</li>
+              </ul>
+
+              <h3 className="font-serif text-xl font-semibold text-ink mb-3 mt-6">Required Disclosure</h3>
+              <p className="text-espresso leading-relaxed mb-4">
+                Clients must disclose, in writing, prior to signing the service agreement if they have contracted or intend to contract any additional professional videographers, film students, or video production services for any portion of the event day (ceremony, reception, getting ready, etc.). This does not include personal guest recordings on phones or cameras.
+              </p>
+
+              <h3 className="font-serif text-xl font-semibold text-ink mb-3 mt-6">Day-of-Event Policy</h3>
+              <p className="text-espresso leading-relaxed mb-4">
+                If another professional videography crew or contracted video service appears at the event without prior written disclosure and mutual agreement, Love, Violeta Rose reserves the right to:
+              </p>
+              <ul className="list-disc pl-6 text-espresso space-y-2 mb-4">
+                <li>Pause services immediately and attempt to resolve the situation with the client</li>
+                <li>If the situation cannot be resolved to mutual satisfaction, discontinue services and depart from the event</li>
+                <li>In the event of early departure due to undisclosed additional videography services, the retainer remains non-refundable and all payments made are retained, as we have reserved the date exclusively and declined other work</li>
+              </ul>
+              <p className="text-espresso leading-relaxed mb-4">
+                We understand that special circumstances may arise (such as a family member studying film or a friend offering to help). If you have questions about whether another person's video activities would conflict with our services, please reach out before your event date so we can discuss and potentially make arrangements that work for everyone.
+              </p>
             </section>
 
             <section className="mb-12">
