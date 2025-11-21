@@ -22,11 +22,11 @@ export default function Footer() {
     }, 1000);
   };
 
-  const stats = [
-    { label: "Weddings Filmed", value: "150+" }, // Update to your actual number
-    { label: "Countries", value: "25+" }, // Update to your actual number
-    { label: "Five-Star Reviews", value: "100%" }, // Update to your actual percentage
-  ];
+  // const stats = [
+  //   { label: "Weddings Filmed", value: "150+" }, // Update to your actual number
+  //   { label: "Countries", value: "25+" }, // Update to your actual number
+  //   { label: "Five-Star Reviews", value: "100%" }, // Update to your actual percentage
+  // ];
 
   return (
     <footer className="relative bg-gradient-to-b from-cream via-warm-sand/20 to-warm-sand/40 overflow-hidden">
@@ -36,8 +36,8 @@ export default function Footer() {
       />
 
       <div className="relative">
-        {/* Stats Bar */}
-        <motion.div
+        {/* Stats Bar - Temporarily disabled */}
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -65,7 +65,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Newsletter Section */}
         <motion.div
