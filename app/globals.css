@@ -380,7 +380,9 @@
 
   /* Radial mask container for click-origin transitions */
   .lvr-radial-mask {
-    will-change: clip-path, opacity;
+    will-change: clip-path, opacity, filter;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 
   /* Accessibility: reduce motion for page transitions */

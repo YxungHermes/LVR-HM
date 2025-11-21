@@ -48,11 +48,11 @@ export default function PageTransition({
           {...(mode === "crossfade"
             ? base
             : {
-                initial: { opacity: 1, clipPath: "circle(0% at var(--lvr-x, 50%) var(--lvr-y, 50%))" },
-                animate: { opacity: 1, clipPath: "circle(140% at var(--lvr-x, 50%) var(--lvr-y, 50%))",
-                  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-                exit:    { opacity: 1, clipPath: "circle(0% at var(--lvr-x, 50%) var(--lvr-y, 50%))",
-                  transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
+                initial: { opacity: 0, clipPath: "circle(0% at var(--lvr-x, 50%) var(--lvr-y, 50%))", filter: "blur(20px)" },
+                animate: { opacity: 1, clipPath: "circle(150% at var(--lvr-x, 50%) var(--lvr-y, 50%))", filter: "blur(0px)",
+                  transition: { duration: 1.0, ease: [0.22, 1, 0.36, 1] } },
+                exit:    { opacity: 0, clipPath: "circle(0% at var(--lvr-x, 50%) var(--lvr-y, 50%))", filter: "blur(20px)",
+                  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
               })}
           className={mode === "radial" ? "lvr-radial-mask" : ""}
         >
