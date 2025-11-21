@@ -300,15 +300,15 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           {activeMegaMenu && (
             <motion.div
               className={`fixed left-0 right-0 z-40 flex justify-center px-4 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[132px]') : 'top-[88px]'}`}
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={handleMegaMenuEnter}
               onMouseLeave={handleNavItemLeave}
             >
               {/* Fluid Rounded Card Container */}
-              <motion.div
+              <div
                 className={`
                   relative w-[95%] max-w-7xl
                   bg-white/65 backdrop-blur-2xl
@@ -321,9 +321,6 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                   backdropFilter: "blur(56px) saturate(180%)",
                   WebkitBackdropFilter: "blur(56px) saturate(180%)",
                 }}
-                initial={{ scale: 0.98 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.2 }}
               >
                 {/* Subtle Top Gradient Bar for Connection */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rose-wax-red/20 to-transparent" />
@@ -380,7 +377,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                       ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
