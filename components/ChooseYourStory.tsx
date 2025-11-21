@@ -74,7 +74,7 @@ export default function ChooseYourStory() {
               {collection.vimeoId && (
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <iframe
-                    src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&loop=0&byline=0&title=0&muted=1#t=10s`}
+                    src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
                     className="absolute pointer-events-none"
                     style={{
                       position: "absolute",
@@ -86,6 +86,7 @@ export default function ChooseYourStory() {
                         collection.slug === "destination-weddings" ? "2.2" :
                         collection.slug === "elopements" ? "1.65" :
                         collection.slug === "couples-films" ? "1.4" :
+                        collection.slug === "wedding-day-films" ? "1.32" :
                         "1.2"
                       })`,
                     }}

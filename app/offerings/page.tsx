@@ -82,6 +82,7 @@ export default function PricingPage() {
                               collection.slug === "destination-weddings" ? "2.2" :
                               collection.slug === "elopements" ? "1.65" :
                               collection.slug === "couples-films" ? "1.4" :
+                              collection.slug === "wedding-day-films" ? "1.32" :
                               "1.2"
                             })`,
                           }}

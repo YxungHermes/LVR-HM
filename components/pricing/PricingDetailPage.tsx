@@ -55,7 +55,7 @@ export default function PricingDetailPage({
 
     return {
       top: isCouples ? "40%" : "50%",
-      scale: isDestination ? "2.2" : isElopements ? "1.65" : isCouples ? "1.4" : "1.2"
+      scale: isDestination ? "2.2" : isElopements ? "1.65" : isCouples ? "1.4" : title.includes("Wedding Day") ? "1.32" : "1.2"
     };
   };
 
