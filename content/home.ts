@@ -56,6 +56,17 @@ export const chooseYourStory = [
 
 export const signatureWork = [
   {
+    title: "Robert & Tishula",
+    subtitle: "New York",
+    location: "New York",
+    date: "Winter 2024",
+    style: "Cinematic & Intimate",
+    tradition: "Modern",
+    vimeoId: "1139491105",
+    description: "An intimate celebration captured with heart and artistry.",
+    collection: "wedding-day"
+  },
+  {
     title: "Selene & Isidro",
     subtitle: "Utah",
     location: "Utah",
@@ -63,7 +74,8 @@ export const signatureWork = [
     style: "Cinematic & Artistic",
     tradition: "Catholic",
     vimeoId: "1057949189",
-    description: "A breathtaking mountain celebration filled with genuine emotion and timeless moments."
+    description: "A breathtaking mountain celebration filled with genuine emotion and timeless moments.",
+    collection: "destination"
   },
   {
     title: "Courtney & Sterling",
@@ -73,7 +85,8 @@ export const signatureWork = [
     style: "Romantic & Timeless",
     tradition: "Western",
     vimeoId: "1137483566",
-    description: "An elegant New England wedding capturing autumn beauty and heartfelt vows."
+    description: "An elegant New England wedding capturing autumn beauty and heartfelt vows.",
+    collection: "wedding-day"
   },
   {
     title: "Brianna & Steven",
@@ -83,7 +96,8 @@ export const signatureWork = [
     style: "Documentary Style",
     tradition: "Jewish",
     vimeoId: "1137492115",
-    description: "A joyful Jewish celebration with the hora, emotional ketubah signing, and pure celebration."
+    description: "A joyful Jewish celebration with the hora, emotional ketubah signing, and pure celebration.",
+    collection: "wedding-day"
   }
 ];
 
