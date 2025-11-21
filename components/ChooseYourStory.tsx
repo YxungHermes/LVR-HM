@@ -82,7 +82,7 @@ export default function ChooseYourStory() {
                       left: "50%",
                       width: "100%",
                       height: "100%",
-                      transform: "translate(-50%, -50%) scale(1.05)",
+                      transform: "translate(-50%, -50%) scale(1.2)",
                     }}
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"

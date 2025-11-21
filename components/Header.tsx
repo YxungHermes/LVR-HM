@@ -89,7 +89,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       }
     };
 
+    // Initial scroll check
     handleScroll();
+
+    // Re-check after brief delay to account for content loading (videos, images, etc.)
+    const recheckTimeout = setTimeout(() => {
+      handleScroll();
+    }, 100);
+
     const mainContainer = document.querySelector('.overflow-y-auto');
     if (mainContainer) {
       mainContainer.addEventListener("scroll", handleScroll, { passive: true });
@@ -97,6 +104,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      clearTimeout(recheckTimeout);
       if (mainContainer) {
         mainContainer.removeEventListener("scroll", handleScroll);
       }
