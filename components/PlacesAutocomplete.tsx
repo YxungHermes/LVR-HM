@@ -44,16 +44,30 @@ export default function PlacesAutocomplete({
 
     setIsLoadingScript(true);
 
+    const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+
+    // Debug logging
+    console.log("🗺️ Loading Google Maps API...");
+    console.log("API Key present:", apiKey ? "Yes" : "No");
+    console.log("API Key value:", apiKey || "MISSING");
+
+    if (!apiKey) {
+      console.error("❌ NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is not defined!");
+      setIsLoadingScript(false);
+      return;
+    }
+
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
     script.async = true;
     script.defer = true;
     script.onload = () => {
+      console.log("✅ Google Maps API loaded successfully");
       setIsLoaded(true);
       setIsLoadingScript(false);
     };
-    script.onerror = () => {
-      console.error("Failed to load Google Maps script");
+    script.onerror = (error) => {
+      console.error("❌ Failed to load Google Maps script:", error);
       setIsLoadingScript(false);
     };
 
