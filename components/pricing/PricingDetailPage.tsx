@@ -61,7 +61,17 @@ export default function PricingDetailPage({
     };
   };
 
+  // Determine offering number for badge
+  const getOfferingNumber = () => {
+    if (title.includes("Elopements")) return "01";
+    if (title.includes("Wedding Day")) return "02";
+    if (title.includes("Destination")) return "03";
+    if (title.includes("Couples")) return "04";
+    return "01";
+  };
+
   const videoStyle = getVideoStyle();
+  const offeringNumber = getOfferingNumber();
 
   return (
     <>
@@ -122,16 +132,24 @@ export default function PricingDetailPage({
                   {/* Subtle vignette overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
 
-                  {/* Category badge overlay - top left */}
+                  {/* Elegant Number Badge - Top Left */}
                   <div className="absolute top-6 left-6 z-10">
-                    <div className="px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-coffee/20 shadow-lg">
-                      <span className="text-xs uppercase tracking-widest text-espresso/80 font-semibold">
-                        {title.includes("Elopements") ? "Elopements" :
-                         title.includes("Wedding Day") ? "Wedding Day" :
-                         title.includes("Destination") ? "Destination" :
-                         title.includes("Couples") ? "Couples Films" :
-                         "Film Collection"}
+                    <div className="w-12 h-12 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 flex items-center justify-center shadow-lg">
+                      <span className="font-serif text-lg font-bold text-rose-wax-red">
+                        {offeringNumber}
                       </span>
+                    </div>
+                  </div>
+
+                  {/* Price Badge - Top Right */}
+                  <div className="absolute top-6 right-6 z-10">
+                    <div className="px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 shadow-lg">
+                      <div className="flex flex-col items-end">
+                        <span className="text-[10px] uppercase tracking-wider text-espresso/70 font-medium leading-none">Starting from</span>
+                        <span className="font-serif text-base font-bold text-rose-wax-red leading-none mt-1">
+                          {startingFrom}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
