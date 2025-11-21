@@ -51,7 +51,7 @@ export default function TermsOfService() {
               </p>
               <ul className="list-disc pl-6 text-espresso space-y-2 mb-4">
                 <li>Receipt of a signed service agreement or contract</li>
-                <li>Payment of the required deposit or retainer fee</li>
+                <li>Payment of the required retainer fee</li>
                 <li>Written confirmation from Love, Violeta Rose</li>
               </ul>
             </section>
@@ -59,9 +59,12 @@ export default function TermsOfService() {
             <section className="mb-12">
               <h2 className="font-serif text-2xl font-bold text-ink mb-4">Payment Terms</h2>
 
-              <h3 className="font-serif text-xl font-semibold text-ink mb-3 mt-6">Deposits and Retainers</h3>
+              <h3 className="font-serif text-xl font-semibold text-ink mb-3 mt-6">Non-Refundable Retainer</h3>
               <p className="text-espresso leading-relaxed mb-4">
-                A non-refundable deposit is required to secure your booking date. The deposit amount will be specified in your service agreement and is typically 30-50% of the total service fee.
+                Client understands and agrees that the retainer paid to Contractor is a non-refundable retainer fee that is not a deposit. This fee is paid solely to reserve Contractor's services and secure the event date. Upon payment, Contractor declines all other work for that date and begins pre-production planning. Because Contractor's availability is limited and time is reserved exclusively for Client, the retainer is earned immediately and is not refundable for any reason, including but not limited to cancellation, postponement, change of event plans, or Client's decision to no longer move forward.
+              </p>
+              <p className="text-espresso leading-relaxed mb-4">
+                The retainer amount will be specified in your service agreement and is typically 30-50% of the total service fee.
               </p>
 
               <h3 className="font-serif text-xl font-semibold text-ink mb-3 mt-6">Final Payment</h3>
@@ -90,8 +93,8 @@ export default function TermsOfService() {
                 If you cancel your booking:
               </p>
               <ul className="list-disc pl-6 text-espresso space-y-2 mb-4">
-                <li>The deposit/retainer fee is non-refundable under all circumstances</li>
-                <li>Cancellations made more than 90 days before the event date may receive a partial refund of additional payments made, minus the deposit</li>
+                <li>The retainer fee is non-refundable under all circumstances</li>
+                <li>Cancellations made more than 90 days before the event date may receive a partial refund of additional payments made, minus the retainer</li>
                 <li>Cancellations made within 90 days of the event date forfeit all payments made</li>
               </ul>
 
