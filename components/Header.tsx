@@ -71,22 +71,30 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
     document.body.style.overflow = mobileOpen ? 'hidden' : 'unset';
   }, [mobileOpen]);
 
-  // Scroll detection
+  // Scroll detection with throttling to prevent blinking
   useEffect(() => {
-    const handleScroll = () => {
-      const mainContainer = document.querySelector('.overflow-y-auto');
-      const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
+    let ticking = false;
 
-      setIsScrolled(scrollY > 50 || settled);
-      setShowScrollTop(scrollY > 400);
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const mainContainer = document.querySelector('.overflow-y-auto');
+          const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
+
+          setIsScrolled(scrollY > 50 || settled);
+          setShowScrollTop(scrollY > 400);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();
     const mainContainer = document.querySelector('.overflow-y-auto');
     if (mainContainer) {
-      mainContainer.addEventListener("scroll", handleScroll);
+      mainContainer.addEventListener("scroll", handleScroll, { passive: true });
     }
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       if (mainContainer) {

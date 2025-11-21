@@ -214,7 +214,7 @@ export default function ConsultationWizard() {
         </section>
 
         {/* Progress Bar - Glassmorphic Design */}
-        <div className="sticky top-24 z-40 px-4 flex justify-center">
+        <div className="sticky top-24 z-30 px-4 flex justify-center">
           <div
             className="w-full max-w-3xl px-6 py-4 bg-white/85 backdrop-blur-xl border border-white/60 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)] transition-all duration-700"
             style={{
