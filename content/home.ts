@@ -23,7 +23,8 @@ export const chooseYourStory = [
     slug: "elopements",
     name: "Elopements & Intimate Gatherings",
     teaser: "For small, intentional 'just us' celebrations.",
-    href: "/offerings/elopements"
+    href: "/offerings/elopements",
+    vimeoId: "1139445343"
   },
   {
     slug: "wedding-day-films",

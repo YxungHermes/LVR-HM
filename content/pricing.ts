@@ -45,6 +45,7 @@ export const pricingOverview = [
       "For intentional ceremonies, city hall 'I do's, rooftops, and small gatherings where every face matters.",
     href: "/offerings/elopements",
     image: "/collections/elopements.jpg",
+    vimeoId: "1139445343",
   },
   {
     slug: "wedding-day-films",
@@ -84,6 +85,7 @@ export const pricingPages = {
     title: "Elopements & Intimate Gatherings",
     seoTitle: "Elopement Wedding Films | Weddings by Michael Andrade",
     heroImage: "/collections/elopements.jpg",
+    vimeoId: "1139445343",
     introHeading: "For the couples choosing presence over spectacle.",
     introBody:
       "Some vows are whispered on a rooftop, in a quiet courthouse, or under a tree with only your closest people. These celebrations deserve the same cinematic respect as any ballroom. This collection is for couples who want a refined, honest film that reflects the intimacy of the day.",
