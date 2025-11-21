@@ -288,14 +288,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
 
       {/* Mega Menu - Desktop Only - Premium Fluid Design */}
       <div className="hidden xl:block">
-        <AnimatePresence>
+        <AnimatePresence initial={false}>
           {activeMegaMenu && (
             <motion.div
-              className={`fixed left-0 right-0 z-40 flex justify-center px-4 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[132px]') : 'top-[88px]'}`}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className={`fixed left-0 right-0 z-40 flex justify-center px-4 ${logoAbove ? (isScrolled ? 'top-[84px]' : 'top-[128px]') : 'top-[84px]'}`}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={handleMegaMenuEnter}
               onMouseLeave={handleNavItemLeave}
             >
@@ -304,8 +304,8 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                 className={`
                   relative w-[95%] max-w-7xl
                   bg-white/65 backdrop-blur-2xl
-                  border border-white/35
-                  rounded-2xl
+                  border border-white/35 border-t-0
+                  rounded-b-2xl
                   shadow-[0_12px_48px_rgba(0,0,0,0.15),0_0_40px_rgba(244,105,126,0.08)]
                   overflow-hidden
                 `}
@@ -313,13 +313,11 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                   backdropFilter: "blur(56px) saturate(180%)",
                   WebkitBackdropFilter: "blur(56px) saturate(180%)",
                 }}
-                initial={{ scale: 0.98 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               >
-                {/* Subtle Top Gradient Bar for Connection */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rose-wax-red/20 to-transparent" />
-
                 {/* Radial gradient overlay for text readability */}
                 <div
                   className="absolute inset-0 pointer-events-none"
