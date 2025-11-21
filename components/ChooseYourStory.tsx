@@ -83,8 +83,8 @@ export default function ChooseYourStory() {
                       width: "100%",
                       height: "100%",
                       transform: `translate(-50%, -50%) scale(${
-                        collection.slug === "destination-weddings" ? "1.05" :
-                        collection.slug === "elopements" ? "1.4" :
+                        collection.slug === "destination-weddings" ? "1.35" :
+                        collection.slug === "elopements" ? "1.5" :
                         collection.slug === "couples-films" ? "1.4" :
                         "1.2"
                       })`,
