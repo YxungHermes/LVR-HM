@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Turnstile from "@/components/Turnstile";
+import PlacesAutocomplete from "@/components/PlacesAutocomplete";
 
 // Form data interface
 interface FormData {
@@ -214,7 +215,7 @@ export default function ConsultationWizard() {
         </section>
 
         {/* Progress Bar - Glassmorphic Design */}
-        <div className="sticky top-24 z-40 px-4 flex justify-center">
+        <div className="sticky top-24 z-30 px-4 flex justify-center">
           <div
             className="w-full max-w-3xl px-6 py-4 bg-white/85 backdrop-blur-xl border border-white/60 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)] transition-all duration-700"
             style={{
@@ -621,18 +622,18 @@ export default function ConsultationWizard() {
                       <label className="block text-sm font-medium text-ink mb-2">
                         Location/Venue *
                       </label>
-                      <input
-                        type="text"
+                      <PlacesAutocomplete
                         value={formData.location}
-                        onChange={(e) => updateField('location', e.target.value)}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                          errors.location ? 'border-red-500' : 'border-coffee/20'
-                        }`}
-                        placeholder="e.g., Napa Valley, CA or The Grand Hotel"
+                        onChange={(value, placeDetails) => {
+                          updateField('location', value);
+                          // You can store placeDetails in state if you need the full address data
+                          if (placeDetails) {
+                            console.log('Place details:', placeDetails);
+                          }
+                        }}
+                        placeholder="Search for a venue or location (e.g., Napa Valley, CA)"
+                        error={errors.location}
                       />
-                      {errors.location && (
-                        <p className="text-sm text-red-500 mt-1">{errors.location}</p>
-                      )}
                     </div>
                   </div>
                 )}
