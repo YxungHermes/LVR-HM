@@ -74,7 +74,7 @@ export default function ChooseYourStory() {
               {collection.vimeoId && (
                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                   <iframe
-                    src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1`}
+                    src={`https://player.vimeo.com/video/${collection.vimeoId}?background=1&loop=0&byline=0&title=0&muted=1#t=10s`}
                     className="absolute pointer-events-none"
                     style={{
                       position: "absolute",
