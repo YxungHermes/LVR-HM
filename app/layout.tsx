@@ -119,7 +119,7 @@ export default function RootLayout({
         </svg>
 
         {/* Page transitions - switch between "crossfade" or "radial" */}
-        <PageTransition mode="radial" tint="#FAF7F2">
+        <PageTransition mode="crossfade" tint="#FAF7F2">
           {children}
         </PageTransition>
 

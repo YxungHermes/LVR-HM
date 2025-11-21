@@ -385,6 +385,20 @@
     -webkit-backface-visibility: hidden;
   }
 
+  /* Prevent layout shift during page transitions */
+  body {
+    overflow-y: scroll; /* Always show scrollbar to prevent width shift */
+  }
+
+  /* Smooth content stability during transitions */
+  main {
+    min-height: 100vh;
+    will-change: opacity, filter;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0); /* Force GPU acceleration */
+  }
+
   /* Accessibility: reduce motion for page transitions */
   @media (prefers-reduced-motion: reduce) {
     .lvr-initial-fade {
