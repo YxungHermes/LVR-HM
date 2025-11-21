@@ -495,15 +495,26 @@ export default function ConsultationWizard() {
                         )}
 
                         <div className="space-y-3">
-                          <input
-                            type="text"
-                            value={formData.partner1Name}
-                            onChange={(e) => updateField('partner1Name', e.target.value)}
-                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                              errors.partner1Name ? 'border-red-500' : 'border-coffee/20'
-                            }`}
-                            placeholder="Your name"
-                          />
+                          <div className="relative">
+                            <input
+                              type="text"
+                              value={formData.partner1Name}
+                              onChange={(e) => updateField('partner1Name', e.target.value)}
+                              className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                                errors.partner1Name ? 'border-red-500' :
+                                formData.partner1Name && !errors.partner1Name ? 'border-green-500' :
+                                'border-coffee/20'
+                              }`}
+                              placeholder="Your name"
+                            />
+                            {formData.partner1Name && !errors.partner1Name && (
+                              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
                           {errors.partner1Name && (
                             <p className="text-sm text-red-500 mt-1">{errors.partner1Name}</p>
                           )}
@@ -552,15 +563,26 @@ export default function ConsultationWizard() {
                         )}
 
                         <div className="space-y-3">
-                          <input
-                            type="text"
-                            value={formData.partner2Name}
-                            onChange={(e) => updateField('partner2Name', e.target.value)}
-                            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                              errors.partner2Name ? 'border-red-500' : 'border-coffee/20'
-                            }`}
-                            placeholder="Partner's name"
-                          />
+                          <div className="relative">
+                            <input
+                              type="text"
+                              value={formData.partner2Name}
+                              onChange={(e) => updateField('partner2Name', e.target.value)}
+                              className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                                errors.partner2Name ? 'border-red-500' :
+                                formData.partner2Name && !errors.partner2Name ? 'border-green-500' :
+                                'border-coffee/20'
+                              }`}
+                              placeholder="Partner's name"
+                            />
+                            {formData.partner2Name && !errors.partner2Name && (
+                              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                </svg>
+                              </div>
+                            )}
+                          </div>
                           {errors.partner2Name && (
                             <p className="text-sm text-red-500 mt-1">{errors.partner2Name}</p>
                           )}
@@ -598,15 +620,26 @@ export default function ConsultationWizard() {
                         <label className="block text-sm font-medium text-ink mb-2">
                           Email Address *
                         </label>
-                        <input
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => updateField('email', e.target.value)}
-                          className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
-                            errors.email ? 'border-red-500' : 'border-coffee/20'
-                          }`}
-                          placeholder="you@email.com"
-                        />
+                        <div className="relative">
+                          <input
+                            type="email"
+                            value={formData.email}
+                            onChange={(e) => updateField('email', e.target.value)}
+                            className={`w-full px-4 py-3 pr-12 border rounded-lg focus:ring-2 focus:ring-rose-wax-red/20 focus:border-rose-wax-red transition-colors ${
+                              errors.email ? 'border-red-500' :
+                              formData.email && /\S+@\S+\.\S+/.test(formData.email) && !errors.email ? 'border-green-500' :
+                              'border-coffee/20'
+                            }`}
+                            placeholder="you@email.com"
+                          />
+                          {formData.email && /\S+@\S+\.\S+/.test(formData.email) && !errors.email && (
+                            <div className="absolute right-4 top-1/2 -translate-y-1/2 text-green-500">
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                            </div>
+                          )}
+                        </div>
                         {errors.email && (
                           <p className="text-sm text-red-500 mt-1">{errors.email}</p>
                         )}
