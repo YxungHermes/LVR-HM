@@ -80,10 +80,8 @@ export default function ChooseYourStory() {
                       position: "absolute",
                       top: "50%",
                       left: "50%",
-                      width: "100vw",
-                      height: "56.25vw",
-                      minHeight: "100%",
-                      minWidth: "177.78vh",
+                      width: "120%",
+                      height: "120%",
                       transform: "translate(-50%, -50%)",
                     }}
                     frameBorder="0"
