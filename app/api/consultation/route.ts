@@ -178,9 +178,9 @@ export async function POST(request: NextRequest) {
       if (dbError) {
         console.error("❌ Failed to save lead to database:", dbError);
         // Don't fail the request - email was sent successfully
-      } else {
-        console.log("✅ Lead saved to database:", lead.id);
-        leadId = lead.id;
+      } else if (lead) {
+        console.log("✅ Lead saved to database:", (lead as any).id);
+        leadId = (lead as any).id;
 
         // Send automated confirmation email to client (fire-and-forget)
         sendClientConfirmation(lead).catch((error) => {
