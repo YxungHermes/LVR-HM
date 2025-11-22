@@ -41,28 +41,52 @@ export const pricingOverview = [
     name: "Elopements & Intimate Gatherings",
     startingFrom: "$2,200",
     range: "$2,200 — $4,800",
+    forWho: "For couples who value presence over performance",
+    tagline: "Small celebrations, infinite intimacy",
     description:
       "For intentional ceremonies, city hall 'I do's, rooftops, and small gatherings where every face matters.",
+    highlights: [
+      "2–6 hours of coverage",
+      "Ceremony + intimate portraits",
+      "2–4 minute cinematic film"
+    ],
     href: "/offerings/elopements",
     image: "/collections/elopements.jpg",
+    vimeoId: "1139445343",
   },
   {
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     startingFrom: "$3,500",
     range: "$3,500 — $7,500",
+    forWho: "For couples who want the whole story preserved",
+    tagline: "Every moment from getting ready to last dance",
     description:
       "For full wedding days at home, crafted as emotive, cinematic films you'll want to revisit often.",
+    highlights: [
+      "6–10 hours of coverage",
+      "Full ceremony + reception film",
+      "Highlight reel for sharing"
+    ],
     href: "/offerings/wedding-day-films",
     image: "/collections/wedding-day.jpg",
+    vimeoId: "1139429379",
+    popular: true,
   },
   {
     slug: "destination-weddings",
     name: "Destination Wedding Films",
     startingFrom: "$5,500",
     range: "$5,500 — $12,000+",
+    forWho: "For celebrations where location becomes part of your story",
+    tagline: "Travel, tradition, and timeless film",
     description:
       "For celebrations in meaningful places around the world, with films that weave in people, place, and atmosphere.",
+    highlights: [
+      "Multi-day coverage available",
+      "Travel expenses included",
+      "Location scout + planning"
+    ],
     href: "/offerings/destination-weddings",
     image: "/collections/destination.jpg",
     vimeoId: "1137400003",
@@ -72,10 +96,18 @@ export const pricingOverview = [
     name: "Couples Films",
     startingFrom: "$750",
     range: "$750 — $2,000",
+    forWho: "For relationships worth documenting at any milestone",
+    tagline: "Love documented, ceremony optional",
     description:
       "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
+    highlights: [
+      "1–3 hours of coverage",
+      "Any milestone or occasion",
+      "Cinematic 1–2 minute film"
+    ],
     href: "/offerings/couples-films",
     image: "/collections/adventure.jpg",
+    vimeoId: "1139450155",
   },
 ];
 
@@ -84,7 +116,9 @@ export const pricingPages = {
     title: "Elopements & Intimate Gatherings",
     seoTitle: "Elopement Wedding Films | Weddings by Michael Andrade",
     heroImage: "/collections/elopements.jpg",
+    vimeoId: "1139445343",
     introHeading: "For the couples choosing presence over spectacle.",
+    cinematicIntro: "You're exchanging vows on a rooftop at sunrise. Just the two of you, your officiant, and the city waking up below. No timeline pressure. No coordinating 150 people. Just pure, unfiltered intimacy—the kind of ceremony that fits in a single breath. This is what we capture.",
     introBody:
       "Some vows are whispered on a rooftop, in a quiet courthouse, or under a tree with only your closest people. These celebrations deserve the same cinematic respect as any ballroom. This collection is for couples who want a refined, honest film that reflects the intimacy of the day.",
     startingFrom: "$2,200",
@@ -112,7 +146,9 @@ export const pricingPages = {
     title: "Wedding Day Films",
     seoTitle: "Wedding Day Film Collections | Weddings by Michael Andrade",
     heroImage: "/collections/wedding-day.jpg",
+    vimeoId: "1139429379",
     introHeading: "A complete, cinematic record of the day you built.",
+    cinematicIntro: "Your mom helps with your dress. Your partner tears up during first look. The ceremony runs long because your grandmother tells a story no one expected. The dance floor erupts. These aren't just moments—they're chapters. We film the whole book.",
     introBody:
       "From getting ready through the final song, your wedding day moves quickly. Our focus is to craft a film that feels like you: how your families hold you, the energy in the room, the way the night turns into story. This collection is for couples who want their full day told with intention.",
     startingFrom: "$3,500",
@@ -143,6 +179,7 @@ export const pricingPages = {
     heroImage: "/collections/destination.jpg",
     vimeoId: "1137400003",
     introHeading: "For celebrations that live across borders and timelines.",
+    cinematicIntro: "The ocean at sunrise. Cobblestone streets echoing with laughter. A ceremony where place becomes character. When you marry somewhere meaningful, location isn't backdrop—it's part of the promise. We weave people, place, and atmosphere into a film that feels like an heirloom from another world.",
     introBody:
       "A destination wedding is more than one day. It is airport greetings, welcome dinners, slow mornings, boat rides, late-night toasts. This collection is for couples who want that full atmosphere held on film. We travel with you, move like guests, and create a film that feels like an heirloom from another world.",
     startingFrom: "$5,500 + travel",
@@ -170,7 +207,9 @@ export const pricingPages = {
     title: "Couples Films",
     seoTitle: "Couples Films & Love Story Sessions | Love Stories by Michael Andrade",
     heroImage: "/collections/adventure.jpg",
+    vimeoId: "1139450155",
     introHeading: "Your relationship deserves more than iPhone footage.",
+    cinematicIntro: "Not every love story needs a ceremony. Anniversaries. Proposals. Just because. Your relationship deserves to be documented beautifully, regardless of rings or vows. This is for couples who know that love doesn't wait for a wedding day.",
     introBody:
       "Not getting married (yet)? Doesn't matter. Anniversaries, birthdays, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These films are for couples who want cinematic storytelling without the wedding day price tag—because your love story matters now, not just on a future wedding day.",
     startingFrom: "$750",

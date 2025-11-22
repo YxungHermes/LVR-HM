@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +11,7 @@ import Roadmap from "@/components/Roadmap";
 
 
 export default function PricingPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   return (
     <>
       <Header settled logoAbove />
@@ -59,7 +61,10 @@ export default function PricingPage() {
                 <motion.div
                   key={collection.slug}
                   id={collection.slug}
-                  className="bg-white border border-coffee/10 rounded-lg overflow-hidden scroll-mt-24"
+                  className="group bg-white border-2 border-coffee/10 rounded-lg overflow-hidden scroll-mt-24 transition-all duration-500 hover:border-rose-wax-red/30 hover:shadow-2xl"
+                  style={{
+                    boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.05)'
+                  }}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -74,18 +79,62 @@ export default function PricingPage() {
                           className="absolute pointer-events-none"
                           style={{
                             position: "absolute",
-                            top: "50%",
+                            top: collection.slug === "couples-films" ? "40%" : "50%",
                             left: "50%",
-                            width: "100vw",
-                            height: "56.25vw", // 16:9 aspect ratio
-                            minHeight: "100%",
-                            minWidth: "177.78vh", // 16:9 aspect ratio
-                            transform: "translate(-50%, -50%)",
+                            width: "100%",
+                            height: "100%",
+                            transform: `translate(-50%, -50%) scale(${
+                              collection.slug === "destination-weddings" ? "2.2" :
+                              collection.slug === "elopements" ? "1.65" :
+                              collection.slug === "couples-films" ? "1.4" :
+                              collection.slug === "wedding-day-films" ? "1.32" :
+                              "1.2"
+                            })`,
                           }}
                           frameBorder="0"
                           allow="autoplay; fullscreen; picture-in-picture"
                           title={collection.name}
                         />
+
+                        {/* Elegant Number Badge - Top Left */}
+                        <div className="absolute top-4 left-4 z-10">
+                          <div className="w-12 h-12 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 flex items-center justify-center shadow-lg">
+                            <span className="font-serif text-lg font-bold text-rose-wax-red">
+                              {String(index + 1).padStart(2, '0')}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Most Popular Badge - Top Center (with floating crown) */}
+                        {collection.popular && (
+                          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+                            <div className="relative">
+                              {/* Floating Crown */}
+                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xl animate-float">
+                                👑
+                              </div>
+                              {/* Badge */}
+                              <div className="px-4 py-2 rounded-full bg-rose-wax-red text-white backdrop-blur-sm border border-rose-wax-red/20 shadow-lg">
+                                <span className="text-[11px] uppercase tracking-widest font-bold">
+                                  Most Popular
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Price Badge - Top Right */}
+                        <div className="absolute top-4 right-4 z-10">
+                          <div className="px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 shadow-lg">
+                            <div className="flex flex-col items-end">
+                              <span className="text-[10px] uppercase tracking-wider text-espresso/70 font-medium leading-none">Starting from</span>
+                              <span className="font-serif text-base font-bold text-rose-wax-red leading-none mt-1">
+                                {collection.startingFrom}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
                       </div>
                     ) : (
                       <Image
@@ -98,34 +147,46 @@ export default function PricingPage() {
                     )}
                   </div>
 
-                  <div className="p-8">
-                    <h3 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
+                  <div className="p-8 md:p-10">
+                    {/* "For Who" Label */}
+                    <p className="font-serif text-sm md:text-base italic text-espresso/80 mb-3">
+                      {collection.forWho}
+                    </p>
+
+                    {/* Title */}
+                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-3">
                       {collection.name}
                     </h3>
 
-                  <div className="mb-4 pb-4 border-b border-coffee/10">
-                    <p className="text-xs font-medium text-coffee uppercase tracking-wider mb-2">
-                      Starting from
+                    {/* Tagline */}
+                    <p className="font-serif text-base md:text-lg italic text-rose-wax-red/90 mb-6 leading-relaxed">
+                      {collection.tagline}
                     </p>
-                    <p className="font-serif text-3xl font-bold text-rose-wax-red">
-                      {collection.startingFrom}
-                    </p>
-                    <p className="text-sm text-espresso/60 mt-1">
-                      {collection.range}
-                    </p>
-                  </div>
 
-                  <p className="text-sm text-espresso leading-relaxed mb-6">
-                    {collection.description}
-                  </p>
+                    {/* Highlights */}
+                    <div className="mb-6 pb-6 border-b border-coffee/10">
+                      <ul className="space-y-2.5">
+                        {collection.highlights.map((highlight: string, idx: number) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <svg className="w-5 h-5 text-rose-wax-red flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span className="text-sm text-espresso leading-relaxed">
+                              {highlight}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
+                    {/* CTA */}
                     <Link
                       href={collection.href}
-                      className="inline-flex items-center text-sm font-medium text-rose-wax-red hover:text-rose-wax-red/80 transition-colors focus-ring"
+                      className="group inline-flex items-center gap-2 px-6 py-3 bg-stone-800 text-white rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-300 hover:bg-rose-wax-red hover:shadow-lg hover:scale-105"
                     >
-                      <span>View details</span>
+                      <span>Learn More</span>
                       <svg
-                        className="ml-2 h-4 w-4"
+                        className="w-4 h-4 transition-transform group-hover:translate-x-1"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -201,6 +262,103 @@ export default function PricingPage() {
                       </svg>
                     </div>
                   </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="px-6 py-20 bg-white">
+          <div className="mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12"
+            >
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+                <h2 className="text-sm uppercase tracking-[0.3em] text-espresso/70 font-semibold">Common Questions</h2>
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+              </div>
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-ink">
+                Answers to Help You Decide
+              </h3>
+            </motion.div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  question: "Can I add extra hours to my package?",
+                  answer: "Absolutely. Most packages include a set number of hours, but you can add additional coverage in hourly increments. During our consultation call, we'll build a custom proposal based on your timeline and needs."
+                },
+                {
+                  question: "What if my wedding day runs over the scheduled time?",
+                  answer: "No stress. If your day runs a bit long, we'll stay to capture the key moments. Significant overages (beyond 30 minutes) are billed at the hourly rate discussed in your contract, but we always prioritize capturing your full story."
+                },
+                {
+                  question: "Do you travel for weddings? Is travel included?",
+                  answer: "Yes, I travel anywhere for weddings! For local weddings within 50 miles of New York City, travel is included. For destination weddings or locations beyond 50 miles, travel costs (flights, accommodations, ground transport) are added to your package. I provide a detailed breakdown during your custom proposal."
+                },
+                {
+                  question: "When will I receive my wedding film?",
+                  answer: "You'll receive a teaser film (60-90 seconds) within 2-3 weeks—perfect for sharing while the excitement is fresh. Your full highlight film arrives in 6-8 weeks, and if you've booked a feature film, that's delivered in 10-12 weeks. Rush delivery is available for an additional fee."
+                },
+                {
+                  question: "What's the difference between a highlight film and a feature film?",
+                  answer: "A highlight film (5-8 minutes) captures the best moments of your day set to music—ceremony, vows, key events, and emotions. A feature film (20-40 minutes) is a more comprehensive edit that includes full speeches, extended ceremony footage, and a complete narrative of your day."
+                },
+                {
+                  question: "Do you offer payment plans?",
+                  answer: "Yes. A 30% deposit secures your date, and the remaining 70% balance is due 2 weeks before your wedding. For larger packages, we can arrange a custom payment schedule. Just ask during your consultation."
+                },
+                {
+                  question: "Can I choose the music for my film?",
+                  answer: "You're welcome to share song preferences or meaningful tracks, and I'll do my best to incorporate them (pending licensing availability). Most couples trust me to select music that matches the tone and emotion of their day, and I always nail it."
+                },
+                {
+                  question: "What equipment do you use?",
+                  answer: "I shoot on professional cinema cameras (Sony FX3/FX6), use stabilization equipment (gimbals, sliders), and capture high-quality audio with wireless lavalier mics. Every wedding gets the same premium gear, regardless of package."
+                }
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="border border-coffee/10 rounded-lg overflow-hidden bg-warm-sand/30"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-warm-sand/50 transition-colors duration-200"
+                    aria-expanded={openFaq === index}
+                  >
+                    <h4 className="font-serif text-lg font-semibold text-ink pr-4">
+                      {faq.question}
+                    </h4>
+                    <div className="flex-shrink-0 text-rose-wax-red text-2xl font-light">
+                      {openFaq === index ? '−' : '+'}
+                    </div>
+                  </button>
+
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: openFaq === index ? 'auto' : 0,
+                      opacity: openFaq === index ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6">
+                      <p className="text-base text-espresso leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

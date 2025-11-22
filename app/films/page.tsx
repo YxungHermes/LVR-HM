@@ -10,6 +10,7 @@ import Link from "next/link";
 export default function FilmsPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [selectedFilter, setSelectedFilter] = useState("all");
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -45,12 +46,17 @@ export default function FilmsPage() {
 
   const currentFilm = signatureWork[currentIndex];
 
+  // Filter films by collection
+  const filteredFilms = selectedFilter === "all"
+    ? signatureWork
+    : signatureWork.filter(film => film.collection === selectedFilter);
+
   return (
     <>
       <Header settled logoAbove />
-      <main className="bg-black min-h-screen">
-        {/* Hero Section */}
-        <section className="relative h-screen flex flex-col">
+      <main className="bg-black">
+        {/* Hero Carousel - Reduced Height */}
+        <section className="relative h-[85vh] flex flex-col">
           {/* Carousel */}
           <div className="flex-1 relative overflow-hidden">
             <AnimatePresence initial={false} custom={direction}>
@@ -92,7 +98,7 @@ export default function FilmsPage() {
                       height: "56.25vw",
                       minHeight: "100%",
                       minWidth: "177.78vh",
-                      transform: "translate(-50%, -50%)",
+                      transform: "translate(-50%, -50%) scale(1.12)",
                     }}
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
@@ -136,7 +142,7 @@ export default function FilmsPage() {
                       transition={{ delay: 0.3 }}
                     >
                       <p className="text-sm md:text-base text-white/70 uppercase tracking-widest mb-3">
-                        Film {currentIndex + 1} of {signatureWork.length}
+                        Featured Film {currentIndex + 1} of {signatureWork.length}
                       </p>
                       <h1
                         className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-tight"
@@ -161,14 +167,6 @@ export default function FilmsPage() {
 
                       {/* Metadata Tags */}
                       <div className="flex flex-wrap gap-3 mb-8">
-                        {currentFilm.date && (
-                          <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/90 px-4 py-2 rounded-full text-sm font-medium">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            {currentFilm.date}
-                          </span>
-                        )}
                         {currentFilm.location && (
                           <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/90 px-4 py-2 rounded-full text-sm font-medium">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -184,14 +182,6 @@ export default function FilmsPage() {
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
                             </svg>
                             {currentFilm.style}
-                          </span>
-                        )}
-                        {currentFilm.tradition && (
-                          <span className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white/90 px-4 py-2 rounded-full text-sm font-medium">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                            </svg>
-                            {currentFilm.tradition}
                           </span>
                         )}
                       </div>
@@ -252,6 +242,181 @@ export default function FilmsPage() {
                   }`}
                   aria-label={`View ${film.title}`}
                 />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials - Multiple Quotes */}
+        <section className="bg-warm-sand/50 py-24 md:py-32 border-y border-coffee/10">
+          <div className="max-w-6xl mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+                <h2 className="text-sm uppercase tracking-[0.3em] text-espresso/70 font-semibold">What Couples Say</h2>
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+              </div>
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-ink">These Films Mean Everything</h3>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Testimonial 1 - Selene & Isidro */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-white/60 backdrop-blur-sm border border-coffee/10 rounded-lg p-8"
+              >
+                <svg className="w-10 h-10 text-rose-wax-red/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="font-serif text-lg text-ink italic mb-4 leading-relaxed">
+                  "Wow. Just... wow. The film brings us right back to that day so clearly. We keep discovering moments we didn't even know happened. It's like reliving the entire celebration all over again...WOW"
+                </p>
+                <p className="text-xs uppercase tracking-widest text-espresso/70">
+                  — Selene & Isidro, Utah 2024
+                </p>
+              </motion.div>
+
+              {/* Testimonial 2 - Brianna & Steven */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-white/60 backdrop-blur-sm border border-coffee/10 rounded-lg p-8"
+              >
+                <svg className="w-10 h-10 text-rose-wax-red/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="font-serif text-lg text-ink italic mb-4 leading-relaxed">
+                  "We loved the video—it's absolutely beautiful. Every moment felt so genuine and perfectly captured."
+                </p>
+                <p className="text-xs uppercase tracking-widest text-espresso/70">
+                  — Brianna & Steven, New Jersey 2023
+                </p>
+              </motion.div>
+
+              {/* Testimonial 3 - Robert & Tishula */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="bg-white/60 backdrop-blur-sm border border-coffee/10 rounded-lg p-8"
+              >
+                <svg className="w-10 h-10 text-rose-wax-red/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="font-serif text-lg text-ink italic mb-4 leading-relaxed">
+                  "Yooo, this is fire, man! I knew you could do it. You absolutely killed it."
+                </p>
+                <p className="text-xs uppercase tracking-widest text-espresso/70">
+                  — Robert & Tishula, Long Island 2023
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Browse by Collection */}
+        <section className="bg-cream py-20 md:py-32">
+          <div className="max-w-7xl mx-auto px-6">
+            {/* Section Header */}
+            <motion.div
+              className="mb-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+                <h2 className="text-sm uppercase tracking-[0.3em] text-espresso/70 font-semibold">Browse by Collection</h2>
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+              </div>
+              <h3 className="font-serif text-4xl md:text-5xl font-bold text-ink">Find Your Story</h3>
+            </motion.div>
+
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {[
+                { label: 'All Films', value: 'all' },
+                { label: 'Elopements', value: 'elopement' },
+                { label: 'Wedding Day', value: 'wedding-day' },
+                { label: 'Destination', value: 'destination' },
+                { label: 'Couples', value: 'couples' },
+              ].map((filter) => (
+                <button
+                  key={filter.value}
+                  onClick={() => setSelectedFilter(filter.value)}
+                  className={`px-6 py-3 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-300 ${
+                    selectedFilter === filter.value
+                      ? 'bg-rose-wax-red text-white shadow-lg'
+                      : 'bg-white text-espresso hover:bg-warm-sand border border-coffee/10'
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+
+            {/* Filtered Grid */}
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {filteredFilms.map((film, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
+                >
+                  {/* Film Card */}
+                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black mb-4 cursor-pointer">
+                    <iframe
+                      src={`https://player.vimeo.com/video/${film.vimeoId}?background=1&autoplay=0&loop=1&byline=0&title=0&muted=1`}
+                      className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-500"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      title={film.title}
+                    />
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <a
+                          href={`https://player.vimeo.com/video/${film.vimeoId}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-white text-ink rounded-full p-4 transform scale-90 group-hover:scale-100 transition-transform duration-300"
+                        >
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Film Info */}
+                  <h4 className="font-serif text-2xl font-bold text-ink mb-2 group-hover:text-rose-wax-red transition-colors">
+                    {film.title}
+                  </h4>
+                  <p className="text-sm text-espresso/70 mb-2">{film.description}</p>
+                  <div className="flex items-center gap-3 text-sm text-espresso/60">
+                    {film.location && <span>{film.location}</span>}
+                    {film.date && <span>• {film.date}</span>}
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>

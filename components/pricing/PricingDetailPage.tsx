@@ -21,6 +21,7 @@ interface PricingDetailPageProps {
   heroImage: string;
   vimeoId?: string;
   introHeading: string;
+  cinematicIntro?: string;
   introBody: string;
   startingFrom: string;
   rangeNote: string;
@@ -37,6 +38,7 @@ export default function PricingDetailPage({
   heroImage,
   vimeoId,
   introHeading,
+  cinematicIntro,
   introBody,
   startingFrom,
   rangeNote,
@@ -47,6 +49,30 @@ export default function PricingDetailPage({
   ctaLabel,
   ctaHref,
 }: PricingDetailPageProps) {
+  // Determine video positioning and scale based on offering type
+  const getVideoStyle = () => {
+    const isElopements = title.includes("Elopements");
+    const isDestination = title.includes("Destination");
+    const isCouples = title.includes("Couples");
+
+    return {
+      top: isCouples ? "40%" : "50%",
+      scale: isDestination ? "2.2" : isElopements ? "1.65" : isCouples ? "1.4" : title.includes("Wedding Day") ? "1.32" : "1.2"
+    };
+  };
+
+  // Determine offering number for badge
+  const getOfferingNumber = () => {
+    if (title.includes("Elopements")) return "01";
+    if (title.includes("Wedding Day")) return "02";
+    if (title.includes("Destination")) return "03";
+    if (title.includes("Couples")) return "04";
+    return "01";
+  };
+
+  const videoStyle = getVideoStyle();
+  const offeringNumber = getOfferingNumber();
+
   return (
     <>
       <Header settled />
@@ -92,18 +118,40 @@ export default function PricingDetailPage({
                     className="absolute pointer-events-none"
                     style={{
                       position: "absolute",
-                      top: "50%",
+                      top: videoStyle.top,
                       left: "50%",
-                      width: "100vw",
-                      height: "56.25vw", // 16:9 aspect ratio
-                      minHeight: "100%",
-                      minWidth: "177.78vh", // 16:9 aspect ratio
-                      transform: "translate(-50%, -50%)",
+                      width: "100%",
+                      height: "100%",
+                      transform: `translate(-50%, -50%) scale(${videoStyle.scale})`,
                     }}
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
                     title={title}
                   />
+
+                  {/* Subtle vignette overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20 pointer-events-none" />
+
+                  {/* Elegant Number Badge - Top Left */}
+                  <div className="absolute top-6 left-6 z-10">
+                    <div className="w-12 h-12 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 flex items-center justify-center shadow-lg">
+                      <span className="font-serif text-lg font-bold text-rose-wax-red">
+                        {offeringNumber}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Price Badge - Top Right */}
+                  <div className="absolute top-6 right-6 z-10">
+                    <div className="px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 shadow-lg">
+                      <div className="flex flex-col items-end">
+                        <span className="text-[10px] uppercase tracking-wider text-espresso/70 font-medium leading-none">Starting from</span>
+                        <span className="font-serif text-base font-bold text-rose-wax-red leading-none mt-1">
+                          {startingFrom}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <>
@@ -148,6 +196,14 @@ export default function PricingDetailPage({
               <h2 className="font-serif text-2xl md:text-3xl font-semibold text-ink mb-4 italic">
                 {introHeading}
               </h2>
+
+              {/* Cinematic intro paragraph - sensory and emotive */}
+              {cinematicIntro && (
+                <p className="text-lg md:text-xl text-ink/90 leading-relaxed mb-6 font-light italic border-l-4 border-rose-wax-red/30 pl-6 py-2">
+                  {cinematicIntro}
+                </p>
+              )}
+
               <p className="text-lg text-espresso leading-relaxed">
                 {introBody}
               </p>

@@ -89,7 +89,14 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
       }
     };
 
+    // Initial scroll check
     handleScroll();
+
+    // Re-check after brief delay to account for content loading (videos, images, etc.)
+    const recheckTimeout = setTimeout(() => {
+      handleScroll();
+    }, 100);
+
     const mainContainer = document.querySelector('.overflow-y-auto');
     if (mainContainer) {
       mainContainer.addEventListener("scroll", handleScroll, { passive: true });
@@ -97,6 +104,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
+      clearTimeout(recheckTimeout);
       if (mainContainer) {
         mainContainer.removeEventListener("scroll", handleScroll);
       }
@@ -107,24 +115,45 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
   const handleNavItemEnter = (label: string, hasMegaMenu?: boolean) => {
     if (!hasMegaMenu) return;
 
+    // Clear any pending timeouts
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
 
-    openTimeoutRef.current = setTimeout(() => {
+    // If a menu is already open, switch immediately (no delay)
+    // Otherwise, add small delay to prevent accidental triggers
+    if (activeMegaMenu) {
       setActiveMegaMenu(label);
-    }, 100);
+    } else {
+      openTimeoutRef.current = setTimeout(() => {
+        setActiveMegaMenu(label);
+      }, 150);
+    }
   };
 
   const handleNavItemLeave = () => {
+    // Clear any pending open timeouts
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+
+    // Longer delay to allow mouse to travel to dropdown
     closeTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null);
-    }, 200);
+    }, 300);
   };
 
   const handleMegaMenuEnter = () => {
+    // Cancel close timeout when entering the dropdown
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+  };
+
+  const handleMegaMenuLeave = () => {
+    // Close immediately when leaving the dropdown area
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 150);
   };
 
   const scrollToTop = () => {
@@ -235,13 +264,13 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <a
                 href="/consultation"
                 className={`
-                  px-6 py-2 rounded-full bg-stone-800 text-white
+                  rounded-full bg-stone-800 text-white
                   text-[9px] font-bold tracking-[0.25em] uppercase
                   transition-all duration-500 hover:bg-rose-wax-red hover:shadow-lg hover:-translate-y-0.5
-                  ${isScrolled ? 'scale-95' : 'scale-100'}
+                  ${isScrolled ? 'px-6 py-2' : 'px-8 py-3'}
                 `}
               >
-                Book
+                {isScrolled ? 'Book' : 'Book Consultation'}
               </a>
             )}
           </div>
@@ -292,19 +321,19 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           {activeMegaMenu && (
             <motion.div
               className={`fixed left-0 right-0 z-40 flex justify-center px-4 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[132px]') : 'top-[88px]'}`}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ y: -10 }}
+              animate={{ y: 0 }}
+              exit={{ y: -10 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={handleMegaMenuEnter}
-              onMouseLeave={handleNavItemLeave}
+              onMouseLeave={handleMegaMenuLeave}
             >
               {/* Fluid Rounded Card Container */}
-              <motion.div
+              <div
                 className={`
                   relative w-[95%] max-w-7xl
-                  bg-white/65 backdrop-blur-2xl
-                  border border-white/35
+                  bg-white/95 backdrop-blur-2xl
+                  border border-white/50
                   rounded-2xl
                   shadow-[0_12px_48px_rgba(0,0,0,0.15),0_0_40px_rgba(244,105,126,0.08)]
                   overflow-hidden
@@ -313,9 +342,6 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                   backdropFilter: "blur(56px) saturate(180%)",
                   WebkitBackdropFilter: "blur(56px) saturate(180%)",
                 }}
-                initial={{ scale: 0.98 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 0.2 }}
               >
                 {/* Subtle Top Gradient Bar for Connection */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-rose-wax-red/20 to-transparent" />
@@ -324,7 +350,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 40%, transparent 70%)'
+                    background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.10) 40%, transparent 70%)'
                   }}
                 />
 
@@ -372,7 +398,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                       ))}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

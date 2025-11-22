@@ -23,59 +23,103 @@ export const chooseYourStory = [
     slug: "elopements",
     name: "Elopements & Intimate Gatherings",
     teaser: "For small, intentional 'just us' celebrations.",
-    href: "/offerings/elopements"
+    href: "/offerings/elopements",
+    vimeoId: "1139445343",
+    startingFrom: "$2,200"
   },
   {
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     teaser: "For full wedding days close to home.",
-    href: "/offerings/wedding-day-films"
+    href: "/offerings/wedding-day-films",
+    vimeoId: "1139429379",
+    startingFrom: "$3,500",
+    popular: true
   },
   {
     slug: "destination-weddings",
     name: "Destination Wedding Films",
     teaser: "For weekends and celebrations around the world.",
     href: "/offerings/destination-weddings",
-    vimeoId: "1137400003"
+    vimeoId: "1137400003",
+    startingFrom: "$5,500"
   },
   {
     slug: "couples-films",
     name: "Couples Films",
     teaser: "For couples celebrating love. Anniversaries, birthdays, or just because—not wedding required.",
-    href: "/offerings/couples-films"
+    href: "/offerings/couples-films",
+    vimeoId: "1139450155",
+    startingFrom: "$750"
   }
 ];
 
 export const signatureWork = [
   {
+    title: "Chrislady & Emanuel",
+    subtitle: "Majorca, Spain",
+    location: "Majorca, Spain",
+    date: "2023",
+    style: "Romantic & Cinematic",
+    tradition: "Destination",
+    vimeoId: "859109463",
+    description: "A stunning Mediterranean destination wedding trailer from the beautiful island of Majorca.",
+    collection: "destination"
+  },
+  {
     title: "Selene & Isidro",
     subtitle: "Utah",
     location: "Utah",
-    date: "Summer 2024",
+    date: "2024",
     style: "Cinematic & Artistic",
-    tradition: "Catholic",
+    tradition: "Western",
     vimeoId: "1057949189",
-    description: "A breathtaking mountain celebration filled with genuine emotion and timeless moments."
+    description: "A breathtaking mountain celebration filled with genuine emotion and timeless moments.",
+    collection: "destination"
   },
   {
     title: "Courtney & Sterling",
     subtitle: "Connecticut",
     location: "Connecticut",
-    date: "Fall 2024",
+    date: "2025",
     style: "Romantic & Timeless",
     tradition: "Western",
     vimeoId: "1137483566",
-    description: "An elegant New England wedding capturing autumn beauty and heartfelt vows."
+    description: "An elegant New England venue wedding capturing beauty and heartfelt vows.",
+    collection: "wedding-day"
   },
   {
     title: "Brianna & Steven",
     subtitle: "New Jersey",
     location: "New Jersey",
-    date: "Spring 2024",
+    date: "2023",
     style: "Documentary Style",
-    tradition: "Jewish",
+    tradition: "Western",
     vimeoId: "1137492115",
-    description: "A joyful Jewish celebration with the hora, emotional ketubah signing, and pure celebration."
+    description: "A joyful venue celebration with energy, emotion, and unforgettable moments.",
+    collection: "wedding-day"
+  },
+  {
+    title: "Robert & Tishula",
+    subtitle: "Long Island, New York",
+    location: "Long Island, New York",
+    date: "2023",
+    style: "Cinematic & Intimate",
+    tradition: "Western",
+    vimeoId: "1139491105",
+    description: "An intimate Long Island venue celebration captured with heart and artistry.",
+    collection: "wedding-day"
+  },
+  {
+    title: "Ari & Billy",
+    subtitle: "Brooklyn, New York",
+    location: "Brooklyn, New York",
+    date: "2024",
+    style: "Urban & Cinematic",
+    tradition: "Western",
+    vimeoId: "1058318297",
+    description: "A vibrant Brooklyn celebration at Box House capturing urban elegance and authentic love.",
+    collection: "wedding-day"
   }
 ];
 
@@ -214,9 +258,9 @@ export const navigation: Navigation = {
           {
             title: "Latest Films",
             links: [
+              { label: "Chrislady & Emanuel", href: "/films", subtitle: "Majorca, Spain" },
               { label: "Selene & Isidro", href: "/films", subtitle: "Utah" },
-              { label: "Courtney & Sterling", href: "/films", subtitle: "Connecticut" },
-              { label: "Brianna & Steven", href: "/films", subtitle: "New Jersey" }
+              { label: "Courtney & Sterling", href: "/films", subtitle: "Connecticut" }
             ]
           },
           {

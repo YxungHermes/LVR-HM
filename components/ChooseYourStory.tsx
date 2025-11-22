@@ -78,13 +78,17 @@ export default function ChooseYourStory() {
                     className="absolute pointer-events-none"
                     style={{
                       position: "absolute",
-                      top: "50%",
+                      top: collection.slug === "couples-films" ? "40%" : "50%",
                       left: "50%",
-                      width: "100vw",
-                      height: "56.25vw",
-                      minHeight: "100%",
-                      minWidth: "177.78vh",
-                      transform: "translate(-50%, -50%)",
+                      width: "100%",
+                      height: "100%",
+                      transform: `translate(-50%, -50%) scale(${
+                        collection.slug === "destination-weddings" ? "2.2" :
+                        collection.slug === "elopements" ? "1.65" :
+                        collection.slug === "couples-films" ? "1.4" :
+                        collection.slug === "wedding-day-films" ? "1.32" :
+                        "1.2"
+                      })`,
                     }}
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
