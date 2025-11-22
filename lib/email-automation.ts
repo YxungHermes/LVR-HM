@@ -1,3 +1,4 @@
+// @ts-nocheck - Supabase types not available until database is configured
 import { Resend } from 'resend';
 import { supabaseAdmin } from './supabase';
 
