@@ -395,18 +395,45 @@ export default function PricingPage() {
             transition={{ duration: 0.6 }}
           >
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4">
-              Not sure which path is right for you?
+              Still Figuring Out What Fits?
             </h3>
             <p className="text-base text-espresso mb-8 leading-relaxed">
-              Share your date, locations, guest count, and what matters most.
-              I'll recommend a collection that fits, with transparent pricing.
+              That's completely normal. Most couples need to talk it through. Tell me about your day and I'll help you figure out which collection makes sense.
             </p>
-            <Link
-              href="/consultation"
-              className="inline-block bg-rose-wax-red text-white px-8 py-3 rounded-md font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring"
-            >
-              Book Your Consultation
-            </Link>
+
+            {/* Dual CTA */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link
+                href="/consultation"
+                className="inline-flex items-center gap-2 bg-rose-wax-red text-white px-8 py-3 rounded-full font-medium transition-all hover:bg-rose-wax-red/90 hover:scale-105 focus-ring uppercase tracking-wider text-sm"
+              >
+                <span>Let's Talk</span>
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+
+              <Link
+                href="/films"
+                className="inline-flex items-center gap-2 px-8 py-3 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-medium transition-all hover:bg-rose-wax-red hover:text-white hover:scale-105 focus-ring uppercase tracking-wider text-sm"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span>See Films First</span>
+              </Link>
+            </div>
+
+            {/* Secondary link */}
+            <p className="mt-6 text-sm text-espresso/70">
+              Or{" "}
+              <Link
+                href="/process"
+                className="text-rose-wax-red hover:text-rose-wax-red/80 underline underline-offset-2 transition-colors"
+              >
+                learn how the whole process works
+              </Link>
+            </p>
           </motion.div>
         </section>
       </main>

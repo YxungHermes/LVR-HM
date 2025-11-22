@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -194,9 +195,9 @@ export default function AboutPage() {
                   className="max-w-[600px]"
                 >
                   <p className="text-[15px] md:text-base text-ink/90 leading-relaxed" style={{ lineHeight: '1.75' }}>
-                    A videographer who captures more than moments. I capture the rhythm and stories through vivid images. Every project is a blend of technical precision and emotional storytelling. My work never fails to experiment; each frame is treated like a canvas where light, sound, and narrative converge.
+                    I'm a videographer who cares about rhythm, emotion, and the details most people miss. Every project blends technical precision with storytelling. I'm always experimenting with how light and sound can create something that feels cinematic but real.
                     <br /><br />
-                    With experience across music, fashion, and commercial projects, the mission is to create films that feel alive. Films that resonate emotionally and stay with you long after watching. Every wedding is unique, and my approach honors that individuality while creating something timeless.
+                    I've worked across music, fashion, and commercial projects before focusing on weddings. The goal is simple: create films that feel alive and make you want to watch them again. Every wedding is different, and I approach each one that way.
                   </p>
                 </motion.div>
               </div>
@@ -250,24 +251,52 @@ export default function AboutPage() {
         {/* CTA SECTION */}
         <section className="px-6 md:px-12 lg:px-24 xl:px-32 py-20 md:py-28 bg-cream">
           <motion.div
-            className="mx-auto max-w-3xl text-center"
+            className="mx-auto max-w-4xl text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-ink mb-6">
-              Ready to Create Something Beautiful?
+              What's Next?
             </h2>
             <p className="text-base md:text-lg text-espresso/80 mb-10 leading-relaxed max-w-2xl mx-auto">
-              Let's discuss your vision and how we can bring your wedding story to life through cinematic film.
+              Now that you know a bit about me and how I work, you've got two options. Check out what this actually looks like, or if you're already feeling it, let's just talk.
             </p>
-            <a
-              href="/consultation"
-              className="inline-block px-10 py-4 bg-rose-wax-red text-cream font-medium rounded-full hover:bg-rose-wax-red/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              Book a Consultation
-            </a>
+
+            {/* Dual CTA - Side by Side */}
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+              <Link
+                href="/films"
+                className="group inline-flex items-center gap-3 px-8 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
+              >
+                <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                <span>See the Work</span>
+              </Link>
+
+              <Link
+                href="/consultation"
+                className="group inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+              >
+                <span>Let's Talk</span>
+                <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </div>
+
+            {/* Secondary link to pricing */}
+            <p className="mt-6 text-sm text-espresso/70">
+              Want to see pricing first?{" "}
+              <Link
+                href="/offerings"
+                className="text-rose-wax-red hover:text-rose-wax-red/80 underline underline-offset-2 transition-colors"
+              >
+                Check out packages and pricing
+              </Link>
+            </p>
           </motion.div>
         </section>
       </main>

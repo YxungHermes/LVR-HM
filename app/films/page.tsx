@@ -430,17 +430,45 @@ export default function FilmsPage() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 leading-tight">
-                Ready to Create Your Film?
+                Like What You See?
               </h2>
               <p className="text-lg md:text-xl text-espresso/80 mb-10 leading-relaxed max-w-2xl mx-auto">
-                Let's craft a cinematic film that captures the beauty, emotion, and magic of your unique love story.
+                If these films feel like what you want for your wedding, let's talk about your day. Or if you want to see pricing and packages first, that works too.
               </p>
-              <Link
-                href="/consultation"
-                className="inline-block px-12 py-5 bg-rose-wax-red text-cream font-semibold rounded-full hover:bg-rose-wax-red/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 uppercase tracking-wider text-sm"
-              >
-                Book a Consultation
-              </Link>
+
+              {/* Dual CTA */}
+              <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <Link
+                  href="/consultation"
+                  className="group inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-10 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+                >
+                  <span>Let's Talk</span>
+                  <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+
+                <Link
+                  href="/offerings"
+                  className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Show Me Pricing</span>
+                  <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                  </svg>
+                </Link>
+              </div>
+
+              {/* Secondary link to process */}
+              <p className="mt-6 text-sm text-espresso/70">
+                Want to understand the full process?{" "}
+                <Link
+                  href="/process"
+                  className="text-rose-wax-red hover:text-rose-wax-red/80 underline underline-offset-2 transition-colors"
+                >
+                  See how we work together
+                </Link>
+              </p>
             </motion.div>
           </div>
         </section>

@@ -1,6 +1,6 @@
 export const hero = {
   title: "Love Stories Worth Reliving",
-  sub: "Cinematic wedding films crafted with heart. From intimate elopements to grand celebrations, we create films you'll treasure forever.",
+  sub: "Cinematic wedding films for couples who want something real. From intimate elopements to full celebrations, I create films you'll actually want to watch.",
   location: "Based in New York City • Traveling Worldwide",
   // Using Vimeo for reliable video hosting and streaming
   // 16:9 wedding video for hero background

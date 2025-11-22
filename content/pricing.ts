@@ -13,7 +13,7 @@ export const whatIOffer = [
     slug: "wedding-day-films",
     name: "Wedding Day Films",
     description:
-      "For full wedding days close to home, from quiet mornings to the final song, crafted as one cohesive cinematic story.",
+      "For full wedding days close to home, from getting ready to the final song, told as one complete story.",
     href: "/offerings/wedding-day-films",
     image: "/collections/wedding-day.jpg",
   },
@@ -184,7 +184,7 @@ export const pricingPages = {
     introHeading: "For celebrations that live across borders and timelines.",
     cinematicIntro: "The ocean at sunrise. Cobblestone streets echoing with laughter. A ceremony where place becomes character. When you marry somewhere meaningful, location isn't backdrop—it's part of the promise. We weave people, place, and atmosphere into a film that feels like an heirloom from another world.",
     introBody:
-      "A destination wedding is more than one day. It is airport greetings, welcome dinners, slow mornings, boat rides, late-night toasts. This collection is for couples who want that full atmosphere held on film. We travel with you, move like guests, and create a film that feels like an heirloom from another world.",
+      "A destination wedding is more than one day. It's airport greetings, welcome dinners, slow mornings, boat rides, late-night toasts. This collection captures that full atmosphere. I travel with you, move like a guest, and create something you'll want to keep forever.",
     startingFrom: "$5,500 + travel",
     rangeNote:
       "Most destination couples invest between $7,500 — $12,000+ depending on country, schedule, and coverage days.",
@@ -215,7 +215,7 @@ export const pricingPages = {
     introHeading: "Your relationship deserves more than iPhone footage.",
     cinematicIntro: "Not every love story needs a ceremony. Anniversaries. Proposals. Just because. Your relationship deserves to be documented beautifully, regardless of rings or vows. This is for couples who know that love doesn't wait for a wedding day.",
     introBody:
-      "Not getting married (yet)? Doesn't matter. Anniversaries, birthdays, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These films are for couples who want cinematic storytelling without the wedding day price tag—because your love story matters now, not just on a future wedding day.",
+      "Not getting married yet? Doesn't matter. Anniversaries, birthdays, proposals, or just because it's Tuesday and you want a beautiful film of your favorite person. These films give you cinematic storytelling without the wedding day price tag.",
     startingFrom: "$750",
     rangeNote:
       "Most couples invest between $750 — $2,000 depending on coverage and film length.",
@@ -304,7 +304,7 @@ export const pricing = {
     starting: 3500,
     range: [3500, 7500],
     description:
-      "For full wedding days close to home, from quiet mornings to the final dance, crafted as one cohesive cinematic story.",
+      "For full wedding days close to home, from getting ready to the final dance, told as one complete story.",
   },
   destination: {
     title: "Destination Wedding Films",
