@@ -57,13 +57,13 @@ export const chooseYourStory = [
 export const signatureWork = [
   {
     title: "Robert & Tishula",
-    subtitle: "New York",
-    location: "New York",
+    subtitle: "Long Island, New York",
+    location: "Long Island, New York",
     date: "Winter 2024",
     style: "Cinematic & Intimate",
     tradition: "Modern",
     vimeoId: "1139491105",
-    description: "An intimate celebration captured with heart and artistry.",
+    description: "An intimate Long Island celebration captured with heart and artistry.",
     collection: "wedding-day"
   },
   {
@@ -74,7 +74,7 @@ export const signatureWork = [
     style: "Romantic & Cinematic",
     tradition: "Destination",
     vimeoId: "859109463",
-    description: "A stunning Mediterranean destination wedding on the beautiful island of Majorca.",
+    description: "A stunning Mediterranean destination wedding trailer from the beautiful island of Majorca.",
     collection: "destination"
   },
   {
