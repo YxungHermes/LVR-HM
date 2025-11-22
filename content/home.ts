@@ -56,28 +56,6 @@ export const chooseYourStory = [
 
 export const signatureWork = [
   {
-    title: "Robert & Tishula",
-    subtitle: "Long Island, New York",
-    location: "Long Island, New York",
-    date: "2023",
-    style: "Cinematic & Intimate",
-    tradition: "Western",
-    vimeoId: "1139491105",
-    description: "An intimate Long Island venue celebration captured with heart and artistry.",
-    collection: "wedding-day"
-  },
-  {
-    title: "Chrislady & Emanuel",
-    subtitle: "Majorca, Spain",
-    location: "Majorca, Spain",
-    date: "2023",
-    style: "Romantic & Cinematic",
-    tradition: "Destination",
-    vimeoId: "859109463",
-    description: "A stunning Mediterranean destination wedding trailer from the beautiful island of Majorca.",
-    collection: "destination"
-  },
-  {
     title: "Selene & Isidro",
     subtitle: "Utah",
     location: "Utah",
@@ -109,6 +87,28 @@ export const signatureWork = [
     vimeoId: "1137492115",
     description: "A joyful venue celebration with energy, emotion, and unforgettable moments.",
     collection: "wedding-day"
+  },
+  {
+    title: "Robert & Tishula",
+    subtitle: "Long Island, New York",
+    location: "Long Island, New York",
+    date: "2023",
+    style: "Cinematic & Intimate",
+    tradition: "Western",
+    vimeoId: "1139491105",
+    description: "An intimate Long Island venue celebration captured with heart and artistry.",
+    collection: "wedding-day"
+  },
+  {
+    title: "Chrislady & Emanuel",
+    subtitle: "Majorca, Spain",
+    location: "Majorca, Spain",
+    date: "2023",
+    style: "Romantic & Cinematic",
+    tradition: "Destination",
+    vimeoId: "859109463",
+    description: "A stunning Mediterranean destination wedding trailer from the beautiful island of Majorca.",
+    collection: "destination"
   },
   {
     title: "Ari & Billy",
@@ -258,9 +258,9 @@ export const navigation: Navigation = {
           {
             title: "Latest Films",
             links: [
-              { label: "Courtney & Sterling", href: "/films", subtitle: "Connecticut" },
               { label: "Selene & Isidro", href: "/films", subtitle: "Utah" },
-              { label: "Ari & Billy", href: "/films", subtitle: "Brooklyn, NY" }
+              { label: "Courtney & Sterling", href: "/films", subtitle: "Connecticut" },
+              { label: "Brianna & Steven", href: "/films", subtitle: "New Jersey" }
             ]
           },
           {
