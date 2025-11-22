@@ -71,6 +71,7 @@ export const pricingOverview = [
     href: "/offerings/wedding-day-films",
     image: "/collections/wedding-day.jpg",
     vimeoId: "1139429379",
+    popular: true,
   },
   {
     slug: "destination-weddings",

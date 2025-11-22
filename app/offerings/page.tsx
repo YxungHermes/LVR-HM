@@ -105,6 +105,24 @@ export default function PricingPage() {
                           </div>
                         </div>
 
+                        {/* Most Popular Badge - Top Center (with floating crown) */}
+                        {collection.popular && (
+                          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+                            <div className="relative">
+                              {/* Floating Crown */}
+                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xl animate-float">
+                                👑
+                              </div>
+                              {/* Badge */}
+                              <div className="px-4 py-2 rounded-full bg-rose-wax-red text-white backdrop-blur-sm border border-rose-wax-red/20 shadow-lg">
+                                <span className="text-[11px] uppercase tracking-widest font-bold">
+                                  Most Popular
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
                         {/* Price Badge - Top Right */}
                         <div className="absolute top-4 right-4 z-10">
                           <div className="px-4 py-2 rounded-full bg-white/95 backdrop-blur-sm border border-coffee/20 shadow-lg">
