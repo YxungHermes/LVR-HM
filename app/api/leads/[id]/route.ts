@@ -57,7 +57,7 @@ export async function PATCH(
 
     const { data, error } = await supabaseAdmin
       .from('leads')
-      .update(body)
+      .update(body as any)
       .eq('id', params.id)
       .select()
       .single();

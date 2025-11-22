@@ -18,7 +18,7 @@ export async function POST(
         note: body.note,
         note_type: body.note_type || 'general',
         created_by: body.created_by || null,
-      })
+      } as any)
       .select()
       .single();
 
@@ -35,7 +35,7 @@ export async function POST(
         activity_type: 'note_added',
         description: `Note added: ${body.note.substring(0, 50)}${body.note.length > 50 ? '...' : ''}`,
         metadata: { note_type: body.note_type || 'general' },
-      });
+      } as any);
 
     return NextResponse.json({ note: data }, { status: 201 });
   } catch (error) {
