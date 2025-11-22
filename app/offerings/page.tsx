@@ -109,8 +109,8 @@ export default function PricingPage() {
                         {collection.popular && (
                           <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
                             <div className="relative">
-                              {/* Floating Crown */}
-                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xl animate-float">
+                              {/* Floating Crown - Fairly OddParents style */}
+                              <div className="absolute -top-10 left-1/2 -translate-x-1/2 text-2xl animate-float">
                                 👑
                               </div>
                               {/* Badge */}
