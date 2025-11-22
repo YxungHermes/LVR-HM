@@ -94,8 +94,12 @@ export default function FAQPage() {
           answer: "First, book a consultation call where we'll discuss your vision, timeline, and needs. Then I'll send a custom proposal with pricing and deliverables. Once you approve, a 30% retainer and signed contract secures your date. Simple and stress-free."
         },
         {
+          question: "What's your filming style?",
+          answer: "I blend cinematic and documentary styles to give you the best of both worlds—beautiful, intentional shots combined with authentic, candid moments. If you prefer a fully hands-off approach where I stay in the background, I'm happy to work in a pure documentary style. We'll discuss your comfort level during our consultation."
+        },
+        {
           question: "Do you require a shot list?",
-          answer: "Not required, but welcomed! I work in a documentary style, capturing moments as they unfold naturally. If you have specific must-have shots (family portraits, detail shots, etc.), just share them with me and I'll make sure they're covered."
+          answer: "Not required, but welcomed! If you have specific must-have shots (family portraits, detail shots, etc.), just share them with me and I'll make sure they're covered. I work naturally with minimal disruption to your day."
         },
         {
           question: "Will you attend our rehearsal?",
