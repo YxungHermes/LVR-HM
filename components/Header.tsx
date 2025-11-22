@@ -261,9 +261,9 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                 href="/consultation"
                 className={`
                   rounded-full bg-stone-800 text-white
-                  text-[9px] font-bold tracking-[0.25em] uppercase
+                  text-[10px] font-bold tracking-[0.25em] uppercase
                   transition-all duration-500 hover:bg-rose-wax-red hover:shadow-lg hover:-translate-y-0.5
-                  ${isScrolled ? 'px-6 py-2' : 'px-8 py-3'}
+                  ${isScrolled ? 'px-7 py-2.5 mr-2' : 'px-9 py-3.5 mr-3'}
                 `}
               >
                 {isScrolled ? 'Talk' : "Let's Talk"}
