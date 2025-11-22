@@ -436,28 +436,39 @@ export default function FilmsPage() {
                 If these films feel like what you want for your wedding, let's talk about your day. Or if you want to see pricing and packages first, that works too.
               </p>
 
-              {/* Dual CTA */}
+              {/* Triple CTA */}
               <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
                 <Link
-                  href="/consultation"
+                  href="/reserve"
                   className="group inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-10 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
-                  <span>Let's Talk</span>
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <span>Reserve Your Date</span>
+                </Link>
+
+                <Link
+                  href="/consultation"
+                  className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
+                >
+                  <span>Free Consultation</span>
                   <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </Link>
+              </div>
 
+              {/* Secondary link to pricing */}
+              <p className="mt-4 text-sm text-espresso/70">
+                Want to see detailed pricing?{" "}
                 <Link
                   href="/offerings"
-                  className="group inline-flex items-center gap-3 px-10 py-4 border-2 border-rose-wax-red rounded-full text-rose-wax-red font-semibold uppercase tracking-wider text-sm hover:bg-rose-wax-red hover:text-white hover:shadow-lg transition-all duration-300"
+                  className="text-rose-wax-red hover:text-rose-wax-red/80 underline underline-offset-2 transition-colors"
                 >
-                  <span>Show Me Pricing</span>
-                  <svg className="h-5 w-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
+                  View all packages
                 </Link>
-              </div>
+              </p>
 
               {/* Secondary link to process */}
               <p className="mt-6 text-sm text-espresso/70">
