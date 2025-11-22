@@ -337,6 +337,10 @@ export default function Footer() {
                 <a href="/sitemap.xml" className="hover:text-rose-wax-red transition-colors focus-ring rounded">
                   Sitemap
                 </a>
+                <span className="text-coffee/30">•</span>
+                <span className="text-espresso/50 text-xs">
+                  Website by Michael Andrade
+                </span>
               </div>
             </div>
           </div>
