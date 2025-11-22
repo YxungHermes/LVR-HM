@@ -518,7 +518,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
             {/* Content */}
             <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-ink prose-p:text-espresso prose-p:leading-relaxed prose-a:text-rose-wax-red prose-a:no-underline hover:prose-a:underline prose-strong:text-ink prose-ul:text-espresso prose-ol:text-espresso">
-              <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br />').replace(/#{1,6}\s/g, (match) => {
+              <div dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, '<br />').replace(/#{1,6}\s/g, (match: string) => {
                 const level = match.trim().length;
                 return `<h${level}>`;
               }).replace(/\n/g, '</h' + post.content.match(/#{1,6}/)?.[0].length + '>') }} />
