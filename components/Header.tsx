@@ -266,7 +266,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                   ${isScrolled ? 'px-6 py-2' : 'px-8 py-3'}
                 `}
               >
-                {isScrolled ? 'Book' : 'Book Consultation'}
+                {isScrolled ? 'Talk' : "Let's Talk"}
               </a>
             )}
           </div>
@@ -517,7 +517,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                   {/* Rose Glow on Hover */}
                   <div className="absolute inset-0 bg-rose-wax-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <span className="relative">Book Consultation</span>
+                  <span className="relative">Let's Talk</span>
                 </a>
               </motion.div>
             </div>

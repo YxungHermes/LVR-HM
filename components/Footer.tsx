@@ -269,7 +269,7 @@ export default function Footer() {
                   href="/consultation"
                   className="block text-center px-6 py-4 bg-rose-wax-red text-white rounded-full font-semibold hover:bg-rose-wax-red/90 transition-all hover:scale-105 shadow-lg hover:shadow-xl focus-ring"
                 >
-                  Start Your Journey
+                  Let's Talk
                 </a>
               </motion.div>
             </div>
@@ -308,16 +308,16 @@ export default function Footer() {
         </motion.div>
       </div>
 
-      {/* Floating Book Consultation Button */}
+      {/* Floating Let's Talk Button */}
       <a
         href="/consultation"
         className="fixed bottom-8 right-8 bg-rose-wax-red text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-out focus-ring z-50 flex items-center gap-3 px-6 py-4 group font-semibold"
-        aria-label="Book consultation"
+        aria-label="Let's talk about your wedding"
       >
         <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
-        <span className="text-sm uppercase tracking-wider">Book Now</span>
+        <span className="text-sm uppercase tracking-wider">Let's Talk</span>
       </a>
     </footer>
   );

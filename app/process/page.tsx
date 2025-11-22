@@ -193,7 +193,7 @@ export default function ProcessPage() {
                   href="/consultation"
                   className="group inline-flex items-center gap-3 bg-rose-wax-red text-white rounded-full px-8 py-4 font-semibold uppercase tracking-wider text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
                 >
-                  <span>Book a Call</span>
+                  <span>Let's Talk</span>
                 </Link>
               </div>
             </motion.div>

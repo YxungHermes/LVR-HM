@@ -157,9 +157,9 @@ export default function FAQPage() {
               <p className="mt-5 text-base md:text-lg text-espresso max-w-2xl mx-auto leading-relaxed">
                 Have a question that's not answered here?
                 <Link href="/consultation" className="text-rose-wax-red hover:underline ml-1">
-                  Book a consultation call
+                  Let's talk
                 </Link>
-                {' '}and let's chat.
+                {' '}and we'll figure it out together.
               </p>
             </motion.div>
           </div>
@@ -252,7 +252,7 @@ export default function FAQPage() {
               href="/consultation"
               className="inline-flex items-center gap-3 px-10 py-4 bg-rose-wax-red text-white font-semibold rounded-full hover:bg-rose-wax-red/90 hover:shadow-xl transition-all duration-300 hover:scale-105 uppercase tracking-wider text-sm"
             >
-              <span>Book Your Consultation</span>
+              <span>Let's Talk</span>
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>

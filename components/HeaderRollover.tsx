@@ -323,7 +323,7 @@ export default function HeaderRollover({ settled = false, hideCta = false }: { s
               onClick={() => setMobileOpen(false)}
               className="block px-10 py-4 bg-stone-800 text-white text-xs font-bold tracking-[0.25em] uppercase hover:bg-rose-wax-red transition-colors rounded-full text-center"
             >
-              Book Consultation
+              Let's Talk
             </a>
           </div>
         </div>
