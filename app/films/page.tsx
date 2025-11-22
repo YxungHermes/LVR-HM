@@ -349,10 +349,8 @@ export default function FilmsPage() {
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               {[
                 { label: 'All Films', value: 'all' },
-                { label: 'Elopements', value: 'elopement' },
                 { label: 'Wedding Day', value: 'wedding-day' },
                 { label: 'Destination', value: 'destination' },
-                { label: 'Couples', value: 'couples' },
               ].map((filter) => (
                 <button
                   key={filter.value}
