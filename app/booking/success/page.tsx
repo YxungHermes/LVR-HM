@@ -130,7 +130,7 @@ export default function BookingSuccessPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-rose-wax-red">•</span>
-                    <span>You can reach me anytime at consultation@yourdomain.com</span>
+                    <span>You can reach me anytime at contact@violetarose.com</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-rose-wax-red">•</span>
