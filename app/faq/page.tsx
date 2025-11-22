@@ -52,12 +52,16 @@ export default function FAQPage() {
       category: "Deliverables & Timeline",
       faqs: [
         {
-          question: "When will I receive my wedding film?",
-          answer: "You'll receive a teaser film (60-90 seconds) within 2-3 weeks—perfect for sharing while the excitement is fresh. Your full highlight film arrives in 6-8 weeks, and if you've booked a feature film, that's delivered in 10-12 weeks. Rush delivery is available for an additional fee."
+          question: "What films are included in my package?",
+          answer: "All packages include a cinematic highlight film (5-8 minutes) and a teaser film (60-90 seconds). The highlight film captures the best moments of your day set to music. Longer formats like feature films (20-40 minutes with full speeches and ceremony) or full ceremony edits are available as add-ons or in premium packages."
         },
         {
-          question: "What's the difference between a highlight film and a feature film?",
-          answer: "A highlight film (5-8 minutes) captures the best moments of your day set to music—ceremony, vows, key events, and emotions. A feature film (20-40 minutes) is a more comprehensive edit that includes full speeches, extended ceremony footage, and a complete narrative of your day."
+          question: "When will I receive my wedding film?",
+          answer: "You'll receive your teaser film (60-90 seconds) within 2-3 weeks—perfect for sharing while the excitement is fresh. Your highlight film arrives in 6-8 weeks. If you've booked a feature film or ceremony edit, those are delivered in 10-12 weeks. Rush delivery is available for an additional fee."
+        },
+        {
+          question: "What's the difference between a highlight film, feature film, and ceremony edit?",
+          answer: "A highlight film (5-8 minutes) is the cinematic storytelling piece—best moments set to music, vows, key emotions, and events. A feature film (20-40 minutes) includes full speeches, extended ceremony footage, getting ready, and a complete narrative of your day. A ceremony edit is the full, uncut ceremony from processional to recessional. Most couples book the highlight film as their main deliverable."
         },
         {
           question: "How will I receive my final films?",
