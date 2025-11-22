@@ -23,7 +23,7 @@ export default function FAQPage() {
         },
         {
           question: "Do you offer payment plans?",
-          answer: "Yes. A 30% deposit secures your date, and the remaining 70% balance is due 2 weeks before your wedding. For larger packages, we can arrange a custom payment schedule. Just ask during your consultation."
+          answer: "Yes. A 30% retainer secures your date, and the remaining 70% balance is due 2 weeks before your wedding. For larger packages, we can arrange a custom payment schedule. Just ask during your consultation."
         },
         {
           question: "Are there any hidden fees?",
@@ -87,7 +87,7 @@ export default function FAQPage() {
       faqs: [
         {
           question: "What's the booking process?",
-          answer: "First, book a consultation call where we'll discuss your vision, timeline, and needs. Then I'll send a custom proposal with pricing and deliverables. Once you approve, a 30% deposit and signed contract secures your date. Simple and stress-free."
+          answer: "First, book a consultation call where we'll discuss your vision, timeline, and needs. Then I'll send a custom proposal with pricing and deliverables. Once you approve, a 30% retainer and signed contract secures your date. Simple and stress-free."
         },
         {
           question: "Do you require a shot list?",
@@ -99,7 +99,7 @@ export default function FAQPage() {
         },
         {
           question: "What if we need to reschedule our wedding?",
-          answer: "Life happens. If you need to reschedule, we'll work together to find a new date that works for both of us. Your deposit transfers to the new date. Full details are in the contract."
+          answer: "We understand plans change. If you need to reschedule and I have availability on your new date, your retainer can be applied as a credit toward the final balance. However, a new retainer is required to secure the new date. All reschedule terms are outlined in your contract."
         }
       ]
     },
