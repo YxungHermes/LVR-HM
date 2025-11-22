@@ -109,6 +109,17 @@ export const signatureWork = [
     vimeoId: "1137492115",
     description: "A joyful venue celebration with energy, emotion, and unforgettable moments.",
     collection: "wedding-day"
+  },
+  {
+    title: "Ari & Billy",
+    subtitle: "Brooklyn, New York",
+    location: "Brooklyn, New York",
+    date: "2024",
+    style: "Urban & Cinematic",
+    tradition: "Western",
+    vimeoId: "1058318297",
+    description: "A vibrant Brooklyn celebration at Box House capturing urban elegance and authentic love.",
+    collection: "wedding-day"
   }
 ];
 
@@ -247,9 +258,9 @@ export const navigation: Navigation = {
           {
             title: "Latest Films",
             links: [
-              { label: "Selene & Isidro", href: "/films", subtitle: "Utah" },
               { label: "Courtney & Sterling", href: "/films", subtitle: "Connecticut" },
-              { label: "Brianna & Steven", href: "/films", subtitle: "New Jersey" }
+              { label: "Selene & Isidro", href: "/films", subtitle: "Utah" },
+              { label: "Ari & Billy", href: "/films", subtitle: "Brooklyn, NY" }
             ]
           },
           {
