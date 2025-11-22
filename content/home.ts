@@ -61,7 +61,6 @@ export const signatureWork = [
     location: "Majorca, Spain",
     date: "2023",
     style: "Romantic & Cinematic",
-    tradition: "Destination",
     vimeoId: "859109463",
     description: "A stunning Mediterranean destination wedding trailer from the beautiful island of Majorca.",
     collection: "destination"
@@ -72,7 +71,6 @@ export const signatureWork = [
     location: "Utah",
     date: "2024",
     style: "Cinematic & Artistic",
-    tradition: "Western",
     vimeoId: "1057949189",
     description: "A breathtaking mountain celebration filled with genuine emotion and timeless moments.",
     collection: "destination"
@@ -83,7 +81,6 @@ export const signatureWork = [
     location: "Connecticut",
     date: "2025",
     style: "Romantic & Timeless",
-    tradition: "Western",
     vimeoId: "1137483566",
     description: "An elegant New England venue wedding capturing beauty and heartfelt vows.",
     collection: "wedding-day"
@@ -94,7 +91,6 @@ export const signatureWork = [
     location: "New Jersey",
     date: "2023",
     style: "Documentary Style",
-    tradition: "Western",
     vimeoId: "1137492115",
     description: "A joyful venue celebration with energy, emotion, and unforgettable moments.",
     collection: "wedding-day"
@@ -105,7 +101,6 @@ export const signatureWork = [
     location: "Long Island, New York",
     date: "2023",
     style: "Cinematic & Intimate",
-    tradition: "Western",
     vimeoId: "1139491105",
     description: "An intimate Long Island venue celebration captured with heart and artistry.",
     collection: "wedding-day"
@@ -116,7 +111,6 @@ export const signatureWork = [
     location: "Brooklyn, New York",
     date: "2024",
     style: "Urban & Cinematic",
-    tradition: "Western",
     vimeoId: "1058318297",
     description: "A vibrant Brooklyn celebration at Box House capturing urban elegance and authentic love.",
     collection: "wedding-day"
@@ -188,36 +182,28 @@ export const packages = [
 
 export const testimonials = [
   {
-    quote: "From the moment we met, we knew this wasn't just a videographer - this was someone who truly understood our story. The film captured emotions we didn't even know existed. Our families still cry watching it.",
-    couple: "Sarah & Michael",
-    location: "Napa Valley, CA",
-    date: "June 2024",
-    tradition: "Multicultural",
-    image: "/testimonials/couple-1.jpg" // Placeholder - add actual image path
+    quote: "Wow. Just... wow. The film brings us right back to that day so clearly. We keep discovering moments we didn't even know happened. It's like reliving the entire celebration all over again...WOW",
+    couple: "Selene & Isidro",
+    location: "Utah",
+    date: "2024",
+    tradition: "Western",
+    vimeoId: "1057949189"
   },
   {
-    quote: "Our three-day Hindu wedding was so complex, but every ritual, every emotion, every detail was captured beautifully. The Baraat, the Saat Phere, the Bidaai - watching our film feels like reliving the most magical weekend of our lives.",
-    couple: "Priya & Raj",
-    location: "San Francisco, CA",
-    date: "August 2024",
-    tradition: "Hindu",
-    image: "/testimonials/couple-2.jpg"
+    quote: "We loved the video. It was absolutely beautiful and captured everything we could have hoped for.",
+    couple: "Brianna & Steven",
+    location: "New Jersey",
+    date: "2023",
+    tradition: "Western",
+    vimeoId: "1137492115"
   },
   {
-    quote: "The Pyebaek ceremony was so important to us, and it was filmed with such respect and artistry. Our parents were moved to tears watching the final film. This is more than a wedding video - it's a family heirloom.",
-    couple: "David & Jonathan",
-    location: "Los Angeles, CA",
-    date: "October 2024",
-    tradition: "Korean",
-    image: "/testimonials/couple-3.jpg"
-  },
-  {
-    quote: "We wanted something cinematic and timeless, and that's exactly what we got. The way our vows were captured, the golden hour shots, the reception energy - it all feels like a movie we never want to end.",
-    couple: "Emma & James",
-    location: "Big Sur, CA",
-    date: "May 2024",
-    tradition: "Catholic",
-    image: "/testimonials/couple-4.jpg"
+    quote: "Yooo this is fire man! I knew you could do it. The way you captured our day exceeded all our expectations.",
+    couple: "Robert & Tishula",
+    location: "Long Island, New York",
+    date: "2023",
+    tradition: "Western",
+    vimeoId: "1139491105"
   }
 ];
 

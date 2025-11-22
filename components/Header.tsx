@@ -10,39 +10,44 @@ interface RolloverLinkProps {
   item: NavItem;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  isScrolled?: boolean;
 }
 
-const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouseLeave }) => {
+const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouseLeave, isScrolled = false }) => {
   const pathname = usePathname();
   const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
 
   return (
     <a
       href={item.href}
-      className="relative group h-5 overflow-hidden px-6 block"
+      className={`relative group overflow-hidden px-6 block transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isScrolled ? 'h-5' : 'h-6'}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-[20px]">
+      <div className={`flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isScrolled ? 'group-hover:-translate-y-[20px]' : 'group-hover:-translate-y-[24px]'}`}>
         {/* Idle State */}
         <span className={`
-          block h-[20px] flex items-center justify-center
-          text-[10px] font-medium tracking-[0.2em] uppercase
+          flex items-center justify-center
+          font-medium tracking-[0.2em] uppercase
+          transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+          ${isScrolled ? 'h-[20px] text-[10px]' : 'h-[24px] text-[12px]'}
           ${isActive ? 'text-rose-wax-red' : 'text-stone-800'}
         `}>
           {item.label}
           {item.megaMenu && (
-            <svg className="inline w-2.5 h-2.5 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className={`inline ml-1 opacity-50 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isScrolled ? 'w-2.5 h-2.5' : 'w-3 h-3'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
             </svg>
           )}
         </span>
 
         {/* Hover State */}
-        <span className="
-          block h-[20px] flex items-center justify-center
-          font-serif text-lg italic text-rose-wax-red whitespace-nowrap
-        ">
+        <span className={`
+          flex items-center justify-center
+          font-serif italic text-rose-wax-red whitespace-nowrap
+          transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+          ${isScrolled ? 'h-[20px] text-lg' : 'h-[24px] text-xl'}
+        `}>
           {item.label.toLowerCase()}
         </span>
       </div>
@@ -54,7 +59,6 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
   const [isScrolled, setIsScrolled] = useState(settled);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
 
@@ -82,7 +86,6 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
 
           setIsScrolled(scrollY > 50 || settled);
-          setShowScrollTop(scrollY > 400);
           ticking = false;
         });
         ticking = true;
@@ -156,15 +159,6 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
     }, 150);
   };
 
-  const scrollToTop = () => {
-    const mainContainer = document.querySelector('.overflow-y-auto');
-    if (mainContainer) {
-      mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   return (
     <>
       {/* Scroll Progress Bar */}
@@ -197,8 +191,8 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             relative flex items-center justify-between
             backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
-              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/75 border-white/50 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
-              : 'w-[95%] max-w-7xl rounded-3xl py-5 px-10 bg-white/70 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
+              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/75 border-white/50 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_50px_rgba(244,105,126,0.14)]'
+              : 'w-[95%] max-w-7xl rounded-3xl py-5 px-10 bg-white/70 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_80px_rgba(244,105,126,0.12)]'
             }
           `}
           style={{
@@ -230,6 +224,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <RolloverLink
                 key={item.label}
                 item={item}
+                isScrolled={isScrolled}
                 onMouseEnter={() => handleNavItemEnter(item.label, !!item.megaMenu)}
                 onMouseLeave={handleNavItemLeave}
               />
@@ -238,6 +233,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <RolloverLink
                 key={item.label}
                 item={item}
+                isScrolled={isScrolled}
                 onMouseEnter={() => handleNavItemEnter(item.label, !!item.megaMenu)}
                 onMouseLeave={handleNavItemLeave}
               />
@@ -265,12 +261,12 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                 href="/consultation"
                 className={`
                   rounded-full bg-stone-800 text-white
-                  text-[9px] font-bold tracking-[0.25em] uppercase
+                  text-[10px] font-bold tracking-[0.25em] uppercase
                   transition-all duration-500 hover:bg-rose-wax-red hover:shadow-lg hover:-translate-y-0.5
-                  ${isScrolled ? 'px-6 py-2' : 'px-8 py-3'}
+                  ${isScrolled ? 'px-7 py-2.5 mr-2' : 'px-9 py-3.5 mr-3'}
                 `}
               >
-                {isScrolled ? 'Book' : 'Book Consultation'}
+                {isScrolled ? 'Talk' : "Let's Talk"}
               </a>
             )}
           </div>
@@ -521,31 +517,11 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                   {/* Rose Glow on Hover */}
                   <div className="absolute inset-0 bg-rose-wax-red opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <span className="relative">Book Consultation</span>
+                  <span className="relative">Let's Talk</span>
                 </a>
               </motion.div>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* Scroll to Top */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-rose-wax-red text-white shadow-lg hover:shadow-xl hover:scale-110 focus:outline-none focus:ring-2 focus:ring-rose-wax-red/50 transition-all duration-200"
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Scroll to top"
-          >
-            <svg className="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-          </motion.button>
         )}
       </AnimatePresence>
     </>

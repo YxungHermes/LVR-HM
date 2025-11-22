@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 import { navigation, socialLinks } from "@/content/home";
 
 export default function Footer() {
@@ -22,12 +23,6 @@ export default function Footer() {
     }, 1000);
   };
 
-  // const stats = [
-  //   { label: "Weddings Filmed", value: "150+" }, // Update to your actual number
-  //   { label: "Countries", value: "25+" }, // Update to your actual number
-  //   { label: "Five-Star Reviews", value: "100%" }, // Update to your actual percentage
-  // ];
-
   return (
     <footer className="relative bg-gradient-to-b from-cream via-warm-sand/20 to-warm-sand/40 overflow-hidden">
       {/* Subtle texture overlay */}
@@ -36,37 +31,6 @@ export default function Footer() {
       />
 
       <div className="relative">
-        {/* Stats Bar - Temporarily disabled */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="border-b border-coffee/10 px-6 py-12"
-        >
-          <div className="mx-auto max-w-7xl">
-            <div className="grid grid-cols-3 gap-4 md:gap-8">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="text-center"
-                >
-                  <div className="font-serif text-3xl md:text-5xl font-bold text-rose-wax-red mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs md:text-sm text-coffee uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div> */}
-
         {/* Newsletter Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -116,9 +80,9 @@ export default function Footer() {
         </motion.div>
 
         {/* Main Footer Content */}
-        <div className="px-6 py-16">
+        <div className="px-6 py-16 md:py-20">
           <div className="mx-auto max-w-7xl">
-            <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
               {/* Brand Column */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -127,8 +91,9 @@ export default function Footer() {
                 transition={{ duration: 0.5 }}
                 className="lg:col-span-2"
               >
+                {/* Logo */}
                 <a href="/" className="inline-block group focus-ring rounded mb-6">
-                  <h3 className="font-serif text-3xl font-bold text-ink group-hover:text-rose-wax-red transition-colors">
+                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink group-hover:text-rose-wax-red transition-colors">
                     Love, Violeta Rose
                   </h3>
                 </a>
@@ -138,23 +103,76 @@ export default function Footer() {
                 </p>
 
                 <p className="text-sm text-coffee mb-8 flex items-center gap-2">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   Based in New York City • Traveling Worldwide
                 </p>
 
+                {/* Team Section */}
+                <div className="mb-8">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-coffee mb-4">
+                    Meet The Team
+                  </h4>
+                  <div className="space-y-4">
+                    {/* Caitlyn Gaurano - Founder & Lead Photographer */}
+                    <div className="flex items-center gap-4">
+                      <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
+                        <Image
+                          src="/media/caitlyn-gaurano.jpg"
+                          alt="Caitlyn Gaurano"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          style={{
+                            objectPosition: '50% 50%'
+                          }}
+                          sizes="64px"
+                        />
+                      </a>
+                      <div>
+                        <a href="/about" className="block font-medium text-ink hover:text-rose-wax-red transition-colors">
+                          Caitlyn Gaurano
+                        </a>
+                        <p className="text-sm text-coffee">Founder & Lead Photographer</p>
+                      </div>
+                    </div>
+
+                    {/* Michael Andrade - Lead Filmmaker */}
+                    <div className="flex items-center gap-4">
+                      <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
+                        <Image
+                          src="/media/michael-andrade.jpg"
+                          alt="Michael Andrade"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          style={{
+                            objectPosition: '50% 15%'
+                          }}
+                          sizes="64px"
+                        />
+                      </a>
+                      <div>
+                        <a href="/about" className="block font-medium text-ink hover:text-rose-wax-red transition-colors">
+                          Michael Andrade
+                        </a>
+                        <p className="text-sm text-coffee">Lead Filmmaker</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Contact Button */}
                 <div>
                   <a
-                    href="mailto:Michael.a@lovevioletarose.com"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-coffee/20 rounded-full text-ink font-medium hover:border-rose-wax-red hover:text-rose-wax-red transition-all hover:scale-105 focus-ring"
+                    href="mailto:contact@michael-andrade.com"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-coffee/20 rounded-full text-ink font-medium hover:border-rose-wax-red hover:text-rose-wax-red transition-all hover:scale-105 focus-ring text-sm"
                   >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    Michael.a@lovevioletarose.com
+                    <span className="hidden sm:inline">contact@michael-andrade.com</span>
+                    <span className="sm:hidden">Email Us</span>
                   </a>
                 </div>
               </motion.div>
@@ -170,7 +188,7 @@ export default function Footer() {
                   Explore
                 </h4>
                 <nav className="space-y-3">
-                  {[...navigation.left, ...navigation.right].map((item) => (
+                  {[...navigation.left, ...navigation.right].filter(item => !item.isCta).map((item) => (
                     <a
                       key={item.label}
                       href={item.href}
@@ -184,6 +202,64 @@ export default function Footer() {
                       </span>
                     </a>
                   ))}
+                </nav>
+              </motion.div>
+
+              {/* Resources Column */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+              >
+                <h4 className="mb-6 text-sm font-bold uppercase tracking-wider text-coffee">
+                  Resources
+                </h4>
+                <nav className="space-y-3">
+                  <a
+                    href="/journal"
+                    className="block text-espresso hover:text-rose-wax-red transition-colors focus-ring rounded group"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      Journal
+                      <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </a>
+                  <a
+                    href="/faq"
+                    className="block text-espresso hover:text-rose-wax-red transition-colors focus-ring rounded group"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      FAQ
+                      <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </a>
+                  <a
+                    href="/films"
+                    className="block text-espresso hover:text-rose-wax-red transition-colors focus-ring rounded group"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      Portfolio
+                      <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </a>
+                  <a
+                    href="/offerings"
+                    className="block text-espresso hover:text-rose-wax-red transition-colors focus-ring rounded group"
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      Pricing
+                      <svg className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </a>
                 </nav>
               </motion.div>
 
@@ -206,7 +282,7 @@ export default function Footer() {
                       rel="noopener noreferrer"
                       className="flex items-center gap-3 text-espresso hover:text-rose-wax-red transition-all group focus-ring rounded"
                     >
-                      <div className="w-10 h-10 rounded-full bg-white border border-coffee/20 flex items-center justify-center group-hover:border-rose-wax-red group-hover:scale-110 transition-all">
+                      <div className="w-10 h-10 rounded-full bg-white border border-coffee/20 flex items-center justify-center group-hover:border-rose-wax-red group-hover:scale-110 transition-all flex-shrink-0">
                         {link.platform === "Instagram" && (
                           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -228,7 +304,7 @@ export default function Footer() {
                   href="/consultation"
                   className="block text-center px-6 py-4 bg-rose-wax-red text-white rounded-full font-semibold hover:bg-rose-wax-red/90 transition-all hover:scale-105 shadow-lg hover:shadow-xl focus-ring"
                 >
-                  Start Your Journey
+                  Let's Talk
                 </a>
               </motion.div>
             </div>
@@ -261,22 +337,27 @@ export default function Footer() {
                 <a href="/sitemap.xml" className="hover:text-rose-wax-red transition-colors focus-ring rounded">
                   Sitemap
                 </a>
+                <span className="text-coffee/30">•</span>
+                <span className="text-espresso/50 text-xs">
+                  Website by <a href="/about" className="hover:text-rose-wax-red transition-colors focus-ring rounded">Michael Andrade</a>
+                </span>
               </div>
             </div>
           </div>
         </motion.div>
       </div>
 
-      {/* Back to Top Button */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-rose-wax-red text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-[transform,shadow] duration-200 ease-out focus-ring z-50 flex items-center justify-center group"
-        aria-label="Back to top"
+      {/* Floating Let's Talk Button */}
+      <a
+        href="/consultation"
+        className="fixed bottom-8 right-8 bg-rose-wax-red text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-out focus-ring z-50 flex items-center gap-3 px-6 py-4 group font-semibold"
+        aria-label="Let's talk about your wedding"
       >
-        <svg className="w-6 h-6 group-hover:-translate-y-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        <svg className="w-5 h-5 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
-      </button>
+        <span className="text-sm uppercase tracking-wider">Let's Talk</span>
+      </a>
     </footer>
   );
 }

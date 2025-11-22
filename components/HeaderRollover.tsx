@@ -55,7 +55,6 @@ export default function HeaderRollover({ settled = false, hideCta = false }: { s
   const [isScrolled, setIsScrolled] = useState(settled);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
   const closeTimeoutRef = useRef<NodeJS.Timeout>();
   const openTimeoutRef = useRef<NodeJS.Timeout>();
 
@@ -79,7 +78,6 @@ export default function HeaderRollover({ settled = false, hideCta = false }: { s
       const scrollY = mainContainer ? mainContainer.scrollTop : window.scrollY;
 
       setIsScrolled(scrollY > 50 || settled);
-      setShowScrollTop(scrollY > 400);
     };
 
     handleScroll();
@@ -118,15 +116,6 @@ export default function HeaderRollover({ settled = false, hideCta = false }: { s
   const handleMegaMenuEnter = () => {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
-  };
-
-  const scrollToTop = () => {
-    const mainContainer = document.querySelector('.overflow-y-auto');
-    if (mainContainer) {
-      mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
   };
 
   return (
@@ -334,31 +323,11 @@ export default function HeaderRollover({ settled = false, hideCta = false }: { s
               onClick={() => setMobileOpen(false)}
               className="block px-10 py-4 bg-stone-800 text-white text-xs font-bold tracking-[0.25em] uppercase hover:bg-rose-wax-red transition-colors rounded-full text-center"
             >
-              Book Consultation
+              Let's Talk
             </a>
           </div>
         </div>
       </div>
-
-      {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {showScrollTop && (
-          <motion.button
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-rose-wax-red text-white shadow-lg hover:shadow-xl hover:scale-110 focus:outline-none focus:ring-2 focus:ring-rose-wax-red/50 transition-all duration-200"
-            initial={{ opacity: 0, scale: 0.8, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Scroll to top"
-          >
-            <svg className="w-5 h-5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-            </svg>
-          </motion.button>
-        )}
-      </AnimatePresence>
     </>
   );
 }

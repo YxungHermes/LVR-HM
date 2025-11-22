@@ -97,7 +97,7 @@ export const pricingOverview = [
     startingFrom: "$750",
     range: "$750 — $2,000",
     forWho: "For relationships worth documenting at any milestone",
-    tagline: "Love documented, ceremony optional",
+    tagline: "The moment everything changes",
     description:
       "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
     highlights: [
@@ -115,6 +115,7 @@ export const pricingPages = {
   elopements: {
     title: "Elopements & Intimate Gatherings",
     seoTitle: "Elopement Wedding Films | Weddings by Michael Andrade",
+    seoDescription: "Cinematic wedding films for intimate ceremonies & elopements in NYC. From rooftop vows to courthouse celebrations. Starting at $2,200.",
     heroImage: "/collections/elopements.jpg",
     vimeoId: "1139445343",
     introHeading: "For the couples choosing presence over spectacle.",
@@ -145,6 +146,7 @@ export const pricingPages = {
   "wedding-day-films": {
     title: "Wedding Day Films",
     seoTitle: "Wedding Day Film Collections | Weddings by Michael Andrade",
+    seoDescription: "Full wedding day cinematography in NYC. From getting ready to last dance, we craft films that feel like you. Starting at $3,500.",
     heroImage: "/collections/wedding-day.jpg",
     vimeoId: "1139429379",
     introHeading: "A complete, cinematic record of the day you built.",
@@ -176,6 +178,7 @@ export const pricingPages = {
   "destination-weddings": {
     title: "Destination Wedding Films",
     seoTitle: "Destination Wedding Videography | Weddings by Michael Andrade",
+    seoDescription: "Destination wedding films from NYC to worldwide. Multi-day coverage, location scouting, travel included. Starting at $5,500 + travel.",
     heroImage: "/collections/destination.jpg",
     vimeoId: "1137400003",
     introHeading: "For celebrations that live across borders and timelines.",
@@ -206,6 +209,7 @@ export const pricingPages = {
   "couples-films": {
     title: "Couples Films",
     seoTitle: "Couples Films & Love Story Sessions | Love Stories by Michael Andrade",
+    seoDescription: "Cinematic couples films for anniversaries, engagements, proposals, or just because. No wedding required. NYC sessions starting at $750.",
     heroImage: "/collections/adventure.jpg",
     vimeoId: "1139450155",
     introHeading: "Your relationship deserves more than iPhone footage.",

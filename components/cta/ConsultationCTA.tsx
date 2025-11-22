@@ -41,13 +41,13 @@ export default function ConsultationCTA({
       <div className="mt-6">
         <Link
           href="/consultation"
-          onClick={() => trackCTAClick(pathname || 'unknown', 'Book Your Consultation', '/consultation')}
+          onClick={() => trackCTAClick(pathname || 'unknown', "Let's Talk", '/consultation')}
           className="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-medium
                      bg-[#A14C41] text-white hover:opacity-90 transition focus:outline-none focus-visible:ring-2
                      focus-visible:ring-offset-2 focus-visible:ring-[#A14C41]"
-          aria-label="Book your consultation"
+          aria-label="Let's talk about your wedding"
         >
-          Book Your Consultation
+          Let's Talk
           <span aria-hidden="true" className="ml-2">
             →
           </span>

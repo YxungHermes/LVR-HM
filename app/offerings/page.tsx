@@ -61,7 +61,7 @@ export default function PricingPage() {
                 <motion.div
                   key={collection.slug}
                   id={collection.slug}
-                  className="group bg-white border-2 border-coffee/10 rounded-lg overflow-hidden scroll-mt-24 transition-all duration-500 hover:border-rose-wax-red/30 hover:shadow-2xl"
+                  className="group bg-white border-2 border-coffee/10 rounded-lg scroll-mt-24 transition-all duration-500 hover:border-rose-wax-red/30 hover:shadow-2xl"
                   style={{
                     boxShadow: 'inset 0 1px 4px rgba(0,0,0,0.05)'
                   }}
@@ -71,7 +71,7 @@ export default function PricingPage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   {/* Collection Image/Video - Fixed aspect ratio */}
-                  <div className="relative w-full aspect-[16/10] overflow-hidden bg-black">
+                  <div className="relative w-full aspect-[16/10] bg-black overflow-hidden rounded-t-lg">
                     {collection.vimeoId ? (
                       <div className="absolute inset-0 w-full h-full overflow-hidden">
                         <iframe
@@ -107,11 +107,28 @@ export default function PricingPage() {
 
                         {/* Most Popular Badge - Top Center (with floating crown) */}
                         {collection.popular && (
-                          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+                          <div className="absolute top-4 left-1/2 -translate-x-1/2 z-50">
                             <div className="relative">
-                              {/* Floating Crown */}
-                              <div className="absolute -top-3 left-1/2 -translate-x-1/2 text-xl animate-float">
-                                👑
+                              {/* Floating Crown - Custom SVG */}
+                              <div className="absolute -top-11 left-1/2 -translate-x-1/2 animate-float z-50">
+                                <svg
+                                  className="w-7 h-7 drop-shadow-lg"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  {/* Crown with elegant, refined design */}
+                                  <path
+                                    d="M3 18h18v2H3v-2zm1.5-12L7 9l5-6 5 6 2.5-3L19 18H5l-.5-12z"
+                                    fill="#A14C41"
+                                    stroke="#FAF7F2"
+                                    strokeWidth="0.5"
+                                  />
+                                  {/* Crown jewels - small accent dots */}
+                                  <circle cx="12" cy="7" r="1.2" fill="#FAF7F2" opacity="0.9" />
+                                  <circle cx="8" cy="10" r="0.8" fill="#FAF7F2" opacity="0.8" />
+                                  <circle cx="16" cy="10" r="0.8" fill="#FAF7F2" opacity="0.8" />
+                                </svg>
                               </div>
                               {/* Badge */}
                               <div className="px-4 py-2 rounded-full bg-rose-wax-red text-white backdrop-blur-sm border border-rose-wax-red/20 shadow-lg">

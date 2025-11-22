@@ -349,10 +349,8 @@ export default function FilmsPage() {
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               {[
                 { label: 'All Films', value: 'all' },
-                { label: 'Elopements', value: 'elopement' },
                 { label: 'Wedding Day', value: 'wedding-day' },
                 { label: 'Destination', value: 'destination' },
-                { label: 'Couples', value: 'couples' },
               ].map((filter) => (
                 <button
                   key={filter.value}
@@ -370,54 +368,54 @@ export default function FilmsPage() {
 
             {/* Filtered Grid */}
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {filteredFilms.map((film, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group"
-                >
-                  {/* Film Card */}
-                  <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black mb-4 cursor-pointer">
-                    <iframe
-                      src={`https://player.vimeo.com/video/${film.vimeoId}?background=1&autoplay=0&loop=1&byline=0&title=0&muted=1`}
-                      className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-500"
-                      frameBorder="0"
-                      allow="autoplay; fullscreen; picture-in-picture"
-                      title={film.title}
-                    />
+              {filteredFilms.map((film, index) => {
+                const filmSlug = film.title.toLowerCase().replace(/\s+&\s+/g, '-').replace(/\s+/g, '-');
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="group"
+                  >
+                    {/* Film Card */}
+                    <Link href={`/films/${filmSlug}`}>
+                      <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black mb-4 cursor-pointer">
+                        <iframe
+                          src={`https://player.vimeo.com/video/${film.vimeoId}?background=1&autoplay=0&loop=1&byline=0&title=0&muted=1`}
+                          className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-500"
+                          frameBorder="0"
+                          allow="autoplay; fullscreen; picture-in-picture"
+                          title={film.title}
+                        />
 
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <a
-                          href={`https://player.vimeo.com/video/${film.vimeoId}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-white text-ink rounded-full p-4 transform scale-90 group-hover:scale-100 transition-transform duration-300"
-                        >
-                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                          </svg>
-                        </a>
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="bg-white text-ink rounded-full p-4 transform scale-90 group-hover:scale-100 transition-transform duration-300">
+                              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Film Info */}
-                  <h4 className="font-serif text-2xl font-bold text-ink mb-2 group-hover:text-rose-wax-red transition-colors">
-                    {film.title}
-                  </h4>
-                  <p className="text-sm text-espresso/70 mb-2">{film.description}</p>
-                  <div className="flex items-center gap-3 text-sm text-espresso/60">
-                    {film.location && <span>{film.location}</span>}
-                    {film.date && <span>• {film.date}</span>}
-                  </div>
-                </motion.div>
-              ))}
+                      {/* Film Info */}
+                      <h4 className="font-serif text-2xl font-bold text-ink mb-2 group-hover:text-rose-wax-red transition-colors">
+                        {film.title}
+                      </h4>
+                      <p className="text-sm text-espresso/70 mb-2">{film.description}</p>
+                      <div className="flex items-center gap-3 text-sm text-espresso/60">
+                        {film.location && <span>{film.location}</span>}
+                        {film.date && <span>• {film.date}</span>}
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </section>
