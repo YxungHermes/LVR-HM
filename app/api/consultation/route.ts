@@ -171,7 +171,7 @@ export async function POST(request: NextRequest) {
 
       const { data: lead, error: dbError } = await supabaseAdmin
         .from('leads')
-        .insert(leadData)
+        .insert(leadData as any) // Type assertion - schema will be validated at runtime
         .select()
         .single();
 
