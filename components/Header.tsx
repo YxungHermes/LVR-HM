@@ -10,39 +10,42 @@ interface RolloverLinkProps {
   item: NavItem;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  isScrolled?: boolean;
 }
 
-const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouseLeave }) => {
+const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouseLeave, isScrolled = false }) => {
   const pathname = usePathname();
   const isActive = item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
 
   return (
     <a
       href={item.href}
-      className="relative group h-5 overflow-hidden px-6 block"
+      className={`relative group overflow-hidden px-6 block ${isScrolled ? 'h-5' : 'h-6'}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <div className="flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-[20px]">
+      <div className={`flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${isScrolled ? 'group-hover:-translate-y-[20px]' : 'group-hover:-translate-y-[24px]'}`}>
         {/* Idle State */}
         <span className={`
-          block h-[20px] flex items-center justify-center
-          text-[10px] font-medium tracking-[0.2em] uppercase
+          flex items-center justify-center
+          font-medium tracking-[0.2em] uppercase
+          ${isScrolled ? 'h-[20px] text-[10px]' : 'h-[24px] text-[12px]'}
           ${isActive ? 'text-rose-wax-red' : 'text-stone-800'}
         `}>
           {item.label}
           {item.megaMenu && (
-            <svg className="inline w-2.5 h-2.5 ml-1 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className={`inline ml-1 opacity-50 ${isScrolled ? 'w-2.5 h-2.5' : 'w-3 h-3'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
             </svg>
           )}
         </span>
 
         {/* Hover State */}
-        <span className="
-          block h-[20px] flex items-center justify-center
-          font-serif text-lg italic text-rose-wax-red whitespace-nowrap
-        ">
+        <span className={`
+          flex items-center justify-center
+          font-serif italic text-rose-wax-red whitespace-nowrap
+          ${isScrolled ? 'h-[20px] text-lg' : 'h-[24px] text-xl'}
+        `}>
           {item.label.toLowerCase()}
         </span>
       </div>
@@ -230,6 +233,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <RolloverLink
                 key={item.label}
                 item={item}
+                isScrolled={isScrolled}
                 onMouseEnter={() => handleNavItemEnter(item.label, !!item.megaMenu)}
                 onMouseLeave={handleNavItemLeave}
               />
@@ -238,6 +242,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <RolloverLink
                 key={item.label}
                 item={item}
+                isScrolled={isScrolled}
                 onMouseEnter={() => handleNavItemEnter(item.label, !!item.megaMenu)}
                 onMouseLeave={handleNavItemLeave}
               />
