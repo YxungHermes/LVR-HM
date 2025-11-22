@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +11,7 @@ import Roadmap from "@/components/Roadmap";
 
 
 export default function PricingPage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   return (
     <>
       <Header settled logoAbove />
@@ -242,6 +244,103 @@ export default function PricingPage() {
                       </svg>
                     </div>
                   </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="px-6 py-20 bg-white">
+          <div className="mx-auto max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12"
+            >
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+                <h2 className="text-sm uppercase tracking-[0.3em] text-espresso/70 font-semibold">Common Questions</h2>
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+              </div>
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-ink">
+                Answers to Help You Decide
+              </h3>
+            </motion.div>
+
+            <div className="space-y-4">
+              {[
+                {
+                  question: "Can I add extra hours to my package?",
+                  answer: "Absolutely. Most packages include a set number of hours, but you can add additional coverage in hourly increments. During our consultation call, we'll build a custom proposal based on your timeline and needs."
+                },
+                {
+                  question: "What if my wedding day runs over the scheduled time?",
+                  answer: "No stress. If your day runs a bit long, we'll stay to capture the key moments. Significant overages (beyond 30 minutes) are billed at the hourly rate discussed in your contract, but we always prioritize capturing your full story."
+                },
+                {
+                  question: "Do you travel for weddings? Is travel included?",
+                  answer: "Yes, I travel anywhere for weddings! For local weddings within 50 miles of New York City, travel is included. For destination weddings or locations beyond 50 miles, travel costs (flights, accommodations, ground transport) are added to your package. I provide a detailed breakdown during your custom proposal."
+                },
+                {
+                  question: "When will I receive my wedding film?",
+                  answer: "You'll receive a teaser film (60-90 seconds) within 2-3 weeks—perfect for sharing while the excitement is fresh. Your full highlight film arrives in 6-8 weeks, and if you've booked a feature film, that's delivered in 10-12 weeks. Rush delivery is available for an additional fee."
+                },
+                {
+                  question: "What's the difference between a highlight film and a feature film?",
+                  answer: "A highlight film (5-8 minutes) captures the best moments of your day set to music—ceremony, vows, key events, and emotions. A feature film (20-40 minutes) is a more comprehensive edit that includes full speeches, extended ceremony footage, and a complete narrative of your day."
+                },
+                {
+                  question: "Do you offer payment plans?",
+                  answer: "Yes. A 30% deposit secures your date, and the remaining 70% balance is due 2 weeks before your wedding. For larger packages, we can arrange a custom payment schedule. Just ask during your consultation."
+                },
+                {
+                  question: "Can I choose the music for my film?",
+                  answer: "You're welcome to share song preferences or meaningful tracks, and I'll do my best to incorporate them (pending licensing availability). Most couples trust me to select music that matches the tone and emotion of their day, and I always nail it."
+                },
+                {
+                  question: "What equipment do you use?",
+                  answer: "I shoot on professional cinema cameras (Sony FX3/FX6), use stabilization equipment (gimbals, sliders), and capture high-quality audio with wireless lavalier mics. Every wedding gets the same premium gear, regardless of package."
+                }
+              ].map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  className="border border-coffee/10 rounded-lg overflow-hidden bg-warm-sand/30"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-warm-sand/50 transition-colors duration-200"
+                    aria-expanded={openFaq === index}
+                  >
+                    <h4 className="font-serif text-lg font-semibold text-ink pr-4">
+                      {faq.question}
+                    </h4>
+                    <div className="flex-shrink-0 text-rose-wax-red text-2xl font-light">
+                      {openFaq === index ? '−' : '+'}
+                    </div>
+                  </button>
+
+                  <motion.div
+                    initial={false}
+                    animate={{
+                      height: openFaq === index ? 'auto' : 0,
+                      opacity: openFaq === index ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6">
+                      <p className="text-base text-espresso leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>

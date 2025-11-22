@@ -247,25 +247,82 @@ export default function FilmsPage() {
           </div>
         </section>
 
-        {/* Testimonial Break */}
+        {/* Testimonials - Multiple Quotes */}
         <section className="bg-warm-sand/50 py-24 md:py-32 border-y border-coffee/10">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="max-w-6xl mx-auto px-6">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="text-center mb-16"
             >
-              <svg className="w-12 h-12 text-rose-wax-red/30 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-              </svg>
-              <p className="font-serif text-2xl md:text-3xl text-ink italic mb-6 leading-relaxed">
-                "The film captured moments we didn't even know happened. Every time we watch, we discover something new—a look, a laugh, a tear. It's like reliving the day all over again."
-              </p>
-              <p className="text-sm uppercase tracking-widest text-espresso/70">
-                — Sarah & James, Brooklyn 2024
-              </p>
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+                <h2 className="text-sm uppercase tracking-[0.3em] text-espresso/70 font-semibold">What Couples Say</h2>
+                <div className="h-px bg-rose-wax-red/30 w-16" />
+              </div>
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-ink">These Films Mean Everything</h3>
             </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Testimonial 1 - Selene & Isidro */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="bg-white/60 backdrop-blur-sm border border-coffee/10 rounded-lg p-8"
+              >
+                <svg className="w-10 h-10 text-rose-wax-red/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="font-serif text-lg text-ink italic mb-4 leading-relaxed">
+                  "Wow. Just... wow. The film brings us right back to that day so clearly. We keep discovering moments we didn't even know happened. It's like reliving the entire celebration all over again."
+                </p>
+                <p className="text-xs uppercase tracking-widest text-espresso/70">
+                  — Selene & Isidro, Utah 2024
+                </p>
+              </motion.div>
+
+              {/* Testimonial 2 - Brianna & Steven */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="bg-white/60 backdrop-blur-sm border border-coffee/10 rounded-lg p-8"
+              >
+                <svg className="w-10 h-10 text-rose-wax-red/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="font-serif text-lg text-ink italic mb-4 leading-relaxed">
+                  "We loved the video—it's absolutely beautiful. Every moment felt so genuine and perfectly captured."
+                </p>
+                <p className="text-xs uppercase tracking-widest text-espresso/70">
+                  — Brianna & Steven, New Jersey 2023
+                </p>
+              </motion.div>
+
+              {/* Testimonial 3 - Robert & Tishula */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="bg-white/60 backdrop-blur-sm border border-coffee/10 rounded-lg p-8"
+              >
+                <svg className="w-10 h-10 text-rose-wax-red/30 mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                </svg>
+                <p className="font-serif text-lg text-ink italic mb-4 leading-relaxed">
+                  "Yooo, this is fire, man! I knew you could do it. You absolutely killed it."
+                </p>
+                <p className="text-xs uppercase tracking-widest text-espresso/70">
+                  — Robert & Tishula, Long Island 2023
+                </p>
+              </motion.div>
+            </div>
           </div>
         </section>
 
