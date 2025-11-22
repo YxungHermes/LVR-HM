@@ -113,27 +113,48 @@ export default function Footer() {
                 {/* Team Section */}
                 <div className="mb-8">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-coffee mb-4">
-                    Your Filmmaker
+                    Meet The Team
                   </h4>
-                  <div className="flex items-center gap-4">
-                    {/* Team member photo - positioned for future expansion */}
-                    <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
-                      <Image
-                        src="/media/michael-andrade.jpg"
-                        alt="Michael Andrade"
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        style={{
-                          objectPosition: '50% 15%'
-                        }}
-                        sizes="64px"
-                      />
-                    </a>
-                    <div>
-                      <a href="/about" className="block font-medium text-ink hover:text-rose-wax-red transition-colors">
-                        Michael Andrade
+                  <div className="space-y-4">
+                    {/* Caitlyn Gaurano - Founder & Lead Photographer */}
+                    <div className="flex items-center gap-4">
+                      <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
+                        <Image
+                          src="/media/caitlyn-gaurano.jpg"
+                          alt="Caitlyn Gaurano"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          sizes="64px"
+                        />
                       </a>
-                      <p className="text-sm text-coffee">Founder & Lead Filmmaker</p>
+                      <div>
+                        <a href="/about" className="block font-medium text-ink hover:text-rose-wax-red transition-colors">
+                          Caitlyn Gaurano
+                        </a>
+                        <p className="text-sm text-coffee">Founder & Lead Photographer</p>
+                      </div>
+                    </div>
+
+                    {/* Michael Andrade - Lead Filmmaker */}
+                    <div className="flex items-center gap-4">
+                      <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
+                        <Image
+                          src="/media/michael-andrade.jpg"
+                          alt="Michael Andrade"
+                          fill
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          style={{
+                            objectPosition: '50% 15%'
+                          }}
+                          sizes="64px"
+                        />
+                      </a>
+                      <div>
+                        <a href="/about" className="block font-medium text-ink hover:text-rose-wax-red transition-colors">
+                          Michael Andrade
+                        </a>
+                        <p className="text-sm text-coffee">Lead Filmmaker</p>
+                      </div>
                     </div>
                   </div>
                 </div>
