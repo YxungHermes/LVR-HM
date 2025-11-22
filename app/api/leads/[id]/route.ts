@@ -55,9 +55,10 @@ export async function PATCH(
   try {
     const body = await request.json();
 
+    // @ts-ignore - Supabase types not available until runtime
     const { data, error } = await supabaseAdmin
       .from('leads')
-      .update(body as any)
+      .update(body)
       .eq('id', params.id)
       .select()
       .single();

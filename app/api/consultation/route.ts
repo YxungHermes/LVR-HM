@@ -169,9 +169,10 @@ export async function POST(request: NextRequest) {
         source: 'consultation-form',
       };
 
+      // @ts-ignore - Supabase types not available until runtime
       const { data: lead, error: dbError } = await supabaseAdmin
         .from('leads')
-        .insert(leadData as any) // Type assertion - schema will be validated at runtime
+        .insert(leadData)
         .select()
         .single();
 
@@ -179,16 +180,16 @@ export async function POST(request: NextRequest) {
         console.error("❌ Failed to save lead to database:", dbError);
         // Don't fail the request - email was sent successfully
       } else if (lead) {
-        console.log("✅ Lead saved to database:", (lead as any).id);
-        leadId = (lead as any).id;
+        console.log("✅ Lead saved to database:", lead.id);
+        leadId = lead.id;
 
         // Send automated confirmation email to client (fire-and-forget)
-        sendClientConfirmation(lead as any).catch((error) => {
+        sendClientConfirmation(lead).catch((error) => {
           console.error("⚠️ Failed to send client confirmation email:", error);
         });
 
         // Schedule 24-hour follow-up (fire-and-forget)
-        scheduleFollowUp((lead as any).id).catch((error) => {
+        scheduleFollowUp(lead.id).catch((error) => {
           console.error("⚠️ Failed to schedule follow-up:", error);
         });
       }
