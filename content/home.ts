@@ -186,7 +186,6 @@ export const testimonials = [
     couple: "Selene & Isidro",
     location: "Utah",
     date: "2024",
-    tradition: "Western",
     vimeoId: "1057949189"
   },
   {
@@ -194,7 +193,6 @@ export const testimonials = [
     couple: "Brianna & Steven",
     location: "New Jersey",
     date: "2023",
-    tradition: "Western",
     vimeoId: "1137492115"
   },
   {
@@ -202,7 +200,6 @@ export const testimonials = [
     couple: "Robert & Tishula",
     location: "Long Island, New York",
     date: "2023",
-    tradition: "Western",
     vimeoId: "1139491105"
   }
 ];
