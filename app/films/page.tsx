@@ -98,7 +98,7 @@ export default function FilmsPage() {
                       height: "56.25vw",
                       minHeight: "100%",
                       minWidth: "177.78vh",
-                      transform: "translate(-50%, -50%)",
+                      transform: "translate(-50%, -50%) scale(1.12)",
                     }}
                     frameBorder="0"
                     allow="autoplay; fullscreen; picture-in-picture"
