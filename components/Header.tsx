@@ -321,9 +321,9 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
           {activeMegaMenu && (
             <motion.div
               className={`fixed left-0 right-0 z-40 flex justify-center px-4 transition-all duration-700 ${logoAbove ? (isScrolled ? 'top-[88px]' : 'top-[132px]') : 'top-[88px]'}`}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
+              initial={{ y: -10 }}
+              animate={{ y: 0 }}
+              exit={{ y: -10 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={handleMegaMenuEnter}
               onMouseLeave={handleMegaMenuLeave}
@@ -332,8 +332,8 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               <div
                 className={`
                   relative w-[95%] max-w-7xl
-                  bg-white/65 backdrop-blur-2xl
-                  border border-white/35
+                  bg-white/95 backdrop-blur-2xl
+                  border border-white/50
                   rounded-2xl
                   shadow-[0_12px_48px_rgba(0,0,0,0.15),0_0_40px_rgba(244,105,126,0.08)]
                   overflow-hidden
@@ -350,7 +350,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
-                    background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.15) 40%, transparent 70%)'
+                    background: 'radial-gradient(ellipse at center, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.10) 40%, transparent 70%)'
                   }}
                 />
 
