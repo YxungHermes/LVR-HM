@@ -61,7 +61,6 @@ export const signatureWork = [
     location: "Majorca, Spain",
     date: "2023",
     style: "Romantic & Cinematic",
-    tradition: "Destination",
     vimeoId: "859109463",
     description: "A stunning Mediterranean destination wedding trailer from the beautiful island of Majorca.",
     collection: "destination"
@@ -72,7 +71,6 @@ export const signatureWork = [
     location: "Utah",
     date: "2024",
     style: "Cinematic & Artistic",
-    tradition: "Western",
     vimeoId: "1057949189",
     description: "A breathtaking mountain celebration filled with genuine emotion and timeless moments.",
     collection: "destination"
@@ -83,7 +81,6 @@ export const signatureWork = [
     location: "Connecticut",
     date: "2025",
     style: "Romantic & Timeless",
-    tradition: "Western",
     vimeoId: "1137483566",
     description: "An elegant New England venue wedding capturing beauty and heartfelt vows.",
     collection: "wedding-day"
@@ -94,7 +91,6 @@ export const signatureWork = [
     location: "New Jersey",
     date: "2023",
     style: "Documentary Style",
-    tradition: "Western",
     vimeoId: "1137492115",
     description: "A joyful venue celebration with energy, emotion, and unforgettable moments.",
     collection: "wedding-day"
@@ -105,7 +101,6 @@ export const signatureWork = [
     location: "Long Island, New York",
     date: "2023",
     style: "Cinematic & Intimate",
-    tradition: "Western",
     vimeoId: "1139491105",
     description: "An intimate Long Island venue celebration captured with heart and artistry.",
     collection: "wedding-day"
@@ -116,7 +111,6 @@ export const signatureWork = [
     location: "Brooklyn, New York",
     date: "2024",
     style: "Urban & Cinematic",
-    tradition: "Western",
     vimeoId: "1058318297",
     description: "A vibrant Brooklyn celebration at Box House capturing urban elegance and authentic love.",
     collection: "wedding-day"
