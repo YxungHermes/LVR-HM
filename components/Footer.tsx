@@ -83,7 +83,7 @@ export default function Footer() {
         <div className="px-6 py-16 md:py-20">
           <div className="mx-auto max-w-7xl">
             <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
-              {/* Brand Column with Photo */}
+              {/* Brand Column */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -91,41 +91,52 @@ export default function Footer() {
                 transition={{ duration: 0.5 }}
                 className="lg:col-span-2"
               >
-                {/* Photo and Logo */}
-                <div className="flex items-center gap-4 mb-6">
-                  {/* Circular Photo - Clickable to About */}
-                  <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
-                    <Image
-                      src="/media/michael-andrade.jpg"
-                      alt="Michael Andrade"
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      style={{
-                        objectPosition: '50% 15%' // More focused on face
-                      }}
-                      sizes="64px"
-                    />
-                  </a>
-
-                  {/* Logo */}
-                  <a href="/" className="inline-block group focus-ring rounded">
-                    <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink group-hover:text-rose-wax-red transition-colors">
-                      Love, Violeta Rose
-                    </h3>
-                  </a>
-                </div>
+                {/* Logo */}
+                <a href="/" className="inline-block group focus-ring rounded mb-6">
+                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink group-hover:text-rose-wax-red transition-colors">
+                    Love, Violeta Rose
+                  </h3>
+                </a>
 
                 <p className="text-espresso/80 mb-6 max-w-md leading-relaxed">
                   Cinematic wedding & couples films crafted with heart. We capture the authentic moments, raw emotions, and timeless love stories that you'll treasure forever.
                 </p>
 
-                <p className="text-sm text-coffee mb-6 flex items-center gap-2">
+                <p className="text-sm text-coffee mb-8 flex items-center gap-2">
                   <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   Based in New York City • Traveling Worldwide
                 </p>
+
+                {/* Team Section */}
+                <div className="mb-8">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-coffee mb-4">
+                    Your Filmmaker
+                  </h4>
+                  <div className="flex items-center gap-4">
+                    {/* Team member photo - positioned for future expansion */}
+                    <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
+                      <Image
+                        src="/media/michael-andrade.jpg"
+                        alt="Michael Andrade"
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        style={{
+                          objectPosition: '50% 15%'
+                        }}
+                        sizes="64px"
+                      />
+                    </a>
+                    <div>
+                      <a href="/about" className="block font-medium text-ink hover:text-rose-wax-red transition-colors">
+                        Michael Andrade
+                      </a>
+                      <p className="text-sm text-coffee">Founder & Lead Filmmaker</p>
+                    </div>
+                  </div>
+                </div>
 
                 {/* Contact Button */}
                 <div>
