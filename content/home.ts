@@ -193,7 +193,7 @@ export const testimonials = [
     location: "Utah",
     date: "2024",
     tradition: "Western",
-    image: "" // No image available
+    vimeoId: "1057949189"
   },
   {
     quote: "We loved the video. It was absolutely beautiful and captured everything we could have hoped for.",
@@ -201,7 +201,7 @@ export const testimonials = [
     location: "New Jersey",
     date: "2023",
     tradition: "Western",
-    image: "" // No image available
+    vimeoId: "1137492115"
   },
   {
     quote: "Yooo this is fire man! I knew you could do it. The way you captured our day exceeded all our expectations.",
@@ -209,7 +209,7 @@ export const testimonials = [
     location: "Long Island, New York",
     date: "2023",
     tradition: "Western",
-    image: "" // No image available
+    vimeoId: "1139491105"
   }
 ];
 
