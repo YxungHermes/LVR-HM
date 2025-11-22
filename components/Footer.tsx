@@ -93,19 +93,19 @@ export default function Footer() {
               >
                 {/* Photo and Logo */}
                 <div className="flex items-center gap-4 mb-6">
-                  {/* Circular Photo */}
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-colors">
+                  {/* Circular Photo - Clickable to About */}
+                  <a href="/about" className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-rose-wax-red/30 shadow-lg group hover:border-rose-wax-red transition-all duration-300 hover:shadow-xl focus-ring flex-shrink-0">
                     <Image
                       src="/media/michael-andrade.jpg"
                       alt="Michael Andrade"
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-500"
                       style={{
-                        objectPosition: '50% 20%' // Zoom in on face
+                        objectPosition: '50% 15%' // More focused on face
                       }}
                       sizes="64px"
                     />
-                  </div>
+                  </a>
 
                   {/* Logo */}
                   <a href="/" className="inline-block group focus-ring rounded">
@@ -130,13 +130,13 @@ export default function Footer() {
                 {/* Contact Button */}
                 <div>
                   <a
-                    href="mailto:Michael.a@lovevioletarose.com"
+                    href="mailto:contact@michael-andrade.com"
                     className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-coffee/20 rounded-full text-ink font-medium hover:border-rose-wax-red hover:text-rose-wax-red transition-all hover:scale-105 focus-ring text-sm"
                   >
                     <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    <span className="hidden sm:inline">Michael.a@lovevioletarose.com</span>
+                    <span className="hidden sm:inline">contact@michael-andrade.com</span>
                     <span className="sm:hidden">Email Us</span>
                   </a>
                 </div>
