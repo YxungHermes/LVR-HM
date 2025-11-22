@@ -97,7 +97,7 @@ export const pricingOverview = [
     startingFrom: "$750",
     range: "$750 — $2,000",
     forWho: "For relationships worth documenting at any milestone",
-    tagline: "Love documented, ceremony optional",
+    tagline: "The moment everything changes",
     description:
       "For couples not getting married (yet)—anniversaries, birthdays, proposals, or just because you want a film together.",
     highlights: [
