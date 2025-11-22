@@ -115,24 +115,45 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
   const handleNavItemEnter = (label: string, hasMegaMenu?: boolean) => {
     if (!hasMegaMenu) return;
 
+    // Clear any pending timeouts
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
 
-    openTimeoutRef.current = setTimeout(() => {
+    // If a menu is already open, switch immediately (no delay)
+    // Otherwise, add small delay to prevent accidental triggers
+    if (activeMegaMenu) {
       setActiveMegaMenu(label);
-    }, 100);
+    } else {
+      openTimeoutRef.current = setTimeout(() => {
+        setActiveMegaMenu(label);
+      }, 150);
+    }
   };
 
   const handleNavItemLeave = () => {
+    // Clear any pending open timeouts
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+
+    // Longer delay to allow mouse to travel to dropdown
     closeTimeoutRef.current = setTimeout(() => {
       setActiveMegaMenu(null);
-    }, 200);
+    }, 300);
   };
 
   const handleMegaMenuEnter = () => {
+    // Cancel close timeout when entering the dropdown
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+  };
+
+  const handleMegaMenuLeave = () => {
+    // Close immediately when leaving the dropdown area
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    if (openTimeoutRef.current) clearTimeout(openTimeoutRef.current);
+
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveMegaMenu(null);
+    }, 150);
   };
 
   const scrollToTop = () => {
@@ -305,7 +326,7 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
               onMouseEnter={handleMegaMenuEnter}
-              onMouseLeave={handleNavItemLeave}
+              onMouseLeave={handleMegaMenuLeave}
             >
               {/* Fluid Rounded Card Container */}
               <div
