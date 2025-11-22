@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FinaleBlock from "@/components/FinaleBlock";
 
 export default function ProcessPage() {
   return (
@@ -278,9 +277,6 @@ export default function ProcessPage() {
             </motion.div>
           </div>
         </section>
-
-        {/* Finale Block */}
-        <FinaleBlock />
       </main>
       <Footer />
     </>
