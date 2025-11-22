@@ -339,7 +339,7 @@ export default function Footer() {
                 </a>
                 <span className="text-coffee/30">•</span>
                 <span className="text-espresso/50 text-xs">
-                  Website by Michael Andrade
+                  Website by <a href="/about" className="hover:text-rose-wax-red transition-colors focus-ring rounded">Michael Andrade</a>
                 </span>
               </div>
             </div>
