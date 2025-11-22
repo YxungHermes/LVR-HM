@@ -124,6 +124,9 @@ export default function Footer() {
                           alt="Caitlyn Gaurano"
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          style={{
+                            objectPosition: '50% 50%'
+                          }}
                           sizes="64px"
                         />
                       </a>
