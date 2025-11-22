@@ -16,10 +16,10 @@ export default function FinaleBlock() {
           {/* Instagram Invitation */}
           <div>
             <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-3">
-              A little inspiration while you wait
+              Follow Along
             </h3>
             <p className="text-base text-espresso leading-relaxed mb-4">
-              Follow along for recent films, color tests, and behind-the-scenes moments from real weddings.
+              Recent films, color tests, and behind-the-scenes moments from real weddings.
             </p>
             <a
               href="https://www.instagram.com/lovevioletarose/"
