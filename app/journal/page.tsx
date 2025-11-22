@@ -6,11 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 
-export const metadata = {
-  title: "Journal - Wedding Film Stories & Planning Tips | Love, Violeta Rose",
-  description: "Wedding videography insights, real wedding stories, and planning tips from NYC wedding filmmaker Michael Andrade.",
-};
-
 // Blog posts data (in a real app, this would come from a CMS or markdown files)
 const blogPosts = [
   {

@@ -6,11 +6,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 
-export const metadata = {
-  title: "FAQ - Frequently Asked Questions | Love, Violeta Rose",
-  description: "Get answers to common questions about wedding videography, pricing, deliverables, and the booking process.",
-};
-
 export default function FAQPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
