@@ -4,7 +4,7 @@ import { pricingPages } from "@/content/pricing";
 
 export const metadata: Metadata = {
   title: pricingPages["destination-weddings"].seoTitle,
-  description: pricingPages["destination-weddings"].introBody,
+  description: pricingPages["destination-weddings"].seoDescription,
 };
 
 export default function DestinationWeddingsPage() {
