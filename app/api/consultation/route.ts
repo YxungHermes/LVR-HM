@@ -183,12 +183,12 @@ export async function POST(request: NextRequest) {
         leadId = (lead as any).id;
 
         // Send automated confirmation email to client (fire-and-forget)
-        sendClientConfirmation(lead).catch((error) => {
+        sendClientConfirmation(lead as any).catch((error) => {
           console.error("⚠️ Failed to send client confirmation email:", error);
         });
 
         // Schedule 24-hour follow-up (fire-and-forget)
-        scheduleFollowUp(lead.id).catch((error) => {
+        scheduleFollowUp((lead as any).id).catch((error) => {
           console.error("⚠️ Failed to schedule follow-up:", error);
         });
       }
