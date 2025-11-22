@@ -202,8 +202,8 @@ export default function Header({ settled = false, hideCta = false, logoAbove = f
             relative flex items-center justify-between
             backdrop-blur-2xl border transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
             ${isScrolled
-              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/75 border-white/50 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_40px_rgba(244,105,126,0.08)]'
-              : 'w-[95%] max-w-7xl rounded-3xl py-5 px-10 bg-white/70 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_60px_rgba(244,105,126,0.06)]'
+              ? 'w-[85%] max-w-5xl rounded-full py-3 px-8 bg-white/75 border-white/50 shadow-[0_8px_48px_rgba(0,0,0,0.12),0_0_50px_rgba(244,105,126,0.14)]'
+              : 'w-[95%] max-w-7xl rounded-3xl py-5 px-10 bg-white/70 border-white/50 shadow-[0_8px_32px_rgba(0,0,0,0.08),0_0_80px_rgba(244,105,126,0.12)]'
             }
           `}
           style={{
