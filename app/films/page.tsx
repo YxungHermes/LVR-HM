@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { signatureWork } from "@/content/home";
 import Header from "@/components/Header";
@@ -11,7 +11,6 @@ export default function FilmsPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [selectedFilter, setSelectedFilter] = useState("all");
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const slideVariants = {
     enter: (direction: number) => ({
@@ -51,17 +50,6 @@ export default function FilmsPage() {
   const filteredFilms = selectedFilter === "all"
     ? signatureWork
     : signatureWork.filter(film => film.collection === selectedFilter);
-
-  // Scroll filmstrip left/right
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 400;
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
 
   return (
     <>
@@ -255,130 +243,6 @@ export default function FilmsPage() {
                   aria-label={`View ${film.title}`}
                 />
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Filmstrip: Recent Work */}
-        <section className="bg-cream py-20 md:py-32 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6">
-            {/* Section Header */}
-            <motion.div
-              className="mb-12"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="h-px bg-rose-wax-red/30 w-16" />
-                <h2 className="text-sm uppercase tracking-[0.3em] text-espresso/70 font-semibold">Recent Work</h2>
-              </div>
-              <h3 className="font-serif text-4xl md:text-5xl font-bold text-ink">Love Stories We've Captured</h3>
-            </motion.div>
-
-            {/* Horizontal Scroll Container */}
-            <div className="relative">
-              {/* Left Scroll Button */}
-              <button
-                onClick={() => scroll('left')}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm hover:bg-white text-ink rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 -ml-4"
-                aria-label="Scroll left"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              {/* Filmstrip */}
-              <div
-                ref={scrollContainerRef}
-                className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide snap-x snap-mandatory"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
-                {signatureWork.map((film, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex-shrink-0 w-[320px] md:w-[400px] snap-start group"
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    {/* Film Card */}
-                    <div className="relative aspect-[16/10] rounded-lg overflow-hidden bg-black mb-4 cursor-pointer">
-                      {/* Video Thumbnail */}
-                      <iframe
-                        src={`https://player.vimeo.com/video/${film.vimeoId}?background=1&autoplay=0&loop=1&byline=0&title=0&muted=1`}
-                        className="absolute inset-0 w-full h-full pointer-events-none group-hover:scale-105 transition-transform duration-500"
-                        frameBorder="0"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        title={film.title}
-                      />
-
-                      {/* Overlay on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <a
-                            href={`https://player.vimeo.com/video/${film.vimeoId}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white text-ink rounded-full p-4 transform scale-90 group-hover:scale-100 transition-transform duration-300"
-                          >
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                          </a>
-                        </div>
-                      </div>
-
-                      {/* Collection Badge */}
-                      {film.collection && (
-                        <div className="absolute top-4 left-4 z-10">
-                          <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm text-xs uppercase tracking-wider text-espresso/80 font-semibold">
-                            {film.collection === 'wedding-day' ? 'Wedding Day' :
-                             film.collection === 'destination' ? 'Destination' :
-                             film.collection === 'elopement' ? 'Elopement' :
-                             film.collection === 'couples' ? 'Couples' : 'Featured'}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Film Info */}
-                    <div>
-                      <h4 className="font-serif text-2xl font-bold text-ink mb-2 group-hover:text-rose-wax-red transition-colors">
-                        {film.title}
-                      </h4>
-                      <div className="flex items-center gap-3 text-sm text-espresso/70">
-                        {film.location && (
-                          <span className="flex items-center gap-1">
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            </svg>
-                            {film.location}
-                          </span>
-                        )}
-                        {film.date && (
-                          <span>• {film.date}</span>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Right Scroll Button */}
-              <button
-                onClick={() => scroll('right')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur-sm hover:bg-white text-ink rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 -mr-4"
-                aria-label="Scroll right"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
           </div>
         </section>
