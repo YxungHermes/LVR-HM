@@ -20,7 +20,7 @@ const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouse
   return (
     <a
       href={item.href}
-      className={`relative group overflow-hidden px-6 block ${isScrolled ? 'h-5' : 'h-6'}`}
+      className={`relative group overflow-hidden px-6 block transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isScrolled ? 'h-5' : 'h-6'}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -29,12 +29,13 @@ const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouse
         <span className={`
           flex items-center justify-center
           font-medium tracking-[0.2em] uppercase
+          transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
           ${isScrolled ? 'h-[20px] text-[10px]' : 'h-[24px] text-[12px]'}
           ${isActive ? 'text-rose-wax-red' : 'text-stone-800'}
         `}>
           {item.label}
           {item.megaMenu && (
-            <svg className={`inline ml-1 opacity-50 ${isScrolled ? 'w-2.5 h-2.5' : 'w-3 h-3'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className={`inline ml-1 opacity-50 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] ${isScrolled ? 'w-2.5 h-2.5' : 'w-3 h-3'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
             </svg>
           )}
@@ -44,6 +45,7 @@ const RolloverLink: React.FC<RolloverLinkProps> = ({ item, onMouseEnter, onMouse
         <span className={`
           flex items-center justify-center
           font-serif italic text-rose-wax-red whitespace-nowrap
+          transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
           ${isScrolled ? 'h-[20px] text-lg' : 'h-[24px] text-xl'}
         `}>
           {item.label.toLowerCase()}
