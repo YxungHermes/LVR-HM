@@ -163,7 +163,7 @@ export async function POST(request: NextRequest) {
         .from('leads')
         .select('id')
         .eq('email', clientEmail)
-        .maybeSingle();
+        .maybeSingle<{ id: string }>();
 
       if (existingLead && !fetchError) {
         // Update existing lead
