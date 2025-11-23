@@ -178,8 +178,8 @@ export async function POST(request: NextRequest) {
           .eq('id', leadId);
 
         // Log activity
-        await supabaseAdmin
-          .from('lead_activities')
+        await (supabaseAdmin
+          .from('lead_activities') as any)
           .insert({
             lead_id: leadId,
             activity_type: 'note_added',
@@ -196,8 +196,8 @@ export async function POST(request: NextRequest) {
         const partner1 = names[0] || sanitizedName;
         const partner2 = names[1] || '';
 
-        const { data: newLead, error: leadError } = await supabaseAdmin
-          .from('leads')
+        const { data: newLead, error: leadError } = await (supabaseAdmin
+          .from('leads') as any)
           .insert({
             partner1_name: partner1,
             partner2_name: partner2,
