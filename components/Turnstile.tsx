@@ -24,20 +24,45 @@ export default function Turnstile({ onVerify, onError, onExpire }: TurnstileProp
 
     const initWidget = () => {
       if (containerRef.current && window.turnstile && !widgetIdRef.current) {
+        const sitekey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+        // ⚠️ SECURITY: Warn if using test key in production
+        if (!sitekey || sitekey === '1x00000000000000000000AA') {
+          console.error('⚠️ CRITICAL: Cloudflare Turnstile is not configured!');
+          console.error('   The test key only works on localhost.');
+          console.error('   Please set NEXT_PUBLIC_TURNSTILE_SITE_KEY in your environment variables.');
+          console.error('   Get your site key from: https://dash.cloudflare.com/?to=/:account/turnstile');
+
+          // Show error to user
+          if (containerRef.current) {
+            containerRef.current.innerHTML = `
+              <div style="padding: 16px; background: #fee; border: 2px solid #c33; border-radius: 8px; color: #c33; font-family: system-ui; font-size: 14px;">
+                <strong>⚠️ CAPTCHA Configuration Error</strong><br/>
+                <span style="font-size: 12px;">Cloudflare Turnstile is not configured. Please contact the site administrator.</span>
+              </div>
+            `;
+          }
+          return;
+        }
+
         // Render the widget only once
         widgetIdRef.current = window.turnstile.render(containerRef.current, {
-          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA', // Test key
+          sitekey,
           callback: (token: string) => {
             callbacksRef.current.onVerify(token);
           },
           'error-callback': () => {
+            console.error('Turnstile error - verification failed');
             callbacksRef.current.onError?.();
           },
           'expired-callback': () => {
+            console.log('Turnstile token expired - user needs to re-verify');
             callbacksRef.current.onExpire?.();
           },
           theme: 'light',
           size: 'normal',
+          // Prevent auto-refresh on error
+          refresh: 'manual',
         });
       }
     };
