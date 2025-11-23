@@ -170,12 +170,12 @@ export async function POST(request: NextRequest) {
         // Update existing lead
         leadId = existingLead.id;
         await (supabaseAdmin
-          .from('leads')
+          .from('leads') as any)
           .update({
             updated_at: new Date().toISOString(),
             wedding_date: weddingDate || null,
-          } as any)
-          .eq('id', leadId));
+          })
+          .eq('id', leadId);
 
         // Log activity
         await supabaseAdmin
