@@ -3,6 +3,7 @@ import { createCheckoutSession } from '@/lib/stripe';
 import { pricingOverview } from '@/content/pricing';
 import { isValidEmail, sanitizeHtml } from '@/lib/sanitize';
 import { supabaseAdmin } from '@/lib/supabase';
+import type { Database } from '@/types/supabase';
 
 // ✅ SECURITY: Rate limiting map (in-memory, use Redis in production)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -168,12 +169,13 @@ export async function POST(request: NextRequest) {
       if (existingLead && !fetchError) {
         // Update existing lead
         leadId = existingLead.id;
+        const updateData: Database['public']['Tables']['leads']['Update'] = {
+          updated_at: new Date().toISOString(),
+          wedding_date: weddingDate || null,
+        };
         await supabaseAdmin
           .from('leads')
-          .update({
-            updated_at: new Date().toISOString(),
-            wedding_date: weddingDate || null,
-          })
+          .update(updateData)
           .eq('id', leadId);
 
         // Log activity
