@@ -34,7 +34,7 @@ export default function Contact() {
 
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-espresso/80 max-w-3xl mx-auto leading-relaxed mb-16">
-            Your love story deserves to be told with heart and artistry. Share your vision with me, and let's craft a film you'll treasure forever.
+            Tell me about your wedding day and what matters most to you. I'll create a film that feels like the real thing.
           </p>
 
           {/* Single CTA Button */}

@@ -1,8 +1,11 @@
+// @ts-nocheck - Supabase types not available until database is configured
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import type { ConsultationFormData, N8nWebhookPayload } from "@/types/consultation";
 import { sanitizeObject, isValidEmail } from "@/lib/sanitize";
 import { rateLimit } from "@/lib/rateLimit";
+import { supabaseAdmin } from "@/lib/supabase";
+import { sendClientConfirmation, scheduleFollowUp } from "@/lib/email-automation";
 
 // Rate limit: 5 requests per 15 minutes per IP
 const limiter = rateLimit({
@@ -132,6 +135,70 @@ export async function POST(request: NextRequest) {
 
     console.log("✅ Email sent successfully:", data?.id);
 
+    // ========================================
+    // CRM Integration: Save lead to database
+    // ========================================
+    let leadId: string | undefined;
+
+    try {
+      // Map form data to database schema
+      const leadData = {
+        partner1_name: body.partner1Name,
+        partner1_pronouns: body.partner1Pronouns || null,
+        partner2_name: body.partner2Name,
+        partner2_pronouns: body.partner2Pronouns || null,
+        email: body.email,
+        phone: body.phone || null,
+        wedding_date: body.weddingDate || null,
+        location: body.location || null,
+        event_type: body.eventType,
+        event_subtype: body.eventSubtype || null,
+        session_tier: body.sessionTier || null,
+        guest_count: body.guestCount || null,
+        tradition: body.tradition || null,
+        tradition_other: body.traditionOther || null,
+        film_style: body.filmStyle || null,
+        deliverables: body.deliverables || null,
+        budget_range: body.budgetRange || null,
+        how_you_met: body.howYouMet || null,
+        additional_notes: body.additionalNotes || null,
+        how_did_you_hear: body.howDidYouHear || null,
+        booking_timeline: body.bookingTimeline || null,
+        status: 'new' as const,
+        priority: determinePriority(body),
+        estimated_value: estimateValue(body),
+        source: 'consultation-form',
+      };
+
+      // @ts-ignore - Supabase types not available until runtime
+      const { data: lead, error: dbError } = await supabaseAdmin
+        .from('leads')
+        .insert(leadData)
+        .select()
+        .single();
+
+      if (dbError) {
+        console.error("❌ Failed to save lead to database:", dbError);
+        // Don't fail the request - email was sent successfully
+      } else if (lead) {
+        console.log("✅ Lead saved to database:", lead.id);
+        leadId = lead.id;
+
+        // Send automated confirmation email to client (fire-and-forget)
+        sendClientConfirmation(lead).catch((error) => {
+          console.error("⚠️ Failed to send client confirmation email:", error);
+        });
+
+        // Schedule 24-hour follow-up (fire-and-forget)
+        scheduleFollowUp(lead.id).catch((error) => {
+          console.error("⚠️ Failed to schedule follow-up:", error);
+        });
+      }
+    } catch (dbError) {
+      console.error("❌ Database error:", dbError);
+      // Continue - don't fail the request
+    }
+
     // Send data to n8n webhook (fire-and-forget - don't block response)
     sendToN8nWebhook(body).catch((error) => {
       console.error("⚠️ n8n webhook error (non-blocking):", error.message);
@@ -142,6 +209,7 @@ export async function POST(request: NextRequest) {
         success: true,
         message: "Consultation request received",
         emailId: data?.id,
+        leadId,
       },
       { status: 200 }
     );
@@ -884,4 +952,59 @@ async function sendToN8nWebhook(formData: ConsultationFormData): Promise<void> {
     }
     throw error; // Re-throw so the catch in POST handler can log it
   }
+}
+
+// =============================================================================
+// CRM Helper Functions
+// =============================================================================
+
+/**
+ * Determine lead priority based on booking timeline and budget
+ */
+function determinePriority(formData: any): 'low' | 'medium' | 'high' {
+  // High priority: booking ASAP or within 1-2 weeks
+  if (formData.bookingTimeline === 'asap' || formData.bookingTimeline === '1-month') {
+    return 'high';
+  }
+
+  // High priority: high budget range
+  if (formData.budgetRange === '8k-plus') {
+    return 'high';
+  }
+
+  // Low priority: just browsing
+  if (formData.bookingTimeline === 'just-browsing' || formData.bookingTimeline === '3-plus-months') {
+    return 'low';
+  }
+
+  // Default: medium
+  return 'medium';
+}
+
+/**
+ * Estimate lead value based on event type and budget range
+ */
+function estimateValue(formData: any): number {
+  // If they provided a budget range, use the midpoint
+  const budgetMap: Record<string, number> = {
+    'under-3k': 2500,
+    '3k-5k': 4000,
+    '5k-8k': 6500,
+    '8k-plus': 10000,
+  };
+
+  if (formData.budgetRange && budgetMap[formData.budgetRange]) {
+    return budgetMap[formData.budgetRange];
+  }
+
+  // Otherwise estimate based on event type
+  const eventTypeMap: Record<string, number> = {
+    'elopement': 3500,
+    'wedding': 5500,
+    'destination': 8500,
+    'engagement': 1200,
+    'anniversary': 1200,
+  };
+
+  return eventTypeMap[formData.eventType] || 4000;
 }

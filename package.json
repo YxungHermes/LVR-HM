@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^8.5.2",
+    "@supabase/supabase-js": "^2.84.0",
     "@vercel/speed-insights": "^1.2.0",
     "clsx": "^2.1.1",
     "cookie": "^1.0.2",
@@ -17,10 +19,12 @@
     "lucide-react": "^0.553.0",
     "next": "14.2.3",
     "react": "^18.3.1",
+    "react-confetti": "^6.4.0",
     "react-datepicker": "^8.9.0",
     "react-dom": "^18.3.1",
     "react-facebook-pixel": "^1.0.4",
-    "resend": "^6.4.2"
+    "resend": "^6.4.2",
+    "stripe": "^20.0.0"
   },
   "devDependencies": {
     "@next/third-parties": "^16.0.3",
