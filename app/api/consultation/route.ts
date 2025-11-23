@@ -583,7 +583,7 @@ function generateEmailHtml(data: any): string {
 
     <!-- Footer -->
     <div class="footer">
-      <p>Love Stories by Michael Andrade — Cinematic Wedding & Couples Films</p>
+      <p>Love, Violeta Rose — Cinematic Wedding & Couples Films</p>
       <p style="margin-top: 8px; font-size: 12px; opacity: 0.8;">
         This consultation request was submitted via your website
       </p>
@@ -699,7 +699,7 @@ function generateEmailText(data: any): string {
   }
 
   text += `═════════════════════════════════════\n`;
-  text += `Love Stories by Michael Andrade — Cinematic Wedding & Couples Films\n`;
+  text += `Love, Violeta Rose — Cinematic Wedding & Couples Films\n`;
   text += `This consultation request was submitted via your website\n`;
 
   return text;

@@ -114,7 +114,7 @@ export const pricingOverview = [
 export const pricingPages = {
   elopements: {
     title: "Elopements & Intimate Gatherings",
-    seoTitle: "Elopement Wedding Films | Weddings by Michael Andrade",
+    seoTitle: "Elopement Wedding Films | Love, Violeta Rose",
     seoDescription: "Cinematic wedding films for intimate ceremonies & elopements in NYC. From rooftop vows to courthouse celebrations. Starting at $2,200.",
     heroImage: "/collections/elopements.jpg",
     vimeoId: "1139445343",
@@ -145,7 +145,7 @@ export const pricingPages = {
 
   "wedding-day-films": {
     title: "Wedding Day Films",
-    seoTitle: "Wedding Day Film Collections | Weddings by Michael Andrade",
+    seoTitle: "Wedding Day Film Collections | Love, Violeta Rose",
     seoDescription: "Full wedding day cinematography in NYC. From getting ready to last dance, we craft films that feel like you. Starting at $3,500.",
     heroImage: "/collections/wedding-day.jpg",
     vimeoId: "1139429379",
@@ -177,7 +177,7 @@ export const pricingPages = {
 
   "destination-weddings": {
     title: "Destination Wedding Films",
-    seoTitle: "Destination Wedding Videography | Weddings by Michael Andrade",
+    seoTitle: "Destination Wedding Videography | Love, Violeta Rose",
     seoDescription: "Destination wedding films from NYC to worldwide. Multi-day coverage, location scouting, travel included. Starting at $5,500 + travel.",
     heroImage: "/collections/destination.jpg",
     vimeoId: "1137400003",
@@ -208,7 +208,7 @@ export const pricingPages = {
 
   "couples-films": {
     title: "Couples Films",
-    seoTitle: "Couples Films & Love Story Sessions | Love Stories by Michael Andrade",
+    seoTitle: "Couples Films & Love Story Sessions | Love, Violeta Rose",
     seoDescription: "Cinematic couples films for anniversaries, engagements, proposals, or just because. No wedding required. NYC sessions starting at $750.",
     heroImage: "/collections/adventure.jpg",
     vimeoId: "1139450155",
