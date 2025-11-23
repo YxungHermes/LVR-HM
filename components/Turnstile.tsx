@@ -11,28 +11,30 @@ interface TurnstileProps {
 export default function Turnstile({ onVerify, onError, onExpire }: TurnstileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
+  const callbacksRef = useRef({ onVerify, onError, onExpire });
+
+  // Update callbacks ref when props change, without triggering re-render
+  useEffect(() => {
+    callbacksRef.current = { onVerify, onError, onExpire };
+  }, [onVerify, onError, onExpire]);
 
   useEffect(() => {
-    // Load Turnstile script
-    const script = document.createElement('script');
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
+    // Check if script is already loaded
+    const existingScript = document.querySelector('script[src*="turnstile"]');
 
-    script.onload = () => {
-      if (containerRef.current && window.turnstile) {
-        // Render the widget
+    const initWidget = () => {
+      if (containerRef.current && window.turnstile && !widgetIdRef.current) {
+        // Render the widget only once
         widgetIdRef.current = window.turnstile.render(containerRef.current, {
           sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA', // Test key
           callback: (token: string) => {
-            onVerify(token);
+            callbacksRef.current.onVerify(token);
           },
           'error-callback': () => {
-            onError?.();
+            callbacksRef.current.onError?.();
           },
           'expired-callback': () => {
-            onExpire?.();
+            callbacksRef.current.onExpire?.();
           },
           theme: 'light',
           size: 'normal',
@@ -40,14 +42,32 @@ export default function Turnstile({ onVerify, onError, onExpire }: TurnstileProp
       }
     };
 
+    if (existingScript) {
+      // Script already loaded, just init the widget
+      if (window.turnstile) {
+        initWidget();
+      } else {
+        // Script exists but not loaded yet
+        existingScript.addEventListener('load', initWidget);
+      }
+    } else {
+      // Load Turnstile script for the first time
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.defer = true;
+      script.onload = initWidget;
+      document.head.appendChild(script);
+    }
+
     return () => {
-      // Cleanup
+      // Only remove the widget, not the script (keep it for other instances)
       if (widgetIdRef.current && window.turnstile) {
         window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
       }
-      document.head.removeChild(script);
     };
-  }, [onVerify, onError, onExpire]);
+  }, []); // Empty deps - only run once on mount
 
   return (
     <div className="flex justify-center">
