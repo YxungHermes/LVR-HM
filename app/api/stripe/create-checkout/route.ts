@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createCheckoutSession } from '@/lib/stripe';
 import { pricingOverview } from '@/content/pricing';
 import { isValidEmail, sanitizeHtml } from '@/lib/sanitize';
+import { supabaseAdmin } from '@/lib/supabase';
 
 // ✅ SECURITY: Rate limiting map (in-memory, use Redis in production)
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -154,6 +155,75 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // ✅ Create or update lead in CRM
+    let leadId: string | undefined;
+    try {
+      // Check if lead exists with this email
+      const { data: existingLead } = await supabaseAdmin
+        .from('leads')
+        .select('id')
+        .eq('email', clientEmail)
+        .maybeSingle();
+
+      if (existingLead) {
+        // Update existing lead
+        leadId = existingLead.id;
+        await supabaseAdmin
+          .from('leads')
+          .update({
+            updated_at: new Date().toISOString(),
+            wedding_date: weddingDate || null,
+          })
+          .eq('id', leadId);
+
+        // Log activity
+        await supabaseAdmin
+          .from('lead_activities')
+          .insert({
+            lead_id: leadId,
+            activity_type: 'note_added',
+            description: `Started checkout process for ${packageDetails.name}`,
+            metadata: {
+              package_slug: packageSlug,
+              package_name: packageDetails.name,
+              amount: amount,
+            },
+          });
+      } else {
+        // Create new lead
+        const names = sanitizedName.split(/&|,|\sand\s/i).map(n => n.trim());
+        const partner1 = names[0] || sanitizedName;
+        const partner2 = names[1] || '';
+
+        const { data: newLead, error: leadError } = await supabaseAdmin
+          .from('leads')
+          .insert({
+            partner1_name: partner1,
+            partner2_name: partner2,
+            email: clientEmail,
+            wedding_date: weddingDate || null,
+            event_type: 'wedding',
+            status: 'new',
+            priority: 'high',
+            estimated_value: amount,
+            source: 'direct_booking',
+            budget_range: packageDetails.range,
+          })
+          .select('id')
+          .single();
+
+        if (leadError) {
+          console.error('Failed to create lead:', leadError);
+        } else if (newLead) {
+          leadId = newLead.id;
+          console.log(`✅ Created new lead: ${leadId}`);
+        }
+      }
+    } catch (crmError) {
+      console.error('CRM error (non-fatal):', crmError);
+      // Continue with checkout even if CRM fails
+    }
+
     // Create Stripe checkout session
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
     const session = await createCheckoutSession({
@@ -162,7 +232,8 @@ export async function POST(request: NextRequest) {
       clientEmail,
       clientName: sanitizedName,
       successUrl: `${baseUrl}/booking/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancelUrl: `${baseUrl}/reserve`,
+      cancelUrl: `${baseUrl}/booking/cancel`,
+      leadId,
     });
 
     if (!session) {
@@ -171,8 +242,6 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
-
-    // TODO: Optionally save this to CRM as a new lead with status "payment_pending"
 
     return NextResponse.json({ url: session.url }, { status: 200 });
   } catch (error) {
