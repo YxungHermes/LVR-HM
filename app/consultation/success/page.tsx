@@ -2,12 +2,35 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import Confetti from "react-confetti";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function ConsultationSuccessPage() {
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [showConfetti, setShowConfetti] = useState(true);
+
+  useEffect(() => {
+    // Set window size for confetti
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+
+    // Stop confetti after 5 seconds
+    const timer = setTimeout(() => setShowConfetti(false), 5000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
+      {showConfetti && (
+        <Confetti
+          width={windowSize.width}
+          height={windowSize.height}
+          recycle={false}
+          numberOfPieces={500}
+          colors={['#8B4641', '#E8DDD3', '#D4C5B9', '#F5F0EA']}
+        />
+      )}
       <Header settled />
       <main className="bg-cream">
         {/* Hero Section - Elegant & Spacious */}
@@ -53,15 +76,15 @@ export default function ConsultationSuccessPage() {
               </div>
 
               <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-ink mb-6 tracking-tight leading-tight">
-                Your Journey Begins Here
+                We've Received Your Information
               </h1>
 
               <p className="text-xl md:text-2xl text-espresso/80 leading-relaxed max-w-3xl mx-auto mb-4">
-                Thank you for trusting us with your story.
+                Thank you for considering us to capture your celebration.
               </p>
 
               <p className="text-base md:text-lg text-espresso/60 leading-relaxed max-w-2xl mx-auto">
-                We're excited to learn more about your celebration and craft a film that captures every beautiful moment.
+                I'm personally reviewing your details and will craft a custom proposal tailored specifically to your vision and needs.
               </p>
             </motion.div>
           </div>
@@ -104,8 +127,8 @@ export default function ConsultationSuccessPage() {
                     },
                     {
                       time: "Within 6 hours",
-                      title: "We Review",
-                      description: "Our team carefully reviews your vision, preferences, and celebration details.",
+                      title: "I Review Your Details",
+                      description: "I personally review your vision, preferences, and celebration details to understand your unique story.",
                       icon: (
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -198,27 +221,27 @@ export default function ConsultationSuccessPage() {
                 Have questions right now?
               </h3>
               <p className="text-espresso/70 mb-6 leading-relaxed">
-                Don't wait for our proposal. We're here to help answer anything on your mind.
+                Don't wait for the proposal. I'm here to help answer anything on your mind.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <a
-                  href="mailto:contact@violetarose.com"
+                  href="mailto:contact@michael-andrade.com"
                   className="inline-flex items-center gap-2 text-rose-wax-red hover:text-rose-wax-red/80 transition-colors font-medium"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
-                  contact@violetarose.com
+                  contact@michael-andrade.com
                 </a>
                 <span className="hidden sm:block text-coffee/30">•</span>
                 <a
-                  href="tel:+13477747840"
+                  href="tel:+13477757840"
                   className="inline-flex items-center gap-2 text-rose-wax-red hover:text-rose-wax-red/80 transition-colors font-medium"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  (347) 774-7840
+                  347-775-7840
                 </a>
               </div>
             </motion.div>
@@ -323,13 +346,13 @@ export default function ConsultationSuccessPage() {
               transition={{ duration: 0.6 }}
             >
               <p className="text-espresso/60 text-sm uppercase tracking-widest mb-4">
-                We're Excited
+                Excited to Connect
               </p>
               <h3 className="font-serif text-2xl md:text-3xl font-bold text-ink mb-4 leading-tight">
-                We can't wait to learn more about your celebration and create something beautiful together.
+                I can't wait to learn more about your celebration and explore how we can tell your story beautifully.
               </h3>
               <p className="text-espresso/70">
-                Check your inbox soon for next steps.
+                Check your inbox soon for your personalized proposal.
               </p>
             </motion.div>
           </div>
