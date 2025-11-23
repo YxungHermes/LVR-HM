@@ -176,8 +176,8 @@ export default function AboutPage() {
               <div className="lg:col-span-4 order-1 lg:order-2">
                 <div className="relative aspect-[3/4] bg-warm-sand rounded-sm overflow-hidden shadow-sm">
                   <img
-                    src="/media/violeta-rose.jpg"
-                    alt="Violeta Rose - Wedding Filmmaker"
+                    src="/media/michael-andrade.jpg"
+                    alt="Michael Andrade - Wedding Filmmaker"
                     className="w-full h-full object-cover"
                   />
                 </div>
