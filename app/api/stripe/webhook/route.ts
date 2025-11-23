@@ -276,12 +276,5 @@ export async function POST(request: NextRequest) {
   }
 }
 
-/**
- * ✅ SECURITY: Disable body parsing for webhook signature verification
- * Next.js needs the raw body to verify Stripe signatures
- */
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+// Note: In Next.js App Router, we use request.text() to get the raw body
+// No need for the old Pages Router config export
