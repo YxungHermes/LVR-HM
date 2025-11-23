@@ -159,13 +159,13 @@ export async function POST(request: NextRequest) {
     let leadId: string | undefined;
     try {
       // Check if lead exists with this email
-      const { data: existingLead } = await supabaseAdmin
+      const { data: existingLead, error: fetchError } = await supabaseAdmin
         .from('leads')
         .select('id')
         .eq('email', clientEmail)
         .maybeSingle();
 
-      if (existingLead) {
+      if (existingLead && !fetchError) {
         // Update existing lead
         leadId = existingLead.id;
         await supabaseAdmin
