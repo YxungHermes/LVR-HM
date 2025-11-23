@@ -117,8 +117,8 @@ export async function POST(request: NextRequest) {
 
           if (leadId) {
             // Update lead status to 'booked'
-            const { error: updateError } = await supabaseAdmin
-              .from('leads')
+            const { error: updateError } = await (supabaseAdmin
+              .from('leads') as any)
               .update({
                 status: 'booked',
                 updated_at: new Date().toISOString(),
@@ -132,8 +132,8 @@ export async function POST(request: NextRequest) {
             }
 
             // Log payment activity
-            await supabaseAdmin
-              .from('lead_activities')
+            await (supabaseAdmin
+              .from('lead_activities') as any)
               .insert({
                 lead_id: leadId,
                 activity_type: 'payment_received',
@@ -175,8 +175,8 @@ export async function POST(request: NextRequest) {
         try {
           const leadId = session.metadata?.lead_id;
           if (leadId) {
-            await supabaseAdmin
-              .from('lead_activities')
+            await (supabaseAdmin
+              .from('lead_activities') as any)
               .insert({
                 lead_id: leadId,
                 activity_type: 'note_added',
