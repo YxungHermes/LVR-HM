@@ -169,14 +169,13 @@ export async function POST(request: NextRequest) {
       if (existingLead && !fetchError) {
         // Update existing lead
         leadId = existingLead.id;
-        const updateData: Database['public']['Tables']['leads']['Update'] = {
-          updated_at: new Date().toISOString(),
-          wedding_date: weddingDate || null,
-        };
-        await supabaseAdmin
+        await (supabaseAdmin
           .from('leads')
-          .update(updateData)
-          .eq('id', leadId);
+          .update({
+            updated_at: new Date().toISOString(),
+            wedding_date: weddingDate || null,
+          } as any)
+          .eq('id', leadId));
 
         // Log activity
         await supabaseAdmin
