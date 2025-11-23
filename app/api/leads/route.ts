@@ -1,11 +1,20 @@
 // @ts-nocheck - Supabase types not available until database is configured
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { isAuthenticated } from '@/lib/auth';
 
 /**
  * GET /api/leads - Get all leads with optional filtering
  */
 export async function GET(request: NextRequest) {
+  // ✅ SECURITY: Require authentication
+  if (!isAuthenticated(request)) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   const { searchParams } = new URL(request.url);
   const status = searchParams.get('status');
   const priority = searchParams.get('priority');
@@ -27,9 +36,11 @@ export async function GET(request: NextRequest) {
       query = query.eq('priority', priority);
     }
 
-    // Search by name or email
+    // ✅ SECURITY: Sanitize search input to prevent SQL injection
     if (search) {
-      query = query.or(`partner1_name.ilike.%${search}%,partner2_name.ilike.%${search}%,email.ilike.%${search}%`);
+      // Escape special characters that could be used for injection
+      const sanitizedSearch = search.replace(/[%_]/g, '\\$&');
+      query = query.or(`partner1_name.ilike.%${sanitizedSearch}%,partner2_name.ilike.%${sanitizedSearch}%,email.ilike.%${sanitizedSearch}%`);
     }
 
     const { data, error } = await query;
