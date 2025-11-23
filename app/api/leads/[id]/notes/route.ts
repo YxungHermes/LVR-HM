@@ -1,6 +1,7 @@
 // @ts-nocheck - Supabase types not available until database is configured
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { isAuthenticated } from '@/lib/auth';
 
 /**
  * POST /api/leads/[id]/notes - Add note to lead
@@ -9,6 +10,14 @@ export async function POST(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // ✅ SECURITY: Require authentication
+  if (!isAuthenticated(request)) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
 

@@ -11,10 +11,12 @@ export function middleware(req: NextRequest) {
     return NextResponse.redirect(new URL("/offerings", req.url));
   }
 
-  // Allow access to login page, auth API, and static assets
+  // Allow access to login page, auth API, webhooks, and static assets
+  // ✅ SECURITY: Webhook routes MUST bypass auth (Stripe needs direct access)
   if (
     url.pathname === "/login" ||
     url.pathname.startsWith("/api/auth") ||
+    url.pathname.startsWith("/api/stripe/webhook") ||
     url.pathname.startsWith("/_next") ||
     url.pathname.startsWith("/static") ||
     url.pathname.includes(".")

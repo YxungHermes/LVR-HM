@@ -222,23 +222,53 @@ You have a complete system with:
    - Vercel Dashboard → Your Project → Settings → Cron Jobs
    - You should see your cron job listed
 
-### Add Stripe Webhook (Future Enhancement)
+### 🚨 Configure Stripe Webhook (CRITICAL - Required for Payment Security)
 
-**Why?** Automatically update CRM when payments succeed.
+**Why is this critical?** Without webhooks, you have NO server-side verification that payments actually completed. Users could manipulate the success page to get free bookings. This is a **critical security vulnerability**.
+
+**What webhooks do:**
+- ✅ Verify payments actually completed on Stripe's servers
+- ✅ Automatically update lead status in CRM when deposits are paid
+- ✅ Track refunds, disputes, and failed payments
+- ✅ Prevent payment fraud and manipulation
+
+**Setup Instructions:**
 
 1. **In Stripe Dashboard:**
-   - Developers → Webhooks
+   - Go to Developers → Webhooks
    - Click "Add endpoint"
    - Endpoint URL: `https://yourdomain.com/api/stripe/webhook`
-   - Events to send: `checkout.session.completed`
+   - Select events to listen for:
+     - `checkout.session.completed` ✅ (required)
+     - `checkout.session.expired` (optional but recommended)
+     - `payment_intent.succeeded` (optional but recommended)
+     - `payment_intent.payment_failed` (optional but recommended)
+     - `charge.refunded` (optional but recommended)
+     - `charge.dispute.created` (optional but recommended)
    - Click "Add endpoint"
-   - Copy the "Signing secret" (starts with `whsec_`)
+   - **IMPORTANT:** Copy the "Signing secret" (starts with `whsec_`)
 
-2. **Add to Vercel:**
-   - Environment Variables
+2. **Add to Vercel Environment Variables:**
+   - Go to Vercel → Your Project → Settings → Environment Variables
    - Add: `STRIPE_WEBHOOK_SECRET=whsec_your_secret_here`
+   - **IMPORTANT:** Add this to Production, Preview, AND Development
+   - Redeploy your site after adding this variable
 
-3. **Create the webhook handler** (we can do this next if you want)
+3. **Test the Webhook:**
+   - In Stripe Dashboard → Webhooks → Click your endpoint
+   - Click "Send test webhook"
+   - Select `checkout.session.completed`
+   - Click "Send test webhook"
+   - You should see a `200 OK` response
+   - Check Vercel logs to confirm receipt
+
+4. **For Local Development:**
+   - Install Stripe CLI: https://stripe.com/docs/stripe-cli
+   - Run: `stripe login`
+   - Forward webhooks: `stripe listen --forward-to localhost:3000/api/stripe/webhook`
+   - Copy the webhook signing secret and add to `.env.local`
+
+**⚠️ IMPORTANT:** Do NOT skip this step! Without webhooks, your payment system is vulnerable to fraud.
 
 ---
 
@@ -266,6 +296,9 @@ Before you go live, verify:
 - [ ] Supabase environment variables added to Vercel
 - [ ] Stripe account created (test mode working)
 - [ ] Stripe environment variables added to Vercel
+- [ ] 🚨 **CRITICAL:** Stripe webhook configured with signing secret
+- [ ] 🚨 **CRITICAL:** STRIPE_WEBHOOK_SECRET added to Vercel
+- [ ] 🚨 **CRITICAL:** Webhook test successful (200 OK response)
 - [ ] Test payment with `4242 4242 4242 4242` succeeds
 - [ ] Consultation form submits successfully
 - [ ] Email confirmation received after consultation

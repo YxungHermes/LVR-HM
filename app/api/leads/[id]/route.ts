@@ -1,6 +1,7 @@
 // @ts-nocheck - Supabase types not available until database is configured
 import { NextRequest, NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/supabase';
+import { isAuthenticated } from '@/lib/auth';
 
 /**
  * GET /api/leads/[id] - Get single lead with activities and notes
@@ -9,6 +10,14 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // ✅ SECURITY: Require authentication
+  if (!isAuthenticated(request)) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     // Get lead data
     const { data: lead, error: leadError } = await supabaseAdmin
@@ -53,13 +62,35 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // ✅ SECURITY: Require authentication
+  if (!isAuthenticated(request)) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     const body = await request.json();
+
+    // ✅ SECURITY: Whitelist allowed fields to prevent arbitrary updates
+    const allowedFields = [
+      'status', 'priority', 'partner1_name', 'partner2_name',
+      'email', 'phone', 'wedding_date', 'location', 'event_type',
+      'budget_range', 'additional_notes', 'estimated_value'
+    ];
+
+    const updates = Object.keys(body).reduce((acc, key) => {
+      if (allowedFields.includes(key)) {
+        acc[key] = body[key];
+      }
+      return acc;
+    }, {} as Record<string, any>);
 
     // @ts-ignore - Supabase types not available until runtime
     const { data, error } = await supabaseAdmin
       .from('leads')
-      .update(body)
+      .update(updates)
       .eq('id', params.id)
       .select()
       .single();
@@ -83,6 +114,14 @@ export async function DELETE(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
+  // ✅ SECURITY: Require authentication
+  if (!isAuthenticated(request)) {
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    );
+  }
+
   try {
     const { error } = await supabaseAdmin
       .from('leads')
